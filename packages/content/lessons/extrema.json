@@ -1,0 +1,161 @@
+{
+  "id": "extrema",
+  "chapterId": "derivative-applications",
+  "number": "5.1",
+  "title": "极值与临界点",
+  "subtitle": "导数为零只是候选",
+  "concept": "连续函数在闭区间上有最大最小值；寻找它们需要检查内部临界点和端点。",
+  "intuition": "一条水平切线可能位于山顶、谷底，也可能只是平坦地穿过去。导数为零能缩小搜索范围，却不能单独证明极值。",
+  "objectives": [
+    "局部与绝对极值",
+    "候选点有哪些",
+    "确认类型"
+  ],
+  "body": [
+    {
+      "title": "局部与绝对极值",
+      "text": "局部极值只与附近点比较；绝对极值与整个定义域或指定区间比较。极值存在定理要求闭且有界区间上的连续性，开区间可能只靠近一个值却从不取到。"
+    },
+    {
+      "title": "候选点有哪些",
+      "text": "内部可导的局部极值点必须满足 f′=0，这叫费马定理。临界点包括定义域内 f′=0 或导数不存在的点。闭区间还必须加入两个端点，比较全部候选值。"
+    },
+    {
+      "title": "确认类型",
+      "text": "一阶导数由正变负是局部最大，由负变正是局部最小。如果 f′(c)=0 且 f″(c)>0，是局部最小；f″(c)<0，是局部最大；等于零时判别失效，应继续分析。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "闭区间方法：列候选，算函数值，再比较。",
+    "latex": "\\text{Candidates}=\\{a,b\\}\\cup\\{c\\in(a,b):f\\prime(c)=0\\text{ or undefined}\\}",
+    "conditions": [
+      "f 在 [a,b] 连续；只把函数有定义的内部点列为临界点。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "以 f(x)=x³−3x 为例，求临界点。",
+      "latex": "f\\prime(x)=3(x^2-1)=0\\Rightarrow x=\\pm1"
+    },
+    {
+      "text": "在 [−2,2] 加入端点并算值。",
+      "latex": "f(-2)=-2,\\quad f(-1)=2,\\quad f(1)=-2,\\quad f(2)=2"
+    },
+    {
+      "text": "比较所有候选，因此最大 2、最小 −2，可能各在多个点达到。",
+      "latex": null
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "derivative",
+    "function": "cubic-extrema",
+    "a": 1,
+    "caption": "移动 a 到 ±1，切线变水平；再观察两侧斜率符号。"
+  },
+  "workedExamples": [
+    {
+      "title": "水平但不是极值",
+      "problem": "判断 $x^3$ 在 0 是否有极值。",
+      "steps": [
+        "f′(0)=0。",
+        "零点两侧导数 3x² 都为正，函数一直递增。"
+      ],
+      "answer": "没有局部极值。"
+    },
+    {
+      "title": "别忘端点",
+      "problem": "求 $f(x)=x^2$ 在 [−1,2] 的绝对极值。",
+      "steps": [
+        "内部临界点 x=0，值为 0。",
+        "端点值为 1 和 4。"
+      ],
+      "answer": "最小值 0 在 x=0，最大值 4 在 x=2。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "extrema-m1",
+      "claim": "导数为零就断言极值。",
+      "correction": "必须用符号变化、二阶判别或直接比较确认。"
+    },
+    {
+      "id": "extrema-m2",
+      "claim": "只查内部，不查端点。",
+      "correction": "闭区间的绝对极值可能在端点。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "extrema-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "extrema-m1"
+      ],
+      "problem": "求 $x^2-4x$ 在 [0,3] 的最小值。",
+      "answer": "$-4$。",
+      "solution": [
+        "导数 2x−4=0 得 x=2；值−4。",
+        "端点值 0、−3，比较后确认。"
+      ],
+      "hint": "列出临界点与端点。",
+      "numericAnswer": -4
+    },
+    {
+      "id": "extrema-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "extrema-m2"
+      ],
+      "problem": "$|x|$ 在 0 有极值吗？",
+      "answer": "有局部且绝对最小值 0。",
+      "solution": [
+        "所有附近及全域输出非负；0 是不可导临界点。"
+      ],
+      "hint": "极值不一定有零导数。"
+    },
+    {
+      "id": "extrema-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "extrema-m2"
+      ],
+      "problem": "$1/x$ 在 (0,1) 有绝对最小值吗？",
+      "answer": "没有。",
+      "solution": [
+        "输出大于 1，趋近 1 却从不取到。"
+      ],
+      "hint": "区间右端不包括 1。"
+    },
+    {
+      "id": "extrema-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "extrema-m2"
+      ],
+      "problem": "f′(c)=0、f″(c)=0，可以判定极值吗？",
+      "answer": "不能。",
+      "solution": [
+        "x⁴ 在 0 有最小值，而 x³ 在 0 无极值。"
+      ],
+      "hint": "找两个反例比较。"
+    }
+  ],
+  "prerequisites": [
+    "derivative-rules",
+    "continuity"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "extrema-m1",
+    "extrema-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}

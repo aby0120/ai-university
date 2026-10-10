@@ -1,0 +1,162 @@
+{
+  "id": "physical-integrals",
+  "chapterId": "integral-applications",
+  "number": "7.5",
+  "title": "位移、功、质量与平均值",
+  "subtitle": "总量等于局部贡献的累积",
+  "concept": "积分模型先写“每小段贡献多少”，再累加。速度、力与密度分别给出位移、功与质量。",
+  "intuition": "流量乘时间是体积，密度乘长度是质量，力乘位移是功。单位会告诉你该乘哪一个微小量，而不是把看到的函数都直接积分。",
+  "objectives": [
+    "位移与总路程",
+    "变力做功",
+    "质量与质心"
+  ],
+  "body": [
+    {
+      "title": "位移与总路程",
+      "text": "位置变化为 ∫v(t)dt，路程为 ∫|v(t)|dt。速度变号时先找零点分段。若求位置，再加上初始位置；若求平均速度，用位移除总时间。"
+    },
+    {
+      "title": "变力做功",
+      "text": "沿运动方向的力 F(x) 在位移 dx 上贡献 dW=F(x)dx。弹簧胡克定律 F=kx（拉伸所需外力）给 W=∫kx dx。若是弹簧对物体的回复力，则符号相反。"
+    },
+    {
+      "title": "质量与质心",
+      "text": "细杆线密度 λ(x) 的质量 m=∫λ dx；关于零点的一阶矩 M=∫xλ dx，质心 x̄=M/m（m>0）。静水压力也可用密度×重力×深度×小片面积累积。每种模型都要说明物理假设。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "把局部贡献与正确的微小量相乘。",
+    "latex": "\\Delta s=\\int v(t)dt,\\quad W=\\int F(x)dx,\\quad m=\\int\\lambda(x)dx,\\quad\\bar x=\\frac{\\int x\\lambda(x)dx}{m}",
+    "conditions": [
+      "定积分上下限对应时间或位置区间；密度非负，质心要求总质量正；力取位移方向分量。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "对 v(t)=t−1，0≤t≤3，先找方向改变的时间。",
+      "latex": "v(t)=0\\Rightarrow t=1"
+    },
+    {
+      "text": "带符号累积给位移。",
+      "latex": "\\Delta s=\\int_0^3(t-1)dt=\\frac32"
+    },
+    {
+      "text": "路程将第一段反号，得到更大的总长度。",
+      "latex": "D=-\\int_0^1(t-1)dt+\\int_1^3(t-1)dt=\\frac52"
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "signed-area",
+    "function": "velocity",
+    "caption": "v(t)=t−1：负段表示倒退，正段表示前进；显示位移与总路程两个读数。"
+  },
+  "workedExamples": [
+    {
+      "title": "拉伸弹簧",
+      "problem": "k=100 N/m，从自然长度拉到 0.2 m，需要多少功？",
+      "steps": [
+        "外力 F=100x。",
+        "W=∫₀^0.2 100x dx=50×0.04。"
+      ],
+      "answer": "2 J，忽略损耗并采用准静态拉伸。"
+    },
+    {
+      "title": "非均匀杆的质量与质心",
+      "problem": "杆 x∈[0,2]，线密度 λ(x)=1+x，求质量与质心。",
+      "steps": [
+        "质量 [x+x²/2]₀²=4。",
+        "矩 [x²/2+x³/3]₀²=14/3，除以质量。"
+      ],
+      "answer": "质量 4，质心 7/6；偏向密度较大的右侧。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "physical-integrals-m1",
+      "claim": "把速度积分当作总路程。",
+      "correction": "负速度会抵消，路程要积分速度绝对值。"
+    },
+    {
+      "id": "physical-integrals-m2",
+      "claim": "积分时变量与单位错配。",
+      "correction": "力乘位置微分，流量乘时间微分，先检查量纲。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "physical-integrals-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "physical-integrals-m1"
+      ],
+      "problem": "v(t)=2t，0≤t≤2，位移是多少？",
+      "answer": "$4$。",
+      "solution": [
+        "积分 t² 在 0 到 2 的端点差为 4。"
+      ],
+      "hint": "速度此处始终非负。",
+      "numericAnswer": 4
+    },
+    {
+      "id": "physical-integrals-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "physical-integrals-m2"
+      ],
+      "problem": "k=50 N/m 的弹簧从 0 拉到 0.4 m，外力做功？",
+      "answer": "$4$ J。",
+      "solution": [
+        "W=(1/2)×50×0.4²=4。"
+      ],
+      "hint": "力会从零逐渐变大。",
+      "numericAnswer": 4
+    },
+    {
+      "id": "physical-integrals-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "physical-integrals-m2"
+      ],
+      "problem": "密度 λ=3、杆长 2，质量是多少？",
+      "answer": "$6$。",
+      "solution": [
+        "∫₀²3 dx=6。"
+      ],
+      "hint": "常密度乘长度。",
+      "numericAnswer": 6
+    },
+    {
+      "id": "physical-integrals-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "physical-integrals-m2"
+      ],
+      "problem": "对 v(t)=t−1、0≤t≤2，位移与路程分别是多少？",
+      "answer": "位移 0，路程 1。",
+      "solution": [
+        "在 1 分段，前后位移 −1/2 与 1/2 抵消。",
+        "绝对值相加为 1。"
+      ],
+      "hint": "方向与长度是不同的总量。"
+    }
+  ],
+  "prerequisites": [
+    "definite-integral",
+    "area-between"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "physical-integrals-m1",
+    "physical-integrals-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}

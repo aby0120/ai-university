@@ -1,0 +1,160 @@
+{
+  "id": "related-rates",
+  "chapterId": "differential-models",
+  "number": "4.3",
+  "title": "相关变化率",
+  "subtitle": "先建立关系，再对时间求导",
+  "concept": "相关变化率把几个同时变化的量放进一个方程，再对时间求导连接它们的速度。",
+  "intuition": "圆的半径在增加，面积也在增加；面积每秒增加多少，取决于半径增长速度和当前半径。静态几何公式经过时间求导，就变成动态关系。",
+  "objectives": [
+    "解题顺序",
+    "单位与符号",
+    "几何约束"
+  ],
+  "body": [
+    {
+      "title": "解题顺序",
+      "text": "给随时间变化的量命名，写出它们始终满足的关系，对 t 求导，最后才代入某时刻的数值。过早代入会把变化变量误当成常数，丢掉它的导数。"
+    },
+    {
+      "title": "单位与符号",
+      "text": "长度变化率单位是长度/时间，面积变化率是面积/时间。流入取正、流出取负，远离取正、靠近取负。题目给“速度大小”时，需要依据变量定义设置符号。"
+    },
+    {
+      "title": "几何约束",
+      "text": "相似三角形可以先消去某个变量，例如圆锥容器中 r/h 恒定。梯子问题则用 x²+y²=L²；固定的是梯子长 L，而不是 x 或 y。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "对时间 t 求导，把链式法则用于每个变化变量。",
+    "latex": "A=\\pi r^2\\quad\\Rightarrow\\quad\\frac{dA}{dt}=2\\pi r\\frac{dr}{dt}",
+    "conditions": [
+      "关系式在所讨论时刻附近成立；先求导再代入时刻值。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "长度为 5 的梯子，两端距离满足勾股关系。",
+      "latex": "x^2+y^2=25"
+    },
+    {
+      "text": "同时对时间求导。",
+      "latex": "2x\\frac{dx}{dt}+2y\\frac{dy}{dt}=0"
+    },
+    {
+      "text": "解出墙上端的速度。",
+      "latex": "\\frac{dy}{dt}=-\\frac xy\\frac{dx}{dt}"
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "related",
+    "function": "circle",
+    "caption": "移动梯子底端 x，观察高 y=√(25−x²) 与向下的变化率。"
+  },
+  "workedExamples": [
+    {
+      "title": "扩张的圆",
+      "problem": "半径以 2 cm/s 增长，在 r=3 cm 时面积变化率是多少？",
+      "steps": [
+        "dA/dt=2πr·dr/dt。",
+        "代入 r=3，dr/dt=2，并保留单位。"
+      ],
+      "answer": "$12\\pi$ cm²/s。"
+    },
+    {
+      "title": "滑动的梯子",
+      "problem": "5 m 梯子底端以 1 m/s 远离墙，x=3 m 时顶部下降多快？",
+      "steps": [
+        "y=√(25−9)=4 m。",
+        "dy/dt=−(3/4)×1=−0.75 m/s。"
+      ],
+      "answer": "顶部向下 0.75 m/s；y 的变化率为 −0.75 m/s。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "related-rates-m1",
+      "claim": "先把瞬时尺寸代入原关系式，再求导。",
+      "correction": "这样会把变量冻结成常数，必须先求导。"
+    },
+    {
+      "id": "related-rates-m2",
+      "claim": "把下降速度写成正的 dy/dt。",
+      "correction": "若 y 表示高度，下降时导数为负。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "related-rates-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "related-rates-m1"
+      ],
+      "problem": "球体 V=4πr³/3，r=2、dr/dt=3，求 dV/dt。",
+      "answer": "$48\\pi$。",
+      "solution": [
+        "dV/dt=4πr² dr/dt=4π×4×3。"
+      ],
+      "hint": "先对 r(t) 求导。"
+    },
+    {
+      "id": "related-rates-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "related-rates-m2"
+      ],
+      "problem": "5 m 梯子，x=4、dx/dt=0.5，求 dy/dt。",
+      "answer": "$-2/3$ m/s。",
+      "solution": [
+        "y=3，dy/dt=−(4/3)×0.5=−2/3。"
+      ],
+      "hint": "负号来自高度下降。",
+      "numericAnswer": -0.6666666666666666
+    },
+    {
+      "id": "related-rates-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "related-rates-m2"
+      ],
+      "problem": "正方形边长以 0.2 cm/s 增长，边长 5 cm 时面积变化率？",
+      "answer": "$2$ cm²/s。",
+      "solution": [
+        "A=s²，A′=2ss′=2×5×0.2。"
+      ],
+      "hint": "面积变化率并不是边长变化率的平方。",
+      "numericAnswer": 2
+    },
+    {
+      "id": "related-rates-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "related-rates-m2"
+      ],
+      "problem": "若半径在减小，圆的面积变化率的符号是什么？",
+      "answer": "负。",
+      "solution": [
+        "2πr>0，而 dr/dt<0，所以乘积为负。"
+      ],
+      "hint": "先确定哪一个变量在减小。"
+    }
+  ],
+  "prerequisites": [
+    "implicit",
+    "chain-rule"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "related-rates-m1",
+    "related-rates-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}

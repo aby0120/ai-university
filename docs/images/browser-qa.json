@@ -1,0 +1,387 @@
+[
+  {
+    "id": "domain",
+    "heading": "函数与定义域",
+    "invalid": false,
+    "mathErrors": 0,
+    "readouts": [
+      "输入 x6",
+      "f(x)2.44949"
+    ],
+    "sliders": 1
+  },
+  {
+    "id": "transformations",
+    "heading": "图像与变换",
+    "invalid": false,
+    "mathErrors": 0,
+    "readouts": [
+      "顶点(3, 5)"
+    ],
+    "sliders": 2
+  },
+  {
+    "id": "composition",
+    "heading": "复合函数与反函数",
+    "invalid": false,
+    "mathErrors": 0,
+    "readouts": [
+      "输入 x3",
+      "f(x)9"
+    ],
+    "sliders": 1
+  },
+  {
+    "id": "trigonometry",
+    "heading": "三角函数与弧度",
+    "invalid": false,
+    "mathErrors": 0,
+    "readouts": [
+      "输入 x7",
+      "f(x)0.65699"
+    ],
+    "sliders": 1
+  },
+  {
+    "id": "exponential-log",
+    "heading": "指数与对数",
+    "invalid": false,
+    "mathErrors": 0,
+    "readouts": [
+      "输入 x2",
+      "f(x)7.38906"
+    ],
+    "sliders": 1
+  },
+  {
+    "id": "limit-intuition",
+    "heading": "极限：靠近时会怎样",
+    "invalid": false,
+    "mathErrors": 0,
+    "readouts": [
+      "x2.5",
+      "f(x)3.5",
+      "距离 |x−a|1.5"
+    ],
+    "sliders": 1
+  },
+  {
+    "id": "limit-laws",
+    "heading": "极限的计算法则",
+    "invalid": false,
+    "mathErrors": 0,
+    "readouts": [
+      "x1.5",
+      "f(x)0.665",
+      "距离 |x−a|1.5"
+    ],
+    "sliders": 1
+  },
+  {
+    "id": "epsilon-delta",
+    "heading": "ε–δ：把靠近说精确",
+    "invalid": false,
+    "mathErrors": 0,
+    "readouts": [
+      "允许误差 ε2",
+      "保证距离 δ0.4"
+    ],
+    "sliders": 1
+  },
+  {
+    "id": "continuity",
+    "heading": "连续性与介值定理",
+    "invalid": false,
+    "mathErrors": 0,
+    "readouts": [
+      "x2.5",
+      "f(x)3.5",
+      "距离 |x−a|1.5"
+    ],
+    "sliders": 1
+  },
+  {
+    "id": "infinite-limits",
+    "heading": "无穷极限与渐近线",
+    "invalid": false,
+    "mathErrors": 0,
+    "readouts": [
+      "x1.5",
+      "f(x)0.66667",
+      "距离 |x−a|1.5"
+    ],
+    "sliders": 1
+  },
+  {
+    "id": "derivative-definition",
+    "heading": "导数：割线变成切线",
+    "invalid": false,
+    "mathErrors": 0,
+    "readouts": [
+      "精确导数 f′(a)5.8",
+      "割线斜率7.3"
+    ],
+    "sliders": 2
+  },
+  {
+    "id": "derivative-rules",
+    "heading": "基本求导规则",
+    "invalid": false,
+    "mathErrors": 0,
+    "readouts": [
+      "精确导数 f′(a)10.83",
+      "割线斜率21.63"
+    ],
+    "sliders": 2
+  },
+  {
+    "id": "chain-rule",
+    "heading": "链式法则",
+    "invalid": false,
+    "mathErrors": 0,
+    "readouts": [
+      "内层 u=x²+14.24",
+      "du/dx3.6",
+      "外层 dy/du=3u²53.9328",
+      "总导数 dy/dx194.15808"
+    ],
+    "sliders": 1
+  },
+  {
+    "id": "trig-derivatives",
+    "heading": "三角函数的导数",
+    "invalid": false,
+    "mathErrors": 0,
+    "readouts": [
+      "精确导数 f′(a)0.81573",
+      "割线斜率0.18411"
+    ],
+    "sliders": 2
+  },
+  {
+    "id": "implicit",
+    "heading": "隐函数求导",
+    "invalid": false,
+    "mathErrors": 0,
+    "readouts": [
+      "精确导数 f′(a)-4.38784",
+      "割线斜率无有限值"
+    ],
+    "sliders": 2
+  },
+  {
+    "id": "exp-log-derivatives",
+    "heading": "指数与对数求导",
+    "invalid": false,
+    "mathErrors": 0,
+    "readouts": [
+      "精确导数 f′(a)6.68589",
+      "割线斜率15.5188"
+    ],
+    "sliders": 2
+  },
+  {
+    "id": "inverse-trig",
+    "heading": "反函数与反三角导数",
+    "invalid": false,
+    "mathErrors": 0,
+    "readouts": [
+      "精确导数 f′(a)0.03998",
+      "割线斜率0.03088"
+    ],
+    "sliders": 2
+  },
+  {
+    "id": "related-rates",
+    "heading": "相关变化率",
+    "invalid": false,
+    "mathErrors": 0,
+    "readouts": [
+      "高度 y0.99499",
+      "若 dx/dt=1，dy/dt-4.92469"
+    ],
+    "sliders": 1
+  },
+  {
+    "id": "linearization",
+    "heading": "线性近似与微分",
+    "mathErrors": 0,
+    "invalid": false,
+    "readouts": [
+      "精确导数 f′(a)0.22361",
+      "真实值2.44949",
+      "切线估计2.45967",
+      "真实误差0.01019"
+    ]
+  },
+  {
+    "id": "newton",
+    "heading": "牛顿法：沿切线找根",
+    "mathErrors": 0,
+    "invalid": false,
+    "readouts": [
+      "初值2.8",
+      "最近近似1.41421",
+      "残差0"
+    ]
+  },
+  {
+    "id": "extrema",
+    "heading": "极值与临界点",
+    "mathErrors": 0,
+    "invalid": false,
+    "readouts": [
+      "精确导数 f′(a)14.28",
+      "割线斜率27.33"
+    ]
+  },
+  {
+    "id": "mean-value",
+    "heading": "罗尔与中值定理",
+    "mathErrors": 0,
+    "invalid": false,
+    "readouts": [
+      "区间 [0,b][0,3.2]",
+      "保证点 c1.6",
+      "共同斜率3.2"
+    ]
+  },
+  {
+    "id": "curve-sketching",
+    "heading": "单调性、凹性与曲线分析",
+    "mathErrors": 0,
+    "invalid": false,
+    "readouts": [
+      "精确导数 f′(a)14.28",
+      "割线斜率27.33"
+    ]
+  },
+  {
+    "id": "optimization",
+    "heading": "优化：把问题变成一个函数",
+    "mathErrors": 0,
+    "invalid": false,
+    "readouts": [
+      "边长 x / y11.9 / 0.1",
+      "周长24",
+      "面积1.19"
+    ]
+  },
+  {
+    "id": "lhopital",
+    "heading": "洛必达法则",
+    "mathErrors": 0,
+    "invalid": false,
+    "readouts": [
+      "x1.5",
+      "f(x)2.32113",
+      "距离 |x−a|1.5"
+    ]
+  },
+  {
+    "id": "antiderivatives",
+    "heading": "原函数与不定积分",
+    "mathErrors": 0,
+    "invalid": false,
+    "readouts": [
+      "积分常数 C2",
+      "F′(1)=1²1"
+    ]
+  },
+  {
+    "id": "riemann-sums",
+    "heading": "黎曼和与数值积分",
+    "mathErrors": 0,
+    "invalid": false,
+    "readouts": [
+      "近似和0.33961",
+      "精确积分1/3 ≈ 0.33333",
+      "近似误差0.00628"
+    ]
+  },
+  {
+    "id": "definite-integral",
+    "heading": "定积分与带符号面积",
+    "mathErrors": 0,
+    "invalid": false,
+    "readouts": [
+      "定积分1.5",
+      "几何面积2.5"
+    ]
+  },
+  {
+    "id": "fundamental-theorem",
+    "heading": "微积分基本定理",
+    "mathErrors": 0,
+    "invalid": false,
+    "readouts": [
+      "累积 A(x)=x³/30.33333",
+      "A′(x)=f(x)1"
+    ]
+  },
+  {
+    "id": "substitution",
+    "heading": "换元积分",
+    "mathErrors": 0,
+    "invalid": false,
+    "readouts": [
+      "内层 u=x²+14.24",
+      "du/dx3.6",
+      "x=0 → u1",
+      "x=1 → u2"
+    ]
+  },
+  {
+    "id": "area-between",
+    "heading": "两曲线之间的面积",
+    "mathErrors": 0,
+    "invalid": false,
+    "readouts": [
+      "条带高度 x−x²0",
+      "总面积1/6 ≈ 0.16667"
+    ]
+  },
+  {
+    "id": "disk-washer",
+    "heading": "旋转体：圆盘与圆环",
+    "mathErrors": 0,
+    "invalid": false,
+    "readouts": [
+      "圆盘半径1",
+      "截面积 πr²3.14159",
+      "总体积π/2"
+    ]
+  },
+  {
+    "id": "shells",
+    "heading": "旋转体：圆柱壳",
+    "mathErrors": 0,
+    "invalid": false,
+    "readouts": [
+      "壳半径1",
+      "单位厚度体积 2πrh6.28319",
+      "总体积π/2"
+    ]
+  },
+  {
+    "id": "arc-length",
+    "heading": "弧长与旋转曲面面积",
+    "mathErrors": 0,
+    "invalid": false,
+    "readouts": [
+      "折线长度1.21894",
+      "精确弧长1.21895",
+      "误差-0.00001"
+    ]
+  },
+  {
+    "id": "physical-integrals",
+    "heading": "位移、功、质量与平均值",
+    "mathErrors": 0,
+    "invalid": false,
+    "readouts": [
+      "位移1.5",
+      "总路程2.5"
+    ]
+  }
+]

@@ -1,0 +1,190 @@
+{
+  "id": "calculus-1",
+  "title": "Calculus I",
+  "titleZh": "微积分 I",
+  "subtitle": "从变化率到累积量",
+  "version": "0.1.0",
+  "language": "zh-CN",
+  "author": "AI University · AI-generated",
+  "description": "一部完整的一元微积分入门教材。用直觉建立含义，用定义守住边界，用推导解释公式，用交互图亲手验证。",
+  "audience": "已具备初等代数基础的自学者与大学微积分入门学习者",
+  "scope": "函数基础、极限与连续、一元求导及应用、定积分与基本积分方法、几何和物理应用。数列级数、多元微积分和系统积分技巧留给后续卷。",
+  "chapters": [
+    {
+      "id": "functions",
+      "title": "函数：变化的语言",
+      "subtitle": "从输入与输出开始",
+      "intro": "微积分研究两件事：变化有多快，变化积累了多少。先把函数、图像和常用模型认清，后面的符号才有具体含义。",
+      "goals": [
+        "确定定义域并读懂图像",
+        "理解复合、反函数与弧度",
+        "认识指数和对数"
+      ],
+      "lessonIds": [
+        "domain",
+        "transformations",
+        "composition",
+        "trigonometry",
+        "exponential-log"
+      ]
+    },
+    {
+      "id": "limits",
+      "title": "极限与连续",
+      "subtitle": "靠近，而不必到达",
+      "intro": "极限描述输入靠近某点时输出的稳定趋势。它允许我们研究孔洞、瞬时变化和无限细分，而不先假设那个点有输出。",
+      "goals": [
+        "区分极限与函数值",
+        "计算双侧、单侧与无穷远极限",
+        "用 ε–δ 与连续性说明结论"
+      ],
+      "lessonIds": [
+        "limit-intuition",
+        "limit-laws",
+        "epsilon-delta",
+        "continuity",
+        "infinite-limits"
+      ]
+    },
+    {
+      "id": "derivatives",
+      "title": "导数的建立与计算",
+      "subtitle": "从一段变化，到这一刻的变化",
+      "intro": "导数把区间平均变化率推进到一个点。先建立定义，再把定义提炼成可靠的计算规则。",
+      "goals": [
+        "用差商理解切线与瞬时速度",
+        "使用积、商、链式法则",
+        "处理三角函数与隐式关系"
+      ],
+      "lessonIds": [
+        "derivative-definition",
+        "derivative-rules",
+        "chain-rule",
+        "trig-derivatives",
+        "implicit"
+      ]
+    },
+    {
+      "id": "differential-models",
+      "title": "更多导数与变化模型",
+      "subtitle": "把变化率带回问题里",
+      "intro": "指数、对数、反三角函数把求导范围补齐；相关变化率、线性近似和牛顿法把工具连到实际任务。",
+      "goals": [
+        "求指数、对数与反三角导数",
+        "设置相关变化率与线性近似",
+        "建立牛顿法并识别失败情形"
+      ],
+      "lessonIds": [
+        "exp-log-derivatives",
+        "inverse-trig",
+        "related-rates",
+        "linearization",
+        "newton"
+      ]
+    },
+    {
+      "id": "derivative-applications",
+      "title": "导数如何描述全局行为",
+      "subtitle": "从局部斜率到整体判断",
+      "intro": "斜率是局部信息，却能用来判断极值、单调性、凹性与最优设计。把结论用对，关键是区间与条件。",
+      "goals": [
+        "寻找并验证极值",
+        "理解中值定理与曲线形状",
+        "建立优化模型并正确使用洛必达法则"
+      ],
+      "lessonIds": [
+        "extrema",
+        "mean-value",
+        "curve-sketching",
+        "optimization",
+        "lhopital"
+      ]
+    },
+    {
+      "id": "integrals",
+      "title": "积分：从累积到原函数",
+      "subtitle": "无数小块，加成一个整体",
+      "intro": "导数问此刻如何变化，积分问这些变化共积累多少。定积分先由细分累积定义，微积分基本定理才把它与原函数连接。",
+      "goals": [
+        "区分原函数与定积分",
+        "建立黎曼和与带符号面积",
+        "使用基本定理、常见公式与换元"
+      ],
+      "lessonIds": [
+        "antiderivatives",
+        "riemann-sums",
+        "definite-integral",
+        "fundamental-theorem",
+        "substitution"
+      ]
+    },
+    {
+      "id": "integral-applications",
+      "title": "积分的几何与物理应用",
+      "subtitle": "选择一小块，再把它们加起来",
+      "intro": "积分应用的共同方法：确定微小元素如何贡献总量，再沿区间累积。面积、体积、弧长、质量和功只是在选择不同的小块。",
+      "goals": [
+        "用分片建立面积与体积",
+        "推导弧长与平均值",
+        "分清位移、路程、功和质量"
+      ],
+      "lessonIds": [
+        "area-between",
+        "disk-washer",
+        "shells",
+        "arc-length",
+        "physical-integrals"
+      ]
+    }
+  ],
+  "lessonIds": [
+    "domain",
+    "transformations",
+    "composition",
+    "trigonometry",
+    "exponential-log",
+    "limit-intuition",
+    "limit-laws",
+    "epsilon-delta",
+    "continuity",
+    "infinite-limits",
+    "derivative-definition",
+    "derivative-rules",
+    "chain-rule",
+    "trig-derivatives",
+    "implicit",
+    "exp-log-derivatives",
+    "inverse-trig",
+    "related-rates",
+    "linearization",
+    "newton",
+    "extrema",
+    "mean-value",
+    "curve-sketching",
+    "optimization",
+    "lhopital",
+    "antiderivatives",
+    "riemann-sums",
+    "definite-integral",
+    "fundamental-theorem",
+    "substitution",
+    "area-between",
+    "disk-washer",
+    "shells",
+    "arc-length",
+    "physical-integrals"
+  ],
+  "sources": [
+    {
+      "id": "openstax-calculus-1",
+      "title": "OpenStax · Calculus Volume 1",
+      "url": "https://openstax.org/details/books/calculus-volume-1",
+      "usage": "知识范围与定理条件核对；本书正文、例题解答与互动图为重新编写，未复制原教材正文或图片。"
+    }
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "humanReviewed": false,
+    "checks": "结构、公式渲染、先修图与选定数值验证；不等同于逐式形式化证明。"
+  }
+}

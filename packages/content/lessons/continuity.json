@@ -1,0 +1,161 @@
+{
+  "id": "continuity",
+  "chapterId": "limits",
+  "number": "2.4",
+  "title": "连续性与介值定理",
+  "subtitle": "附近趋势与点上数值接起来",
+  "concept": "在 a 连续，是指函数值存在、极限存在，而且两者相等。",
+  "intuition": "极限可以绕开孔洞，连续性却要求把孔洞补对。连续函数从负值走到正值，途中不能跳过零。",
+  "objectives": [
+    "三件事一起检查",
+    "连续函数的组合",
+    "介值定理"
+  ],
+  "body": [
+    {
+      "title": "三件事一起检查",
+      "text": "检查 f(a) 是否有定义，再检查左右趋势是否相同，最后比较极限与 f(a)。可去间断是能补值的孔洞；跳跃与无限间断不能靠只改一个点修复。区间端点只检查朝区间内部的单侧。"
+    },
+    {
+      "title": "连续函数的组合",
+      "text": "多项式、指数、三角函数在各自定义域内连续；有理函数、对数和复合函数也在允许输入上连续。连续性让极限可以穿过函数：若 g→b 且 f 在 b 连续，f(g)→f(b)。"
+    },
+    {
+      "title": "介值定理",
+      "text": "连续函数在闭区间端点取值 A、B，就会取到 A 与 B 之间每个数。它保证存在，不保证唯一，也不自动给出位置。可结合二分法逐步缩小根所在区间。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "连续性的等式；介值定理要求在整个闭区间连续。",
+    "latex": "\\lim_{x\\to a}f(x)=f(a)",
+    "conditions": [
+      "介值定理：f 在 [a,b] 连续；N 位于 f(a) 与 f(b) 之间，则存在 c∈[a,b] 使 f(c)=N。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "分段函数要在连接点让两侧和点值一致。",
+      "latex": "f(x)=\\begin{cases}x^2,&x<1\\\\ kx+1,&x\\ge1\\end{cases}"
+    },
+    {
+      "text": "左侧极限为 1，右侧极限和点值为 k+1。",
+      "latex": "1=k+1"
+    },
+    {
+      "text": "所以只有 k=0 能让连接处连续。",
+      "latex": "k=0"
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "limit",
+    "function": "hole",
+    "a": 1,
+    "caption": "孔洞处的极限是 2。若把该点补为 2，函数才连续。"
+  },
+  "workedExamples": [
+    {
+      "title": "补一个孔洞",
+      "problem": "令 f(x)=(x²−4)/(x−2)（x≠2），应设 f(2) 为多少？",
+      "steps": [
+        "附近等于 x+2，因此极限为 4。",
+        "连续要求点值等于该极限。"
+      ],
+      "answer": "设 f(2)=4。"
+    },
+    {
+      "title": "保证方程有根",
+      "problem": "说明 $x^3+x-1=0$ 在 (0,1) 有根。",
+      "steps": [
+        "多项式在 [0,1] 连续。",
+        "f(0)=−1，f(1)=1，零在端点值之间。"
+      ],
+      "answer": "由介值定理，至少有一个根在 (0,1)。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "continuity-m1",
+      "claim": "有定义就连续。",
+      "correction": "还要附近极限等于点值。"
+    },
+    {
+      "id": "continuity-m2",
+      "claim": "介值定理保证恰好一个根。",
+      "correction": "它只保证至少一个；唯一性需要单调性等额外证据。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "continuity-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "continuity-m1"
+      ],
+      "problem": "若 $\\lim_{x\\to2}f(x)=5$、f(2)=3，连续吗？",
+      "answer": "不连续。",
+      "solution": [
+        "极限与函数值不相等。"
+      ],
+      "hint": "检查连续性的最后一步。"
+    },
+    {
+      "id": "continuity-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "continuity-m2"
+      ],
+      "problem": "使 $(x^2-9)/(x-3)$ 在 3 连续的补值是多少？",
+      "answer": "$6$。",
+      "solution": [
+        "约分后是 x+3，极限为 6。"
+      ],
+      "hint": "先求孔洞附近的极限。",
+      "numericAnswer": 6
+    },
+    {
+      "id": "continuity-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "continuity-m2"
+      ],
+      "problem": "用介值定理说明 $\\cos x=x$ 在 (0,1) 有解。",
+      "answer": "存在解。",
+      "solution": [
+        "g(x)=cos x−x 连续；g(0)=1>0，g(1)=cos 1−1<0。",
+        "所以 g 在区间内部至少一次为零。"
+      ],
+      "hint": "把方程移到一边形成连续函数。"
+    },
+    {
+      "id": "continuity-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "continuity-m2"
+      ],
+      "problem": "跳跃间断能仅靠改变该点值修复吗？",
+      "answer": "不能。",
+      "solution": [
+        "两个单侧极限不同，不存在可用的共同点值。"
+      ],
+      "hint": "连续先要求双侧极限存在。"
+    }
+  ],
+  "prerequisites": [
+    "limit-intuition",
+    "limit-laws"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "continuity-m1",
+    "continuity-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}

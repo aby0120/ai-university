@@ -1,0 +1,161 @@
+{
+  "id": "optimization",
+  "chapterId": "derivative-applications",
+  "number": "5.4",
+  "title": "优化：把问题变成一个函数",
+  "subtitle": "最重要的一步常在求导之前",
+  "concept": "优化先确定目标与约束，把问题降到一个变量，再在可行域内寻找并验证最优值。",
+  "intuition": "围栏总长度固定时，拉长一边就必须缩短另一边。所谓“最优”，是在合法方案里比较，不是在整个实数轴随便找一个零导数。",
+  "objectives": [
+    "建模的四步",
+    "求导并验证",
+    "回到原问题"
+  ],
+  "body": [
+    {
+      "title": "建模的四步",
+      "text": "画图并给变量定义；写目标量；用约束消掉其他变量；注明可行区间。单位能帮助发现模型错误，例如面积不应只含一个长度因子。"
+    },
+    {
+      "title": "求导并验证",
+      "text": "找内部临界点，比较端点或边界趋势。用一阶符号或二阶导数证明它是所需最大或最小。若区间开放，可能只有上确界而没有能实现的最大值。"
+    },
+    {
+      "title": "回到原问题",
+      "text": "最终回答所有所求尺寸、数值和单位。实际优化还可能受整数、最小尺寸等额外限制；连续模型得出的值要重新检查这些条件。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "在可行域 D 上比较目标函数，而非只解导数方程。",
+    "latex": "\\max_{x\\in D}F(x)\\quad\\text{or}\\quad\\min_{x\\in D}F(x)",
+    "conditions": [
+      "约束、单位和定义域是模型的一部分；内部零导数只是候选。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "周长为 24，矩形两边 x、y 满足约束。",
+      "latex": "2x+2y=24\\Rightarrow y=12-x"
+    },
+    {
+      "text": "面积化成一个变量，并写可行域。",
+      "latex": "A(x)=x(12-x),\\quad0<x<12"
+    },
+    {
+      "text": "导数在 6 变正为负，给出最大面积。",
+      "latex": "A\\prime=12-2x,\\quad x=y=6,\\quad A_{\\max}=36"
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "optimization",
+    "function": "area-parabola",
+    "caption": "拖动矩形边长 x：周长固定，另一边为 12−x，面积在正方形处最大。"
+  },
+  "workedExamples": [
+    {
+      "title": "靠墙的围栏",
+      "problem": "用 40 m 围栏围靠墙矩形，只围三边，最大面积？",
+      "steps": [
+        "设垂直墙的边为 x，平行墙的边为 y；2x+y=40。",
+        "A=x(40−2x)，导数 40−4x 在 x=10 变号。"
+      ],
+      "answer": "x=10 m，y=20 m，最大 200 m²。"
+    },
+    {
+      "title": "最小距离",
+      "problem": "直线 y=x 上哪一点离 (2,0) 最近？",
+      "steps": [
+        "平方距离 D²=(x−2)²+x²，最小平方与最小距离位置相同。",
+        "导数为 4x−4，唯一零点 x=1，二阶为 4>0。"
+      ],
+      "answer": "点 (1,1)，距离 √2。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "optimization-m1",
+      "claim": "求出零导数就直接结束。",
+      "correction": "还要检查可行性、端点和极值类型。"
+    },
+    {
+      "id": "optimization-m2",
+      "claim": "没有写变量约束。",
+      "correction": "负长度或超出资源限制的解不属于合法方案。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "optimization-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "optimization-m1"
+      ],
+      "problem": "周长 20 的矩形最大面积？",
+      "answer": "$25$。",
+      "solution": [
+        "边长之和 10，A=x(10−x)，顶点 x=5。"
+      ],
+      "hint": "最大时两边相等。",
+      "numericAnswer": 25
+    },
+    {
+      "id": "optimization-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "optimization-m2"
+      ],
+      "problem": "两正数和为 10，最大乘积？",
+      "answer": "$25$。",
+      "solution": [
+        "乘积 x(10−x)，在 x=5 最大。"
+      ],
+      "hint": "把约束变成第二个数。",
+      "numericAnswer": 25
+    },
+    {
+      "id": "optimization-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "optimization-m2"
+      ],
+      "problem": "两正数积为 16，最小和？",
+      "answer": "$8$。",
+      "solution": [
+        "S=x+16/x，x>0；S′=1−16/x²，在 4 前负后正。"
+      ],
+      "hint": "用正数约束选根。",
+      "numericAnswer": 8
+    },
+    {
+      "id": "optimization-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "optimization-m2"
+      ],
+      "problem": "为什么最小化距离常改为最小化距离平方？",
+      "answer": "平方在非负数上严格递增，最优位置相同且去掉根号。",
+      "solution": [
+        "比较 d₁≤d₂ 与 d₁²≤d₂² 等价。"
+      ],
+      "hint": "距离本来非负。"
+    }
+  ],
+  "prerequisites": [
+    "extrema",
+    "curve-sketching"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "optimization-m1",
+    "optimization-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}

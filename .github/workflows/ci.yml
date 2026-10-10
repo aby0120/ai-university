@@ -1,0 +1,23 @@
+name: Check textbook
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: git diff --exit-code -- book/Calculus-I.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: calculus-1-static-website
+          path: dist

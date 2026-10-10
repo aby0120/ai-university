@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+.DS_Store
+playwright-report/
+test-results/
+.openai/*.local.*
+*.tar.gz
+apps/web/public/book.html
+apps/web/public/Calculus-I.md
+apps/web/public/book-assets/

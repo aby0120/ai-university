@@ -1,0 +1,161 @@
+{
+  "id": "limit-intuition",
+  "chapterId": "limits",
+  "number": "2.1",
+  "title": "极限：靠近时会怎样",
+  "subtitle": "一个孔洞，为什么不妨碍极限？",
+  "concept": "极限看的是目标点附近的输出趋势，不是目标点本身的值。",
+  "intuition": "沿曲线从左右靠近同一位置。如果输出都靠近同一个数 L，那么极限为 L；即使那个位置画着空心圆，也可以有极限。",
+  "objectives": [
+    "先看附近，再看点上",
+    "左右必须相遇",
+    "图和表格的作用"
+  ],
+  "body": [
+    {
+      "title": "先看附近，再看点上",
+      "text": "$\\lim_{x\\to a}f(x)=L$ 不要求 f(a)=L，甚至不要求 f(a) 有定义。计算极限时 x 接近 a 但不等于 a。一个点的改动通常不改变附近的趋势。"
+    },
+    {
+      "title": "左右必须相遇",
+      "text": "双侧极限存在且为 L，当且仅当左极限和右极限都存在且等于 L。阶跃函数在跳跃点两侧走向不同，所以没有双侧极限；不能把两侧平均一下。"
+    },
+    {
+      "title": "图和表格的作用",
+      "text": "数值表可以帮助猜测，但有限采样不是证明。函数可能在更小尺度振荡，例如 sin(1/x) 在零附近没有稳定趋势。我们随后用代数规则和精确定义确认猜测。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "双侧极限是左右两个靠近过程的共同输出趋势。",
+    "latex": "\\lim_{x\\to a}f(x)=L\\iff \\lim_{x\\to a^-}f(x)=\\lim_{x\\to a^+}f(x)=L",
+    "conditions": [
+      "这里讨论有限实数极限；左右需有可接近的定义域点。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "分解分子，但保留原函数的孔洞。",
+      "latex": "\\frac{x^2-1}{x-1}=x+1\\quad(x\\ne1)"
+    },
+    {
+      "text": "附近输出沿直线靠近 2。",
+      "latex": "\\lim_{x\\to1}(x+1)=2"
+    },
+    {
+      "text": "约掉因子是在附近建立等式，不是在 x=1 处强行定义原分式。",
+      "latex": null
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "limit",
+    "function": "hole",
+    "a": 1,
+    "caption": "从左右让 x 靠近 1。空心点说明原函数在 1 无定义，输出仍趋近 2。"
+  },
+  "workedExamples": [
+    {
+      "title": "有孔洞的直线",
+      "problem": "求 $\\lim_{x\\to2}(x^2-4)/(x-2)$。",
+      "steps": [
+        "在 x≠2 时约去 x−2，得到 x+2。",
+        "左右都趋近 4。"
+      ],
+      "answer": "极限为 4，原函数在 2 无定义。"
+    },
+    {
+      "title": "左右不相同",
+      "problem": "$f(x)=-1$（x<0），$f(x)=1$（x≥0）。求零点附近的极限。",
+      "steps": [
+        "左侧一直为 −1，右侧一直为 1。",
+        "两侧不同，点上取哪个值也救不了。"
+      ],
+      "answer": "左极限 −1，右极限 1，双侧极限不存在。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "limit-intuition-m1",
+      "claim": "把 0/0 当成极限为 0。",
+      "correction": "0/0 是未定式，表示需要进一步分析。"
+    },
+    {
+      "id": "limit-intuition-m2",
+      "claim": "觉得有极限就必须在该点连续。",
+      "correction": "连续还要函数值存在且等于极限。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "limit-intuition-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "limit-intuition-m1"
+      ],
+      "problem": "求 $\\lim_{x\\to3}(x+2)$。",
+      "answer": "$5$。",
+      "solution": [
+        "线性函数附近的输出趋近 3+2。"
+      ],
+      "hint": "可以直接代入连续函数。",
+      "numericAnswer": 5
+    },
+    {
+      "id": "limit-intuition-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "limit-intuition-m2"
+      ],
+      "problem": "求 $\\lim_{x\\to1}(x^2-1)/(x-1)$。",
+      "answer": "$2$。",
+      "solution": [
+        "x≠1 时约分为 x+1。"
+      ],
+      "hint": "先分解平方差。",
+      "numericAnswer": 2
+    },
+    {
+      "id": "limit-intuition-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "limit-intuition-m2"
+      ],
+      "problem": "若左右极限分别为 2 和 3，双侧极限存在吗？",
+      "answer": "不存在。",
+      "solution": [
+        "双侧极限要求两侧同值。"
+      ],
+      "hint": "不能求两侧的平均值。"
+    },
+    {
+      "id": "limit-intuition-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "limit-intuition-m2"
+      ],
+      "problem": "把 $f(1)$ 从 2 改为 100，会改变 $\\lim_{x\\to1}(x+1)$ 的趋势吗？",
+      "answer": "不会，极限仍为 2。",
+      "solution": [
+        "极限考察穿孔邻域，单点改动不影响。"
+      ],
+      "hint": "x 接近 1 但不等于 1。"
+    }
+  ],
+  "prerequisites": [
+    "domain",
+    "transformations"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "limit-intuition-m1",
+    "limit-intuition-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}

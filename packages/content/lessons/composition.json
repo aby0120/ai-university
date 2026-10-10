@@ -1,0 +1,158 @@
+{
+  "id": "composition",
+  "chapterId": "functions",
+  "number": "1.3",
+  "title": "复合函数与反函数",
+  "subtitle": "把两条规则接起来",
+  "concept": "复合是把一个函数的输出交给另一个函数；反函数是把一条可逆规则倒着走。",
+  "intuition": "温度从摄氏转为华氏，再从华氏计算耗电量，是复合。知道华氏温度并找回摄氏温度，是反函数。顺序和可逆性都不能省略。",
+  "objectives": [
+    "复合的定义域",
+    "一一对应才可逆",
+    "求反函数"
+  ],
+  "body": [
+    {
+      "title": "复合的定义域",
+      "text": "$(f\\circ g)(x)=f(g(x))$。先要求 x 在 g 的定义域，再要求 g(x) 落在 f 的定义域。写得出公式，不代表所有输入都合法。"
+    },
+    {
+      "title": "一一对应才可逆",
+      "text": "若两个不同输入得到同一输出，倒过来就无法唯一选择。$x^2$ 在实数全域不可逆，但限制到 x≥0 后，它的反函数是平方根。水平线检验检查的就是单射性。"
+    },
+    {
+      "title": "求反函数",
+      "text": "先写 y=f(x)，解出 x 关于 y 的表达式，再交换变量名称。反函数的定义域是原函数的值域。$f^{-1}$ 的 −1 是记号，不是倒数。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "若 f 为一一映射到其值域，反函数把输出还原为输入。",
+    "latex": "f^{-1}(f(x))=x,\\qquad f(f^{-1}(y))=y",
+    "conditions": [
+      "两个等式各自在对应定义域内成立。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "以线性函数开始。",
+      "latex": "y=3x-2"
+    },
+    {
+      "text": "解出原来的输入。",
+      "latex": "x=\\frac{y+2}{3}"
+    },
+    {
+      "text": "交换变量名得到反函数。",
+      "latex": "f^{-1}(x)=\\frac{x+2}{3}"
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "graph",
+    "function": "square",
+    "caption": "比较抛物线的两侧：同一高度可以来自两个输入，所以全域不一一对应。"
+  },
+  "workedExamples": [
+    {
+      "title": "顺序真的重要",
+      "problem": "$f(x)=x^2$，$g(x)=x+1$，求两种复合。",
+      "steps": [
+        "f(g(x)) 先加 1 再平方。",
+        "g(f(x)) 先平方再加 1。"
+      ],
+      "answer": "$(f\\circ g)(x)=(x+1)^2$；$(g\\circ f)(x)=x^2+1$。"
+    },
+    {
+      "title": "复合的限制",
+      "problem": "求 $\\ln(\\sqrt{x-1})$ 的定义域。",
+      "steps": [
+        "根号要求 x≥1，但对数还要求根号值严格大于零。",
+        "因此不能取 x=1。"
+      ],
+      "answer": "x>1。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "composition-m1",
+      "claim": "把反函数看作 $1/f(x)$。",
+      "correction": "反函数撤销输入输出关系，倒数只改变数值。"
+    },
+    {
+      "id": "composition-m2",
+      "claim": "认为复合可以交换顺序。",
+      "correction": "一般 f∘g≠g∘f。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "composition-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "composition-m1"
+      ],
+      "problem": "$f(x)=2x+5$ 的反函数？",
+      "answer": "$f^{-1}(x)=(x-5)/2$。",
+      "solution": [
+        "由 y=2x+5 解出 x=(y−5)/2。"
+      ],
+      "hint": "先解出原输入。"
+    },
+    {
+      "id": "composition-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "composition-m2"
+      ],
+      "problem": "$f(x)=x^2$ 限制到 $x\\le0$ 的反函数？",
+      "answer": "$-\\sqrt{x}$，反函数定义域 x≥0。",
+      "solution": [
+        "原输入必须非正，因此选平方根的负分支。"
+      ],
+      "hint": "平方后失去了符号，要由原定义域补回。"
+    },
+    {
+      "id": "composition-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "composition-m2"
+      ],
+      "problem": "$f(x)=\\sqrt{x}$、$g(x)=x-4$，求 $(f\\circ g)(9)$。",
+      "answer": "$\\sqrt5$。",
+      "solution": [
+        "先算 g(9)=5，再算 f(5)。"
+      ],
+      "hint": "从内向外算。"
+    },
+    {
+      "id": "composition-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "composition-m2"
+      ],
+      "problem": "$1/(x^2+1)$ 是 $x^2+1$ 的反函数吗？",
+      "answer": "不是。",
+      "solution": [
+        "它是倒数；x²+1 在全实数上甚至不是一一对应。"
+      ],
+      "hint": "反函数需要还原输入。"
+    }
+  ],
+  "prerequisites": [
+    "domain",
+    "transformations"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "composition-m1",
+    "composition-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "id": "newton",
+  "chapterId": "differential-models",
+  "number": "4.5",
+  "title": "牛顿法：沿切线找根",
+  "subtitle": "从猜测开始，用斜率改进",
+  "concept": "牛顿法用当前点的切线与 x 轴交点作为下一个近似根。",
+  "intuition": "在曲线上选一个点，沿切线往零点方向走，再重新画切线。附近曲线越像直线，这一步通常越有效；糟糕的初值也可能跳走。",
+  "objectives": [
+    "迭代公式",
+    "怎样停止",
+    "适用与失败"
+  ],
+  "body": [
+    {
+      "title": "迭代公式",
+      "text": "切线 y=f(x_n)+f′(x_n)(x−x_n)，令 y=0 解出下一点。每步需要 f′(x_n)≠0。算法是近似计算，不是所有函数和初值都保证收敛。"
+    },
+    {
+      "title": "怎样停止",
+      "text": "同时检查步长 |x_(n+1)−x_n| 与残差 |f(x_(n+1))|，设置最大迭代次数，并处理非有限值与小导数。小步长本身不总保证靠近真根，尤其在数值舍入或导数很大时。"
+    },
+    {
+      "title": "适用与失败",
+      "text": "光滑函数的单根附近通常有很快的局部收敛；在重根附近会慢一些。在 f(x)=x³−2x+2 中从 0 出发会在 0 与 1 间循环。可靠实现应报告失败，必要时配合有根区间的二分法。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "切线求根的迭代公式。",
+    "latex": "x_{n+1}=x_n-\\frac{f(x_n)}{f\\prime(x_n)}",
+    "conditions": [
+      "每步导数非零且计算有限；收敛需要额外局部条件和合适初值。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "让当前切线的输出等于零。",
+      "latex": "0=f(x_n)+f\\prime(x_n)(x_{n+1}-x_n)"
+    },
+    {
+      "text": "解出下一输入，得到迭代式。",
+      "latex": "x_{n+1}=x_n-\\frac{f(x_n)}{f\\prime(x_n)}"
+    },
+    {
+      "text": "对 x²−2，公式化成平均形式。",
+      "latex": "x_{n+1}=\\frac12\\left(x_n+\\frac2{x_n}\\right)"
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "newton",
+    "function": "square-minus-two",
+    "caption": "从初值出发，逐步显示切线交点。改变初值，观察残差下降或导数接近零的警告。"
+  },
+  "workedExamples": [
+    {
+      "title": "近似 √2",
+      "problem": "对 x²−2 从 x₀=1 开始迭代两次。",
+      "steps": [
+        "x₁=(1+2)/2=1.5。",
+        "x₂=(1.5+2/1.5)/2=17/12≈1.416667。"
+      ],
+      "answer": "两步后约 1.416667，已接近 √2。"
+    },
+    {
+      "title": "一个明确的循环",
+      "problem": "f(x)=x³−2x+2，从 x₀=0 开始会如何？",
+      "steps": [
+        "f(0)=2、f′(0)=−2，得到 x₁=1。",
+        "f(1)=1、f′(1)=1，得到 x₂=0。"
+      ],
+      "answer": "在 0 与 1 循环，不收敛。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "newton-m1",
+      "claim": "把每次迭代都当成更接近根。",
+      "correction": "牛顿法可能离开根或循环，必须监测。"
+    },
+    {
+      "id": "newton-m2",
+      "claim": "导数为零时仍继续除法。",
+      "correction": "应停止并报告，或换用其他方法。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "newton-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "newton-m1"
+      ],
+      "problem": "对 x²−4，从 x₀=3 做一步。",
+      "answer": "$13/6$。",
+      "solution": [
+        "3−(9−4)/6=13/6。"
+      ],
+      "hint": "使用当前函数值与导数。",
+      "numericAnswer": 2.1666666666666665
+    },
+    {
+      "id": "newton-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "newton-m2"
+      ],
+      "problem": "对 f(x)=x²−2，x₀=0 能做第一步吗？",
+      "answer": "不能。",
+      "solution": [
+        "f′(0)=0，迭代式出现除零。"
+      ],
+      "hint": "先检查导数。"
+    },
+    {
+      "id": "newton-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "newton-m2"
+      ],
+      "problem": "对线性函数 2x−6，任何初值一步会到哪里？",
+      "answer": "$3$。",
+      "solution": [
+        "x−(2x−6)/2=3；直线等于自己的切线。"
+      ],
+      "hint": "所有切线都是原直线。",
+      "numericAnswer": 3
+    },
+    {
+      "id": "newton-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "newton-m2"
+      ],
+      "problem": "残差小是否能单独证明输入误差小？",
+      "answer": "一般不能。",
+      "solution": [
+        "函数很平坦时，大的输入偏差也可能产生小残差，需要导数下界等信息。"
+      ],
+      "hint": "区分函数值误差与根位置误差。"
+    }
+  ],
+  "prerequisites": [
+    "derivative-definition",
+    "derivative-rules"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "newton-m1",
+    "newton-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "id": "transformations",
+  "chapterId": "functions",
+  "number": "1.2",
+  "title": "图像与变换",
+  "subtitle": "公式里的移动，图上的移动",
+  "concept": "平移、伸缩与反射让我们从一张熟悉的图得到新图。",
+  "intuition": "先跟踪一个点。例如 $(u,f(u))$ 在 $g(x)=f(x-2)$ 中变成 $(u+2,f(u))$；所以减 2 反而向右移动。",
+  "objectives": [
+    "水平与竖直平移",
+    "伸缩与反射",
+    "对称性与区间"
+  ],
+  "body": [
+    {
+      "title": "水平与竖直平移",
+      "text": "$f(x-h)+k$ 将图像右移 h、上移 k。h 或 k 为负时方向反过来。水平变化作用于输入，竖直变化作用于输出，这是方向看起来不同的原因。"
+    },
+    {
+      "title": "伸缩与反射",
+      "text": "$A f(Bx)$ 把输出乘 A，把横坐标除以 B。A<0 时关于 x 轴反射，B<0 时关于 y 轴反射。B 的绝对值越大，横向越压缩。"
+    },
+    {
+      "title": "对称性与区间",
+      "text": "$f(-x)=f(x)$ 是偶函数；$f(-x)=-f(x)$ 是奇函数。增减描述一个区间上的行为，不是只比较两个孤立点。图像可帮助发现规律，精确结论仍要用公式。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "若 B≠0，图上原点 $(u,f(u))$ 在下式中对应 $(u/B+h,Af(u)+k)$。",
+    "latex": "g(x)=A f(B(x-h))+k",
+    "conditions": [
+      "变换后的定义域也要跟着移动或伸缩。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "令新函数内部的输入等于旧输入 u。",
+      "latex": "B(x-h)=u"
+    },
+    {
+      "text": "解出新横坐标，再变换输出。",
+      "latex": "x=\\frac uB+h,\\qquad y=A f(u)+k"
+    },
+    {
+      "text": "这条点映射比背“左加右减”更可靠。",
+      "latex": null
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "transform",
+    "function": "square",
+    "caption": "移动 h 与 k，观察抛物线的顶点。"
+  },
+  "workedExamples": [
+    {
+      "title": "顶点在哪里",
+      "problem": "$g(x)=2(x-3)^2+1$ 的顶点、开口和最小值？",
+      "steps": [
+        "从 y=x² 开始，右移 3，纵向放大 2 倍，再上移 1。",
+        "平方项非负，所以最小输出是 1。"
+      ],
+      "answer": "顶点 (3,1)，向上开口，最小值 1。"
+    },
+    {
+      "title": "从点反推",
+      "problem": "已知 $f(2)=5$，求 $g(x)=f(2x+2)-3$ 上对应的点。",
+      "steps": [
+        "令 2x+2=2，得 x=0。",
+        "输出等于 5−3=2。"
+      ],
+      "answer": "对应点是 (0,2)。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "transformations-m1",
+      "claim": "把 $f(x-3)$ 向左移。",
+      "correction": "跟踪内部输入：旧 x=0 对应新 x=3。"
+    },
+    {
+      "id": "transformations-m2",
+      "claim": "认为 $2f(x)$ 与 $f(2x)$ 一样。",
+      "correction": "一个改输出，一个改输入，通常不同。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "transformations-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "transformations-m1"
+      ],
+      "problem": "$y=(x+2)^2-4$ 的顶点？",
+      "answer": "$(-2,-4)$。",
+      "solution": [
+        "内部为零时 x=−2，输出为−4。"
+      ],
+      "hint": "先找平方项为零的位置。"
+    },
+    {
+      "id": "transformations-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "transformations-m2"
+      ],
+      "problem": "$g(x)=-f(x)$ 是哪种反射？",
+      "answer": "关于 x 轴反射。",
+      "solution": [
+        "每个点 (x,y) 变成 (x,−y)。"
+      ],
+      "hint": "只有输出变号。"
+    },
+    {
+      "id": "transformations-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "transformations-m2"
+      ],
+      "problem": "$f(x)=x^3$ 是奇函数还是偶函数？",
+      "answer": "奇函数。",
+      "solution": [
+        "f(−x)=−x³=−f(x)。"
+      ],
+      "hint": "代入 −x 检查。"
+    },
+    {
+      "id": "transformations-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "transformations-m2"
+      ],
+      "problem": "$g(x)=\\sqrt{x-2}$ 的定义域？",
+      "answer": "$[2,\\infty)$。",
+      "solution": [
+        "要求 x−2≥0。"
+      ],
+      "hint": "定义域也会平移。"
+    }
+  ],
+  "prerequisites": [
+    "domain"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "transformations-m1",
+    "transformations-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}

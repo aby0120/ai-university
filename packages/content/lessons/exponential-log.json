@@ -1,0 +1,159 @@
+{
+  "id": "exponential-log",
+  "chapterId": "functions",
+  "number": "1.5",
+  "title": "指数与对数",
+  "subtitle": "倍增与反向寻找指数",
+  "concept": "指数描述等比例变化；对数回答“需要多少个倍增步骤”。",
+  "intuition": "增加固定数量是加法模型，乘固定比例是指数模型。对数把连乘转成相加，方便比较跨度很大的数量。",
+  "objectives": [
+    "底数与定义域",
+    "运算法则与条件",
+    "认识 e"
+  ],
+  "body": [
+    {
+      "title": "底数与定义域",
+      "text": "对于 b>0 且 b≠1，b^x 对所有实数 x 有定义，输出为正。log_b x 是其反函数，只接受 x>0。底数大于 1 时两者递增；底数在 0 与 1 之间时递减。"
+    },
+    {
+      "title": "运算法则与条件",
+      "text": "指数的乘法来自指数相加，因此 log_b(uv)=log_b u+log_b v，前提 u,v>0。对数没有把加法拆开的同类规则。ln 表示以 e 为底的对数。"
+    },
+    {
+      "title": "认识 e",
+      "text": "e 是使指数函数在每点“变化率等于当前值”的特殊底数，约 2.71828。导数章节会精确说明这个性质。复利形式 (1+1/n)^n 的极限也等于 e。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "对数与指数互为反函数。",
+    "latex": "\\log_b x=y\\iff b^y=x,\\qquad \\ln(e^x)=x",
+    "conditions": [
+      "b>0，b≠1，x>0；ln 是底数为 e 的对数。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "把正数 u、v 写成指数。",
+      "latex": "u=b^p,\\quad v=b^q"
+    },
+    {
+      "text": "相乘相当于指数相加。",
+      "latex": "uv=b^{p+q}"
+    },
+    {
+      "text": "反向读出指数，得到对数乘法法则。",
+      "latex": "\\log_b(uv)=\\log_bu+\\log_bv"
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "graph",
+    "function": "exp",
+    "caption": "指数始终为正；拖动 x 比较加一个单位时输出乘 e。"
+  },
+  "workedExamples": [
+    {
+      "title": "寻找指数",
+      "problem": "解 $2^x=8$。",
+      "steps": [
+        "把 8 写成 2³。",
+        "同一底数的一一对应性质给出相同指数。"
+      ],
+      "answer": "x=3。"
+    },
+    {
+      "title": "带定义域解方程",
+      "problem": "解 $\\ln(x-1)=2$。",
+      "steps": [
+        "先要求 x>1。",
+        "两边取指数，x−1=e²，所得解满足定义域。"
+      ],
+      "answer": "$x=1+e^2$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "exponential-log-m1",
+      "claim": "认为 $\\ln(u+v)=\\ln u+\\ln v$。",
+      "correction": "对数拆分适用于乘积，不适用于和。"
+    },
+    {
+      "id": "exponential-log-m2",
+      "claim": "在实数范围内计算 ln(−1)。",
+      "correction": "实对数的输入必须严格为正。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "exponential-log-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "exponential-log-m1"
+      ],
+      "problem": "求 $\\log_3 81$。",
+      "answer": "$4$。",
+      "solution": [
+        "3⁴=81。"
+      ],
+      "hint": "问 3 的几次方等于 81。",
+      "numericAnswer": 4
+    },
+    {
+      "id": "exponential-log-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "exponential-log-m2"
+      ],
+      "problem": "化简 $\\ln(e^5)$。",
+      "answer": "$5$。",
+      "solution": [
+        "ln 与 exp 撤销彼此。"
+      ],
+      "hint": "使用反函数关系。",
+      "numericAnswer": 5
+    },
+    {
+      "id": "exponential-log-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "exponential-log-m2"
+      ],
+      "problem": "求 $\\ln(2-x)$ 的定义域。",
+      "answer": "$x<2$。",
+      "solution": [
+        "要求 2−x>0。"
+      ],
+      "hint": "对数内部要严格为正。"
+    },
+    {
+      "id": "exponential-log-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "exponential-log-m2"
+      ],
+      "problem": "在 $x>0$ 时，$\\ln(x^3)$ 等于什么？",
+      "answer": "$3\\ln x$。",
+      "solution": [
+        "x³ 是三个正数 x 的乘积。"
+      ],
+      "hint": "应用乘积法则。"
+    }
+  ],
+  "prerequisites": [
+    "composition"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "exponential-log-m1",
+    "exponential-log-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "id": "limit-laws",
+  "chapterId": "limits",
+  "number": "2.2",
+  "title": "极限的计算法则",
+  "subtitle": "何时能代入，何时先化简",
+  "concept": "已有的极限可以通过加、乘、除等运算组合，但分母趋近零时不能直接使用商法则。",
+  "intuition": "先把极限看作稳定的数值趋势：两个量分别稳定到 A 与 B，它们的和就稳定到 A+B。除法需要分母远离零，才不会放大微小误差。",
+  "objectives": [
+    "代入的边界",
+    "夹逼定理",
+    "基本三角极限"
+  ],
+  "body": [
+    {
+      "title": "代入的边界",
+      "text": "多项式处处连续；有理函数在分母非零处连续，所以这些位置可直接代入。出现 0/0 时先因式分解、通分或乘共轭。出现非零数除以零时，要检查两侧符号。"
+    },
+    {
+      "title": "夹逼定理",
+      "text": "若附近 g(x)≤f(x)≤h(x)，且外面两函数都趋近 L，则中间函数也趋近 L。它适合处理“小量乘有界振荡”，例如 |x sin(1/x)|≤|x|。"
+    },
+    {
+      "title": "基本三角极限",
+      "text": "弧度下 sin x/x→1。几何比较给出 0<x<π/2 时 cos x≤sin x/x≤1，再利用对称性得到双侧结论。常见变形要把内部角与分母配成同一变量。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "若 f→A、g→B，则和与乘积的极限按数值运算；商还要求 B≠0。",
+    "latex": "\\lim(f+g)=A+B,\\quad\\lim(fg)=AB,\\quad\\lim\\frac fg=\\frac AB\\ (B\\ne0)",
+    "conditions": [
+      "f 与 g 的有限极限存在；商的分母极限不为零。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "根式差用共轭去掉相减。",
+      "latex": "\\frac{\\sqrt{1+x}-1}{x}=\\frac{1}{\\sqrt{1+x}+1}\\quad(x\\ne0)"
+    },
+    {
+      "text": "新分母在零点趋近 2，可以用商法则。",
+      "latex": "\\lim_{x\\to0}\\frac{1}{\\sqrt{1+x}+1}=\\frac12"
+    },
+    {
+      "text": "变形必须在接近点的允许输入上成立。",
+      "latex": null
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "limit",
+    "function": "sinc",
+    "a": 0,
+    "caption": "观察 sin(x)/x 在 x=0 两侧趋近 1。零点用孔洞标记。"
+  },
+  "workedExamples": [
+    {
+      "title": "匹配内部角",
+      "problem": "求 $\\lim_{x\\to0}\\sin(3x)/x$。",
+      "steps": [
+        "改写为 $3\\sin(3x)/(3x)$。",
+        "令 u=3x，u 也趋近 0。"
+      ],
+      "answer": "极限为 3。"
+    },
+    {
+      "title": "压住振荡",
+      "problem": "求 $\\lim_{x\\to0}x^2\\cos(1/x)$。",
+      "steps": [
+        "余弦介于 −1 与 1，故表达式介于 −x² 与 x²。",
+        "两边都趋近 0，夹逼得到结论。"
+      ],
+      "answer": "极限为 0。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "limit-laws-m1",
+      "claim": "在分母极限为零时直接用商法则。",
+      "correction": "商法则的非零条件不能删掉。"
+    },
+    {
+      "id": "limit-laws-m2",
+      "claim": "约分后忘记原表达式的限制。",
+      "correction": "化简等式通常只在目标点之外成立。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "limit-laws-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "limit-laws-m1"
+      ],
+      "problem": "求 $\\lim_{x\\to2}(x^2+3x)$。",
+      "answer": "$10$。",
+      "solution": [
+        "多项式直接代入：4+6=10。"
+      ],
+      "hint": "连续处代入。",
+      "numericAnswer": 10
+    },
+    {
+      "id": "limit-laws-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "limit-laws-m2"
+      ],
+      "problem": "求 $\\lim_{x\\to0}(\\sqrt{4+x}-2)/x$。",
+      "answer": "$1/4$。",
+      "solution": [
+        "乘共轭化为 1/(√(4+x)+2)，代入为 1/4。"
+      ],
+      "hint": "乘分子分母的共轭。",
+      "numericAnswer": 0.25
+    },
+    {
+      "id": "limit-laws-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "limit-laws-m2"
+      ],
+      "problem": "求 $\\lim_{x\\to0}\\sin(5x)/(2x)$。",
+      "answer": "$5/2$。",
+      "solution": [
+        "写成 (5/2)sin(5x)/(5x)。"
+      ],
+      "hint": "制造同一个小角度。",
+      "numericAnswer": 2.5
+    },
+    {
+      "id": "limit-laws-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "limit-laws-m2"
+      ],
+      "problem": "求 $\\lim_{x\\to0}x\\sin(1/x)$。",
+      "answer": "$0$。",
+      "solution": [
+        "绝对值不超过 |x|，由夹逼定理得 0。"
+      ],
+      "hint": "正弦的绝对值不超过 1。",
+      "numericAnswer": 0
+    }
+  ],
+  "prerequisites": [
+    "limit-intuition",
+    "trigonometry"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "limit-laws-m1",
+    "limit-laws-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}

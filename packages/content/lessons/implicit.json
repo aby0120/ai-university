@@ -1,0 +1,160 @@
+{
+  "id": "implicit",
+  "chapterId": "derivatives",
+  "number": "3.5",
+  "title": "隐函数求导",
+  "subtitle": "不用先解出 y，也能找到斜率",
+  "concept": "在关系式里把 y 当作 x 的函数，求导时每个 y 的变化都要带上 y′。",
+  "intuition": "圆并非整条都是一个 y(x)，但在局部可以选一条分支。沿这条分支改变 x，y 也随之变化，所以 y² 的导数不是 2y，而是 2y y′。",
+  "objectives": [
+    "一起对 x 求导",
+    "局部而非全局",
+    "更高阶导数"
+  ],
+  "body": [
+    {
+      "title": "一起对 x 求导",
+      "text": "对等式两边使用同一变量求导，含 y 的项用链式法则，含 xy 的项还用积法则。然后把所有 y′ 项移到一侧，提出来，解出 y′。"
+    },
+    {
+      "title": "局部而非全局",
+      "text": "求出的斜率表达式依赖所选曲线上点 (x,y)。同一 x 可能有两个 y，给出不同斜率。在公式的分母为零处，不应继续除法；可能是竖直切线或更复杂的奇点。"
+    },
+    {
+      "title": "更高阶导数",
+      "text": "还可以再对 y′ 求导得到 y″，其中出现 y 时仍需乘 y′。不要把点坐标太早代入，先完成求导关系，再在指定点计算。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "若 F(x,y(x))=0 且局部可导、F_y≠0，可解得斜率。",
+    "latex": "F_x+F_y y\\prime=0,\\qquad y\\prime=-\\frac{F_x}{F_y}",
+    "conditions": [
+      "本节以多项式等可微关系为主；F_y≠0 保证能解出有限局部斜率。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "对圆方程两边求导。",
+      "latex": "x^2+y^2=4\\quad\\Rightarrow\\quad2x+2yy\\prime=0"
+    },
+    {
+      "text": "在 y≠0 处解出 y′。",
+      "latex": "y\\prime=-\\frac xy"
+    },
+    {
+      "text": "上半圆在 x>0 处的斜率为负，与图像吻合。",
+      "latex": null
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "derivative",
+    "function": "circle",
+    "a": 1,
+    "caption": "在半径 2 的上半圆移动 a。靠近端点时切线越来越陡。"
+  },
+  "workedExamples": [
+    {
+      "title": "圆上的斜率",
+      "problem": "圆 $x^2+y^2=25$ 在 (3,4) 的切线？",
+      "steps": [
+        "隐式求导给 y′=−x/y。",
+        "斜率为 −3/4，通过 (3,4)。"
+      ],
+      "answer": "$y-4=-\\frac34(x-3)$。"
+    },
+    {
+      "title": "含乘积的关系",
+      "problem": "对 $xy+y^2=6$ 求导。",
+      "steps": [
+        "xy 给 y+xy′，y² 给 2yy′。",
+        "整理 y+(x+2y)y′=0。"
+      ],
+      "answer": "$y\\prime=-y/(x+2y)$，分母非零。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "implicit-m1",
+      "claim": "把 y 当作常数。",
+      "correction": "y 沿曲线随 x 变化，每次对 y 的外层求导都要乘 y′。"
+    },
+    {
+      "id": "implicit-m2",
+      "claim": "分母为零就说斜率为零。",
+      "correction": "分母为零表示此公式无法给出有限斜率。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "implicit-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "implicit-m1"
+      ],
+      "problem": "对 $x^2+y^2=1$ 求 y′。",
+      "answer": "$-x/y$（y≠0）。",
+      "solution": [
+        "求导得 2x+2yy′=0，解出。"
+      ],
+      "hint": "圆的半径不影响这个斜率关系。"
+    },
+    {
+      "id": "implicit-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "implicit-m2"
+      ],
+      "problem": "对 $y^3=x$ 求 y′。",
+      "answer": "$1/(3y^2)$（y≠0）。",
+      "solution": [
+        "3y²y′=1。"
+      ],
+      "hint": "先对整个 y³ 求导。"
+    },
+    {
+      "id": "implicit-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "implicit-m2"
+      ],
+      "problem": "$x^2+y^2=25$ 在 (0,5) 的斜率？",
+      "answer": "$0$。",
+      "solution": [
+        "−x/y=−0/5=0。"
+      ],
+      "hint": "代入满足圆方程的点。",
+      "numericAnswer": 0
+    },
+    {
+      "id": "implicit-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "implicit-m2"
+      ],
+      "problem": "对 $x+y+xy=3$ 求 y′。",
+      "answer": "$-(1+y)/(1+x)$（x≠−1）。",
+      "solution": [
+        "1+y′+y+xy′=0，合并 y′ 项。"
+      ],
+      "hint": "xy 需要积法则。"
+    }
+  ],
+  "prerequisites": [
+    "chain-rule",
+    "derivative-rules"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "implicit-m1",
+    "implicit-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}

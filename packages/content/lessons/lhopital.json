@@ -1,0 +1,164 @@
+{
+  "id": "lhopital",
+  "chapterId": "derivative-applications",
+  "number": "5.5",
+  "title": "洛必达法则",
+  "subtitle": "未定式里，比较变化率",
+  "concept": "在严格条件下，0/0 或 ∞/∞ 型的比值极限可由导数的比值极限决定。",
+  "intuition": "两项都变得很小，仅看终点无法比较比例；它们靠近终点的变化速度可能给出比例。但这不是“分式都能分别求导”的规则。",
+  "objectives": [
+    "先检查形式与条件",
+    "改写其他未定式",
+    "结论不反向"
+  ],
+  "body": [
+    {
+      "title": "先检查形式与条件",
+      "text": "确认原式是 0/0 或 ∞/∞；f、g 在目标点的穿孔单侧邻域可导，g′不为零，且 f′/g′ 的极限存在（可以为 ±∞）。再使用法则。普通分式的导数仍然用商法则，完全是另一个问题。"
+    },
+    {
+      "title": "改写其他未定式",
+      "text": "0·∞ 可改成商，∞−∞ 可通分或共轭，1^∞、0^0、∞^0 可先取对数转成乘积。但每次改写后仍要验证条件；若导数比更复杂，代数化简可能更好。"
+    },
+    {
+      "title": "结论不反向",
+      "text": "导数比没有极限，并不说明原比值没有极限。洛必达是提供结论的充分工具。反复使用时，每一步都要重新检查未定式和导数条件。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "在上述单侧邻域条件下，0/0 或 ∞/∞ 型可用导数比的极限。",
+    "latex": "\\lim_{x\\to a}\\frac{f(x)}{g(x)}=\\lim_{x\\to a}\\frac{f\\prime(x)}{g\\prime(x)}",
+    "conditions": [
+      "f,g 可导；g′≠0；原式为 0/0 或 ∞/∞；右侧极限存在；双侧结论要两侧一致。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "有限端点 0/0 情形，可连续补 f(a)=g(a)=0。",
+      "latex": null
+    },
+    {
+      "text": "柯西中值定理给出区间内一点 c，且 c 随 x 靠近 a。",
+      "latex": "\\frac{f(x)-f(a)}{g(x)-g(a)}=\\frac{f\\prime(c)}{g\\prime(c)}"
+    },
+    {
+      "text": "若导数比趋近 L，左侧也趋近 L。其余形式需相应的推广论证。",
+      "latex": "\\frac{f(x)}{g(x)}\\to L"
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "limit",
+    "function": "expm1ratio",
+    "a": 0,
+    "caption": "观察 (e^x−1)/x 趋近 1；导数比 e^x/1 也趋近 1。"
+  },
+  "workedExamples": [
+    {
+      "title": "两个零比较速度",
+      "problem": "求 $\\lim_{x\\to0}(e^x-1)/x$。",
+      "steps": [
+        "原式为 0/0，分母导数为 1。",
+        "导数比为 e^x，趋近 1。"
+      ],
+      "answer": "极限为 1。"
+    },
+    {
+      "title": "对数与线性增长",
+      "problem": "求 $\\lim_{x\\to\\infty}\\ln x/x$。",
+      "steps": [
+        "原式为 ∞/∞，导数比为 (1/x)/1。",
+        "导数比趋近 0，条件满足。"
+      ],
+      "answer": "极限为 0，线性增长快于对数。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "lhopital-m1",
+      "claim": "非未定式也分别求导。",
+      "correction": "例如 x/2 在 x→0 的极限为 0，分母导数为零，不能套法则。"
+    },
+    {
+      "id": "lhopital-m2",
+      "claim": "把导数比当作分式的导数。",
+      "correction": "(f/g)′ 是商法则，不是 f′/g′。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "lhopital-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "lhopital-m1"
+      ],
+      "problem": "求 $\\lim_{x\\to0}\\ln(1+x)/x$。",
+      "answer": "$1$。",
+      "solution": [
+        "0/0 型，导数比 1/(1+x) 趋近 1。"
+      ],
+      "hint": "确认对数定义域。",
+      "numericAnswer": 1
+    },
+    {
+      "id": "lhopital-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "lhopital-m2"
+      ],
+      "problem": "求 $\\lim_{x\\to0}(1-\\cos x)/x^2$。",
+      "answer": "$1/2$。",
+      "solution": [
+        "一次得到 sin x/(2x)，再用基本三角极限，或再次洛必达。"
+      ],
+      "hint": "每次使用前检查形式。",
+      "numericAnswer": 0.5
+    },
+    {
+      "id": "lhopital-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "lhopital-m2"
+      ],
+      "problem": "求 $\\lim_{x\\to\\infty}x/e^x$。",
+      "answer": "$0$。",
+      "solution": [
+        "∞/∞ 型，导数比 1/e^x→0。"
+      ],
+      "hint": "指数增长更快。",
+      "numericAnswer": 0
+    },
+    {
+      "id": "lhopital-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "lhopital-m2"
+      ],
+      "problem": "求 $\\lim_{x\\to0}(x+1)/(x+2)$，是否需要洛必达？",
+      "answer": "$1/2$，不能按未定式使用洛必达。",
+      "solution": [
+        "原式可直接代入，分母不为零。"
+      ],
+      "hint": "先看原极限形式。",
+      "numericAnswer": 0.5
+    }
+  ],
+  "prerequisites": [
+    "exp-log-derivatives",
+    "limit-laws",
+    "mean-value"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "lhopital-m1",
+    "lhopital-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}

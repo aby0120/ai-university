@@ -1,0 +1,159 @@
+{
+  "id": "substitution",
+  "chapterId": "integrals",
+  "number": "6.5",
+  "title": "换元积分",
+  "subtitle": "链式法则，倒着使用",
+  "concept": "当被积式里同时出现一个内部函数与它的导数时，可以把内部函数换成新变量。",
+  "intuition": "复杂表达式常常只是一个简单函数穿上了复合外衣。换元先识别里面那层，再把它的变化率一起搬走。",
+  "objectives": [
+    "选择 u 与 du",
+    "定积分同时换界",
+    "验证与常见模式"
+  ],
+  "body": [
+    {
+      "title": "选择 u 与 du",
+      "text": "令 u=g(x)，则 du=g′(x)dx。这不是把 dx 随意当数约分，而是链式法则逆向给出的积分公式。若只差常数倍，可以提出调整；若缺少变化的因子，不能凭空补上。"
+    },
+    {
+      "title": "定积分同时换界",
+      "text": "原 x=a,b 对应 u=g(a),g(b)。换了变量就必须换上下限；也可以先求关于 x 的原函数，再使用原界，二者任选一条完整路线。若 g 非单调，公式作为原函数端点关系仍成立；几何换变量需另查方向与分段。"
+    },
+    {
+      "title": "验证与常见模式",
+      "text": "(内层)^n×内层导数、e^(内层)×内层导数、内层导数/内层都是优先模式。根式有时令 u 为根号内；三角积可令 u=sin x 或 cos x。最终对不定积分答案求导核对。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "链式法则的逆向积分公式。",
+    "latex": "\\int f(g(x))g\\prime(x)dx=F(g(x))+C,\\qquad\\int_a^b f(g(x))g\\prime(x)dx=\\int_{g(a)}^{g(b)}f(u)du",
+    "conditions": [
+      "F′=f；在区间上具备连续与可导条件；定积分的界要对应新变量。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "令 u=x²+1，使 du=2x dx。",
+      "latex": "\\int2x(x^2+1)^3dx=\\int u^3du"
+    },
+    {
+      "text": "先用简单幂公式积分。",
+      "latex": "\\int u^3du=\\frac{u^4}{4}+C"
+    },
+    {
+      "text": "把 u 换回原变量。",
+      "latex": "\\frac{(x^2+1)^4}{4}+C"
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "substitution",
+    "function": "square",
+    "caption": "x 从 0 到 1 时，u=x²+1 从 1 到 2；显示 du/dx=2x，强调宽度也随换元改变。"
+  },
+  "workedExamples": [
+    {
+      "title": "识别对数结构",
+      "problem": "求 $\\int 2x/(1+x^2)dx$。",
+      "steps": [
+        "令 u=1+x²，du=2x dx。",
+        "积分变成 ∫1/u du；u 始终为正。"
+      ],
+      "answer": "$\\ln(1+x^2)+C$。"
+    },
+    {
+      "title": "换界的一条路线",
+      "problem": "求 $\\int_0^1 2x e^{x^2}dx$。",
+      "steps": [
+        "令 u=x²，界从 0、1 变为 0、1，du=2x dx。",
+        "计算 ∫₀¹e^u du=e−1。"
+      ],
+      "answer": "$e-1$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "substitution-m1",
+      "claim": "只换符号，不换 dx 或积分界。",
+      "correction": "变量、变化因子与界要同步处理。"
+    },
+    {
+      "id": "substitution-m2",
+      "claim": "u′ 缺失时仍强行套公式。",
+      "correction": "一般 ∫f(g(x))dx 不等于 F(g(x))。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "substitution-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "substitution-m1"
+      ],
+      "problem": "求 $\\int 3x^2\\cos(x^3)dx$。",
+      "answer": "$\\sin(x^3)+C$。",
+      "solution": [
+        "u=x³，du=3x²dx，积分变成 ∫cos u du。"
+      ],
+      "hint": "内部的导数就在外面。"
+    },
+    {
+      "id": "substitution-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "substitution-m2"
+      ],
+      "problem": "求 $\\int_0^1 2x(1+x^2)dx$。",
+      "answer": "$3/2$。",
+      "solution": [
+        "u=1+x²，界为 1 到 2，∫₁²u du=(4−1)/2。"
+      ],
+      "hint": "新界不是 0 到 1。",
+      "numericAnswer": 1.5
+    },
+    {
+      "id": "substitution-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "substitution-m2"
+      ],
+      "problem": "求 $\\int e^{2x}dx$。",
+      "answer": "$e^{2x}/2+C$。",
+      "solution": [
+        "u=2x，du=2dx，补 1/2。"
+      ],
+      "hint": "积分要除去内部倍率。"
+    },
+    {
+      "id": "substitution-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "substitution-m2"
+      ],
+      "problem": "求 $\\int\\sin x\\cos x\\,dx$。",
+      "answer": "$\\sin^2x/2+C$。",
+      "solution": [
+        "u=sin x，du=cos x dx。"
+      ],
+      "hint": "也可选择 cos x，结果仅差常数。"
+    }
+  ],
+  "prerequisites": [
+    "chain-rule",
+    "fundamental-theorem"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "substitution-m1",
+    "substitution-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}

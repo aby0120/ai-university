@@ -1,0 +1,158 @@
+{
+  "id": "shells",
+  "chapterId": "integral-applications",
+  "number": "7.3",
+  "title": "旋转体：圆柱壳",
+  "subtitle": "绕一圈的窄条有多长？",
+  "concept": "平行旋转轴的窄条旋转后形成薄壳，体积约为周长乘高度乘厚度。",
+  "intuition": "展开一层很薄的圆柱侧壁，近似一个长方体：长是圆周 2πr，高是条带长度，厚是 dr。",
+  "objectives": [
+    "建立壳的三个量",
+    "为什么近似会准确",
+    "与圆环法交叉检查"
+  ],
+  "body": [
+    {
+      "title": "建立壳的三个量",
+      "text": "绕 y 轴时，常取竖条：半径 x、高度上−下、厚度 dx。绕竖直线 x=k 则半径是 |x−k|。要在不重复覆盖的区域内累积，各壳半径应一一对应切片。"
+    },
+    {
+      "title": "为什么近似会准确",
+      "text": "薄壳的精确体积为 π[(r+Δr)²−r²]h=(2πrΔr+πΔr²)h；额外二阶项在细分极限中消失，留下 2πrh dr。"
+    },
+    {
+      "title": "与圆环法交叉检查",
+      "text": "同一区域换方向切片可得到圆环式。两种答案应一致。若旋转轴穿过区域，直接将两侧壳相加可能把同一体积算两次，应选择无重叠描述。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "圆柱壳体积公式。",
+    "latex": "V=2\\pi\\int_a^b r(x)h(x)dx",
+    "conditions": [
+      "切片平行于旋转轴；r≥0、h≥0，且壳层不重复覆盖。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "对 0≤x≤1、0≤y≤x² 绕 y 轴。",
+      "latex": "r=x,\\qquad h=x^2"
+    },
+    {
+      "text": "微小壳体积为 2πx³dx。",
+      "latex": "V=2\\pi\\int_0^1x^3dx"
+    },
+    {
+      "text": "积分得到 π/2。",
+      "latex": "V=\\frac\\pi2"
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "shell",
+    "function": "square",
+    "caption": "移动竖条：半径 x、高 x²、周长 2πx；切片视图与旋转示意同步。"
+  },
+  "workedExamples": [
+    {
+      "title": "壳层直接算",
+      "problem": "区域 0≤x≤2、0≤y≤x 绕 y 轴的体积。",
+      "steps": [
+        "r=x、h=x，因此 V=2π∫₀²x²dx。",
+        "得到 2π×8/3。"
+      ],
+      "answer": "$16\\pi/3$。"
+    },
+    {
+      "title": "用圆环核对",
+      "problem": "对上一节示意的 y=x² 下方区域，改用圆环法。",
+      "steps": [
+        "横切 y∈[0,1]，外半径 1，内半径 √y。",
+        "V=π∫₀¹(1−y)dy=π/2。"
+      ],
+      "answer": "与壳层结果 $\\pi/2$ 一致。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "shells-m1",
+      "claim": "把壳半径平方。",
+      "correction": "薄壳使用周长 2πr，只有圆盘面积使用 πr²。"
+    },
+    {
+      "id": "shells-m2",
+      "claim": "跨轴两侧壳层直接相加。",
+      "correction": "可能重复覆盖，要先画旋转后的区域。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "shells-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "shells-m1"
+      ],
+      "problem": "区域 0≤x≤1、0≤y≤1 绕 y 轴的体积？",
+      "answer": "$\\pi$。",
+      "solution": [
+        "壳法 2π∫₀¹x dx=π。"
+      ],
+      "hint": "这是半径 1、高 1 的圆柱。"
+    },
+    {
+      "id": "shells-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "shells-m2"
+      ],
+      "problem": "y=x、0≤x≤1 下方区域绕 y 轴体积？",
+      "answer": "$2\\pi/3$。",
+      "solution": [
+        "2π∫₀¹x·x dx=2π/3。"
+      ],
+      "hint": "半径与高度都为 x。"
+    },
+    {
+      "id": "shells-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "shells-m2"
+      ],
+      "problem": "竖条绕 x=3 旋转，x∈[0,1] 时半径是什么？",
+      "answer": "$3-x$。",
+      "solution": [
+        "到竖直轴的水平距离为 |x−3|=3−x。"
+      ],
+      "hint": "半径始终非负。"
+    },
+    {
+      "id": "shells-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "shells-m2"
+      ],
+      "problem": "壳公式中高度与厚度可以交换吗？",
+      "answer": "不能随意交换。",
+      "solution": [
+        "高度沿轴，厚度沿半径；改变切法会改变积分变量与边界。"
+      ],
+      "hint": "先看三维几何方向。"
+    }
+  ],
+  "prerequisites": [
+    "disk-washer",
+    "area-between"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "shells-m1",
+    "shells-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}

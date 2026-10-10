@@ -1,0 +1,160 @@
+{
+  "id": "epsilon-delta",
+  "chapterId": "limits",
+  "number": "2.3",
+  "title": "ε–δ：把靠近说精确",
+  "subtitle": "你给误差，我给输入范围",
+  "concept": "ε 是允许的输出误差；δ 是保证误差所需的输入距离。极限要求无论 ε 多小，都能找到有效的 δ。",
+  "intuition": "这是一个保证，不是一张采样表。对方先说“输出误差小于 0.01”，你再给出一个输入范围，让里面每一个合法输入都满足要求。",
+  "objectives": [
+    "量词的顺序",
+    "如何找 δ",
+    "证据的强度"
+  ],
+  "body": [
+    {
+      "title": "量词的顺序",
+      "text": "先任意给 ε>0，再选择 δ>0。δ 可以依赖 ε，但不能依赖范围内临时选到的某个 x。接着要保证所有满足 0<|x−a|<δ 的定义域输入，都有 |f(x)−L|<ε。"
+    },
+    {
+      "title": "如何找 δ",
+      "text": "把输出误差拆成输入距离乘一个可控因子。线性函数只需要 δ=ε/|m|。平方函数多一个 |x+a|，先限制 δ≤1，把它压在固定上界内，再缩小 δ。"
+    },
+    {
+      "title": "证据的强度",
+      "text": "展示几个接近的数并不能覆盖“所有 x”。证明需要明确写出 δ，再沿不等式推到目标误差。用更小的 δ 仍然有效，所以 δ 不必是最大的。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "对定义域在 a 附近有聚点的函数，有限极限定义如下。",
+    "latex": "\\forall\\varepsilon>0\\ \\exists\\delta>0:\\quad 0<|x-a|<\\delta\\Rightarrow |f(x)-L|<\\varepsilon",
+    "conditions": [
+      "x 属于函数定义域；a 不必属于定义域。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "证明 x² 在 x→2 时趋近 4，分解误差。",
+      "latex": "|x^2-4|=|x-2||x+2|"
+    },
+    {
+      "text": "先令 |x−2|<1，则 1<x<3，从而 |x+2|<5。",
+      "latex": "\\delta=\\min\\left(1,\\frac\\varepsilon5\\right)"
+    },
+    {
+      "text": "当 0<|x−2|<δ 时，误差小于 5δ≤ε。",
+      "latex": "|x^2-4|<5\\delta\\le\\varepsilon"
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "epsilon",
+    "function": "square",
+    "a": 2,
+    "caption": "改变 ε；δ=min(1,ε/5) 给出保证。蓝色竖带中的曲线落在绿色横带内。"
+  },
+  "workedExamples": [
+    {
+      "title": "线性函数的保证",
+      "problem": "证明 $\\lim_{x\\to1}(3x+2)=5$。",
+      "steps": [
+        "输出误差为 |3x+2−5|=3|x−1|。",
+        "给任意 ε>0，取 δ=ε/3，则误差严格小于 ε。"
+      ],
+      "answer": "$\\delta=\\varepsilon/3$ 有效。"
+    },
+    {
+      "title": "常数函数",
+      "problem": "证明常数函数 $f(x)=7$ 的极限为 7。",
+      "steps": [
+        "输出误差恒为零。",
+        "任意 ε>0，取 δ=1 即可。"
+      ],
+      "answer": "任何正 δ 都能满足要求。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "epsilon-delta-m1",
+      "claim": "先固定 δ，再要求所有 ε 都适用。",
+      "correction": "需要按给定 ε 选择 δ；同一个固定 δ 通常做不到。"
+    },
+    {
+      "id": "epsilon-delta-m2",
+      "claim": "仅要求存在一个好 x。",
+      "correction": "保证要求范围内所有合法 x 都满足输出误差。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "epsilon-delta-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "epsilon-delta-m1"
+      ],
+      "problem": "对 $f(x)=2x$、a=3、L=6，给出有效 δ。",
+      "answer": "$\\delta=\\varepsilon/2$。",
+      "solution": [
+        "误差 2|x−3|<2δ=ε。"
+      ],
+      "hint": "输出误差是输入误差的两倍。"
+    },
+    {
+      "id": "epsilon-delta-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "epsilon-delta-m2"
+      ],
+      "problem": "上题 ε=0.1 时可取多少 δ？",
+      "answer": "$0.05$。",
+      "solution": [
+        "0.1/2=0.05。"
+      ],
+      "hint": "代入你的 δ 公式。",
+      "numericAnswer": 0.05
+    },
+    {
+      "id": "epsilon-delta-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "epsilon-delta-m2"
+      ],
+      "problem": "证明 $\\lim_{x\\to1}x^2=1$，先限制 |x−1|<1。",
+      "answer": "$\\delta=\\min(1,\\varepsilon/3)$。",
+      "solution": [
+        "此时 0<x<2，|x+1|<3。",
+        "|x²−1|<3δ≤ε。"
+      ],
+      "hint": "因式分解误差。"
+    },
+    {
+      "id": "epsilon-delta-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "epsilon-delta-m2"
+      ],
+      "problem": "为什么条件是 0<|x−a|，不包含 x=a？",
+      "answer": "极限研究附近行为，不依赖点上的值。",
+      "solution": [
+        "去掉中心点后，即使 f(a) 未定义，也能谈极限。"
+      ],
+      "hint": "回想有孔洞的曲线。"
+    }
+  ],
+  "prerequisites": [
+    "limit-laws"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "epsilon-delta-m1",
+    "epsilon-delta-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}

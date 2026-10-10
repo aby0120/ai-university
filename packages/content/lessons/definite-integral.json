@@ -1,0 +1,160 @@
+{
+  "id": "definite-integral",
+  "chapterId": "integrals",
+  "number": "6.3",
+  "title": "定积分与带符号面积",
+  "subtitle": "累积可以相互抵消",
+  "concept": "定积分是带方向的累积量。曲线在 x 轴上方贡献正值，下方贡献负值。",
+  "intuition": "向前走 5 米又向后走 3 米，位移为 2 米，总路程为 8 米。定积分的符号记录方向；几何面积则把每块都取正。",
+  "objectives": [
+    "积分性质",
+    "面积与平均值",
+    "有积累但无原函数公式"
+  ],
+  "body": [
+    {
+      "title": "积分性质",
+      "text": "可对和与常数倍线性拆分；沿区间分段再相加。交换上下限改变符号，同端点积分为零。如果 f≤g，则在 a<b 时 ∫f≤∫g。比较要在同一区间同一方向。"
+    },
+    {
+      "title": "面积与平均值",
+      "text": "几何面积用 ∫|f|，或按零点分段翻转负值。函数平均值为 (1/(b−a))∫f；它把总累积平均分配到区间长度，不是只平均两个端点。"
+    },
+    {
+      "title": "有积累但无原函数公式",
+      "text": "连续函数可积，并不意味着原函数能写成初等函数表达式，例如 e^(−x²)。这时数值积分仍能有效计算，定积分的定义不依赖一个漂亮公式。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "带符号积分与几何面积要区分。",
+    "latex": "A_{\\mathrm{geometric}}=\\int_a^b|f(x)|\\,dx,\\qquad f_{\\mathrm{avg}}=\\frac1{b-a}\\int_a^b f(x)\\,dx",
+    "conditions": [
+      "a<b；面积与平均值公式要求相应函数可积。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "对于 f(x)=x，左右三角形的带符号面积不同。",
+      "latex": "\\int_{-1}^0 x\\,dx=-\\frac12,\\qquad\\int_0^1x\\,dx=\\frac12"
+    },
+    {
+      "text": "相加得到零，但取绝对值后两块相加。",
+      "latex": "\\int_{-1}^1x\\,dx=0,\\qquad\\int_{-1}^1|x|\\,dx=1"
+    },
+    {
+      "text": "因此零积分不说明函数处处为零。",
+      "latex": null
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "signed-area",
+    "function": "line",
+    "caption": "改变终点 b；y=x 在负半轴的阴影贡献负值，正半轴贡献正值。"
+  },
+  "workedExamples": [
+    {
+      "title": "抵消不等于没面积",
+      "problem": "计算 $\\int_{-2}^2 x\\,dx$ 及对应几何面积。",
+      "steps": [
+        "两块带符号三角形面积分别 −2 和 2。",
+        "几何面积改为两块正面积相加。"
+      ],
+      "answer": "定积分 0，几何面积 4。"
+    },
+    {
+      "title": "平均高度",
+      "problem": "f(x)=2x+1 在 [0,2] 的平均值？",
+      "steps": [
+        "总积分由梯形面积为 6。",
+        "除以区间长度 2。"
+      ],
+      "answer": "平均值为 3。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "definite-integral-m1",
+      "claim": "把定积分当作总几何面积。",
+      "correction": "负函数值会抵消，几何面积要用绝对值。"
+    },
+    {
+      "id": "definite-integral-m2",
+      "claim": "定积分末尾还加 C。",
+      "correction": "定积分是一个数或参数函数，不是整族原函数。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "definite-integral-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "definite-integral-m1"
+      ],
+      "problem": "已知 $\\int_0^2f=5$，求 $\\int_2^0f$。",
+      "answer": "$-5$。",
+      "solution": [
+        "交换上下限改变符号。"
+      ],
+      "hint": "积分有方向。",
+      "numericAnswer": -5
+    },
+    {
+      "id": "definite-integral-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "definite-integral-m2"
+      ],
+      "problem": "已知 $\\int_0^1f=2$、$\\int_1^3f=4$，求 $\\int_0^3f$。",
+      "answer": "$6$。",
+      "solution": [
+        "相邻区间的累积相加。"
+      ],
+      "hint": "在 1 处分段。",
+      "numericAnswer": 6
+    },
+    {
+      "id": "definite-integral-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "definite-integral-m2"
+      ],
+      "problem": "f(x)=x 在 [0,4] 的平均值？",
+      "answer": "$2$。",
+      "solution": [
+        "三角形面积 8，除以长度 4。"
+      ],
+      "hint": "面积除以宽度。",
+      "numericAnswer": 2
+    },
+    {
+      "id": "definite-integral-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "definite-integral-m2"
+      ],
+      "problem": "若连续非负函数在闭区间积分为零，能推断什么？",
+      "answer": "函数在整个区间都为零。",
+      "solution": [
+        "若某点正，由连续性其附近也正，必贡献正积分，矛盾。"
+      ],
+      "hint": "非负与连续是关键条件。"
+    }
+  ],
+  "prerequisites": [
+    "riemann-sums"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "definite-integral-m1",
+    "definite-integral-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}

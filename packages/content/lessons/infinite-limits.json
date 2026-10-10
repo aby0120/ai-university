@@ -1,0 +1,160 @@
+{
+  "id": "infinite-limits",
+  "chapterId": "limits",
+  "number": "2.5",
+  "title": "无穷极限与渐近线",
+  "subtitle": "无限是趋势，不是一个实数",
+  "concept": "输出无界增大叫无穷极限；输入无界增大时的输出趋势叫无穷远极限。两种“无限”位置不同。",
+  "intuition": "沿 1/x 的右侧向零靠近，输出越来越大；沿横轴向右走远，输出反而接近零。先看谁在走向无限。",
+  "objectives": [
+    "竖直与水平渐近线",
+    "有理函数看最高次",
+    "无穷极限的保证"
+  ],
+  "body": [
+    {
+      "title": "竖直与水平渐近线",
+      "text": "某侧 x→a 时 f(x)→±∞，则 x=a 是竖直渐近线。x→±∞ 时 f(x)→L，则 y=L 是相应方向的水平渐近线。函数可以穿过水平渐近线；它描述远处趋势，不是不能碰的墙。"
+    },
+    {
+      "title": "有理函数看最高次",
+      "text": "在 x→±∞ 时将分子分母除以分母最高幂：分子次数低则趋近 0，同次则趋近最高次系数比，高次则可能无界或有斜渐近线。左右方向要注意奇次幂符号。"
+    },
+    {
+      "title": "无穷极限的保证",
+      "text": "f(x)→+∞ 表示给任意大门槛 M，都能让足够近的合法输入满足 f(x)>M。无界并不自动趋向 +∞；振荡且无界的函数可能没有固定趋势。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "右侧趋向正无穷的定义，及无穷远的有限极限示例。",
+    "latex": "\\forall M>0\\ \\exists\\delta>0:\\ 0<x-a<\\delta\\Rightarrow f(x)>M",
+    "conditions": [
+      "±∞ 不是有限实数；双侧无穷趋势需按左右符号分别说明。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "无穷远时把高次项提出。",
+      "latex": "\\frac{3x^2+1}{2x^2-5}=\\frac{3+1/x^2}{2-5/x^2}"
+    },
+    {
+      "text": "小项趋近零，分母趋近非零。",
+      "latex": "\\lim_{x\\to\\pm\\infty}\\frac{3x^2+1}{2x^2-5}=\\frac32"
+    },
+    {
+      "text": "水平线 y=3/2 是两端的渐近线。",
+      "latex": null
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "limit",
+    "function": "reciprocal",
+    "a": 0,
+    "caption": "1/x 在零点两侧分别趋向负无穷、正无穷。图窗外的部分被裁切，并不意味着曲线停止。"
+  },
+  "workedExamples": [
+    {
+      "title": "左右符号不同",
+      "problem": "求 $\\lim_{x\\to0^-}1/x$ 与 $\\lim_{x\\to0^+}1/x$。",
+      "steps": [
+        "负小数的倒数是绝对值很大的负数。",
+        "正小数的倒数是很大的正数。"
+      ],
+      "answer": "分别为 −∞ 与 +∞，没有共同的双侧趋势。"
+    },
+    {
+      "title": "斜渐近线",
+      "problem": "求 $f(x)=(x^2+1)/x$ 的斜渐近线。",
+      "steps": [
+        "拆成 x+1/x。",
+        "与 y=x 的竖直距离为 1/x，远处趋近 0。"
+      ],
+      "answer": "斜渐近线 y=x。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "infinite-limits-m1",
+      "claim": "把 ∞ 当数代入四则运算。",
+      "correction": "∞−∞ 等形式不提供结论，必须比较具体增长。"
+    },
+    {
+      "id": "infinite-limits-m2",
+      "claim": "看到分母为零就断定竖直渐近线。",
+      "correction": "因子可能约去形成孔洞，要检查附近趋势。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "infinite-limits-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "infinite-limits-m1"
+      ],
+      "problem": "求 $\\lim_{x\\to\\infty}(2x+1)/(x+4)$。",
+      "answer": "$2$。",
+      "solution": [
+        "同除以 x，得到 (2+1/x)/(1+4/x)。"
+      ],
+      "hint": "比较最高次系数。",
+      "numericAnswer": 2
+    },
+    {
+      "id": "infinite-limits-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "infinite-limits-m2"
+      ],
+      "problem": "求 $\\lim_{x\\to0}1/x^2$。",
+      "answer": "+∞。",
+      "solution": [
+        "两侧都是正数且无界增大。"
+      ],
+      "hint": "平方消除了左右符号差异。"
+    },
+    {
+      "id": "infinite-limits-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "infinite-limits-m2"
+      ],
+      "problem": "求 $\\lim_{x\\to-\\infty}x^3$。",
+      "answer": "−∞。",
+      "solution": [
+        "负输入的奇次幂为负，绝对值无界。"
+      ],
+      "hint": "注意方向和幂的奇偶性。"
+    },
+    {
+      "id": "infinite-limits-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "infinite-limits-m2"
+      ],
+      "problem": "$f(x)=(x^2-1)/(x-1)$ 在 1 有竖直渐近线吗？",
+      "answer": "没有，是可去孔洞。",
+      "solution": [
+        "x≠1 时等于 x+1，附近极限有限。"
+      ],
+      "hint": "先约分再判断。"
+    }
+  ],
+  "prerequisites": [
+    "limit-laws",
+    "continuity"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "infinite-limits-m1",
+    "infinite-limits-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}

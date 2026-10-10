@@ -1,0 +1,159 @@
+{
+  "id": "chain-rule",
+  "chapterId": "derivatives",
+  "number": "3.3",
+  "title": "链式法则",
+  "subtitle": "外层变化 × 内层变化",
+  "concept": "复合函数的变化率，是外层对内层的变化率乘以内层对原输入的变化率。",
+  "intuition": "把距离换成时间，再把时间换成成本，每一步的倍率要连乘。漏掉内层导数，就相当于假设内层每次恰好变化一个单位。",
+  "objectives": [
+    "辨认内外层",
+    "与积法则区分",
+    "为什么可以连乘"
+  ],
+  "body": [
+    {
+      "title": "辨认内外层",
+      "text": "对 (x²+1)³，内层 u=x²+1，外层 y=u³。先对 u 求外层导数 3u²，再代回 u，最后乘 u′=2x。沿嵌套结构从外到内，每层贡献一个导数因子。"
+    },
+    {
+      "title": "与积法则区分",
+      "text": "相乘的函数需要积法则；函数套函数需要链式法则。有的式子同时需要两种，例如 x² sin(x³)。先看最外层结构：这里先是乘积，其中正弦项再使用链式法则。"
+    },
+    {
+      "title": "为什么可以连乘",
+      "text": "一阶近似说明 Δu≈g′(x)Δx，Δy≈f′(u)Δu，合起来就得到乘积。这个解释不要求 g′非零；严格证明用余项处理 Δu=0 的情况，而不是随意约掉可能为零的量。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "若 g 在 x 可导且 f 在 g(x) 可导，则复合可导。",
+    "latex": "\\frac d{dx}f(g(x))=f\\prime(g(x))g\\prime(x)",
+    "conditions": [
+      "外层导数在 g(x) 处取值；两个可导条件都要满足。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "对 f(g(x)) 用可导的一阶展开。",
+      "latex": "\\Delta y=f\\prime(g(x))\\Delta u+o(\\Delta u)"
+    },
+    {
+      "text": "内层也有一阶展开。",
+      "latex": "\\Delta u=g\\prime(x)h+o(h)"
+    },
+    {
+      "text": "代入并除以 h，余项趋零，得到链式法则。",
+      "latex": "\\frac{\\Delta y}{h}\\to f\\prime(g(x))g\\prime(x)"
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "chain",
+    "function": "square",
+    "caption": "选择 x，比较内层 u=x²+1 的变化率 2x 与外层 y=u³ 的变化率 3u²；总变化率是两者乘积。"
+  },
+  "workedExamples": [
+    {
+      "title": "三次方的内层",
+      "problem": "求 $y=(x^2+1)^3$ 的导数。",
+      "steps": [
+        "外层是 u³，导数为 3u²。",
+        "内层导数为 2x，连乘并代回。"
+      ],
+      "answer": "$y\\prime=6x(x^2+1)^2$。"
+    },
+    {
+      "title": "两层结构",
+      "problem": "求 $y=\\sqrt{1+x^2}$ 的导数。",
+      "steps": [
+        "外层 u^(1/2) 的导数为 (1/2)u^(−1/2)。",
+        "内层 1+x² 的导数为 2x。"
+      ],
+      "answer": "$y\\prime=x/\\sqrt{1+x^2}$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "chain-rule-m1",
+      "claim": "只求外层导数。",
+      "correction": "还要乘内部规则的变化率。"
+    },
+    {
+      "id": "chain-rule-m2",
+      "claim": "把 f′(g(x)) 写成 f′(x)。",
+      "correction": "外层接收的输入是 g(x)。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "chain-rule-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "chain-rule-m1"
+      ],
+      "problem": "求 $(2x+1)^4$ 的导数。",
+      "answer": "$8(2x+1)^3$。",
+      "solution": [
+        "外层给 4(2x+1)³，内层给 2。"
+      ],
+      "hint": "内层导数是 2。"
+    },
+    {
+      "id": "chain-rule-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "chain-rule-m2"
+      ],
+      "problem": "求 $1/(1+x^2)$ 的导数。",
+      "answer": "$-2x/(1+x^2)^2$。",
+      "solution": [
+        "写成 (1+x²)^−1，外层导数乘 2x。"
+      ],
+      "hint": "使用负一次幂。"
+    },
+    {
+      "id": "chain-rule-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "chain-rule-m2"
+      ],
+      "problem": "$y=(x^2+1)^3$ 在 x=1 的导数值？",
+      "answer": "$24$。",
+      "solution": [
+        "6×1×(1+1)²=24。"
+      ],
+      "hint": "先求整体导数。",
+      "numericAnswer": 24
+    },
+    {
+      "id": "chain-rule-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "chain-rule-m2"
+      ],
+      "problem": "求 $x^2(1+x)^3$ 的导数。",
+      "answer": "$2x(1+x)^3+3x^2(1+x)^2$。",
+      "solution": [
+        "先积法则，再对 (1+x)³ 用链式法则。"
+      ],
+      "hint": "从最外层运算开始。"
+    }
+  ],
+  "prerequisites": [
+    "composition",
+    "derivative-rules"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "chain-rule-m1",
+    "chain-rule-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "id": "inverse-trig",
+  "chapterId": "differential-models",
+  "number": "4.2",
+  "title": "反函数与反三角导数",
+  "subtitle": "把斜率倒过来，也要看分支",
+  "concept": "反函数图像交换横纵坐标，因此在非零斜率处，反函数的导数是原导数的倒数。",
+  "intuition": "原函数输出只改一点，输入却改很多时，反函数斜率就大。正弦全域会重复，所以反正弦只反转一个选定分支。",
+  "objectives": [
+    "反函数导数",
+    "主值分支",
+    "常用公式"
+  ],
+  "body": [
+    {
+      "title": "反函数导数",
+      "text": "若 y=f^−1(x)，则 f(y)=x；链式求导给 f′(y)y′=1。必须在原导数不为零且局部反函数可导的条件下使用。不要直接把 f′(x) 取倒数，原函数接收的是 y。"
+    },
+    {
+      "title": "主值分支",
+      "text": "arcsin 的输出在 [−π/2,π/2]，arccos 在 [0,π]，arctan 在 (−π/2,π/2)。限制分支决定根号符号，也决定是否加负号。arcsin 和 arccos 在输入 ±1 的端点没有有限双侧导数。"
+    },
+    {
+      "title": "常用公式",
+      "text": "arcsin x 的导数为 1/√(1−x²)；arccos 是它的负值；arctan 为 1/(1+x²)。它们也会成为积分公式，因为求原函数等于倒着使用导数。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "反三角导数使用主值分支。",
+    "latex": "(\\arcsin x)\\prime=\\frac1{\\sqrt{1-x^2}},\\quad(\\arccos x)\\prime=-\\frac1{\\sqrt{1-x^2}},\\quad(\\arctan x)\\prime=\\frac1{1+x^2}",
+    "conditions": [
+      "前两式 |x|<1；arctan 在全实数上可导。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "令 y=arcsin x，主值分支上 cos y≥0。",
+      "latex": "\\sin y=x\\quad\\Rightarrow\\quad\\cos y\\,y\\prime=1"
+    },
+    {
+      "text": "在 |x|<1 时 cos y 严格为正。",
+      "latex": "\\cos y=\\sqrt{1-\\sin^2y}=\\sqrt{1-x^2}"
+    },
+    {
+      "text": "解出导数。",
+      "latex": "y\\prime=\\frac1{\\sqrt{1-x^2}}"
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "derivative",
+    "function": "arctan",
+    "a": 0,
+    "caption": "arctan 的切线斜率为 1/(1+a²)，始终为正，远处逐渐变小。"
+  },
+  "workedExamples": [
+    {
+      "title": "内部还有函数",
+      "problem": "求 $\\arctan(2x)$ 的导数。",
+      "steps": [
+        "外层导数 1/(1+(2x)²)。",
+        "内部导数为 2。"
+      ],
+      "answer": "$2/(1+4x^2)$。"
+    },
+    {
+      "title": "反函数的指定点",
+      "problem": "f(2)=5，f′(2)=3，求 (f^−1)′(5)。",
+      "steps": [
+        "反函数在输入 5 时输出 2。",
+        "取原函数在 2 的导数的倒数。"
+      ],
+      "answer": "1/3。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "inverse-trig-m1",
+      "claim": "把 arcsin x 与 1/sin x 混淆。",
+      "correction": "前者是反函数，后者是 csc x。"
+    },
+    {
+      "id": "inverse-trig-m2",
+      "claim": "求反函数导数时在错误点取原导数。",
+      "correction": "先找到反函数输出 y，再计算 f′(y)。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "inverse-trig-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "inverse-trig-m1"
+      ],
+      "problem": "求 $\\arcsin(x/2)$ 的导数。",
+      "answer": "$1/\\sqrt{4-x^2}$，|x|<2。",
+      "solution": [
+        "先得 (1/2)/√(1−x²/4)，再化简。"
+      ],
+      "hint": "链式法则与定义域一起检查。"
+    },
+    {
+      "id": "inverse-trig-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "inverse-trig-m2"
+      ],
+      "problem": "求 arctan x 在 1 的导数值。",
+      "answer": "$1/2$。",
+      "solution": [
+        "1/(1+1²)=1/2。"
+      ],
+      "hint": "使用主值函数的公式。",
+      "numericAnswer": 0.5
+    },
+    {
+      "id": "inverse-trig-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "inverse-trig-m2"
+      ],
+      "problem": "求 $\\arccos x$ 在 0 的导数值。",
+      "answer": "$-1$。",
+      "solution": [
+        "−1/√(1−0)=−1。"
+      ],
+      "hint": "余弦反函数递减。",
+      "numericAnswer": -1
+    },
+    {
+      "id": "inverse-trig-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "inverse-trig-m2"
+      ],
+      "problem": "f(1)=4，f′(1)=2，求 (f^−1)′(4)。",
+      "answer": "$1/2$。",
+      "solution": [
+        "原输入为 1，导数倒数为 1/2。"
+      ],
+      "hint": "把 4 先反向映回 1。",
+      "numericAnswer": 0.5
+    }
+  ],
+  "prerequisites": [
+    "composition",
+    "implicit"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "inverse-trig-m1",
+    "inverse-trig-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}

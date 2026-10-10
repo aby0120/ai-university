@@ -1,0 +1,158 @@
+{
+  "id": "trigonometry",
+  "chapterId": "functions",
+  "number": "1.4",
+  "title": "三角函数与弧度",
+  "subtitle": "用单位圆理解周期变化",
+  "concept": "正弦和余弦是单位圆上的纵坐标与横坐标；弧度让角度与弧长直接相连。",
+  "intuition": "走过长度 1 的单位圆弧，对应 1 弧度。这样角的变化量就是圆上的实际距离，导数公式才不需要额外的换算系数。",
+  "objectives": [
+    "弧度与周期",
+    "最常用的恒等式",
+    "微积分中的小角度"
+  ],
+  "body": [
+    {
+      "title": "弧度与周期",
+      "text": "半径 r、弧长 s 对应角 θ=s/r。整圈是 2π 弧度，180° 是 π 弧度。sin 和 cos 的周期为 2π；tan 的周期为 π，但在 cos=0 处没有定义。"
+    },
+    {
+      "title": "最常用的恒等式",
+      "text": "单位圆方程给出 sin²x+cos²x=1。商关系是 tan x=sin x/cos x。计算时可把复杂表达式还原成 sin 和 cos，再检查分母。"
+    },
+    {
+      "title": "微积分中的小角度",
+      "text": "弧度下，x 趋近 0 时 sin x/x 趋近 1。这是正弦导数的关键基础；它只是一条极限，并不表示所有 x 都满足 sin x=x。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "单位圆上角 x 对应点 $(\\cos x,\\sin x)$。",
+    "latex": "\\sin^2x+\\cos^2x=1,\\qquad \\tan x=\\frac{\\sin x}{\\cos x}",
+    "conditions": [
+      "本书三角函数的输入默认弧度；tan 要求 cos x≠0。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "圆周长为 2πr，除以半径得到整圈角度。",
+      "latex": "\\theta=\\frac sr,\\qquad \\theta_{\\mathrm{circle}}=2\\pi"
+    },
+    {
+      "text": "单位圆横纵坐标满足圆方程。",
+      "latex": "(\\cos x)^2+(\\sin x)^2=1"
+    },
+    {
+      "text": "因此角度、图像与代数恒等式描述的是同一件事。",
+      "latex": null
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "graph",
+    "function": "sin",
+    "caption": "拖动 x 观察正弦的周期；横轴单位是弧度。"
+  },
+  "workedExamples": [
+    {
+      "title": "角度换单位",
+      "problem": "把 150° 换成弧度并计算正弦。",
+      "steps": [
+        "乘 π/180，得到 5π/6。",
+        "5π/6 位于第二象限，正弦为正，与 π/6 同高。"
+      ],
+      "answer": "$5\\pi/6$，正弦 $1/2$。"
+    },
+    {
+      "title": "找不到输出的位置",
+      "problem": "$\\tan x$ 在哪里没有定义？",
+      "steps": [
+        "分母 cos x=0 时不允许除法。",
+        "这些角度是 π/2 加任意整数个 π。"
+      ],
+      "answer": "$x=\\pi/2+k\\pi$，$k\\in\\mathbb Z$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "trigonometry-m1",
+      "claim": "把 30 当成 30° 输入正弦。",
+      "correction": "本书公式中的 30 是弧度，30° 要换成 π/6。"
+    },
+    {
+      "id": "trigonometry-m2",
+      "claim": "把 sin²x 写成 sin(x²)。",
+      "correction": "前者是 (sin x)²，先求正弦再平方。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "trigonometry-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "trigonometry-m1"
+      ],
+      "problem": "90° 等于多少弧度？",
+      "answer": "$\\pi/2$。",
+      "solution": [
+        "90×π/180=π/2。"
+      ],
+      "hint": "整圈是 2π。"
+    },
+    {
+      "id": "trigonometry-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "trigonometry-m2"
+      ],
+      "problem": "求 $\\cos\\pi$。",
+      "answer": "$-1$。",
+      "solution": [
+        "单位圆转半圈到达 (−1,0)。"
+      ],
+      "hint": "看横坐标。",
+      "numericAnswer": -1
+    },
+    {
+      "id": "trigonometry-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "trigonometry-m2"
+      ],
+      "problem": "化简 $1-\\sin^2x$。",
+      "answer": "$\\cos^2x$。",
+      "solution": [
+        "移项使用单位圆恒等式。"
+      ],
+      "hint": "平方和等于 1。"
+    },
+    {
+      "id": "trigonometry-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "trigonometry-m2"
+      ],
+      "problem": "$\\sin(x+2\\pi)$ 与 $\\sin x$ 有什么关系？",
+      "answer": "相等。",
+      "solution": [
+        "转完整一圈回到同一点。"
+      ],
+      "hint": "使用周期。"
+    }
+  ],
+  "prerequisites": [
+    "domain"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "trigonometry-m1",
+    "trigonometry-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}

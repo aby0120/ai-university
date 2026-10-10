@@ -1,0 +1,19 @@
+{
+  "$schema":"http://json-schema.org/draft-07/schema#", "$id":"https://ai-university.org/schemas/learning-object.schema.json",
+  "title":"AI University canonical learning object", "type":"object", "additionalProperties":false,
+  "required":["id","chapterId","number","title","subtitle","concept","intuition","objectives","body","formalDefinition","derivation","interactiveVisual","workedExamples","commonMistakes","practice","prerequisites","difficulty","misconceptionTags","provenance","sources"],
+  "properties":{
+    "id":{"type":"string","pattern":"^[a-z][a-z0-9-]*$"},"chapterId":{"type":"string"},"number":{"type":"string","pattern":"^[1-9][0-9]*\\.[1-9][0-9]*$"},
+    "title":{"$ref":"#/definitions/text"},"subtitle":{"$ref":"#/definitions/text"},"concept":{"$ref":"#/definitions/text"},"intuition":{"$ref":"#/definitions/text"},
+    "objectives":{"type":"array","minItems":2,"items":{"$ref":"#/definitions/text"}},
+    "body":{"type":"array","minItems":3,"items":{"type":"object","additionalProperties":false,"required":["title","text"],"properties":{"title":{"$ref":"#/definitions/text"},"text":{"$ref":"#/definitions/text"}}}},
+    "formalDefinition":{"type":"object","additionalProperties":false,"required":["text","latex","conditions"],"properties":{"text":{"$ref":"#/definitions/text"},"latex":{"$ref":"#/definitions/text"},"conditions":{"type":"array","minItems":1,"items":{"$ref":"#/definitions/text"}}}},
+    "derivation":{"type":"array","minItems":3,"items":{"type":"object","additionalProperties":false,"required":["text","latex"],"properties":{"text":{"$ref":"#/definitions/text"},"latex":{"type":["string","null"]}}}},
+    "interactiveVisual":{"type":"object","additionalProperties":false,"required":["kind","function","caption"],"properties":{"kind":{"enum":["graph","transform","limit","epsilon","derivative","chain","related","linearization","mvt","optimization","newton","antiderivative","riemann","signed-area","accumulation","substitution","area-between","disk","shell","arc"]},"function":{"type":"string"},"a":{"type":"number"},"caption":{"$ref":"#/definitions/text"}}},
+    "workedExamples":{"type":"array","minItems":2,"items":{"type":"object","additionalProperties":false,"required":["title","problem","steps","answer"],"properties":{"title":{"$ref":"#/definitions/text"},"problem":{"$ref":"#/definitions/text"},"steps":{"type":"array","minItems":2,"items":{"$ref":"#/definitions/text"}},"answer":{"$ref":"#/definitions/text"}}}},
+    "commonMistakes":{"type":"array","minItems":2,"items":{"type":"object","additionalProperties":false,"required":["id","claim","correction"],"properties":{"id":{"type":"string"},"claim":{"$ref":"#/definitions/text"},"correction":{"$ref":"#/definitions/text"}}}},
+    "practice":{"type":"array","minItems":4,"items":{"type":"object","additionalProperties":false,"required":["id","problem","answer","solution","hint","difficulty","misconceptionTags"],"properties":{"id":{"type":"string"},"problem":{"$ref":"#/definitions/text"},"answer":{"$ref":"#/definitions/text"},"solution":{"type":"array","minItems":1,"items":{"$ref":"#/definitions/text"}},"hint":{"$ref":"#/definitions/text"},"numericAnswer":{"type":"number"},"difficulty":{"type":"integer","minimum":1,"maximum":6},"misconceptionTags":{"type":"array","items":{"type":"string"}}}}},
+    "prerequisites":{"type":"array","uniqueItems":true,"items":{"type":"string"}},"difficulty":{"type":"integer","minimum":1,"maximum":6},"misconceptionTags":{"type":"array","uniqueItems":true,"items":{"type":"string"}},
+    "provenance":{"type":"object","additionalProperties":false,"required":["author","version","status","humanReviewed"],"properties":{"author":{"const":"AI-generated"},"version":{"type":"string"},"status":{"enum":["first-edition","revised"]},"humanReviewed":{"type":"boolean"}}},"sources":{"type":"array","minItems":1,"items":{"type":"string"}}
+  },"definitions":{"text":{"type":"string","minLength":1}}
+}

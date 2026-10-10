@@ -1,0 +1,30 @@
+[
+  {
+    "id": "chain-rule",
+    "invalid": false,
+    "readouts": [
+      "内层 u=x²+13.25",
+      "du/dx3",
+      "外层 dy/du=3u²31.6875",
+      "总导数 dy/dx95.0625"
+    ]
+  },
+  {
+    "id": "substitution",
+    "invalid": false,
+    "readouts": [
+      "内层 u=x²+12",
+      "du/dx2",
+      "x=0 → u1",
+      "x=1 → u2"
+    ]
+  },
+  {
+    "id": "implicit",
+    "invalid": false,
+    "readouts": [
+      "精确导数 f′(a)-4.38784",
+      "割线斜率-8.07457"
+    ]
+  }
+]

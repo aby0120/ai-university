@@ -1,0 +1,161 @@
+{
+  "id": "trig-derivatives",
+  "chapterId": "derivatives",
+  "number": "3.4",
+  "title": "三角函数的导数",
+  "subtitle": "周期运动的瞬时变化",
+  "concept": "弧度下 sin 的导数是 cos，cos 的导数是 −sin。",
+  "intuition": "正弦曲线从零上升时斜率最大；到最高点时斜率为零；随后斜率变负。余弦恰好记录这条变化率曲线。",
+  "objectives": [
+    "正弦公式从哪里来",
+    "其他三角导数",
+    "单位与内层"
+  ],
+  "body": [
+    {
+      "title": "正弦公式从哪里来",
+      "text": "用加法公式展开 sin(x+h)，差商出现 sin h/h 与 (cos h−1)/h。前者趋近 1，后者趋近 0，因此留下 cos x。余弦同理留下 −sin x。"
+    },
+    {
+      "title": "其他三角导数",
+      "text": "tan 的导数为 sec²；cot 的导数为 −csc²；sec 的导数为 sec tan；csc 的导数为 −csc cot。后三种是倒数或商，用已经知道的规则即可推导。"
+    },
+    {
+      "title": "单位与内层",
+      "text": "sin(3x) 的导数为 3cos(3x)。若输入用角度数，sin(πx/180) 的导数还要乘 π/180。常见负号错误来自 cos 的导数，而不是所有三角函数都带负号。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "在各三角函数有定义的点，使用弧度输入。",
+    "latex": "(\\sin x)\\prime=\\cos x,\\quad(\\cos x)\\prime=-\\sin x,\\quad(\\tan x)\\prime=\\sec^2x",
+    "conditions": [
+      "sec x=1/cos x；csc x=1/sin x；相应分母不能为零。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "展开正弦差商。",
+      "latex": "\\frac{\\sin(x+h)-\\sin x}{h}=\\sin x\\frac{\\cos h-1}{h}+\\cos x\\frac{\\sin h}{h}"
+    },
+    {
+      "text": "两个基本极限分别是 0 与 1。",
+      "latex": "\\lim_{h\\to0}\\frac{\\cos h-1}{h}=0,\\quad\\lim_{h\\to0}\\frac{\\sin h}{h}=1"
+    },
+    {
+      "text": "因此得到 cos x。",
+      "latex": "(\\sin x)\\prime=\\cos x"
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "derivative",
+    "function": "sin",
+    "a": 0,
+    "caption": "在正弦曲线上移动 a；切线斜率等于 cos(a)。"
+  },
+  "workedExamples": [
+    {
+      "title": "缩短周期后的速度",
+      "problem": "求 $y=\\sin(4x)$ 的导数。",
+      "steps": [
+        "外层给 cos(4x)。",
+        "内层给 4，连乘。"
+      ],
+      "answer": "$y\\prime=4\\cos(4x)$。"
+    },
+    {
+      "title": "积与三角函数",
+      "problem": "求 $y=x\\cos x$ 的导数。",
+      "steps": [
+        "积法则给 1·cos x+x·(−sin x)。",
+        "第二项的负号必须保留。"
+      ],
+      "answer": "$y\\prime=\\cos x-x\\sin x$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "trig-derivatives-m1",
+      "claim": "余弦求导忘记负号。",
+      "correction": "cos 在零点右侧下降，导数 −sin 与图像一致。"
+    },
+    {
+      "id": "trig-derivatives-m2",
+      "claim": "三角函数内部有倍率却漏乘。",
+      "correction": "周期缩短意味着变化更快，链式因子不能省。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "trig-derivatives-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "trig-derivatives-m1"
+      ],
+      "problem": "求 $\\cos(2x)$ 的导数。",
+      "answer": "$-2\\sin(2x)$。",
+      "solution": [
+        "余弦导数带负号，再乘内部导数 2。"
+      ],
+      "hint": "两件事：负号与链式因子。"
+    },
+    {
+      "id": "trig-derivatives-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "trig-derivatives-m2"
+      ],
+      "problem": "求 $\\sin^2x$ 的导数。",
+      "answer": "$2\\sin x\\cos x$。",
+      "solution": [
+        "外层平方与内层正弦连乘。"
+      ],
+      "hint": "这是平方复合，不是 sin(x²)。"
+    },
+    {
+      "id": "trig-derivatives-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "trig-derivatives-m2"
+      ],
+      "problem": "求 tan x 在 0 的导数值。",
+      "answer": "$1$。",
+      "solution": [
+        "sec²0=1/cos²0=1。"
+      ],
+      "hint": "商法则也能算出。",
+      "numericAnswer": 1
+    },
+    {
+      "id": "trig-derivatives-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "trig-derivatives-m2"
+      ],
+      "problem": "求 $\\sec x$ 的导数。",
+      "answer": "$\\sec x\\tan x$。",
+      "solution": [
+        "写成 (cos x)^−1，求导得 sin x/cos²x。"
+      ],
+      "hint": "把它写成余弦的倒数。"
+    }
+  ],
+  "prerequisites": [
+    "trigonometry",
+    "limit-laws",
+    "chain-rule"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "trig-derivatives-m1",
+    "trig-derivatives-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}

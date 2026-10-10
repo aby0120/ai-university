@@ -1,0 +1,160 @@
+{
+  "id": "linearization",
+  "chapterId": "differential-models",
+  "number": "4.4",
+  "title": "线性近似与微分",
+  "subtitle": "在足够近的地方，曲线像直线",
+  "concept": "可导函数在一点附近可以用切线近似；微分把小输入变化换成估计输出变化。",
+  "intuition": "在很近的一小段路上，弯曲道路可以近似成直线。离中心点越远，弯曲积累的误差往往越明显；近似号不能擅自改成等号。",
+  "objectives": [
+    "一阶近似",
+    "微分与误差传播",
+    "判断高估或低估"
+  ],
+  "body": [
+    {
+      "title": "一阶近似",
+      "text": "令 h=x−a。可导的定义等价于 f(a+h)=f(a)+f′(a)h+o(h)，余项相对于 h 趋近零。这说明切线是局部的一阶模型，不说明误差始终为零。"
+    },
+    {
+      "title": "微分与误差传播",
+      "text": "取 dx 为小的输入改变量，dy=f′(a)dx。实际改变量 Δy 与 dy 不完全相同。相对变化率可估计为 Δy/y≈f′(a)Δx/f(a)，前提分母不为零。"
+    },
+    {
+      "title": "判断高估或低估",
+      "text": "若附近 f″>0，曲线凹向上，切线位于曲线下方，近似偏低；若 f″<0，近似偏高。定量误差界需要更多信息，例如二阶导数上界，不能只靠“看起来近”。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "以可导点 a 为中心的线性化。",
+    "latex": "L(x)=f(a)+f\\prime(a)(x-a),\\qquad dy=f\\prime(a)\\,dx",
+    "conditions": [
+      "仅是 a 附近的近似；导数存在并不自动给出指定距离上的误差上界。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "以平方根在 a=4 的切线建立模型。",
+      "latex": "f(4)=2,\\quad f\\prime(4)=\\frac14"
+    },
+    {
+      "text": "把输入变化 0.1 转成输出变化。",
+      "latex": "L(4.1)=2+\\frac14(0.1)=2.025"
+    },
+    {
+      "text": "平方根凹向下，切线估计偏高。",
+      "latex": "\\sqrt{4.1}\\approx2.025"
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "linearization",
+    "function": "sqrt",
+    "a": 4,
+    "caption": "改变 x 与中心 a，比较曲线值、切线估计与真实误差。"
+  },
+  "workedExamples": [
+    {
+      "title": "快速估平方根",
+      "problem": "估计 $\\sqrt{9.06}$。",
+      "steps": [
+        "在 9 附近：f(9)=3，f′(9)=1/6。",
+        "变化为 0.06，输出估计增加 0.01。"
+      ],
+      "answer": "约 3.01，略高于真实值。"
+    },
+    {
+      "title": "半径测量误差",
+      "problem": "球半径约 10 cm，误差约 0.1 cm，体积相对误差约多少？",
+      "steps": [
+        "V=4πr³/3，dV/V=3dr/r。",
+        "3×0.1/10=0.03。"
+      ],
+      "answer": "约 3%，是一阶估计。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "linearization-m1",
+      "claim": "把近似写成精确相等。",
+      "correction": "保留 ≈，误差需要另行评估。"
+    },
+    {
+      "id": "linearization-m2",
+      "claim": "以为任何距离都能用同一切线。",
+      "correction": "线性化是局部模型，远离中心时误差可能显著。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "linearization-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "linearization-m1"
+      ],
+      "problem": "用 a=1 的线性化估计 ln(1.02)。",
+      "answer": "$0.02$。",
+      "solution": [
+        "ln1=0，导数在 1 为 1，增加 0.02。"
+      ],
+      "hint": "选容易计算的附近中心。",
+      "numericAnswer": 0.02
+    },
+    {
+      "id": "linearization-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "linearization-m2"
+      ],
+      "problem": "e^x 在 a=0 的线性化是什么？",
+      "answer": "$L(x)=1+x$。",
+      "solution": [
+        "函数值与导数值都为 1。"
+      ],
+      "hint": "写出切线的点斜式。"
+    },
+    {
+      "id": "linearization-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "linearization-m2"
+      ],
+      "problem": "正方形边长测量相对误差 1%，面积相对误差约多少？",
+      "answer": "$2%$。",
+      "solution": [
+        "A=s²，dA/A=2ds/s。"
+      ],
+      "hint": "面积的指数决定一阶倍数。"
+    },
+    {
+      "id": "linearization-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "linearization-m2"
+      ],
+      "problem": "平方根在正数附近的切线估计通常偏高还是偏低？",
+      "answer": "偏高。",
+      "solution": [
+        "f″<0，曲线凹向下，切线在上方。"
+      ],
+      "hint": "比较凹性与切线位置。"
+    }
+  ],
+  "prerequisites": [
+    "derivative-definition",
+    "exp-log-derivatives"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "linearization-m1",
+    "linearization-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}

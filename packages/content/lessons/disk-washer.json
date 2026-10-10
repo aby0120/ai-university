@@ -1,0 +1,157 @@
+{
+  "id": "disk-washer",
+  "chapterId": "integral-applications",
+  "number": "7.2",
+  "title": "旋转体：圆盘与圆环",
+  "subtitle": "把截面面积沿轴累积",
+  "concept": "垂直旋转轴切片，区域转一圈形成圆盘或圆环；积分截面面积得到体积。",
+  "intuition": "一块薄片的体积近似为截面面积乘厚度。旋转后用的是半径平方，不能把两个半径之差直接平方来当圆环面积。",
+  "objectives": [
+    "半径是到轴的距离",
+    "圆盘与圆环",
+    "相同总量，不同切法"
+  ],
+  "body": [
+    {
+      "title": "半径是到轴的距离",
+      "text": "绕 x 轴时，竖切半径由 y 的距离给出；绕水平线 y=k 时，要用 |y−k|。哪个是外半径要根据到轴的远近确定，不一定对应原图的上函数。"
+    },
+    {
+      "title": "圆盘与圆环",
+      "text": "实心圆盘截面积 πR²；有孔圆环截面积 π(R²−r²)。厚度沿轴方向：绕水平轴常用 dx，绕竖轴常用 dy；先画截面再写公式。"
+    },
+    {
+      "title": "相同总量，不同切法",
+      "text": "圆盘法与下一节的壳层法可以算同一体积。选择避免解反函数或避免分段的方法。旋转轴穿过区域时，截面覆盖与半径可能要重新分析，不能照抄“上减下”。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "在截面外半径 R≥内半径 r≥0 时。",
+    "latex": "V=\\pi\\int_a^b\\left[R(x)^2-r(x)^2\\right]dx",
+    "conditions": [
+      "切片垂直旋转轴；半径是到旋转轴的距离；无孔时 r=0。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "y=√x、x 轴与 x=1 围成区域绕 x 轴旋转。",
+      "latex": "R(x)=\\sqrt x,\\qquad A(x)=\\pi x"
+    },
+    {
+      "text": "沿 x 方向累积薄圆盘。",
+      "latex": "V=\\pi\\int_0^1x\\,dx"
+    },
+    {
+      "text": "代端点得到体积。",
+      "latex": "V=\\frac\\pi2"
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "disk",
+    "function": "sqrt",
+    "caption": "移动切片 x：圆盘半径 √x、截面积 πx；总积累为 π/2。"
+  },
+  "workedExamples": [
+    {
+      "title": "实心旋转体",
+      "problem": "y=x、0≤x≤2 下方区域绕 x 轴旋转，求体积。",
+      "steps": [
+        "圆盘半径 x，截面积 πx²。",
+        "积分 π∫₀²x²dx。"
+      ],
+      "answer": "$8\\pi/3$。"
+    },
+    {
+      "title": "有孔的旋转体",
+      "problem": "区域 0≤x≤1、1≤y≤2 绕 x 轴旋转。",
+      "steps": [
+        "外半径 2，内半径 1。",
+        "截面积恒为 π(4−1)=3π，长度 1。"
+      ],
+      "answer": "$3\\pi$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "disk-washer-m1",
+      "claim": "圆环面积写成 π(R−r)²。",
+      "correction": "应为大圆面积减小圆面积 π(R²−r²)。"
+    },
+    {
+      "id": "disk-washer-m2",
+      "claim": "绕 y=k 仍把 y 当半径。",
+      "correction": "半径是到轴距离，不一定是坐标值。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "disk-washer-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "disk-washer-m1"
+      ],
+      "problem": "y=x²、0≤x≤1 下方区域绕 x 轴旋转，体积？",
+      "answer": "$\\pi/5$。",
+      "solution": [
+        "π∫₀¹(x²)²dx=π/5。"
+      ],
+      "hint": "半径要先平方。"
+    },
+    {
+      "id": "disk-washer-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "disk-washer-m2"
+      ],
+      "problem": "外半径 3、内半径 2 的恒定圆环长 4，体积？",
+      "answer": "$20\\pi$。",
+      "solution": [
+        "截面积 π(9−4)=5π，乘长度 4。"
+      ],
+      "hint": "圆环截面是面积差。"
+    },
+    {
+      "id": "disk-washer-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "disk-washer-m2"
+      ],
+      "problem": "y=3 与 y=4 之间的区域绕 y=2 转，外内半径各多少？",
+      "answer": "外半径 2，内半径 1。",
+      "solution": [
+        "到轴距离分别为 4−2 与 3−2。"
+      ],
+      "hint": "先减旋转轴高度。"
+    },
+    {
+      "id": "disk-washer-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "disk-washer-m2"
+      ],
+      "problem": "若切片平行于旋转轴，一般应使用什么法？",
+      "answer": "壳层法。",
+      "solution": [
+        "平行条带旋转形成薄圆柱壳，而非垂直圆盘。"
+      ],
+      "hint": "看切片相对轴的方向。"
+    }
+  ],
+  "prerequisites": [
+    "area-between"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "disk-washer-m1",
+    "disk-washer-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}

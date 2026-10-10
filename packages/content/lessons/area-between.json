@@ -1,0 +1,161 @@
+{
+  "id": "area-between",
+  "chapterId": "integral-applications",
+  "number": "7.1",
+  "title": "两曲线之间的面积",
+  "subtitle": "每一条窄带的高度是多少？",
+  "concept": "两曲线夹住的面积是上函数减下函数的积分；若上下关系交换，就分段。",
+  "intuition": "竖着切一小条，高度是两条曲线的距离，宽度是 dx。横着切则是右边减左边，宽度是 dy。先选最容易描述的小条。",
+  "objectives": [
+    "先找交点和顺序",
+    "横切有时更简单",
+    "绝对值表达"
+  ],
+  "body": [
+    {
+      "title": "先找交点和顺序",
+      "text": "解 f=g 得分界点。在每段用测试点或代数判断谁在上方，建立 ∫(上−下)。不能直接让正负面积抵消，也不能只凭图窗猜交点。"
+    },
+    {
+      "title": "横切有时更简单",
+      "text": "当曲线容易写成 x 关于 y 的函数时，改用 ∫(右−左)dy。一个封闭区域可能需要多段不同边界，选择分段更少的方向能简化计算。"
+    },
+    {
+      "title": "绝对值表达",
+      "text": "竖向面积也可写 ∫|f−g|dx，但计算时仍往往要按交点去掉绝对值。本节总是谈非负几何面积，与上一章的带符号累积不同。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "当 f 在 g 上方时，面积由竖向条带累积。",
+    "latex": "A=\\int_a^b[f(x)-g(x)]dx",
+    "conditions": [
+      "在该区间 f≥g，且两者可积；若顺序改变需分段。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "在 [0,1]，x≥x²，所以条带高度是 x−x²。",
+      "latex": "dA=(x-x^2)dx"
+    },
+    {
+      "text": "积分并代端点。",
+      "latex": "A=\\left[\\frac{x^2}{2}-\\frac{x^3}{3}\\right]_0^1"
+    },
+    {
+      "text": "得到非负面积。",
+      "latex": "A=\\frac16"
+    }
+  ],
+  "interactiveVisual": {
+    "kind": "area-between",
+    "function": "square",
+    "caption": "高亮 y=x 与 y=x² 在 [0,1] 的窄条：高度 x−x²，总面积 1/6。"
+  },
+  "workedExamples": [
+    {
+      "title": "一条直线与抛物线",
+      "problem": "求 y=x、y=x² 围成的面积。",
+      "steps": [
+        "交点 x=0、1，区间内直线在上。",
+        "积分 x−x² 得 1/2−1/3。"
+      ],
+      "answer": "面积为 1/6。"
+    },
+    {
+      "title": "顺序交换",
+      "problem": "求 y=x 与 y=−x 在 [−1,1] 之间的面积。",
+      "steps": [
+        "左半段上−下为 −2x，右半段为 2x。",
+        "两块三角形面积各为 1。"
+      ],
+      "answer": "总面积 2，而直接积分 2x 会错误抵消。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "area-between-m1",
+      "claim": "始终用一个相减顺序，不检查交点。",
+      "correction": "上下交换时需要分段或绝对值。"
+    },
+    {
+      "id": "area-between-m2",
+      "claim": "积分结果负还称为几何面积。",
+      "correction": "先确保条带高度为非负。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "area-between-p1",
+      "difficulty": 1,
+      "misconceptionTags": [
+        "area-between-m1"
+      ],
+      "problem": "求 y=2 与 y=x 在 [0,2] 的面积。",
+      "answer": "$2$。",
+      "solution": [
+        "∫₀²(2−x)dx=4−2。"
+      ],
+      "hint": "水平线在上。",
+      "numericAnswer": 2
+    },
+    {
+      "id": "area-between-p2",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "area-between-m2"
+      ],
+      "problem": "求 y=x² 与 x 轴在 [−1,1] 的面积。",
+      "answer": "$2/3$。",
+      "solution": [
+        "函数非负，∫₋₁¹x²dx=2/3。"
+      ],
+      "hint": "用对称性或端点差。",
+      "numericAnswer": 0.6666666666666666
+    },
+    {
+      "id": "area-between-p3",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "area-between-m2"
+      ],
+      "problem": "y=√x 与 y=x 在 [0,1] 的面积？",
+      "answer": "$1/6$。",
+      "solution": [
+        "√x≥x；积分为 2/3−1/2=1/6。"
+      ],
+      "hint": "先比较两个函数。",
+      "numericAnswer": 0.16666666666666666
+    },
+    {
+      "id": "area-between-p4",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "area-between-m2"
+      ],
+      "problem": "横向切片的面积公式使用“上减下”吗？",
+      "answer": "使用右减左。",
+      "solution": [
+        "小条长度沿 x 方向，厚度是 dy。"
+      ],
+      "hint": "看条带长边朝哪个方向。"
+    }
+  ],
+  "prerequisites": [
+    "substitution",
+    "definite-integral"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "area-between-m1",
+    "area-between-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-1"
+  ]
+}
