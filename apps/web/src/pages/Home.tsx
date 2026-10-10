@@ -1,71 +1,71 @@
-import {
-  ArrowRight,
-  ArrowUpRight,
-  Beaker,
-  BookOpen,
-  Download,
-} from "lucide-react";
+import { ArrowRight, ArrowUpRight, Beaker, BookOpen } from "lucide-react";
 import { lessonById } from "../../../../packages/content";
-import { Formula } from "../components/MathText";
 import { Visual } from "../components/Visual";
+import { Eyebrow, Link } from "../components/UI";
+import {
+  MathAreas,
+  PublishedBook,
+  SeriesPrinciples,
+} from "../components/Series";
+import { mathAreas, publishedVolumes, volumes } from "../lib/library";
 
-import { BookCover, BookStats, Eyebrow, Link } from "../components/UI";
-import { BOOK, lessonPath } from "../lib/catalog";
-import { useApp } from "../lib/state";
 export function Home() {
-  const { reading } = useApp();
-  const resume = reading.recent[0];
   return (
     <>
-      <section className="home-hero">
+      <section className="home-hero series-home-hero">
         <div className="hero-copy">
-          <Link to={BOOK} className="release-pill">
-            <span /> 第一部完整教材 · Calculus I <ArrowUpRight size={14} />
+          <Link to="library" className="release-pill">
+            <span />
+            开放数学教科书系列
+            <ArrowUpRight size={14} />
           </Link>
-          <Eyebrow>KNOWLEDGE, MADE CLEAR.</Eyebrow>
+          <Eyebrow>AI UNIVERSITY / MATHEMATICS</Eyebrow>
           <h1>
-            让知识，
+            把数学，
             <br />
-            真正变得<span>清楚。</span>
+            读成一条<span>清楚的路。</span>
           </h1>
           <p>
-            从一句听得懂的解释开始。
-            <br />
-            用可以亲手探索的图，理解公式背后的意思。
+            从变化到空间，从结构到不确定性。
+            <br />由 AI 编写系统教科书，用清楚的讲解与交互图示，
+            <br className="desktop-break" />
+            让每个概念都有可以理解的入口。
           </p>
           <div className="hero-actions">
-            <Link
-              className="primary-btn"
-              to={resume ? lessonPath(resume) : BOOK}
-            >
-              {resume ? "继续上次阅读" : "打开微积分 I"}
+            <Link className="primary-btn" to="library">
+              探索数学教科书
               <ArrowRight size={18} />
             </Link>
             <Link to="lab" className="text-btn">
-              探索互动演示
+              体验互动演示
               <ArrowUpRight size={17} />
             </Link>
           </div>
           <div className="hero-footnote">
-            <BookOpen size={15} /> 完整教科书 <span>·</span>
-            <Beaker size={15} /> 亲手探索 <span>·</span> 免费与开源
+            <BookOpen size={15} />
+            系统教材<span>·</span>
+            <Beaker size={15} />
+            交互图示<span>·</span>免费与开源
+          </div>
+          <div className="series-hero-note">
+            <span>{mathAreas.length} 个数学方向</span>
+            <span>{publishedVolumes.length} 本已出版</span>
+            <span>{volumes.length - publishedVolumes.length} 本规划中</span>
           </div>
         </div>
         <div className="hero-demo">
           <div className="demo-window-bar">
-            <span className="demo-status" />
-            INTERACTIVE NOTEBOOK<span>01 / CHANGE</span>
+            <span className="demo-status" />A GLIMPSE INTO THE BOOKS
+            <span>互动教材一瞥</span>
           </div>
           <div className="demo-title">
+            <span className="demo-source">来自已出版教材 · 微积分 I</span>
             <h2>瞬时变化，是什么？</h2>
             <p>在 a = 1 缩小 h，看割线如何变成切线。</p>
           </div>
           <Visual lesson={lessonById["derivative-definition"]} compact />
-          <Link
-            to={lessonPath("derivative-definition")}
-            className="demo-bottom"
-          >
-            从导数的定义读起
+          <Link to="lesson/derivative-definition" className="demo-bottom">
+            阅读这个概念
             <ArrowRight size={16} />
           </Link>
         </div>
@@ -81,103 +81,49 @@ export function Home() {
       <section className="home-section">
         <div className="section-title">
           <div>
-            <Eyebrow>THE OPEN BOOKSHELF</Eyebrow>
-            <h2>一本书，一条完整的路。</h2>
+            <Eyebrow>EXPLORE MATHEMATICS</Eyebrow>
+            <h2>数学的不同方向，在这里连接。</h2>
           </div>
-          <Link to="library" className="text-btn">
-            进入书库
+          <p>从一套系列出发，一本一本完成。</p>
+        </div>
+        <MathAreas />
+        <p className="series-scope-note">
+          目前专注数学。各方向持续扩展，教材完成后开放整本阅读。
+        </p>
+      </section>
+      <section className="home-section published-section">
+        <div className="section-title">
+          <div>
+            <Eyebrow>NOW ON THE SHELF</Eyebrow>
+            <h2>已经可以开始读的书。</h2>
+          </div>
+          <Link
+            to="library"
+            params={{ status: "published" }}
+            className="text-btn"
+          >
+            查看已出版教材
             <ArrowRight size={16} />
           </Link>
         </div>
-        <div className="featured-book">
-          <Link to={BOOK} className="cover-link" aria-label="查看微积分 I 教材">
-            <BookCover />
-          </Link>
-          <div className="featured-book-copy">
-            <span className="badge">数学 / 大学入门</span>
-            <h3>微积分 I</h3>
-            <span className="english-title">
-              Calculus I — From change to accumulation
-            </span>
-            <p>
-              函数怎样变化？瞬间的速度怎么算？无数小块又怎样积成一个整体？从函数基础出发，走完极限、导数、积分与应用。
-            </p>
-            <BookStats />
-            <div className="hero-actions">
-              <Link to={BOOK} className="primary-btn">
-                查看完整目录
-                <ArrowRight size={17} />
-              </Link>
-              <Link to="downloads" className="text-btn">
-                <Download size={16} />
-                下载整本教材
-              </Link>
-            </div>
-            <small>AI 编写 · 35 节完整内容 · 含章末回顾与综合测试</small>
-          </div>
-        </div>
-      </section>
-      <section className="home-section questions-section">
-        <div className="section-title">
-          <div>
-            <Eyebrow>START WITH A QUESTION</Eyebrow>
-            <h2>先从一个好奇开始。</h2>
-          </div>
-          <p>三个问题，通向微积分的三个核心概念。</p>
-        </div>
-        <div className="question-grid">
-          {[
-            {
-              id: "limit-intuition",
-              n: "01",
-              name: "靠近，却不到达。",
-              q: "一个点没有值，为什么还能有极限？",
-              formula: String.raw`\lim_{x\to 1}\frac{x^2-1}{x-1}=2`,
-              tag: "极限 / LIMITS",
-            },
-            {
-              id: "derivative-definition",
-              n: "02",
-              name: "这一刻，变化多快？",
-              q: "从平均速度，到一个点的变化率。",
-              formula: String.raw`f'(a)=\lim_{h\to0}\frac{f(a+h)-f(a)}h`,
-              tag: "导数 / DERIVATIVES",
-            },
-            {
-              id: "riemann-sums",
-              n: "03",
-              name: "无限小，积成整体。",
-              q: "曲线下面的面积，怎样由小矩形得到？",
-              formula: String.raw`\int_a^b f(x)\,dx=\lim_{n\to\infty}\sum_{i=1}^n f(x_i)\Delta x`,
-              tag: "积分 / INTEGRALS",
-            },
-          ].map((x) => (
-            <Link to={lessonPath(x.id)} key={x.id} className="question-card">
-              <div>
-                <span>{x.tag}</span>
-                <ArrowUpRight size={20} />
-              </div>
-              <h3>{x.name}</h3>
-              <p>{x.q}</p>
-              <Formula latex={x.formula} display />
-              <span className="card-bottom">
-                阅读讲解与互动演示 <ArrowRight size={16} />
-              </span>
-            </Link>
+        <div className="published-book-list">
+          {publishedVolumes.map((volume) => (
+            <PublishedBook key={volume.id} volume={volume} />
           ))}
         </div>
       </section>
+      <SeriesPrinciples />
       <section className="open-banner">
         <Eyebrow>BUILT BY AI. OPEN TO EVERYONE.</Eyebrow>
         <h2>
-          随时打开，
+          一套不断生长的教材，
           <br />
-          按自己的节奏理解。
+          一种始终清楚的表达。
         </h2>
         <p>
-          所有讲解、例题和练习已经写在书里。
+          每本书有完整的目录、讲解、图示与练习。
           <br />
-          阅读无需注册，图示可以反复探索，整本教材可以带走。
+          随时打开，按自己的节奏理解，也可以下载与分享。
         </p>
         <Link to="about" className="secondary-btn">
           了解开放教科书计划

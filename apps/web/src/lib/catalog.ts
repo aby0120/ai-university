@@ -18,7 +18,7 @@ export function labelFor(route: Route) {
   return (
     (
       {
-        home: "开放教科书",
+        home: "开放数学教科书系列",
         library: "教科书库",
         [BOOK]: "微积分 I",
         lab: "互动实验室",

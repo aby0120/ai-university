@@ -59,7 +59,8 @@ export function AboutPage() {
               写成可以读懂的书。
             </h2>
             <p>
-              AI University 是一套由 AI 制作的开放教科书。AI
+              AI University 是一套由 AI
+              制作的开放教科书，目前专注数学，逐步覆盖微积分、线性代数、微分方程、概率统计等方向。AI
               在制作阶段编写解释、定义、推导、例题、练习和可交互图示；发布后，读者直接阅读固定版本。
             </p>
           </div>
@@ -67,7 +68,7 @@ export function AboutPage() {
             {[
               [
                 "完整，而不是摘选",
-                "每一卷都沿着系统的课程结构完成。当前微积分 I 覆盖函数基础、极限、求导、积分与几何和物理应用。",
+                "每本教材都沿着系统的课程结构完成。微积分 I 是首本已出版教材；各方向的后续教材在书库中明确标注为规划中。",
               ],
               [
                 "清楚，也保留必要条件",
@@ -172,6 +173,14 @@ export function AboutPage() {
         <div className="versions-page">
           <div className="version-entry">
             <span className="badge">当前网站</span>
+            <h2>v0.2.1 · 数学教科书系列</h2>
+            <time>2026 年 10 月 10 日</time>
+            <p>
+              首页以数学系列为入口，书库按数学方向与出版状态组织。微积分 I
+              为首本已出版教材；后续规划有独立条目，完成后开放阅读。
+            </p>
+          </div>
+          <div className="version-entry">
             <h2>v0.2.0 · 完整阅读体验</h2>
             <time>2026 年 10 月 10 日</time>
             <ul>

@@ -55,3 +55,8 @@ AI University 的 AI 位于制作流程，而不位于读者运行时。每卷�
 - `lib/state.tsx`：本地记录校验及共享状态契约。
 
 实验室每页六个模型预览，索引每页七项，搜索每页八个结果。过滤与分页进入 URL，刷新和分享保留当前页面。知识点的阅读、演示、练习、连接也有各自地址。全文搜索涵盖正文、定义、例题和练习；结果链接返回完整讲解。
+
+
+## 数学系列展示
+
+`packages/content/library.json` 是系列方向、教材元数据与出版状态的统一目录，由 `schemas/library.schema.json` 和构建时关联检查校验。首页与书库通过 `lib/library.ts` 读取，`components/Series.tsx` 渲染方向卡、已出版教材和规划卡。`library?area=<id>&status=all|published|planned` 表达书库筛选状态，支持复制链接和浏览器返回。规划卡不创建教材路由。下一本教材的实际加载、路由与记录接入要求见 [LIBRARY](LIBRARY.md)。

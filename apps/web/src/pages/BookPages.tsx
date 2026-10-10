@@ -21,59 +21,133 @@ import {
 } from "../components/UI";
 import { BOOK, chapterPath, lessonPath } from "../lib/catalog";
 import { useApp } from "../lib/state";
+import { PlannedBooks, PublishedBook } from "../components/Series";
+import { mathAreas, volumes, type PublishedVolume } from "../lib/library";
+import { routeHref } from "../lib/navigation";
 export function Library() {
+  const { route } = useApp();
+  const area = route.params.get("area") || "";
+  const requestedStatus = route.params.get("status");
+  const status =
+    requestedStatus === "published" || requestedStatus === "planned"
+      ? requestedStatus
+      : "all";
+  const currentArea = mathAreas.find((a) => a.id === area);
+  const matching = volumes.filter(
+    (v) =>
+      (!currentArea || v.areaId === currentArea.id) &&
+      (status === "all" || v.status === status),
+  );
+  const published = matching.filter(
+    (v): v is PublishedVolume => v.status === "published",
+  );
+  const planned = matching.filter((v) => v.status === "planned");
   return (
     <>
       <PageTitle
         tag="THE OPEN BOOKSHELF"
         title="教科书库"
-        description="一本一本完成，沿着清楚的学习路径前进。"
+        description="一套逐步扩展的数学教科书。探索不同方向，阅读已出版教材，查看后续规划。"
       />
-      <div className="library-filter">
-        <span className="filter-pill active">
-          全部教材 <b>1</b>
-        </span>
-        <span>当前出版 · 数学</span>
+      <div className="series-library-filter">
+        <nav aria-label="教材出版状态">
+          {[
+            ["all", "全部"],
+            ["published", "已出版"],
+            ["planned", "规划中"],
+          ].map(([id, title]) => (
+            <Link
+              key={id}
+              to="library"
+              params={{ area: currentArea?.id, status: id }}
+              className={status === id ? "active" : ""}
+              aria-current={status === id ? "page" : undefined}
+            >
+              {title}
+              <span>
+                {
+                  volumes.filter(
+                    (v) =>
+                      (!currentArea || v.areaId === currentArea.id) &&
+                      (id === "all" || v.status === id),
+                  ).length
+                }
+              </span>
+            </Link>
+          ))}
+        </nav>
+        <label>
+          数学方向
+          <select
+            aria-label="筛选数学方向"
+            value={currentArea?.id || ""}
+            onChange={(e) => {
+              location.hash = routeHref("library", {
+                area: e.target.value || undefined,
+                status,
+              });
+            }}
+          >
+            <option value="">全部方向</option>
+            {mathAreas.map((a) => (
+              <option key={a.id} value={a.id}>
+                {a.title}
+              </option>
+            ))}
+          </select>
+        </label>
       </div>
-      <div className="library-book">
-        <Link to={BOOK} aria-label="打开微积分 I" className="cover-link">
-          <BookCover />
-        </Link>
-        <div>
-          <span className="badge">完整第一卷</span>
-          <h2>微积分 I</h2>
-          <p className="english-title">Calculus I</p>
-          <p>{book.description}</p>
-          <dl className="book-details">
-            <div>
-              <dt>适合读者</dt>
-              <dd>有初等代数基础的自学者</dd>
-            </div>
-            <div>
-              <dt>教材结构</dt>
-              <dd>7 章 · 35 节 · 70 例题 · 175 练习</dd>
-            </div>
-            <div>
-              <dt>学习范围</dt>
-              <dd>函数 → 极限 → 导数 → 积分 → 应用</dd>
-            </div>
-            <div>
-              <dt>阅读方式</dt>
-              <dd>在线阅读 / 交互演示 / 下载与打印</dd>
-            </div>
-          </dl>
-          <Link to={BOOK} className="primary-btn">
-            进入教材
-            <ArrowRight size={17} />
+      {currentArea && (
+        <div className="library-area-intro">
+          <Eyebrow>{currentArea.english.toUpperCase()}</Eyebrow>
+          <h2>
+            {currentArea.title}：{currentArea.question}
+          </h2>
+          <p>{currentArea.description}</p>
+        </div>
+      )}
+      {published.length > 0 && (
+        <section className="library-published">
+          <div className="section-title">
+            <h2>已出版</h2>
+            <span>整本内容已开放阅读</span>
+          </div>
+          <div className="published-book-list">
+            {published.map((volume) => (
+              <PublishedBook key={volume.id} volume={volume} />
+            ))}
+          </div>
+        </section>
+      )}
+      {planned.length > 0 && (
+        <section className="library-planned">
+          <div className="section-title">
+            <h2>后续教材规划</h2>
+            <span>内容尚未出版</span>
+          </div>
+          <PlannedBooks items={planned} />
+        </section>
+      )}
+      {matching.length === 0 && (
+        <div className="series-library-empty">
+          <h2>这个方向暂未出版教材。</h2>
+          <p>可以查看该方向的教材规划，或先读已经出版的书。</p>
+          <Link
+            to="library"
+            params={{ area: currentArea?.id, status: "all" }}
+            className="secondary-btn"
+          >
+            查看这个方向的全部教材
+            <ArrowRight size={16} />
           </Link>
         </div>
-      </div>
+      )}
       <div className="quiet-note">
         <Layers3 size={24} />
         <div>
-          <h3>完整之后，再开始下一本。</h3>
+          <h3>一本一本完成，系列持续扩展。</h3>
           <p>
-            书库只展示已有完整内容的教材。后续卷会沿用相同的写作与交互规范，完成后再加入。
+            已出版教材提供完整正文与交互图示；规划条目展示拟覆盖的范围，出版顺序与范围可随编写进展调整。
           </p>
         </div>
         <Link to="about/contribute">

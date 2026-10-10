@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { routeHref } from "../lib/navigation";
 
 import { Link } from "../components/UI";
-import { BOOK, REPO, lessonPath, searchLessons } from "../lib/catalog";
+import { REPO, lessonPath, searchLessons } from "../lib/catalog";
 import { useApp } from "../lib/state";
 export function Footer() {
   return (
@@ -27,7 +27,7 @@ export function Footer() {
         </div>
         <div>
           <strong>阅读资源</strong>
-          <Link to={BOOK}>微积分 I · 目录</Link>
+          <Link to="library">数学教科书系列</Link>
           <Link to="reference">公式与术语</Link>
           <Link to="downloads">下载与打印</Link>
           <Link to="learning">我的学习</Link>

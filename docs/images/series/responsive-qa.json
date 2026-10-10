@@ -1,0 +1,362 @@
+[
+  {
+    "width": 1440,
+    "path": "home",
+    "h1": "把数学，读成一条清楚的路。",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 1440,
+    "path": "library",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 1440,
+    "path": "library?status=published",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 1440,
+    "path": "library?status=planned",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 1440,
+    "path": "library?area=calculus",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 1440,
+    "path": "library?area=linear-algebra",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 1440,
+    "path": "library?area=differential-equations",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 1440,
+    "path": "library?area=probability",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 1440,
+    "path": "library?area=discrete-math",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 1440,
+    "path": "library?area=analysis",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 1440,
+    "path": "library?area=linear-algebra&status=published",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 1440,
+    "path": "book/calculus-1",
+    "h1": "微积分 ICalculus I",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 1440,
+    "path": "lesson/limit-intuition",
+    "h1": "极限：靠近时会怎样",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 1440,
+    "path": "about",
+    "h1": "关于 AI University",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 1440,
+    "path": "about/versions",
+    "h1": "版本与勘误",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 768,
+    "path": "home",
+    "h1": "把数学，读成一条清楚的路。",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 768,
+    "path": "library",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 768,
+    "path": "library?status=published",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 768,
+    "path": "library?status=planned",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 768,
+    "path": "library?area=calculus",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 768,
+    "path": "library?area=linear-algebra",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 768,
+    "path": "library?area=differential-equations",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 768,
+    "path": "library?area=probability",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 768,
+    "path": "library?area=discrete-math",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 768,
+    "path": "library?area=analysis",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 768,
+    "path": "library?area=linear-algebra&status=published",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 768,
+    "path": "book/calculus-1",
+    "h1": "微积分 ICalculus I",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 768,
+    "path": "lesson/limit-intuition",
+    "h1": "极限：靠近时会怎样",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 768,
+    "path": "about",
+    "h1": "关于 AI University",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 768,
+    "path": "about/versions",
+    "h1": "版本与勘误",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 390,
+    "path": "home",
+    "h1": "把数学，读成一条清楚的路。",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 390,
+    "path": "library",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 390,
+    "path": "library?status=published",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 390,
+    "path": "library?status=planned",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 390,
+    "path": "library?area=calculus",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 390,
+    "path": "library?area=linear-algebra",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 390,
+    "path": "library?area=differential-equations",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 390,
+    "path": "library?area=probability",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 390,
+    "path": "library?area=discrete-math",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 390,
+    "path": "library?area=analysis",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 390,
+    "path": "library?area=linear-algebra&status=published",
+    "h1": "教科书库",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 390,
+    "path": "book/calculus-1",
+    "h1": "微积分 ICalculus I",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 390,
+    "path": "lesson/limit-intuition",
+    "h1": "极限：靠近时会怎样",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 390,
+    "path": "about",
+    "h1": "关于 AI University",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  },
+  {
+    "width": 390,
+    "path": "about/versions",
+    "h1": "版本与勘误",
+    "mathErrors": 0,
+    "overflow": false,
+    "plannedReadingLinks": 0
+  }
+]

@@ -14,6 +14,7 @@ import { pageWindow, routeHref } from "../lib/navigation";
 
 import { BOOK, lessonPath } from "../lib/catalog";
 import { useApp } from "../lib/state";
+import { firstVolume, type PublishedVolume, type Volume } from "../lib/library";
 export function Link({
   to,
   params,
@@ -83,14 +84,18 @@ export function Breadcrumb({
   );
 }
 
-export function BookStats() {
+export function BookStats({
+  volume = firstVolume,
+}: {
+  volume?: PublishedVolume;
+}) {
   return (
     <div className="book-stats">
       {[
-        ["7", "章节"],
-        ["35", "知识点"],
-        ["70", "逐步例题"],
-        ["175", "练习与解答"],
+        [volume.stats.chapters, "章节"],
+        [volume.stats.lessons, "知识点"],
+        [volume.stats.examples, "逐步例题"],
+        [volume.stats.exercises, "练习与解答"],
       ].map(([n, s]) => (
         <span key={s}>
           <strong>{n}</strong>
@@ -101,26 +106,38 @@ export function BookStats() {
   );
 }
 
-export function BookCover({ small = false }: { small?: boolean }) {
+export function BookCover({
+  small = false,
+  volume = firstVolume,
+}: {
+  small?: boolean;
+  volume?: Volume;
+}) {
   return (
     <div className={"book-cover " + (small ? "small" : "")}>
       <div className="cover-top">
-        AI UNIVERSITY<span>VOL. 01</span>
+        AI UNIVERSITY<span>MATHEMATICS</span>
       </div>
       <div>
         <span>MATHEMATICS</span>
         <h2>
-          Calculus
-          <br />
-          <em>I</em>
+          {volume.coverTitle.map((line, i) => (
+            <span key={i}>
+              {i > 0 && <br />}
+              {i === 1 && /^I+$/.test(line) ? <em>{line}</em> : line}
+            </span>
+          ))}
         </h2>
         <p>
-          微积分 I<br />
-          从变化率到累积量
+          {volume.title}
+          <br />
+          {volume.tagline}
         </p>
       </div>
       <div className="cover-bottom">
-        <Formula latex={String.raw`\frac{d}{dx}\int_a^x f(t)\,dt=f(x)`} />
+        {volume.status === "published" && (
+          <Formula latex={volume.coverFormula} />
+        )}
         <span>OPEN TEXTBOOK</span>
       </div>
     </div>

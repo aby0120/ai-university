@@ -1,5 +1,5 @@
 import path from "node:path";
-import {fileURLToPath} from "node:url";
+import { fileURLToPath } from "node:url";
 import fs from "node:fs";
 import assert from "node:assert/strict";
 import Ajv from "ajv";
@@ -132,7 +132,56 @@ export function validateContent() {
       mathCount++;
     }
   });
+  const library = JSON.parse(
+    fs.readFileSync(`${root}/packages/content/library.json`, "utf8"),
+  );
+  const librarySchema = JSON.parse(
+    fs.readFileSync(`${root}/schemas/library.schema.json`, "utf8"),
+  );
+  const validateLibrary = new Ajv({ allErrors: true }).compile(librarySchema);
+  assert(
+    validateLibrary(library),
+    `Library: ${JSON.stringify(validateLibrary.errors)}`,
+  );
+  const areaIds = new Set(library.areas.map((a) => a.id));
+  assert.equal(
+    areaIds.size,
+    library.areas.length,
+    "Duplicate mathematics area",
+  );
+  assert.equal(
+    new Set(library.volumes.map((v) => v.id)).size,
+    library.volumes.length,
+    "Duplicate catalog volume",
+  );
+  const published = library.volumes.filter((v) => v.status === "published");
+  for (const volume of library.volumes)
+    assert(areaIds.has(volume.areaId), `Unknown area: ${volume.id}`);
+  // Publication requires a complete canonical book, not just a catalog card.
+  assert.deepEqual(
+    published.map((v) => v.id).sort(),
+    [book.id],
+    "Published catalog must match implemented books",
+  );
+  for (const volume of published) {
+    assert.equal(volume.route, `book/${volume.id}`);
+    assert.deepEqual(volume.stats, {
+      chapters: book.chapters.length,
+      lessons: allLessons.length,
+      examples: allLessons.reduce((n, l) => n + l.workedExamples.length, 0),
+      exercises:
+        allLessons.reduce((n, l) => n + l.practice.length, 0) + more.length,
+    });
+    katex.renderToString(volume.coverFormula, {
+      throwOnError: true,
+      strict: "ignore",
+      trust: false,
+    });
+  }
   return {
+    mathematicsAreas: library.areas.length,
+    catalogVolumes: library.volumes.length,
+    publishedVolumes: published.length,
     chapters: book.chapters.length,
     sections: ids.size,
     examples: allLessons.reduce((n, l) => n + l.workedExamples.length, 0),
