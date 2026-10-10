@@ -1,0 +1,42 @@
+[
+  {
+    "path": "home",
+    "overflow": false
+  },
+  {
+    "path": "library",
+    "overflow": false
+  },
+  {
+    "path": "book/calculus-1",
+    "overflow": false
+  },
+  {
+    "path": "lab",
+    "overflow": false
+  },
+  {
+    "path": "practice",
+    "overflow": false
+  },
+  {
+    "path": "reference",
+    "overflow": false
+  },
+  {
+    "path": "about",
+    "overflow": false
+  },
+  {
+    "path": "lesson/limit-intuition",
+    "overflow": false
+  },
+  {
+    "path": "lesson/epsilon-delta",
+    "overflow": false
+  },
+  {
+    "path": "lesson/implicit?view=visual",
+    "overflow": false
+  }
+]

@@ -1,14 +1,14 @@
+import { MoveHorizontal, Pause, Play, RotateCcw } from "lucide-react";
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
-import { Play, Pause, RotateCcw, MoveHorizontal } from "lucide-react";
+import type { Lesson } from "../../../../packages/content/types";
 import {
+  arcLength,
+  epsilonDelta,
   functions,
   integrate,
   newton,
   secant,
-  arcLength,
-  epsilonDelta,
 } from "../../../../packages/visuals/math.mjs";
-import type { Lesson } from "../../../../packages/content/types";
 import { Formula } from "./MathText";
 const fmt = (v: number) =>
   Number.isFinite(v) ? Number(v.toFixed(5)).toString() : "无有限值";
@@ -101,7 +101,7 @@ function Plot({
         cx={X(x)}
         cy={Y(y)}
         r={open ? 5 : 4.5}
-        fill={open ? "#fafbf7" : color}
+        fill={open ? "#ffffff" : color}
         stroke={color}
         strokeWidth="2"
       />
@@ -169,7 +169,7 @@ function Plot({
       </defs>
       {xticks.map((x, i) => (
         <g key={`x${i}`}>
-          <line x1={X(x)} x2={X(x)} y1={P} y2={H - P} stroke="#e4e9e3" />
+          <line x1={X(x)} x2={X(x)} y1={P} y2={H - P} stroke="#e9edf6" />
           <text x={X(x)} y={H - 14} textAnchor="middle">
             {Number(x.toFixed(1))}
           </text>
@@ -177,14 +177,14 @@ function Plot({
       ))}
       {yticks.map((y, i) => (
         <g key={`y${i}`}>
-          <line x1={P} x2={W - P} y1={Y(y)} y2={Y(y)} stroke="#e4e9e3" />
+          <line x1={P} x2={W - P} y1={Y(y)} y2={Y(y)} stroke="#e9edf6" />
           <text x={P - 7} y={Y(y) + 4} textAnchor="end">
             {Number(y.toFixed(1))}
           </text>
         </g>
       ))}
-      <line x1={P} x2={W - P} y1={Y(axisX)} y2={Y(axisX)} stroke="#a4b1a5" />
-      <line x1={X(axisY)} x2={X(axisY)} y1={P} y2={H - P} stroke="#a4b1a5" />
+      <line x1={P} x2={W - P} y1={Y(axisX)} y2={Y(axisX)} stroke="#b2bfd7" />
+      <line x1={X(axisY)} x2={X(axisY)} y1={P} y2={H - P} stroke="#b2bfd7" />
       <text x={W - 10} y={H - 14}>
         x
       </text>
@@ -192,7 +192,7 @@ function Plot({
         y
       </text>
       <g clipPath={`url(#${clip})`}>
-        {line(fn, "#214f40")}
+        {line(fn, "#344de8")}
         {children?.({ X, Y, path, line, point, area })}
       </g>
     </svg>
@@ -354,7 +354,7 @@ export function Visual({
       <>
         {old?.(p)}
         {p.point(xx, fn(xx))}
-        {F.hole && p.point(F.hole[0], F.hole[1], "#214f40", true)}
+        {F.hole && p.point(F.hole[0], F.hole[1], "#344de8", true)}
       </>
     );
   }
@@ -392,7 +392,7 @@ export function Visual({
           fill="#4573c0"
           opacity="0.16"
         />
-        {p.line(F.f, "#214f40")}
+        {p.line(F.f, "#344de8")}
         {p.point(2, 4)}
       </>
     );
@@ -475,7 +475,7 @@ export function Visual({
           {p.line(tangent, "#bf8b38", true)}
           {p.point(x, tangent(x), "#bf8b38")}
           {p.point(x, fn(x))}
-          {p.point(a, fn(a), "#214f40")}
+          {p.point(a, fn(a), "#344de8")}
         </>
       );
     }
@@ -611,7 +611,7 @@ export function Visual({
           width={xx * 14}
           height={yy * 5}
           fill="#e9edd3"
-          stroke="#214f40"
+          stroke="#344de8"
           strokeWidth="2"
         />
         <text x="30" y="84">
@@ -736,7 +736,7 @@ export function Visual({
             />
           );
         })}
-        {p.line(fn, "#214f40")}
+        {p.line(fn, "#344de8")}
       </>
     );
   }
@@ -780,7 +780,7 @@ export function Visual({
             fillOpacity="0.3"
           />
         )}
-        {p.line(fn, "#214f40")}
+        {p.line(fn, "#344de8")}
       </>
     );
   }
@@ -836,7 +836,7 @@ export function Visual({
           fillOpacity="0.24"
         />
         {p.line((z) => z, "#2861ba")}
-        {p.line(fn, "#214f40")}
+        {p.line(fn, "#344de8")}
         <line
           x1={p.X(xx)}
           x2={p.X(xx)}
@@ -901,7 +901,7 @@ export function Visual({
             rx={yy * 65}
             ry={yy * 35}
             fill="#e7ecd6"
-            stroke="#214f40"
+            stroke="#344de8"
           />
         ) : (
           <g>
@@ -911,11 +911,11 @@ export function Visual({
               rx={xx * 70}
               ry={xx * 16}
               fill="#e7ecd6"
-              stroke="#214f40"
+              stroke="#344de8"
             />
             <path
               d={`M${150 - xx * 70},${75 - yy * 55}V75 M${150 + xx * 70},${75 - yy * 55}V75`}
-              stroke="#214f40"
+              stroke="#344de8"
             />
             <ellipse
               cx="150"
@@ -923,7 +923,7 @@ export function Visual({
               rx={xx * 70}
               ry={xx * 16}
               fill="none"
-              stroke="#214f40"
+              stroke="#344de8"
             />
           </g>
         )}
@@ -992,7 +992,7 @@ export function Visual({
       </header>
       <div className="plot-label">
         {k === "chain" || k === "substitution" ? "u = x² + 1" : F.label}
-        <span>SVG · 本地计算</span>
+        <span>可拖动参数 · 即时更新</span>
       </div>
       <Plot
         fn={fn}
@@ -1036,5 +1036,36 @@ export function Visual({
         图像用于探索；有限采样与动画不能替代正文中的数学论证。
       </p>
     </section>
+  );
+}
+
+/** A read-only snapshot of the same model used in the interactive lesson. */
+export function VisualPreview({ lesson }: { lesson: Lesson }) {
+  const spec = lesson.interactiveVisual;
+  const F = functions[spec.function];
+  const a = spec.a ?? 1;
+  const integral = [
+    "riemann",
+    "signed-area",
+    "accumulation",
+    "area-between",
+    "disk",
+    "shell",
+  ].includes(spec.kind);
+  return (
+    <Plot fn={F.f} range={F.range} title={lesson.title + "：数学模型预览"}>
+      {(p) => (
+        <>
+          {integral && (
+            <path d={p.area(F.f, () => 0, 0, 1)} fill="#8396ff" opacity=".22" />
+          )}
+          {spec.kind === "derivative" &&
+            Number.isFinite(F.d(a)) &&
+            p.line((x) => F.f(a) + F.d(a) * (x - a), "#bf8b38", true)}
+          {spec.kind === "derivative" && p.point(a, F.f(a))}
+          {F.hole && p.point(F.hole[0], F.hole[1], "#344de8", true)}
+        </>
+      )}
+    </Plot>
   );
 }

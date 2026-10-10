@@ -1,0 +1,362 @@
+[
+  {
+    "path": "home",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "让知识，真正变得清楚。"
+  },
+  {
+    "path": "library",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "教科书库"
+  },
+  {
+    "path": "book/calculus-1",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "微积分 ICalculus I"
+  },
+  {
+    "path": "lab",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "互动实验室"
+  },
+  {
+    "path": "lab?page=6",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "互动实验室"
+  },
+  {
+    "path": "practice",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "练习中心"
+  },
+  {
+    "path": "practice/exam",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "整本书 · 综合测试"
+  },
+  {
+    "path": "reference",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "知识索引"
+  },
+  {
+    "path": "reference?tab=glossary",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "知识索引"
+  },
+  {
+    "path": "reference?tab=appendix",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "知识索引"
+  },
+  {
+    "path": "learning",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "我的学习"
+  },
+  {
+    "path": "guide",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "怎样读这本教科书"
+  },
+  {
+    "path": "downloads",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "下载与离线阅读"
+  },
+  {
+    "path": "about",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "关于 AI University"
+  },
+  {
+    "path": "about/contribute",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "参与贡献"
+  },
+  {
+    "path": "about/versions",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "版本与勘误"
+  },
+  {
+    "path": "about/privacy",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "隐私与本地数据"
+  },
+  {
+    "path": "search?q=极限",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "搜索教材"
+  },
+  {
+    "path": "chapter/functions",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "函数：变化的语言"
+  },
+  {
+    "path": "chapter/limits",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "极限与连续"
+  },
+  {
+    "path": "chapter/derivatives",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "导数的建立与计算"
+  },
+  {
+    "path": "chapter/differential-models",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "更多导数与变化模型"
+  },
+  {
+    "path": "chapter/derivative-applications",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "导数如何描述全局行为"
+  },
+  {
+    "path": "chapter/integrals",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "积分：从累积到原函数"
+  },
+  {
+    "path": "chapter/integral-applications",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "积分的几何与物理应用"
+  },
+  {
+    "path": "lesson/domain",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "函数与定义域"
+  },
+  {
+    "path": "lesson/transformations",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "图像与变换"
+  },
+  {
+    "path": "lesson/composition",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "复合函数与反函数"
+  },
+  {
+    "path": "lesson/trigonometry",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "三角函数与弧度"
+  },
+  {
+    "path": "lesson/exponential-log",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "指数与对数"
+  },
+  {
+    "path": "lesson/limit-intuition",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "极限：靠近时会怎样"
+  },
+  {
+    "path": "lesson/limit-laws",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "极限的计算法则"
+  },
+  {
+    "path": "lesson/epsilon-delta",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "ε–δ：把靠近说精确"
+  },
+  {
+    "path": "lesson/continuity",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "连续性与介值定理"
+  },
+  {
+    "path": "lesson/infinite-limits",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "无穷极限与渐近线"
+  },
+  {
+    "path": "lesson/derivative-definition",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "导数：割线变成切线"
+  },
+  {
+    "path": "lesson/derivative-rules",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "基本求导规则"
+  },
+  {
+    "path": "lesson/chain-rule",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "链式法则"
+  },
+  {
+    "path": "lesson/trig-derivatives",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "三角函数的导数"
+  },
+  {
+    "path": "lesson/implicit",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "隐函数求导"
+  },
+  {
+    "path": "lesson/exp-log-derivatives",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "指数与对数求导"
+  },
+  {
+    "path": "lesson/inverse-trig",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "反函数与反三角导数"
+  },
+  {
+    "path": "lesson/related-rates",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "相关变化率"
+  },
+  {
+    "path": "lesson/linearization",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "线性近似与微分"
+  },
+  {
+    "path": "lesson/newton",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "牛顿法：沿切线找根"
+  },
+  {
+    "path": "lesson/extrema",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "极值与临界点"
+  },
+  {
+    "path": "lesson/mean-value",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "罗尔与中值定理"
+  },
+  {
+    "path": "lesson/curve-sketching",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "单调性、凹性与曲线分析"
+  },
+  {
+    "path": "lesson/optimization",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "优化：把问题变成一个函数"
+  },
+  {
+    "path": "lesson/lhopital",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "洛必达法则"
+  },
+  {
+    "path": "lesson/antiderivatives",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "原函数与不定积分"
+  },
+  {
+    "path": "lesson/riemann-sums",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "黎曼和与数值积分"
+  },
+  {
+    "path": "lesson/definite-integral",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "定积分与带符号面积"
+  },
+  {
+    "path": "lesson/fundamental-theorem",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "微积分基本定理"
+  },
+  {
+    "path": "lesson/substitution",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "换元积分"
+  },
+  {
+    "path": "lesson/area-between",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "两曲线之间的面积"
+  },
+  {
+    "path": "lesson/disk-washer",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "旋转体：圆盘与圆环"
+  },
+  {
+    "path": "lesson/shells",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "旋转体：圆柱壳"
+  },
+  {
+    "path": "lesson/arc-length",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "弧长与旋转曲面面积"
+  },
+  {
+    "path": "lesson/physical-integrals",
+    "mathErrors": 0,
+    "overflow": false,
+    "title": "位移、功、质量与平均值"
+  }
+]

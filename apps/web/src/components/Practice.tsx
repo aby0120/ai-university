@@ -1,5 +1,13 @@
-import { useState } from "react";
-import { Lightbulb, Check, ChevronDown } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Check,
+  ChevronDown,
+  Layers3,
+  Lightbulb,
+  List,
+} from "lucide-react";
+import { useRef, useState } from "react";
 import type { Exercise, Lesson } from "../../../../packages/content/types";
 import { MathText } from "./MathText";
 export type Progress = Record<string, "understood" | "review">;
@@ -29,22 +37,86 @@ export function PracticeSet({
   progress: Progress;
   onMark: (id: string, v: "understood" | "review") => void;
 }) {
+  const [index, setIndex] = useState(0),
+    [all, setAll] = useState(false);
+  const heading = useRef<HTMLHeadingElement>(null);
+  const understood = questions.filter(
+    (q) => progress[q.id] === "understood",
+  ).length;
+  function choose(i: number) {
+    setIndex(i);
+    heading.current?.focus({ preventScroll: true });
+    heading.current?.scrollIntoView({ block: "start", behavior: "instant" });
+  }
   return (
-    <section>
+    <section className="practice-set">
       <div className="section-heading">
         <span className="eyebrow">PRACTICE & REFLECT</span>
-        <h2>先尝试，再看解答</h2>
+        <h2 ref={heading} tabIndex={-1} style={{ scrollMarginTop: 140 }}>
+          先尝试，再看解答
+        </h2>
         <p>数字题可检查数值；推导题请对照步骤自评。记录只保存在当前浏览器。</p>
       </div>
+      <div className="practice-overview">
+        <span>
+          {questions.length} 道题 · {understood} 道已掌握
+        </span>
+        <button onClick={() => setAll(!all)}>
+          {all ? <Layers3 size={14} /> : <List size={14} />}{" "}
+          {all ? "逐题练习" : "连续查看"}
+        </button>
+      </div>
+      <nav className="question-navigator" aria-label="练习题导航">
+        {questions.map((q, i) => (
+          <button
+            key={q.id}
+            aria-label={"第 " + (i + 1) + " 题"}
+            aria-current={!all && i === index ? "step" : undefined}
+            className={
+              (i === index && !all ? "active " : "") +
+              (progress[q.id] === "understood"
+                ? "done"
+                : progress[q.id] === "review"
+                  ? "review"
+                  : "")
+            }
+            onClick={() => {
+              setAll(false);
+              choose(i);
+            }}
+          >
+            {i + 1}
+          </button>
+        ))}
+      </nav>
       {questions.map((q, i) => (
-        <Question
-          key={q.id}
-          q={q}
-          index={i}
-          status={progress[q.id]}
-          onMark={(v) => onMark(q.id, v)}
-        />
+        <div key={q.id} hidden={!all && i !== index}>
+          <Question
+            q={q}
+            index={i}
+            status={progress[q.id]}
+            onMark={(v) => onMark(q.id, v)}
+          />
+        </div>
       ))}
+      {!all && (
+        <div className="question-pagination">
+          <button disabled={index === 0} onClick={() => choose(index - 1)}>
+            <ArrowLeft size={15} />
+            上一题
+          </button>
+          <span>
+            第 {index + 1} / {questions.length} 题
+          </span>
+          <button
+            disabled={index === questions.length - 1}
+            onClick={() => choose(index + 1)}
+          >
+            下一题
+            <ArrowRight size={15} />
+          </button>
+        </div>
+      )}
     </section>
   );
 }
@@ -96,7 +168,7 @@ function Question({
         </span>
         <span>难度 {q.difficulty}/6</span>
         {status && (
-          <span className={`status ${status}`}>
+          <span className={"status " + status}>
             {status === "understood" ? "已掌握 · 自评/数值检查" : "需要回顾"}
           </span>
         )}
@@ -105,28 +177,42 @@ function Question({
         <MathText text={q.problem} />
       </h3>
       <label className="answer-label">
-        你的思路{q.numericAnswer !== undefined && "（数字题支持小数或分数）"}
+        {q.numericAnswer !== undefined ? "你的答案（小数或分数）" : "你的思路"}
         <textarea
           value={draft}
-          onChange={(e) => setDraft(e.target.value)}
-          placeholder="写下关键步骤，或先在纸上完成…"
+          onChange={(e) => {
+            setDraft(e.target.value);
+            setFeedback("");
+          }}
+          placeholder={
+            q.numericAnswer !== undefined
+              ? "输入数值，也可以先在纸上完成…"
+              : "写下关键步骤，或先在纸上完成…"
+          }
         />
       </label>
       <div className="exercise-actions">
         {q.numericAnswer !== undefined && (
           <button className="small-btn" onClick={check}>
-            <Check size={15} />
+            <Check size={14} />
             检查数值
           </button>
         )}
-        <button className="small-btn" onClick={() => setHint(!hint)}>
-          <Lightbulb size={15} />
+        <button
+          className="small-btn"
+          aria-expanded={hint}
+          onClick={() => setHint(!hint)}
+        >
+          <Lightbulb size={14} />
           {hint ? "收起提示" : "给我一点提示"}
         </button>
-        <button className="text-btn" onClick={() => setReveal(!reveal)}>
-          {" "}
+        <button
+          className="text-btn"
+          aria-expanded={reveal}
+          onClick={() => setReveal(!reveal)}
+        >
           {reveal ? "收起解答" : "查看完整解答"}
-          <ChevronDown size={15} />
+          <ChevronDown size={14} />
         </button>
       </div>
       {feedback && (
@@ -152,10 +238,19 @@ function Question({
             ))}
           </ol>
           <div className="exercise-actions">
-            <button className="small-btn" onClick={() => onMark("understood")}>
+            <button
+              className="small-btn"
+              aria-pressed={status === "understood"}
+              onClick={() => onMark("understood")}
+            >
+              <Check size={14} />
               自评：我已理解
             </button>
-            <button className="small-btn" onClick={() => onMark("review")}>
+            <button
+              className="small-btn"
+              aria-pressed={status === "review"}
+              onClick={() => onMark("review")}
+            >
               自评：还需回顾
             </button>
           </div>

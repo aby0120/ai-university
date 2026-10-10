@@ -30,10 +30,28 @@ AI University 的 AI 位于制作流程，而不位于读者运行时。每卷�
 
 ## 网站路由与本地状态
 
-使用 hash 路由，例如 `/#limit-intuition`，因此任意静态服务器无需 SPA 重写规则。`base: './'` 支持 GitHub Pages 子目录。整本阅读文件是普通 HTML，即使 JavaScript 关闭也能读完教材。
+使用分层 hash 路由，例如 `/#/book/calculus-1`、`/#/chapter/limits`、`/#/lesson/limit-intuition?view=visual`（兼容旧知识点地址），因此任意静态服务器无需 SPA 重写规则。`base: './'` 支持 GitHub Pages 子目录。整本阅读文件是普通 HTML，即使 JavaScript 关闭也能读完教材。
 
-练习草稿为本次会话状态；“已理解/需回顾”记录保存在 localStorage，标注自评或数值检查。记录可导出和清空，没有远程同步。浏览器不允许存储时仍可正常阅读。
+练习草稿为本次会话状态；“已理解/需回顾”记录保存在 localStorage，标注自评或数值检查。阅读状态、收藏和最近阅读在独立的本地记录中维护。记录可导出、合并导入和清空，没有远程同步。浏览器不允许存储时仍可正常阅读。
 
 ## 扩展下一本
 
 完成本卷后，新增独立的卷目录、完整课程范围与依赖图，再逐章完成。后续需要多卷选择器与共享学习对象标识命名空间。此版不伪装成已有 Calculus II、Linear Algebra 或 Differential Equations 全卷。
+
+## 网站页面与阅读组件（v0.2.0）
+
+- `App.tsx`：全局导航、路由与状态保存。
+- `pages/Home.tsx`：网站首页与即时导数演示。
+- `pages/BookPages.tsx`：书库、教材目录、章节概览。
+- `pages/LessonPage.tsx`：正文、演示、练习、先修连接与上下节。
+- `pages/ExplorePage.tsx`：实验室与练习筛选、分页、章末与综合练习。
+- `pages/Resources.tsx`：索引、学习记录、全文搜索、指南和下载。
+- `pages/AboutPage.tsx`：项目、贡献、版本、隐私与数据管理。
+- `components/UI.tsx`：共享导航链接、页标题、目录行、筛选和分页。
+- `components/SiteChrome.tsx`：页脚与可键盘操作的搜索对话框。
+- `components/BookSidebar.tsx`：桌面教材目录、手机抽屉与焦点循环。
+- `lib/navigation.ts`：地址解析、参数和边界安全的分页计算。
+- `lib/catalog.ts`：教材路径、标题与全文搜索。
+- `lib/state.tsx`：本地记录校验及共享状态契约。
+
+实验室每页六个模型预览，索引每页七项，搜索每页八个结果。过滤与分页进入 URL，刷新和分享保留当前页面。知识点的阅读、演示、练习、连接也有各自地址。全文搜索涵盖正文、定义、例题和练习；结果链接返回完整讲解。

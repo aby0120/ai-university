@@ -50,7 +50,7 @@
     "kind": "derivative",
     "function": "square",
     "a": 1,
-    "caption": "缩小 h：蓝色割线靠近绿色切线。读数显示差商与精确导数的差。"
+    "caption": "缩小 h：蓝色割线靠近金色切线。读数显示差商与精确导数的差。"
   },
   "workedExamples": [
     {
