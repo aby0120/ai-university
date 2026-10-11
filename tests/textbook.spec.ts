@@ -127,3 +127,22 @@ test("site pages fit the viewport and the print edition includes the full book",
   await expect(page.locator(".problem")).toHaveCount(175);
   await expect(page.locator(".katex-error")).toHaveCount(0);
 });
+
+
+test("exhibition shapes change parameters and reading focus preserves navigation", async ({ page }) => {
+  await page.goto("/#/home");
+  const canvas = page.locator("canvas[data-sculpture]");
+  await expect(canvas).toHaveAttribute("data-rendered", "true");
+  for (const [name, mode, parameter, maximum] of [["01 曲面", "wave", "振幅 A", "1.8"], ["02 环面", "torus", "管半径 r", "1.2"], ["03 螺旋", "helix", "上升系数 p", "0.3"]]) {
+    await page.getByRole("button", { name, exact: true }).click();
+    await page.getByRole("slider", { name: parameter, exact: true }).press("End");
+    await expect(canvas).toHaveAttribute("data-sculpture", mode);
+    await expect(canvas).toHaveAttribute("data-parameter", maximum);
+    await expect(page.locator(".katex-error")).toHaveCount(0);
+  }
+  await page.getByRole("link", { name: "阅读当前图形的相关基础", exact: true }).click();
+  await page.getByRole("button", { name: "专注阅读", exact: true }).click();
+  await expect(page.locator(".lesson-toc")).toBeHidden();
+  await expect(page.locator("#lesson-article")).toBeVisible();
+  await page.getByRole("button", { name: "退出专注阅读", exact: true }).click();
+});

@@ -135,7 +135,11 @@ export default function App() {
       >
         跳到正文
       </a>
-      <header className="site-header">
+      <header
+        className={
+          "site-header " + (route.path === "home" ? "immersive-header" : "")
+        }
+      >
         <div className="header-inner">
           <Link to="home" className="brand" aria-label="AI University 首页">
             <span className="brand-mark">
@@ -234,7 +238,13 @@ export default function App() {
           </Link>
         </div>
       )}
-      <div className={reader ? "reader-shell" : "site-shell"}>
+      <div
+        className={
+          reader
+            ? "reader-shell"
+            : "site-shell " + (route.path === "home" ? "home-shell" : "")
+        }
+      >
         {reader && (
           <>
             <BookSidebar

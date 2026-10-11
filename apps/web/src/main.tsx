@@ -5,6 +5,7 @@ import App from "./App";
 import "./style.css";
 import "./series.css";
 import "./frontier.css";
+import "./immersive.css";
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <App />

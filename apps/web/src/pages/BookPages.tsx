@@ -43,12 +43,21 @@ export function Library() {
   );
   const planned = matching.filter((v) => v.status === "planned");
   return (
-    <>
+    <div className="library-exhibition">
       <PageTitle
         tag="THE OPEN BOOKSHELF"
         title="教科书库"
-        description="一套逐步扩展的数学教科书。探索不同方向，阅读已出版教材，查看后续规划。"
-      />
+        description="一本一本完成的数学教材。选择方向，开始一条完整的学习路径。"
+      >
+        <div className="library-edition">
+          <strong>
+            {String(
+              volumes.filter((v) => v.status === "published").length,
+            ).padStart(2, "0")}
+          </strong>
+          <span>本已出版 / {volumes.length} 本系列教材</span>
+        </div>
+      </PageTitle>
       <div className="series-library-filter">
         <nav aria-label="教材出版状态">
           {[
@@ -155,7 +164,7 @@ export function Library() {
           <ArrowUpRight size={16} />
         </Link>
       </div>
-    </>
+    </div>
   );
 }
 

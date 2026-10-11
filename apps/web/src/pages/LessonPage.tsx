@@ -8,6 +8,8 @@ import {
   Check,
   CircleCheck,
   Lightbulb,
+  Maximize2,
+  Minimize2,
   X,
 } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -46,6 +48,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
   const ch = book.chapters.find((c) => c.id === l.chapterId)!;
   const [active, setActive] = useState("idea");
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [focused, setFocused] = useState(false);
   const saved = reading.saved.includes(l.id),
     read = reading.read.includes(l.id);
   useEffect(() => {
@@ -84,7 +87,13 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
     });
   }
   return (
-    <div className={"lesson-page " + (reading.large ? "large-text" : "")}>
+    <div
+      className={
+        "lesson-page " +
+        (reading.large ? "large-text " : "") +
+        (focused ? "read-focus" : "")
+      }
+    >
       <div
         className="reading-progress"
         style={{ width: scrollProgress + "%" }}
@@ -97,6 +106,9 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
         ]}
       />
       <header className="lesson-heading">
+        <span className="lesson-section-number" aria-hidden="true">
+          {l.number}
+        </span>
         <Eyebrow>
           SECTION {l.number} / {ch.subtitle}
         </Eyebrow>
@@ -108,6 +120,14 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
           </span>
           <span>2 例题 · 4 练习</span>
           <div>
+            <button
+              className="icon-btn"
+              aria-label={focused ? "退出专注阅读" : "专注阅读"}
+              aria-pressed={focused}
+              onClick={() => setFocused(!focused)}
+            >
+              {focused ? <Minimize2 size={18} /> : <Maximize2 size={18} />}
+            </button>
             <button
               className={"icon-btn " + (saved ? "selected" : "")}
               aria-label={saved ? "取消收藏本节" : "收藏本节"}

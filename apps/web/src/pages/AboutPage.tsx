@@ -179,6 +179,16 @@ export function AboutPage() {
         <div className="versions-page">
           <div className="version-entry">
             <span className="badge">当前网站 · 教材 v0.2.0</span>
+            <h2>v0.4.0 · 数学展览馆与专注阅读</h2>
+            <time>2026 年 10 月 10 日</time>
+            <ul>
+              <li>重建首页的整屏数学场景，支持曲面、环面、螺旋的连续形态切换与参数操作。</li>
+              <li>六个数学方向、已出版书架和互动实验室衔接为完整浏览过程。</li>
+              <li>重新编排书库和阅读页，增加可收起两侧目录的专注模式。</li>
+              <li>保留完整教材与纯静态运行；动效可暂停，并响应减少动画偏好。</li>
+            </ul>
+          </div>
+          <div className="version-entry">
             <h2>v0.3.0 · 概念检查与三维数学</h2>
             <time>2026 年 10 月 10 日</time>
             <ul>

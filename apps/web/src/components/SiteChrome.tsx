@@ -6,8 +6,13 @@ import { Link } from "../components/UI";
 import { REPO, lessonPath, searchLessons } from "../lib/catalog";
 import { useApp } from "../lib/state";
 export function Footer() {
+  const { route } = useApp();
   return (
-    <footer className="site-footer">
+    <footer
+      className={
+        "site-footer " + (route.path === "home" ? "immersive-footer" : "")
+      }
+    >
       <div className="footer-top">
         <div>
           <Link to="home" className="footer-brand">
