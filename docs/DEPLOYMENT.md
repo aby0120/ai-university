@@ -15,6 +15,8 @@ npm run check
 
 初次开源仓库发布不自动假设 Pages 已启用。仓库负责人选择托管之后，再启用此部署工作流。CI 校验工作流独立运行。
 
+本仓库的 Pages 生产环境只允许 `main` 分支，工作流也检查相同分支。正式主分支要求 PR、最新基础版本、内容 CI 与独立贡献授权检查，管理员同样适用。投稿分支不会直接发布；合并之后由维护者手动发布。外部贡献复核与回退见 [贡献保护](CONTRIBUTION_SECURITY.md)。
+
 ## 其他静态平台
 
 构建命令 `npm run build`，输出 `dist`，Node 24。无需设置 API key、数据库或鉴权。Nginx、对象存储网站、Netlify、Cloudflare Pages 等只需提供静态文件。
