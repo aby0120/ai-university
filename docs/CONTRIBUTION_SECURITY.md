@@ -46,4 +46,6 @@
 
 可信工作流与数学 CI 分开，避免在带写权限的工作流中执行外部代码。远端设置和实际 PR 状态需要另外核验，不能仅凭本地测试声称已经启用保护。
 
+远端验证方法：用无教材改动的草稿 PR 检查授权状态失败与合并阻挡，再将其转为可复核 PR，确认同一提交的授权状态成功、CI 通过后可以正常合并。检查主分支保护确实绑定两项状态、管理员受约束、强推和删除禁用；同时核对 fork 运行批准政策与 Pages 的 `main` 限制。外部攻击场景采用隔离测试数据验证，不需要创建假身份或向教材放入错误内容。
+
 实现依据：[GitHub 分支保护 API](https://docs.github.com/en/rest/branches/branch-protection)、[工作流事件及 pull_request_target 注意事项](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#pull_request_target)、[外部工作流运行批准](https://docs.github.com/en/rest/actions/permissions)、[部署分支限制](https://docs.github.com/en/rest/deployments/branch-policies)。
