@@ -26,3 +26,18 @@
 正式收录仍遵循贡献保护：外部贡献需仓库所有者批准当前 head SHA，追加提交后重新批准；本投稿不修改贡献审查、主分支保护或 Pages 发布权限。
 
 本次 v0.2.0 重写使用具体情境、显式例题和小步解释。章末题只组合已教内容，困难边界放在选读。执行结果校验不等同于已证明零基础读者能够独立学会；尚需用户阅读试学反馈。
+
+## 如何审阅网页效果
+
+在新的工作目录中获取本投稿分支：
+
+```sh
+git clone --branch contribution/python-introduction --single-branch https://github.com/GMguimei/ai-university.git python-textbook-review
+cd python-textbook-review
+npm ci
+npm run dev
+```
+
+打开终端显示的本地地址并进入 `#/python`；例如 `http://127.0.0.1:5173/#/python`。建议从 1.1 开始阅读，再看 1.3 的装袋互动、2.3 的零次循环和 4.1 的函数参数与返回。网页演示全部在浏览器本地回放，不需要 API key。
+
+整本书稿可直接阅读 `drafts/python/Python-Introduction.md`。安装 Python 后另运行 `npm run check:python` 验证教学代码；当前正式 Pages 站点需维护者决定收录、合并与发布后才会出现本投稿。
