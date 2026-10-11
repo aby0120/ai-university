@@ -1,0 +1,47 @@
+name: Trusted contribution review
+on:
+  pull_request_target:
+    branches: [main]
+    types: [opened, reopened, synchronize, edited, ready_for_review, converted_to_draft, labeled, unlabeled]
+permissions:
+  contents: read
+  pull-requests: read
+  statuses: write
+concurrency:
+  group: trusted-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+jobs:
+  trusted-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      # This privileged workflow reads ONLY the trusted base commit.
+      # Never change this to the PR head/merge ref or execute fork code here.
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          persist-credentials: false
+      - uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
+        with:
+          script: |
+            const { contributionDecision } = await import(`${process.env.GITHUB_WORKSPACE}/scripts/contribution-policy.mjs`);
+            const repo = context.repo;
+            const pull_number = context.payload.pull_request.number;
+            const { data: pull } = await github.rest.pulls.get({ ...repo, pull_number });
+            const sha = pull.head.sha;
+            const status = (state, description) => github.rest.repos.createCommitStatus({
+              ...repo, sha, state, context: 'Contribution review', description,
+              target_url: `https://github.com/${repo.owner}/${repo.repo}/actions/runs/${process.env.GITHUB_RUN_ID}`
+            });
+            await status('pending', 'Checking trusted owner approval for this exact commit');
+            const reviews = await github.paginate(github.rest.pulls.listReviews, { ...repo, pull_number, per_page: 100 });
+            const decision = contributionDecision({ pull, reviews, owner: repo.owner, repository: `${repo.owner}/${repo.repo}` });
+            const { data: current } = await github.rest.pulls.get({ ...repo, pull_number });
+            if (current.head.sha !== sha || current.state !== 'open') {
+              await status('failure', 'Contribution changed during review; rerun required');
+              core.setFailed('Contribution changed during review');
+              return;
+            }
+            await status(decision.allowed ? 'success' : 'failure', decision.allowed ? 'Trusted contribution approval verified' : 'Owner approval of the current commit required');
+            core.info(decision.reason);
+            if (!decision.allowed) core.setFailed(decision.reason);
