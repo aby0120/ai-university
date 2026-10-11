@@ -137,7 +137,7 @@ export default function App() {
       </a>
       <header
         className={
-          "site-header " + (route.path === "home" ? "immersive-header" : "")
+          "site-header immersive-header"
         }
       >
         <div className="header-inner">
@@ -159,8 +159,9 @@ export default function App() {
               <Link
                 key={id}
                 to={id}
+                aria-current={route.path === id || route.path.startsWith(id + "/") || (id === "library" && (reader || route.path === BOOK)) ? "page" : undefined}
                 className={
-                  route.path === id ||
+                  route.path === id || route.path.startsWith(id + "/") ||
                   (id === "library" && (reader || route.path === BOOK))
                     ? "active"
                     : ""

@@ -34,7 +34,7 @@ export function AboutPage() {
           part === "research"
             ? "讲解、练习与图示怎样帮助理解：编写依据与补充阅读。"
             : part === "project"
-              ? "让 AI 写成完整教科书，让知识以清楚、开放的方式被阅读。"
+              ? "由 AI 编写，整本开放阅读。正文、图示和修订记录都在这里。"
               : part === "contribute"
                 ? "修正一个错误，改善一道例题，或者让一张图更容易理解。"
                 : part === "versions"
@@ -47,6 +47,7 @@ export function AboutPage() {
           <Link
             key={id}
             to={id === "project" ? "about" : "about/" + id}
+            aria-current={part === id ? "page" : undefined}
             className={part === id ? "active" : ""}
           >
             {name.replace(" AI University", "")}
@@ -179,6 +180,16 @@ export function AboutPage() {
         <div className="versions-page">
           <div className="version-entry">
             <span className="badge">当前网站 · 教材 v0.2.0</span>
+            <h2>v0.5.0 · 整站视觉统一与首页精简</h2>
+            <time>2026 年 10 月 10 日</time>
+            <ul>
+              <li>统一书库、阅读、实验室、练习、索引和辅助页面的配色、排版与控件。</li>
+              <li>首页先展示可读教材，再展开数学系列；减少重复文案和宣传区。</li>
+              <li>更新书封、阅读目录、搜索和手机布局；动画不再隐藏正文。</li>
+              <li>保留完整数学内容、3D 演示和纯静态运行。</li>
+            </ul>
+          </div>
+          <div className="version-entry">
             <h2>v0.4.0 · 数学展览馆与专注阅读</h2>
             <time>2026 年 10 月 10 日</time>
             <ul>

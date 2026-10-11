@@ -6,11 +6,10 @@ import { Link } from "../components/UI";
 import { REPO, lessonPath, searchLessons } from "../lib/catalog";
 import { useApp } from "../lib/state";
 export function Footer() {
-  const { route } = useApp();
   return (
     <footer
       className={
-        "site-footer " + (route.path === "home" ? "immersive-footer" : "")
+        "site-footer immersive-footer"
       }
     >
       <div className="footer-top">
@@ -32,7 +31,7 @@ export function Footer() {
         </div>
         <div>
           <strong>阅读资源</strong>
-          <Link to="library">数学教科书系列</Link>
+          <Link to="about/research">学习方法与参考资料</Link>
           <Link to="reference">公式与术语</Link>
           <Link to="downloads">下载与打印</Link>
           <Link to="learning">我的学习</Link>

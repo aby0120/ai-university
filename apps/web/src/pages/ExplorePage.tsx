@@ -39,7 +39,7 @@ export function ExplorePage({ mode }: { mode: "lab" | "practice" }) {
         title={mode === "lab" ? "互动实验室" : "练习中心"}
         description={
           mode === "lab"
-            ? "移动一个点，改变一个参数。让抽象概念在眼前发生。"
+            ? "改变参数，对照图像、数值与公式。每个演示都能回到对应讲解。"
             : "先独立尝试，再对照完整解答。按知识点练习，也可以回顾整章。"
         }
       >
@@ -53,7 +53,7 @@ export function ExplorePage({ mode }: { mode: "lab" | "practice" }) {
           <GraduationCap size={32} />
           <div>
             <h2>整本书 · 综合测试</h2>
-            <p>14 道题，从函数与极限到积分应用，连接整本知识。</p>
+            <p>14 道题，检查函数、极限、导数与积分的理解。</p>
           </div>
           <Link to="practice/exam" className="primary-btn">
             开始测试

@@ -47,7 +47,7 @@ export function Library() {
       <PageTitle
         tag="THE OPEN BOOKSHELF"
         title="教科书库"
-        description="一本一本完成的数学教材。选择方向，开始一条完整的学习路径。"
+        description="按数学方向选书。已出版的教材，整本开放阅读。"
       >
         <div className="library-edition">
           <strong>
@@ -220,7 +220,7 @@ export function BookPage() {
         <div className="section-title">
           <div>
             <Eyebrow>CONTENTS</Eyebrow>
-            <h2>从函数到积分，七章连成一条路。</h2>
+            <h2>全书目录</h2>
           </div>
           <span>{reading.read.length} / 35 节已读</span>
         </div>
@@ -311,7 +311,7 @@ export function ChapterPage() {
       <section>
         <div className="section-title">
           <h2>本章目录</h2>
-          <span>5 节 · 10 例题 · 20 练习</span>
+          <span>5 节 · 10 例题 · 20 节内练习</span>
         </div>
         <div className="chapter-detail-list">
           {ch.lessonIds.map((id) => {

@@ -121,7 +121,7 @@ export function Home() {
           <span>
             <i /> AI-AUTHORED. OPEN TO EVERYONE.
           </span>
-          <span>MATHEMATICS / VOL. 001—</span>
+          <span>MATHEMATICS / OPEN TEXTBOOKS</span>
         </div>
         <div className="stage-title">
           <Eyebrow>AI UNIVERSITY</Eyebrow>
@@ -131,9 +131,9 @@ export function Home() {
             <span>理解本质。</span>
           </h1>
           <p>
-            从一个问题，到一个清楚的答案。
+            AI 编写的开放数学教科书。
             <br />
-            系统的教材，可探索的图形，完整的推导。
+            读讲解，操作图形，自己解一道题。
           </p>
           <div className="stage-actions">
             <Link to="library" className="stage-primary">
@@ -245,13 +245,31 @@ export function Home() {
           </button>
         </div>
       </section>
+      <section className="shelf-section">
+        <div className="shelf-heading" data-reveal>
+          <Eyebrow>01 / THE OPEN BOOKSHELF</Eyebrow>
+          <h2>
+            已出版。
+            <br />
+            <em>现在就读。</em>
+          </h2>
+          <Link to="library" params={{ status: "published" }}>
+            浏览已出版教材 <ArrowUpRight size={18} />
+          </Link>
+        </div>
+        <div className="shelf-books" data-reveal>
+          {publishedVolumes.map((volume) => (
+            <PublishedBook key={volume.id} volume={volume} />
+          ))}
+        </div>
+      </section>
       <section className="math-atlas" id="math-atlas">
         <div className="atlas-heading" data-reveal>
-          <Eyebrow>01 / THE MATHEMATICAL ATLAS</Eyebrow>
+          <Eyebrow>02 / THE MATHEMATICAL ATLAS</Eyebrow>
           <h2>
-            一整个数学世界。
+            数学，不止一本书。
             <br />
-            <span>一本一本，向你展开。</span>
+            <span>从这里，继续向前。</span>
           </h2>
           <p>
             目前从微积分 I 开始。
@@ -287,28 +305,6 @@ export function Home() {
           })}
         </div>
       </section>
-      <section className="shelf-section">
-        <div className="shelf-heading" data-reveal>
-          <Eyebrow>02 / THE OPEN BOOKSHELF</Eyebrow>
-          <h2>
-            从这里，
-            <br />
-            <em>真正读懂。</em>
-          </h2>
-          <Link to="library" params={{ status: "published" }}>
-            浏览已出版教材 <ArrowUpRight size={18} />
-          </Link>
-        </div>
-        <div className="shelf-books" data-reveal>
-          {publishedVolumes.map((volume) => (
-            <PublishedBook key={volume.id} volume={volume} />
-          ))}
-        </div>
-        <div className="shelf-footnote">
-          <span>AI 编写 · 固定版本 · 可下载</span>
-          <span>一套教材，一条完整的学习路径。</span>
-        </div>
-      </section>
       <section className="hands-on-section">
         <div className="hands-on-copy" data-reveal>
           <Eyebrow>03 / THINK WITH YOUR HANDS</Eyebrow>
@@ -339,29 +335,11 @@ export function Home() {
         </div>
         <MotionNotebook />
       </section>
-      <section className="open-finale">
-        <Eyebrow>KNOWLEDGE HAS NO GATEKEEPERS.</Eyebrow>
-        <h2 data-reveal>
-          打开一本书。
-          <br />
-          <span>打开一种看法。</span>
-        </h2>
-        <div>
-          <p>
-            免费阅读，自由下载。
-            <br />由 AI 编写，向所有人开放。
-          </p>
-          <Link to="library" className="stage-primary">
-            开始阅读 <ArrowUpRight size={22} />
-          </Link>
-          <Link to="about" className="stage-secondary">
-            了解开放计划 <ArrowRight size={18} />
-          </Link>
-        </div>
-        <span className="finale-wordmark" aria-hidden="true">
-          AI UNIVERSITY
-        </span>
-      </section>
+      <nav className="home-next" aria-label="学习入口">
+        <Link to="guide"><small>01 / READ</small><h3>读懂一个概念</h3><span>从讲解到定义 <ArrowUpRight size={19} /></span></Link>
+        <Link to="lab"><small>02 / EXPLORE</small><h3>亲手验证直觉</h3><span>改变参数，观察结果 <ArrowUpRight size={19} /></span></Link>
+        <Link to="practice"><small>03 / PRACTICE</small><h3>独立解一道题</h3><span>先尝试，再看解答 <ArrowUpRight size={19} /></span></Link>
+      </nav>
     </div>
   );
 }

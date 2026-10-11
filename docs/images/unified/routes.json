@@ -1,0 +1,1490 @@
+[
+  {
+    "errors": 0,
+    "h1": "看见数学。理解本质。",
+    "header": "site-header immersive-header",
+    "route": "#/home",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "教科书库",
+    "header": "site-header immersive-header",
+    "route": "#/library",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "微积分 ICalculus I",
+    "header": "site-header immersive-header",
+    "route": "#/book/calculus-1",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "互动实验室",
+    "header": "site-header immersive-header",
+    "route": "#/lab",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "互动实验室",
+    "header": "site-header immersive-header",
+    "route": "#/lab?page=2",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "练习中心",
+    "header": "site-header immersive-header",
+    "route": "#/practice",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "练习中心",
+    "header": "site-header immersive-header",
+    "route": "#/practice?page=2",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "整本书 · 综合测试",
+    "header": "site-header immersive-header",
+    "route": "#/practice/exam",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "知识索引",
+    "header": "site-header immersive-header",
+    "route": "#/reference",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "知识索引",
+    "header": "site-header immersive-header",
+    "route": "#/reference?tab=glossary",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "知识索引",
+    "header": "site-header immersive-header",
+    "route": "#/reference?tab=appendix",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "我的学习",
+    "header": "site-header immersive-header",
+    "route": "#/learning",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "搜索教材",
+    "header": "site-header immersive-header",
+    "route": "#/search?q=%E6%9E%81%E9%99%90",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "怎样读这本教科书",
+    "header": "site-header immersive-header",
+    "route": "#/guide",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "下载与离线阅读",
+    "header": "site-header immersive-header",
+    "route": "#/downloads",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "关于 AI University",
+    "header": "site-header immersive-header",
+    "route": "#/about",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "参与贡献",
+    "header": "site-header immersive-header",
+    "route": "#/about/contribute",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "版本与勘误",
+    "header": "site-header immersive-header",
+    "route": "#/about/versions",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "隐私与本地数据",
+    "header": "site-header immersive-header",
+    "route": "#/about/privacy",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "学习方法与参考资料",
+    "header": "site-header immersive-header",
+    "route": "#/about/research",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "函数：变化的语言",
+    "header": "site-header immersive-header",
+    "route": "#/chapter/functions",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "极限与连续",
+    "header": "site-header immersive-header",
+    "route": "#/chapter/limits",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "导数的建立与计算",
+    "header": "site-header immersive-header",
+    "route": "#/chapter/derivatives",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "更多导数与变化模型",
+    "header": "site-header immersive-header",
+    "route": "#/chapter/differential-models",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "导数如何描述全局行为",
+    "header": "site-header immersive-header",
+    "route": "#/chapter/derivative-applications",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "积分：从累积到原函数",
+    "header": "site-header immersive-header",
+    "route": "#/chapter/integrals",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "积分的几何与物理应用",
+    "header": "site-header immersive-header",
+    "route": "#/chapter/integral-applications",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "函数与定义域",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/domain",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "图像与变换",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/transformations",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "复合函数与反函数",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/composition",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "三角函数与弧度",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/trigonometry",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "指数与对数",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/exponential-log",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "极限：靠近时会怎样",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/limit-intuition",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "极限的计算法则",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/limit-laws",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "ε–δ：把靠近说精确",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/epsilon-delta",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "连续性与介值定理",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/continuity",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "无穷极限与渐近线",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/infinite-limits",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "导数：割线变成切线",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/derivative-definition",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "基本求导规则",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/derivative-rules",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "链式法则",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/chain-rule",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "三角函数的导数",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/trig-derivatives",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "隐函数求导",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/implicit",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "指数与对数求导",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/exp-log-derivatives",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "反函数与反三角导数",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/inverse-trig",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "相关变化率",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/related-rates",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "线性近似与微分",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/linearization",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "牛顿法：沿切线找根",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/newton",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "极值与临界点",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/extrema",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "罗尔与中值定理",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/mean-value",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "单调性、凹性与曲线分析",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/curve-sketching",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "优化：把问题变成一个函数",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/optimization",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "洛必达法则",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/lhopital",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "原函数与不定积分",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/antiderivatives",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "黎曼和与数值积分",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/riemann-sums",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "定积分与带符号面积",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/definite-integral",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "微积分基本定理",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/fundamental-theorem",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "换元积分",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/substitution",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "两曲线之间的面积",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/area-between",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "旋转体：圆盘与圆环",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/disk-washer",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "旋转体：圆柱壳",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/shells",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "弧长与旋转曲面面积",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/arc-length",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "位移、功、质量与平均值",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/physical-integrals",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "errors": 0,
+    "h1": "看见数学。理解本质。",
+    "header": "site-header immersive-header",
+    "route": "#/home",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "教科书库",
+    "header": "site-header immersive-header",
+    "route": "#/library",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "微积分 ICalculus I",
+    "header": "site-header immersive-header",
+    "route": "#/book/calculus-1",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "互动实验室",
+    "header": "site-header immersive-header",
+    "route": "#/lab",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "互动实验室",
+    "header": "site-header immersive-header",
+    "route": "#/lab?page=2",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "练习中心",
+    "header": "site-header immersive-header",
+    "route": "#/practice",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "练习中心",
+    "header": "site-header immersive-header",
+    "route": "#/practice?page=2",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "整本书 · 综合测试",
+    "header": "site-header immersive-header",
+    "route": "#/practice/exam",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "知识索引",
+    "header": "site-header immersive-header",
+    "route": "#/reference",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "知识索引",
+    "header": "site-header immersive-header",
+    "route": "#/reference?tab=glossary",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "知识索引",
+    "header": "site-header immersive-header",
+    "route": "#/reference?tab=appendix",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "我的学习",
+    "header": "site-header immersive-header",
+    "route": "#/learning",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "搜索教材",
+    "header": "site-header immersive-header",
+    "route": "#/search?q=%E6%9E%81%E9%99%90",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "怎样读这本教科书",
+    "header": "site-header immersive-header",
+    "route": "#/guide",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "下载与离线阅读",
+    "header": "site-header immersive-header",
+    "route": "#/downloads",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "关于 AI University",
+    "header": "site-header immersive-header",
+    "route": "#/about",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "参与贡献",
+    "header": "site-header immersive-header",
+    "route": "#/about/contribute",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "版本与勘误",
+    "header": "site-header immersive-header",
+    "route": "#/about/versions",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "隐私与本地数据",
+    "header": "site-header immersive-header",
+    "route": "#/about/privacy",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "学习方法与参考资料",
+    "header": "site-header immersive-header",
+    "route": "#/about/research",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "函数：变化的语言",
+    "header": "site-header immersive-header",
+    "route": "#/chapter/functions",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "极限与连续",
+    "header": "site-header immersive-header",
+    "route": "#/chapter/limits",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "导数的建立与计算",
+    "header": "site-header immersive-header",
+    "route": "#/chapter/derivatives",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "更多导数与变化模型",
+    "header": "site-header immersive-header",
+    "route": "#/chapter/differential-models",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "导数如何描述全局行为",
+    "header": "site-header immersive-header",
+    "route": "#/chapter/derivative-applications",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "积分：从累积到原函数",
+    "header": "site-header immersive-header",
+    "route": "#/chapter/integrals",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "积分的几何与物理应用",
+    "header": "site-header immersive-header",
+    "route": "#/chapter/integral-applications",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "函数与定义域",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/domain",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "图像与变换",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/transformations",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "复合函数与反函数",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/composition",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "三角函数与弧度",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/trigonometry",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "指数与对数",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/exponential-log",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "极限：靠近时会怎样",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/limit-intuition",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "极限的计算法则",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/limit-laws",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "ε–δ：把靠近说精确",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/epsilon-delta",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "连续性与介值定理",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/continuity",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "无穷极限与渐近线",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/infinite-limits",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "导数：割线变成切线",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/derivative-definition",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "基本求导规则",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/derivative-rules",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "链式法则",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/chain-rule",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "三角函数的导数",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/trig-derivatives",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "隐函数求导",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/implicit",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "指数与对数求导",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/exp-log-derivatives",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "反函数与反三角导数",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/inverse-trig",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "相关变化率",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/related-rates",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "线性近似与微分",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/linearization",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "牛顿法：沿切线找根",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/newton",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "极值与临界点",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/extrema",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "罗尔与中值定理",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/mean-value",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "单调性、凹性与曲线分析",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/curve-sketching",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "优化：把问题变成一个函数",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/optimization",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "洛必达法则",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/lhopital",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "原函数与不定积分",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/antiderivatives",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "黎曼和与数值积分",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/riemann-sums",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "定积分与带符号面积",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/definite-integral",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "微积分基本定理",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/fundamental-theorem",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "换元积分",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/substitution",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "两曲线之间的面积",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/area-between",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "旋转体：圆盘与圆环",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/disk-washer",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "旋转体：圆柱壳",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/shells",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "弧长与旋转曲面面积",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/arc-length",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "位移、功、质量与平均值",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/physical-integrals",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "errors": 0,
+    "h1": "看见数学。理解本质。",
+    "header": "site-header immersive-header",
+    "route": "#/home",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "教科书库",
+    "header": "site-header immersive-header",
+    "route": "#/library",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "微积分 ICalculus I",
+    "header": "site-header immersive-header",
+    "route": "#/book/calculus-1",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "互动实验室",
+    "header": "site-header immersive-header",
+    "route": "#/lab",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "互动实验室",
+    "header": "site-header immersive-header",
+    "route": "#/lab?page=2",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "练习中心",
+    "header": "site-header immersive-header",
+    "route": "#/practice",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "练习中心",
+    "header": "site-header immersive-header",
+    "route": "#/practice?page=2",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "整本书 · 综合测试",
+    "header": "site-header immersive-header",
+    "route": "#/practice/exam",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "知识索引",
+    "header": "site-header immersive-header",
+    "route": "#/reference",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "知识索引",
+    "header": "site-header immersive-header",
+    "route": "#/reference?tab=glossary",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "知识索引",
+    "header": "site-header immersive-header",
+    "route": "#/reference?tab=appendix",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "我的学习",
+    "header": "site-header immersive-header",
+    "route": "#/learning",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "搜索教材",
+    "header": "site-header immersive-header",
+    "route": "#/search?q=%E6%9E%81%E9%99%90",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "怎样读这本教科书",
+    "header": "site-header immersive-header",
+    "route": "#/guide",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "下载与离线阅读",
+    "header": "site-header immersive-header",
+    "route": "#/downloads",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "关于 AI University",
+    "header": "site-header immersive-header",
+    "route": "#/about",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "参与贡献",
+    "header": "site-header immersive-header",
+    "route": "#/about/contribute",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "版本与勘误",
+    "header": "site-header immersive-header",
+    "route": "#/about/versions",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "隐私与本地数据",
+    "header": "site-header immersive-header",
+    "route": "#/about/privacy",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "学习方法与参考资料",
+    "header": "site-header immersive-header",
+    "route": "#/about/research",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "函数：变化的语言",
+    "header": "site-header immersive-header",
+    "route": "#/chapter/functions",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "极限与连续",
+    "header": "site-header immersive-header",
+    "route": "#/chapter/limits",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "导数的建立与计算",
+    "header": "site-header immersive-header",
+    "route": "#/chapter/derivatives",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "更多导数与变化模型",
+    "header": "site-header immersive-header",
+    "route": "#/chapter/differential-models",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "导数如何描述全局行为",
+    "header": "site-header immersive-header",
+    "route": "#/chapter/derivative-applications",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "积分：从累积到原函数",
+    "header": "site-header immersive-header",
+    "route": "#/chapter/integrals",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "积分的几何与物理应用",
+    "header": "site-header immersive-header",
+    "route": "#/chapter/integral-applications",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "函数与定义域",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/domain",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "图像与变换",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/transformations",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "复合函数与反函数",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/composition",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "三角函数与弧度",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/trigonometry",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "指数与对数",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/exponential-log",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "极限：靠近时会怎样",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/limit-intuition",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "极限的计算法则",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/limit-laws",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "ε–δ：把靠近说精确",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/epsilon-delta",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "连续性与介值定理",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/continuity",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "无穷极限与渐近线",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/infinite-limits",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "导数：割线变成切线",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/derivative-definition",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "基本求导规则",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/derivative-rules",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "链式法则",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/chain-rule",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "三角函数的导数",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/trig-derivatives",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "隐函数求导",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/implicit",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "指数与对数求导",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/exp-log-derivatives",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "反函数与反三角导数",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/inverse-trig",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "相关变化率",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/related-rates",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "线性近似与微分",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/linearization",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "牛顿法：沿切线找根",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/newton",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "极值与临界点",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/extrema",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "罗尔与中值定理",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/mean-value",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "单调性、凹性与曲线分析",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/curve-sketching",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "优化：把问题变成一个函数",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/optimization",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "洛必达法则",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/lhopital",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "原函数与不定积分",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/antiderivatives",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "黎曼和与数值积分",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/riemann-sums",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "定积分与带符号面积",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/definite-integral",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "微积分基本定理",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/fundamental-theorem",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "换元积分",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/substitution",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "两曲线之间的面积",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/area-between",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "旋转体：圆盘与圆环",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/disk-washer",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "旋转体：圆柱壳",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/shells",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "弧长与旋转曲面面积",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/arc-length",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "errors": 0,
+    "h1": "位移、功、质量与平均值",
+    "header": "site-header immersive-header",
+    "route": "#/lesson/physical-integrals",
+    "scrollWidth": 390,
+    "width": 390
+  }
+]
