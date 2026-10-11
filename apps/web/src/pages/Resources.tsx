@@ -55,6 +55,7 @@ export function ReferencePage() {
             key={id}
             to="reference"
             params={{ tab: id }}
+            aria-current={tab === id ? "page" : undefined}
             className={tab === id ? "active" : ""}
           >
             {name}
@@ -189,6 +190,7 @@ export function LearningPage() {
             key={id}
             to="learning"
             params={{ tab: id }}
+            aria-current={tab === id ? "page" : undefined}
             className={tab === id ? "active" : ""}
           >
             {name}

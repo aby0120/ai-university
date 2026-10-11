@@ -53,6 +53,12 @@ export function PageTitle({
 }) {
   return (
     <div className="page-heading">
+      <svg className="masthead-lines" viewBox="0 0 460 260" aria-hidden="true" focusable="false">
+        <path d="M-30 210 C90 200 100 40 240 70 S370 210 490 20" />
+        <path d="M-30 230 C90 220 110 60 240 90 S370 230 490 40" />
+        <path d="M-30 250 C90 240 120 80 240 110 S370 250 490 60" />
+        <path d="M-30 270 C90 260 130 100 240 130 S370 270 490 80" />
+      </svg>
       <div>
         <Eyebrow>{tag}</Eyebrow>
         <h1>{title}</h1>
