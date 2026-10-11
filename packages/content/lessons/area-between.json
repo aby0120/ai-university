@@ -4,8 +4,8 @@
   "number": "7.1",
   "title": "两曲线之间的面积",
   "subtitle": "每一条窄带的高度是多少？",
-  "concept": "两曲线夹住的面积是上函数减下函数的积分；若上下关系交换，就分段。",
-  "intuition": "竖着切一小条，高度是两条曲线的距离，宽度是 dx。横着切则是右边减左边，宽度是 dy。先选最容易描述的小条。",
+  "concept": "两曲线之间的面积，用每条小条的高度乘宽度，再积分。竖条是上减下，横条是右减左。",
+  "intuition": "y=x 与 y=x² 在 [0,1] 之间，竖条高度为 x−x²，所以面积为 ∫₀¹(x−x²)dx=1/6。",
   "objectives": [
     "先找交点和顺序",
     "横切有时更简单",
@@ -13,16 +13,16 @@
   ],
   "body": [
     {
-      "title": "先找交点和顺序",
-      "text": "解 f=g 得分界点。在每段用测试点或代数判断谁在上方，建立 ∫(上−下)。不能直接让正负面积抵消，也不能只凭图窗猜交点。"
+      "title": "先找什么？",
+      "text": "先解交点，判断各段谁在上方。上下交换时分段，避免正负相抵。"
     },
     {
-      "title": "横切有时更简单",
-      "text": "当曲线容易写成 x 关于 y 的函数时，改用 ∫(右−左)dy。一个封闭区域可能需要多段不同边界，选择分段更少的方向能简化计算。"
+      "title": "什么时候横着切？",
+      "text": "曲线容易写成 x=g(y)，或横切能减少分段时，用 ∫(右−左)dy。先标明这一段的左右边界。"
     },
     {
-      "title": "绝对值表达",
-      "text": "竖向面积也可写 ∫|f−g|dx，但计算时仍往往要按交点去掉绝对值。本节总是谈非负几何面积，与上一章的带符号累积不同。"
+      "title": "能直接用绝对值吗？",
+      "text": "可以写 ∫|f−g|dx，但计算时通常仍要按交点分段去掉绝对值。这是非负面积，不是带符号累积。"
     }
   ],
   "formalDefinition": {
@@ -49,7 +49,8 @@
   "interactiveVisual": {
     "kind": "area-between",
     "function": "square",
-    "caption": "高亮 y=x 与 y=x² 在 [0,1] 的窄条：高度 x−x²，总面积 1/6。"
+    "caption": "高亮 y=x 与 y=x² 在 [0,1] 的窄条：高度 x−x²，总面积 1/6。",
+    "prediction": "y=x 与 y=x² 之间，窄条的高度是多少？哪些端点的高度为零？"
   },
   "workedExamples": [
     {
@@ -151,11 +152,24 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.2.0",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [
-    "openstax-calculus-1"
-  ]
+    "openstax-calculus-1",
+    "active-calculus-2",
+    "ies-learning",
+    "phet-design"
+  ],
+  "learningCheck": {
+    "question": "两条曲线在区间内交叉，面积怎么计算？",
+    "choices": [
+      "始终按第一条减第二条",
+      "在交点处分段，每段用上方曲线减下方曲线",
+      "只算交点的高度差"
+    ],
+    "correctIndex": 1,
+    "explanation": "面积不能靠正负抵消。先找交点与上下关系，再分段积分，也可写成高度差的绝对值积分。"
+  }
 }

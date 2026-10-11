@@ -4,8 +4,8 @@
   "number": "2.2",
   "title": "极限的计算法则",
   "subtitle": "何时能代入，何时先化简",
-  "concept": "已有的极限可以通过加、乘、除等运算组合，但分母趋近零时不能直接使用商法则。",
-  "intuition": "先把极限看作稳定的数值趋势：两个量分别稳定到 A 与 B，它们的和就稳定到 A+B。除法需要分母远离零，才不会放大微小误差。",
+  "concept": "已知两个函数的极限，就能计算它们的和、积、商的极限；商要求分母极限不为 0。",
+  "intuition": "极限规则让你先分别求出各部分的趋势，再组合。0/0 时，这条商规则暂时不能用。",
   "objectives": [
     "代入的边界",
     "夹逼定理",
@@ -13,16 +13,16 @@
   ],
   "body": [
     {
-      "title": "代入的边界",
-      "text": "多项式处处连续；有理函数在分母非零处连续，所以这些位置可直接代入。出现 0/0 时先因式分解、通分或乘共轭。出现非零数除以零时，要检查两侧符号。"
+      "title": "什么时候可以代入？",
+      "text": "多项式处处连续；有理式在分母不为 0 处连续。遇到根号、对数，还要检查定义域。"
     },
     {
-      "title": "夹逼定理",
-      "text": "若附近 g(x)≤f(x)≤h(x)，且外面两函数都趋近 L，则中间函数也趋近 L。它适合处理“小量乘有界振荡”，例如 |x sin(1/x)|≤|x|。"
+      "title": "遇到 0/0 怎么办？",
+      "text": "尝试因式分解、约分或乘共轭。化简只需在目标点附近成立，不必让原式在目标点有定义。"
     },
     {
-      "title": "基本三角极限",
-      "text": "弧度下 sin x/x→1。几何比较给出 0<x<π/2 时 cos x≤sin x/x≤1，再利用对称性得到双侧结论。常见变形要把内部角与分母配成同一变量。"
+      "title": "夹逼怎么用？",
+      "text": "若附近 g≤f≤h，且 g、h 都趋近 L，f 也趋近 L。先把不等式和两端极限说明白；三角极限使用弧度。"
     }
   ],
   "formalDefinition": {
@@ -50,7 +50,8 @@
     "kind": "limit",
     "function": "sinc",
     "a": 0,
-    "caption": "观察 sin(x)/x 在 x=0 两侧趋近 1。零点用孔洞标记。"
+    "caption": "观察 sin(x)/x 在 x=0 两侧趋近 1。零点用孔洞标记。",
+    "prediction": "sin x/x 在 0 处没有定义。左右靠近时，输出是否仍能趋近同一个数？"
   },
   "workedExamples": [
     {
@@ -153,11 +154,25 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.2.0",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [
-    "openstax-calculus-1"
-  ]
+    "openstax-calculus-1",
+    "active-calculus-2",
+    "ies-learning",
+    "phet-design",
+    "3b1b-calculus"
+  ],
+  "learningCheck": {
+    "question": "代入后得到 0/0，下一步应该做什么？",
+    "choices": [
+      "答案就是 0",
+      "答案就是 1",
+      "整理表达式，再求极限"
+    ],
+    "correctIndex": 2,
+    "explanation": "0/0 是未定式，不是答案。因式分解、约分或有理化可能揭示附近的趋势；不能直接除以零。"
+  }
 }

@@ -4,8 +4,8 @@
   "number": "2.3",
   "title": "ε–δ：把靠近说精确",
   "subtitle": "你给误差，我给输入范围",
-  "concept": "ε 是允许的输出误差；δ 是保证误差所需的输入距离。极限要求无论 ε 多小，都能找到有效的 δ。",
-  "intuition": "这是一个保证，不是一张采样表。对方先说“输出误差小于 0.01”，你再给出一个输入范围，让里面每一个合法输入都满足要求。",
+  "concept": "ε 限制输出误差，δ 限制输入距离。无论误差要求多小，都能找到相应的 δ，才叫有极限。",
+  "intuition": "对 f(x)=2x、a=1、L=2，输出误差是输入距离的 2 倍。要让误差小于 ε，取 δ=ε/2 就够了。",
   "objectives": [
     "量词的顺序",
     "如何找 δ",
@@ -13,21 +13,21 @@
   ],
   "body": [
     {
-      "title": "量词的顺序",
-      "text": "先任意给 ε>0，再选择 δ>0。δ 可以依赖 ε，但不能依赖范围内临时选到的某个 x。接着要保证所有满足 0<|x−a|<δ 的定义域输入，都有 |f(x)−L|<ε。"
+      "title": "谁先给，谁后选？",
+      "text": "先给任意 ε>0，再选 δ>0。δ 可以依赖 ε，但不能等看见某个 x 后再临时选择。"
     },
     {
-      "title": "如何找 δ",
-      "text": "把输出误差拆成输入距离乘一个可控因子。线性函数只需要 δ=ε/|m|。平方函数多一个 |x+a|，先限制 δ≤1，把它压在固定上界内，再缩小 δ。"
+      "title": "0<|x−a| 为什么有个 0？",
+      "text": "它排除了 x=a。极限只考察附近合法输入，所以 a 不必在定义域中。"
     },
     {
-      "title": "证据的强度",
-      "text": "展示几个接近的数并不能覆盖“所有 x”。证明需要明确写出 δ，再沿不等式推到目标误差。用更小的 δ 仍然有效，所以 δ 不必是最大的。"
+      "title": "δ 怎样找？",
+      "text": "从 |f(x)−L|<ε 倒推输入限制，再按正向顺序验证。例如 x² 在 a=2 附近先取 δ≤1，使 |x+2|<5，再取 δ≤ε/5。"
     }
   ],
   "formalDefinition": {
-    "text": "对定义域在 a 附近有聚点的函数，有限极限定义如下。",
-    "latex": "\\forall\\varepsilon>0\\ \\exists\\delta>0:\\quad 0<|x-a|<\\delta\\Rightarrow |f(x)-L|<\\varepsilon",
+    "text": "设 D 为定义域，a 是 D 的聚点：a 附近总有不等于 a 的合法输入。有限极限定义如下。",
+    "latex": "\\forall\\varepsilon>0\\ \\exists\\delta>0\\ \\forall x\\in D:\\quad 0<|x-a|<\\delta\\Rightarrow |f(x)-L|<\\varepsilon",
     "conditions": [
       "x 属于函数定义域；a 不必属于定义域。"
     ]
@@ -50,7 +50,8 @@
     "kind": "epsilon",
     "function": "square",
     "a": 2,
-    "caption": "改变 ε；δ=min(1,ε/5) 给出保证。蓝色竖带中的曲线落在绿色横带内。"
+    "caption": "改变 ε；δ=min(1,ε/5) 给出保证。蓝色竖带中的曲线落在绿色横带内。",
+    "prediction": "把 ε 缩小一半，保证范围 δ 会怎样变？先预测，再观察两条色带。"
   },
   "workedExamples": [
     {
@@ -150,11 +151,25 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.2.0",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [
-    "openstax-calculus-1"
-  ]
+    "openstax-calculus-1",
+    "active-calculus-2",
+    "ies-learning",
+    "phet-design",
+    "3b1b-calculus"
+  ],
+  "learningCheck": {
+    "question": "ε–δ 定义中，先给定哪一个？",
+    "choices": [
+      "输出误差 ε，再找输入范围 δ",
+      "先固定 δ，再要求所有 ε 都有效",
+      "ε 和 δ 必须相等"
+    ],
+    "correctIndex": 0,
+    "explanation": "无论要求多小的输出误差 ε，都要能找到足够小的 δ。δ 可以依赖 ε。"
+  }
 }

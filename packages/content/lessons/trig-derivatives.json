@@ -4,8 +4,8 @@
   "number": "3.4",
   "title": "三角函数的导数",
   "subtitle": "周期运动的瞬时变化",
-  "concept": "弧度下 sin 的导数是 cos，cos 的导数是 −sin。",
-  "intuition": "正弦曲线从零上升时斜率最大；到最高点时斜率为零；随后斜率变负。余弦恰好记录这条变化率曲线。",
+  "concept": "用弧度时，sin 的导数是 cos，cos 的导数是 −sin；复合角还要乘内层导数。",
+  "intuition": "sin(3x) 比 sin x 的角度变化快 3 倍，所以导数是 3cos(3x)。这个 3 来自链式法则。",
   "objectives": [
     "正弦公式从哪里来",
     "其他三角导数",
@@ -13,16 +13,16 @@
   ],
   "body": [
     {
-      "title": "正弦公式从哪里来",
-      "text": "用加法公式展开 sin(x+h)，差商出现 sin h/h 与 (cos h−1)/h。前者趋近 1，后者趋近 0，因此留下 cos x。余弦同理留下 −sin x。"
+      "title": "正弦的公式怎么来？",
+      "text": "用加法公式展开 sin(x+h)。差商中的 sin h/h→1、(cos h−1)/h→0，剩下 cos x。"
     },
     {
-      "title": "其他三角导数",
-      "text": "tan 的导数为 sec²；cot 的导数为 −csc²；sec 的导数为 sec tan；csc 的导数为 −csc cot。后三种是倒数或商，用已经知道的规则即可推导。"
+      "title": "其他三角函数要死记吗？",
+      "text": "tan=sin/cos，可由商法则得到 sec²。cot、sec、csc 同样可用商或倒数求导，注意定义域。"
     },
     {
-      "title": "单位与内层",
-      "text": "sin(3x) 的导数为 3cos(3x)。若输入用角度数，sin(πx/180) 的导数还要乘 π/180。常见负号错误来自 cos 的导数，而不是所有三角函数都带负号。"
+      "title": "为什么必须用弧度？",
+      "text": "角度数 θ 对应 πθ/180 弧度，对 θ 求导就多出 π/180。公式默认弧度；cos 求导的负号也不能漏。"
     }
   ],
   "formalDefinition": {
@@ -50,7 +50,8 @@
     "kind": "derivative",
     "function": "sin",
     "a": 0,
-    "caption": "在正弦曲线上移动 a；切线斜率等于 cos(a)。"
+    "caption": "在正弦曲线上移动 a；切线斜率等于 cos(a)。",
+    "prediction": "sin x 的最高点，切线斜率是多少？用 cos(a) 核对。"
   },
   "workedExamples": [
     {
@@ -151,11 +152,25 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.2.0",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [
-    "openstax-calculus-1"
-  ]
+    "openstax-calculus-1",
+    "active-calculus-2",
+    "ies-learning",
+    "phet-design",
+    "3b1b-calculus"
+  ],
+  "learningCheck": {
+    "question": "(cos x)′ 等于什么？",
+    "choices": [
+      "sin x",
+      "−sin x",
+      "−cos x"
+    ],
+    "correctIndex": 1,
+    "explanation": "在 x=π/2 附近，cos x 向下变化，斜率为 −1。这与 −sin x 相符；角以弧度计。"
+  }
 }

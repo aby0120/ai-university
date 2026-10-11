@@ -31,8 +31,8 @@ const rich = (s) =>
 const p = (s) => `<p>${rich(s)}</p>`,
   list = (items) =>
     `<ol>${items.map((s) => `<li>${rich(s)}</li>`).join("")}</ol>`;
-let md = `# AI University · ${book.title}\n\n## ${book.titleZh}：${book.subtitle}\n\nv${book.version} · AI 编写的固定第一版 · 内容 CC0 · 尚未逐节人工审校\n\n${book.description}\n\n范围：${book.scope}\n\n阅读方法：先读直觉，再检查定义条件，跟随推导与例题，最后做练习。互动图位于网站同名知识点中；有限图像采样不是证明。\n\n## 目录\n\n`;
-let html = `<header class="cover"><p class="kicker">AI UNIVERSITY / OPEN TEXTBOOKS</p><h1>Calculus I</h1><h2>${book.titleZh}：${book.subtitle}</h2>${p(book.description)}${p(book.scope)}<p>v${book.version} · 7 章 35 节 · 70 例题 · 140 节内练习 + 35 回顾与综合题</p><p>AI 编写的固定第一版；尚未逐节人工审校。内容 CC0，代码 MIT。</p><p><a href="./">进入交互阅读网站</a> · <a href="Calculus-I.md" download>下载 Markdown</a> · <button onclick="window.print()">打印 / 保存为 PDF</button></p></header><nav class="toc"><h2>目录</h2>`;
+let md = `# AI University · ${book.title}\n\n## ${book.titleZh}：${book.subtitle}\n\nv${book.version} · AI 编写的固定修订版 · 内容 CC0 · 尚未逐节人工审校\n\n${book.description}\n\n范围：${book.scope}\n\n阅读方法：先读直觉，再检查定义条件，跟随推导与例题，最后做练习。互动图位于网站同名知识点中；有限图像采样不是证明。\n\n## 目录\n\n`;
+let html = `<header class="cover"><p class="kicker">AI UNIVERSITY / OPEN TEXTBOOKS</p><h1>Calculus I</h1><h2>${book.titleZh}：${book.subtitle}</h2>${p(book.description)}${p(book.scope)}<p>v${book.version} · 7 章 35 节 · 70 例题 · 140 节内练习 + 35 回顾与综合题</p><p>AI 编写的固定修订版；尚未逐节人工审校。内容 CC0，代码 MIT。</p><p><a href="./">进入交互阅读网站</a> · <a href="Calculus-I.md" download>下载 Markdown</a> · <button onclick="window.print()">打印 / 保存为 PDF</button></p></header><nav class="toc"><h2>目录</h2>`;
 for (const c of book.chapters) {
   md += `\n### ${c.title}\n\n`;
   html += `<h3>${esc(c.title)}</h3><ol>`;
@@ -57,8 +57,11 @@ for (const [ci, c] of book.chapters.entries()) {
   html += `<section class="chapter-intro"><p class="kicker">CHAPTER ${ci + 1}</p><h1>${esc(c.title)}</h1>${p(c.intro)}${list(c.goals)}</section>`;
   for (const id of c.lessonIds) {
     const l = allLessons.find((l) => l.id === id);
-    md += `\n## ${l.number} ${l.title}\n\n*${l.subtitle}*\n\n### 核心意思\n\n${l.concept}\n\n### 先建立直觉\n\n${l.intuition}\n`;
-    html += `<section class="lesson" id="${id}"><p class="kicker">SECTION ${l.number}</p><h2>${l.title}</h2><p class="subtitle">${l.subtitle}</p><div class="idea">${p(l.concept)}</div><h3>先建立直觉</h3>${p(l.intuition)}`;
+    md += `\n## ${l.number} ${l.title}\n\n*${l.subtitle}*\n\n### 核心意思\n\n${l.concept}\n\n### 怎么理解？\n\n${l.intuition}\n`;
+    html += `<section class="lesson" id="${id}"><p class="kicker">SECTION ${l.number}</p><h2>${l.title}</h2><p class="subtitle">${l.subtitle}</p><div class="idea">${p(l.concept)}</div><h3>怎么理解？</h3>${p(l.intuition)}`;
+    const check = l.learningCheck;
+    md += `\n### 先想一下\n\n${check.question}\n\n${check.choices.map((s, i) => `${String.fromCharCode(65 + i)}. ${s}`).join("\n")}\n\n答案：${String.fromCharCode(65 + check.correctIndex)}。${check.explanation}\n`;
+    html += `<div class="concept-check"><h3>先想一下</h3>${p(check.question)}${list(check.choices)}<details><summary>查看答案与解释</summary>${p(`${String.fromCharCode(65 + check.correctIndex)}。${check.explanation}`)}</details></div>`;
     for (const s of l.body) {
       md += `\n### ${s.title}\n\n${s.text}\n`;
       html += `<h3>${s.title}</h3>${p(s.text)}`;
@@ -69,8 +72,8 @@ for (const [ci, c] of book.chapters.entries()) {
       md += `\n${d.text}\n${d.latex ? `\n$$\n${d.latex}\n$$\n` : ""}`;
       html += p(d.text) + (d.latex ? math(d.latex, true) : "");
     }
-    md += `\n### 交互演示\n\n${l.interactiveVisual.caption}\n\n在网站打开知识点：#${l.id}。图像用于探索，不替代数学证明。\n\n### 例题\n`;
-    html += `<div class="visual-link"><strong>交互演示</strong>${p(l.interactiveVisual.caption)}<a href="./#${l.id}">打开 ${l.number} 的互动图 →</a></div><h3>例题</h3>`;
+    md += `\n### 交互演示\n\n先预测：${l.interactiveVisual.prediction}\n\n${l.interactiveVisual.caption}\n\n在网站打开知识点：#/lesson/${l.id}。图像用于探索，不替代数学证明。\n\n### 例题\n`;
+    html += `<div class="visual-link"><strong>交互演示</strong>${p(l.interactiveVisual.prediction)}${p(l.interactiveVisual.caption)}<a href="./#/lesson/${l.id}?view=visual">打开 ${l.number} 的互动图 →</a></div><h3>例题</h3>`;
     for (const [i, e] of l.workedExamples.entries()) {
       md += `\n#### 例 ${i + 1}：${e.title}\n\n${e.problem}\n\n${e.steps.map((s) => `- ${s}`).join("\n")}\n\n**答案：${e.answer}**\n`;
       html += `<article class="example"><h4>例 ${i + 1}：${e.title}</h4>${p(e.problem)}${list(e.steps)}<div class="answer">${p(e.answer)}</div></article>`;
@@ -108,9 +111,9 @@ for (const a of extra.appendices) {
 }
 html += "</section>";
 md +=
-  "\n# 来源与版本\n\n本书的解释、推导、例题、解答与可视化为 AI 重新编写。参考来源用于课程范围与数学条件核对，不复制参考教材的正文或图像。\n\n";
+  "\n# 来源与版本\n\n本书的解释、推导、例题、解答与可视化为 AI 重新编写。参考来源分别用于课程范围、数学条件和教学设计核对；具体用途见各条来源。不复制原教材正文或图像。\n\n";
 html +=
-  "<section><h1>来源与版本</h1><p>本书内容与图像重新编写，参考来源用于范围与定理条件核对；尚未逐节人工审校。</p>";
+  "<section><h1>来源与版本</h1><p>本书内容与图像重新编写，参考来源用于范围、定理条件与教学设计核对；尚未逐节人工审校。</p>";
 for (const s of book.sources) {
   md += `- [${s.title}](${s.url})：${s.usage}\n`;
   html += `<p><a href="${s.url}">${s.title}</a>：${s.usage}</p>`;

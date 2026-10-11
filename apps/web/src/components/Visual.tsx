@@ -1,5 +1,13 @@
 import { MoveHorizontal, Pause, Play, RotateCcw } from "lucide-react";
-import { useEffect, useId, useRef, useState, type ReactNode } from "react";
+import {
+  lazy,
+  Suspense,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import type { Lesson } from "../../../../packages/content/types";
 import {
   arcLength,
@@ -198,6 +206,7 @@ function Plot({
     </svg>
   );
 }
+const SolidVisual = lazy(() => import("./SolidVisual"));
 export function Visual({
   lesson,
   compact = false,
@@ -205,9 +214,77 @@ export function Visual({
   lesson: Lesson;
   compact?: boolean;
 }) {
+  const spatial = ["disk", "shell", "arc"].includes(
+    lesson.interactiveVisual.kind,
+  );
+  const [dimension, setDimension] = useState<"2d" | "3d">(
+    spatial ? "3d" : "2d",
+  );
+  return (
+    <div className="visual-system">
+      <details className="visual-challenge">
+        <summary>先预测，再动手</summary>
+        <p>{lesson.interactiveVisual.prediction}</p>
+      </details>
+      {spatial && (
+        <div className="dimension-switch" role="group" aria-label="演示维度">
+          <span>同一个模型 · 两种视角</span>
+          <button
+            aria-pressed={dimension === "2d"}
+            className={dimension === "2d" ? "active" : ""}
+            onClick={() => setDimension("2d")}
+          >
+            {lesson.interactiveVisual.kind === "arc" ? "2D 弧长" : "2D 截面"}
+          </button>
+          <button
+            aria-pressed={dimension === "3d"}
+            className={dimension === "3d" ? "active" : ""}
+            onClick={() => setDimension("3d")}
+          >
+            {lesson.interactiveVisual.kind === "arc" ? "3D 曲面" : "3D 旋转体"}
+          </button>
+        </div>
+      )}
+      {dimension === "3d" ? (
+        <Suspense
+          fallback={<div className="solid-loading">准备三维数学模型…</div>}
+        >
+          <SolidVisual
+            lesson={lesson}
+            compact={compact}
+            onFallback={() => setDimension("2d")}
+          />
+        </Suspense>
+      ) : (
+        <PlanarVisual lesson={lesson} compact={compact} />
+      )}
+    </div>
+  );
+}
+function PlanarVisual({
+  lesson,
+  compact = false,
+}: {
+  lesson: Lesson;
+  compact?: boolean;
+}) {
+  const [comparison, setComparison] = useState("original");
   const spec = lesson.interactiveVisual,
     k = spec.kind,
-    F = functions[spec.function];
+    F =
+      functions[
+        comparison === "jump"
+          ? "jump"
+          : comparison === "corner"
+            ? "absolute"
+            : spec.function
+      ];
+  const caption =
+    comparison === "jump"
+      ? "左右分别趋近 1 和 3。缩小距离并切换方向：两侧不相等，双侧极限不存在。"
+      : comparison === "corner"
+        ? "在 a=0 切换第二点方向：右侧差商为 1，左侧为 −1。函数连续，但零点不可导。"
+        : spec.caption;
   const initialA = spec.a ?? (k === "derivative" ? 1 : 0);
   const initialX =
     k === "linearization"
@@ -236,6 +313,8 @@ export function Visual({
     [c, setC] = useState(0),
     [method, setMethod] = useState("right"),
     [playing, setPlaying] = useState(false);
+  const [speed, setSpeed] = useState(1);
+  const cardRef = useRef<HTMLElement>(null);
   const clock = useRef(0);
   useEffect(() => {
     if (!playing) return;
@@ -249,18 +328,28 @@ export function Visual({
       }
       const dt = last ? Math.min(100, now - last) / 1000 : 0;
       last = now;
-      clock.current += dt;
+      const elapsed = dt * speed;
+      clock.current += elapsed;
       if (k === "limit" || k === "derivative")
-        setH((z) => Math.max(0.0001, z * Math.exp(-dt * 0.8)));
+        setH((z) => Math.max(0.0001, z * Math.exp(-elapsed * 0.8)));
       else if (k === "riemann" || k === "arc")
         setN(Math.min(80, Math.floor(4 + clock.current * 9)));
-      else setX((z) => (z + dt * 0.25 > 1 ? 0 : z + dt * 0.25));
+      else setX((z) => (z + elapsed * 0.25 > 1 ? 0 : z + elapsed * 0.25));
       if (clock.current >= 8) setPlaying(false);
       else id = requestAnimationFrame(tick);
     };
     id = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(id);
-  }, [playing, k]);
+  }, [playing, k, speed]);
+  useEffect(() => {
+    const element = cardRef.current;
+    if (!element) return;
+    const observer = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) setPlaying(false);
+    });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
   function reset() {
     setPlaying(false);
     setA(initialA);
@@ -271,6 +360,7 @@ export function Visual({
     setC(0);
     setEps(0.5);
     setSide(1);
+    setComparison("original");
   }
   const stats: { label: string; value: string }[] = [];
   let controls: ReactNode = null,
@@ -355,8 +445,15 @@ export function Visual({
         {old?.(p)}
         {p.point(xx, fn(xx))}
         {F.hole && p.point(F.hole[0], F.hole[1], "#344de8", true)}
+        {comparison === "jump" && p.point(1, 3, "#344de8", true)}
       </>
     );
+    if (lesson.id === "limit-intuition") {
+      stats.push(
+        { label: "左侧采样值", value: fmt(fn(at - h)) },
+        { label: "右侧采样值", value: fmt(fn(at + h)) },
+      );
+    }
   }
   if (k === "epsilon") {
     const delta = epsilonDelta(eps);
@@ -408,9 +505,12 @@ export function Visual({
           : 1.5,
       hh = Math.min(h, maxH),
       s = secant(fn, a, side * hh);
-    stats.push({ label: "精确导数 f′(a)", value: fmt(F.d(a)) });
+    stats.push({ label: "精确导数 f′(a)", value: Number.isFinite(F.d(a)) ? fmt(F.d(a)) : "不存在" });
     if (k === "derivative") {
-      stats.push({ label: "割线斜率", value: fmt(s) });
+      stats.push(
+        { label: "割线斜率", value: fmt(s) },
+        { label: "差商 − 导数", value: Number.isFinite(F.d(a)) ? fmt(s - F.d(a)) : "不适用" },
+      );
       controls = (
         <>
           <Slider
@@ -978,31 +1078,68 @@ export function Visual({
   ].includes(k);
   return (
     <section
+      ref={cardRef}
       className={`visual-card ${compact ? "compact" : ""}`}
       aria-label="交互演示"
     >
       <header>
         <div>
           <span className="eyebrow">EXPLORE THE IDEA</span>
-          <h3>把概念变成看得见的变化</h3>
+          <h3>{lesson.title}</h3>
         </div>
         <button className="icon-btn" onClick={reset} aria-label="重置演示">
           <RotateCcw size={17} />
         </button>
       </header>
+      {(lesson.id === "limit-intuition" ||
+        lesson.id === "derivative-definition") && (
+        <div className="comparison-tabs" role="group" aria-label="对比数学情形">
+          <button
+            aria-pressed={comparison === "original"}
+            className={comparison === "original" ? "active" : ""}
+            onClick={() => {
+              setComparison("original");
+              setA(initialA);
+              setH(1);
+              setPlaying(false);
+            }}
+          >
+            {k === "limit" ? "有孔洞，极限存在" : "光滑曲线 x²"}
+          </button>
+          <button
+            aria-pressed={comparison !== "original"}
+            className={comparison !== "original" ? "active" : ""}
+            onClick={() => {
+              setComparison(k === "limit" ? "jump" : "corner");
+              setA(k === "limit" ? 1 : 0);
+              setH(1);
+              setPlaying(false);
+            }}
+          >
+            {k === "limit" ? "左右不同，极限不存在" : "尖角 |x|，检查可导性"}
+          </button>
+        </div>
+      )}
       <div className="plot-label">
         {k === "chain" || k === "substitution" ? "u = x² + 1" : F.label}
-        <span>可拖动参数 · 即时更新</span>
+        <span>拖动滑块，比较数值与图像</span>
       </div>
       <Plot
         fn={fn}
         range={range}
-        title={`${lesson.title}：${spec.caption}`}
+        title={`${lesson.title}：${caption}`}
         onX={k === "graph" ? setX : undefined}
       >
         {overlay}
       </Plot>
       {extra}
+      {comparison !== "original" && (
+        <p className="comparison-insight">
+          {comparison === "jump"
+            ? "左侧极限为 1，右侧极限为 3。把距离缩得再小，也不会变成同一个数。"
+            : "在 a=0，右侧差商为 1，左侧为 −1。函数连续，却没有唯一的导数。切换第二点方向检查。"}
+        </p>
+      )}
       <div className="stats">
         {stats.map((s) => (
           <div key={s.label}>
@@ -1013,24 +1150,46 @@ export function Visual({
       </div>
       <div className="controls">{controls}</div>
       {canPlay && (
-        <button
-          className="animation-btn"
-          onClick={() => {
-            if (!playing) {
-              if (k === "limit" || k === "derivative") setH(1);
-              if (k === "riemann" || k === "arc") setN(4);
-              else setX(0);
-            }
-            setPlaying((z) => !z);
-          }}
-        >
-          {playing ? <Pause size={15} /> : <Play size={15} />}{" "}
-          {playing ? "暂停动画" : "播放变化过程"}
-        </button>
+        <div className="animation-transport">
+          <button
+            className="animation-btn"
+            onClick={() => {
+              if (!playing) {
+                if (k === "limit" || k === "derivative") setH(1);
+                if (k === "riemann" || k === "arc") setN(4);
+                else setX(0);
+              }
+              setPlaying((z) => !z);
+            }}
+          >
+            {playing ? <Pause size={15} /> : <Play size={15} />}{" "}
+            {playing
+              ? "暂停动画"
+              : k === "limit"
+                ? "让 x 靠近目标"
+                : k === "derivative"
+                  ? "让割线靠近切线"
+                  : k === "riemann" || k === "arc"
+                    ? "逐渐细分"
+                    : "播放参数变化"}
+          </button>
+          <label>
+            速度
+            <select
+              aria-label="动画速度"
+              value={speed}
+              onChange={(e) => setSpeed(+e.target.value)}
+            >
+              <option value={0.5}>0.5×</option>
+              <option value={1}>1×</option>
+              <option value={2}>2×</option>
+            </select>
+          </label>
+        </div>
       )}
       <p className="visual-caption">
         <MoveHorizontal size={15} />
-        {spec.caption}
+        {caption}
       </p>
       <p className="visual-note">
         图像用于探索；有限采样与动画不能替代正文中的数学论证。

@@ -7,6 +7,7 @@ import {
   RotateCcw,
 } from "lucide-react";
 import { useRef, useState } from "react";
+import research from "../../../../packages/content/learning-research.json";
 import { book, lessonById } from "../../../../packages/content";
 import { type Progress } from "../components/Practice";
 
@@ -21,6 +22,7 @@ export function AboutPage() {
     contribute: "参与贡献",
     versions: "版本与勘误",
     privacy: "隐私与本地数据",
+    research: "学习方法与参考资料",
   };
   if (!names[part]) return <NotFound />;
   return (
@@ -29,13 +31,15 @@ export function AboutPage() {
         tag="THE OPEN TEXTBOOK PROJECT"
         title={names[part]}
         description={
-          part === "project"
-            ? "让 AI 写成完整教科书，让知识以清楚、开放的方式被阅读。"
-            : part === "contribute"
-              ? "修正一个错误，改善一道例题，或者让一张图更容易理解。"
-              : part === "versions"
-                ? "记录教材与网站的变化，让修订过程公开可追溯。"
-                : "学习记录保存在你的浏览器中，可以随时导出或清空。"
+          part === "research"
+            ? "讲解、练习与图示怎样帮助理解：编写依据与补充阅读。"
+            : part === "project"
+              ? "让 AI 写成完整教科书，让知识以清楚、开放的方式被阅读。"
+              : part === "contribute"
+                ? "修正一个错误，改善一道例题，或者让一张图更容易理解。"
+                : part === "versions"
+                  ? "记录教材与网站的变化，让修订过程公开可追溯。"
+                  : "学习记录保存在你的浏览器中，可以随时导出或清空。"
         }
       />
       <nav className="page-tabs" aria-label="项目资料">
@@ -49,7 +53,9 @@ export function AboutPage() {
           </Link>
         ))}
       </nav>
-      {part === "project" ? (
+      {part === "research" ? (
+        <ResearchPanel />
+      ) : part === "project" ? (
         <div className="about-content">
           <div className="about-statement">
             <Eyebrow>CLARITY IS THE POINT.</Eyebrow>
@@ -172,7 +178,30 @@ export function AboutPage() {
       ) : part === "versions" ? (
         <div className="versions-page">
           <div className="version-entry">
-            <span className="badge">当前网站</span>
+            <span className="badge">当前网站 · 教材 v0.2.0</span>
+            <h2>v0.3.0 · 概念检查与三维数学</h2>
+            <time>2026 年 10 月 10 日</time>
+            <ul>
+              <li>
+                重写全书 35 节的核心说明、直觉和正文，保留定义条件、推导与解答。
+              </li>
+              <li>
+                新增 35 个概念检查和 35 个演示预测问题，例题解法可按需展开。
+              </li>
+              <li>
+                加入圆盘、圆环、圆柱壳与旋转曲面的 3D
+                演示；极限和导数增加反例对比。
+              </li>
+              <li>
+                更新数学系列首页、交互界面及教学研究来源；保持纯静态运行。
+              </li>
+            </ul>
+            <Link to="about/research" className="text-btn">
+              查看学习方法与参考资料
+              <ArrowRight size={15} />
+            </Link>
+          </div>
+          <div className="version-entry">
             <h2>v0.2.1 · 数学教科书系列</h2>
             <time>2026 年 10 月 10 日</time>
             <p>
@@ -354,6 +383,61 @@ export function PrivacyPanel() {
         </div>
         {message && <p role="status">{message}</p>}
       </div>
+    </div>
+  );
+}
+
+function ResearchPanel() {
+  return (
+    <div className="research-panel">
+      <section className="research-intro">
+        <Eyebrow>UNDERSTANDING, BY DESIGN</Eyebrow>
+        <h2>{research.summary}</h2>
+        <p>
+          本次资料核对：{research.reviewedAt}
+          。资源分别用于内容范围、解释方式与学习设计；正文、题目和图示重新编写。
+        </p>
+      </section>
+      <div className="research-principles">
+        {research.principles.map((p, i) => (
+          <article key={p.title}>
+            <span>0{i + 1}</span>
+            <h3>{p.title}</h3>
+            <p>{p.text}</p>
+          </article>
+        ))}
+      </div>
+      <section>
+        <h2>补充阅读与演示</h2>
+        <div className="research-resources">
+          {research.resources.map((r) => (
+            <article key={r.url}>
+              <span>{r.kind}</span>
+              <a href={r.url} target="_blank" rel="noreferrer">
+                <h3>{r.title}</h3>
+                <ArrowUpRight size={17} />
+              </a>
+              <p>{r.use}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section>
+        <h2>教学研究与设计依据</h2>
+        <div className="research-resources">
+          {research.evidence.map((r) => (
+            <article key={r.url}>
+              <span>{r.kind}</span>
+              <a href={r.url} target="_blank" rel="noreferrer">
+                <h3>{r.title}</h3>
+                <ArrowUpRight size={17} />
+              </a>
+              <p>{r.use}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <p className="research-limits">{research.limits}</p>
     </div>
   );
 }

@@ -4,8 +4,8 @@
   "number": "6.1",
   "title": "原函数与不定积分",
   "subtitle": "把求导倒着做",
-  "concept": "F′=f 时，F 是 f 的一个原函数；同一区间上的全部原函数只差一个常数。",
-  "intuition": "知道速度，位置仍可整体平移：从 0 米开始或从 100 米开始，速度相同。积分常数记录了这种尚未确定的起点。",
+  "concept": "原函数就是求导后能得到 f 的函数。一个区间内，所有原函数只差一个常数。",
+  "intuition": "x²/2、x²/2+3 的导数都是 x。求导会丢掉常数，所以反过来积分时要写 +C。",
   "objectives": [
     "常数为什么必要",
     "基本公式表",
@@ -13,16 +13,16 @@
   ],
   "body": [
     {
-      "title": "常数为什么必要",
-      "text": "两个原函数之差的导数为零，中值定理说明这个差在区间上为常数。因此不定积分是一族函数，不是一个数。在不连通定义域上，不同区间可以有不同常数。"
+      "title": "为什么不能漏掉 C？",
+      "text": "两个原函数之差的导数为 0，故在区间内是常数。不连通的定义域上，各段可以有不同的常数。"
     },
     {
-      "title": "基本公式表",
-      "text": "∫x^n dx=x^(n+1)/(n+1)+C（n≠−1）；∫1/x dx=ln|x|+C；∫e^x dx=e^x+C；∫cos x dx=sin x+C；∫sin x dx=−cos x+C；∫1/(1+x²) dx=arctan x+C；∫1/√(1−x²) dx=arcsin x+C。每式须在函数有定义的区间内使用。"
+      "title": "怎样选基本公式？",
+      "text": "把被积式对照已知导数。幂法则在 n=−1 时失效，∫1/x dx 要用 ln|x|+C；每式都要在合法区间使用。"
     },
     {
-      "title": "用初始条件找常数",
-      "text": "先求通解 F+C，再代入某点的已知函数值求 C。积分可以对和逐项、对常数倍提出，但不能把乘积积分写成两个积分的乘积。验证答案最直接的方法是求导。"
+      "title": "怎样确定并检查答案？",
+      "text": "已知某点的函数值时，代入 F(x)+C 求出 C。最后求导核对；乘积的积分不能拆成两个积分相乘。"
     }
   ],
   "formalDefinition": {
@@ -49,7 +49,8 @@
   "interactiveVisual": {
     "kind": "antiderivative",
     "function": "square",
-    "caption": "改变积分常数 C：原函数 x³/3+C 上下移动，但其导数始终为 x²。"
+    "caption": "改变积分常数 C：原函数 x³/3+C 上下移动，但其导数始终为 x²。",
+    "prediction": "只改变积分常数 C，会改变曲线斜率吗？观察上下平移与导数读数。"
   },
   "workedExamples": [
     {
@@ -149,11 +150,25 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.2.0",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [
-    "openstax-calculus-1"
-  ]
+    "openstax-calculus-1",
+    "active-calculus-2",
+    "ies-learning",
+    "phet-design",
+    "3b1b-calculus"
+  ],
+  "learningCheck": {
+    "question": "求 ∫2x dx，为什么答案要加 C？",
+    "choices": [
+      "因为常数的导数为零",
+      "因为积分都是近似",
+      "因为 C 必须等于 1"
+    ],
+    "correctIndex": 0,
+    "explanation": "x²、x²+3 等都求导得到 2x。C 记录这一族原函数；在同一个区间讨论。"
+  }
 }

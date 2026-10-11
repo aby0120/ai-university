@@ -4,8 +4,8 @@
   "number": "1.5",
   "title": "指数与对数",
   "subtitle": "倍增与反向寻找指数",
-  "concept": "指数描述等比例变化；对数回答“需要多少个倍增步骤”。",
-  "intuition": "增加固定数量是加法模型，乘固定比例是指数模型。对数把连乘转成相加，方便比较跨度很大的数量。",
+  "concept": "指数算“乘了多少次”；对数反过来问“要乘多少次，才能得到这个数”。",
+  "intuition": "每次加同一个数是线性变化，每次乘同一个比例是指数变化。对数把乘法转成加法。",
   "objectives": [
     "底数与定义域",
     "运算法则与条件",
@@ -13,16 +13,16 @@
   ],
   "body": [
     {
-      "title": "底数与定义域",
-      "text": "对于 b>0 且 b≠1，b^x 对所有实数 x 有定义，输出为正。log_b x 是其反函数，只接受 x>0。底数大于 1 时两者递增；底数在 0 与 1 之间时递减。"
+      "title": "指数和对数接受哪些输入？",
+      "text": "b>0、b≠1 时，bˣ 对所有实数有定义，输出为正；log_b x 只接受 x>0。b>1 时递增，0<b<1 时递减。"
     },
     {
-      "title": "运算法则与条件",
-      "text": "指数的乘法来自指数相加，因此 log_b(uv)=log_b u+log_b v，前提 u,v>0。对数没有把加法拆开的同类规则。ln 表示以 e 为底的对数。"
+      "title": "对数可以怎样拆？",
+      "text": "正数的乘积变成对数的和，商变成差，幂的指数可以提到前面。对数不能把加法拆开：ln(x+y)≠ln x+ln y。"
     },
     {
-      "title": "认识 e",
-      "text": "e 是使指数函数在每点“变化率等于当前值”的特殊底数，约 2.71828。导数章节会精确说明这个性质。复利形式 (1+1/n)^n 的极限也等于 e。"
+      "title": "为什么常用 e？",
+      "text": "以 e 为底时，指数函数的变化率等于自身；ln 是它的反函数。一般底数会在导数中多出 ln b。"
     }
   ],
   "formalDefinition": {
@@ -49,7 +49,8 @@
   "interactiveVisual": {
     "kind": "graph",
     "function": "exp",
-    "caption": "指数始终为正；拖动 x 比较加一个单位时输出乘 e。"
+    "caption": "指数始终为正；拖动 x 比较加一个单位时输出乘 e。",
+    "prediction": "输入增加 1，输出是加 e，还是乘 e？用两个读数比较。"
   },
   "workedExamples": [
     {
@@ -149,11 +150,24 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.2.0",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [
-    "openstax-calculus-1"
-  ]
+    "openstax-calculus-1",
+    "active-calculus-2",
+    "ies-learning",
+    "phet-design"
+  ],
+  "learningCheck": {
+    "question": "ln(e³) 等于多少？",
+    "choices": [
+      "e",
+      "3",
+      "3e"
+    ],
+    "correctIndex": 1,
+    "explanation": "ln 与 e 的指数运算互为逆运算：ln(eˣ)=x。这里 x=3。"
+  }
 }

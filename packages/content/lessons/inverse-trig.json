@@ -4,8 +4,8 @@
   "number": "4.2",
   "title": "反函数与反三角导数",
   "subtitle": "把斜率倒过来，也要看分支",
-  "concept": "反函数图像交换横纵坐标，因此在非零斜率处，反函数的导数是原导数的倒数。",
-  "intuition": "原函数输出只改一点，输入却改很多时，反函数斜率就大。正弦全域会重复，所以反正弦只反转一个选定分支。",
+  "concept": "反函数的斜率是原函数对应点斜率的倒数，前提是原斜率不为 0。",
+  "intuition": "原函数把 x 变成 y，反函数把 y 变回 x。横纵角色交换，变化率也从 dy/dx 变成 dx/dy。",
   "objectives": [
     "反函数导数",
     "主值分支",
@@ -13,16 +13,16 @@
   ],
   "body": [
     {
-      "title": "反函数导数",
-      "text": "若 y=f^−1(x)，则 f(y)=x；链式求导给 f′(y)y′=1。必须在原导数不为零且局部反函数可导的条件下使用。不要直接把 f′(x) 取倒数，原函数接收的是 y。"
+      "title": "反函数导数怎样求？",
+      "text": "对 f(f⁻¹(x))=x 用链式法则，解得 (f⁻¹)′(x)=1/f′(f⁻¹(x))。需要所选分支可逆，且分母不为 0。"
     },
     {
-      "title": "主值分支",
-      "text": "arcsin 的输出在 [−π/2,π/2]，arccos 在 [0,π]，arctan 在 (−π/2,π/2)。限制分支决定根号符号，也决定是否加负号。arcsin 和 arccos 在输入 ±1 的端点没有有限双侧导数。"
+      "title": "为什么反三角函数要选分支？",
+      "text": "三角函数会重复输出。arcsin 取 [−π/2,π/2]，arccos 取 [0,π]，arctan 取 (−π/2,π/2)，反函数才唯一。"
     },
     {
-      "title": "常用公式",
-      "text": "arcsin x 的导数为 1/√(1−x²)；arccos 是它的负值；arctan 为 1/(1+x²)。它们也会成为积分公式，因为求原函数等于倒着使用导数。"
+      "title": "公式在哪些点能用？",
+      "text": "arcsin、arccos 的导数只在 |x|<1 使用；arctan 在全实数上可导。代入边界前先检查分母。"
     }
   ],
   "formalDefinition": {
@@ -50,7 +50,8 @@
     "kind": "derivative",
     "function": "arctan",
     "a": 0,
-    "caption": "arctan 的切线斜率为 1/(1+a²)，始终为正，远处逐渐变小。"
+    "caption": "arctan 的切线斜率为 1/(1+a²)，始终为正，远处逐渐变小。",
+    "prediction": "arctan 的切点远离 0 时，斜率增大还是减小？用公式核对。"
   },
   "workedExamples": [
     {
@@ -152,11 +153,24 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.2.0",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [
-    "openstax-calculus-1"
-  ]
+    "openstax-calculus-1",
+    "active-calculus-2",
+    "ies-learning",
+    "phet-design"
+  ],
+  "learningCheck": {
+    "question": "arcsin(sin x)=x 对所有实数 x 都成立吗？",
+    "choices": [
+      "成立",
+      "只在主值区间 [−π/2,π/2] 成立",
+      "从不成立"
+    ],
+    "correctIndex": 1,
+    "explanation": "arcsin 的输出限制在 [−π/2,π/2]。超出这个区间，原角通常不能被恢复。"
+  }
 }

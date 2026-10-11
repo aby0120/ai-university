@@ -4,8 +4,8 @@
   "number": "4.1",
   "title": "指数与对数求导",
   "subtitle": "e 为什么特别？",
-  "concept": "e^x 的变化率等于自身；ln x 的变化率为 1/x。这一对关系来自反函数。",
-  "intuition": "指数增长中，当前越多，增加得越快；对数则把越来越大的输入压缩，因此斜率随 x 增大而减小。",
+  "concept": "eˣ 求导不变，ln x 求导为 1/x；一般底数和复合输入会带来额外因子。",
+  "intuition": "y=e^(x²) 有两层变化：外层保留 e^(x²)，内层贡献 2x，导数为 2xe^(x²)。",
   "objectives": [
     "指数函数",
     "对数与绝对值",
@@ -13,16 +13,16 @@
   ],
   "body": [
     {
-      "title": "指数函数",
-      "text": "自然底数 e 满足 lim(h→0)(e^h−1)/h=1，所以 e^x 的差商留下 e^x。任意 b>0 可写成 e^(x ln b)，链式法则给 b^x ln b。"
+      "title": "底数不是 e 怎么办？",
+      "text": "bˣ=e^(x ln b)，求导得到 bˣln b，要求 b>0。ln x 只在 x>0 使用；ln|x| 在 x≠0 时导数为 1/x。"
     },
     {
-      "title": "对数与绝对值",
-      "text": "对 x>0，ln x 的导数为 1/x。在 x≠0 的区间上，ln|x| 也有导数 1/x。一般 ln|u(x)| 的导数为 u′/u，但 u 不能为零。"
+      "title": "ln(g(x)) 怎样求导？",
+      "text": "结果是 g′(x)/g(x)，但原对数须有定义。对 ln|g(x)|，要求 g(x)≠0。"
     },
     {
-      "title": "对数求导",
-      "text": "当函数是幂的幂，如 x^x（x>0），先取对数：ln y=x ln x，求导后再乘回 y。它同时处理底数与指数变化，不能只用固定指数的幂法则。"
+      "title": "什么时候用对数求导？",
+      "text": "变量同时在底数和指数中时，例如 xˣ（x>0），先取 ln：ln y=x ln x。求导得到 y′/y=ln x+1，再乘回 y。"
     }
   ],
   "formalDefinition": {
@@ -50,7 +50,8 @@
     "kind": "derivative",
     "function": "exp",
     "a": 0,
-    "caption": "拖动 a：e^a 的曲线高度恰好等于切线斜率。"
+    "caption": "拖动 a：e^a 的曲线高度恰好等于切线斜率。",
+    "prediction": "在 eˣ 上移动切点。曲线高度与切线斜率有什么关系？"
   },
   "workedExamples": [
     {
@@ -151,11 +152,24 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.2.0",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [
-    "openstax-calculus-1"
-  ]
+    "openstax-calculus-1",
+    "active-calculus-2",
+    "ies-learning",
+    "phet-design"
+  ],
+  "learningCheck": {
+    "question": "在 x>0，(ln(3x))′ 等于什么？",
+    "choices": [
+      "1/(3x)",
+      "3/x",
+      "1/x"
+    ],
+    "correctIndex": 2,
+    "explanation": "链式法则给出 (1/(3x))·3=1/x。ln(3x) 的实数定义域是 x>0。"
+  }
 }

@@ -1,4 +1,17 @@
 export const functions = {
+  absolute: {
+    label: "|x|",
+    f: Math.abs,
+    d: (x) => (x === 0 ? NaN : Math.sign(x)),
+    range: [-2, 2, -0.2, 2.2],
+  },
+  jump: {
+    label: "x<1: 1；x>1: 3",
+    f: (x) => (x === 1 ? NaN : x < 1 ? 1 : 3),
+    d: (x) => (x === 1 ? NaN : 0),
+    range: [0, 2, 0, 4],
+    hole: [1, 1],
+  },
   square: {
     label: "x²",
     f: (x) => x * x,

@@ -1,6 +1,5 @@
 import { ArrowRight, ArrowUpRight, Beaker, BookOpen } from "lucide-react";
-import { lessonById } from "../../../../packages/content";
-import { Visual } from "../components/Visual";
+import { HeroNotebook } from "../components/HeroNotebook";
 import { Eyebrow, Link } from "../components/UI";
 import {
   MathAreas,
@@ -21,15 +20,16 @@ export function Home() {
           </Link>
           <Eyebrow>AI UNIVERSITY / MATHEMATICS</Eyebrow>
           <h1>
-            把数学，
+            数学，
             <br />
-            读成一条<span>清楚的路。</span>
+            <span>讲清楚。</span>
           </h1>
           <p>
-            从变化到空间，从结构到不确定性。
-            <br />由 AI 编写系统教科书，用清楚的讲解与交互图示，
+            一本一本完成的开放数学教材。
+            <br />
+            简明讲解、完整推导、可操作的二维与三维图。
             <br className="desktop-break" />
-            让每个概念都有可以理解的入口。
+            从一个问题出发，弄懂公式为什么成立。
           </p>
           <div className="hero-actions">
             <Link className="primary-btn" to="library">
@@ -53,22 +53,7 @@ export function Home() {
             <span>{volumes.length - publishedVolumes.length} 本规划中</span>
           </div>
         </div>
-        <div className="hero-demo">
-          <div className="demo-window-bar">
-            <span className="demo-status" />A GLIMPSE INTO THE BOOKS
-            <span>互动教材一瞥</span>
-          </div>
-          <div className="demo-title">
-            <span className="demo-source">来自已出版教材 · 微积分 I</span>
-            <h2>瞬时变化，是什么？</h2>
-            <p>在 a = 1 缩小 h，看割线如何变成切线。</p>
-          </div>
-          <Visual lesson={lessonById["derivative-definition"]} compact />
-          <Link to="lesson/derivative-definition" className="demo-bottom">
-            阅读这个概念
-            <ArrowRight size={16} />
-          </Link>
-        </div>
+        <HeroNotebook />
       </section>
       <div className="manifesto-strip">
         <span>理解优先，符号随后。</span>
@@ -82,7 +67,7 @@ export function Home() {
         <div className="section-title">
           <div>
             <Eyebrow>EXPLORE MATHEMATICS</Eyebrow>
-            <h2>数学的不同方向，在这里连接。</h2>
+            <h2>从变化到空间，再到结构。</h2>
           </div>
           <p>从一套系列出发，一本一本完成。</p>
         </div>
@@ -95,7 +80,7 @@ export function Home() {
         <div className="section-title">
           <div>
             <Eyebrow>NOW ON THE SHELF</Eyebrow>
-            <h2>已经可以开始读的书。</h2>
+            <h2>开始读一本完整的书。</h2>
           </div>
           <Link
             to="library"
@@ -116,9 +101,9 @@ export function Home() {
       <section className="open-banner">
         <Eyebrow>BUILT BY AI. OPEN TO EVERYONE.</Eyebrow>
         <h2>
-          一套不断生长的教材，
+          免费阅读。自由下载。
           <br />
-          一种始终清楚的表达。
+          也欢迎你把它改得更好。
         </h2>
         <p>
           每本书有完整的目录、讲解、图示与练习。

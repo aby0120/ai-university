@@ -4,8 +4,8 @@
   "number": "6.4",
   "title": "微积分基本定理",
   "subtitle": "变化与累积为何互相撤销",
-  "concept": "连续函数的累积函数导数等于原函数；定积分可以用任何原函数的端点差计算。",
-  "intuition": "往水箱里持续进水，累积水量的瞬时增加率就是当前流量。这个联系把“无限小块相加”转成了“两端相减”。",
+  "concept": "积分累积，导数测变化。连续函数的累积函数求导回到原函数；定积分可用原函数的端点差计算。",
+  "intuition": "A(x)=∫ₐˣf(t)dt。x 多走 h，就多累积一小条；这条的平均高度趋近 f(x)，所以 A′(x)=f(x)。",
   "objectives": [
     "第一部分：累积的导数",
     "第二部分：原函数端点差",
@@ -13,16 +13,16 @@
   ],
   "body": [
     {
-      "title": "第一部分：累积的导数",
-      "text": "定义 A(x)=∫_a^x f(t)dt。输入增加 h，只新增从 x 到 x+h 的窄条；平均高度趋近 f(x)，于是 A′(x)=f(x)。f 的连续性让窄条内高度稳定。"
+      "title": "为什么累积的导数是 f(x)？",
+      "text": "差商就是新增窄条的平均高度。f 在 x 连续时，窄条高度都靠近 f(x)，平均值也靠近它。"
     },
     {
-      "title": "第二部分：原函数端点差",
-      "text": "若 F′=f，则 F 与 A 的导数相同，差为常数。因此 A(b)−A(a)=F(b)−F(a)。a 点累积为零，得到定积分计算公式。积分常数在端点相减时抵消。"
+      "title": "为什么能用 F(b)−F(a)？",
+      "text": "若 F′=f，F 与累积函数 A 的导数相同，在区间上只差常数。端点相减，常数抵消。"
     },
     {
-      "title": "可变上下限",
-      "text": "∫_a^{g(x)} f(t)dt 的导数为 f(g(x))g′(x)。两端都变化时，上端贡献减下端贡献。积分内的 t 是哑变量，不能把上下限的 x 也当作 t 求导。"
+      "title": "上限是 g(x) 怎么办？",
+      "text": "再用链式法则：导数为 f(g(x))g′(x)。两端都变化时，上端贡献减下端贡献；积分内的 t 只是积分变量。"
     }
   ],
   "formalDefinition": {
@@ -49,7 +49,8 @@
   "interactiveVisual": {
     "kind": "accumulation",
     "function": "square",
-    "caption": "移动上限 x：累积 A(x)=x³/3 的斜率等于新增条带的高度 f(x)=x²。"
+    "caption": "移动上限 x：累积 A(x)=x³/3 的斜率等于新增条带的高度 f(x)=x²。",
+    "prediction": "累积曲线 A(x) 的斜率与原曲线 f(x) 的高度怎样对应？移动上限检查。"
   },
   "workedExamples": [
     {
@@ -151,11 +152,25 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.2.0",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [
-    "openstax-calculus-1"
-  ]
+    "openstax-calculus-1",
+    "active-calculus-2",
+    "ies-learning",
+    "phet-design",
+    "3b1b-calculus"
+  ],
+  "learningCheck": {
+    "question": "f 连续，A(x)=∫₀ˣf(t)dt。A′(x) 等于什么？",
+    "choices": [
+      "f(x)",
+      "∫₀ˣf′(t)dt",
+      "f(0)"
+    ],
+    "correctIndex": 0,
+    "explanation": "上限增加 h 时，新增积分约为 f(x)h。除以 h 再取极限，得到当前的 f(x)。"
+  }
 }

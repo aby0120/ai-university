@@ -7,6 +7,8 @@ npm run check
 
 最终目录为 `dist/`。它只有 HTML、CSS、JS、字体、图片与书稿；没有 server function，不需要环境变量。放到任意静态托管即可。网站用 hash 路由与相对资源路径，适用于根域名和子目录。
 
+3D 使用打包到网站的 Three.js，需要浏览器支持 WebGL2；不调用外部渲染服务。模块仅在打开三维演示时加载。WebGL 不可用时可切回二维；静态正文、公式与下载书稿不依赖 WebGL。
+
 ## GitHub Pages
 
 仓库设置 → Pages → Build and deployment → Source 选择 **GitHub Actions**。然后手动运行 `Deploy static textbook`。`.github/workflows/pages.yml` 先构建，再上传 `dist/`，最后发布 Pages。

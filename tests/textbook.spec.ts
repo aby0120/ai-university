@@ -10,9 +10,17 @@ test("every section renders canonical text, boundary-safe diagrams and four exer
     await page.goto("/#/lesson/" + id);
     await expect(page.locator("#lesson-article > section")).toHaveCount(8);
     await expect(page.locator(".worked-example")).toHaveCount(2);
+    await expect(page.locator(".check-choices button")).toHaveCount(3);
+    await expect(page.locator(".example-solution")).toHaveCount(2);
     await expect(page.locator(".katex-error")).toHaveCount(0);
     await page.getByRole("link", { name: "交互演示", exact: true }).click();
-    await expect(page.locator(".plot")).toHaveCount(1);
+    if (["disk-washer", "shells", "arc-length"].includes(id)) {
+      await expect(page.locator(".solid-visual")).toBeVisible();
+      const canvas = page.locator(".solid-canvas-host canvas");
+      if (await canvas.count())
+        await expect(canvas).toHaveAttribute("data-rendered", "true");
+      else await expect(page.locator(".solid-unavailable")).toBeVisible();
+    } else await expect(page.locator(".plot")).toHaveCount(1);
     for (const slider of await page.getByRole("slider").all()) {
       await slider.press("Home");
       await slider.press("End");
@@ -102,6 +110,8 @@ test("site pages fit the viewport and the print edition includes the full book",
     "guide",
     "downloads",
     "about",
+    "about/research",
+    "about/versions",
     ...book.chapters.map((c: { id: string }) => "chapter/" + c.id),
   ]) {
     await page.goto("/#/" + route);

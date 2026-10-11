@@ -4,8 +4,8 @@
   "number": "3.5",
   "title": "隐函数求导",
   "subtitle": "不用先解出 y，也能找到斜率",
-  "concept": "在关系式里把 y 当作 x 的函数，求导时每个 y 的变化都要带上 y′。",
-  "intuition": "圆并非整条都是一个 y(x)，但在局部可以选一条分支。沿这条分支改变 x，y 也随之变化，所以 y² 的导数不是 2y，而是 2y y′。",
+  "concept": "关系式里即使没有解出 y，也能求导。把 y 当作 x 的函数，每次对 y 求导都带上 y′。",
+  "intuition": "x²+y²=1 两边求导，得到 2x+2y·y′=0。y≠0 时，斜率为 −x/y。",
   "objectives": [
     "一起对 x 求导",
     "局部而非全局",
@@ -13,23 +13,24 @@
   ],
   "body": [
     {
-      "title": "一起对 x 求导",
-      "text": "对等式两边使用同一变量求导，含 y 的项用链式法则，含 xy 的项还用积法则。然后把所有 y′ 项移到一侧，提出来，解出 y′。"
+      "title": "怎样把 y′ 解出来？",
+      "text": "两边对 x 求导，含 y 的项用链式法则，含 xy 的项用乘积法则。收集 y′、提公因子，再解方程。"
     },
     {
-      "title": "局部而非全局",
-      "text": "求出的斜率表达式依赖所选曲线上点 (x,y)。同一 x 可能有两个 y，给出不同斜率。在公式的分母为零处，不应继续除法；可能是竖直切线或更复杂的奇点。"
+      "title": "同一个 x 会有两个斜率吗？",
+      "text": "会。斜率取决于曲线上的具体点 (x,y)。分母为 0 时不能继续相除，要检查竖直切线或其他奇点。"
     },
     {
-      "title": "更高阶导数",
-      "text": "还可以再对 y′ 求导得到 y″，其中出现 y 时仍需乘 y′。不要把点坐标太早代入，先完成求导关系，再在指定点计算。"
+      "title": "怎样求 y″？",
+      "text": "再对 y′ 求导，出现 y 时仍乘 y′。先完成求导再代入点坐标；过早代入会丢掉变量的变化。"
     }
   ],
   "formalDefinition": {
-    "text": "若 F(x,y(x))=0 且局部可导、F_y≠0，可解得斜率。",
+    "text": "若可微关系 F(x,y)=0 局部有可导分支 y=y(x)，且 F_y≠0，对 x 求导可解出斜率。",
     "latex": "F_x+F_y y\\prime=0,\\qquad y\\prime=-\\frac{F_x}{F_y}",
     "conditions": [
-      "本节以多项式等可微关系为主；F_y≠0 保证能解出有限局部斜率。"
+      "先假设该可导分支存在；F_x、F_y 分别表示只对 x、只对 y 求导，另一个变量暂视为常数。",
+      "导数在曲线上的点 (x,y(x)) 取值；F_y≠0 才能在斜率公式中相除。"
     ]
   },
   "derivation": [
@@ -50,7 +51,8 @@
     "kind": "derivative",
     "function": "circle",
     "a": 1,
-    "caption": "在半径 2 的上半圆移动 a。靠近端点时切线越来越陡。"
+    "caption": "在半径 2 的上半圆移动 a。靠近端点时切线越来越陡。",
+    "prediction": "沿上半圆接近两端，切线会越来越平还是越来越陡？"
   },
   "workedExamples": [
     {
@@ -150,11 +152,25 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.2.0",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [
-    "openstax-calculus-1"
-  ]
+    "openstax-calculus-1",
+    "active-calculus-2",
+    "ies-learning",
+    "phet-design",
+    "3b1b-calculus"
+  ],
+  "learningCheck": {
+    "question": "把 y 看成 x 的函数时，(y²)′ 是什么？",
+    "choices": [
+      "2y",
+      "2y·y′",
+      "y′²"
+    ],
+    "correctIndex": 1,
+    "explanation": "y² 是外层平方与内层 y(x) 的复合。要乘上内层导数 y′。"
+  }
 }

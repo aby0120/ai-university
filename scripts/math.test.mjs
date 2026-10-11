@@ -122,3 +122,15 @@ test("arc polylines converge to a separate analytic integral", () => {
   assert(arcLength(f, 0, 1, 80) > arcLength(f, 0, 1, 4));
   near(arcLength(f, 0, 1, 5000), target, 1e-7);
 });
+test("comparison examples distinguish a jump from a hole, and a corner from a tangent", () => {
+  const jump = functions.jump;
+  assert(Number.isNaN(jump.f(1)));
+  near(jump.f(1 - 1e-6), 1);
+  near(jump.f(1 + 1e-6), 3);
+  const corner = functions.absolute;
+  near(corner.f(-1e-6), corner.f(1e-6));
+  near(secant(corner.f, 0, -0.001), -1);
+  near(secant(corner.f, 0, 0.001), 1);
+  assert(Number.isNaN(corner.d(0)));
+  near(corner.d(-0.5), (corner.f(-0.5 + 1e-5) - corner.f(-0.5 - 1e-5)) / 2e-5);
+});

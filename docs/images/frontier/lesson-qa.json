@@ -1,0 +1,612 @@
+[
+  {
+    "id": "domain",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "函数与定义域"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 1,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "transformations",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "图像与变换"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 2,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "composition",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "复合函数与反函数"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 1,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "trigonometry",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "三角函数与弧度"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 1,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "exponential-log",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "指数与对数"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 1,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "limit-intuition",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "极限：靠近时会怎样"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 1,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "limit-laws",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "极限的计算法则"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 1,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "epsilon-delta",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "ε–δ：把靠近说精确"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 1,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "continuity",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "连续性与介值定理"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 1,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "infinite-limits",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "无穷极限与渐近线"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 1,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "derivative-definition",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "导数：割线变成切线"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 2,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "derivative-rules",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "基本求导规则"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 2,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "chain-rule",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "链式法则"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 1,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "trig-derivatives",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "三角函数的导数"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 2,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "implicit",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "隐函数求导"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 2,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "exp-log-derivatives",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "指数与对数求导"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 2,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "inverse-trig",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "反函数与反三角导数"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 2,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "related-rates",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "相关变化率"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 1,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "linearization",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "线性近似与微分"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 2,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "newton",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "牛顿法：沿切线找根"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 2,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "extrema",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "极值与临界点"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 2,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "mean-value",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "罗尔与中值定理"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 1,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "curve-sketching",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "单调性、凹性与曲线分析"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 2,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "optimization",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "优化：把问题变成一个函数"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 1,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "lhopital",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "洛必达法则"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 1,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "antiderivatives",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "原函数与不定积分"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 1,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "riemann-sums",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "黎曼和与数值积分"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 1,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "definite-integral",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "定积分与带符号面积"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 1,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "fundamental-theorem",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "微积分基本定理"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 1,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "substitution",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "换元积分"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 1,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "area-between",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "两曲线之间的面积"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 1,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "disk-washer",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "旋转体：圆盘与圆环"
+    },
+    "visual": {
+      "canvas": [
+        {
+          "model": "disk",
+          "rendered": "true"
+        }
+      ],
+      "controls": 2,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "shells",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "旋转体：圆柱壳"
+    },
+    "visual": {
+      "canvas": [
+        {
+          "model": "shell",
+          "rendered": "true"
+        }
+      ],
+      "controls": 2,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "arc-length",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "弧长与旋转曲面面积"
+    },
+    "visual": {
+      "canvas": [
+        {
+          "model": "surface",
+          "rendered": "true"
+        }
+      ],
+      "controls": 2,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  },
+  {
+    "id": "physical-integrals",
+    "read": {
+      "article": true,
+      "checks": 3,
+      "examples": 2,
+      "mathErrors": 0,
+      "overflow": false,
+      "title": "位移、功、质量与平均值"
+    },
+    "visual": {
+      "canvas": [],
+      "controls": 1,
+      "invalidSvg": false,
+      "overflow": false
+    }
+  }
+]

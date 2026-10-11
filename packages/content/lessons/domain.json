@@ -4,8 +4,8 @@
   "number": "1.1",
   "title": "函数与定义域",
   "subtitle": "先问：这个输入允许吗？",
-  "concept": "函数给每个允许的输入指定唯一输出。定义域不是附注，它决定哪些运算有意义。",
-  "intuition": "把函数看作一条规则，而不是一串符号。给平方根一个负数，在实数范围内就没有输出；这不是计算失败，而是输入越界。",
+  "concept": "函数是一条输入到输出的规则：每个允许的输入，只能对应一个输出。",
+  "intuition": "先问“这个数能不能代入”，再算结果。例如 √x 只接受 x≥0；负数不在它的实数定义域里。",
   "objectives": [
     "确定定义域",
     "读懂函数记号",
@@ -13,16 +13,16 @@
   ],
   "body": [
     {
-      "title": "确定定义域",
-      "text": "先列限制，再取交集：分母不能为零；偶次根号里面不能为负；对数里面必须为正。如果题目来自实际问题，时间、长度等还会带来额外限制。"
+      "title": "哪些数能代入？",
+      "text": "分母不能为 0，偶次根号内不能为负，对数的真数必须为正。把限制取交集。实际问题还要加上时间、长度等限制。"
     },
     {
-      "title": "读懂函数记号",
-      "text": "$f(3)$ 是把 3 代入整条规则；$f(x+h)$ 是把每个 x 都换成 x+h。$f$ 是函数，$f(x)$ 是一个输出。图像是所有允许的点 $(x,f(x))$ 的集合。"
+      "title": "f(x+h) 怎么代？",
+      "text": "把原式中每个 x 换成 x+h。f 是规则，f(x) 是这次输入得到的输出。图像由所有合法的 (x,f(x)) 组成。"
     },
     {
-      "title": "函数与关系",
-      "text": "同一个 x 若对应两个不同 y，就不是 y 关于 x 的函数。圆 $x^2+y^2=1$ 是一个关系；取上半圆 $y=\\sqrt{1-x^2}$ 才成为一个函数。竖直线检验表达的就是输出唯一。"
+      "title": "圆为什么不是函数？",
+      "text": "同一个 x 可能对应两个 y。取上半圆 y=√(1−x²) 后，每个 x 才只有一个输出。竖直线检验就是检查这一点。"
     }
   ],
   "formalDefinition": {
@@ -49,7 +49,8 @@
   "interactiveVisual": {
     "kind": "graph",
     "function": "sqrt",
-    "caption": "拖动输入 x，观察平方根只在 x≥0 时有实数输出。"
+    "caption": "拖动输入 x，观察平方根只在 x≥0 时有实数输出。",
+    "prediction": "把 x 从正数拖到负数。平方根图像会延伸到哪里？为什么？"
   },
   "workedExamples": [
     {
@@ -146,11 +147,24 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.2.0",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [
-    "openstax-calculus-1"
-  ]
+    "openstax-calculus-1",
+    "active-calculus-2",
+    "ies-learning",
+    "phet-design"
+  ],
+  "learningCheck": {
+    "question": "f(x)=1/√(x−2)，哪些 x 可以代入？",
+    "choices": [
+      "x ≥ 2",
+      "x > 2",
+      "x ≠ 2"
+    ],
+    "correctIndex": 1,
+    "explanation": "根号要求 x−2≥0，分母又不能是零。两个条件合起来是 x>2。"
+  }
 }

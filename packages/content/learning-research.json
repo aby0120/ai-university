@@ -1,0 +1,22 @@
+{
+  "reviewedAt": "2026-10-10",
+  "summary": "用具体问题进入概念，用定义检查条件，用图像和公式对照，再独立解释与解题。",
+  "principles": [
+    {"title":"先说出自己的判断","text":"看到概念检查或演示问题时，先选一个答案，或用一句话说出预测。答错也有用：后面的反馈会指出条件和差别。"},
+    {"title":"一次只改变一个量","text":"先改变 h，再看斜率；先改变半径，再看面积。把屏幕上的颜色、数值和公式中的符号对应起来。"},
+    {"title":"能独立做出来，再回头复习","text":"先遮住例题步骤和练习解答。隔一天再解释同一个概念，并混着做几类题，检查自己能否选对方法。"}
+  ],
+  "resources": [
+    {"title":"OpenStax · Calculus Volume 1","url":"https://openstax.org/books/calculus-volume-1/pages/2-2-the-limit-of-a-function","kind":"开放教材","use":"查定义、定理条件与传统课程范围。"},
+    {"title":"3Blue1Brown · Essence of Calculus","url":"https://www.3blue1brown.com/lessons/essence-of-calculus/","kind":"图解与视频","use":"从几何变化理解导数、积分与 ε–δ。视频和图解用于补充直觉。"},
+    {"title":"Active Calculus · Single Variable, 2nd edition","url":"https://activecalculus.org/acs2e/","kind":"开放教材 · 2025 第二版","use":"把活动和问题放在学习过程中，练习自己解释数学。"},
+    {"title":"MIT OCW · 18.01SC","url":"https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/pages/syllabus/","kind":"自学课程","use":"课程讲解、习题与解答可用于补充练习。范围比本卷更广，也包括后续微积分内容。"}
+  ],
+  "evidence": [
+    {"title":"IES · Organizing Instruction and Study to Improve Student Learning","url":"https://ies.ed.gov/ncee/wwc/PracticeGuide/1","kind":"研究指南 · 2007","use":"参考例题与练习穿插、图文结合、具体与抽象表示相连、间隔复习等建议。指南对不同建议给出不同证据等级。"},
+    {"title":"Agarwal, Nunes & Blunt · Retrieval Practice","url":"https://pdf.poojaagarwal.com/Agarwal_etal_2021_EDPR.pdf","kind":"系统综述 · 2021","use":"支持主动回忆与反馈的学习方向。该综述中的数学研究较少；本书的选择题也不能替代独立求解。"},
+    {"title":"PhET · Simulation Research / Look and Feel","url":"https://phet.colorado.edu/en/research","kind":"交互设计研究","use":"参考明确的操作提示、多种表示、即时反馈和少量控件。多数研究情境是科学模拟，不能直接当作本书的效果证明。"},
+    {"title":"CMU Eberly Center · Choosing an Appropriate Approach","url":"https://www.cmu.edu/teaching/solveproblem/strat-cantapply/cantapply-04.html","kind":"教学设计建议","use":"例题说明为什么选一种方法；综合练习检查读者能否自己识别条件。"}
+  ],
+  "limits": "这些资源为编写方法提供依据。本书仍由 AI 编写，尚未进行读者学习效果实验或逐节人工审校；不能据此宣称它是最好的教材。"
+}

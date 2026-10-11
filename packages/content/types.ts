@@ -38,6 +38,12 @@ export interface Lesson {
   concept: string;
   intuition: string;
   objectives: string[];
+  learningCheck: {
+    question: string;
+    choices: string[];
+    correctIndex: number;
+    explanation: string;
+  };
   body: { title: string; text: string }[];
   formalDefinition: { text: string; latex: string; conditions: string[] };
   derivation: { text: string; latex: string | null }[];
@@ -46,6 +52,7 @@ export interface Lesson {
     function: string;
     a?: number;
     caption: string;
+    prediction: string;
   };
   workedExamples: {
     title: string;

@@ -11,7 +11,7 @@
 
 ## 改进交互
 
-视觉模型在 `packages/visuals/math.mjs`，界面在 `apps/web/src/components/Visual.tsx`。交互必须纯本地、能用键盘、标明图窗与近似性质、提供重置。不要加入模型 API、实时聊天室、强制登录或闭源图形服务。
+二维模型在 `packages/visuals/math.mjs`，旋转几何在 `packages/visuals/solid-models.mjs`，界面在 `apps/web/src/components/Visual.tsx`。三维界面在 `SolidVisual.tsx`，按需加载 Three.js。交互必须纯本地、能用键盘、标明图窗与近似性质、提供重置。不要加入模型 API、实时聊天室、强制登录或闭源图形服务。
 
 ## 新的 learning object
 

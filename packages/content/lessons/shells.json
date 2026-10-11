@@ -4,8 +4,8 @@
   "number": "7.3",
   "title": "旋转体：圆柱壳",
   "subtitle": "绕一圈的窄条有多长？",
-  "concept": "平行旋转轴的窄条旋转后形成薄壳，体积约为周长乘高度乘厚度。",
-  "intuition": "展开一层很薄的圆柱侧壁，近似一个长方体：长是圆周 2πr，高是条带长度，厚是 dr。",
+  "concept": "平行于旋转轴的窄条转一圈，形成薄圆柱壳。体积近似为周长×高度×厚度。",
+  "intuition": "把薄壳展开：长为 2πr，高为 h，厚为 dr。因此一层贡献约 2πrh dr。",
   "objectives": [
     "建立壳的三个量",
     "为什么近似会准确",
@@ -13,23 +13,24 @@
   ],
   "body": [
     {
-      "title": "建立壳的三个量",
-      "text": "绕 y 轴时，常取竖条：半径 x、高度上−下、厚度 dx。绕竖直线 x=k 则半径是 |x−k|。要在不重复覆盖的区域内累积，各壳半径应一一对应切片。"
+      "title": "半径、高度怎样找？",
+      "text": "绕 y 轴取竖条时，r=x，h=上−下。绕 x=k 时，r=|x−k|。每层须对应不同半径，避免重叠计数。"
     },
     {
-      "title": "为什么近似会准确",
-      "text": "薄壳的精确体积为 π[(r+Δr)²−r²]h=(2πrΔr+πΔr²)h；额外二阶项在细分极限中消失，留下 2πrh dr。"
+      "title": "为什么薄壳近似能用于积分？",
+      "text": "精确体积为 π[(r+Δr)²−r²]h。展开得到 2πrhΔr+πhΔr²；细分后第二项消失，留下积分。"
     },
     {
-      "title": "与圆环法交叉检查",
-      "text": "同一区域换方向切片可得到圆环式。两种答案应一致。若旋转轴穿过区域，直接将两侧壳相加可能把同一体积算两次，应选择无重叠描述。"
+      "title": "怎样核对结果？",
+      "text": "同一区域改用圆环法，答案应相同。若旋转轴穿过区域，把两边壳层直接相加可能重复计算，要先选无重叠描述。"
     }
   ],
   "formalDefinition": {
     "text": "圆柱壳体积公式。",
     "latex": "V=2\\pi\\int_a^b r(x)h(x)dx",
     "conditions": [
-      "切片平行于旋转轴；r≥0、h≥0，且壳层不重复覆盖。"
+      "a<b，半径 r 与高度 h 在 [a,b] 连续且非负；壳层不能重复覆盖。",
+      "切片平行旋转轴；x 沿垂直于轴的方向计距离，使 dx 是径向厚度。例如绕 y 轴、x≥0 时 r=x。"
     ]
   },
   "derivation": [
@@ -49,7 +50,8 @@
   "interactiveVisual": {
     "kind": "shell",
     "function": "square",
-    "caption": "移动竖条：半径 x、高 x²、周长 2πx；切片视图与旋转示意同步。"
+    "caption": "移动竖条：半径 x、高 x²、周长 2πx；切片视图与旋转示意同步。",
+    "prediction": "薄壳半径增加时，高度是否保持不变？对照二维竖片，找出 2πx 与 x²。"
   },
   "workedExamples": [
     {
@@ -63,7 +65,7 @@
     },
     {
       "title": "用圆环核对",
-      "problem": "对上一节示意的 y=x² 下方区域，改用圆环法。",
+      "problem": "区域 0≤x≤1、0≤y≤x² 绕 y 轴旋转，改用圆环法核对体积。",
       "steps": [
         "横切 y∈[0,1]，外半径 1，内半径 √y。",
         "V=π∫₀¹(1−y)dy=π/2。"
@@ -148,11 +150,24 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.2.0",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [
-    "openstax-calculus-1"
-  ]
+    "openstax-calculus-1",
+    "active-calculus-2",
+    "ies-learning",
+    "phet-design"
+  ],
+  "learningCheck": {
+    "question": "区域 0≤y≤x²、0≤x≤1 绕 y 轴旋转。半径 x 的薄壳高度是多少？",
+    "choices": [
+      "x",
+      "x²",
+      "1−x²"
+    ],
+    "correctIndex": 1,
+    "explanation": "竖片从 y=0 延伸到 y=x²，高是 x²。薄壳体积约为 2πx·x²·dx。"
+  }
 }

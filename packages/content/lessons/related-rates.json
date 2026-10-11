@@ -4,8 +4,8 @@
   "number": "4.3",
   "title": "相关变化率",
   "subtitle": "先建立关系，再对时间求导",
-  "concept": "相关变化率把几个同时变化的量放进一个方程，再对时间求导连接它们的速度。",
-  "intuition": "圆的半径在增加，面积也在增加；面积每秒增加多少，取决于半径增长速度和当前半径。静态几何公式经过时间求导，就变成动态关系。",
+  "concept": "几个量同时随时间变化时，先写它们的关系，再对时间求导，就能连接各自的变化率。",
+  "intuition": "A=πr²。半径变化时，面积变化率为 dA/dt=2πr·dr/dt；同样的半径增长速度，在更大的圆上产生更快的面积增长。",
   "objectives": [
     "解题顺序",
     "单位与符号",
@@ -13,16 +13,16 @@
   ],
   "body": [
     {
-      "title": "解题顺序",
-      "text": "给随时间变化的量命名，写出它们始终满足的关系，对 t 求导，最后才代入某时刻的数值。过早代入会把变化变量误当成常数，丢掉它的导数。"
+      "title": "为什么最后才代数值？",
+      "text": "先对关系式求导，才能保留变量的变化。若过早把 r 换成某个数，它会被当成常数，dr/dt 就丢了。"
     },
     {
-      "title": "单位与符号",
-      "text": "长度变化率单位是长度/时间，面积变化率是面积/时间。流入取正、流出取负，远离取正、靠近取负。题目给“速度大小”时，需要依据变量定义设置符号。"
+      "title": "正负和单位怎样定？",
+      "text": "增长取正、减小取负，具体按变量定义判断。长度变化率用长度/时间，面积变化率用面积/时间。"
     },
     {
-      "title": "几何约束",
-      "text": "相似三角形可以先消去某个变量，例如圆锥容器中 r/h 恒定。梯子问题则用 x²+y²=L²；固定的是梯子长 L，而不是 x 或 y。"
+      "title": "关系式从哪里来？",
+      "text": "从几何或物理条件来。梯子长度固定时 x²+y²=L²；圆锥中的水若与容器相似，可先用固定的 r/h 比消去一个变量。"
     }
   ],
   "formalDefinition": {
@@ -49,7 +49,8 @@
   "interactiveVisual": {
     "kind": "related",
     "function": "circle",
-    "caption": "移动梯子底端 x，观察高 y=√(25−x²) 与向下的变化率。"
+    "caption": "移动梯子底端 x，观察高 y=√(25−x²) 与向下的变化率。",
+    "prediction": "梯子底端匀速向外移动时，顶端也匀速下降吗？比较不同位置的变化率。"
   },
   "workedExamples": [
     {
@@ -150,11 +151,24 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.2.0",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [
-    "openstax-calculus-1"
-  ]
+    "openstax-calculus-1",
+    "active-calculus-2",
+    "ies-learning",
+    "phet-design"
+  ],
+  "learningCheck": {
+    "question": "圆面积 A=πr²，r 随时间变化。dA/dt 是什么？",
+    "choices": [
+      "2πr",
+      "2πr·dr/dt",
+      "π(dr/dt)²"
+    ],
+    "correctIndex": 1,
+    "explanation": "先对时间求导，得到 dA/dt=2πr·dr/dt。遗漏 dr/dt 就忽略了半径变化的速度。"
+  }
 }

@@ -4,8 +4,8 @@
   "number": "6.5",
   "title": "换元积分",
   "subtitle": "链式法则，倒着使用",
-  "concept": "当被积式里同时出现一个内部函数与它的导数时，可以把内部函数换成新变量。",
-  "intuition": "复杂表达式常常只是一个简单函数穿上了复合外衣。换元先识别里面那层，再把它的变化率一起搬走。",
+  "concept": "换元是反着用链式法则：把内层函数换成 u，同时把它的导数和 dx 换成 du。",
+  "intuition": "∫2x(x²+1)³dx 中，令 u=x²+1，du=2x dx，原式就变成 ∫u³du。",
   "objectives": [
     "选择 u 与 du",
     "定积分同时换界",
@@ -13,23 +13,24 @@
   ],
   "body": [
     {
-      "title": "选择 u 与 du",
-      "text": "令 u=g(x)，则 du=g′(x)dx。这不是把 dx 随意当数约分，而是链式法则逆向给出的积分公式。若只差常数倍，可以提出调整；若缺少变化的因子，不能凭空补上。"
+      "title": "u 怎样选？",
+      "text": "先找内层 g(x)，再检查被积式是否带 g′(x)。只差常数倍可以调整；缺少随 x 变化的因子不能随意补。"
     },
     {
-      "title": "定积分同时换界",
-      "text": "原 x=a,b 对应 u=g(a),g(b)。换了变量就必须换上下限；也可以先求关于 x 的原函数，再使用原界，二者任选一条完整路线。若 g 非单调，公式作为原函数端点关系仍成立；几何换变量需另查方向与分段。"
+      "title": "定积分要换上下限吗？",
+      "text": "要。x=a,b 对应 u=g(a),g(b)。也可先换回 x 再用原界，但不能把新变量与旧界混用。"
     },
     {
-      "title": "验证与常见模式",
-      "text": "(内层)^n×内层导数、e^(内层)×内层导数、内层导数/内层都是优先模式。根式有时令 u 为根号内；三角积可令 u=sin x 或 cos x。最终对不定积分答案求导核对。"
+      "title": "怎样确认没有换错？",
+      "text": "不定积分答案求导，应回到原被积式。非单调代换按原函数端点公式处理；几何换变量时还要检查方向与分段。"
     }
   ],
   "formalDefinition": {
     "text": "链式法则的逆向积分公式。",
     "latex": "\\int f(g(x))g\\prime(x)dx=F(g(x))+C,\\qquad\\int_a^b f(g(x))g\\prime(x)dx=\\int_{g(a)}^{g(b)}f(u)du",
     "conditions": [
-      "F′=f；在区间上具备连续与可导条件；定积分的界要对应新变量。"
+      "f 在包含 g([a,b]) 的区间连续，F′=f；g 在 [a,b] 连续可导。",
+      "定积分的界对应新变量 g(a)、g(b)；此原函数公式不要求 g 单调。"
     ]
   },
   "derivation": [
@@ -49,7 +50,8 @@
   "interactiveVisual": {
     "kind": "substitution",
     "function": "square",
-    "caption": "x 从 0 到 1 时，u=x²+1 从 1 到 2；显示 du/dx=2x，强调宽度也随换元改变。"
+    "caption": "x 从 0 到 1 时，u=x²+1 从 1 到 2；显示 du/dx=2x，强调宽度也随换元改变。",
+    "prediction": "x 的宽度相同，换成 u=x²+1 后宽度也相同吗？比较不同 x 的 du/dx。"
   },
   "workedExamples": [
     {
@@ -149,11 +151,25 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.2.0",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [
-    "openstax-calculus-1"
-  ]
+    "openstax-calculus-1",
+    "active-calculus-2",
+    "ies-learning",
+    "phet-design",
+    "3b1b-calculus"
+  ],
+  "learningCheck": {
+    "question": "在 ∫₀¹2x(x²+1)³dx 中设 u=x²+1，新上下限是什么？",
+    "choices": [
+      "0 和 1",
+      "1 和 2",
+      "0 和 2"
+    ],
+    "correctIndex": 1,
+    "explanation": "上下限也要随变量转换：x=0 对应 u=1，x=1 对应 u=2。du=2x dx。"
+  }
 }

@@ -4,8 +4,8 @@
   "number": "1.4",
   "title": "三角函数与弧度",
   "subtitle": "用单位圆理解周期变化",
-  "concept": "正弦和余弦是单位圆上的纵坐标与横坐标；弧度让角度与弧长直接相连。",
-  "intuition": "走过长度 1 的单位圆弧，对应 1 弧度。这样角的变化量就是圆上的实际距离，导数公式才不需要额外的换算系数。",
+  "concept": "单位圆上，cos 是横坐标，sin 是纵坐标。弧度把角度直接写成弧长与半径的比。",
+  "intuition": "在单位圆上走过长度 1 的圆弧，就是 1 弧度。微积分中的三角公式默认用弧度。",
   "objectives": [
     "弧度与周期",
     "最常用的恒等式",
@@ -13,16 +13,16 @@
   ],
   "body": [
     {
-      "title": "弧度与周期",
-      "text": "半径 r、弧长 s 对应角 θ=s/r。整圈是 2π 弧度，180° 是 π 弧度。sin 和 cos 的周期为 2π；tan 的周期为 π，但在 cos=0 处没有定义。"
+      "title": "弧度怎样换算？",
+      "text": "θ=s/r，整圈为 2π 弧度，180°=π 弧度。sin、cos 的周期是 2π；tan 的周期是 π，在 cos=0 处无定义。"
     },
     {
-      "title": "最常用的恒等式",
-      "text": "单位圆方程给出 sin²x+cos²x=1。商关系是 tan x=sin x/cos x。计算时可把复杂表达式还原成 sin 和 cos，再检查分母。"
+      "title": "恒等式从哪里来？",
+      "text": "单位圆方程给出 sin²x+cos²x=1；tan x=sin x/cos x。化简后仍要保留原式的定义域限制。"
     },
     {
-      "title": "微积分中的小角度",
-      "text": "弧度下，x 趋近 0 时 sin x/x 趋近 1。这是正弦导数的关键基础；它只是一条极限，并不表示所有 x 都满足 sin x=x。"
+      "title": "为什么小角度很重要？",
+      "text": "弧度下，x→0 时 sin x/x→1，这是正弦求导的基础。它不表示所有 x 都满足 sin x=x。"
     }
   ],
   "formalDefinition": {
@@ -49,7 +49,8 @@
   "interactiveVisual": {
     "kind": "graph",
     "function": "sin",
-    "caption": "拖动 x 观察正弦的周期；横轴单位是弧度。"
+    "caption": "拖动 x 观察正弦的周期；横轴单位是弧度。",
+    "prediction": "把 x 增加 2π，sin x 的值会怎样？比较相隔一个周期的两个输入。"
   },
   "workedExamples": [
     {
@@ -148,11 +149,24 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.2.0",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [
-    "openstax-calculus-1"
-  ]
+    "openstax-calculus-1",
+    "active-calculus-2",
+    "ies-learning",
+    "phet-design"
+  ],
+  "learningCheck": {
+    "question": "为什么微积分里的角通常用弧度？",
+    "choices": [
+      "弧度让所有角都变小",
+      "弧度等于弧长与半径之比，使基本极限不多出换算系数",
+      "角度不能求导"
+    ],
+    "correctIndex": 1,
+    "explanation": "sin h/h→1 要求 h 用弧度。若用角度，换算会带来 π/180 的系数。"
+  }
 }

@@ -7,7 +7,6 @@ import {
   Bookmark,
   Check,
   CircleCheck,
-  Clock3,
   Lightbulb,
   X,
 } from "lucide-react";
@@ -16,6 +15,7 @@ import { book, lessonById, lessons } from "../../../../packages/content";
 import type { Lesson } from "../../../../packages/content/types";
 import { Formula, MathText } from "../components/MathText";
 import { Practice } from "../components/Practice";
+import { LearningCheck } from "../components/LearningCheck";
 import { Visual } from "../components/Visual";
 
 import {
@@ -29,10 +29,10 @@ import { BOOK, chapterPath, lessonPath } from "../lib/catalog";
 import { useApp } from "../lib/state";
 
 const sections = [
-  ["idea", "核心意思"],
-  ["intuition", "建立直觉"],
+  ["idea", "先看结论"],
+  ["intuition", "怎么理解"],
   ["visual", "亲手探索"],
-  ["explain", "展开理解"],
+  ["explain", "关键问题"],
   ["definition", "定义与条件"],
   ["derivation", "一步步推导"],
   ["examples", "逐步例题"],
@@ -104,8 +104,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
         <p>{l.subtitle}</p>
         <div className="lesson-tools">
           <span>
-            <Clock3 size={15} />约{" "}
-            {Math.max(8, Math.ceil(JSON.stringify(l).length / 350))} 分钟阅读
+            <BookOpen size={15} /> {l.body.length} 个关键问题
           </span>
           <span>2 例题 · 4 练习</span>
           <div>
@@ -165,11 +164,12 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
                 </p>
               </section>
               <section id="section-intuition">
-                <SectionTitle num="01" title="先建立直觉" />
+                <SectionTitle num="01" title="怎么理解？" />
                 <p>
                   <MathText text={l.intuition} />
                 </p>
               </section>
+              <LearningCheck key={l.id} check={l.learningCheck} />
               <section id="section-visual" className="embedded-visual">
                 <div className="visual-section-heading">
                   <span>
@@ -184,7 +184,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
                 <Visual lesson={l} compact />
               </section>
               <section id="section-explain">
-                <SectionTitle num="02" title="把意思展开" />
+                <SectionTitle num="02" title="三个关键问题" />
                 {l.body.map((b) => (
                   <div className="body-part" key={b.title}>
                     <h3>{b.title}</h3>
@@ -195,7 +195,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
                 ))}
               </section>
               <section id="section-definition">
-                <SectionTitle num="03" title="精确地说" />
+                <SectionTitle num="03" title="定义与条件" />
                 <div className="definition-block">
                   <Eyebrow>DEFINITION / THEOREM</Eyebrow>
                   <p>
@@ -231,7 +231,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
                 </ol>
               </section>
               <section id="section-examples">
-                <SectionTitle num="05" title="跟着做两道例题" />
+                <SectionTitle num="05" title="两道例题" />
                 {l.workedExamples.map((ex, i) => (
                   <div className="worked-example" key={i}>
                     <header>
@@ -241,22 +241,25 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
                     <p className="example-problem">
                       <MathText text={ex.problem} />
                     </p>
-                    <ol>
-                      {ex.steps.map((s, j) => (
-                        <li key={j}>
-                          <MathText text={s} />
-                        </li>
-                      ))}
-                    </ol>
-                    <div className="example-answer">
-                      <Check size={18} />
-                      <MathText text={ex.answer} />
-                    </div>
+                    <details className="example-solution">
+                      <summary>查看解题步骤</summary>
+                      <ol>
+                        {ex.steps.map((s, j) => (
+                          <li key={j}>
+                            <MathText text={s} />
+                          </li>
+                        ))}
+                      </ol>
+                      <div className="example-answer">
+                        <Check size={18} />
+                        <MathText text={ex.answer} />
+                      </div>
+                    </details>
                   </div>
                 ))}
               </section>
               <section id="section-mistakes">
-                <SectionTitle num="06" title="容易卡住的地方" />
+                <SectionTitle num="06" title="常见误区" />
                 {l.commonMistakes.map((m) => (
                   <div className="misconception" key={m.id}>
                     <div>
@@ -277,7 +280,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
               <div className="lesson-finish">
                 <div>
                   <Eyebrow>NOW, TRY IT YOURSELF</Eyebrow>
-                  <h2>读懂之后，亲手做一次。</h2>
+                  <h2>用四道题检验理解。</h2>
                   <p>四道练习，检查概念、计算与适用条件。</p>
                 </div>
                 <Link
@@ -308,7 +311,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
             <div className="focus-visual">
               <div className="focus-visual-intro">
                 <Eyebrow>EXPLORE THE IDEA</Eyebrow>
-                <h2>让符号变成看得见的变化。</h2>
+                <h2>{l.title} · 交互演示</h2>
                 <p>
                   <MathText text={l.concept} />
                 </p>
@@ -318,7 +321,9 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
                 <Lightbulb size={20} />
                 <div>
                   <h3>观察任务</h3>
-                  <p>{l.interactiveVisual.caption}</p>
+                  <p>
+                    先说出你的预测，再改变一个参数。数值与图像是否支持它？回到推导解释原因。
+                  </p>
                   <Link to={lessonPath(l.id)}>
                     回到定义与推导
                     <ArrowRight size={15} />

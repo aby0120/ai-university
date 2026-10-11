@@ -3,10 +3,10 @@
   "title": "Calculus I",
   "titleZh": "微积分 I",
   "subtitle": "从变化率到累积量",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "language": "zh-CN",
   "author": "AI University · AI-generated",
-  "description": "一部完整的一元微积分入门教材。用直觉建立含义，用定义守住边界，用推导解释公式，用交互图亲手验证。",
+  "description": "一元微积分入门：函数、极限、导数、积分及应用。每节有简明讲解、定义条件、推导、例题、练习和可操作图示。",
   "audience": "已具备初等代数基础的自学者与大学微积分入门学习者",
   "scope": "函数基础、极限与连续、一元求导及应用、定积分与基本积分方法、几何和物理应用。数列级数、多元微积分和系统积分技巧留给后续卷。",
   "chapters": [
@@ -180,6 +180,48 @@
       "title": "OpenStax · Calculus Volume 1",
       "url": "https://openstax.org/details/books/calculus-volume-1",
       "usage": "知识范围与定理条件核对；本书正文、例题解答与互动图为重新编写，未复制原教材正文或图片。"
+    },
+    {
+      "id": "active-calculus-2",
+      "title": "Active Calculus · Single Variable, Second Edition",
+      "url": "https://activecalculus.org/acs2e/",
+      "usage": "参考问题和活动驱动的学习组织方式；未复制正文、活动或题目。"
+    },
+    {
+      "id": "ies-learning",
+      "title": "IES · Organizing Instruction and Study to Improve Student Learning",
+      "url": "https://ies.ed.gov/ncee/wwc/PracticeGuide/1",
+      "usage": "参考图文结合、例题与练习穿插、间隔复习等教学设计建议；不作为本书效果证明。"
+    },
+    {
+      "id": "phet-design",
+      "title": "PhET · Research and Simulation Design",
+      "url": "https://phet.colorado.edu/en/research",
+      "usage": "参考有限控件、即时反馈和多种表示的设计方法；三维模型与图示独立实现。"
+    },
+    {
+      "id": "3b1b-calculus",
+      "title": "3Blue1Brown · Essence of Calculus",
+      "url": "https://www.3blue1brown.com/lessons/essence-of-calculus/",
+      "usage": "参考从几何变化连接极限、导数、积分的解释方式；未复制视频、图像或文字。"
+    },
+    {
+      "id": "mit-ocw",
+      "title": "MIT OCW · 18.01SC Syllabus",
+      "url": "https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/pages/syllabus/",
+      "usage": "课程目标与自学材料组织参考；MIT 课程包含本卷之外的后续内容。"
+    },
+    {
+      "id": "retrieval-review",
+      "title": "Agarwal, Nunes & Blunt · Retrieval Practice (2021)",
+      "url": "https://pdf.poojaagarwal.com/Agarwal_etal_2021_EDPR.pdf",
+      "usage": "主动回忆与反馈的研究参考；数学样本较少，不将选择题等同于完整的回忆练习。"
+    },
+    {
+      "id": "cmu-method-choice",
+      "title": "CMU Eberly Center · Choosing an Appropriate Approach",
+      "url": "https://www.cmu.edu/teaching/solveproblem/strat-cantapply/cantapply-04.html",
+      "usage": "参考在例题中说明方法选择并在混合练习中检查迁移的教学建议。"
     }
   ],
   "provenance": {

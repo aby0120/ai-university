@@ -4,8 +4,8 @@
   "number": "1.3",
   "title": "复合函数与反函数",
   "subtitle": "把两条规则接起来",
-  "concept": "复合是把一个函数的输出交给另一个函数；反函数是把一条可逆规则倒着走。",
-  "intuition": "温度从摄氏转为华氏，再从华氏计算耗电量，是复合。知道华氏温度并找回摄氏温度，是反函数。顺序和可逆性都不能省略。",
+  "concept": "复合函数是接着算：先算内层，再把结果交给外层。反函数则把可逆的规则倒着算。",
+  "intuition": "比如先平方再加 1，是 x→x²→x²+1。反过来找输入时，若一个输出对应多个输入，就需要先限制范围。",
   "objectives": [
     "复合的定义域",
     "一一对应才可逆",
@@ -13,16 +13,16 @@
   ],
   "body": [
     {
-      "title": "复合的定义域",
-      "text": "$(f\\circ g)(x)=f(g(x))$。先要求 x 在 g 的定义域，再要求 g(x) 落在 f 的定义域。写得出公式，不代表所有输入都合法。"
+      "title": "复合的输入有什么限制？",
+      "text": "对 f(g(x))，x 要能代入 g，g(x) 也要能代入 f。两个条件都要满足。"
     },
     {
-      "title": "一一对应才可逆",
-      "text": "若两个不同输入得到同一输出，倒过来就无法唯一选择。$x^2$ 在实数全域不可逆，但限制到 x≥0 后，它的反函数是平方根。水平线检验检查的就是单射性。"
+      "title": "为什么 x² 不能直接求反函数？",
+      "text": "2 和 −2 都得到 4，反过来无法唯一选一个。限制 x≥0 后，反函数才是 √x。"
     },
     {
-      "title": "求反函数",
-      "text": "先写 y=f(x)，解出 x 关于 y 的表达式，再交换变量名称。反函数的定义域是原函数的值域。$f^{-1}$ 的 −1 是记号，不是倒数。"
+      "title": "反函数怎样求？",
+      "text": "写 y=f(x)，解出 x，再交换 x、y 的名字。反函数的定义域是原函数的值域；f⁻¹ 表示反函数，不是 1/f。"
     }
   ],
   "formalDefinition": {
@@ -49,7 +49,8 @@
   "interactiveVisual": {
     "kind": "graph",
     "function": "square",
-    "caption": "比较抛物线的两侧：同一高度可以来自两个输入，所以全域不一一对应。"
+    "caption": "比较抛物线的两侧：同一高度可以来自两个输入，所以全域不一一对应。",
+    "prediction": "一个输出能对应两个输入吗？在抛物线两侧寻找相同高度。"
   },
   "workedExamples": [
     {
@@ -148,11 +149,24 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.2.0",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [
-    "openstax-calculus-1"
-  ]
+    "openstax-calculus-1",
+    "active-calculus-2",
+    "ies-learning",
+    "phet-design"
+  ],
+  "learningCheck": {
+    "question": "f(x)=x²，g(x)=x+1。f(g(2)) 是多少？",
+    "choices": [
+      "9",
+      "5",
+      "7"
+    ],
+    "correctIndex": 0,
+    "explanation": "先算内层 g(2)=3，再算外层 f(3)=9。交换顺序会得到 g(f(2))=5。"
+  }
 }

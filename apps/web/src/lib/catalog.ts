@@ -32,6 +32,7 @@ export function labelFor(route: Route) {
         "about/contribute": "参与贡献",
         "about/versions": "版本与勘误",
         "about/privacy": "隐私与本地数据",
+        "about/research": "学习方法与参考资料",
         "practice/exam": "综合测试",
       } as Record<string, string>
     )[route.path] || "章末回顾"
@@ -46,6 +47,8 @@ export function searchLessons(query: string) {
       l.subtitle,
       l.concept,
       l.intuition,
+      l.learningCheck.question,
+      l.interactiveVisual.prediction,
       ...l.body.map((b) => b.text),
       l.formalDefinition.text,
       ...l.workedExamples.map((e) => e.problem),

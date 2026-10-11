@@ -4,8 +4,8 @@
   "number": "3.3",
   "title": "链式法则",
   "subtitle": "外层变化 × 内层变化",
-  "concept": "复合函数的变化率，是外层对内层的变化率乘以内层对原输入的变化率。",
-  "intuition": "把距离换成时间，再把时间换成成本，每一步的倍率要连乘。漏掉内层导数，就相当于假设内层每次恰好变化一个单位。",
+  "concept": "函数套函数时，每一层的变化率都要乘进去：外层导数乘内层导数。",
+  "intuition": "y=(x²+1)³：先把括号当作 u，得到 3u²；再乘 u′=2x。答案是 6x(x²+1)²。",
   "objectives": [
     "辨认内外层",
     "与积法则区分",
@@ -13,16 +13,16 @@
   ],
   "body": [
     {
-      "title": "辨认内外层",
-      "text": "对 (x²+1)³，内层 u=x²+1，外层 y=u³。先对 u 求外层导数 3u²，再代回 u，最后乘 u′=2x。沿嵌套结构从外到内，每层贡献一个导数因子。"
+      "title": "内外层怎样找？",
+      "text": "先找最后一次运算。(x²+1)³ 最后是立方，内层才是 x²+1。从外向内求导，每层贡献一个因子。"
     },
     {
-      "title": "与积法则区分",
-      "text": "相乘的函数需要积法则；函数套函数需要链式法则。有的式子同时需要两种，例如 x² sin(x³)。先看最外层结构：这里先是乘积，其中正弦项再使用链式法则。"
+      "title": "什么时候还要乘积法则？",
+      "text": "x²sin(x³) 的最外层是相乘，先用乘积法则；其中 sin(x³) 再用链式法则。嵌套和相乘是不同结构。"
     },
     {
-      "title": "为什么可以连乘",
-      "text": "一阶近似说明 Δu≈g′(x)Δx，Δy≈f′(u)Δu，合起来就得到乘积。这个解释不要求 g′非零；严格证明用余项处理 Δu=0 的情况，而不是随意约掉可能为零的量。"
+      "title": "为什么变化率能相乘？",
+      "text": "Δu≈g′(x)Δx，Δy≈f′(u)Δu，因此 Δy≈f′(u)g′(x)Δx。严格证明用余项，不靠约掉可能为 0 的 Δu。"
     }
   ],
   "formalDefinition": {
@@ -49,7 +49,8 @@
   "interactiveVisual": {
     "kind": "chain",
     "function": "square",
-    "caption": "选择 x，比较内层 u=x²+1 的变化率 2x 与外层 y=u³ 的变化率 3u²；总变化率是两者乘积。"
+    "caption": "选择 x，比较内层 u=x²+1 的变化率 2x 与外层 y=u³ 的变化率 3u²；总变化率是两者乘积。",
+    "prediction": "在 x=0，外层变化率不为零，总变化率为什么可能为零？查看内层读数。"
   },
   "workedExamples": [
     {
@@ -149,11 +150,25 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.2.0",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [
-    "openstax-calculus-1"
-  ]
+    "openstax-calculus-1",
+    "active-calculus-2",
+    "ies-learning",
+    "phet-design",
+    "3b1b-calculus"
+  ],
+  "learningCheck": {
+    "question": "y=(x²+1)³ 的导数中，最容易漏掉哪个因子？",
+    "choices": [
+      "2x",
+      "3",
+      "x²+1"
+    ],
+    "correctIndex": 0,
+    "explanation": "外层变化率是 3(x²+1)²，内层变化率是 2x。链式法则把两段变化率相乘。"
+  }
 }

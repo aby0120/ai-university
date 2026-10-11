@@ -44,6 +44,13 @@ draft.derivation = [
   { text: "TODO", latex: null },
 ];
 draft.interactiveVisual.caption = "TODO";
+draft.interactiveVisual.prediction = "TODO";
+draft.learningCheck = {
+  question: "TODO",
+  choices: ["TODO A", "TODO B", "TODO C"],
+  correctIndex: 0,
+  explanation: "TODO",
+};
 fs.mkdirSync(path.join(root, "drafts"), { recursive: true });
 const file = path.join(root, "drafts", `${id}.json`);
 fs.writeFileSync(file, JSON.stringify(draft, null, 2) + "\n", { flag: "wx" });

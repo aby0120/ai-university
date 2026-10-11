@@ -5,6 +5,7 @@ import {
   Download,
   ExternalLink,
   Github,
+  Lightbulb,
   Printer,
   Search,
   Settings2,
@@ -362,8 +363,8 @@ export function GuidePage() {
           ],
           [
             "03",
-            "跟做例题，独立练习",
-            "例题按步骤读；练习先自己完成，再开提示。对照解答检查遗漏的条件、单位和符号，最后给自己一个诚实的记录。",
+            "先独立做，再看解法",
+            "先尝试例题，再展开解题步骤。做练习时先自己完成，卡住再看提示；对照解答检查条件、单位和符号。隔一天再做一次，并混着练习不同方法。",
           ],
         ].map(([n, h, p]) => (
           <section key={n}>
@@ -384,7 +385,7 @@ export function GuidePage() {
           ],
           [
             "需要多久完成？",
-            "按自己的节奏逐节前进。页面显示的阅读时间只是估算，完成例题、演示和练习通常需要更多时间。",
+            "按自己的节奏逐节前进。能用自己的话解释、独立完成一道题，比读过多少页更有用。",
           ],
           [
             "数字答案与符号答案怎么检查？",
@@ -404,6 +405,17 @@ export function GuidePage() {
           </details>
         ))}
       </section>
+      <div className="quiet-note">
+        <Lightbulb size={21} />
+        <div>
+          <h3>这些学习方法依据什么？</h3>
+          <p>查看参考教材、图解和学习研究，也可以用它们补充阅读。</p>
+          <Link to="about/research" className="text-btn">
+            学习方法与参考资料
+            <ArrowRight size={15} />
+          </Link>
+        </div>
+      </div>
       <div className="guide-cta">
         <h2>从第一节开始。</h2>
         <Link to={lessonPath("domain")} className="primary-btn">

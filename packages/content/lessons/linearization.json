@@ -4,8 +4,8 @@
   "number": "4.4",
   "title": "线性近似与微分",
   "subtitle": "在足够近的地方，曲线像直线",
-  "concept": "可导函数在一点附近可以用切线近似；微分把小输入变化换成估计输出变化。",
-  "intuition": "在很近的一小段路上，弯曲道路可以近似成直线。离中心点越远，弯曲积累的误差往往越明显；近似号不能擅自改成等号。",
+  "concept": "在可导点附近，用切线估计函数值：原值加上“导数×输入改变量”。",
+  "intuition": "√4.1 接近 √4=2。导数在 4 为 1/4，因此 √4.1≈2+(1/4)×0.1=2.025。",
   "objectives": [
     "一阶近似",
     "微分与误差传播",
@@ -13,16 +13,16 @@
   ],
   "body": [
     {
-      "title": "一阶近似",
-      "text": "令 h=x−a。可导的定义等价于 f(a+h)=f(a)+f′(a)h+o(h)，余项相对于 h 趋近零。这说明切线是局部的一阶模型，不说明误差始终为零。"
+      "title": "为什么能用直线近似？",
+      "text": "可导意味着 f(a+h)=f(a)+f′(a)h+o(h)：余项比 h 更快趋于 0。它是局部近似，不是精确等式。"
     },
     {
-      "title": "微分与误差传播",
-      "text": "取 dx 为小的输入改变量，dy=f′(a)dx。实际改变量 Δy 与 dy 不完全相同。相对变化率可估计为 Δy/y≈f′(a)Δx/f(a)，前提分母不为零。"
+      "title": "dy 与 Δy 一样吗？",
+      "text": "dy=f′(a)dx 是估计，Δy=f(a+dx)−f(a) 才是实际变化。f(a)≠0 时，可用 dy/f(a) 估计相对变化。"
     },
     {
-      "title": "判断高估或低估",
-      "text": "若附近 f″>0，曲线凹向上，切线位于曲线下方，近似偏低；若 f″<0，近似偏高。定量误差界需要更多信息，例如二阶导数上界，不能只靠“看起来近”。"
+      "title": "怎样判断偏高还是偏低？",
+      "text": "附近 f″>0 时，曲线在切线上方，近似偏低；f″<0 时偏高。具体误差界还需要二阶导数等信息。"
     }
   ],
   "formalDefinition": {
@@ -50,7 +50,8 @@
     "kind": "linearization",
     "function": "sqrt",
     "a": 4,
-    "caption": "改变 x 与中心 a，比较曲线值、切线估计与真实误差。"
+    "caption": "改变 x 与中心 a，比较曲线值、切线估计与真实误差。",
+    "prediction": "离近似中心越远，切线估计通常越准还是越差？对照误差读数。"
   },
   "workedExamples": [
     {
@@ -150,11 +151,24 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.2.0",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [
-    "openstax-calculus-1"
-  ]
+    "openstax-calculus-1",
+    "active-calculus-2",
+    "ies-learning",
+    "phet-design"
+  ],
+  "learningCheck": {
+    "question": "在 a 附近用切线近似 f(x)，哪条公式正确？",
+    "choices": [
+      "f(x)≈f(a)+f′(a)(x−a)",
+      "f(x)=f′(a)x 对所有 x 成立",
+      "f(x)≈f(a)+f′(x)"
+    ],
+    "correctIndex": 0,
+    "explanation": "近似从点 (a,f(a)) 出发，沿该点的斜率变化。除非函数本来就是直线，否则一般不是精确等式。"
+  }
 }

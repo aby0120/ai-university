@@ -4,8 +4,8 @@
   "number": "1.2",
   "title": "图像与变换",
   "subtitle": "公式里的移动，图上的移动",
-  "concept": "平移、伸缩与反射让我们从一张熟悉的图得到新图。",
-  "intuition": "先跟踪一个点。例如 $(u,f(u))$ 在 $g(x)=f(x-2)$ 中变成 $(u+2,f(u))$；所以减 2 反而向右移动。",
+  "concept": "图像变换就是改变每个点的坐标。先跟踪一个点，方向就不会记反。",
+  "intuition": "在 f(x−2) 中，要让内层输入仍是 u，新的横坐标必须是 u+2。所以图像向右移 2。",
   "objectives": [
     "水平与竖直平移",
     "伸缩与反射",
@@ -13,16 +13,16 @@
   ],
   "body": [
     {
-      "title": "水平与竖直平移",
-      "text": "$f(x-h)+k$ 将图像右移 h、上移 k。h 或 k 为负时方向反过来。水平变化作用于输入，竖直变化作用于输出，这是方向看起来不同的原因。"
+      "title": "为什么减 h 却向右移？",
+      "text": "要让 x−h 等于原来的输入 u，就得取 x=u+h。因此 f(x−h)+k 把点 (u,f(u)) 移到 (u+h,f(u)+k)。"
     },
     {
-      "title": "伸缩与反射",
-      "text": "$A f(Bx)$ 把输出乘 A，把横坐标除以 B。A<0 时关于 x 轴反射，B<0 时关于 y 轴反射。B 的绝对值越大，横向越压缩。"
+      "title": "伸缩怎样看？",
+      "text": "A f(Bx) 把纵坐标乘 A、横坐标除以 B（B≠0）。A<0 时上下翻转，B<0 时左右翻转；|B| 越大，横向越压缩。"
     },
     {
-      "title": "对称性与区间",
-      "text": "$f(-x)=f(x)$ 是偶函数；$f(-x)=-f(x)$ 是奇函数。增减描述一个区间上的行为，不是只比较两个孤立点。图像可帮助发现规律，精确结论仍要用公式。"
+      "title": "对称和增减怎样判断？",
+      "text": "偶函数满足 f(−x)=f(x)，奇函数满足 f(−x)=−f(x)。增减要检查整个区间，不能只比较两点；断开的定义域要分开讨论。"
     }
   ],
   "formalDefinition": {
@@ -49,7 +49,8 @@
   "interactiveVisual": {
     "kind": "transform",
     "function": "square",
-    "caption": "移动 h 与 k，观察抛物线的顶点。"
+    "caption": "移动 h 与 k，观察抛物线的顶点。",
+    "prediction": "增大 h 时，顶点向左还是向右？先预测，再拖动水平平移滑块。"
   },
   "workedExamples": [
     {
@@ -147,11 +148,24 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.2.0",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [
-    "openstax-calculus-1"
-  ]
+    "openstax-calculus-1",
+    "active-calculus-2",
+    "ies-learning",
+    "phet-design"
+  ],
+  "learningCheck": {
+    "question": "y=(x−2)² 的顶点在哪里？",
+    "choices": [
+      "(−2,0)",
+      "(0,2)",
+      "(2,0)"
+    ],
+    "correctIndex": 2,
+    "explanation": "括号中的输入等于零时，函数最小。x−2=0，所以顶点向右移到 (2,0)。"
+  }
 }

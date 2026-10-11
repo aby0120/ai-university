@@ -4,8 +4,8 @@
   "number": "3.2",
   "title": "基本求导规则",
   "subtitle": "规则是定义的压缩版",
-  "concept": "常数、和、幂、积与商的求导规则，让我们不用每次重新计算极限。",
-  "intuition": "积的变化来自两个因素同时变化。第一因素改一点，第二因素也改一点；只把两个导数相乘，会漏掉几乎全部的一阶变化。",
+  "concept": "求导规则把常见结构直接转换成导数。先看最外层：和、乘积，还是商。",
+  "intuition": "乘积 uv 变化时，两个因子都会变，所以要把 u′v 和 uv′ 相加；不是只乘两个导数。",
   "objectives": [
     "线性与幂法则",
     "乘积法则",
@@ -13,16 +13,16 @@
   ],
   "body": [
     {
-      "title": "线性与幂法则",
-      "text": "常数导数为零；常数倍与加法可以逐项处理。d(x^n)/dx=n x^(n−1)。对正整数幂可用二项式从定义证明；实数幂在合适定义域上也成立，但 x=0 等边界要检查。"
+      "title": "和与幂怎样求导？",
+      "text": "常数导数为 0，和与常数倍可逐项求导。xⁿ 的导数为 nxⁿ⁻¹；实数幂要在相应定义域使用，0 等边界另查。"
     },
     {
-      "title": "乘积法则",
-      "text": "(uv)′=u′v+uv′。它对应“保持 v，让 u 变”加“保持 u，让 v 变”。公式里的 u、v、u′、v′ 都在同一个输入处取值。"
+      "title": "乘积为什么有两项？",
+      "text": "让 u 变、v 暂时固定，贡献 u′v；让 v 变、u 暂时固定，贡献 uv′。相加得到 (uv)′=u′v+uv′。"
     },
     {
-      "title": "商法则",
-      "text": "(u/v)′=(u′v−uv′)/v²，要求 v≠0。分子次序会决定符号。可以把商写成 u×v^−1，再用积法则与链式法则得到同一结果。"
+      "title": "商的负号放哪里？",
+      "text": "(u/v)′=(u′v−uv′)/v²，要求 v≠0。可以把商改写为 u·v⁻¹，再用乘积与链式法则核对。"
     }
   ],
   "formalDefinition": {
@@ -50,7 +50,8 @@
     "kind": "derivative",
     "function": "cubic",
     "a": 1,
-    "caption": "观察 x³ 的差商趋近 3x²；改变 a 检查不同点。"
+    "caption": "观察 x³ 的差商趋近 3x²；改变 a 检查不同点。",
+    "prediction": "x³ 的切点从 0 移到 1，斜率会怎样变？用 3a² 核对读数。"
   },
   "workedExamples": [
     {
@@ -150,11 +151,25 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.2.0",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [
-    "openstax-calculus-1"
-  ]
+    "openstax-calculus-1",
+    "active-calculus-2",
+    "ies-learning",
+    "phet-design",
+    "3b1b-calculus"
+  ],
+  "learningCheck": {
+    "question": "(f(x)g(x))′ 等于什么？",
+    "choices": [
+      "f′g′",
+      "f′g+fg′",
+      "f′+g′"
+    ],
+    "correctIndex": 1,
+    "explanation": "两因子都可能变化：一个变化时乘上另一个的原值。积的导数要把这两部分相加。"
+  }
 }

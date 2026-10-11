@@ -17,6 +17,10 @@ export function validateContent() {
   let mathCount = 0;
   for (const l of allLessons) {
     assert(validate(l), `${l.id}: ${JSON.stringify(validate.errors)}`);
+    assert(
+      l.learningCheck.correctIndex < l.learningCheck.choices.length,
+      `${l.id}: invalid learning check answer`,
+    );
     assert(!ids.has(l.id), `Duplicate lesson ${l.id}`);
     ids.add(l.id);
     assert(
