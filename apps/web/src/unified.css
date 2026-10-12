@@ -171,7 +171,7 @@
 .visual-card .eyebrow { color: #627e61; }
 .visual-card .icon-btn { color: #456c4c; border-color: #c9d8c2; width: 44px; height: 44px; }
 .controls { border-color: #cbdac4; }
-.stats span { color: #627961; }
+.stats > div > span { color: #627961; }
 .stats strong { color: #315a3c; }
 .stats > div { border-color: #cedcc7; }
 .slider :is(output,input) { accent-color: #426b42; }
@@ -450,3 +450,33 @@ input[type=range] { accent-color: #4c855b; }
 .reference-list article>.formula { color: #355f3c; }
 .learning-list>div>span,.chapter-detail-list>a>span:first-child { color: #78956c; }
 .immersive-home [data-reveal],.immersive-home [data-reveal].is-revealed { animation: none; opacity: 1; }
+/* Canonical mathematical notation uses the same typesetting in every surface. */
+.formula:not(.display) { display: inline-block; max-width: 100%; vertical-align: -.12em; padding-block: .1em; margin-inline: .08em; }
+.formula.display { width: 100%; overscroll-behavior-x: contain; padding-block: .6em; }
+.formula .katex { font-size: 1.08em; color: inherit; }
+.learning-check h3 { font-size: 19px; line-height: 2; font-weight: 550; margin-block: 18px 24px; }
+.learning-check h3 .formula .katex { font-size: 1.18em; }
+.check-choices button { align-items: center; min-height: 58px; padding: 15px 17px; }
+.check-choice-text { flex: 1; min-width: 0; line-height: 1.9; }
+.check-choice-text .formula { font-size: 16px; }
+.check-feedback { line-height: 2; }
+.plot-label { align-items: center; flex-wrap: wrap; }
+.plot-label > .plot-equation { font-size: 15px; color: #315a3c; white-space: normal; }
+.stats > div > span .formula { display: inline-block; font-size: inherit; }
+.hero-demo .plot-label > .plot-equation { color: #d1ead1; }
+.slider > span > span { min-width: 0; }
+.check-choices button .formula { font-weight: 400; }
+.plot text { font-variant-numeric: tabular-nums; }
+@media(max-width:600px) {
+  .learning-check { padding: 20px 17px; }
+  .learning-check h3 { font-size: 17px; }
+  .check-choices button { padding: 13px; gap: 10px; }
+  .check-choice-text .formula { font-size: 15px; }
+  .textbook-article .formula.display .katex { font-size: 1em; }
+}
+
+.formula:not(.display) { overflow-x: auto; overflow-y: hidden; padding-block: .24em; scrollbar-width: thin; }
+/* Preserve the actual mathematical baseline beside Chinese prose. */
+.formula:not(.display) { display: inline; vertical-align: baseline; padding: 0; overflow: visible; margin-inline: .1em; }
+.plot .math-axis { font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-size: 13px; fill: #456345; }
+.sidebar-lessons a > .formula { font-size: inherit; color: inherit; }

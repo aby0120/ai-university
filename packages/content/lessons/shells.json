@@ -4,8 +4,8 @@
   "number": "7.3",
   "title": "旋转体：圆柱壳",
   "subtitle": "绕一圈的窄条有多长？",
-  "concept": "平行于旋转轴的窄条转一圈，形成薄圆柱壳。体积近似为周长×高度×厚度。",
-  "intuition": "把薄壳展开：长为 2πr，高为 h，厚为 dr。因此一层贡献约 2πrh dr。",
+  "concept": "平行于旋转轴的窄条转一圈，形成薄圆柱壳。体积近似为$\\text{周长}\\times\\text{高度}\\times\\text{厚度}$。",
+  "intuition": "把薄壳展开：长为 $2 \\pi  r$，高为 $h$，厚为 $\\mathrm{d}r$。因此一层贡献约 $2\\pi rh\\,\\mathrm{d}r$。",
   "objectives": [
     "建立壳的三个量",
     "为什么近似会准确",
@@ -14,11 +14,11 @@
   "body": [
     {
       "title": "半径、高度怎样找？",
-      "text": "绕 y 轴取竖条时，r=x，h=上−下。绕 x=k 时，r=|x−k|。每层须对应不同半径，避免重叠计数。"
+      "text": "绕 $y$ 轴取竖条时，$r = x$，$h$=上−下。绕 $x = k$ 时，$r = |x - k|$。每层须对应不同半径，避免重叠计数。"
     },
     {
       "title": "为什么薄壳近似能用于积分？",
-      "text": "精确体积为 π[(r+Δr)²−r²]h。展开得到 2πrhΔr+πhΔr²；细分后第二项消失，留下积分。"
+      "text": "精确体积为 $\\pi  [(r + \\Delta  r)^{2} - r^{2}] h$。展开得到 $2 \\pi  r h \\Delta  r + \\pi  h \\Delta  r^{2}$；细分后第二项消失，留下积分。"
     },
     {
       "title": "怎样核对结果？",
@@ -29,55 +29,55 @@
     "text": "圆柱壳体积公式。",
     "latex": "V=2\\pi\\int_a^b r(x)h(x)dx",
     "conditions": [
-      "a<b，半径 r 与高度 h 在 [a,b] 连续且非负；壳层不能重复覆盖。",
-      "切片平行旋转轴；x 沿垂直于轴的方向计距离，使 dx 是径向厚度。例如绕 y 轴、x≥0 时 r=x。"
+      "$a < b$，半径 $r$ 与高度 $h$ 在 $[a , b]$ 连续且非负；壳层不能重复覆盖。",
+      "切片平行旋转轴；$x$ 沿垂直于轴的方向计距离，使 $\\mathrm{d}x$ 是径向厚度。例如绕 $y$ 轴、$x \\ge 0$ 时 $r = x$。"
     ]
   },
   "derivation": [
     {
-      "text": "对 0≤x≤1、0≤y≤x² 绕 y 轴。",
+      "text": "对 $0 \\le x \\le 1$、$0 \\le y \\le x^{2}$ 绕 $y$ 轴。",
       "latex": "r=x,\\qquad h=x^2"
     },
     {
-      "text": "微小壳体积为 2πx³dx。",
+      "text": "微小壳体积为 $2 \\pi  x^{3} \\mathrm{d}x$。",
       "latex": "V=2\\pi\\int_0^1x^3dx"
     },
     {
-      "text": "积分得到 π/2。",
+      "text": "积分得到 $\\frac{\\pi }{2}$。",
       "latex": "V=\\frac\\pi2"
     }
   ],
   "interactiveVisual": {
     "kind": "shell",
     "function": "square",
-    "caption": "移动竖条：半径 x、高 x²、周长 2πx；切片视图与旋转示意同步。",
-    "prediction": "薄壳半径增加时，高度是否保持不变？对照二维竖片，找出 2πx 与 x²。"
+    "caption": "移动竖条：半径 $x$、高 $x^{2}$、周长 $2 \\pi  x$；切片视图与旋转示意同步。",
+    "prediction": "薄壳半径增加时，高度是否保持不变？对照二维竖片，找出 $2 \\pi  x$ 与 $x^{2}$。"
   },
   "workedExamples": [
     {
       "title": "壳层直接算",
-      "problem": "区域 0≤x≤2、0≤y≤x 绕 y 轴的体积。",
+      "problem": "区域 $0 \\le x \\le 2$、$0 \\le y \\le x$ 绕 $y$ 轴的体积。",
       "steps": [
-        "r=x、h=x，因此 V=2π∫₀²x²dx。",
-        "得到 2π×8/3。"
+        "$r = x$、$h = x$，因此 $V = 2 \\pi  \\int _{0}^{2} x^{2} \\mathrm{d}x$。",
+        "得到 $\\frac{2 \\pi  \\times 8}{3}$。"
       ],
-      "answer": "$16\\pi/3$。"
+      "answer": "$\\frac{16\\pi}{3}$。"
     },
     {
       "title": "用圆环核对",
-      "problem": "区域 0≤x≤1、0≤y≤x² 绕 y 轴旋转，改用圆环法核对体积。",
+      "problem": "区域 $0 \\le x \\le 1$、$0 \\le y \\le x^{2}$ 绕 $y$ 轴旋转，改用圆环法核对体积。",
       "steps": [
-        "横切 y∈[0,1]，外半径 1，内半径 √y。",
-        "V=π∫₀¹(1−y)dy=π/2。"
+        "横切 $y \\in [0 , 1]$，外半径 1，内半径 $\\sqrt{y}$。",
+        "$V = \\pi  \\int _{0}^{1} (1 - y) \\mathrm{d}y = \\frac{\\pi }{2}$。"
       ],
-      "answer": "与壳层结果 $\\pi/2$ 一致。"
+      "answer": "与壳层结果 $\\frac{\\pi}{2}$ 一致。"
     }
   ],
   "commonMistakes": [
     {
       "id": "shells-m1",
       "claim": "把壳半径平方。",
-      "correction": "薄壳使用周长 2πr，只有圆盘面积使用 πr²。"
+      "correction": "薄壳使用周长 $2 \\pi  r$，只有圆盘面积使用 $\\pi  r^{2}$。"
     },
     {
       "id": "shells-m2",
@@ -92,10 +92,10 @@
       "misconceptionTags": [
         "shells-m1"
       ],
-      "problem": "区域 0≤x≤1、0≤y≤1 绕 y 轴的体积？",
+      "problem": "区域 $0 \\le x \\le 1$、$0 \\le y \\le 1$ 绕 $y$ 轴的体积？",
       "answer": "$\\pi$。",
       "solution": [
-        "壳法 2π∫₀¹x dx=π。"
+        "壳法 $2 \\pi  \\int _{0}^{1} x \\mathrm{d}x = \\pi$。"
       ],
       "hint": "这是半径 1、高 1 的圆柱。"
     },
@@ -105,12 +105,12 @@
       "misconceptionTags": [
         "shells-m2"
       ],
-      "problem": "y=x、0≤x≤1 下方区域绕 y 轴体积？",
-      "answer": "$2\\pi/3$。",
+      "problem": "$y = x$、$0 \\le x \\le 1$ 下方区域绕 $y$ 轴体积？",
+      "answer": "$\\frac{2\\pi}{3}$。",
       "solution": [
-        "2π∫₀¹x·x dx=2π/3。"
+        "$2 \\pi  \\int _{0}^{1} x \\cdot x \\mathrm{d}x = \\frac{2 \\pi }{3}$。"
       ],
-      "hint": "半径与高度都为 x。"
+      "hint": "半径与高度都为 $x$。"
     },
     {
       "id": "shells-p3",
@@ -118,10 +118,10 @@
       "misconceptionTags": [
         "shells-m2"
       ],
-      "problem": "竖条绕 x=3 旋转，x∈[0,1] 时半径是什么？",
+      "problem": "竖条绕 $x = 3$ 旋转，$x \\in [0 , 1]$ 时半径是什么？",
       "answer": "$3-x$。",
       "solution": [
-        "到竖直轴的水平距离为 |x−3|=3−x。"
+        "到竖直轴的水平距离为 $|x - 3| = 3 - x$。"
       ],
       "hint": "半径始终非负。"
     },
@@ -150,7 +150,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -161,13 +161,13 @@
     "phet-design"
   ],
   "learningCheck": {
-    "question": "区域 0≤y≤x²、0≤x≤1 绕 y 轴旋转。半径 x 的薄壳高度是多少？",
+    "question": "区域 $0 \\le y \\le x^{2}$、$0 \\le x \\le 1$ 绕 $y$ 轴旋转。半径 $x$ 的薄壳高度是多少？",
     "choices": [
-      "x",
-      "x²",
-      "1−x²"
+      "$x$",
+      "$x^{2}$",
+      "$1 - x^{2}$"
     ],
     "correctIndex": 1,
-    "explanation": "竖片从 y=0 延伸到 y=x²，高是 x²。薄壳体积约为 2πx·x²·dx。"
+    "explanation": "竖片从 $y = 0$ 延伸到 $y = x^{2}$，高是 $x^{2}$。薄壳体积约为 $2 \\pi  x \\cdot x^{2} \\cdot \\mathrm{d}x$。"
   }
 }

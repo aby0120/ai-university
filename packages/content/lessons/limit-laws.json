@@ -5,7 +5,7 @@
   "title": "极限的计算法则",
   "subtitle": "何时能代入，何时先化简",
   "concept": "已知两个函数的极限，就能计算它们的和、积、商的极限；商要求分母极限不为 0。",
-  "intuition": "极限规则让你先分别求出各部分的趋势，再组合。0/0 时，这条商规则暂时不能用。",
+  "intuition": "极限规则让你先分别求出各部分的趋势，再组合。$\\frac{0}{0}$ 时，这条商规则暂时不能用。",
   "objectives": [
     "代入的边界",
     "夹逼定理",
@@ -17,19 +17,19 @@
       "text": "多项式处处连续；有理式在分母不为 0 处连续。遇到根号、对数，还要检查定义域。"
     },
     {
-      "title": "遇到 0/0 怎么办？",
+      "title": "遇到 $\\frac{0}{0}$ 怎么办？",
       "text": "尝试因式分解、约分或乘共轭。化简只需在目标点附近成立，不必让原式在目标点有定义。"
     },
     {
       "title": "夹逼怎么用？",
-      "text": "若附近 g≤f≤h，且 g、h 都趋近 L，f 也趋近 L。先把不等式和两端极限说明白；三角极限使用弧度。"
+      "text": "若附近 $g \\le f \\le h$，且 $g$、$h$ 都趋近 $L$，$f$ 也趋近 $L$。先把不等式和两端极限说明白；三角极限使用弧度。"
     }
   ],
   "formalDefinition": {
-    "text": "若 f→A、g→B，则和与乘积的极限按数值运算；商还要求 B≠0。",
+    "text": "若 $f \\to A$、$g \\to B$，则和与乘积的极限按数值运算；商还要求 $B \\ne 0$。",
     "latex": "\\lim(f+g)=A+B,\\quad\\lim(fg)=AB,\\quad\\lim\\frac fg=\\frac AB\\ (B\\ne0)",
     "conditions": [
-      "f 与 g 的有限极限存在；商的分母极限不为零。"
+      "$f$ 与 $g$ 的有限极限存在；商的分母极限不为零。"
     ]
   },
   "derivation": [
@@ -50,24 +50,24 @@
     "kind": "limit",
     "function": "sinc",
     "a": 0,
-    "caption": "观察 sin(x)/x 在 x=0 两侧趋近 1。零点用孔洞标记。",
-    "prediction": "sin x/x 在 0 处没有定义。左右靠近时，输出是否仍能趋近同一个数？"
+    "caption": "观察 $\\frac{\\sin (x)}{x}$ 在 $x = 0$ 两侧趋近 1。零点用孔洞标记。",
+    "prediction": "$\\frac{\\sin x}{x}$ 在 0 处没有定义。左右靠近时，输出是否仍能趋近同一个数？"
   },
   "workedExamples": [
     {
       "title": "匹配内部角",
-      "problem": "求 $\\lim_{x\\to0}\\sin(3x)/x$。",
+      "problem": "求 $\\lim_{x\\to0}\\frac{\\sin(3x)}{x}$。",
       "steps": [
-        "改写为 $3\\sin(3x)/(3x)$。",
-        "令 u=3x，u 也趋近 0。"
+        "改写为 $3\\frac{\\sin(3x)}{3x}$。",
+        "令 $u = 3 x$，$u$ 也趋近 0。"
       ],
       "answer": "极限为 3。"
     },
     {
       "title": "压住振荡",
-      "problem": "求 $\\lim_{x\\to0}x^2\\cos(1/x)$。",
+      "problem": "求 $\\lim_{x\\to0}x^2\\cos(\\frac{1}{x})$。",
       "steps": [
-        "余弦介于 −1 与 1，故表达式介于 −x² 与 x²。",
+        "余弦介于 −1 与 1，故表达式介于 $- x^{2}$ 与 $x^{2}$。",
         "两边都趋近 0，夹逼得到结论。"
       ],
       "answer": "极限为 0。"
@@ -95,7 +95,7 @@
       "problem": "求 $\\lim_{x\\to2}(x^2+3x)$。",
       "answer": "$10$。",
       "solution": [
-        "多项式直接代入：4+6=10。"
+        "多项式直接代入：$4 + 6 = 10$。"
       ],
       "hint": "连续处代入。",
       "numericAnswer": 10
@@ -106,10 +106,10 @@
       "misconceptionTags": [
         "limit-laws-m2"
       ],
-      "problem": "求 $\\lim_{x\\to0}(\\sqrt{4+x}-2)/x$。",
-      "answer": "$1/4$。",
+      "problem": "求 $\\lim_{x\\to0}\\frac{\\sqrt{4+x}-2}{x}$。",
+      "answer": "$\\frac{1}{4}$。",
       "solution": [
-        "乘共轭化为 1/(√(4+x)+2)，代入为 1/4。"
+        "乘共轭化为 $\\frac{1}{\\sqrt{4 + x} + 2}$，代入为 $\\frac{1}{4}$。"
       ],
       "hint": "乘分子分母的共轭。",
       "numericAnswer": 0.25
@@ -120,10 +120,10 @@
       "misconceptionTags": [
         "limit-laws-m2"
       ],
-      "problem": "求 $\\lim_{x\\to0}\\sin(5x)/(2x)$。",
-      "answer": "$5/2$。",
+      "problem": "求 $\\lim_{x\\to0}\\frac{\\sin(5x)}{2x}$。",
+      "answer": "$\\frac{5}{2}$。",
       "solution": [
-        "写成 (5/2)sin(5x)/(5x)。"
+        "写成 $\\frac{(\\frac{5}{2}) \\sin (5 x)}{5 x}$。"
       ],
       "hint": "制造同一个小角度。",
       "numericAnswer": 2.5
@@ -134,10 +134,10 @@
       "misconceptionTags": [
         "limit-laws-m2"
       ],
-      "problem": "求 $\\lim_{x\\to0}x\\sin(1/x)$。",
+      "problem": "求 $\\lim_{x\\to0}x\\sin(\\frac{1}{x})$。",
       "answer": "$0$。",
       "solution": [
-        "绝对值不超过 |x|，由夹逼定理得 0。"
+        "绝对值不超过 $|x|$，由夹逼定理得 0。"
       ],
       "hint": "正弦的绝对值不超过 1。",
       "numericAnswer": 0
@@ -154,7 +154,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -166,13 +166,13 @@
     "3b1b-calculus"
   ],
   "learningCheck": {
-    "question": "代入后得到 0/0，下一步应该做什么？",
+    "question": "代入后得到 $\\frac{0}{0}$，下一步应该做什么？",
     "choices": [
       "答案就是 0",
       "答案就是 1",
       "整理表达式，再求极限"
     ],
     "correctIndex": 2,
-    "explanation": "0/0 是未定式，不是答案。因式分解、约分或有理化可能揭示附近的趋势；不能直接除以零。"
+    "explanation": "$\\frac{0}{0}$ 是未定式，不是答案。因式分解、约分或有理化可能揭示附近的趋势；不能直接除以零。"
   }
 }

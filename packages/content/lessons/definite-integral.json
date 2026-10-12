@@ -4,7 +4,7 @@
   "number": "6.3",
   "title": "定积分与带符号面积",
   "subtitle": "累积可以相互抵消",
-  "concept": "定积分是带符号的累积：x 轴上方加，下方减。几何面积要把负的部分也算成正。",
+  "concept": "定积分是带符号的累积：$x$ 轴上方加，下方减。几何面积要把负的部分也算成正。",
   "intuition": "速度积分给位移，往回走会抵消；路程积分用速度的绝对值，不会抵消。",
   "objectives": [
     "积分性质",
@@ -18,23 +18,23 @@
     },
     {
       "title": "面积和平均值怎么算？",
-      "text": "面积用 ∫|f|，计算时常按零点分段。平均值用总积分除以 b−a，不是只平均两个端点。"
+      "text": "面积用 $\\int  |f|$，计算时常按零点分段。平均值用总积分除以 $b - a$，不是只平均两个端点。"
     },
     {
       "title": "没有简单原函数怎么办？",
-      "text": "例如 e^(−x²) 的原函数没有初等表达式，但连续时仍可积。可用数值方法计算；积分定义不依赖原函数公式。"
+      "text": "例如 $e^{- x^{2}}$ 的原函数没有初等表达式，但连续时仍可积。可用数值方法计算；积分定义不依赖原函数公式。"
     }
   ],
   "formalDefinition": {
     "text": "带符号积分与几何面积要区分。",
     "latex": "A_{\\mathrm{geometric}}=\\int_a^b|f(x)|\\,dx,\\qquad f_{\\mathrm{avg}}=\\frac1{b-a}\\int_a^b f(x)\\,dx",
     "conditions": [
-      "a<b；面积与平均值公式要求相应函数可积。"
+      "$a < b$；面积与平均值公式要求相应函数可积。"
     ]
   },
   "derivation": [
     {
-      "text": "对于 f(x)=x，左右三角形的带符号面积不同。",
+      "text": "对于 $f (x) = x$，左右三角形的带符号面积不同。",
       "latex": "\\int_{-1}^0 x\\,dx=-\\frac12,\\qquad\\int_0^1x\\,dx=\\frac12"
     },
     {
@@ -49,7 +49,7 @@
   "interactiveVisual": {
     "kind": "signed-area",
     "function": "line",
-    "caption": "改变终点 b；y=x 在负半轴的阴影贡献负值，正半轴贡献正值。",
+    "caption": "改变终点 $b$；$y = x$ 在负半轴的阴影贡献负值，正半轴贡献正值。",
     "prediction": "增加积分上限，定积分一定增大吗？观察进入负值区域时的变化。"
   },
   "workedExamples": [
@@ -64,7 +64,7 @@
     },
     {
       "title": "平均高度",
-      "problem": "f(x)=2x+1 在 [0,2] 的平均值？",
+      "problem": "$f (x) = 2 x + 1$ 在 [0,2] 的平均值？",
       "steps": [
         "总积分由梯形面积为 6。",
         "除以区间长度 2。"
@@ -80,7 +80,7 @@
     },
     {
       "id": "definite-integral-m2",
-      "claim": "定积分末尾还加 C。",
+      "claim": "定积分末尾还加 $C$。",
       "correction": "定积分是一个数或参数函数，不是整族原函数。"
     }
   ],
@@ -119,7 +119,7 @@
       "misconceptionTags": [
         "definite-integral-m2"
       ],
-      "problem": "f(x)=x 在 [0,4] 的平均值？",
+      "problem": "$f (x) = x$ 在 [0,4] 的平均值？",
       "answer": "$2$。",
       "solution": [
         "三角形面积 8，除以长度 4。"
@@ -151,7 +151,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -163,13 +163,13 @@
     "3b1b-calculus"
   ],
   "learningCheck": {
-    "question": "∫₀²(t−1)dt=0，是否说明曲线与横轴之间没有面积？",
+    "question": "$\\int _{0}^{2} (t - 1) \\mathrm{d}t = 0$，是否说明曲线与横轴之间没有面积？",
     "choices": [
       "是",
       "不是，正负积分抵消，几何面积仍是 1",
       "几何面积是 −1"
     ],
     "correctIndex": 1,
-    "explanation": "[0,1] 的积分是 −1/2，[1,2] 是 1/2。几何面积要把两部分都取正，再相加。"
+    "explanation": "[0,1] 的积分是 $\\frac{- 1}{2}$，[1,2] 是 $\\frac{1}{2}$。几何面积要把两部分都取正，再相加。"
   }
 }

@@ -2016,7 +2016,7 @@ kbd {
 .stats > div:last-child {
   border: 0;
 }
-.stats span {
+.stats > div > span {
   display: block;
   font-size: 10px;
   color: #8f9ab2;
@@ -3884,7 +3884,7 @@ kbd {
     min-width: 0;
     padding: 0 6px;
   }
-  .hero-demo .stats span {
+  .hero-demo .stats > div > span {
     font-size: 8px;
   }
   .hero-demo .visual-card .select-label {
@@ -4235,7 +4235,7 @@ kbd {
   .hero-demo .stats strong {
     font-size: 18px;
   }
-  .hero-demo .stats span {
+  .hero-demo .stats > div > span {
     font-size: 10px;
   }
   .hero-demo .stats > div {
@@ -4717,7 +4717,7 @@ kbd {
   .stats strong {
     font-size: 19px;
   }
-  .stats span {
+  .stats > div > span {
     font-size: 9px;
   }
   .controls {

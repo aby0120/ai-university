@@ -2,47 +2,47 @@
   "id": "epsilon-delta",
   "chapterId": "limits",
   "number": "2.3",
-  "title": "ε–δ：把靠近说精确",
+  "title": "$\\varepsilon$–$\\delta$：把靠近说精确",
   "subtitle": "你给误差，我给输入范围",
-  "concept": "ε 限制输出误差，δ 限制输入距离。无论误差要求多小，都能找到相应的 δ，才叫有极限。",
-  "intuition": "对 f(x)=2x、a=1、L=2，输出误差是输入距离的 2 倍。要让误差小于 ε，取 δ=ε/2 就够了。",
+  "concept": "$\\varepsilon$ 限制输出误差，$\\delta$ 限制输入距离。无论误差要求多小，都能找到相应的 $\\delta$，才叫有极限。",
+  "intuition": "对 $f (x) = 2 x$、$a = 1$、$L = 2$，输出误差是输入距离的 2 倍。要让误差小于 $\\varepsilon$，取 $\\delta  = \\frac{\\varepsilon }{2}$ 就够了。",
   "objectives": [
     "量词的顺序",
-    "如何找 δ",
+    "如何找 $\\delta$",
     "证据的强度"
   ],
   "body": [
     {
       "title": "谁先给，谁后选？",
-      "text": "先给任意 ε>0，再选 δ>0。δ 可以依赖 ε，但不能等看见某个 x 后再临时选择。"
+      "text": "先给任意 $\\varepsilon  > 0$，再选 $\\delta  > 0$。$\\delta$ 可以依赖 $\\varepsilon$，但不能等看见某个 $x$ 后再临时选择。"
     },
     {
-      "title": "0<|x−a| 为什么有个 0？",
-      "text": "它排除了 x=a。极限只考察附近合法输入，所以 a 不必在定义域中。"
+      "title": "$0 < |x - a|$ 为什么有个 0？",
+      "text": "它排除了 $x = a$。极限只考察附近合法输入，所以 $a$ 不必在定义域中。"
     },
     {
-      "title": "δ 怎样找？",
-      "text": "从 |f(x)−L|<ε 倒推输入限制，再按正向顺序验证。例如 x² 在 a=2 附近先取 δ≤1，使 |x+2|<5，再取 δ≤ε/5。"
+      "title": "$\\delta$ 怎样找？",
+      "text": "从 $|f (x) - L| < \\varepsilon$ 倒推输入限制，再按正向顺序验证。例如 $x^{2}$ 在 $a = 2$ 附近先取 $\\delta  \\le 1$，使 $|x + 2| < 5$，再取 $\\delta  \\le \\frac{\\varepsilon }{5}$。"
     }
   ],
   "formalDefinition": {
-    "text": "设 D 为定义域，a 是 D 的聚点：a 附近总有不等于 a 的合法输入。有限极限定义如下。",
+    "text": "设 $D$ 为定义域，$a$ 是 $D$ 的聚点：$a$ 附近总有不等于 $a$ 的合法输入。有限极限定义如下。",
     "latex": "\\forall\\varepsilon>0\\ \\exists\\delta>0\\ \\forall x\\in D:\\quad 0<|x-a|<\\delta\\Rightarrow |f(x)-L|<\\varepsilon",
     "conditions": [
-      "x 属于函数定义域；a 不必属于定义域。"
+      "$x$ 属于函数定义域；$a$ 不必属于定义域。"
     ]
   },
   "derivation": [
     {
-      "text": "证明 x² 在 x→2 时趋近 4，分解误差。",
+      "text": "证明 $x^{2}$ 在 $x \\to 2$ 时趋近 4，分解误差。",
       "latex": "|x^2-4|=|x-2||x+2|"
     },
     {
-      "text": "先令 |x−2|<1，则 1<x<3，从而 |x+2|<5。",
+      "text": "先令 $|x - 2| < 1$，则 $1 < x < 3$，从而 $|x + 2| < 5$。",
       "latex": "\\delta=\\min\\left(1,\\frac\\varepsilon5\\right)"
     },
     {
-      "text": "当 0<|x−2|<δ 时，误差小于 5δ≤ε。",
+      "text": "当 $0 < |x - 2| < \\delta$ 时，误差小于 $5 \\delta  \\le \\varepsilon$。",
       "latex": "|x^2-4|<5\\delta\\le\\varepsilon"
     }
   ],
@@ -50,39 +50,39 @@
     "kind": "epsilon",
     "function": "square",
     "a": 2,
-    "caption": "改变 ε；δ=min(1,ε/5) 给出保证。蓝色竖带中的曲线落在绿色横带内。",
-    "prediction": "把 ε 缩小一半，保证范围 δ 会怎样变？先预测，再观察两条色带。"
+    "caption": "改变 $\\varepsilon$；$\\delta  = \\min (1 , \\frac{\\varepsilon }{5})$ 给出保证。蓝色竖带中的曲线落在绿色横带内。",
+    "prediction": "把 $\\varepsilon$ 缩小一半，保证范围 $\\delta$ 会怎样变？先预测，再观察两条色带。"
   },
   "workedExamples": [
     {
       "title": "线性函数的保证",
       "problem": "证明 $\\lim_{x\\to1}(3x+2)=5$。",
       "steps": [
-        "输出误差为 |3x+2−5|=3|x−1|。",
-        "给任意 ε>0，取 δ=ε/3，则误差严格小于 ε。"
+        "输出误差为 $|3 x + 2 - 5| = 3 |x - 1|$。",
+        "给任意 $\\varepsilon  > 0$，取 $\\delta  = \\frac{\\varepsilon }{3}$，则误差严格小于 $\\varepsilon$。"
       ],
-      "answer": "$\\delta=\\varepsilon/3$ 有效。"
+      "answer": "$\\delta=\\frac{\\varepsilon}{3}$ 有效。"
     },
     {
       "title": "常数函数",
       "problem": "证明常数函数 $f(x)=7$ 的极限为 7。",
       "steps": [
         "输出误差恒为零。",
-        "任意 ε>0，取 δ=1 即可。"
+        "任意 $\\varepsilon  > 0$，取 $\\delta  = 1$ 即可。"
       ],
-      "answer": "任何正 δ 都能满足要求。"
+      "answer": "任何正 $\\delta$ 都能满足要求。"
     }
   ],
   "commonMistakes": [
     {
       "id": "epsilon-delta-m1",
-      "claim": "先固定 δ，再要求所有 ε 都适用。",
-      "correction": "需要按给定 ε 选择 δ；同一个固定 δ 通常做不到。"
+      "claim": "先固定 $\\delta$，再要求所有 $\\varepsilon$ 都适用。",
+      "correction": "需要按给定 $\\varepsilon$ 选择 $\\delta$；同一个固定 $\\delta$ 通常做不到。"
     },
     {
       "id": "epsilon-delta-m2",
-      "claim": "仅要求存在一个好 x。",
-      "correction": "保证要求范围内所有合法 x 都满足输出误差。"
+      "claim": "仅要求存在一个好 $x$。",
+      "correction": "保证要求范围内所有合法 $x$ 都满足输出误差。"
     }
   ],
   "practice": [
@@ -92,10 +92,10 @@
       "misconceptionTags": [
         "epsilon-delta-m1"
       ],
-      "problem": "对 $f(x)=2x$、a=3、L=6，给出有效 δ。",
-      "answer": "$\\delta=\\varepsilon/2$。",
+      "problem": "对 $f(x)=2x$、$a = 3$、$L = 6$，给出有效 $\\delta$。",
+      "answer": "$\\delta=\\frac{\\varepsilon}{2}$。",
       "solution": [
-        "误差 2|x−3|<2δ=ε。"
+        "误差 $2 |x - 3| < 2 \\delta  = \\varepsilon$。"
       ],
       "hint": "输出误差是输入误差的两倍。"
     },
@@ -105,12 +105,12 @@
       "misconceptionTags": [
         "epsilon-delta-m2"
       ],
-      "problem": "上题 ε=0.1 时可取多少 δ？",
+      "problem": "上题 $\\varepsilon  = 0.1$ 时可取多少 $\\delta$？",
       "answer": "$0.05$。",
       "solution": [
-        "0.1/2=0.05。"
+        "$\\frac{0.1}{2} = 0.05$。"
       ],
-      "hint": "代入你的 δ 公式。",
+      "hint": "代入你的 $\\delta$ 公式。",
       "numericAnswer": 0.05
     },
     {
@@ -119,11 +119,11 @@
       "misconceptionTags": [
         "epsilon-delta-m2"
       ],
-      "problem": "证明 $\\lim_{x\\to1}x^2=1$，先限制 |x−1|<1。",
-      "answer": "$\\delta=\\min(1,\\varepsilon/3)$。",
+      "problem": "证明 $\\lim_{x\\to1}x^2=1$，先限制 $|x - 1| < 1$。",
+      "answer": "$\\delta=\\min(1,\\frac{\\varepsilon}{3})$。",
       "solution": [
-        "此时 0<x<2，|x+1|<3。",
-        "|x²−1|<3δ≤ε。"
+        "此时 $0 < x < 2$，$|x + 1| < 3$。",
+        "$|x^{2} - 1| < 3 \\delta  \\le \\varepsilon$。"
       ],
       "hint": "因式分解误差。"
     },
@@ -133,10 +133,10 @@
       "misconceptionTags": [
         "epsilon-delta-m2"
       ],
-      "problem": "为什么条件是 0<|x−a|，不包含 x=a？",
+      "problem": "为什么条件是 $0 < |x - a|$，不包含 $x = a$？",
       "answer": "极限研究附近行为，不依赖点上的值。",
       "solution": [
-        "去掉中心点后，即使 f(a) 未定义，也能谈极限。"
+        "去掉中心点后，即使 $f (a)$ 未定义，也能谈极限。"
       ],
       "hint": "回想有孔洞的曲线。"
     }
@@ -151,7 +151,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -163,13 +163,13 @@
     "3b1b-calculus"
   ],
   "learningCheck": {
-    "question": "ε–δ 定义中，先给定哪一个？",
+    "question": "$\\varepsilon$–$\\delta$ 定义中，先给定哪一个？",
     "choices": [
-      "输出误差 ε，再找输入范围 δ",
-      "先固定 δ，再要求所有 ε 都有效",
-      "ε 和 δ 必须相等"
+      "输出误差 $\\varepsilon$，再找输入范围 $\\delta$",
+      "先固定 $\\delta$，再要求所有 $\\varepsilon$ 都有效",
+      "$\\varepsilon$ 和 $\\delta$ 必须相等"
     ],
     "correctIndex": 0,
-    "explanation": "无论要求多小的输出误差 ε，都要能找到足够小的 δ。δ 可以依赖 ε。"
+    "explanation": "无论要求多小的输出误差 $\\varepsilon$，都要能找到足够小的 $\\delta$。$\\delta$ 可以依赖 $\\varepsilon$。"
   }
 }

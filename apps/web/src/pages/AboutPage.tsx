@@ -179,7 +179,18 @@ export function AboutPage() {
       ) : part === "versions" ? (
         <div className="versions-page">
           <div className="version-entry">
-            <span className="badge">当前网站 · 教材 v0.2.0</span>
+            <span className="badge">当前网站 · 教材 v0.2.1</span>
+            <h2>v0.5.1 · 统一数学排版</h2>
+            <time>2026 年 10 月 11 日</time>
+            <ul>
+              <li>全书题干、选项、解释、推导与解答统一使用数学排版。</li>
+              <li>补齐标题、图示说明、索引与打印版的公式渲染。</li>
+              <li>改善根号、分数、上下标、公式基线与手机布局。</li>
+              <li>加入发布前的排版检查；修正正弦基本极限的记号。</li>
+            </ul>
+          </div>
+          <div className="version-entry">
+            <span className="badge">教材 v0.2.0</span>
             <h2>v0.5.0 · 整站视觉统一与首页精简</h2>
             <time>2026 年 10 月 10 日</time>
             <ul>

@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { book, lessonById, lessons } from "../../../../packages/content";
 import supplements from "../../../../packages/content/supplements.json";
-import { Formula, MathText } from "../components/MathText";
+import { Formula, MathText, plainMathText } from "../components/MathText";
 import { pageWindow, routeHref } from "../lib/navigation";
 
 import {
@@ -36,7 +36,7 @@ export function ReferencePage() {
   const { route } = useApp();
   const tab = route.params.get("tab") || "formulas";
   const query = route.params.get("q") || "";
-  const list = lessons.filter((l) => `${l.title} ${l.concept}`.includes(query));
+  const list = lessons.filter((l) => plainMathText(`${l.title} ${l.concept}`).includes(query));
   const { start, end } = pageWindow(list.length, route.params.get("page"), 7);
   return (
     <>
@@ -75,14 +75,14 @@ export function ReferencePage() {
                 <header>
                   <Link to={lessonPath(l.id)}>
                     <span>{l.number}</span>
-                    <h2>{l.title}</h2>
+                    <h2><MathText text={l.title} /></h2>
                     <ArrowUpRight size={17} />
                   </Link>
                 </header>
                 <Formula latex={l.formalDefinition.latex} display />
                 <div className="reference-conditions">
                   <strong>条件</strong>
-                  <span>{l.formalDefinition.conditions.join("；")}</span>
+                  <span><MathText text={l.formalDefinition.conditions.join("；")} /></span>
                 </div>
               </article>
             ))}
@@ -106,7 +106,7 @@ export function ReferencePage() {
         <div className="glossary-list">
           {supplements.glossary.map((g) => (
             <article key={g.term}>
-              <h2>{g.term}</h2>
+              <h2><MathText text={g.term} /></h2>
               <p>
                 <MathText text={g.meaning} />
               </p>
@@ -205,8 +205,8 @@ export function LearningPage() {
               <div key={id}>
                 <span>{l.number}</span>
                 <Link to={lessonPath(id)}>
-                  <h2>{l.title}</h2>
-                  <p>{l.subtitle}</p>
+                  <h2><MathText text={l.title} /></h2>
+                  <p><MathText text={l.subtitle} /></p>
                 </Link>
                 <Link
                   to={lessonPath(id)}
@@ -303,7 +303,7 @@ export function SearchPage() {
                   微积分 I /{" "}
                   {book.chapters.find((c) => c.id === l.chapterId)!.title}
                 </small>
-                <h2>{l.title}</h2>
+                <h2><MathText text={l.title} /></h2>
                 <p>
                   <MathText text={l.concept} />
                 </p>

@@ -3,9 +3,9 @@
   "chapterId": "derivatives",
   "number": "3.3",
   "title": "链式法则",
-  "subtitle": "外层变化 × 内层变化",
+  "subtitle": "外层变化率 $\\times$ 内层变化率",
   "concept": "函数套函数时，每一层的变化率都要乘进去：外层导数乘内层导数。",
-  "intuition": "y=(x²+1)³：先把括号当作 u，得到 3u²；再乘 u′=2x。答案是 6x(x²+1)²。",
+  "intuition": "$y = (x^{2} + 1)^{3}$：先把括号当作 $u$，得到 $3 u^{2}$；再乘 $u' = 2 x$。答案是 $6 x (x^{2} + 1)^{2}$。",
   "objectives": [
     "辨认内外层",
     "与积法则区分",
@@ -14,27 +14,27 @@
   "body": [
     {
       "title": "内外层怎样找？",
-      "text": "先找最后一次运算。(x²+1)³ 最后是立方，内层才是 x²+1。从外向内求导，每层贡献一个因子。"
+      "text": "先找最后一次运算。$(x^{2} + 1)^{3}$ 最后是立方，内层才是 $x^{2} + 1$。从外向内求导，每层贡献一个因子。"
     },
     {
       "title": "什么时候还要乘积法则？",
-      "text": "x²sin(x³) 的最外层是相乘，先用乘积法则；其中 sin(x³) 再用链式法则。嵌套和相乘是不同结构。"
+      "text": "$x^{2} \\sin (x^{3})$ 的最外层是相乘，先用乘积法则；其中 $\\sin (x^{3})$ 再用链式法则。嵌套和相乘是不同结构。"
     },
     {
       "title": "为什么变化率能相乘？",
-      "text": "Δu≈g′(x)Δx，Δy≈f′(u)Δu，因此 Δy≈f′(u)g′(x)Δx。严格证明用余项，不靠约掉可能为 0 的 Δu。"
+      "text": "$\\Delta  u \\approx g' (x) \\Delta  x$，$\\Delta  y \\approx f' (u) \\Delta  u$，因此 $\\Delta  y \\approx f' (u) g' (x) \\Delta  x$。严格证明用余项，不靠约掉可能为 0 的 $\\Delta  u$。"
     }
   ],
   "formalDefinition": {
-    "text": "若 g 在 x 可导且 f 在 g(x) 可导，则复合可导。",
+    "text": "若 $g$ 在 $x$ 可导且 $f$ 在 $g (x)$ 可导，则复合可导。",
     "latex": "\\frac d{dx}f(g(x))=f\\prime(g(x))g\\prime(x)",
     "conditions": [
-      "外层导数在 g(x) 处取值；两个可导条件都要满足。"
+      "外层导数在 $g (x)$ 处取值；两个可导条件都要满足。"
     ]
   },
   "derivation": [
     {
-      "text": "对 f(g(x)) 用可导的一阶展开。",
+      "text": "对 $f (g (x))$ 用可导的一阶展开。",
       "latex": "\\Delta y=f\\prime(g(x))\\Delta u+o(\\Delta u)"
     },
     {
@@ -42,23 +42,23 @@
       "latex": "\\Delta u=g\\prime(x)h+o(h)"
     },
     {
-      "text": "代入并除以 h，余项趋零，得到链式法则。",
+      "text": "代入并除以 $h$，余项趋零，得到链式法则。",
       "latex": "\\frac{\\Delta y}{h}\\to f\\prime(g(x))g\\prime(x)"
     }
   ],
   "interactiveVisual": {
     "kind": "chain",
     "function": "square",
-    "caption": "选择 x，比较内层 u=x²+1 的变化率 2x 与外层 y=u³ 的变化率 3u²；总变化率是两者乘积。",
-    "prediction": "在 x=0，外层变化率不为零，总变化率为什么可能为零？查看内层读数。"
+    "caption": "选择 $x$，比较内层 $u = x^{2} + 1$ 的变化率 $2 x$ 与外层 $y = u^{3}$ 的变化率 $3 u^{2}$；总变化率是两者乘积。",
+    "prediction": "在 $x = 0$，外层变化率不为零，总变化率为什么可能为零？查看内层读数。"
   },
   "workedExamples": [
     {
       "title": "三次方的内层",
       "problem": "求 $y=(x^2+1)^3$ 的导数。",
       "steps": [
-        "外层是 u³，导数为 3u²。",
-        "内层导数为 2x，连乘并代回。"
+        "外层是 $u^{3}$，导数为 $3 u^{2}$。",
+        "内层导数为 $2 x$，连乘并代回。"
       ],
       "answer": "$y\\prime=6x(x^2+1)^2$。"
     },
@@ -66,10 +66,10 @@
       "title": "两层结构",
       "problem": "求 $y=\\sqrt{1+x^2}$ 的导数。",
       "steps": [
-        "外层 u^(1/2) 的导数为 (1/2)u^(−1/2)。",
-        "内层 1+x² 的导数为 2x。"
+        "外层 $u^{\\frac{1}{2}}$ 的导数为 $(\\frac{1}{2}) u^{\\frac{- 1}{2}}$。",
+        "内层 $1 + x^{2}$ 的导数为 $2 x$。"
       ],
-      "answer": "$y\\prime=x/\\sqrt{1+x^2}$。"
+      "answer": "$y\\prime=\\frac{x}{\\sqrt{1+x^2}}$。"
     }
   ],
   "commonMistakes": [
@@ -80,8 +80,8 @@
     },
     {
       "id": "chain-rule-m2",
-      "claim": "把 f′(g(x)) 写成 f′(x)。",
-      "correction": "外层接收的输入是 g(x)。"
+      "claim": "把 $f' (g (x))$ 写成 $f' (x)$。",
+      "correction": "外层接收的输入是 $g (x)$。"
     }
   ],
   "practice": [
@@ -94,7 +94,7 @@
       "problem": "求 $(2x+1)^4$ 的导数。",
       "answer": "$8(2x+1)^3$。",
       "solution": [
-        "外层给 4(2x+1)³，内层给 2。"
+        "外层给 $4 (2 x + 1)^{3}$，内层给 2。"
       ],
       "hint": "内层导数是 2。"
     },
@@ -104,10 +104,10 @@
       "misconceptionTags": [
         "chain-rule-m2"
       ],
-      "problem": "求 $1/(1+x^2)$ 的导数。",
-      "answer": "$-2x/(1+x^2)^2$。",
+      "problem": "求 $\\frac{1}{1+x^2}$ 的导数。",
+      "answer": "$-\\frac{2x}{(1+x^2)^2}$。",
       "solution": [
-        "写成 (1+x²)^−1，外层导数乘 2x。"
+        "写成 $(1 + x^{2})^{- 1}$，外层导数乘 $2 x$。"
       ],
       "hint": "使用负一次幂。"
     },
@@ -117,10 +117,10 @@
       "misconceptionTags": [
         "chain-rule-m2"
       ],
-      "problem": "$y=(x^2+1)^3$ 在 x=1 的导数值？",
+      "problem": "$y=(x^2+1)^3$ 在 $x = 1$ 的导数值？",
       "answer": "$24$。",
       "solution": [
-        "6×1×(1+1)²=24。"
+        "$6 \\times 1 \\times (1 + 1)^{2} = 24$。"
       ],
       "hint": "先求整体导数。",
       "numericAnswer": 24
@@ -134,7 +134,7 @@
       "problem": "求 $x^2(1+x)^3$ 的导数。",
       "answer": "$2x(1+x)^3+3x^2(1+x)^2$。",
       "solution": [
-        "先积法则，再对 (1+x)³ 用链式法则。"
+        "先积法则，再对 $(1 + x)^{3}$ 用链式法则。"
       ],
       "hint": "从最外层运算开始。"
     }
@@ -150,7 +150,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -162,13 +162,13 @@
     "3b1b-calculus"
   ],
   "learningCheck": {
-    "question": "y=(x²+1)³ 的导数中，最容易漏掉哪个因子？",
+    "question": "$y = (x^{2} + 1)^{3}$ 的导数中，最容易漏掉哪个因子？",
     "choices": [
-      "2x",
-      "3",
-      "x²+1"
+      "$2 x$",
+      "$3$",
+      "$x^{2} + 1$"
     ],
     "correctIndex": 0,
-    "explanation": "外层变化率是 3(x²+1)²，内层变化率是 2x。链式法则把两段变化率相乘。"
+    "explanation": "外层变化率是 $3 (x^{2} + 1)^{2}$，内层变化率是 $2 x$。链式法则把两段变化率相乘。"
   }
 }

@@ -1,39 +1,33 @@
 import katex from "katex";
-import { Fragment } from "react";
-export function Formula({
+import { Fragment, memo } from "react";
+import { splitMathText, plainMathText, mathDisplayMode } from "../../../../packages/content/math-text.mjs";
+export { plainMathText };
+export const Formula = memo(function Formula({
   latex,
   display = false,
 }: {
   latex: string;
   display?: boolean;
 }) {
+  const scrollable = mathDisplayMode(latex, display);
   const html = katex.renderToString(latex, {
-    displayMode: display,
+    displayMode: scrollable,
     throwOnError: false,
     trust: false,
     strict: "ignore",
   });
   return (
     <span
-      className={display ? "formula display" : "formula"}
+      className={scrollable ? "formula display" : "formula"}
+      tabIndex={scrollable ? 0 : undefined}
+      role={scrollable ? "group" : undefined}
+      aria-label={scrollable ? "数学公式，可横向滚动" : undefined}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );
-}
+});
 export function MathText({ text }: { text: string }) {
-  return (
-    <>
-      {text
-        .split(/(\$\$[\s\S]*?\$\$|\$[^$]+\$)/g)
-        .map((part, i) =>
-          part.startsWith("$$") ? (
-            <Formula key={i} display latex={part.slice(2, -2)} />
-          ) : part.startsWith("$") ? (
-            <Formula key={i} latex={part.slice(1, -1)} />
-          ) : (
-            <Fragment key={i}>{part}</Fragment>
-          ),
-        )}
-    </>
-  );
+  return <>{splitMathText(text).map((part, i) => part.kind === "math"
+    ? <Formula key={i} display={part.display} latex={part.value} />
+    : <Fragment key={i}>{part.value}</Fragment>)}</>;
 }

@@ -18,7 +18,7 @@ import {
   solidReadout,
   type SolidModel,
 } from "../../../../packages/visuals/solid-models.mjs";
-import { Formula } from "./MathText";
+import { Formula, MathText, plainMathText } from "./MathText";
 const f = (n: number) => Number(n.toFixed(4)).toString();
 type View = "perspective" | "front" | "axis";
 type Controller = {
@@ -44,12 +44,12 @@ function SolidSlider({
   return (
     <label className="slider">
       <span>
-        {label}
+        <span><MathText text={label} /></span>
         <output>{f(value)}</output>
       </span>
       <input
         type="range"
-        aria-label={label}
+        aria-label={plainMathText(label)}
         min={min}
         max={max}
         step={step}
@@ -91,12 +91,12 @@ export default function SolidVisual({
     );
   const description =
     model === "disk"
-      ? "y = √x，0 ≤ x ≤ 1，绕 x 轴"
+      ? "$y=\\sqrt{x}$，$0\\le x\\le1$，绕 $x$ 轴"
       : model === "washer"
-        ? "1 ≤ y ≤ 2，0 ≤ x ≤ 1，绕 x 轴"
+        ? "$1\\le y\\le2$，$0\\le x\\le1$，绕 $x$ 轴"
         : model === "shell"
-          ? "0 ≤ y ≤ x²，0 ≤ x ≤ 1，绕 y 轴"
-          : "y = (2/3)x³ᐟ²，0 ≤ x ≤ 1，绕 x 轴";
+          ? "$0\\le y\\le x^2$，$0\\le x\\le1$，绕 $y$ 轴"
+          : "$y=\\frac{2}{3}x^{\\frac{3}{2}}$，$0\\le x\\le1$，绕 $x$ 轴";
   const readout = solidReadout(model, slice, degrees);
   useEffect(() => {
     const container = host.current;
@@ -119,7 +119,7 @@ export default function SolidVisual({
     const canvas = renderer.domElement;
     canvas.setAttribute(
       "aria-label",
-      `${lesson.title}的三维图。拖动旋转，滚轮缩放；键盘方向键旋转，加减键缩放。`,
+      `${plainMathText(lesson.title)}的三维图。拖动旋转，滚轮缩放；键盘方向键旋转，加减键缩放。`,
     );
     canvas.setAttribute("role", "img");
     canvas.tabIndex = 0;
@@ -454,7 +454,7 @@ export default function SolidVisual({
   return (
     <section
       className={`solid-visual ${compact ? "compact" : ""}`}
-      aria-label="三维旋转演示"
+      aria-label={"三维旋转演示"}
     >
       <header className="solid-header">
         <div>
@@ -467,25 +467,25 @@ export default function SolidVisual({
                 : "一条横截面，转出一个旋转体"}
           </h3>
         </div>
-        <button className="icon-btn" aria-label="重置三维演示" onClick={reset}>
+        <button className="icon-btn" aria-label={"重置三维演示"} onClick={reset}>
           <RotateCcw size={17} />
         </button>
       </header>
       {kind === "disk" && (
-        <div className="solid-model-tabs" role="group" aria-label="旋转体模型">
+        <div className="solid-model-tabs" role="group" aria-label={"旋转体模型"}>
           <button
             className={!washer ? "active" : ""}
             aria-pressed={!washer}
             onClick={() => setWasher(false)}
           >
-            圆盘 · √x
+            <MathText text={"圆盘 · $\\sqrt{x}$"} />
           </button>
           <button
             className={washer ? "active" : ""}
             aria-pressed={washer}
             onClick={() => setWasher(true)}
           >
-            圆环 · R=2, r=1
+            <MathText text="圆环 · $R=2$，$r=1$" />
           </button>
         </div>
       )}
@@ -505,25 +505,25 @@ export default function SolidVisual({
         </span>
         <div className="solid-stage-tools">
           <button
-            aria-label="旋转视角"
+            aria-label={"旋转视角"}
             onClick={() => controller.current?.orbit()}
           >
             <RotateCw size={16} />
           </button>
           <button
-            aria-label="放大三维图"
+            aria-label={"放大三维图"}
             onClick={() => controller.current?.zoom(0.85)}
           >
             <Plus size={16} />
           </button>
           <button
-            aria-label="缩小三维图"
+            aria-label={"缩小三维图"}
             onClick={() => controller.current?.zoom(1.15)}
           >
             <Minus size={16} />
           </button>
           <button
-            aria-label="恢复三维视角"
+            aria-label={"恢复三维视角"}
             onClick={() => controller.current?.view("perspective")}
           >
             <Maximize2 size={16} />
@@ -541,7 +541,7 @@ export default function SolidVisual({
           </span>
         </div>
       </div>
-      <div className="solid-view-tabs" role="group" aria-label="三维视角">
+      <div className="solid-view-tabs" role="group" aria-label={"三维视角"}>
         <span>拖动旋转 · 滚轮缩放</span>
         <button onClick={() => controller.current?.view("perspective")}>
           立体
@@ -557,19 +557,19 @@ export default function SolidVisual({
           网格
         </label>
       </div>
-      <p className="solid-model-description">{description}</p>
+      <p className="solid-model-description"><MathText text={description} /></p>
       <div className="stats">
         <div>
-          <span>{model === "shell" ? "半径 x" : "截面位置 x"}</span>
+          <span><MathText text={model === "shell" ? "半径 $x$" : "截面位置 $x$"} /></span>
           <strong>{f(slice)}</strong>
         </div>
         <div>
           <span>
-            {model === "shell"
-              ? "完整薄壳的 dV/dx"
+            <MathText text={model === "shell"
+              ? "完整薄壳的 $\\frac{\\mathrm{d}V}{\\mathrm{d}x}$"
               : model === "surface"
-                ? "完整曲面的 dS/dx"
-                : "完整截面面积 A(x)"}
+                ? "完整曲面的 $\\frac{\\mathrm{d}S}{\\mathrm{d}x}$"
+                : "完整截面面积 $A(x)$"} />
           </span>
           <strong>{f(readout.density)}</strong>
         </div>
@@ -582,7 +582,7 @@ export default function SolidVisual({
       </div>
       <div className="controls">
         <SolidSlider
-          label="旋转角度 θ"
+          label={"旋转角度 $\\theta$"}
           value={degrees}
           min={0}
           max={360}
@@ -592,7 +592,7 @@ export default function SolidVisual({
           }}
         />
         <SolidSlider
-          label={model === "shell" ? "薄壳半径 x" : "截面位置 x"}
+          label={model === "shell" ? "薄壳半径 $x$" : "截面位置 $x$"}
           value={slice}
           min={0}
           max={1}
@@ -615,7 +615,7 @@ export default function SolidVisual({
         <label>
           速度
           <select
-            aria-label="三维动画速度"
+            aria-label={"三维动画速度"}
             value={speed}
             onChange={(e) => setSpeed(+e.target.value)}
           >
@@ -634,17 +634,17 @@ export default function SolidVisual({
                 ? "dV=\\pi(2^2-1^2)\\,dx"
                 : model === "shell"
                   ? "dV=2\\pi x\\cdot x^2\\,dx"
-                  : "dS=2\\pi\\left(\\frac23x^{3/2}\\right)\\sqrt{1+x}\\,dx"
+                  : "dS=2\\pi\\left(\\frac23x^{\\frac{3}{2}}\\right)\\sqrt{1+x}\\,dx"
           }
         />
         <p>
-          {model === "shell"
-            ? "金色薄壳的周长是 2πx，高是 x²。相乘得到单位厚度的体积。"
+          <MathText text={model === "shell"
+            ? "金色薄壳的周长是 $2\\pi x$，高是 $x^2$。相乘得到单位厚度的体积。"
             : model === "surface"
-              ? "金色带的面积约为周长 × 斜长。斜长是 ds，不是 dx。"
+              ? "金色带的面积约为周长乘以斜长。斜长是 $\\mathrm{d}s$，不是 $\\mathrm{d}x$。"
               : model === "washer"
-                ? "先算外圆，再减去内孔。金色截面面积是 3π。"
-                : "金色圆盘的半径是 √x，面积是 πx。沿 x 累加这些截面。"}
+                ? "先算外圆，再减去内孔。金色截面面积是 $3\\pi$。"
+                : "金色圆盘的半径是 $\\sqrt{x}$，面积是 $\\pi x$。沿 $x$ 累加这些截面。"} />
         </p>
       </div>
       <p className="visual-note">
@@ -673,7 +673,7 @@ function Profile({ model, slice }: { model: SolidModel; slice: number }) {
       className="solid-profile"
       viewBox="0 0 150 120"
       role="img"
-      aria-label="旋转前的二维轮廓"
+      aria-label={"旋转前的二维轮廓"}
     >
       <text x="13" y="14">
         旋转前

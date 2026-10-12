@@ -1,3 +1,4 @@
+import { MathText } from "./MathText";
 import { ArrowRight, ArrowUpRight, Search, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { routeHref } from "../lib/navigation";
@@ -127,8 +128,8 @@ export function SearchDialog({
               <Link key={l.id} to={lessonPath(l.id)}>
                 <span>{l.number}</span>
                 <div>
-                  <strong>{l.title}</strong>
-                  <p>{l.subtitle}</p>
+                  <strong><MathText text={l.title} /></strong>
+                  <p><MathText text={l.subtitle} /></p>
                 </div>
                 <ArrowUpRight size={18} />
               </Link>
