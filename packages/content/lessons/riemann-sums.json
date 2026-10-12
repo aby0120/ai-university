@@ -87,7 +87,7 @@
   "practice": [
     {
       "id": "riemann-sums-p1",
-      "difficulty": 1,
+      "difficulty": 2,
       "misconceptionTags": [
         "riemann-sums-m1"
       ],
@@ -103,7 +103,7 @@
       "id": "riemann-sums-p2",
       "difficulty": 2,
       "misconceptionTags": [
-        "riemann-sums-m2"
+        "riemann-sums-m1"
       ],
       "problem": "$x^{2}$ 在 [0,1] 的单个中点矩形值？",
       "answer": "$\\frac{1}{4}$。",
@@ -115,10 +115,8 @@
     },
     {
       "id": "riemann-sums-p3",
-      "difficulty": 3,
-      "misconceptionTags": [
-        "riemann-sums-m2"
-      ],
+      "difficulty": 1,
+      "misconceptionTags": [],
       "problem": "对递增非负函数，左端和通常高估还是低估积分？",
       "answer": "低估。",
       "solution": [
@@ -128,10 +126,8 @@
     },
     {
       "id": "riemann-sums-p4",
-      "difficulty": 4,
-      "misconceptionTags": [
-        "riemann-sums-m2"
-      ],
+      "difficulty": 1,
+      "misconceptionTags": [],
       "problem": "常数函数 3 在 [0,2] 的任意黎曼和是多少？",
       "answer": "$6$。",
       "solution": [
@@ -152,7 +148,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

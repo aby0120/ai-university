@@ -23,6 +23,14 @@
     {
       "title": "怎样确定并检查答案？",
       "text": "已知某点的函数值时，代入 $F (x) + C$ 求出 $C$。最后求导核对；乘积的积分不能拆成两个积分相乘。"
+    },
+    {
+      "title": "常见原函数有哪些？",
+      "text": "幂与对数之外，先记这一组：$\\int e^x\\,\\mathrm{d}x=e^x+C$；$\\int\\sin x\\,\\mathrm{d}x=-\\cos x+C$；$\\int\\cos x\\,\\mathrm{d}x=\\sin x+C$。每式都能用求导核对，复合输入则要检查内部导数。"
+    },
+    {
+      "title": "三角与反三角结构怎样识别？",
+      "text": "$\\int\\sec^2x\\,\\mathrm{d}x=\\tan x+C$，$\\int\\csc^2x\\,\\mathrm{d}x=-\\cot x+C$；$\\int\\sec x\\tan x\\,\\mathrm{d}x=\\sec x+C$，$\\int\\csc x\\cot x\\,\\mathrm{d}x=-\\csc x+C$。再由反三角导数读出 $\\int\\frac{1}{1+x^2}\\,\\mathrm{d}x=\\arctan x+C$ 与 $\\int\\frac{1}{\\sqrt{1-x^2}}\\,\\mathrm{d}x=\\arcsin x+C$。前四式避开函数无定义点，最后一式限于 $|x|<1$ 的区间。"
     }
   ],
   "formalDefinition": {
@@ -70,6 +78,15 @@
         "代入 $t = 0$ 得 $C = 3$。"
       ],
       "answer": "$s (t) = t^{2} + t + 3$。"
+    },
+    {
+      "title": "按结构逐项识别",
+      "problem": "求 $\\int\\left(e^x+\\frac{2}{1+x^2}-3\\sin x\\right)\\,\\mathrm{d}x$。",
+      "steps": [
+        "三项分别是 $e^x$、$2\\arctan x$、$3\\cos x$ 的导数。",
+        "求导复算：$(3\\cos x)\\prime=-3\\sin x$，负号与原题一致。"
+      ],
+      "answer": "$e^x+2\\arctan x+3\\cos x+C$。"
     }
   ],
   "commonMistakes": [
@@ -102,6 +119,7 @@
       "id": "antiderivatives-p2",
       "difficulty": 2,
       "misconceptionTags": [
+        "antiderivatives-m1",
         "antiderivatives-m2"
       ],
       "problem": "求 $\\int(\\frac{2}{x})\\,dx$。",
@@ -113,9 +131,9 @@
     },
     {
       "id": "antiderivatives-p3",
-      "difficulty": 3,
+      "difficulty": 1,
       "misconceptionTags": [
-        "antiderivatives-m2"
+        "antiderivatives-m1"
       ],
       "problem": "求 $\\int\\cos x\\,dx$。",
       "answer": "$\\sin x+C$。",
@@ -126,9 +144,9 @@
     },
     {
       "id": "antiderivatives-p4",
-      "difficulty": 4,
+      "difficulty": 2,
       "misconceptionTags": [
-        "antiderivatives-m2"
+        "antiderivatives-m1"
       ],
       "problem": "$F' (x) = 3 x^{2}$，$F (1) = 5$，求 $F (x)$。",
       "answer": "$x^3+4$。",
@@ -136,12 +154,39 @@
         "$F = x^{3} + C$；$1 + C = 5$ 得 $C = 4$。"
       ],
       "hint": "初始值决定平移量。"
+    },
+    {
+      "id": "antiderivatives-p5",
+      "problem": "求 $\\int(2\\sec^2x-\\cos x)\\,\\mathrm{d}x$，注明适用区间。",
+      "answer": "$2\\tan x-\\sin x+C$，在避开 $\\cos x=0$ 的任一区间使用。",
+      "solution": [
+        "由 $(\\tan x)\\prime=\\sec^2x$ 与 $(\\sin x)\\prime=\\cos x$ 逐项积分。",
+        "求导得到原式；不能跨越正切函数的无定义点使用同一原函数。"
+      ],
+      "hint": "对照三角导数，保留常数与定义域。",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "antiderivatives-m1"
+      ]
+    },
+    {
+      "id": "antiderivatives-p6",
+      "problem": "求 $\\int\\frac{1}{\\sqrt{1-x^2}}\\,\\mathrm{d}x$，能在 $x=1$ 使用原式吗？",
+      "answer": "$\\arcsin x+C$（$|x|<1$）；原被积式在 $x=1$ 无定义。",
+      "solution": [
+        "反正弦的导数是 $\\frac{1}{\\sqrt{1-x^2}}$。",
+        "端点处根号为零，原式不能代入；反常积分需另用极限，本卷不把它当普通定积分。"
+      ],
+      "hint": "区分原函数的值与被积函数的定义域。",
+      "difficulty": 2,
+      "misconceptionTags": []
     }
   ],
   "prerequisites": [
     "mean-value",
     "exp-log-derivatives",
-    "inverse-trig"
+    "inverse-trig",
+    "trig-derivatives"
   ],
   "difficulty": 2,
   "misconceptionTags": [
@@ -150,7 +195,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

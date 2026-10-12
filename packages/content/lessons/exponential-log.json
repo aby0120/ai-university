@@ -88,9 +88,7 @@
     {
       "id": "exponential-log-p1",
       "difficulty": 1,
-      "misconceptionTags": [
-        "exponential-log-m1"
-      ],
+      "misconceptionTags": [],
       "problem": "求 $\\log_3 81$。",
       "answer": "$4$。",
       "solution": [
@@ -101,10 +99,8 @@
     },
     {
       "id": "exponential-log-p2",
-      "difficulty": 2,
-      "misconceptionTags": [
-        "exponential-log-m2"
-      ],
+      "difficulty": 1,
+      "misconceptionTags": [],
       "problem": "化简 $\\ln(e^5)$。",
       "answer": "$5$。",
       "solution": [
@@ -115,7 +111,7 @@
     },
     {
       "id": "exponential-log-p3",
-      "difficulty": 3,
+      "difficulty": 1,
       "misconceptionTags": [
         "exponential-log-m2"
       ],
@@ -128,10 +124,8 @@
     },
     {
       "id": "exponential-log-p4",
-      "difficulty": 4,
-      "misconceptionTags": [
-        "exponential-log-m2"
-      ],
+      "difficulty": 2,
+      "misconceptionTags": [],
       "problem": "在 $x>0$ 时，$\\ln(x^3)$ 等于什么？",
       "answer": "$3\\ln x$。",
       "solution": [
@@ -150,7 +144,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

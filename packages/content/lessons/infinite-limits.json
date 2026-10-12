@@ -89,9 +89,7 @@
     {
       "id": "infinite-limits-p1",
       "difficulty": 1,
-      "misconceptionTags": [
-        "infinite-limits-m1"
-      ],
+      "misconceptionTags": [],
       "problem": "求 $\\lim_{x\\to\\infty}\\frac{2x+1}{x+4}$。",
       "answer": "$2$。",
       "solution": [
@@ -104,7 +102,7 @@
       "id": "infinite-limits-p2",
       "difficulty": 2,
       "misconceptionTags": [
-        "infinite-limits-m2"
+        "infinite-limits-m1"
       ],
       "problem": "求 $\\lim_{x\\to0}\\frac{1}{x^2}$。",
       "answer": "$+ \\infty$。",
@@ -115,10 +113,8 @@
     },
     {
       "id": "infinite-limits-p3",
-      "difficulty": 3,
-      "misconceptionTags": [
-        "infinite-limits-m2"
-      ],
+      "difficulty": 1,
+      "misconceptionTags": [],
       "problem": "求 $\\lim_{x\\to-\\infty}x^3$。",
       "answer": "$- \\infty$。",
       "solution": [
@@ -128,7 +124,7 @@
     },
     {
       "id": "infinite-limits-p4",
-      "difficulty": 4,
+      "difficulty": 2,
       "misconceptionTags": [
         "infinite-limits-m2"
       ],
@@ -151,7 +147,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

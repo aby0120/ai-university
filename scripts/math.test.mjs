@@ -14,7 +14,9 @@ const near = (a, b, tol = 1e-7) =>
 test("entire manuscript is linked, schema valid, formula-renderable and acyclic", () => {
   const result = validateContent();
   assert.equal(result.sections, 35);
-  assert.equal(result.exercises, 140);
+  assert.equal(result.exercises, 153);
+  assert.equal(result.examples, 79);
+  assert.equal(result.reviewAndExamExercises, 38);
 });
 test("canonical derivatives agree with independent central differences", () => {
   for (const [id, s] of Object.entries(functions)) {

@@ -100,10 +100,8 @@
     },
     {
       "id": "transformations-p2",
-      "difficulty": 2,
-      "misconceptionTags": [
-        "transformations-m2"
-      ],
+      "difficulty": 1,
+      "misconceptionTags": [],
       "problem": "$g(x)=-f(x)$ 是哪种反射？",
       "answer": "关于 $x$ 轴反射。",
       "solution": [
@@ -113,10 +111,8 @@
     },
     {
       "id": "transformations-p3",
-      "difficulty": 3,
-      "misconceptionTags": [
-        "transformations-m2"
-      ],
+      "difficulty": 1,
+      "misconceptionTags": [],
       "problem": "$f(x)=x^3$ 是奇函数还是偶函数？",
       "answer": "奇函数。",
       "solution": [
@@ -126,9 +122,9 @@
     },
     {
       "id": "transformations-p4",
-      "difficulty": 4,
+      "difficulty": 2,
       "misconceptionTags": [
-        "transformations-m2"
+        "transformations-m1"
       ],
       "problem": "$g(x)=\\sqrt{x-2}$ 的定义域？",
       "answer": "$[2,\\infty)$。",
@@ -148,7 +144,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

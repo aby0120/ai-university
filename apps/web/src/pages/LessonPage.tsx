@@ -118,7 +118,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
           <span>
             <BookOpen size={15} /> {l.body.length} 个关键问题
           </span>
-          <span>2 例题 · 4 练习</span>
+          <span>{l.workedExamples.length} 例题 · {l.practice.length} 练习</span>
           <div>
             <button
               className="icon-btn"
@@ -169,7 +169,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
             aria-current={view === id ? "page" : undefined}
           >
             {name}
-            {id === "practice" && <span>4</span>}
+            {id === "practice" && <span>{l.practice.length}</span>}
           </Link>
         ))}
       </nav>
@@ -300,8 +300,8 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
               <div className="lesson-finish">
                 <div>
                   <Eyebrow>NOW, TRY IT YOURSELF</Eyebrow>
-                  <h2>用四道题检验理解。</h2>
-                  <p>四道练习，检查概念、计算与适用条件。</p>
+                  <h2>用练习检验理解。</h2>
+                  <p>{l.practice.length} 道练习，检查概念、计算与适用条件。</p>
                 </div>
                 <Link
                   to={lessonPath(l.id)}

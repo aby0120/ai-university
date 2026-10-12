@@ -75,7 +75,7 @@
   "commonMistakes": [
     {
       "id": "fundamental-theorem-m1",
-      "claim": "积分的导数总是原函数，不看上限。",
+      "claim": "不看积分上限，直接把导数写成 $f(x)$。",
       "correction": "上限为 $g (x)$ 时必须代入并乘 $g'$。"
     },
     {
@@ -89,7 +89,7 @@
       "id": "fundamental-theorem-p1",
       "difficulty": 1,
       "misconceptionTags": [
-        "fundamental-theorem-m1"
+        "fundamental-theorem-m2"
       ],
       "problem": "计算 $\\int_1^3 2x\\,dx$。",
       "answer": "$8$。",
@@ -101,9 +101,9 @@
     },
     {
       "id": "fundamental-theorem-p2",
-      "difficulty": 2,
+      "difficulty": 1,
       "misconceptionTags": [
-        "fundamental-theorem-m2"
+        "fundamental-theorem-m1"
       ],
       "problem": "求 $\\frac d{dx}\\int_1^x e^t dt$。",
       "answer": "$e^x$。",
@@ -116,7 +116,7 @@
       "id": "fundamental-theorem-p3",
       "difficulty": 3,
       "misconceptionTags": [
-        "fundamental-theorem-m2"
+        "fundamental-theorem-m1"
       ],
       "problem": "求 $\\frac d{dx}\\int_x^{2x}t^2dt$。",
       "answer": "$7x^2$。",
@@ -127,7 +127,7 @@
     },
     {
       "id": "fundamental-theorem-p4",
-      "difficulty": 4,
+      "difficulty": 1,
       "misconceptionTags": [
         "fundamental-theorem-m2"
       ],
@@ -152,7 +152,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

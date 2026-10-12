@@ -88,9 +88,10 @@
   "practice": [
     {
       "id": "trig-derivatives-p1",
-      "difficulty": 1,
+      "difficulty": 2,
       "misconceptionTags": [
-        "trig-derivatives-m1"
+        "trig-derivatives-m1",
+        "trig-derivatives-m2"
       ],
       "problem": "求 $\\cos(2x)$ 的导数。",
       "answer": "$-2\\sin(2x)$。",
@@ -114,10 +115,8 @@
     },
     {
       "id": "trig-derivatives-p3",
-      "difficulty": 3,
-      "misconceptionTags": [
-        "trig-derivatives-m2"
-      ],
+      "difficulty": 1,
+      "misconceptionTags": [],
       "problem": "求 $\\tan x$ 在 0 的导数值。",
       "answer": "$1$。",
       "solution": [
@@ -128,10 +127,8 @@
     },
     {
       "id": "trig-derivatives-p4",
-      "difficulty": 4,
-      "misconceptionTags": [
-        "trig-derivatives-m2"
-      ],
+      "difficulty": 2,
+      "misconceptionTags": [],
       "problem": "求 $\\sec x$ 的导数。",
       "answer": "$\\sec x\\tan x$。",
       "solution": [
@@ -152,7 +149,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

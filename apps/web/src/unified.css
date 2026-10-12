@@ -480,3 +480,14 @@ input[type=range] { accent-color: #4c855b; }
 .formula:not(.display) { display: inline; vertical-align: baseline; padding: 0; overflow: visible; margin-inline: .1em; }
 .plot .math-axis { font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-size: 13px; fill: #456345; }
 .sidebar-lessons a > .formula { font-size: inherit; color: inherit; }
+
+/* Supplemental application models follow the same reader palette. */
+.application-visual { margin-top: 24px; }
+.application-visual>p { line-height: 1.9; }
+.application-visual>svg { display: block; width: 100%; height: auto; background: #fbfcf8; border: 1px solid #d8e1cf; border-radius: 4px; margin: 18px 0; }
+.application-visual>svg text { font: 13px var(--sans); fill: #60755f; }
+.application-visual>svg .math-axis { font-family: KaTeX_Main,Georgia,serif; font-style: italic; }
+.application-toggle { display: flex; align-items: center; gap: 8px; padding: 12px 0; color: #54745a; font-size: 13px; }
+.application-toggle input { accent-color: #4a7652; }
+.application-visual .controls { grid-template-columns: repeat(auto-fit,minmax(min(220px,100%),1fr)); }
+@media(max-width:700px) { .application-visual .stats { grid-template-columns: 1fr; } }

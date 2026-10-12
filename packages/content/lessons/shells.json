@@ -103,7 +103,7 @@
       "id": "shells-p2",
       "difficulty": 2,
       "misconceptionTags": [
-        "shells-m2"
+        "shells-m1"
       ],
       "problem": "$y = x$、$0 \\le x \\le 1$ 下方区域绕 $y$ 轴体积？",
       "answer": "$\\frac{2\\pi}{3}$。",
@@ -114,10 +114,8 @@
     },
     {
       "id": "shells-p3",
-      "difficulty": 3,
-      "misconceptionTags": [
-        "shells-m2"
-      ],
+      "difficulty": 1,
+      "misconceptionTags": [],
       "problem": "竖条绕 $x = 3$ 旋转，$x \\in [0 , 1]$ 时半径是什么？",
       "answer": "$3-x$。",
       "solution": [
@@ -127,10 +125,8 @@
     },
     {
       "id": "shells-p4",
-      "difficulty": 4,
-      "misconceptionTags": [
-        "shells-m2"
-      ],
+      "difficulty": 2,
+      "misconceptionTags": [],
       "problem": "壳公式中高度与厚度可以交换吗？",
       "answer": "不能随意交换。",
       "solution": [
@@ -150,7 +146,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

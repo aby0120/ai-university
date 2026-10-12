@@ -5,7 +5,7 @@ import {
   ArrowUpRight,
   GraduationCap,
 } from "lucide-react";
-import { book, lessons } from "../../../../packages/content";
+import { bookStats, book, lessons } from "../../../../packages/content";
 import supplements from "../../../../packages/content/supplements.json";
 import type { Exercise } from "../../../../packages/content/types";
 import { PracticeSet } from "../components/Practice";
@@ -45,7 +45,7 @@ export function ExplorePage({ mode }: { mode: "lab" | "practice" }) {
         }
       >
         <span className="page-count">
-          {mode === "lab" ? "35 个演示" : "175 道练习"}
+          {mode === "lab" ? `${bookStats.lessons} 节演示` : `${bookStats.exercises} 道练习`}
           <small>Calculus I</small>
         </span>
       </PageTitle>

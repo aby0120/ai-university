@@ -179,7 +179,19 @@ export function AboutPage() {
       ) : part === "versions" ? (
         <div className="versions-page">
           <div className="version-entry">
-            <span className="badge">当前网站 · 教材 v0.2.1</span>
+            <span className="badge">当前网站 · 教材 v0.3.0</span>
+            <h2>v0.6.0 · 微积分 I 内容补全与复核</h2>
+            <time>2026 年 10 月 12 日</time>
+            <ul>
+              <li>补齐积分中值定理、隐式二阶导数、一般截面体积和水的积分应用。</li>
+              <li>增加基本原函数、非单调换元及洛必达边界的完整例题。</li>
+              <li>加入等面积平均高度、可变截面、抽水与闸门水压的交互图。</li>
+              <li>重新核对练习难度与误区标签，章末题和综合题改用具体提示。</li>
+              <li>全书保留 7 章 35 节，现有 79 个例题与 191 道练习。</li>
+            </ul>
+          </div>
+          <div className="version-entry">
+            <span className="badge">教材 v0.2.1</span>
             <h2>v0.5.1 · 统一数学排版</h2>
             <time>2026 年 10 月 11 日</time>
             <ul>

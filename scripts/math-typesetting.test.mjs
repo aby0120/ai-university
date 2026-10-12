@@ -12,6 +12,9 @@ test('unmarked notation and damaged delimiters cannot enter canonical content', 
     assert.throws(() => assertMathText(text), /unmarked|unmatched/);
   }
   assert.throws(() => validateMathNotation({question:'$\\sqrt{$'}), /ParseError/);
+  assert.throws(() => validateMathNotation({answer:'$2%$'}), /unescaped percent/);
+  assert.throws(() => validateMathNotation({latex:'2%+3'}), /unescaped percent/);
+  assert.doesNotThrow(() => validateMathNotation({answer:'$2\\%$'}));
   assert.doesNotThrow(() => validateMathNotation({question:'$f(x)=\\frac{1}{\\sqrt{x-2}}$，哪些 $x$ 可以代入？'}));
 });
 test('inline and multiline display notation use the same explicit token contract', () => {

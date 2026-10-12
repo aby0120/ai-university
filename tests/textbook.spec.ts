@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import fs from "node:fs";
 const book = JSON.parse(fs.readFileSync("packages/content/book.json", "utf8"));
-test("every section renders canonical text, boundary-safe diagrams and four exercises", async ({
+test("every section renders canonical text, boundary-safe diagrams and all exercises", async ({
   page,
 }) => {
   const errors: string[] = [];
@@ -9,9 +9,10 @@ test("every section renders canonical text, boundary-safe diagrams and four exer
   for (const id of book.lessonIds) {
     await page.goto("/#/lesson/" + id);
     await expect(page.locator("#lesson-article > section")).toHaveCount(8);
-    await expect(page.locator(".worked-example")).toHaveCount(2);
+    const lesson = JSON.parse(fs.readFileSync(`packages/content/lessons/${id}.json`, "utf8"));
+    await expect(page.locator(".worked-example")).toHaveCount(lesson.workedExamples.length);
     await expect(page.locator(".check-choices button")).toHaveCount(3);
-    await expect(page.locator(".example-solution")).toHaveCount(2);
+    await expect(page.locator(".example-solution")).toHaveCount(lesson.workedExamples.length);
     await expect(page.locator(".katex-error")).toHaveCount(0);
     await page.getByRole("link", { name: "交互演示", exact: true }).click();
     if (["disk-washer", "shells", "arc-length"].includes(id)) {
@@ -30,8 +31,8 @@ test("every section renders canonical text, boundary-safe diagrams and four exer
         'svg [d*="NaN"],svg [d*="Infinity"],svg [cx="NaN"],svg [cy="NaN"]',
       ),
     ).toHaveCount(0);
-    await page.getByRole("link", { name: "练习与解答 4", exact: true }).click();
-    await expect(page.locator(".exercise")).toHaveCount(4);
+    await page.getByRole("link", { name: `练习与解答 ${lesson.practice.length}`, exact: true }).click();
+    await expect(page.locator(".exercise")).toHaveCount(lesson.practice.length);
     await expect(page.locator(".exercise:visible")).toHaveCount(1);
   }
   expect(errors).toEqual([]);
@@ -124,7 +125,7 @@ test("site pages fit the viewport and the print edition includes the full book",
   }
   await page.goto("/book.html");
   await expect(page.locator(".lesson")).toHaveCount(35);
-  await expect(page.locator(".problem")).toHaveCount(175);
+  await expect(page.locator(".problem")).toHaveCount(191);
   await expect(page.locator(".katex-error")).toHaveCount(0);
 });
 

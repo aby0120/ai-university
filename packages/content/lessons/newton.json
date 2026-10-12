@@ -87,10 +87,8 @@
   "practice": [
     {
       "id": "newton-p1",
-      "difficulty": 1,
-      "misconceptionTags": [
-        "newton-m1"
-      ],
+      "difficulty": 2,
+      "misconceptionTags": [],
       "problem": "对 $x^{2} - 4$，从 $x_{0} = 3$ 做一步。",
       "answer": "$\\frac{13}{6}$。",
       "solution": [
@@ -101,7 +99,7 @@
     },
     {
       "id": "newton-p2",
-      "difficulty": 2,
+      "difficulty": 1,
       "misconceptionTags": [
         "newton-m2"
       ],
@@ -114,10 +112,8 @@
     },
     {
       "id": "newton-p3",
-      "difficulty": 3,
-      "misconceptionTags": [
-        "newton-m2"
-      ],
+      "difficulty": 2,
+      "misconceptionTags": [],
       "problem": "对线性函数 $2 x - 6$，任何初值一步会到哪里？",
       "answer": "$3$。",
       "solution": [
@@ -128,9 +124,9 @@
     },
     {
       "id": "newton-p4",
-      "difficulty": 4,
+      "difficulty": 3,
       "misconceptionTags": [
-        "newton-m2"
+        "newton-m1"
       ],
       "problem": "残差小是否能单独证明输入误差小？",
       "answer": "一般不能。",
@@ -151,7 +147,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

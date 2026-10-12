@@ -87,9 +87,10 @@
   "practice": [
     {
       "id": "optimization-p1",
-      "difficulty": 1,
+      "difficulty": 2,
       "misconceptionTags": [
-        "optimization-m1"
+        "optimization-m1",
+        "optimization-m2"
       ],
       "problem": "周长 20 的矩形最大面积？",
       "answer": "$25$。",
@@ -103,6 +104,7 @@
       "id": "optimization-p2",
       "difficulty": 2,
       "misconceptionTags": [
+        "optimization-m1",
         "optimization-m2"
       ],
       "problem": "两正数和为 10，最大乘积？",
@@ -117,6 +119,7 @@
       "id": "optimization-p3",
       "difficulty": 3,
       "misconceptionTags": [
+        "optimization-m1",
         "optimization-m2"
       ],
       "problem": "两正数积为 16，最小和？",
@@ -129,10 +132,8 @@
     },
     {
       "id": "optimization-p4",
-      "difficulty": 4,
-      "misconceptionTags": [
-        "optimization-m2"
-      ],
+      "difficulty": 2,
+      "misconceptionTags": [],
       "problem": "为什么最小化距离常改为最小化距离平方？",
       "answer": "平方在非负数上严格递增，最优位置相同且去掉根号。",
       "solution": [
@@ -152,7 +153,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

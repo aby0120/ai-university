@@ -5,6 +5,7 @@ import { root, book, allLessons } from "./content-utils.mjs";
 const extra = JSON.parse(
   fs.readFileSync(`${root}/packages/content/supplements.json`, "utf8"),
 );
+const counts = { examples: allLessons.reduce((n,l)=>n+l.workedExamples.length,0), practice: allLessons.reduce((n,l)=>n+l.practice.length,0), extra: extra.exam.length+extra.reviews.reduce((n,r)=>n+r.questions.length,0) };
 const esc = (s) =>
   s
     .replaceAll("&", "&amp;")
@@ -23,7 +24,7 @@ const p = (s) => `<p>${rich(s)}</p>`,
   list = (items) =>
     `<ol>${items.map((s) => `<li>${rich(s)}</li>`).join("")}</ol>`;
 let md = `# AI University · ${book.title}\n\n## ${book.titleZh}：${book.subtitle}\n\nv${book.version} · AI 编写的固定修订版 · 内容 CC0 · 尚未逐节人工审校\n\n${book.description}\n\n范围：${book.scope}\n\n阅读方法：先读直觉，再检查定义条件，跟随推导与例题，最后做练习。互动图位于网站同名知识点中；有限图像采样不是证明。\n\n## 目录\n\n`;
-let html = `<header class="cover"><p class="kicker">AI UNIVERSITY / OPEN TEXTBOOKS</p><h1>Calculus I</h1><h2>${book.titleZh}：${book.subtitle}</h2>${p(book.description)}${p(book.scope)}<p>v${book.version} · 7 章 35 节 · 70 例题 · 140 节内练习 + 35 回顾与综合题</p><p>AI 编写的固定修订版；尚未逐节人工审校。内容 CC0，代码 MIT。</p><p><a href="./">进入交互阅读网站</a> · <a href="Calculus-I.md" download>下载 Markdown</a> · <button onclick="window.print()">打印 / 保存为 PDF</button></p></header><nav class="toc"><h2>目录</h2>`;
+let html = `<header class="cover"><p class="kicker">AI UNIVERSITY / OPEN TEXTBOOKS</p><h1>Calculus I</h1><h2>${book.titleZh}：${book.subtitle}</h2>${p(book.description)}${p(book.scope)}<p>v${book.version} · ${book.chapters.length} 章 ${allLessons.length} 节 · ${counts.examples} 例题 · ${counts.practice} 节内练习 + ${counts.extra} 回顾与综合题</p><p>AI 编写的固定修订版；尚未逐节人工审校。内容 CC0，代码 MIT。</p><p><a href="./">进入交互阅读网站</a> · <a href="Calculus-I.md" download>下载 Markdown</a> · <button onclick="window.print()">打印 / 保存为 PDF</button></p></header><nav class="toc"><h2>目录</h2>`;
 for (const c of book.chapters) {
   md += `\n### ${c.title}\n\n`;
   html += `<h3>${esc(c.title)}</h3><ol>`;
@@ -130,5 +131,5 @@ fs.cpSync(
   { recursive: true },
 );
 console.log(
-  `Built full manuscript: ${md.length} characters, ${allLessons.length} sections, 175 exercises with solutions.`,
+  `Built full manuscript: ${md.length} characters, ${allLessons.length} sections, ${counts.practice+counts.extra} exercises with solutions.`,
 );

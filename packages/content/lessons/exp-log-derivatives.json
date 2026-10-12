@@ -88,10 +88,8 @@
   "practice": [
     {
       "id": "exp-log-derivatives-p1",
-      "difficulty": 1,
-      "misconceptionTags": [
-        "exp-log-derivatives-m1"
-      ],
+      "difficulty": 2,
+      "misconceptionTags": [],
       "problem": "求 $\\ln(1+x^2)$ 的导数。",
       "answer": "$\\frac{2x}{1+x^2}$。",
       "solution": [
@@ -101,10 +99,8 @@
     },
     {
       "id": "exp-log-derivatives-p2",
-      "difficulty": 2,
-      "misconceptionTags": [
-        "exp-log-derivatives-m2"
-      ],
+      "difficulty": 1,
+      "misconceptionTags": [],
       "problem": "求 $2^x$ 的导数。",
       "answer": "$2^x\\ln2$。",
       "solution": [
@@ -114,9 +110,9 @@
     },
     {
       "id": "exp-log-derivatives-p3",
-      "difficulty": 3,
+      "difficulty": 1,
       "misconceptionTags": [
-        "exp-log-derivatives-m2"
+        "exp-log-derivatives-m1"
       ],
       "problem": "求 $e^{x}$ 在 0 的导数值。",
       "answer": "$1$。",
@@ -128,10 +124,8 @@
     },
     {
       "id": "exp-log-derivatives-p4",
-      "difficulty": 4,
-      "misconceptionTags": [
-        "exp-log-derivatives-m2"
-      ],
+      "difficulty": 2,
+      "misconceptionTags": [],
       "problem": "求 $\\ln|3x-1|$ 的导数及限制。",
       "answer": "$\\frac{3}{3x-1}$，$x \\ne \\frac{1}{3}$。",
       "solution": [
@@ -152,7 +146,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

@@ -100,10 +100,8 @@
     },
     {
       "id": "trigonometry-p2",
-      "difficulty": 2,
-      "misconceptionTags": [
-        "trigonometry-m2"
-      ],
+      "difficulty": 1,
+      "misconceptionTags": [],
       "problem": "求 $\\cos\\pi$。",
       "answer": "$-1$。",
       "solution": [
@@ -114,7 +112,7 @@
     },
     {
       "id": "trigonometry-p3",
-      "difficulty": 3,
+      "difficulty": 1,
       "misconceptionTags": [
         "trigonometry-m2"
       ],
@@ -127,10 +125,8 @@
     },
     {
       "id": "trigonometry-p4",
-      "difficulty": 4,
-      "misconceptionTags": [
-        "trigonometry-m2"
-      ],
+      "difficulty": 1,
+      "misconceptionTags": [],
       "problem": "$\\sin(x+2\\pi)$ 与 $\\sin x$ 有什么关系？",
       "answer": "相等。",
       "solution": [
@@ -149,7 +145,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

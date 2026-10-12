@@ -100,9 +100,9 @@
     },
     {
       "id": "arc-length-p2",
-      "difficulty": 2,
+      "difficulty": 1,
       "misconceptionTags": [
-        "arc-length-m2"
+        "arc-length-m1"
       ],
       "problem": "水平线 $y = 2$ 在 [0,3] 的弧长？",
       "answer": "$3$。",
@@ -114,7 +114,7 @@
     },
     {
       "id": "arc-length-p3",
-      "difficulty": 3,
+      "difficulty": 2,
       "misconceptionTags": [
         "arc-length-m2"
       ],
@@ -127,9 +127,9 @@
     },
     {
       "id": "arc-length-p4",
-      "difficulty": 4,
+      "difficulty": 1,
       "misconceptionTags": [
-        "arc-length-m2"
+        "arc-length-m1"
       ],
       "problem": "弧长积分中的 $f'$为何要平方？",
       "answer": "长度由勾股关系得到，方向正负不改变长度。",
@@ -150,7 +150,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

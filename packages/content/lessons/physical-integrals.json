@@ -23,6 +23,14 @@
     {
       "title": "质量与质心怎样算？",
       "text": "线密度 $\\lambda$ 给质量 $m = \\int  \\lambda  \\mathrm{d}x$；位置加权量 $M = \\int  x \\lambda  \\mathrm{d}x$，质心为 $\\frac{M}{m}$（$m > 0$）。流体压力等模型还需注明密度、深度等物理假设。"
+    },
+    {
+      "title": "抽水为什么不能用同一个提升距离？",
+      "text": "水箱底为 $y=0$、出口高 $H$，高度 $y$ 的薄层体积为 $A(y)\\,\\mathrm{d}y$，需提升 $H-y$。功为 $W=\\int\\rho gA(y)(H-y)\\,\\mathrm{d}y$，积分覆盖实际水层。这里密度 $\\rho$、重力加速度 $g$ 恒定，忽略损耗与流出速度。"
+    },
+    {
+      "title": "水压怎样累积成力？",
+      "text": "深度 $h$ 从液面向下量，表压为 $p=\\rho gh$。竖直薄条宽 $w(h)$、高 $\\mathrm{d}h$，受力为 $\\rho ghw(h)\\,\\mathrm{d}h$。沿深度积分，得到垂直平板一侧的合力；若两侧都受压，要比较压差。"
     }
   ],
   "formalDefinition": {
@@ -70,6 +78,24 @@
         "矩 $[\\frac{x^{2}}{2} + \\frac{x^{3}}{3}]_{0}^{2} = \\frac{14}{3}$，除以质量。"
       ],
       "answer": "质量 4，质心 $\\frac{7}{6}$；偏向密度较大的右侧。"
+    },
+    {
+      "title": "每层水提升距离不同",
+      "problem": "圆柱水箱底为 $y=0$，半径 $1\\,\\mathrm{m}$，水深 $2\\,\\mathrm{m}$，出口高 $3\\,\\mathrm{m}$。取 $\\rho=1000\\,\\mathrm{kg}\\,\\mathrm{m}^{-3}$、$g=9.8\\,\\mathrm{m}\\,\\mathrm{s}^{-2}$，忽略损耗，求全部抽出的功。",
+      "steps": [
+        "高度 $y$ 的薄层截面积是 $\\pi\\,\\mathrm{m}^2$，重量为 $9800\\pi\\,\\mathrm{d}y$，提升距离为 $3-y$。",
+        "$W=9800\\pi\\int_0^2(3-y)\\,\\mathrm{d}y=9800\\pi[3y-\\frac{y^2}{2}]_0^2$。"
+      ],
+      "answer": "$W=39200\\pi\\,\\mathrm{J}$。不能把所有水都当成从水箱底提升。"
+    },
+    {
+      "title": "压力随深度增长",
+      "problem": "竖直矩形闸门宽 $2\\,\\mathrm{m}$、高 $3\\,\\mathrm{m}$，上边在水面。门一侧为水、另一侧为相同大气压。取 $\\rho=1000\\,\\mathrm{kg}\\,\\mathrm{m}^{-3}$、$g=9.8\\,\\mathrm{m}\\,\\mathrm{s}^{-2}$，求净水压力。",
+      "steps": [
+        "深度 $h$ 处压差 $p=9800h$，薄条面积 $2\\,\\mathrm{d}h$，所以 $\\mathrm{d}F=19600h\\,\\mathrm{d}h$。",
+        "$F=19600\\int_0^3h\\,\\mathrm{d}h=19600\\times\\frac92$。"
+      ],
+      "answer": "$F=88200\\,\\mathrm{N}$；这是力，不是功。"
     }
   ],
   "commonMistakes": [
@@ -106,7 +132,7 @@
         "physical-integrals-m2"
       ],
       "problem": "$k=50\\,\\mathrm{N}\\,\\mathrm{m}^{-1}$ 的弹簧从 0 拉到 $0.4\\,\\mathrm{m}$，外力做功？",
-      "answer": "$4$ $J$。",
+      "answer": "$4\\,\\mathrm{J}$。",
       "solution": [
         "$W = (\\frac{1}{2}) \\times 50 \\times 0.4^{2} = 4$。"
       ],
@@ -115,7 +141,7 @@
     },
     {
       "id": "physical-integrals-p3",
-      "difficulty": 3,
+      "difficulty": 1,
       "misconceptionTags": [
         "physical-integrals-m2"
       ],
@@ -129,9 +155,9 @@
     },
     {
       "id": "physical-integrals-p4",
-      "difficulty": 4,
+      "difficulty": 2,
       "misconceptionTags": [
-        "physical-integrals-m2"
+        "physical-integrals-m1"
       ],
       "problem": "对 $v (t) = t - 1$、$0 \\le t \\le 2$，位移与路程分别是多少？",
       "answer": "位移 0，路程 1。",
@@ -140,6 +166,49 @@
         "绝对值相加为 1。"
       ],
       "hint": "方向与长度是不同的总量。"
+    },
+    {
+      "id": "physical-integrals-p5",
+      "problem": "上例圆柱水箱仍有 $2\\,\\mathrm{m}$ 深的水，把出口从高 3 改为高 $2\\,\\mathrm{m}$，需多少功？其他假设相同。",
+      "answer": "$19600\\pi\\,\\mathrm{J}$。",
+      "solution": [
+        "提升距离改为 $2-y$，$W=9800\\pi\\int_0^2(2-y)\\,\\mathrm{d}y$。",
+        "积分为 2，得到 $19600\\pi\\,\\mathrm{J}$。出口处薄层的提升距离为零。"
+      ],
+      "hint": "只改提升距离；水层区间没有改变。",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "physical-integrals-m2"
+      ]
+    },
+    {
+      "id": "physical-integrals-p6",
+      "problem": "上例闸门若上边在水下 $1\\,\\mathrm{m}$、下边在水下 $4\\,\\mathrm{m}$，净水压力是多少？宽度与物理假设不变。",
+      "answer": "$147000\\,\\mathrm{N}$。",
+      "solution": [
+        "深度从 1 积到 4，$F=19600\\int_1^4h\\,\\mathrm{d}h$。",
+        "$F=19600\\times\\frac{16-1}{2}=147000\\,\\mathrm{N}$。"
+      ],
+      "hint": "积分变量是离水面的深度。",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "physical-integrals-m2"
+      ],
+      "numericAnswer": 147000
+    },
+    {
+      "id": "physical-integrals-p7",
+      "problem": "抽水积分中，$\\rho gA(y)\\,\\mathrm{d}y$ 与再乘 $H-y$ 后分别表示什么量？",
+      "answer": "前者是薄层重量（力），后者是提升该薄层的功。",
+      "solution": [
+        "密度乘体积给质量，乘重力加速度给力。",
+        "力乘提升距离给功；量纲分别为 $\\mathrm{N}$ 和 $\\mathrm{J}$。"
+      ],
+      "hint": "把质量、力、功三个量依次分清。",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "physical-integrals-m2"
+      ]
     }
   ],
   "prerequisites": [
@@ -153,7 +222,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

@@ -71,6 +71,15 @@
         "导数比趋近 0，条件满足。"
       ],
       "answer": "极限为 0，线性增长快于对数。"
+    },
+    {
+      "title": "导数比振荡，原比值仍有极限",
+      "problem": "求 $\\lim_{x\\to\\infty}\\frac{x}{2x+\\sin x}$。导数比没有极限，原极限就不存在吗？",
+      "steps": [
+        "原比值改写为 $\\frac{1}{2+\\frac{\\sin x}{x}}$。由 $|\\frac{\\sin x}{x}|\\le\\frac1x$（$x>0$），内项趋于 0。",
+        "导数比为 $\\frac1{2+\\cos x}$，沿 $x=2n\\pi$ 与 $x=(2n+1)\\pi$ 分别为 $\\frac13$、1，所以无极限。"
+      ],
+      "answer": "原极限仍为 $\\frac12$。洛必达的条件不满足，只说明此方法不能给结论。"
     }
   ],
   "commonMistakes": [
@@ -88,10 +97,8 @@
   "practice": [
     {
       "id": "lhopital-p1",
-      "difficulty": 1,
-      "misconceptionTags": [
-        "lhopital-m1"
-      ],
+      "difficulty": 2,
+      "misconceptionTags": [],
       "problem": "求 $\\lim_{x\\to0}\\frac{\\ln(1+x)}{x}$。",
       "answer": "$1$。",
       "solution": [
@@ -103,9 +110,7 @@
     {
       "id": "lhopital-p2",
       "difficulty": 2,
-      "misconceptionTags": [
-        "lhopital-m2"
-      ],
+      "misconceptionTags": [],
       "problem": "求 $\\lim_{x\\to0}\\frac{1-\\cos x}{x^2}$。",
       "answer": "$\\frac{1}{2}$。",
       "solution": [
@@ -116,10 +121,8 @@
     },
     {
       "id": "lhopital-p3",
-      "difficulty": 3,
-      "misconceptionTags": [
-        "lhopital-m2"
-      ],
+      "difficulty": 2,
+      "misconceptionTags": [],
       "problem": "求 $\\lim_{x\\to\\infty}\\frac{x}{e^x}$。",
       "answer": "$0$。",
       "solution": [
@@ -130,9 +133,9 @@
     },
     {
       "id": "lhopital-p4",
-      "difficulty": 4,
+      "difficulty": 1,
       "misconceptionTags": [
-        "lhopital-m2"
+        "lhopital-m1"
       ],
       "problem": "求 $\\lim_{x\\to0}\\frac{x+1}{x+2}$，是否需要洛必达？",
       "answer": "$\\frac{1}{2}$，不能按未定式使用洛必达。",
@@ -141,6 +144,21 @@
       ],
       "hint": "先看原极限形式。",
       "numericAnswer": 0.5
+    },
+    {
+      "id": "lhopital-p5",
+      "problem": "求 $\\lim_{x\\to0^+}x\\ln x$。为什么不能直接分别求导？",
+      "answer": "$0$。",
+      "solution": [
+        "原式是 $0\\cdot(-\\infty)$ 型，改写为 $\\frac{\\ln x}{1/x}$。",
+        "该商为无穷比型，导数比为 $\\frac{1/x}{-1/x^2}=-x\\to0$；在正侧邻域分母导数非零。"
+      ],
+      "hint": "先变成满足条件的商。",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "lhopital-m1"
+      ],
+      "numericAnswer": 0
     }
   ],
   "prerequisites": [
@@ -155,7 +173,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

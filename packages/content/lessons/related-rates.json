@@ -70,6 +70,15 @@
         "$\\frac{\\mathrm{d}y}{\\mathrm{d}t}=-\\frac{3}{4}\\times1=-0.75\\,\\mathrm{m}\\,\\mathrm{s}^{-1}$。"
       ],
       "answer": "顶部向下 $0.75\\,\\mathrm{m}\\,\\mathrm{s}^{-1}$；$y$ 的变化率为 $-0.75\\,\\mathrm{m}\\,\\mathrm{s}^{-1}$。"
+    },
+    {
+      "title": "先用相似关系消去半径",
+      "problem": "倒置圆锥水箱高 $6\\,\\mathrm{m}$、顶部半径 $3\\,\\mathrm{m}$，以 $2\\,\\mathrm{m}^3\\mathrm{s}^{-1}$ 注水。水深为 $2\\,\\mathrm{m}$ 时，水面上升多快？",
+      "steps": [
+        "相似三角形给 $\\frac rh=\\frac36=\\frac12$，所以 $V=\\frac13\\pi r^2h=\\frac\\pi{12}h^3$。",
+        "对时间求导：$\\frac{\\mathrm{d}V}{\\mathrm{d}t}=\\frac\\pi4h^2\\frac{\\mathrm{d}h}{\\mathrm{d}t}$。最后代入 $h=2$、注水率 2。"
+      ],
+      "answer": "$\\frac{\\mathrm{d}h}{\\mathrm{d}t}=\\frac2\\pi\\,\\mathrm{m}\\,\\mathrm{s}^{-1}$；半径也在变，不能当常数。"
     }
   ],
   "commonMistakes": [
@@ -87,7 +96,7 @@
   "practice": [
     {
       "id": "related-rates-p1",
-      "difficulty": 1,
+      "difficulty": 2,
       "misconceptionTags": [
         "related-rates-m1"
       ],
@@ -102,6 +111,7 @@
       "id": "related-rates-p2",
       "difficulty": 2,
       "misconceptionTags": [
+        "related-rates-m1",
         "related-rates-m2"
       ],
       "problem": "$5\\,\\mathrm{m}$ 梯子，$x = 4$、$\\frac{\\mathrm{d}x}{\\mathrm{d}t} = 0.5$，求 $\\frac{\\mathrm{d}y}{\\mathrm{d}t}$。",
@@ -114,9 +124,9 @@
     },
     {
       "id": "related-rates-p3",
-      "difficulty": 3,
+      "difficulty": 2,
       "misconceptionTags": [
-        "related-rates-m2"
+        "related-rates-m1"
       ],
       "problem": "正方形边长以 $0.2\\,\\mathrm{cm}\\,\\mathrm{s}^{-1}$ 增长，边长 5 cm 时面积变化率？",
       "answer": "$2$ $\\mathrm{cm}^{2}\\,\\mathrm{s}^{-1}$。",
@@ -128,7 +138,7 @@
     },
     {
       "id": "related-rates-p4",
-      "difficulty": 4,
+      "difficulty": 1,
       "misconceptionTags": [
         "related-rates-m2"
       ],
@@ -138,6 +148,21 @@
         "$2 \\pi  r > 0$，而 $\\frac{\\mathrm{d}r}{\\mathrm{d}t} < 0$，所以乘积为负。"
       ],
       "hint": "先确定哪一个变量在减小。"
+    },
+    {
+      "id": "related-rates-p5",
+      "problem": "上例水箱的注水率仍为 $2\\,\\mathrm{m}^3\\mathrm{s}^{-1}$。水深为 $4\\,\\mathrm{m}$ 时，上升速率是原来水深 2 时的几倍？",
+      "answer": "$\\frac14$。",
+      "solution": [
+        "由 $\\frac{\\mathrm{d}h}{\\mathrm{d}t}=\\frac{8}{\\pi h^2}$。",
+        "水深加倍，水平截面积变为四倍；同样的入水量使上升速率降为四分之一。"
+      ],
+      "hint": "比较变化率，不必先算两个小数。",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "related-rates-m1"
+      ],
+      "numericAnswer": 0.25
     }
   ],
   "prerequisites": [
@@ -151,7 +176,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

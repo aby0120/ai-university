@@ -18,6 +18,7 @@ import {
   secant,
 } from "../../../../packages/visuals/math.mjs";
 import { Formula, MathText, plainMathText } from "./MathText";
+import { ApplicationVisual } from "./ApplicationVisual";
 const fmt = (v: number) =>
   Number.isFinite(v) ? Number(v.toFixed(5)).toString() : "无有限值";
 function Slider({
@@ -258,6 +259,7 @@ export function Visual({
       ) : (
         <PlanarVisual lesson={lesson} compact={compact} />
       )}
+      <ApplicationVisual lessonId={lesson.id} />
     </div>
   );
 }

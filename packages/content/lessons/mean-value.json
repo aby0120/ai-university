@@ -87,9 +87,9 @@
   "practice": [
     {
       "id": "mean-value-p1",
-      "difficulty": 1,
+      "difficulty": 2,
       "misconceptionTags": [
-        "mean-value-m1"
+        "mean-value-m2"
       ],
       "problem": "$f (x) = x^{3}$ 在 [0,1]，求满足中值定理的 $c$。",
       "answer": "$\\frac{1}{\\sqrt{3}}$。",
@@ -101,9 +101,7 @@
     {
       "id": "mean-value-p2",
       "difficulty": 2,
-      "misconceptionTags": [
-        "mean-value-m2"
-      ],
+      "misconceptionTags": [],
       "problem": "若 $f' = 0$ 在整个区间成立，$f$ 有何特点？",
       "answer": "在该区间为常数。",
       "solution": [
@@ -113,7 +111,7 @@
     },
     {
       "id": "mean-value-p3",
-      "difficulty": 3,
+      "difficulty": 2,
       "misconceptionTags": [
         "mean-value-m2"
       ],
@@ -126,10 +124,8 @@
     },
     {
       "id": "mean-value-p4",
-      "difficulty": 4,
-      "misconceptionTags": [
-        "mean-value-m2"
-      ],
+      "difficulty": 2,
+      "misconceptionTags": [],
       "problem": "导数在区间内始终负，函数如何变化？",
       "answer": "严格递减。",
       "solution": [
@@ -149,7 +145,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

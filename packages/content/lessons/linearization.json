@@ -88,7 +88,7 @@
   "practice": [
     {
       "id": "linearization-p1",
-      "difficulty": 1,
+      "difficulty": 2,
       "misconceptionTags": [
         "linearization-m1"
       ],
@@ -102,7 +102,7 @@
     },
     {
       "id": "linearization-p2",
-      "difficulty": 2,
+      "difficulty": 1,
       "misconceptionTags": [
         "linearization-m2"
       ],
@@ -115,12 +115,12 @@
     },
     {
       "id": "linearization-p3",
-      "difficulty": 3,
+      "difficulty": 2,
       "misconceptionTags": [
-        "linearization-m2"
+        "linearization-m1"
       ],
       "problem": "正方形边长测量相对误差 1%，面积相对误差约多少？",
-      "answer": "$2%$。",
+      "answer": "约 $2\\%$，是一阶估计。",
       "solution": [
         "$A = s^{2}$，$\\frac{\\mathrm{d}A}{A} = \\frac{2 \\mathrm{d}s}{s}$。"
       ],
@@ -128,9 +128,9 @@
     },
     {
       "id": "linearization-p4",
-      "difficulty": 4,
+      "difficulty": 2,
       "misconceptionTags": [
-        "linearization-m2"
+        "linearization-m1"
       ],
       "problem": "平方根在正数附近的切线估计通常偏高还是偏低？",
       "answer": "偏高。",
@@ -151,7 +151,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },
