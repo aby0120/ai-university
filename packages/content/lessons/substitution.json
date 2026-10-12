@@ -71,6 +71,15 @@
         "计算 $\\int _{0}^{1} e^{u} \\mathrm{d}u = e - 1$。"
       ],
       "answer": "$e-1$。"
+    },
+    {
+      "title": "新上下限相同，不一定换错",
+      "problem": "求 $\\int_{-1}^{1}2xe^{x^2}\\,\\mathrm{d}x$。",
+      "steps": [
+        "令 $u=x^2$，$\\mathrm{d}u=2x\\,\\mathrm{d}x$。两端都对应 $u=1$，因此换元积分为 $\\int_1^1e^u\\,\\mathrm{d}u=0$。",
+        "也可在 0 分段：$\\int_1^0e^u\\,\\mathrm{d}u+\\int_0^1e^u\\,\\mathrm{d}u=0$。先倒走再正走，贡献抵消。"
+      ],
+      "answer": "积分为 0。这是带方向的累积，不是把两段几何面积都取正。"
     }
   ],
   "commonMistakes": [
@@ -88,7 +97,7 @@
   "practice": [
     {
       "id": "substitution-p1",
-      "difficulty": 1,
+      "difficulty": 2,
       "misconceptionTags": [
         "substitution-m1"
       ],
@@ -103,7 +112,7 @@
       "id": "substitution-p2",
       "difficulty": 2,
       "misconceptionTags": [
-        "substitution-m2"
+        "substitution-m1"
       ],
       "problem": "求 $\\int_0^1 2x(1+x^2)dx$。",
       "answer": "$\\frac{3}{2}$。",
@@ -115,9 +124,9 @@
     },
     {
       "id": "substitution-p3",
-      "difficulty": 3,
+      "difficulty": 2,
       "misconceptionTags": [
-        "substitution-m2"
+        "substitution-m1"
       ],
       "problem": "求 $\\int e^{2x}dx$。",
       "answer": "$\\frac{e^{2x}}{2}+C$。",
@@ -128,9 +137,9 @@
     },
     {
       "id": "substitution-p4",
-      "difficulty": 4,
+      "difficulty": 2,
       "misconceptionTags": [
-        "substitution-m2"
+        "substitution-m1"
       ],
       "problem": "求 $\\int\\sin x\\cos x\\,dx$。",
       "answer": "$\\frac{\\sin^2x}{2}+C$。",
@@ -138,6 +147,21 @@
         "$u = \\sin x$，$\\mathrm{d}u = \\cos x \\mathrm{d}x$。"
       ],
       "hint": "也可选择 $\\cos x$，结果仅差常数。"
+    },
+    {
+      "id": "substitution-p5",
+      "problem": "求 $\\int_{-2}^{2}2x(1+x^2)^3\\,\\mathrm{d}x$。为什么 $u=1+x^2$ 不单调仍能换元？",
+      "answer": "积分为 0；此公式由链式法则与原函数端点差得到，不要求代换一一对应。",
+      "solution": [
+        "原函数为 $\\frac{(1+x^2)^4}{4}$，两端值相同。",
+        "若按 0 分段，新变量分别由 5 到 1、由 1 到 5，积分抵消。"
+      ],
+      "hint": "既可由端点复算，也可分段检查方向。",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "substitution-m1"
+      ],
+      "numericAnswer": 0
     }
   ],
   "prerequisites": [
@@ -151,7 +175,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

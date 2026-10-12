@@ -87,10 +87,8 @@
   "practice": [
     {
       "id": "composition-p1",
-      "difficulty": 1,
-      "misconceptionTags": [
-        "composition-m1"
-      ],
+      "difficulty": 2,
+      "misconceptionTags": [],
       "problem": "$f(x)=2x+5$ 的反函数？",
       "answer": "$f^{-1}(x)=\\frac{x-5}{2}$。",
       "solution": [
@@ -101,9 +99,7 @@
     {
       "id": "composition-p2",
       "difficulty": 2,
-      "misconceptionTags": [
-        "composition-m2"
-      ],
+      "misconceptionTags": [],
       "problem": "$f(x)=x^2$ 限制到 $x\\le0$ 的反函数？",
       "answer": "$-\\sqrt{x}$，反函数定义域 $x \\ge 0$。",
       "solution": [
@@ -113,7 +109,7 @@
     },
     {
       "id": "composition-p3",
-      "difficulty": 3,
+      "difficulty": 1,
       "misconceptionTags": [
         "composition-m2"
       ],
@@ -126,9 +122,9 @@
     },
     {
       "id": "composition-p4",
-      "difficulty": 4,
+      "difficulty": 1,
       "misconceptionTags": [
-        "composition-m2"
+        "composition-m1"
       ],
       "problem": "$\\frac{1}{x^2+1}$ 是 $x^2+1$ 的反函数吗？",
       "answer": "不是。",
@@ -149,7 +145,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

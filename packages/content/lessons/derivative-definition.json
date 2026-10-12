@@ -88,7 +88,7 @@
   "practice": [
     {
       "id": "derivative-definition-p1",
-      "difficulty": 1,
+      "difficulty": 2,
       "misconceptionTags": [
         "derivative-definition-m1"
       ],
@@ -103,9 +103,7 @@
     {
       "id": "derivative-definition-p2",
       "difficulty": 2,
-      "misconceptionTags": [
-        "derivative-definition-m2"
-      ],
+      "misconceptionTags": [],
       "problem": "$y=x^2$ 在 $x = 2$ 的切线？",
       "answer": "$y=4x-4$。",
       "solution": [
@@ -115,7 +113,7 @@
     },
     {
       "id": "derivative-definition-p3",
-      "difficulty": 3,
+      "difficulty": 1,
       "misconceptionTags": [
         "derivative-definition-m2"
       ],
@@ -128,10 +126,8 @@
     },
     {
       "id": "derivative-definition-p4",
-      "difficulty": 4,
-      "misconceptionTags": [
-        "derivative-definition-m2"
-      ],
+      "difficulty": 1,
+      "misconceptionTags": [],
       "problem": "$s(t)=t^2$ 在 $t = 3$ 的瞬时速度？",
       "answer": "$6$。",
       "solution": [
@@ -152,7 +148,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

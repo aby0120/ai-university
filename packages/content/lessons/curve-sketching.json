@@ -89,9 +89,7 @@
     {
       "id": "curve-sketching-p1",
       "difficulty": 1,
-      "misconceptionTags": [
-        "curve-sketching-m1"
-      ],
+      "misconceptionTags": [],
       "problem": "$x^2$ 在哪里递减？",
       "answer": "$(-\\infty,0)$。",
       "solution": [
@@ -114,9 +112,9 @@
     },
     {
       "id": "curve-sketching-p3",
-      "difficulty": 3,
+      "difficulty": 1,
       "misconceptionTags": [
-        "curve-sketching-m2"
+        "curve-sketching-m1"
       ],
       "problem": "$e^{x}$ 是凹向上还是向下？",
       "answer": "凹向上。",
@@ -127,10 +125,8 @@
     },
     {
       "id": "curve-sketching-p4",
-      "difficulty": 4,
-      "misconceptionTags": [
-        "curve-sketching-m2"
-      ],
+      "difficulty": 2,
+      "misconceptionTags": [],
       "problem": "求 $x^3-3x$ 的局部最大值。",
       "answer": "$2$。",
       "solution": [
@@ -152,7 +148,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

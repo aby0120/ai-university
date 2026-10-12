@@ -103,7 +103,7 @@
       "id": "continuity-p2",
       "difficulty": 2,
       "misconceptionTags": [
-        "continuity-m2"
+        "continuity-m1"
       ],
       "problem": "使 $\\frac{x^2-9}{x-3}$ 在 3 连续的补值是多少？",
       "answer": "$6$。",
@@ -129,9 +129,9 @@
     },
     {
       "id": "continuity-p4",
-      "difficulty": 4,
+      "difficulty": 2,
       "misconceptionTags": [
-        "continuity-m2"
+        "continuity-m1"
       ],
       "problem": "跳跃间断能仅靠改变该点值修复吗？",
       "answer": "不能。",
@@ -152,7 +152,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

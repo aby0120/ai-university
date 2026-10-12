@@ -72,6 +72,15 @@
         "整理 $y + (x + 2 y) y' = 0$。"
       ],
       "answer": "$y\\prime=-\\frac{y}{x+2y}$，分母非零。"
+    },
+    {
+      "title": "再求一次导数",
+      "problem": "圆 $x^2+y^2=25$ 的上半圆在 $(3,4)$ 处，求 $y\\prime\\prime$。",
+      "steps": [
+        "先得 $y\\prime=-\\frac{x}{y}$，在 $y\\ne0$ 的分支上再次求导：$y\\prime\\prime=\\frac{-y+xy\\prime}{y^2}$。",
+        "代入 $y\\prime=-\\frac{x}{y}$，得 $y\\prime\\prime=-\\frac{x^2+y^2}{y^3}=-\\frac{25}{y^3}$。最后才代入 $(3,4)$。"
+      ],
+      "answer": "$y\\prime\\prime=-\\frac{25}{64}$；上半圆在该点凹向下。"
     }
   ],
   "commonMistakes": [
@@ -89,9 +98,10 @@
   "practice": [
     {
       "id": "implicit-p1",
-      "difficulty": 1,
+      "difficulty": 2,
       "misconceptionTags": [
-        "implicit-m1"
+        "implicit-m1",
+        "implicit-m2"
       ],
       "problem": "对 $x^2+y^2=1$ 求 $y'$。",
       "answer": "$-\\frac{x}{y}$（$y \\ne 0$）。",
@@ -104,6 +114,7 @@
       "id": "implicit-p2",
       "difficulty": 2,
       "misconceptionTags": [
+        "implicit-m1",
         "implicit-m2"
       ],
       "problem": "对 $y^3=x$ 求 $y'$。",
@@ -115,10 +126,8 @@
     },
     {
       "id": "implicit-p3",
-      "difficulty": 3,
-      "misconceptionTags": [
-        "implicit-m2"
-      ],
+      "difficulty": 1,
+      "misconceptionTags": [],
       "problem": "$x^2+y^2=25$ 在 (0,5) 的斜率？",
       "answer": "$0$。",
       "solution": [
@@ -129,8 +138,9 @@
     },
     {
       "id": "implicit-p4",
-      "difficulty": 4,
+      "difficulty": 2,
       "misconceptionTags": [
+        "implicit-m1",
         "implicit-m2"
       ],
       "problem": "对 $x+y+xy=3$ 求 $y'$。",
@@ -139,6 +149,21 @@
         "$1 + y' + y + x y' = 0$，合并 $y'$ 项。"
       ],
       "hint": "$x y$ 需要积法则。"
+    },
+    {
+      "id": "implicit-p5",
+      "problem": "圆 $x^2+y^2=4$ 的上半圆在 $(0,2)$ 处，求 $y\\prime\\prime$。",
+      "answer": "$-\\frac12$。",
+      "solution": [
+        "由 $2x+2yy\\prime=0$，再求导得 $2+2(y\\prime)^2+2yy\\prime\\prime=0$。",
+        "该点 $y\\prime=0$，所以 $2+4y\\prime\\prime=0$，得 $y\\prime\\prime=-\\frac12$。"
+      ],
+      "hint": "可以对第一次求导后的方程再求导，避免商式。",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "implicit-m1"
+      ],
+      "numericAnswer": -0.5
     }
   ],
   "prerequisites": [
@@ -152,7 +177,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

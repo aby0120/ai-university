@@ -87,7 +87,7 @@
   "practice": [
     {
       "id": "chain-rule-p1",
-      "difficulty": 1,
+      "difficulty": 2,
       "misconceptionTags": [
         "chain-rule-m1"
       ],
@@ -102,7 +102,7 @@
       "id": "chain-rule-p2",
       "difficulty": 2,
       "misconceptionTags": [
-        "chain-rule-m2"
+        "chain-rule-m1"
       ],
       "problem": "求 $\\frac{1}{1+x^2}$ 的导数。",
       "answer": "$-\\frac{2x}{(1+x^2)^2}$。",
@@ -113,9 +113,9 @@
     },
     {
       "id": "chain-rule-p3",
-      "difficulty": 3,
+      "difficulty": 2,
       "misconceptionTags": [
-        "chain-rule-m2"
+        "chain-rule-m1"
       ],
       "problem": "$y=(x^2+1)^3$ 在 $x = 1$ 的导数值？",
       "answer": "$24$。",
@@ -127,9 +127,9 @@
     },
     {
       "id": "chain-rule-p4",
-      "difficulty": 4,
+      "difficulty": 3,
       "misconceptionTags": [
-        "chain-rule-m2"
+        "chain-rule-m1"
       ],
       "problem": "求 $x^2(1+x)^3$ 的导数。",
       "answer": "$2x(1+x)^3+3x^2(1+x)^2$。",
@@ -150,7 +150,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

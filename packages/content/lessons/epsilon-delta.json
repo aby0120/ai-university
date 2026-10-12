@@ -88,7 +88,7 @@
   "practice": [
     {
       "id": "epsilon-delta-p1",
-      "difficulty": 1,
+      "difficulty": 2,
       "misconceptionTags": [
         "epsilon-delta-m1"
       ],
@@ -101,9 +101,9 @@
     },
     {
       "id": "epsilon-delta-p2",
-      "difficulty": 2,
+      "difficulty": 1,
       "misconceptionTags": [
-        "epsilon-delta-m2"
+        "epsilon-delta-m1"
       ],
       "problem": "上题 $\\varepsilon  = 0.1$ 时可取多少 $\\delta$？",
       "answer": "$0.05$。",
@@ -117,7 +117,7 @@
       "id": "epsilon-delta-p3",
       "difficulty": 3,
       "misconceptionTags": [
-        "epsilon-delta-m2"
+        "epsilon-delta-m1"
       ],
       "problem": "证明 $\\lim_{x\\to1}x^2=1$，先限制 $|x - 1| < 1$。",
       "answer": "$\\delta=\\min(1,\\frac{\\varepsilon}{3})$。",
@@ -129,10 +129,8 @@
     },
     {
       "id": "epsilon-delta-p4",
-      "difficulty": 4,
-      "misconceptionTags": [
-        "epsilon-delta-m2"
-      ],
+      "difficulty": 2,
+      "misconceptionTags": [],
       "problem": "为什么条件是 $0 < |x - a|$，不包含 $x = a$？",
       "answer": "极限研究附近行为，不依赖点上的值。",
       "solution": [
@@ -151,7 +149,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

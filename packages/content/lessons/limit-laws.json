@@ -89,9 +89,7 @@
     {
       "id": "limit-laws-p1",
       "difficulty": 1,
-      "misconceptionTags": [
-        "limit-laws-m1"
-      ],
+      "misconceptionTags": [],
       "problem": "求 $\\lim_{x\\to2}(x^2+3x)$。",
       "answer": "$10$。",
       "solution": [
@@ -104,6 +102,7 @@
       "id": "limit-laws-p2",
       "difficulty": 2,
       "misconceptionTags": [
+        "limit-laws-m1",
         "limit-laws-m2"
       ],
       "problem": "求 $\\lim_{x\\to0}\\frac{\\sqrt{4+x}-2}{x}$。",
@@ -116,10 +115,8 @@
     },
     {
       "id": "limit-laws-p3",
-      "difficulty": 3,
-      "misconceptionTags": [
-        "limit-laws-m2"
-      ],
+      "difficulty": 2,
+      "misconceptionTags": [],
       "problem": "求 $\\lim_{x\\to0}\\frac{\\sin(5x)}{2x}$。",
       "answer": "$\\frac{5}{2}$。",
       "solution": [
@@ -130,10 +127,8 @@
     },
     {
       "id": "limit-laws-p4",
-      "difficulty": 4,
-      "misconceptionTags": [
-        "limit-laws-m2"
-      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
       "problem": "求 $\\lim_{x\\to0}x\\sin(\\frac{1}{x})$。",
       "answer": "$0$。",
       "solution": [
@@ -154,7 +149,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

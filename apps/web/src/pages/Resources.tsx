@@ -10,7 +10,7 @@ import {
   Search,
   Settings2,
 } from "lucide-react";
-import { book, lessonById, lessons } from "../../../../packages/content";
+import { bookStats, book, lessonById, lessons } from "../../../../packages/content";
 import supplements from "../../../../packages/content/supplements.json";
 import { Formula, MathText, plainMathText } from "../components/MathText";
 import { pageWindow, routeHref } from "../lib/navigation";
@@ -447,7 +447,7 @@ export function DownloadsPage() {
           <span>TEXTBOOK / MARKDOWN</span>
           <h2>完整书稿</h2>
           <p>
-            包含全部 35 节正文、70 个例题、175
+            包含全部 {bookStats.lessons} 节正文、{bookStats.examples} 个例题、{bookStats.exercises}
             道练习与解答，以及术语和附录。适合本地阅读与编辑。
           </p>
           <a href="Calculus-I.md" download className="primary-btn">

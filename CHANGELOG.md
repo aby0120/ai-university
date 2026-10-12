@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.0 · 2026-10-12
+
+- Canonical textbook v0.3.0: retain 7 chapters / 35 lessons; expand to 79 worked examples, 153 section exercises, 24 chapter-review questions and 14 exam questions (191 exercises total).
+- Complete integral mean-value conditions, implicit second derivatives, general section volumes, cone related rates, pumping work and hydrostatic gate force. Supply usable basic antiderivatives and method-boundary counterexamples.
+- Add browser-local average-height, section-shape, pumping and pressure diagrams, with independent geometry/physics checks.
+- Replace generic review hints, recalibrate practice difficulty and remove unrelated misconception tags. Require local inverse-function conditions and restore a silently hidden percent sign.
+- Derive displayed publication counts from canonical content; reject unescaped TeX comments before publishing.
+
 ## 0.5.1 · 统一数学排版
 
 - 为全书 35 节、概念检查、例题、175 道练习与附录补齐显式数学标记；分数、根号、上下标及不等式使用 KaTeX。

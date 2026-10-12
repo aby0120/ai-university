@@ -87,9 +87,10 @@
   "practice": [
     {
       "id": "area-between-p1",
-      "difficulty": 1,
+      "difficulty": 2,
       "misconceptionTags": [
-        "area-between-m1"
+        "area-between-m1",
+        "area-between-m2"
       ],
       "problem": "求 $y = 2$ 与 $y = x$ 在 [0,2] 的面积。",
       "answer": "$2$。",
@@ -115,8 +116,9 @@
     },
     {
       "id": "area-between-p3",
-      "difficulty": 3,
+      "difficulty": 2,
       "misconceptionTags": [
+        "area-between-m1",
         "area-between-m2"
       ],
       "problem": "$y = \\sqrt{x}$ 与 $y = x$ 在 [0,1] 的面积？",
@@ -129,10 +131,8 @@
     },
     {
       "id": "area-between-p4",
-      "difficulty": 4,
-      "misconceptionTags": [
-        "area-between-m2"
-      ],
+      "difficulty": 1,
+      "misconceptionTags": [],
       "problem": "横向切片的面积公式使用“上减下”吗？",
       "answer": "使用右减左。",
       "solution": [
@@ -152,7 +152,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

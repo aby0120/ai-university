@@ -88,9 +88,10 @@
   "practice": [
     {
       "id": "extrema-p1",
-      "difficulty": 1,
+      "difficulty": 2,
       "misconceptionTags": [
-        "extrema-m1"
+        "extrema-m1",
+        "extrema-m2"
       ],
       "problem": "求 $x^2-4x$ 在 [0,3] 的最小值。",
       "answer": "$-4$。",
@@ -103,9 +104,9 @@
     },
     {
       "id": "extrema-p2",
-      "difficulty": 2,
+      "difficulty": 1,
       "misconceptionTags": [
-        "extrema-m2"
+        "extrema-m1"
       ],
       "problem": "$|x|$ 在 0 有极值吗？",
       "answer": "有局部且绝对最小值 0。",
@@ -116,10 +117,8 @@
     },
     {
       "id": "extrema-p3",
-      "difficulty": 3,
-      "misconceptionTags": [
-        "extrema-m2"
-      ],
+      "difficulty": 2,
+      "misconceptionTags": [],
       "problem": "$\\frac{1}{x}$ 在 (0,1) 有绝对最小值吗？",
       "answer": "没有。",
       "solution": [
@@ -129,9 +128,9 @@
     },
     {
       "id": "extrema-p4",
-      "difficulty": 4,
+      "difficulty": 3,
       "misconceptionTags": [
-        "extrema-m2"
+        "extrema-m1"
       ],
       "problem": "$f' (c) = 0$、$f'' (c) = 0$，可以判定极值吗？",
       "answer": "不能。",
@@ -152,7 +151,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "status": "revised",
     "humanReviewed": false
   },

@@ -10,7 +10,7 @@
           "solution": [
             "根式要求 $|x| \\le 3$；分母排除 1；取交集。"
           ],
-          "hint": "先写出相关定义与适用条件。",
+          "hint": "根号给一个闭区间，分母再挖掉一个点。",
           "id": "review-1-1",
           "difficulty": 2,
           "misconceptionTags": []
@@ -22,7 +22,7 @@
             "第一式只要求 $x^{2} > 0$。",
             "第二式先计算 $\\ln x$，因此 $x > 0$。"
           ],
-          "hint": "先写出相关定义与适用条件。",
+          "hint": "分别检查每一条复合路线的内层与外层限制。",
           "id": "review-1-2",
           "difficulty": 3,
           "misconceptionTags": []
@@ -33,7 +33,7 @@
           "solution": [
             "若改用角度数，需要先乘 $\\frac{\\pi }{180}$，导数也因此多一个换算因子。"
           ],
-          "hint": "先写出相关定义与适用条件。",
+          "hint": "从 $\\lim_{h\\to0}\\frac{\\sin h}{h}=1$ 比较弧度和角度数。",
           "id": "review-1-3",
           "difficulty": 4,
           "misconceptionTags": []
@@ -50,7 +50,7 @@
           "solution": [
             "乘共轭得到 $\\frac{1}{\\sqrt{x} + 2}$，再代入。"
           ],
-          "hint": "先写出相关定义与适用条件。",
+          "hint": "乘共轭，再说明变形在哪些输入成立。",
           "id": "review-2-1",
           "difficulty": 2,
           "misconceptionTags": []
@@ -61,7 +61,7 @@
           "solution": [
             "$0 < |x| < \\sqrt{\\varepsilon }$ 时，$|x^{2}| < \\varepsilon$。"
           ],
-          "hint": "先写出相关定义与适用条件。",
+          "hint": "从输出误差反推输入范围。",
           "id": "review-2-2",
           "difficulty": 3,
           "misconceptionTags": []
@@ -72,7 +72,7 @@
           "solution": [
             "左极限为 1，右极限和点值为 $k$，要求相等。"
           ],
-          "hint": "先写出相关定义与适用条件。",
+          "hint": "在连接点分别写左右极限和点值。",
           "id": "review-2-3",
           "difficulty": 4,
           "misconceptionTags": []
@@ -89,7 +89,7 @@
           "solution": [
             "先积法则，再给正弦内部乘 $3 x^{2}$。"
           ],
-          "hint": "先写出相关定义与适用条件。",
+          "hint": "最外层是乘积，正弦内部仍需链式法则。",
           "id": "review-3-1",
           "difficulty": 2,
           "misconceptionTags": []
@@ -100,7 +100,7 @@
           "solution": [
             "点值为 1；商法则给导数在 0 为 1。"
           ],
-          "hint": "先写出相关定义与适用条件。",
+          "hint": "切线需要点值和斜率两个量。",
           "id": "review-3-2",
           "difficulty": 3,
           "misconceptionTags": []
@@ -112,7 +112,7 @@
             "求导得 $2 x + y + x y' + 2 y y' = 0$。",
             "提取 $y'$，再代入点。"
           ],
-          "hint": "先写出相关定义与适用条件。",
+          "hint": "对 $xy$ 用积法则，对 $y^2$ 用链式法则。",
           "id": "review-3-3",
           "difficulty": 4,
           "misconceptionTags": []
@@ -129,7 +129,7 @@
           "solution": [
             "链式法则给 $\\frac{\\cos x}{\\sin x}$；原对数需输入正。"
           ],
-          "hint": "先写出相关定义与适用条件。",
+          "hint": "先检查原对数能否代入，再求导。",
           "id": "review-4-1",
           "difficulty": 2,
           "misconceptionTags": []
@@ -140,7 +140,7 @@
           "solution": [
             "$V' = 4 \\pi  r^{2} r' = 4 \\pi  \\times 16 \\times 0.5$。"
           ],
-          "hint": "先写出相关定义与适用条件。",
+          "hint": "先对体积关系式求时间导数，再代入半径。",
           "id": "review-4-2",
           "difficulty": 3,
           "misconceptionTags": []
@@ -151,7 +151,7 @@
           "solution": [
             "$L = 1 + x$；$e^{x}$ 的二阶导数正，所以切线在曲线下方。"
           ],
-          "hint": "先写出相关定义与适用条件。",
+          "hint": "在 0 写切线，用凹性判断近似偏向。",
           "id": "review-4-3",
           "difficulty": 4,
           "misconceptionTags": []
@@ -168,7 +168,7 @@
           "solution": [
             "临界点 $\\pm 1$，加端点 $\\pm 2$；四点取值 −2、2、−2、2。"
           ],
-          "hint": "先写出相关定义与适用条件。",
+          "hint": "内部临界点与两个端点都要算函数值。",
           "id": "review-5-1",
           "difficulty": 2,
           "misconceptionTags": []
@@ -179,7 +179,7 @@
           "solution": [
             "$a \\ne b$ 时差值为 $\\cos c \\cdot (b - a)$，$|\\cos c| \\le 1$；$a = b$ 时显然。"
           ],
-          "hint": "先写出相关定义与适用条件。",
+          "hint": "对两端间使用中值定理，再估计余弦的绝对值。",
           "id": "review-5-2",
           "difficulty": 3,
           "misconceptionTags": []
@@ -191,7 +191,7 @@
             "$2 x + y = 60$，$A = x (60 - 2 x)$，导数在 $x = 15$ 变正为负。",
             "$y = 30$，面积 450。"
           ],
-          "hint": "先写出相关定义与适用条件。",
+          "hint": "写三边长度约束，再将面积化成一个变量。",
           "id": "review-5-3",
           "difficulty": 4,
           "misconceptionTags": []
@@ -208,7 +208,7 @@
           "solution": [
             "令 $u = x^{3}$，$\\mathrm{d}u = 3 x^{2} \\mathrm{d}x$，界仍为 0 到 1。"
           ],
-          "hint": "先写出相关定义与适用条件。",
+          "hint": "内层为 $x^3$；同时核对微分与上下限。",
           "id": "review-6-1",
           "difficulty": 2,
           "misconceptionTags": []
@@ -219,7 +219,7 @@
           "solution": [
             "上端代 $x^{3}$ 并乘 $3 x^{2}$，下端代 $x^{2}$ 并乘 $2 x$，然后相减。"
           ],
-          "hint": "先写出相关定义与适用条件。",
+          "hint": "上限贡献减下限贡献，各自乘内部导数。",
           "id": "review-6-2",
           "difficulty": 3,
           "misconceptionTags": []
@@ -230,9 +230,21 @@
           "solution": [
             "奇函数对称积分为零；绝对值积分是 $2 \\int _{0}^{1} x^{3} \\mathrm{d}x = \\frac{1}{2}$。"
           ],
-          "hint": "先写出相关定义与适用条件。",
+          "hint": "积分零可由抵消得到；面积须取绝对值。",
           "id": "review-6-3",
           "difficulty": 4,
+          "misconceptionTags": []
+        },
+        {
+          "id": "review-6-4",
+          "problem": "连续函数在 $[0,4]$ 的积分为 10，说明为何某点函数值为 $\\frac52$。",
+          "answer": "平均值为 $\\frac52$；积分中值定理保证取到。",
+          "solution": [
+            "$f_{\\mathrm{avg}}=\\frac{10}{4}=\\frac52$。",
+            "由连续性，平均值位于最小、最大值之间，再由介值定理得到相应点。"
+          ],
+          "hint": "积分给数值，连续性给取到这个数的保证。",
+          "difficulty": 3,
           "misconceptionTags": []
         }
       ]
@@ -248,7 +260,7 @@
             "圆盘法：$\\pi  \\int  x^{4} \\mathrm{d}x = \\frac{\\pi }{5}$。",
             "壳层法：$2 \\pi  \\int  x^{3} \\mathrm{d}x = \\frac{\\pi }{2}$。"
           ],
-          "hint": "先写出相关定义与适用条件。",
+          "hint": "两种旋转轴分别选圆盘与壳层，半径不同。",
           "id": "review-7-1",
           "difficulty": 2,
           "misconceptionTags": []
@@ -260,7 +272,7 @@
             "位移 $[t^{2} - 2 t]_{0}^{3} = 3$。",
             "在 1 分段，负段的绝对累积为 1，正段为 4。"
           ],
-          "hint": "先写出相关定义与适用条件。",
+          "hint": "先找速度变号时刻，再分别累积位移与路程。",
           "id": "review-7-2",
           "difficulty": 3,
           "misconceptionTags": []
@@ -272,9 +284,33 @@
             "$m = \\int _{0}^{2} (x + 2) \\mathrm{d}x = 6$。",
             "$M = \\int _{0}^{2} (x^{2} + 2 x) \\mathrm{d}x = \\frac{20}{3}$，除以 6。"
           ],
-          "hint": "先写出相关定义与适用条件。",
+          "hint": "质量与位置加权量要分别积分，再相除。",
           "id": "review-7-3",
           "difficulty": 4,
+          "misconceptionTags": []
+        },
+        {
+          "id": "review-7-4",
+          "problem": "垂直 $x$ 轴的正方形截面边长为 $x(1-x)$，$0\\le x\\le1$，体积是多少？",
+          "answer": "$\\frac1{30}$。",
+          "solution": [
+            "$A(x)=x^2(1-x)^2$。",
+            "$\\int_0^1A(x)\\,\\mathrm{d}x=\\frac13-\\frac12+\\frac15=\\frac1{30}$。"
+          ],
+          "hint": "截面是正方形，不是圆盘。",
+          "difficulty": 3,
+          "misconceptionTags": []
+        },
+        {
+          "id": "review-7-5",
+          "problem": "截面积恒为 $1\\,\\mathrm{m}^2$ 的水箱，水在 $0\\le y\\le2\\,\\mathrm{m}$。出口高 $3\\,\\mathrm{m}$，$\\rho g=9800\\,\\mathrm{N}\\,\\mathrm{m}^{-3}$，忽略损耗，抽空做功多少？",
+          "answer": "$39200\\,\\mathrm{J}$。",
+          "solution": [
+            "薄层重量为 $9800\\,\\mathrm{d}y$，提升距离为 $3-y$。",
+            "$W=9800\\int_0^2(3-y)\\,\\mathrm{d}y=39200\\,\\mathrm{J}$。"
+          ],
+          "hint": "薄层厚度与提升距离是两个不同的长度。",
+          "difficulty": 3,
           "misconceptionTags": []
         }
       ]
@@ -287,7 +323,7 @@
       "solution": [
         "要求 $4 - x^{2} > 0$，端点不允许。"
       ],
-      "hint": "先写出相关定义与适用条件。",
+      "hint": "对数真数须严格大于零，端点要排除。",
       "id": "exam-1",
       "difficulty": 3,
       "misconceptionTags": []
@@ -298,7 +334,7 @@
       "solution": [
         "改写为 $\\frac{(\\frac{2}{5}) \\sin (2 x)}{2 x}$。"
       ],
-      "hint": "先写出相关定义与适用条件。",
+      "hint": "把分母配成正弦里的角，再补常数。",
       "id": "exam-2",
       "difficulty": 3,
       "misconceptionTags": []
@@ -309,7 +345,7 @@
       "solution": [
         "约分为 $x^{2} + x + 1$，再代入 1。"
       ],
-      "hint": "先写出相关定义与适用条件。",
+      "hint": "分解立方差；约分只在目标点外成立。",
       "id": "exam-3",
       "difficulty": 3,
       "misconceptionTags": []
@@ -320,7 +356,7 @@
       "solution": [
         "输出误差 $|4 x - 1 - 7| = 4 |x - 2| < 4 \\delta  = \\varepsilon$。"
       ],
-      "hint": "先写出相关定义与适用条件。",
+      "hint": "把输出误差写成输入误差的常数倍。",
       "id": "exam-4",
       "difficulty": 3,
       "misconceptionTags": []
@@ -331,7 +367,7 @@
       "solution": [
         "积法则；指数项再用链式法则，整理共同因子。"
       ],
-      "hint": "先写出相关定义与适用条件。",
+      "hint": "先用积法则，指数项再用链式法则。",
       "id": "exam-5",
       "difficulty": 3,
       "misconceptionTags": []
@@ -342,7 +378,7 @@
       "solution": [
         "隐式求导 $y' = \\frac{- x}{y}$，该点斜率 $\\frac{- 1}{3}$。"
       ],
-      "hint": "先写出相关定义与适用条件。",
+      "hint": "先求曲线斜率，再用给定点写切线。",
       "id": "exam-6",
       "difficulty": 3,
       "misconceptionTags": []
@@ -353,7 +389,7 @@
       "solution": [
         "高度为 8，$\\frac{\\mathrm{d}y}{\\mathrm{d}t} = - (\\frac{6}{8}) \\times 0.5 = \\frac{- 3}{8}$。"
       ],
-      "hint": "先写出相关定义与适用条件。",
+      "hint": "先用勾股求当时的高度，再代入变化率方程。",
       "id": "exam-7",
       "difficulty": 4,
       "misconceptionTags": []
@@ -365,7 +401,7 @@
         "导数 $3 x (x - 2)$，临界点 0、2；端点 −1、3。",
         "四点值为 −4、0、−4、0。"
       ],
-      "hint": "先写出相关定义与适用条件。",
+      "hint": "列出导数零点和两个端点，比较全部函数值。",
       "id": "exam-8",
       "difficulty": 4,
       "misconceptionTags": []
@@ -376,7 +412,7 @@
       "solution": [
         "$\\frac{\\infty }{\\infty }$ 型，第一次为 $\\frac{2 x}{e^{x}}$，第二次为 $\\frac{2}{e^{x}}$，趋近零。"
       ],
-      "hint": "先写出相关定义与适用条件。",
+      "hint": "原式与每次求导后的商都要重新检查未定式。",
       "id": "exam-9",
       "difficulty": 4,
       "misconceptionTags": []
@@ -388,7 +424,7 @@
         "$u = 1 + x^{2}$，$\\mathrm{d}u = 2 x \\mathrm{d}x$，界 1 到 5。",
         "积分 $(\\frac{1}{2}) u^{\\frac{1}{2}}$ 得 $\\frac{u^{\\frac{3}{2}}}{3}$。"
       ],
-      "hint": "先写出相关定义与适用条件。",
+      "hint": "根号内部作新变量，别漏微分中的常数。",
       "id": "exam-10",
       "difficulty": 4,
       "misconceptionTags": []
@@ -399,7 +435,7 @@
       "solution": [
         "先在上限处取被积函数，再乘上限导数。"
       ],
-      "hint": "先写出相关定义与适用条件。",
+      "hint": "被积函数在上限取值，再乘上限导数。",
       "id": "exam-11",
       "difficulty": 4,
       "misconceptionTags": []
@@ -410,7 +446,7 @@
       "solution": [
         "交点 0、2，积分 $2 x - x^{2}$ 得 $4 - \\frac{8}{3}$。"
       ],
-      "hint": "先写出相关定义与适用条件。",
+      "hint": "先找两交点和上方曲线。",
       "id": "exam-12",
       "difficulty": 4,
       "misconceptionTags": []
@@ -421,7 +457,7 @@
       "solution": [
         "圆盘半径 $\\sqrt{x}$，$V = \\pi  \\int _{0}^{4} x \\mathrm{d}x = 8 \\pi$。"
       ],
-      "hint": "先写出相关定义与适用条件。",
+      "hint": "截面积是半径的平方乘圆面积因子。",
       "id": "exam-13",
       "difficulty": 4,
       "misconceptionTags": []
@@ -432,7 +468,7 @@
       "solution": [
         "$m = \\int  2 x \\mathrm{d}x = 1$，$M = \\int  2 x^{2} \\mathrm{d}x = \\frac{2}{3}$，除以质量。"
       ],
-      "hint": "先写出相关定义与适用条件。",
+      "hint": "先求总质量，再求位置加权量；后者不是质心。",
       "id": "exam-14",
       "difficulty": 4,
       "misconceptionTags": []
@@ -537,6 +573,21 @@
     {
       "term": "质心",
       "meaning": "位置以质量为权重的平均值。",
+      "lessonId": "physical-integrals"
+    },
+    {
+      "term": "积分中值定理",
+      "meaning": "连续函数在闭区间上会取到该区间的平均值。",
+      "lessonId": "definite-integral"
+    },
+    {
+      "term": "截面体积",
+      "meaning": "沿切片方向累积每片截面积；不要求立体来自旋转。",
+      "lessonId": "disk-washer"
+    },
+    {
+      "term": "表压",
+      "meaning": "相对于周围大气压的压力；静水中随离液面的深度增长。",
       "lessonId": "physical-integrals"
     }
   ],
