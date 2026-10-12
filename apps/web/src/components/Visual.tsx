@@ -1076,6 +1076,7 @@ function PlanarVisual({
     <section
       ref={cardRef}
       onChangeCapture={()=>setPlaying(false)}
+      onFocusCapture={e=>{if((e.target as Element).closest(".parameter-value"))setPlaying(false);}}
       className={`visual-card ${compact ? "compact" : ""}`}
       aria-label={"交互演示"}
     >

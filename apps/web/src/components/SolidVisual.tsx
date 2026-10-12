@@ -432,6 +432,7 @@ export default function SolidVisual({
   return (
     <section
       onChangeCapture={()=>setPlaying(false)}
+      onFocusCapture={e=>{if((e.target as Element).closest(".parameter-value"))setPlaying(false);}}
       className={`solid-visual ${compact ? "compact" : ""}`}
       aria-label={"三维旋转演示"}
     >

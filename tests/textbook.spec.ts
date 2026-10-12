@@ -148,3 +148,15 @@ test("exhibition shapes change parameters and reading focus preserves navigation
   await expect(page.locator("#lesson-article")).toBeVisible();
   await page.getByRole("button", { name: "退出专注阅读", exact: true }).click();
 });
+
+
+test("typing a precise parameter during playback pauses and preserves the intended value", async ({page}) => {
+  await page.goto("/#/lesson/derivative-definition?view=visual");
+  await page.getByRole("button",{name:"让割线靠近切线",exact:true}).click();
+  const value=page.getByRole("textbox",{name:"两点距离 h：输入数值",exact:true});
+  await value.fill("0.02");
+  await value.press("Enter");
+  await expect(value).toHaveValue("0.02");
+  await expect(page.getByRole("button",{name:"让割线靠近切线",exact:true})).toBeVisible();
+  await expect(page.locator(".stats")).toContainText("2.02");
+});
