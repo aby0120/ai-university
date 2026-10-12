@@ -4,6 +4,7 @@ import fs from "node:fs";
 import assert from "node:assert/strict";
 import Ajv from "ajv";
 import katex from "katex";
+import { validateMathNotation } from "./math-notation.mjs";
 import { book, allLessons, walkStrings, root } from "./content-utils.mjs";
 import { functions } from "../packages/visuals/math.mjs";
 export function validateContent() {
@@ -16,6 +17,7 @@ export function validateContent() {
     sourceIds = new Set(book.sources.map((s) => s.id));
   let mathCount = 0;
   for (const l of allLessons) {
+    validateMathNotation(l, l.id);
     assert(validate(l), `${l.id}: ${JSON.stringify(validate.errors)}`);
     assert(
       l.learningCheck.correctIndex < l.learningCheck.choices.length,
@@ -112,6 +114,8 @@ export function validateContent() {
     extra.reviews.map((r) => r.chapterId),
     book.chapters.map((c) => c.id),
   );
+  validateMathNotation(extra, "supplements");
+  validateMathNotation(book.chapters, "chapters");
   const more = [...extra.exam, ...extra.reviews.flatMap((r) => r.questions)];
   assert.equal(new Set(more.map((q) => q.id)).size, more.length);
   for (const q of more) {

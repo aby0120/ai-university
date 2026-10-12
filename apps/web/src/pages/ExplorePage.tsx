@@ -1,3 +1,4 @@
+import { MathText, plainMathText } from "../components/MathText";
 import {
   ArrowLeft,
   ArrowRight,
@@ -29,7 +30,7 @@ export function ExplorePage({ mode }: { mode: "lab" | "practice" }) {
   const list = lessons.filter(
     (l) =>
       (!params.chapter || l.chapterId === params.chapter) &&
-      `${l.title} ${l.subtitle} ${l.concept}`.toLowerCase().includes(query),
+      plainMathText(`${l.title} ${l.subtitle} ${l.concept}`).toLowerCase().includes(query),
   );
   const { start, end } = pageWindow(list.length, route.params.get("page"), 6);
   return (
@@ -91,9 +92,9 @@ export function ExplorePage({ mode }: { mode: "lab" | "practice" }) {
                     {l.number} /{" "}
                     {book.chapters.find((c) => c.id === l.chapterId)!.title}
                   </small>
-                  <h3>{l.title}</h3>
+                  <h3><MathText text={l.title} /></h3>
                   <p>
-                    {mode === "lab" ? l.interactiveVisual.caption : l.subtitle}
+                    <MathText text={mode === "lab" ? l.interactiveVisual.caption : l.subtitle} />
                   </p>
                   <div>
                     <span>

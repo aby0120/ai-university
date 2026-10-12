@@ -1,3 +1,4 @@
+import { MathText } from "./MathText";
 import {
   ArrowRight,
   ArrowUpRight,

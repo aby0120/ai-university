@@ -1,3 +1,4 @@
+import { plainMathText } from "../../../../packages/content/math-text.mjs";
 import { book, lessonById, lessons } from "../../../../packages/content";
 import type { Lesson } from "../../../../packages/content/types";
 import type { Route } from "./navigation";
@@ -12,7 +13,7 @@ export function findLesson(path: string) {
 }
 export function labelFor(route: Route) {
   const l = findLesson(route.path);
-  if (l) return l.title;
+  if (l) return plainMathText(l.title);
   const ch = book.chapters.find((c) => chapterPath(c.id) === route.path);
   if (ch) return ch.title;
   return (
@@ -42,7 +43,7 @@ export function searchLessons(query: string) {
   const words = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
   if (!words.length) return [];
   return lessons.filter((l) => {
-    const text = [
+    const text = plainMathText([
       l.title,
       l.subtitle,
       l.concept,
@@ -54,8 +55,7 @@ export function searchLessons(query: string) {
       ...l.workedExamples.map((e) => e.problem),
       ...l.practice.map((q) => q.problem),
     ]
-      .join(" ")
-      .toLowerCase();
+      .join(" ")).toLowerCase();
     return words.every((w) => text.includes(w));
   });
 }

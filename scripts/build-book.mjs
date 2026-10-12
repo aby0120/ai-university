@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import katex from "katex";
+import { splitMathText, mathDisplayMode } from "../packages/content/math-text.mjs";
 import { root, book, allLessons } from "./content-utils.mjs";
 const extra = JSON.parse(
   fs.readFileSync(`${root}/packages/content/supplements.json`, "utf8"),
@@ -12,22 +13,12 @@ const esc = (s) =>
     .replaceAll('"', "&quot;");
 const math = (s, display = false) =>
   katex.renderToString(s, {
-    displayMode: display,
+    displayMode: mathDisplayMode(s, display),
     throwOnError: true,
     strict: "ignore",
     trust: false,
   });
-const rich = (s) =>
-  s
-    .split(/(\$\$[\s\S]*?\$\$|\$[^$]+\$)/g)
-    .map((p) =>
-      p.startsWith("$$")
-        ? math(p.slice(2, -2), true)
-        : p.startsWith("$")
-          ? math(p.slice(1, -1))
-          : esc(p),
-    )
-    .join("");
+const rich = (s) => splitMathText(s).map(part => part.kind === "math" ? math(part.value, part.display) : esc(part.value)).join("");
 const p = (s) => `<p>${rich(s)}</p>`,
   list = (items) =>
     `<ol>${items.map((s) => `<li>${rich(s)}</li>`).join("")}</ol>`;
@@ -39,7 +30,7 @@ for (const c of book.chapters) {
   for (const id of c.lessonIds) {
     const l = allLessons.find((l) => l.id === id);
     md += `- ${l.number} ${l.title}\n`;
-    html += `<li><a href="#${id}">${l.number} ${esc(l.title)}</a></li>`;
+    html += `<li><a href="#${id}">${l.number} ${rich(l.title)}</a></li>`;
   }
   html += `<li><a href="#review-${c.id}">章末回顾</a></li></ol>`;
 }
@@ -58,13 +49,13 @@ for (const [ci, c] of book.chapters.entries()) {
   for (const id of c.lessonIds) {
     const l = allLessons.find((l) => l.id === id);
     md += `\n## ${l.number} ${l.title}\n\n*${l.subtitle}*\n\n### 核心意思\n\n${l.concept}\n\n### 怎么理解？\n\n${l.intuition}\n`;
-    html += `<section class="lesson" id="${id}"><p class="kicker">SECTION ${l.number}</p><h2>${l.title}</h2><p class="subtitle">${l.subtitle}</p><div class="idea">${p(l.concept)}</div><h3>怎么理解？</h3>${p(l.intuition)}`;
+    html += `<section class="lesson" id="${id}"><p class="kicker">SECTION ${l.number}</p><h2>${rich(l.title)}</h2><p class="subtitle">${rich(l.subtitle)}</p><div class="idea">${p(l.concept)}</div><h3>怎么理解？</h3>${p(l.intuition)}`;
     const check = l.learningCheck;
     md += `\n### 先想一下\n\n${check.question}\n\n${check.choices.map((s, i) => `${String.fromCharCode(65 + i)}. ${s}`).join("\n")}\n\n答案：${String.fromCharCode(65 + check.correctIndex)}。${check.explanation}\n`;
-    html += `<div class="concept-check"><h3>先想一下</h3>${p(check.question)}${list(check.choices)}<details><summary>查看答案与解释</summary>${p(`${String.fromCharCode(65 + check.correctIndex)}。${check.explanation}`)}</details></div>`;
+    html += `<div class="concept-check"><h3>先想一下</h3>${p(check.question)}${`<ol type="A" class="concept-check-choices">${check.choices.map(choice => `<li>${rich(choice)}</li>`).join("")}</ol>`}<details><summary>查看答案与解释</summary>${p(`${String.fromCharCode(65 + check.correctIndex)}。${check.explanation}`)}</details></div>`;
     for (const s of l.body) {
       md += `\n### ${s.title}\n\n${s.text}\n`;
-      html += `<h3>${s.title}</h3>${p(s.text)}`;
+      html += `<h3>${rich(s.title)}</h3>${p(s.text)}`;
     }
     md += `\n### 精确定义与条件\n\n${l.formalDefinition.text}\n\n$$\n${l.formalDefinition.latex}\n$$\n\n${l.formalDefinition.conditions.map((s) => `- ${s}`).join("\n")}\n\n### 推导\n`;
     html += `<div class="definition"><h3>精确定义与条件</h3>${p(l.formalDefinition.text)}${math(l.formalDefinition.latex, true)}${list(l.formalDefinition.conditions)}</div><h3>公式是怎么来的？</h3>`;
@@ -76,7 +67,7 @@ for (const [ci, c] of book.chapters.entries()) {
     html += `<div class="visual-link"><strong>交互演示</strong>${p(l.interactiveVisual.prediction)}${p(l.interactiveVisual.caption)}<a href="./#/lesson/${l.id}?view=visual">打开 ${l.number} 的互动图 →</a></div><h3>例题</h3>`;
     for (const [i, e] of l.workedExamples.entries()) {
       md += `\n#### 例 ${i + 1}：${e.title}\n\n${e.problem}\n\n${e.steps.map((s) => `- ${s}`).join("\n")}\n\n**答案：${e.answer}**\n`;
-      html += `<article class="example"><h4>例 ${i + 1}：${e.title}</h4>${p(e.problem)}${list(e.steps)}<div class="answer">${p(e.answer)}</div></article>`;
+      html += `<article class="example"><h4>例 ${i + 1}：${rich(e.title)}</h4>${p(e.problem)}${list(e.steps)}<div class="answer">${p(e.answer)}</div></article>`;
     }
     md += `\n### 常见错误\n`;
     html += "<h3>常见错误</h3>";
@@ -87,7 +78,7 @@ for (const [ci, c] of book.chapters.entries()) {
     md += `\n### 练习与解答\n`;
     html += `<h3>练习与解答</h3>${questions(l.practice)}`;
     md += `\n前置知识：${l.prerequisites.map((id) => allLessons.find((x) => x.id === id).title).join("、") || "初等代数"}。\n`;
-    html += `<p class="prerequisites">前置知识：${l.prerequisites.map((id) => `<a href="#${id}">${allLessons.find((x) => x.id === id).title}</a>`).join("、") || "初等代数"}。</p></section>`;
+    html += `<p class="prerequisites">前置知识：${l.prerequisites.map((id) => `<a href="#${id}">${rich(allLessons.find((x) => x.id === id).title)}</a>`).join("、") || "初等代数"}。</p></section>`;
   }
   const review = extra.reviews.find((r) => r.chapterId === c.id);
   md += `\n## 章末回顾\n\n请先独立作答，再与解答核对。\n`;
@@ -100,14 +91,14 @@ md += "\n# 术语索引\n";
 html += '<section id="glossary"><h1>术语索引</h1><dl>';
 for (const g of extra.glossary) {
   md += `\n- **${g.term}**：${g.meaning}\n`;
-  html += `<dt><a href="#${g.lessonId}">${g.term}</a></dt><dd>${g.meaning}</dd>`;
+  html += `<dt><a href="#${g.lessonId}">${rich(g.term)}</a></dt><dd>${rich(g.meaning)}</dd>`;
 }
 html += "</dl></section>";
 md += "\n# 证明补充与范围说明\n";
 html += '<section id="appendices"><h1>证明补充与范围说明</h1>';
 for (const a of extra.appendices) {
   md += `\n## ${a.title}\n\n${a.text}\n`;
-  html += `<h2>${a.title}</h2>${p(a.text)}`;
+  html += `<h2>${rich(a.title)}</h2>${p(a.text)}`;
 }
 html += "</section>";
 md +=
@@ -116,10 +107,10 @@ html +=
   "<section><h1>来源与版本</h1><p>本书内容与图像重新编写，参考来源用于范围、定理条件与教学设计核对；尚未逐节人工审校。</p>";
 for (const s of book.sources) {
   md += `- [${s.title}](${s.url})：${s.usage}\n`;
-  html += `<p><a href="${s.url}">${s.title}</a>：${s.usage}</p>`;
+  html += `<p><a href="${s.url}">${rich(s.title)}</a>：${s.usage}</p>`;
 }
 html += "</section>";
-const css = `*{box-sizing:border-box}body{margin:0;font:16px/1.95 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;color:#314a3a;background:#fafbf6}main{max-width:850px;margin:40px auto;background:white;padding:65px 65px;box-shadow:0 2px 25px #23402009}a{color:#436d46}button{font:inherit;border:1px solid #aaba9b;background:#f4f7e9;padding:5px 14px;color:#476142;cursor:pointer}h1,h2,h3,h4{line-height:1.5}h1{font-family:Georgia,"Songti SC",serif;font-size:38px;font-weight:500}h2{font-size:26px;margin-top:35px}h3{font-size:19px;margin-top:28px}h4{font-size:16px;margin-top:20px}.cover h1{font-size:65px}.kicker{letter-spacing:2px;font-size:10px;color:#91a17d}.subtitle{color:#899776}.toc,.lesson,.review,.chapter-intro{margin:50px 0;padding:30px 0;border-top:1px solid #e3e8db}.toc ol{padding-left:25px}.idea,.definition,.visual-link,.answer{background:#f2f6e8;padding:18px 22px;margin:23px 0;border-radius:4px}.definition{background:#fafbf6;border:1px solid #e3e8db}.example,.problem{margin:25px 0;padding:20px;border:1px solid #e4e9dc}.hint,.prerequisites{font-size:13px;color:#8a9978}.mistake{border-left:2px solid #ccb189;padding-left:18px;margin:24px 0}.katex-display{overflow:auto;font-size:.9em}dt{font-weight:600}dd{margin:5px 0 18px;color:#82916f}@media(max-width:700px){main{padding:28px 22px;margin:0}body{font-size:15px}.cover h1{font-size:50px}h1{font-size:30px}.example,.problem{padding:15px}}@media print{body{background:white;color:black;font-size:10.5pt;line-height:1.75}main{max-width:none;margin:0;padding:0;box-shadow:none}button,.visual-link{display:none}.cover,.toc,.chapter-intro,.lesson,.review{break-before:page;border:0;padding:0;margin:0}.cover{break-before:auto}.definition,.example,.mistake{break-inside:avoid}.problem{border:0;padding:0;break-inside:avoid}.answer{background:#f6f6f6}.katex-display{overflow:visible}a{color:inherit;text-decoration:none}@page{size:A4;margin:19mm 18mm}}`;
+const css = `.concept-check{background:#eef4e8;border:1px solid #d2e0ca;border-radius:4px;padding:20px 24px;margin:28px 0}.concept-check-choices{padding-left:30px}.concept-check-choices li{padding:8px 0;line-height:1.9}*{box-sizing:border-box}body{margin:0;font:16px/1.95 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;color:#314a3a;background:#fafbf6}main{max-width:850px;margin:40px auto;background:white;padding:65px 65px;box-shadow:0 2px 25px #23402009}a{color:#436d46}button{font:inherit;border:1px solid #aaba9b;background:#f4f7e9;padding:5px 14px;color:#476142;cursor:pointer}h1,h2,h3,h4{line-height:1.5}h1{font-family:Georgia,"Songti SC",serif;font-size:38px;font-weight:500}h2{font-size:26px;margin-top:35px}h3{font-size:19px;margin-top:28px}h4{font-size:16px;margin-top:20px}.cover h1{font-size:65px}.kicker{letter-spacing:2px;font-size:10px;color:#91a17d}.subtitle{color:#899776}.toc,.lesson,.review,.chapter-intro{margin:50px 0;padding:30px 0;border-top:1px solid #e3e8db}.toc ol{padding-left:25px}.idea,.definition,.visual-link,.answer{background:#f2f6e8;padding:18px 22px;margin:23px 0;border-radius:4px}.definition{background:#fafbf6;border:1px solid #e3e8db}.example,.problem{margin:25px 0;padding:20px;border:1px solid #e4e9dc}.hint,.prerequisites{font-size:13px;color:#8a9978}.mistake{border-left:2px solid #ccb189;padding-left:18px;margin:24px 0}.katex-display{overflow:auto;font-size:.9em}dt{font-weight:600}dd{margin:5px 0 18px;color:#82916f}@media(max-width:700px){main{padding:28px 22px;margin:0}body{font-size:15px}.cover h1{font-size:50px}h1{font-size:30px}.example,.problem{padding:15px}}@media print{body{background:white;color:black;font-size:10.5pt;line-height:1.75}main{max-width:none;margin:0;padding:0;box-shadow:none}button,.visual-link{display:none}.cover,.toc,.chapter-intro,.lesson,.review{break-before:page;border:0;padding:0;margin:0}.cover{break-before:auto}.definition,.example,.mistake{break-inside:avoid}.problem{border:0;padding:0;break-inside:avoid}.answer{background:#f6f6f6}.katex-display{overflow:visible}a{color:inherit;text-decoration:none}@page{size:A4;margin:19mm 18mm}}`;
 const publicDir = `${root}/apps/web/public`;
 fs.mkdirSync(`${root}/book`, { recursive: true });
 fs.writeFileSync(`${root}/book/Calculus-I.md`, md);

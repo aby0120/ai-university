@@ -4,8 +4,8 @@
   "number": "4.4",
   "title": "线性近似与微分",
   "subtitle": "在足够近的地方，曲线像直线",
-  "concept": "在可导点附近，用切线估计函数值：原值加上“导数×输入改变量”。",
-  "intuition": "√4.1 接近 √4=2。导数在 4 为 1/4，因此 √4.1≈2+(1/4)×0.1=2.025。",
+  "concept": "在可导点附近，用切线估计函数值：原值加上“$\\text{导数}\\times\\text{输入改变量}$”。",
+  "intuition": "$\\sqrt{4.1}$ 接近 $\\sqrt{4} = 2$。导数在 4 为 $\\frac{1}{4}$，因此 $\\sqrt{4.1} \\approx 2 + (\\frac{1}{4}) \\times 0.1 = 2.025$。",
   "objectives": [
     "一阶近似",
     "微分与误差传播",
@@ -14,27 +14,27 @@
   "body": [
     {
       "title": "为什么能用直线近似？",
-      "text": "可导意味着 f(a+h)=f(a)+f′(a)h+o(h)：余项比 h 更快趋于 0。它是局部近似，不是精确等式。"
+      "text": "可导意味着 $f (a + h) = f (a) + f' (a) h + o (h)$：余项比 $h$ 更快趋于 0。它是局部近似，不是精确等式。"
     },
     {
-      "title": "dy 与 Δy 一样吗？",
-      "text": "dy=f′(a)dx 是估计，Δy=f(a+dx)−f(a) 才是实际变化。f(a)≠0 时，可用 dy/f(a) 估计相对变化。"
+      "title": "$\\mathrm{d}y$ 与 $\\Delta  y$ 一样吗？",
+      "text": "$\\mathrm{d}y = f' (a) \\mathrm{d}x$ 是估计，$\\Delta  y = f (a + \\mathrm{d}x) - f (a)$ 才是实际变化。$f (a) \\ne 0$ 时，可用 $\\frac{\\mathrm{d}y}{f (a)}$ 估计相对变化。"
     },
     {
       "title": "怎样判断偏高还是偏低？",
-      "text": "附近 f″>0 时，曲线在切线上方，近似偏低；f″<0 时偏高。具体误差界还需要二阶导数等信息。"
+      "text": "附近 $f'' > 0$ 时，曲线在切线上方，近似偏低；$f'' < 0$ 时偏高。具体误差界还需要二阶导数等信息。"
     }
   ],
   "formalDefinition": {
-    "text": "以可导点 a 为中心的线性化。",
+    "text": "以可导点 $a$ 为中心的线性化。",
     "latex": "L(x)=f(a)+f\\prime(a)(x-a),\\qquad dy=f\\prime(a)\\,dx",
     "conditions": [
-      "仅是 a 附近的近似；导数存在并不自动给出指定距离上的误差上界。"
+      "仅是 $a$ 附近的近似；导数存在并不自动给出指定距离上的误差上界。"
     ]
   },
   "derivation": [
     {
-      "text": "以平方根在 a=4 的切线建立模型。",
+      "text": "以平方根在 $a = 4$ 的切线建立模型。",
       "latex": "f(4)=2,\\quad f\\prime(4)=\\frac14"
     },
     {
@@ -50,7 +50,7 @@
     "kind": "linearization",
     "function": "sqrt",
     "a": 4,
-    "caption": "改变 x 与中心 a，比较曲线值、切线估计与真实误差。",
+    "caption": "改变 $x$ 与中心 $a$，比较曲线值、切线估计与真实误差。",
     "prediction": "离近似中心越远，切线估计通常越准还是越差？对照误差读数。"
   },
   "workedExamples": [
@@ -58,7 +58,7 @@
       "title": "快速估平方根",
       "problem": "估计 $\\sqrt{9.06}$。",
       "steps": [
-        "在 9 附近：f(9)=3，f′(9)=1/6。",
+        "在 9 附近：$f (9) = 3$，$f' (9) = \\frac{1}{6}$。",
         "变化为 0.06，输出估计增加 0.01。"
       ],
       "answer": "约 3.01，略高于真实值。"
@@ -67,8 +67,8 @@
       "title": "半径测量误差",
       "problem": "球半径约 10 cm，误差约 0.1 cm，体积相对误差约多少？",
       "steps": [
-        "V=4πr³/3，dV/V=3dr/r。",
-        "3×0.1/10=0.03。"
+        "$V = \\frac{4 \\pi  r^{3}}{3}$，$\\frac{\\mathrm{d}V}{V} = \\frac{3 \\mathrm{d}r}{r}$。",
+        "$\\frac{3 \\times 0.1}{10} = 0.03$。"
       ],
       "answer": "约 3%，是一阶估计。"
     }
@@ -77,7 +77,7 @@
     {
       "id": "linearization-m1",
       "claim": "把近似写成精确相等。",
-      "correction": "保留 ≈，误差需要另行评估。"
+      "correction": "保留 $\\approx$，误差需要另行评估。"
     },
     {
       "id": "linearization-m2",
@@ -92,10 +92,10 @@
       "misconceptionTags": [
         "linearization-m1"
       ],
-      "problem": "用 a=1 的线性化估计 ln(1.02)。",
+      "problem": "用 $a = 1$ 的线性化估计 $\\ln (1.02)$。",
       "answer": "$0.02$。",
       "solution": [
-        "ln1=0，导数在 1 为 1，增加 0.02。"
+        "$\\ln 1 = 0$，导数在 1 为 1，增加 0.02。"
       ],
       "hint": "选容易计算的附近中心。",
       "numericAnswer": 0.02
@@ -106,7 +106,7 @@
       "misconceptionTags": [
         "linearization-m2"
       ],
-      "problem": "e^x 在 a=0 的线性化是什么？",
+      "problem": "$e^{x}$ 在 $a = 0$ 的线性化是什么？",
       "answer": "$L(x)=1+x$。",
       "solution": [
         "函数值与导数值都为 1。"
@@ -122,7 +122,7 @@
       "problem": "正方形边长测量相对误差 1%，面积相对误差约多少？",
       "answer": "$2%$。",
       "solution": [
-        "A=s²，dA/A=2ds/s。"
+        "$A = s^{2}$，$\\frac{\\mathrm{d}A}{A} = \\frac{2 \\mathrm{d}s}{s}$。"
       ],
       "hint": "面积的指数决定一阶倍数。"
     },
@@ -135,7 +135,7 @@
       "problem": "平方根在正数附近的切线估计通常偏高还是偏低？",
       "answer": "偏高。",
       "solution": [
-        "f″<0，曲线凹向下，切线在上方。"
+        "$f'' < 0$，曲线凹向下，切线在上方。"
       ],
       "hint": "比较凹性与切线位置。"
     }
@@ -151,7 +151,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -162,13 +162,13 @@
     "phet-design"
   ],
   "learningCheck": {
-    "question": "在 a 附近用切线近似 f(x)，哪条公式正确？",
+    "question": "在 $a$ 附近用切线近似 $f (x)$，哪条公式正确？",
     "choices": [
-      "f(x)≈f(a)+f′(a)(x−a)",
-      "f(x)=f′(a)x 对所有 x 成立",
-      "f(x)≈f(a)+f′(x)"
+      "$f (x) \\approx f (a) + f' (a) (x - a)$",
+      "$f (x) = f' (a) x$ 对所有 $x$ 成立",
+      "$f (x) \\approx f (a) + f' (x)$"
     ],
     "correctIndex": 0,
-    "explanation": "近似从点 (a,f(a)) 出发，沿该点的斜率变化。除非函数本来就是直线，否则一般不是精确等式。"
+    "explanation": "近似从点 $(a , f (a))$ 出发，沿该点的斜率变化。除非函数本来就是直线，否则一般不是精确等式。"
   }
 }

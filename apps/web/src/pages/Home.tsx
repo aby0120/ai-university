@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { HeroNotebook } from "../components/HeroNotebook";
-import { Formula } from "../components/MathText";
+import { Formula, MathText, plainMathText } from "../components/MathText";
 import { PublishedBook } from "../components/Series";
 import { Eyebrow, Link } from "../components/UI";
 import type { SculptureMode } from "../components/MathSculpture";
@@ -20,7 +20,7 @@ const forms = [
     title: "曲面",
     subtitle: "波的形状",
     latex: String.raw`z=A\sin x\cos y`,
-    label: "振幅 A",
+    label: "振幅 $A$",
     min: 0.1,
     max: 1.8,
     step: 0.05,
@@ -33,7 +33,7 @@ const forms = [
     title: "环面",
     subtitle: "旋转的形状",
     latex: String.raw`(\sqrt{x^2+y^2}-2)^2+z^2=r^2`,
-    label: "管半径 r",
+    label: "管半径 $r$",
     min: 0.25,
     max: 1.2,
     step: 0.05,
@@ -46,12 +46,12 @@ const forms = [
     title: "螺旋",
     subtitle: "旋转与上升",
     latex: String.raw`(x,y,z)=(1.65\cos t,1.65\sin t,p(t-3\pi))`,
-    label: "上升系数 p",
+    label: "上升系数 $p$",
     min: 0.1,
     max: 0.3,
     step: 0.01,
     initial: 0.2,
-    caption: "三圈螺旋，管厚仅便于显示；每圈上升 2πp。",
+    caption: "三圈螺旋，管厚仅便于显示；每圈上升 $2\\pi p$。",
     to: "lesson/trigonometry",
   },
 ];
@@ -185,15 +185,15 @@ export function Home() {
           </div>
           <div className="sculpture-equation">
             <Formula latex={form.latex} />
-            <span>{form.caption}</span>
+            <span><MathText text={form.caption} /></span>
           </div>
           <label className="sculpture-parameter">
             <span>
-              {form.label}
+              <span><MathText text={form.label} /></span>
               <output>{value.toFixed(2)}</output>
             </span>
             <input
-              aria-label={form.label}
+              aria-label={plainMathText(form.label)}
               type="range"
               min={form.min}
               max={form.max}

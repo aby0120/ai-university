@@ -33,7 +33,7 @@ export function LearningCheck({ check }: { check: Lesson["learningCheck"] }) {
                 String.fromCharCode(65 + i)
               )}
             </span>
-            <MathText text={text} />
+            <span className="check-choice-text"><MathText text={text} /></span>
             <ArrowRight size={14} />
           </button>
         ))}

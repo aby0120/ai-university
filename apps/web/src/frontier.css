@@ -391,7 +391,7 @@ input {
 .solid-visual .stats > div {
   border-color: #2b4058;
 }
-.solid-visual .stats span {
+.solid-visual .stats > div > span {
   color: #9bb3cb;
   font-size: 10px;
   line-height: 1.6;
@@ -564,14 +564,14 @@ input {
   font-size: 11px;
   margin: 10px 0;
 }
-.frontier-notebook .visual-card .plot-label span {
+.frontier-notebook .visual-card .plot-label > span {
   display: none;
 }
 .frontier-notebook .visual-card .plot {
   background: #f0f6fa;
   border-radius: 8px;
 }
-.frontier-notebook .visual-card .stats span,
+.frontier-notebook .visual-card .stats > div > span,
 .frontier-notebook .visual-card .slider {
   color: #abbcd4;
   font-size: 11px;
@@ -829,7 +829,7 @@ input {
   .solid-visual .stats strong {
     font-size: 15px;
   }
-  .solid-visual .stats span {
+  .solid-visual .stats > div > span {
     font-size: 9px;
   }
   .learning-check {

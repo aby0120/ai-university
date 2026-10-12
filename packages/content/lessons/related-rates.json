@@ -5,7 +5,7 @@
   "title": "相关变化率",
   "subtitle": "先建立关系，再对时间求导",
   "concept": "几个量同时随时间变化时，先写它们的关系，再对时间求导，就能连接各自的变化率。",
-  "intuition": "A=πr²。半径变化时，面积变化率为 dA/dt=2πr·dr/dt；同样的半径增长速度，在更大的圆上产生更快的面积增长。",
+  "intuition": "$A = \\pi  r^{2}$。半径变化时，面积变化率为 $\\frac{\\mathrm{d}A}{\\mathrm{d}t} = \\frac{2 \\pi  r \\cdot \\mathrm{d}r}{\\mathrm{d}t}$；同样的半径增长速度，在更大的圆上产生更快的面积增长。",
   "objectives": [
     "解题顺序",
     "单位与符号",
@@ -14,7 +14,7 @@
   "body": [
     {
       "title": "为什么最后才代数值？",
-      "text": "先对关系式求导，才能保留变量的变化。若过早把 r 换成某个数，它会被当成常数，dr/dt 就丢了。"
+      "text": "先对关系式求导，才能保留变量的变化。若过早把 $r$ 换成某个数，它会被当成常数，$\\frac{\\mathrm{d}r}{\\mathrm{d}t}$ 就丢了。"
     },
     {
       "title": "正负和单位怎样定？",
@@ -22,11 +22,11 @@
     },
     {
       "title": "关系式从哪里来？",
-      "text": "从几何或物理条件来。梯子长度固定时 x²+y²=L²；圆锥中的水若与容器相似，可先用固定的 r/h 比消去一个变量。"
+      "text": "从几何或物理条件来。梯子长度固定时 $x^{2} + y^{2} = L^{2}$；圆锥中的水若与容器相似，可先用固定的 $\\frac{r}{h}$ 比消去一个变量。"
     }
   ],
   "formalDefinition": {
-    "text": "对时间 t 求导，把链式法则用于每个变化变量。",
+    "text": "对时间 $t$ 求导，把链式法则用于每个变化变量。",
     "latex": "A=\\pi r^2\\quad\\Rightarrow\\quad\\frac{dA}{dt}=2\\pi r\\frac{dr}{dt}",
     "conditions": [
       "关系式在所讨论时刻附近成立；先求导再代入时刻值。"
@@ -49,27 +49,27 @@
   "interactiveVisual": {
     "kind": "related",
     "function": "circle",
-    "caption": "移动梯子底端 x，观察高 y=√(25−x²) 与向下的变化率。",
+    "caption": "移动梯子底端 $x$，观察高 $y = \\sqrt{25 - x^{2}}$ 与向下的变化率。",
     "prediction": "梯子底端匀速向外移动时，顶端也匀速下降吗？比较不同位置的变化率。"
   },
   "workedExamples": [
     {
       "title": "扩张的圆",
-      "problem": "半径以 2 cm/s 增长，在 r=3 cm 时面积变化率是多少？",
+      "problem": "半径以 $2\\,\\mathrm{cm}\\,\\mathrm{s}^{-1}$ 增长，在 $r=3\\,\\mathrm{cm}$ 时面积变化率是多少？",
       "steps": [
-        "dA/dt=2πr·dr/dt。",
-        "代入 r=3，dr/dt=2，并保留单位。"
+        "$\\frac{\\mathrm{d}A}{\\mathrm{d}t} = \\frac{2 \\pi  r \\cdot \\mathrm{d}r}{\\mathrm{d}t}$。",
+        "代入 $r = 3$，$\\frac{\\mathrm{d}r}{\\mathrm{d}t} = 2$，并保留单位。"
       ],
-      "answer": "$12\\pi$ cm²/s。"
+      "answer": "$12\\pi$ $\\mathrm{cm}^{2}\\,\\mathrm{s}^{-1}$。"
     },
     {
       "title": "滑动的梯子",
-      "problem": "5 m 梯子底端以 1 m/s 远离墙，x=3 m 时顶部下降多快？",
+      "problem": "$5\\,\\mathrm{m}$ 梯子底端以 $1\\,\\mathrm{m}\\,\\mathrm{s}^{-1}$ 远离墙，$x=3\\,\\mathrm{m}$ 时顶部下降多快？",
       "steps": [
-        "y=√(25−9)=4 m。",
-        "dy/dt=−(3/4)×1=−0.75 m/s。"
+        "$y=\\sqrt{25-9}=4\\,\\mathrm{m}$。",
+        "$\\frac{\\mathrm{d}y}{\\mathrm{d}t}=-\\frac{3}{4}\\times1=-0.75\\,\\mathrm{m}\\,\\mathrm{s}^{-1}$。"
       ],
-      "answer": "顶部向下 0.75 m/s；y 的变化率为 −0.75 m/s。"
+      "answer": "顶部向下 $0.75\\,\\mathrm{m}\\,\\mathrm{s}^{-1}$；$y$ 的变化率为 $-0.75\\,\\mathrm{m}\\,\\mathrm{s}^{-1}$。"
     }
   ],
   "commonMistakes": [
@@ -80,8 +80,8 @@
     },
     {
       "id": "related-rates-m2",
-      "claim": "把下降速度写成正的 dy/dt。",
-      "correction": "若 y 表示高度，下降时导数为负。"
+      "claim": "把下降速度写成正的 $\\frac{\\mathrm{d}y}{\\mathrm{d}t}$。",
+      "correction": "若 $y$ 表示高度，下降时导数为负。"
     }
   ],
   "practice": [
@@ -91,12 +91,12 @@
       "misconceptionTags": [
         "related-rates-m1"
       ],
-      "problem": "球体 V=4πr³/3，r=2、dr/dt=3，求 dV/dt。",
+      "problem": "球体 $V = \\frac{4 \\pi  r^{3}}{3}$，$r = 2$、$\\frac{\\mathrm{d}r}{\\mathrm{d}t} = 3$，求 $\\frac{\\mathrm{d}V}{\\mathrm{d}t}$。",
       "answer": "$48\\pi$。",
       "solution": [
-        "dV/dt=4πr² dr/dt=4π×4×3。"
+        "$\\frac{\\mathrm{d}V}{\\mathrm{d}t} = \\frac{4 \\pi  r^{2} \\mathrm{d}r}{\\mathrm{d}t} = 4 \\pi  \\times 4 \\times 3$。"
       ],
-      "hint": "先对 r(t) 求导。"
+      "hint": "先对 $r (t)$ 求导。"
     },
     {
       "id": "related-rates-p2",
@@ -104,10 +104,10 @@
       "misconceptionTags": [
         "related-rates-m2"
       ],
-      "problem": "5 m 梯子，x=4、dx/dt=0.5，求 dy/dt。",
-      "answer": "$-2/3$ m/s。",
+      "problem": "$5\\,\\mathrm{m}$ 梯子，$x = 4$、$\\frac{\\mathrm{d}x}{\\mathrm{d}t} = 0.5$，求 $\\frac{\\mathrm{d}y}{\\mathrm{d}t}$。",
+      "answer": "$-\\frac{2}{3}$ $\\mathrm{m}\\,\\mathrm{s}^{-1}$。",
       "solution": [
-        "y=3，dy/dt=−(4/3)×0.5=−2/3。"
+        "$y = 3$，$\\frac{\\mathrm{d}y}{\\mathrm{d}t} = - (\\frac{4}{3}) \\times 0.5 = \\frac{- 2}{3}$。"
       ],
       "hint": "负号来自高度下降。",
       "numericAnswer": -0.6666666666666666
@@ -118,10 +118,10 @@
       "misconceptionTags": [
         "related-rates-m2"
       ],
-      "problem": "正方形边长以 0.2 cm/s 增长，边长 5 cm 时面积变化率？",
-      "answer": "$2$ cm²/s。",
+      "problem": "正方形边长以 $0.2\\,\\mathrm{cm}\\,\\mathrm{s}^{-1}$ 增长，边长 5 cm 时面积变化率？",
+      "answer": "$2$ $\\mathrm{cm}^{2}\\,\\mathrm{s}^{-1}$。",
       "solution": [
-        "A=s²，A′=2ss′=2×5×0.2。"
+        "$A = s^{2}$，$A' = 2 s s' = 2 \\times 5 \\times 0.2$。"
       ],
       "hint": "面积变化率并不是边长变化率的平方。",
       "numericAnswer": 2
@@ -135,7 +135,7 @@
       "problem": "若半径在减小，圆的面积变化率的符号是什么？",
       "answer": "负。",
       "solution": [
-        "2πr>0，而 dr/dt<0，所以乘积为负。"
+        "$2 \\pi  r > 0$，而 $\\frac{\\mathrm{d}r}{\\mathrm{d}t} < 0$，所以乘积为负。"
       ],
       "hint": "先确定哪一个变量在减小。"
     }
@@ -151,7 +151,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -162,13 +162,13 @@
     "phet-design"
   ],
   "learningCheck": {
-    "question": "圆面积 A=πr²，r 随时间变化。dA/dt 是什么？",
+    "question": "圆面积 $A = \\pi  r^{2}$，$r$ 随时间变化。$\\frac{\\mathrm{d}A}{\\mathrm{d}t}$ 是什么？",
     "choices": [
-      "2πr",
-      "2πr·dr/dt",
-      "π(dr/dt)²"
+      "$2 \\pi  r$",
+      "$\\frac{2 \\pi  r \\cdot \\mathrm{d}r}{\\mathrm{d}t}$",
+      "$\\pi  (\\frac{\\mathrm{d}r}{\\mathrm{d}t})^{2}$"
     ],
     "correctIndex": 1,
-    "explanation": "先对时间求导，得到 dA/dt=2πr·dr/dt。遗漏 dr/dt 就忽略了半径变化的速度。"
+    "explanation": "先对时间求导，得到 $\\frac{\\mathrm{d}A}{\\mathrm{d}t} = \\frac{2 \\pi  r \\cdot \\mathrm{d}r}{\\mathrm{d}t}$。遗漏 $\\frac{\\mathrm{d}r}{\\mathrm{d}t}$ 就忽略了半径变化的速度。"
   }
 }

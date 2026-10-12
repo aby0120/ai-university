@@ -4,8 +4,8 @@
   "number": "7.5",
   "title": "位移、功、质量与平均值",
   "subtitle": "总量等于局部贡献的累积",
-  "concept": "先写一小段贡献多少，再积分：速度×时间给位移，力×位移给功，线密度×长度给质量。",
-  "intuition": "检查单位，往往就知道该乘什么：m/s×s=m，N×m=J，kg/m×m=kg。",
+  "concept": "先写一小段贡献多少，再积分：$\\text{速度}\\times\\text{时间}$给位移，$\\text{力}\\times\\text{位移}$给功，$\\text{线密度}\\times\\text{长度}$给质量。",
+  "intuition": "检查单位，往往就知道该乘什么：$\\frac{\\mathrm{m}}{\\mathrm{s}}\\times\\mathrm{s}=\\mathrm{m}$，$\\mathrm{N}\\times\\mathrm{m}=\\mathrm{J}$，$\\frac{\\mathrm{kg}}{\\mathrm{m}}\\times\\mathrm{m}=\\mathrm{kg}$。",
   "objectives": [
     "位移与总路程",
     "变力做功",
@@ -14,15 +14,15 @@
   "body": [
     {
       "title": "位移与路程有什么不同？",
-      "text": "位移为 ∫v dt，路程为 ∫|v|dt。速度变号时分段；求位置还要加初始位置，平均速度则用位移除以时间。"
+      "text": "位移为 $\\int  v \\mathrm{d}t$，路程为 $\\int  |v| \\mathrm{d}t$。速度变号时分段；求位置还要加初始位置，平均速度则用位移除以时间。"
     },
     {
       "title": "变力做功怎样算？",
-      "text": "沿运动方向的力贡献 dW=F(x)dx。拉伸弹簧所需外力为 kx，功为 ∫kx dx；弹簧的回复力方向相反。"
+      "text": "沿运动方向的力贡献 $\\mathrm{d}W = F (x) \\mathrm{d}x$。拉伸弹簧所需外力为 $k x$，功为 $\\int kx\\,\\mathrm{d}x$；弹簧的回复力方向相反。"
     },
     {
       "title": "质量与质心怎样算？",
-      "text": "线密度 λ 给质量 m=∫λ dx；位置加权量 M=∫xλ dx，质心为 M/m（m>0）。流体压力等模型还需注明密度、深度等物理假设。"
+      "text": "线密度 $\\lambda$ 给质量 $m = \\int  \\lambda  \\mathrm{d}x$；位置加权量 $M = \\int  x \\lambda  \\mathrm{d}x$，质心为 $\\frac{M}{m}$（$m > 0$）。流体压力等模型还需注明密度、深度等物理假设。"
     }
   ],
   "formalDefinition": {
@@ -34,7 +34,7 @@
   },
   "derivation": [
     {
-      "text": "对 v(t)=t−1，0≤t≤3，先找方向改变的时间。",
+      "text": "对 $v (t) = t - 1$，$0 \\le t \\le 3$，先找方向改变的时间。",
       "latex": "v(t)=0\\Rightarrow t=1"
     },
     {
@@ -49,27 +49,27 @@
   "interactiveVisual": {
     "kind": "signed-area",
     "function": "velocity",
-    "caption": "v(t)=t−1：负段表示倒退，正段表示前进；显示位移与总路程两个读数。",
+    "caption": "$v (t) = t - 1$：负段表示倒退，正段表示前进；显示位移与总路程两个读数。",
     "prediction": "速度先负后正时，位移和路程是否相同？比较上限为 2 时的两个读数。"
   },
   "workedExamples": [
     {
       "title": "拉伸弹簧",
-      "problem": "k=100 N/m，从自然长度拉到 0.2 m，需要多少功？",
+      "problem": "$k=100\\,\\mathrm{N}\\,\\mathrm{m}^{-1}$，从自然长度拉到 $0.2\\,\\mathrm{m}$，需要多少功？",
       "steps": [
-        "外力 F=100x。",
-        "W=∫₀^0.2 100x dx=50×0.04。"
+        "外力 $F = 100 x$。",
+        "$W = \\int _{0}^{0.2} 100 x \\mathrm{d}x = 50 \\times 0.04$。"
       ],
-      "answer": "2 J，忽略损耗并采用准静态拉伸。"
+      "answer": "$2\\,\\mathrm{J}$，忽略损耗并采用准静态拉伸。"
     },
     {
       "title": "非均匀杆的质量与质心",
-      "problem": "杆 x∈[0,2]，线密度 λ(x)=1+x，求质量与质心。",
+      "problem": "杆 $x \\in [0 , 2]$，线密度 $\\lambda  (x) = 1 + x$，求质量与质心。",
       "steps": [
-        "质量 [x+x²/2]₀²=4。",
-        "矩 [x²/2+x³/3]₀²=14/3，除以质量。"
+        "质量 $[x + \\frac{x^{2}}{2}]_{0}^{2} = 4$。",
+        "矩 $[\\frac{x^{2}}{2} + \\frac{x^{3}}{3}]_{0}^{2} = \\frac{14}{3}$，除以质量。"
       ],
-      "answer": "质量 4，质心 7/6；偏向密度较大的右侧。"
+      "answer": "质量 4，质心 $\\frac{7}{6}$；偏向密度较大的右侧。"
     }
   ],
   "commonMistakes": [
@@ -91,10 +91,10 @@
       "misconceptionTags": [
         "physical-integrals-m1"
       ],
-      "problem": "v(t)=2t，0≤t≤2，位移是多少？",
+      "problem": "$v (t) = 2 t$，$0 \\le t \\le 2$，位移是多少？",
       "answer": "$4$。",
       "solution": [
-        "积分 t² 在 0 到 2 的端点差为 4。"
+        "积分 $t^{2}$ 在 0 到 2 的端点差为 4。"
       ],
       "hint": "速度此处始终非负。",
       "numericAnswer": 4
@@ -105,10 +105,10 @@
       "misconceptionTags": [
         "physical-integrals-m2"
       ],
-      "problem": "k=50 N/m 的弹簧从 0 拉到 0.4 m，外力做功？",
-      "answer": "$4$ J。",
+      "problem": "$k=50\\,\\mathrm{N}\\,\\mathrm{m}^{-1}$ 的弹簧从 0 拉到 $0.4\\,\\mathrm{m}$，外力做功？",
+      "answer": "$4$ $J$。",
       "solution": [
-        "W=(1/2)×50×0.4²=4。"
+        "$W = (\\frac{1}{2}) \\times 50 \\times 0.4^{2} = 4$。"
       ],
       "hint": "力会从零逐渐变大。",
       "numericAnswer": 4
@@ -119,10 +119,10 @@
       "misconceptionTags": [
         "physical-integrals-m2"
       ],
-      "problem": "密度 λ=3、杆长 2，质量是多少？",
+      "problem": "密度 $\\lambda  = 3$、杆长 2，质量是多少？",
       "answer": "$6$。",
       "solution": [
-        "∫₀²3 dx=6。"
+        "$\\int _{0}^{2} 3 \\mathrm{d}x = 6$。"
       ],
       "hint": "常密度乘长度。",
       "numericAnswer": 6
@@ -133,10 +133,10 @@
       "misconceptionTags": [
         "physical-integrals-m2"
       ],
-      "problem": "对 v(t)=t−1、0≤t≤2，位移与路程分别是多少？",
+      "problem": "对 $v (t) = t - 1$、$0 \\le t \\le 2$，位移与路程分别是多少？",
       "answer": "位移 0，路程 1。",
       "solution": [
-        "在 1 分段，前后位移 −1/2 与 1/2 抵消。",
+        "在 1 分段，前后位移 $\\frac{- 1}{2}$ 与 $\\frac{1}{2}$ 抵消。",
         "绝对值相加为 1。"
       ],
       "hint": "方向与长度是不同的总量。"
@@ -153,7 +153,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -164,13 +164,13 @@
     "phet-design"
   ],
   "learningCheck": {
-    "question": "速度 v(t) 有正有负。总路程应积分什么？",
+    "question": "速度 $v (t)$ 有正有负。总路程应积分什么？",
     "choices": [
-      "v(t)",
-      "|v(t)|",
-      "v′(t)"
+      "$v (t)$",
+      "$|v (t)|$",
+      "$v' (t)$"
     ],
     "correctIndex": 1,
-    "explanation": "位移积分带方向的 v(t)，路程积分速率 |v(t)|。往返运动的位移会抵消，路程不会。"
+    "explanation": "位移积分带方向的 $v (t)$，路程积分速率 $|v (t)|$。往返运动的位移会抵消，路程不会。"
   }
 }

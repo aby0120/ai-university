@@ -4,7 +4,7 @@
   "number": "5.5",
   "title": "洛必达法则",
   "subtitle": "未定式里，比较变化率",
-  "concept": "0/0 或 ∞/∞ 型极限满足条件时，可以把分子、分母分别求导，再求它们的比值极限。",
+  "concept": "$\\frac{0}{0}$ 或 $\\frac{\\infty }{\\infty }$ 型极限满足条件时，可以把分子、分母分别求导，再求它们的比值极限。",
   "intuition": "这是求极限的法则，不是求分式导数。使用前先检查未定式，求导后也要重新检查。",
   "objectives": [
     "先检查形式与条件",
@@ -14,11 +14,11 @@
   "body": [
     {
       "title": "使用前检查什么？",
-      "text": "原式为 0/0 或 ∞/∞；目标点的穿孔单侧邻域内分子、分母可导，分母导数不为 0，导数比的极限存在，可为 ±∞。"
+      "text": "原式为 $\\frac{0}{0}$ 或 $\\frac{\\infty }{\\infty }$；目标点的穿孔单侧邻域内分子、分母可导，分母导数不为 0，导数比的极限存在，可为 $\\pm \\infty$。"
     },
     {
       "title": "其他未定式怎么办？",
-      "text": "0·∞ 可改成商，∞−∞ 可通分或乘共轭，幂型可先取对数。改写后仍要检查条件；能直接化简时不必求导。"
+      "text": "$0 \\cdot \\infty$ 可改成商，$\\infty  - \\infty$ 可通分或乘共轭，幂型可先取对数。改写后仍要检查条件；能直接化简时不必求导。"
     },
     {
       "title": "导数比无极限意味着什么？",
@@ -26,23 +26,23 @@
     }
   ],
   "formalDefinition": {
-    "text": "在上述单侧邻域条件下，0/0 或 ∞/∞ 型可用导数比的极限。",
+    "text": "在上述单侧邻域条件下，$\\frac{0}{0}$ 或 $\\frac{\\infty }{\\infty }$ 型可用导数比的极限。",
     "latex": "\\lim_{x\\to a}\\frac{f(x)}{g(x)}=\\lim_{x\\to a}\\frac{f\\prime(x)}{g\\prime(x)}",
     "conditions": [
-      "f,g 可导；g′≠0；原式为 0/0 或 ∞/∞；右侧极限存在；双侧结论要两侧一致。"
+      "$f , g$ 可导；$g' \\ne 0$；原式为 $\\frac{0}{0}$ 或 $\\frac{\\infty }{\\infty }$；右侧极限存在；双侧结论要两侧一致。"
     ]
   },
   "derivation": [
     {
-      "text": "有限端点 0/0 情形，可连续补 f(a)=g(a)=0。",
+      "text": "有限端点 $\\frac{0}{0}$ 情形，可连续补 $f (a) = g (a) = 0$。",
       "latex": null
     },
     {
-      "text": "柯西中值定理给出区间内一点 c，且 c 随 x 靠近 a。",
+      "text": "柯西中值定理给出区间内一点 $c$，且 $c$ 随 $x$ 靠近 $a$。",
       "latex": "\\frac{f(x)-f(a)}{g(x)-g(a)}=\\frac{f\\prime(c)}{g\\prime(c)}"
     },
     {
-      "text": "若导数比趋近 L，左侧也趋近 L。其余形式需相应的推广论证。",
+      "text": "若导数比趋近 $L$，左侧也趋近 $L$。其余形式需相应的推广论证。",
       "latex": "\\frac{f(x)}{g(x)}\\to L"
     }
   ],
@@ -50,24 +50,24 @@
     "kind": "limit",
     "function": "expm1ratio",
     "a": 0,
-    "caption": "观察 (e^x−1)/x 趋近 1；导数比 e^x/1 也趋近 1。",
-    "prediction": "(eˣ−1)/x 在 0 附近的趋势是什么？把差商和求导后的比值联系起来。"
+    "caption": "观察 $\\frac{e^{x} - 1}{x}$ 趋近 1；导数比 $\\frac{e^{x}}{1}$ 也趋近 1。",
+    "prediction": "$\\frac{e^{x} - 1}{x}$ 在 0 附近的趋势是什么？把差商和求导后的比值联系起来。"
   },
   "workedExamples": [
     {
       "title": "两个零比较速度",
-      "problem": "求 $\\lim_{x\\to0}(e^x-1)/x$。",
+      "problem": "求 $\\lim_{x\\to0}\\frac{e^x-1}{x}$。",
       "steps": [
-        "原式为 0/0，分母导数为 1。",
-        "导数比为 e^x，趋近 1。"
+        "原式为 $\\frac{0}{0}$，分母导数为 1。",
+        "导数比为 $e^{x}$，趋近 1。"
       ],
       "answer": "极限为 1。"
     },
     {
       "title": "对数与线性增长",
-      "problem": "求 $\\lim_{x\\to\\infty}\\ln x/x$。",
+      "problem": "求 $\\lim_{x\\to\\infty}\\frac{\\ln x}{x}$。",
       "steps": [
-        "原式为 ∞/∞，导数比为 (1/x)/1。",
+        "原式为 $\\frac{\\infty }{\\infty }$，导数比为 $\\frac{\\frac{1}{x}}{1}$。",
         "导数比趋近 0，条件满足。"
       ],
       "answer": "极限为 0，线性增长快于对数。"
@@ -77,12 +77,12 @@
     {
       "id": "lhopital-m1",
       "claim": "非未定式也分别求导。",
-      "correction": "例如 x/2 在 x→0 的极限为 0，分母导数为零，不能套法则。"
+      "correction": "例如 $\\frac{x}{2}$ 在 $x \\to 0$ 的极限为 0，分母导数为零，不能套法则。"
     },
     {
       "id": "lhopital-m2",
       "claim": "把导数比当作分式的导数。",
-      "correction": "(f/g)′ 是商法则，不是 f′/g′。"
+      "correction": "$(\\frac{f}{g})'$ 是商法则，不是 $\\frac{f'}{g'}$。"
     }
   ],
   "practice": [
@@ -92,10 +92,10 @@
       "misconceptionTags": [
         "lhopital-m1"
       ],
-      "problem": "求 $\\lim_{x\\to0}\\ln(1+x)/x$。",
+      "problem": "求 $\\lim_{x\\to0}\\frac{\\ln(1+x)}{x}$。",
       "answer": "$1$。",
       "solution": [
-        "0/0 型，导数比 1/(1+x) 趋近 1。"
+        "$\\frac{0}{0}$ 型，导数比 $\\frac{1}{1 + x}$ 趋近 1。"
       ],
       "hint": "确认对数定义域。",
       "numericAnswer": 1
@@ -106,10 +106,10 @@
       "misconceptionTags": [
         "lhopital-m2"
       ],
-      "problem": "求 $\\lim_{x\\to0}(1-\\cos x)/x^2$。",
-      "answer": "$1/2$。",
+      "problem": "求 $\\lim_{x\\to0}\\frac{1-\\cos x}{x^2}$。",
+      "answer": "$\\frac{1}{2}$。",
       "solution": [
-        "一次得到 sin x/(2x)，再用基本三角极限，或再次洛必达。"
+        "一次得到 $\\frac{\\sin x}{2 x}$，再用基本三角极限，或再次洛必达。"
       ],
       "hint": "每次使用前检查形式。",
       "numericAnswer": 0.5
@@ -120,10 +120,10 @@
       "misconceptionTags": [
         "lhopital-m2"
       ],
-      "problem": "求 $\\lim_{x\\to\\infty}x/e^x$。",
+      "problem": "求 $\\lim_{x\\to\\infty}\\frac{x}{e^x}$。",
       "answer": "$0$。",
       "solution": [
-        "∞/∞ 型，导数比 1/e^x→0。"
+        "$\\frac{\\infty }{\\infty }$ 型，导数比 $\\frac{1}{e^{x}} \\to 0$。"
       ],
       "hint": "指数增长更快。",
       "numericAnswer": 0
@@ -134,8 +134,8 @@
       "misconceptionTags": [
         "lhopital-m2"
       ],
-      "problem": "求 $\\lim_{x\\to0}(x+1)/(x+2)$，是否需要洛必达？",
-      "answer": "$1/2$，不能按未定式使用洛必达。",
+      "problem": "求 $\\lim_{x\\to0}\\frac{x+1}{x+2}$，是否需要洛必达？",
+      "answer": "$\\frac{1}{2}$，不能按未定式使用洛必达。",
       "solution": [
         "原式可直接代入，分母不为零。"
       ],
@@ -155,7 +155,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -166,13 +166,13 @@
     "phet-design"
   ],
   "learningCheck": {
-    "question": "分式代入后得到 1/0，能直接用洛必达吗？",
+    "question": "分式代入后得到 $\\frac{1}{0}$，能直接用洛必达吗？",
     "choices": [
       "能，分子分母分别求导",
-      "不能；这不是 0/0 或 ∞/∞ 型",
+      "不能；这不是 $\\frac{0}{0}$ 或 $\\frac{\\infty }{\\infty }$ 型",
       "答案必定是 0"
     ],
     "correctIndex": 1,
-    "explanation": "先检查未定式和定理条件。1/0 不是洛必达所处理的类型，通常需要单侧分析。"
+    "explanation": "先检查未定式和定理条件。$\\frac{1}{0}$ 不是洛必达所处理的类型，通常需要单侧分析。"
   }
 }

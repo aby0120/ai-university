@@ -5,7 +5,7 @@
   "title": "弧长与旋转曲面面积",
   "subtitle": "累积短线段，而不是竖直高度",
   "concept": "弧长把小段的勾股长度相加；旋转侧面积把这些小段扫出的窄带面积相加。",
-  "intuition": "一小段水平走 dx、竖直约走 f′dx，所以斜向长度为 √(1+f′²)dx。沿曲线走比只量横向跨度长。",
+  "intuition": "一小段水平走 $\\mathrm{d}x$、竖直约走 $f' \\mathrm{d}x$，所以斜向长度为 $\\sqrt{1 + {f'}^{2}} \\mathrm{d}x$。沿曲线走比只量横向跨度长。",
   "objectives": [
     "弧长公式",
     "适当参数与原函数",
@@ -14,31 +14,31 @@
   "body": [
     {
       "title": "弧长怎样算？",
-      "text": "f 在 [a,b] 连续可导时，积分 √(1+f′²)。斜率平方使下降段也贡献正长度；长度一般不等于两端直线距离。"
+      "text": "$f$ 在 $[a , b]$ 连续可导时，积分 $\\sqrt{1 + {f'}^{2}}$。斜率平方使下降段也贡献正长度；长度一般不等于两端直线距离。"
     },
     {
       "title": "积分算不出来怎么办？",
-      "text": "可用数值方法，或改写 x=g(y) 对 y 积分。没有初等原函数，不代表曲线没有确定的长度。"
+      "text": "可用数值方法，或改写 $x = g (y)$ 对 $y$ 积分。没有初等原函数，不代表曲线没有确定的长度。"
     },
     {
       "title": "旋转面积为什么要乘周长？",
-      "text": "绕 x 轴、f≥0 时，小段 ds 扫出周长 2πf 的窄带，面积约为 2πf ds。积分只计侧面，端盖要另加；换轴则改半径。"
+      "text": "绕 $x$ 轴、$f \\ge 0$ 时，小段 $\\mathrm{d}s$ 扫出周长 $2 \\pi  f$ 的窄带，面积约为 $2 \\pi  f \\mathrm{d}s$。积分只计侧面，端盖要另加；换轴则改半径。"
     }
   ],
   "formalDefinition": {
-    "text": "弧长与绕 x 轴的旋转侧面积。",
+    "text": "弧长与绕 $x$ 轴的旋转侧面积。",
     "latex": "L=\\int_a^b\\sqrt{1+[f\\prime(x)]^2}\\,dx,\\qquad S=2\\pi\\int_a^b f(x)\\sqrt{1+[f\\prime(x)]^2}\\,dx",
     "conditions": [
-      "f 在 [a,b] 连续可导；曲面公式此处假设 f≥0，且计侧面而非端盖。"
+      "$f$ 在 $[a , b]$ 连续可导；曲面公式此处假设 $f \\ge 0$，且计侧面而非端盖。"
     ]
   },
   "derivation": [
     {
-      "text": "小段水平位移 Δx 与垂直位移 Δy 组成直角三角形。",
+      "text": "小段水平位移 $\\Delta  x$ 与垂直位移 $\\Delta  y$ 组成直角三角形。",
       "latex": "\\Delta s=\\sqrt{(\\Delta x)^2+(\\Delta y)^2}"
     },
     {
-      "text": "除去水平尺度，斜率趋近 f′。",
+      "text": "除去水平尺度，斜率趋近 $f'$。",
       "latex": "ds=\\sqrt{1+(f\\prime)^2}\\,dx"
     },
     {
@@ -49,25 +49,25 @@
   "interactiveVisual": {
     "kind": "arc",
     "function": "arc",
-    "caption": "二维增加折线段数，比较折线长度与弧长；三维旋转同一条曲线，观察窄带面积需要乘弧长 ds。",
+    "caption": "二维增加折线段数，比较折线长度与弧长；三维旋转同一条曲线，观察窄带面积需要乘弧长 $\\mathrm{d}s$。",
     "prediction": "曲线的小段为何比水平宽度长？在二维细分弧长，再到三维看斜长怎样进入窄带面积。"
   },
   "workedExamples": [
     {
       "title": "斜线长度",
-      "problem": "求 y=3x+1 在 [0,2] 的弧长。",
+      "problem": "求 $y = 3 x + 1$ 在 [0,2] 的弧长。",
       "steps": [
-        "导数为 3，长度因子 √(1+9)=√10。",
+        "导数为 3，长度因子 $\\sqrt{1 + 9} = \\sqrt{10}$。",
         "乘横向跨度 2。"
       ],
       "answer": "$2\\sqrt{10}$。"
     },
     {
       "title": "可直接积分的曲线",
-      "problem": "求 y=(2/3)x^(3/2) 在 [0,1] 的弧长。",
+      "problem": "求 $y = (\\frac{2}{3}) x^{\\frac{3}{2}}$ 在 [0,1] 的弧长。",
       "steps": [
-        "导数 √x，所以长度积分 ∫₀¹√(1+x)dx。",
-        "原函数 (2/3)(1+x)^(3/2)。"
+        "导数 $\\sqrt{x}$，所以长度积分 $\\int _{0}^{1} \\sqrt{1 + x} \\mathrm{d}x$。",
+        "原函数 $(\\frac{2}{3}) (1 + x)^{\\frac{3}{2}}$。"
       ],
       "answer": "$\\frac23(2\\sqrt2-1)$。"
     }
@@ -75,7 +75,7 @@
   "commonMistakes": [
     {
       "id": "arc-length-m1",
-      "claim": "用 ∫f(x)dx 算弧长。",
+      "claim": "用 $\\int  f (x) \\mathrm{d}x$ 算弧长。",
       "correction": "那通常是带符号面积，弧长积分使用斜率。"
     },
     {
@@ -91,10 +91,10 @@
       "misconceptionTags": [
         "arc-length-m1"
       ],
-      "problem": "y=4x 在 [0,1] 的弧长？",
+      "problem": "$y = 4 x$ 在 [0,1] 的弧长？",
       "answer": "$\\sqrt{17}$。",
       "solution": [
-        "长度因子 √(1+16)，区间宽 1。"
+        "长度因子 $\\sqrt{1 + 16}$，区间宽 1。"
       ],
       "hint": "用勾股检查。"
     },
@@ -104,7 +104,7 @@
       "misconceptionTags": [
         "arc-length-m2"
       ],
-      "problem": "水平线 y=2 在 [0,3] 的弧长？",
+      "problem": "水平线 $y = 2$ 在 [0,3] 的弧长？",
       "answer": "$3$。",
       "solution": [
         "导数为 0，积分 1 得 3。"
@@ -118,10 +118,10 @@
       "misconceptionTags": [
         "arc-length-m2"
       ],
-      "problem": "y=2、0≤x≤3 绕 x 轴的侧面积？",
+      "problem": "$y = 2$、$0 \\le x \\le 3$ 绕 $x$ 轴的侧面积？",
       "answer": "$12\\pi$。",
       "solution": [
-        "半径 2、长度 3，侧面积 2π×2×3。"
+        "半径 2、长度 3，侧面积 $2 \\pi  \\times 2 \\times 3$。"
       ],
       "hint": "不包含两个圆端盖。"
     },
@@ -131,7 +131,7 @@
       "misconceptionTags": [
         "arc-length-m2"
       ],
-      "problem": "弧长积分中的 f′为何要平方？",
+      "problem": "弧长积分中的 $f'$为何要平方？",
       "answer": "长度由勾股关系得到，方向正负不改变长度。",
       "solution": [
         "纵向分量的平方与横向分量的平方相加。"
@@ -150,7 +150,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -163,11 +163,11 @@
   "learningCheck": {
     "question": "计算旋转曲面的窄带面积时，周长应乘哪种长度？",
     "choices": [
-      "水平宽度 dx",
-      "沿曲线的斜长 ds=√(1+f′(x)²)dx",
-      "函数高度 f(x)"
+      "水平宽度 $\\mathrm{d}x$",
+      "沿曲线的斜长 $\\mathrm{d}s = \\sqrt{1 + f' (x)^{2}} \\mathrm{d}x$",
+      "函数高度 $f (x)$"
     ],
     "correctIndex": 1,
-    "explanation": "窄带沿曲线展开，宽度是弧长 ds。只乘 dx 会漏掉倾斜带来的长度；这里只算侧面。"
+    "explanation": "窄带沿曲线展开，宽度是弧长 $\\mathrm{d}s$。只乘 $\\mathrm{d}x$ 会漏掉倾斜带来的长度；这里只算侧面。"
   }
 }

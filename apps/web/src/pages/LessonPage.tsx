@@ -112,8 +112,8 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
         <Eyebrow>
           SECTION {l.number} / {ch.subtitle}
         </Eyebrow>
-        <h1>{l.title}</h1>
-        <p>{l.subtitle}</p>
+        <h1><MathText text={l.title} /></h1>
+        <p><MathText text={l.subtitle} /></p>
         <div className="lesson-tools">
           <span>
             <BookOpen size={15} /> {l.body.length} 个关键问题
@@ -207,7 +207,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
                 <SectionTitle num="02" title="三个关键问题" />
                 {l.body.map((b) => (
                   <div className="body-part" key={b.title}>
-                    <h3>{b.title}</h3>
+                    <h3><MathText text={b.title} /></h3>
                     <p>
                       <MathText text={b.text} />
                     </p>
@@ -256,7 +256,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
                   <div className="worked-example" key={i}>
                     <header>
                       <span>例题 {i + 1}</span>
-                      <h3>{ex.title}</h3>
+                      <h3><MathText text={ex.title} /></h3>
                     </header>
                     <p className="example-problem">
                       <MathText text={ex.problem} />
@@ -331,7 +331,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
             <div className="focus-visual">
               <div className="focus-visual-intro">
                 <Eyebrow>EXPLORE THE IDEA</Eyebrow>
-                <h2>{l.title} · 交互演示</h2>
+                <h2><MathText text={l.title} /> · 交互演示</h2>
                 <p>
                   <MathText text={l.concept} />
                 </p>
@@ -378,7 +378,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
           ) : (
             <>
               <Eyebrow>THIS SECTION</Eyebrow>
-              <p>{l.concept}</p>
+              <p><MathText text={l.concept} /></p>
             </>
           )}
           <div className="toc-objectives">
@@ -386,7 +386,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
             {l.objectives.map((o) => (
               <p key={o}>
                 <Check size={13} />
-                {o}
+                <MathText text={o} />
               </p>
             ))}
           </div>
@@ -406,7 +406,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
             <ArrowLeft size={18} />
             <div>
               <small>上一节 · {lessons[index - 1].number}</small>
-              <strong>{lessons[index - 1].title}</strong>
+              <strong><MathText text={lessons[index - 1].title} /></strong>
             </div>
           </Link>
         ) : (
@@ -419,7 +419,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
           <Link to={lessonPath(lessons[index + 1].id)}>
             <div>
               <small>下一节 · {lessons[index + 1].number}</small>
-              <strong>{lessons[index + 1].title}</strong>
+              <strong><MathText text={lessons[index + 1].title} /></strong>
             </div>
             <ArrowRight size={18} />
           </Link>
@@ -473,7 +473,7 @@ export function Connections({ lesson }: { lesson: Lesson }) {
         <div className="current-concept">
           <BookOpen size={23} />
           <span>{lesson.number}</span>
-          <strong>{lesson.title}</strong>
+          <strong><MathText text={lesson.title} /></strong>
           <small>你在这里</small>
         </div>
         <div>

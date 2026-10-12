@@ -9,7 +9,7 @@ import {
 import { type ReactNode } from "react";
 import { book } from "../../../../packages/content";
 import type { Lesson } from "../../../../packages/content/types";
-import { Formula } from "../components/MathText";
+import { Formula, MathText } from "../components/MathText";
 import { pageWindow, routeHref } from "../lib/navigation";
 
 import { BOOK, lessonPath } from "../lib/catalog";
@@ -80,9 +80,9 @@ export function Breadcrumb({
         <span key={i}>
           {i > 0 && <ChevronRight size={13} />}{" "}
           {item.to ? (
-            <Link to={item.to}>{item.label}</Link>
+            <Link to={item.to}><MathText text={item.label} /></Link>
           ) : (
-            <span aria-current="page">{item.label}</span>
+            <span aria-current="page"><MathText text={item.label} /></span>
           )}
         </span>
       ))}
@@ -155,7 +155,7 @@ export function LessonRow({ lesson }: { lesson: Lesson }) {
   return (
     <Link to={lessonPath(lesson.id)} className="lesson-row">
       <span className="lesson-number">{lesson.number}</span>
-      <span>{lesson.title}</span>
+      <span><MathText text={lesson.title} /></span>
       {reading.read.includes(lesson.id) ? (
         <Check size={16} className="read-check" />
       ) : (

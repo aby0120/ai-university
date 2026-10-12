@@ -1,3 +1,4 @@
+import { MathText } from "../components/MathText";
 import {
   ArrowLeft,
   ArrowRight,
@@ -303,7 +304,7 @@ export function ChapterPage() {
           {ch.goals.map((g) => (
             <li key={g}>
               <CircleCheck size={18} />
-              {g}
+              <MathText text={g} />
             </li>
           ))}
         </ul>
@@ -320,8 +321,8 @@ export function ChapterPage() {
               <Link to={lessonPath(id)} key={id}>
                 <span>{l.number}</span>
                 <div>
-                  <h3>{l.title}</h3>
-                  <p>{l.subtitle}</p>
+                  <h3><MathText text={l.title} /></h3>
+                  <p><MathText text={l.subtitle} /></p>
                 </div>
                 <span className="lesson-detail-meta">阅读 · 演示 · 练习</span>
                 <ArrowRight size={19} />
