@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.7.0 · 2026-10-12
+
+- Textbook v0.3.1: author 35 alternate explanations and 105 bounded, replayable guided experiment states in the canonical schema and printed manuscript.
+- Connect prediction, controls, observation and checking; distinguish changed parameters from the original preset observation. Keep free exploration and local 2D/3D models.
+- Use editable, validated parameter controls across planar, spatial and supplementary diagrams; clarify curve/line/area legends and correct the antiderivative legend.
+- Reduce repeated headings, fix hard-coded question/example labels and collapse secondary models until requested.
+- Add staged hints and topic-specific feedback; successful numeric matching no longer automatically claims conceptual understanding.
+- Verify experiment-to-control mappings, mathematical counterexamples and exact known readouts before publication.
+
 ## 0.6.0 · 2026-10-12
 
 - Canonical textbook v0.3.0: retain 7 chapters / 35 lessons; expand to 79 worked examples, 153 section exercises, 24 chapter-review questions and 14 exam questions (191 exercises total).

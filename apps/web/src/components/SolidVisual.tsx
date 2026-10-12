@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import type { Lesson } from "../../../../packages/content/types";
+import type { Lesson, TeachingPreset } from "../../../../packages/content/types";
 import {
   revolutionGeometry,
   revolutionPoint,
@@ -19,6 +19,7 @@ import {
   type SolidModel,
 } from "../../../../packages/visuals/solid-models.mjs";
 import { Formula, MathText, plainMathText } from "./MathText";
+import { ParameterControl } from "./ParameterControl";
 const f = (n: number) => Number(n.toFixed(4)).toString();
 type View = "perspective" | "front" | "axis";
 type Controller = {
@@ -26,46 +27,18 @@ type Controller = {
   orbit: () => void;
   zoom: (scale: number) => void;
 };
-function SolidSlider({
-  label,
-  value,
-  min,
-  max,
-  step = 1,
-  onChange,
-}: {
-  label: string;
-  value: number;
-  min: number;
-  max: number;
-  step?: number;
-  onChange: (n: number) => void;
-}) {
-  return (
-    <label className="slider">
-      <span>
-        <span><MathText text={label} /></span>
-        <output>{f(value)}</output>
-      </span>
-      <input
-        type="range"
-        aria-label={plainMathText(label)}
-        min={min}
-        max={max}
-        step={step}
-        value={value}
-        onChange={(e) => onChange(+e.target.value)}
-      />
-    </label>
-  );
+function SolidSlider({label,value,min,max,step=1,onChange}:{label:string;value:number;min:number;max:number;step?:number;onChange:(n:number)=>void}) {
+  return <ParameterControl label={label} value={value} min={min} max={max} step={step} onChange={onChange}/>;
 }
 export default function SolidVisual({
   lesson,
   compact = false,
+  scenario,
   onFallback,
 }: {
   lesson: Lesson;
   compact?: boolean;
+  scenario?: TeachingPreset & {revision:number};
   onFallback: () => void;
 }) {
   const kind = lesson.interactiveVisual.kind;
@@ -98,6 +71,11 @@ export default function SolidVisual({
           ? "$0\\le y\\le x^2$，$0\\le x\\le1$，绕 $y$ 轴"
           : "$y=\\frac{2}{3}x^{\\frac{3}{2}}$，$0\\le x\\le1$，绕 $x$ 轴";
   const readout = solidReadout(model, slice, degrees);
+  useEffect(()=>{
+    if(!scenario)return;
+    setPlaying(false);setDegrees(scenario.degrees??270);setSlice(scenario.slice??.55);
+    setWasher(scenario.model==="washer");setWire(false);
+  },[scenario]);
   useEffect(() => {
     const container = host.current;
     if (!container) return;
@@ -453,6 +431,8 @@ export default function SolidVisual({
   };
   return (
     <section
+      onChangeCapture={()=>setPlaying(false)}
+      onFocusCapture={e=>{if((e.target as Element).closest(".parameter-value"))setPlaying(false);}}
       className={`solid-visual ${compact ? "compact" : ""}`}
       aria-label={"三维旋转演示"}
     >

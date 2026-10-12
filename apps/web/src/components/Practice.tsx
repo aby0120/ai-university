@@ -23,6 +23,7 @@ export function Practice({
   return (
     <PracticeSet
       questions={lesson.practice}
+      misconceptions={lesson.commonMistakes}
       progress={progress}
       onMark={onMark}
     />
@@ -30,10 +31,12 @@ export function Practice({
 }
 export function PracticeSet({
   questions,
+  misconceptions = [],
   progress,
   onMark,
 }: {
   questions: Exercise[];
+  misconceptions?: Lesson["commonMistakes"];
   progress: Progress;
   onMark: (id: string, v: "understood" | "review") => void;
 }) {
@@ -93,6 +96,7 @@ export function PracticeSet({
         <div key={q.id} hidden={!all && i !== index}>
           <Question
             q={q}
+            misconceptions={misconceptions.filter(m=>q.misconceptionTags.includes(m.id))}
             index={i}
             status={progress[q.id]}
             onMark={(v) => onMark(q.id, v)}
@@ -131,11 +135,13 @@ function parseNumeric(input: string) {
 }
 function Question({
   q,
+  misconceptions,
   index,
   status,
   onMark,
 }: {
   q: Exercise;
+  misconceptions: Lesson["commonMistakes"];
   index: number;
   status?: string;
   onMark: (v: "understood" | "review") => void;
@@ -144,21 +150,25 @@ function Question({
     [hint, setHint] = useState(false),
     [reveal, setReveal] = useState(false),
     [feedback, setFeedback] = useState("");
+  const [result,setResult] = useState<"correct"|"wrong"|"invalid"|null>(null), [nextHint,setNextHint] = useState(false);
   function check() {
     const value = parseNumeric(draft);
     if (!Number.isFinite(value)) {
+      setResult("invalid");
       setFeedback("请输入有限数值，可使用小数或分数（如 1/3）。");
       return;
     }
     const ok =
       Math.abs(value - q.numericAnswer!) <
       Math.max(1e-5, Math.abs(q.numericAnswer!) * 1e-5);
+    setResult(ok?"correct":"wrong");
+    if(!ok){setHint(true);setNextHint(false);}
     setFeedback(
       ok
         ? "数值正确。请继续检查单位与推导步骤。"
-        : "数值暂不一致。试试提示，或展开解答检查步骤。",
+        : "数值暂不一致。先检查这一步，再试一次。",
     );
-    onMark(ok ? "understood" : "review");
+    if(!ok)onMark("review");
   }
   return (
     <article className="exercise">
@@ -183,6 +193,7 @@ function Question({
           onChange={(e) => {
             setDraft(e.target.value);
             setFeedback("");
+            setResult(null);
           }}
           placeholder={
             q.numericAnswer !== undefined
@@ -216,14 +227,17 @@ function Question({
         </button>
       </div>
       {feedback && (
-        <p role="status" className="feedback">
-          {feedback}
-        </p>
+        <div role="status" className={"feedback feedback-"+result}>
+          <strong>{feedback}</strong>
+          {result==="wrong"&&<>{misconceptions.length>0&&<div className="feedback-checks"><span>值得检查</span>{misconceptions.map(m=><p key={m.id}><MathText text={m.correction}/></p>)}</div>}</>}
+          {result==="correct"&&<button className="small-btn" onClick={()=>onMark("understood")}>我能说明步骤，标记已理解</button>}
+        </div>
       )}
       {hint && (
-        <p className="hint">
-          <MathText text={q.hint} />
-        </p>
+        <div className="hint staged-hint">
+          <span>先找入口</span><p><MathText text={q.hint}/></p>
+          {!nextHint?<button className="text-btn" onClick={()=>setNextHint(true)}>再给一步<ArrowRight size={14}/></button>:<><span>第一步可以这样开始</span><p><MathText text={q.solution[0]}/></p></>}
+        </div>
       )}
       {reveal && (
         <div className="solution">

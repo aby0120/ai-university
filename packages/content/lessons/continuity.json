@@ -152,7 +152,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -172,5 +172,39 @@
     ],
     "correctIndex": 1,
     "explanation": "连续要求 $f (a)$ 有定义、极限存在，并且两者相等。少一个条件都不行。"
+  },
+  "teaching": {
+    "explain": "附近的趋势和点上的输出接上，才叫连续。只把左右趋势算对，还没检查点值。",
+    "steps": [
+      {
+        "title": "右侧的趋势",
+        "instruction": "从右侧距孔洞 0.1 处观察。",
+        "preset": {
+          "h": 0.1,
+          "side": 1
+        },
+        "observation": "输出是 2.1，目标点附近的趋势是 2。"
+      },
+      {
+        "title": "左侧的趋势",
+        "instruction": "同样距离改看左侧。",
+        "preset": {
+          "h": 0.1,
+          "side": -1
+        },
+        "observation": "输出是 1.9；左右趋势相同。"
+      },
+      {
+        "title": "补上这个点",
+        "instruction": "把目标点的输出补为 2。",
+        "preset": {
+          "h": 0.001,
+          "side": -1,
+          "comparison": "filled",
+          "c": 2
+        },
+        "observation": "左右输出都趋近 2，点值也等于 2，所以补后的函数在该点连续。再手动改错点值，对比为什么不连续。"
+      }
+    ]
   }
 }

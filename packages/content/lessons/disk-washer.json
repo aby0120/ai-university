@@ -196,7 +196,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -215,5 +215,43 @@
     ],
     "correctIndex": 1,
     "explanation": "圆环是外圆减去内圆：$\\pi  \\cdot 2^{2} - \\pi  \\cdot 1^{2} = 3 \\pi$。先减半径再平方会丢掉几何关系。"
+  },
+  "teaching": {
+    "explain": "体积先由薄片截面积决定。圆盘用大圆面积，圆环用大圆减小圆；其他形状就使用那个形状自己的面积。",
+    "steps": [
+      {
+        "title": "观察一个圆盘",
+        "instruction": "完成一圈，截面位置取 0.25。",
+        "preset": {
+          "dimension": "3d",
+          "model": "disk",
+          "degrees": 360,
+          "slice": 0.25
+        },
+        "observation": "半径为 0.5，完整截面积为 $\\frac\\pi4$。"
+      },
+      {
+        "title": "把半径加倍",
+        "instruction": "同一圆盘模型，截面位置取 1。",
+        "preset": {
+          "dimension": "3d",
+          "model": "disk",
+          "degrees": 360,
+          "slice": 1
+        },
+        "observation": "半径为 1，面积为 $\\pi$；半径加倍，面积变四倍。"
+      },
+      {
+        "title": "切换圆环",
+        "instruction": "外半径为 2、内半径为 1。",
+        "preset": {
+          "dimension": "3d",
+          "model": "washer",
+          "degrees": 360,
+          "slice": 0.5
+        },
+        "observation": "完整截面积为 $3\\pi$，不是 $\\pi(2-1)^2$。"
+      }
+    ]
   }
 }

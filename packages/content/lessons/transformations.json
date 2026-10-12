@@ -144,7 +144,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -163,5 +163,37 @@
     ],
     "correctIndex": 2,
     "explanation": "括号中的输入等于零时，函数最小。$x - 2 = 0$，所以顶点向右移到 (2,0)。"
+  },
+  "teaching": {
+    "explain": "平移改变的是点的位置。内部减去一个数时，要用更大的输入才能算到原来的位置，所以图像往右走。",
+    "steps": [
+      {
+        "title": "从原图开始",
+        "instruction": "水平和竖直平移都设为 0。",
+        "preset": {
+          "a": 0,
+          "c": 0
+        },
+        "observation": "顶点在 $(0,0)$。"
+      },
+      {
+        "title": "向右移动",
+        "instruction": "水平平移设为 2，其他量保持不变。",
+        "preset": {
+          "a": 2,
+          "c": 0
+        },
+        "observation": "$y=(x-2)^2$ 的顶点在 $(2,0)$。"
+      },
+      {
+        "title": "再向上移动",
+        "instruction": "保持水平平移 2，竖直平移设为 1。",
+        "preset": {
+          "a": 2,
+          "c": 1
+        },
+        "observation": "顶点变为 $(2,1)$；两种平移改变不同坐标。"
+      }
+    ]
   }
 }

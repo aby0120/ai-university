@@ -175,7 +175,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -195,5 +195,34 @@
     ],
     "correctIndex": 1,
     "explanation": "上下限也要随变量转换：$x = 0$ 对应 $u = 1$，$x = 1$ 对应 $u = 2$。$\\mathrm{d}u = 2 x \\mathrm{d}x$。"
+  },
+  "teaching": {
+    "explain": "换元不只给变量改名，还要换掉小段宽度。内部函数的导数正是新旧宽度之间的倍率。",
+    "steps": [
+      {
+        "title": "检查起点",
+        "instruction": "输入取 0。",
+        "preset": {
+          "x": 0
+        },
+        "observation": "新变量 $u=1$，局部倍率 $\\frac{\\mathrm{d}u}{\\mathrm{d}x}=0$。"
+      },
+      {
+        "title": "比较中间",
+        "instruction": "输入取 0.5。",
+        "preset": {
+          "x": 0.5
+        },
+        "observation": "新变量为 1.25，局部宽度倍率为 1。"
+      },
+      {
+        "title": "核对终点",
+        "instruction": "输入取 1。",
+        "preset": {
+          "x": 1
+        },
+        "observation": "新变量为 2，宽度倍率为 2；新积分界与宽度都要同步改变。"
+      }
+    ]
   }
 }

@@ -133,7 +133,7 @@ export function Home() {
           <p>
             AI 编写的开放数学教科书。
             <br />
-            读讲解，操作图形，自己解一道题。
+            先把问题说清楚，再亲手验证理解。
           </p>
           <div className="stage-actions">
             <Link to="library" className="stage-primary">

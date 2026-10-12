@@ -173,7 +173,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -192,5 +192,37 @@
     ],
     "correctIndex": 1,
     "explanation": "先检查未定式和定理条件。$\\frac{1}{0}$ 不是洛必达所处理的类型，通常需要单侧分析。"
+  },
+  "teaching": {
+    "explain": "未定式比较的是两种变化谁更快。洛必达在条件成立时用导数比帮助判断，但不能对任意分式都这样做。",
+    "steps": [
+      {
+        "title": "先看原商",
+        "instruction": "右侧距离取 0.1。",
+        "preset": {
+          "h": 0.1,
+          "side": 1
+        },
+        "observation": "原商约为 1.05171。原式在零点没有定义。"
+      },
+      {
+        "title": "靠近零点",
+        "instruction": "右侧距离缩到 0.001。",
+        "preset": {
+          "h": 0.001,
+          "side": 1
+        },
+        "observation": "原商约为 1.00050，接近 1。"
+      },
+      {
+        "title": "核对左側",
+        "instruction": "同样距离改看左侧。",
+        "preset": {
+          "h": 0.001,
+          "side": -1
+        },
+        "observation": "原商约为 0.99950。结合正文的导数比与条件，得到共同极限 1。"
+      }
+    ]
   }
 }

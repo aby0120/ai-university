@@ -196,7 +196,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -216,5 +216,34 @@
     ],
     "correctIndex": 1,
     "explanation": "[0,1] 的积分是 $\\frac{- 1}{2}$，[1,2] 是 $\\frac{1}{2}$。几何面积要把两部分都取正，再相加。"
+  },
+  "teaching": {
+    "explain": "累积保留方向。正贡献和负贡献可以抵消，所以总积分为零不等于没有发生变化，也不等于没有面积。",
+    "steps": [
+      {
+        "title": "只有负贡献",
+        "instruction": "上限取 −0.5。",
+        "preset": {
+          "b": -0.5
+        },
+        "observation": "从 −1 积到 −0.5，积分为 $-\\frac38$，面积为 $\\frac38$。"
+      },
+      {
+        "title": "两边抵消",
+        "instruction": "上限取 1。",
+        "preset": {
+          "b": 1
+        },
+        "observation": "定积分为零，几何面积为 1。"
+      },
+      {
+        "title": "正贡献更多",
+        "instruction": "上限取 2。",
+        "preset": {
+          "b": 2
+        },
+        "observation": "定积分为 $\\frac32$，几何面积为 $\\frac52$。"
+      }
+    ]
   }
 }

@@ -147,7 +147,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -166,5 +166,37 @@
     ],
     "correctIndex": 1,
     "explanation": "更新要除以 $f' (x_{n})$。斜率为零时不能这样做；函数值也可能不为零。"
+  },
+  "teaching": {
+    "explain": "每一步把弯曲函数临时换成当前切线，求切线的零点作为下一次猜测。猜测能更新，但不能保证每次都更好。",
+    "steps": [
+      {
+        "title": "先做一步",
+        "instruction": "初值取 1，迭代一次。",
+        "preset": {
+          "x": 1,
+          "n": 1
+        },
+        "observation": "对平方减 2 的模型，下一猜测是 1.5。"
+      },
+      {
+        "title": "继续核对",
+        "instruction": "仍从 1 出发，迭代四次。",
+        "preset": {
+          "x": 1,
+          "n": 4
+        },
+        "observation": "近似接近平方根 2，残差很小。"
+      },
+      {
+        "title": "尝试失效点",
+        "instruction": "初值改为 0。",
+        "preset": {
+          "x": 0,
+          "n": 4
+        },
+        "observation": "导数为零，不能除；演示应给出停止原因。"
+      }
+    ]
   }
 }

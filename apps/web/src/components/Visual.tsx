@@ -8,7 +8,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import type { Lesson } from "../../../../packages/content/types";
+import type { Lesson, TeachingPreset } from "../../../../packages/content/types";
 import {
   arcLength,
   epsilonDelta,
@@ -18,41 +18,13 @@ import {
   secant,
 } from "../../../../packages/visuals/math.mjs";
 import { Formula, MathText, plainMathText } from "./MathText";
+import { ParameterControl } from "./ParameterControl";
 import { ApplicationVisual } from "./ApplicationVisual";
+import { GuidedExperiment } from "./Teaching";
 const fmt = (v: number) =>
   Number.isFinite(v) ? Number(v.toFixed(5)).toString() : "无有限值";
-function Slider({
-  label,
-  value,
-  min,
-  max,
-  step = 0.01,
-  onChange,
-}: {
-  label: string;
-  value: number;
-  min: number;
-  max: number;
-  step?: number;
-  onChange: (v: number) => void;
-}) {
-  return (
-    <label className="slider">
-      <span>
-        <span><MathText text={label} /></span>
-        <output>{fmt(value)}</output>
-      </span>
-      <input
-        aria-label={plainMathText(label)}
-        type="range"
-        min={min}
-        max={max}
-        step={step}
-        value={value}
-        onChange={(e) => onChange(+e.target.value)}
-      />
-    </label>
-  );
+function Slider({label,value,min,max,step=.01,onChange}:{label:string;value:number;min:number;max:number;step?:number;onChange:(n:number)=>void}) {
+  return <ParameterControl label={label} value={value} min={min} max={max} step={step} onChange={onChange}/>;
 }
 type PlotContext = {
   X: (x: number) => number;
@@ -221,12 +193,15 @@ export function Visual({
   const [dimension, setDimension] = useState<"2d" | "3d">(
     spatial ? "3d" : "2d",
   );
+  const [step,setStep] = useState<number|null>(null);
+  const [scenario,setScenario] = useState<(TeachingPreset & {revision:number})>();
+  const [modified,setModified] = useState(false);
+  const additional = ({"definite-integral":"平均值：把面积摊成相同高度","disk-washer":"其他截面：正方形与三角形","physical-integrals":"水的模型：抽水做功与闸门受力"} as Record<string,string>)[lesson.id];
+  const apply = (i:number) => { const preset=lesson.teaching.steps[i].preset; setStep(i); setModified(false); setScenario({...preset,revision:(scenario?.revision??0)+1}); if(preset.dimension)setDimension(preset.dimension); };
+  useEffect(()=>{setStep(null);setScenario(undefined);setModified(false);setDimension(spatial?"3d":"2d");},[lesson.id]);
   return (
-    <div className="visual-system">
-      <details className="visual-challenge">
-        <summary>先预测，再动手</summary>
-        <p><MathText text={lesson.interactiveVisual.prediction} /></p>
-      </details>
+    <div className="visual-system" onChangeCapture={e=>{if(!(e.target as Element).closest(".application-visual"))setModified(true);}} onClickCapture={e=>{const target=e.target as Element;if(target.closest("button")&&target.closest(".visual-card,.solid-visual,.dimension-switch")&&!target.closest(".application-visual"))setModified(true);}}>
+      <GuidedExperiment key={lesson.id} lesson={lesson} index={step} modified={modified} onApply={apply}/>
       {spatial && (
         <div className="dimension-switch" role="group" aria-label={"演示维度"}>
           <span>同一个模型 · 两种视角</span>
@@ -251,24 +226,28 @@ export function Visual({
           fallback={<div className="solid-loading">准备三维数学模型…</div>}
         >
           <SolidVisual
+            key={lesson.id}
             lesson={lesson}
+            scenario={scenario}
             compact={compact}
             onFallback={() => setDimension("2d")}
           />
         </Suspense>
       ) : (
-        <PlanarVisual lesson={lesson} compact={compact} />
+        <PlanarVisual key={lesson.id} lesson={lesson} compact={compact} scenario={scenario} />
       )}
-      <ApplicationVisual lessonId={lesson.id} />
+      {additional&&<details className="supplemental-experiment"><summary><span>延伸探索</span>{additional}<span>展开</span></summary><ApplicationVisual key={lesson.id} lessonId={lesson.id}/></details>}
     </div>
   );
 }
 function PlanarVisual({
   lesson,
   compact = false,
+  scenario,
 }: {
   lesson: Lesson;
   compact?: boolean;
+  scenario?: TeachingPreset & {revision:number};
 }) {
   const [comparison, setComparison] = useState("original");
   const spec = lesson.interactiveVisual,
@@ -315,6 +294,12 @@ function PlanarVisual({
     [c, setC] = useState(0),
     [method, setMethod] = useState("right"),
     [playing, setPlaying] = useState(false);
+  useEffect(()=>{
+    if(!scenario)return;
+    setPlaying(false); setA(scenario.a??initialA); setX(scenario.x??initialX); setH(scenario.h??1); setN(scenario.n??(k==="newton"?6:8));
+    setB(scenario.b===undefined?1:(k==="mvt"||spec.function==="velocity"?scenario.b/3:scenario.b));
+    setC(scenario.c??0);setEps(scenario.eps??.5);setSide(scenario.side??1);setComparison(scenario.comparison??"original");setMethod(scenario.method??"right");
+  },[scenario]);
   const [speed, setSpeed] = useState(1);
   const cardRef = useRef<HTMLElement>(null);
   const clock = useRef(0);
@@ -357,12 +342,13 @@ function PlanarVisual({
     setA(initialA);
     setX(initialX);
     setH(1);
-    setN(8);
+    setN(k === "newton" ? 6 : 8);
     setB(1);
     setC(0);
     setEps(0.5);
     setSide(1);
     setComparison("original");
+    setMethod("right");
   }
   const stats: { label: string; value: string }[] = [];
   let controls: ReactNode = null,
@@ -441,12 +427,17 @@ function PlanarVisual({
         strokeDasharray="5 4"
       />
     );
+    if(lesson.id==="continuity") {
+      stats.push({label:"目标点的函数值",value:comparison==="filled"?fmt(c):"没有定义"});
+      controls=<>{controls}<button className="small-btn" aria-pressed={comparison==="filled"} onClick={()=>{setComparison(comparison==="filled"?"original":"filled");setC(2);setPlaying(false);}}>{comparison==="filled"?"移除补点":"补上这个点"}</button>{comparison==="filled"&&<Slider label="补点值 $f(1)$" value={c} min={0} max={4} onChange={setC}/>}</>;
+    }
     const old = overlay;
     overlay = (p) => (
       <>
         {old?.(p)}
         {p.point(xx, fn(xx))}
-        {F.hole && p.point(F.hole[0], F.hole[1], "#344de8", true)}
+        {F.hole && !(comparison==="filled"&&c===F.hole[1]) && p.point(F.hole[0], F.hole[1], "#344de8", true)}
+        {comparison==="filled" && p.point(1,c,"#487454")}
         {comparison === "jump" && p.point(1, 3, "#344de8", true)}
       </>
     );
@@ -496,7 +487,7 @@ function PlanarVisual({
       </>
     );
     extra = (
-      <Formula latex="\delta=\min(1,\varepsilon/5),\quad |x^2-4|<\varepsilon" />
+      <Formula latex="\delta=\min(1,\frac{\varepsilon}{5}),\quad |x^2-4|<\varepsilon" />
     );
   }
   if (isTangent) {
@@ -659,7 +650,7 @@ function PlanarVisual({
       mid = end / 2;
     range = [0, 3.5, 0, 11];
     stats.push(
-      { label: "区间 $[0 , b]$", value: `[0,${fmt(end)}]` },
+      { label: "区间 $[0 , b]$", value: `$[0,${fmt(end)}]$` },
       { label: "保证点 $c$", value: fmt(mid) },
       { label: "共同斜率", value: fmt(end) },
     );
@@ -782,11 +773,11 @@ function PlanarVisual({
     controls = (
       <Slider label={"积分常数 $C$"} value={c} min={-2} max={2} onChange={setC} />
     );
-    overlay = (p) => p.line((z) => z * z, "#2861ba", true);
+    overlay = (p) => p.line((z) => z * z, "#487454", true);
     extra = (
       <div className="legend">
-        <span>绿色：原函数</span>
-        <span>蓝色虚线：导函数</span>
+        <span>蓝色实线：原函数</span>
+        <span>绿色虚线：导函数</span>
       </div>
     );
   }
@@ -911,6 +902,9 @@ function PlanarVisual({
           fill="#2861ba"
         />
         {p.point(xx, fn(xx))}
+        {p.line(z=>z**3/3,"#487454")}
+        {p.line(z=>xx**3/3+xx*xx*(z-xx),"#bf8b38",true)}
+        {p.point(xx,xx**3/3,"#487454")}
       </>
     );
     extra = <Formula latex="A(x)=\int_0^x t^2dt,\quad A\prime(x)=x^2" />;
@@ -1081,13 +1075,15 @@ function PlanarVisual({
   return (
     <section
       ref={cardRef}
+      onChangeCapture={()=>setPlaying(false)}
+      onFocusCapture={e=>{if((e.target as Element).closest(".parameter-value"))setPlaying(false);}}
       className={`visual-card ${compact ? "compact" : ""}`}
       aria-label={"交互演示"}
     >
       <header>
         <div>
           <span className="eyebrow">EXPLORE THE IDEA</span>
-          <h3><MathText text={lesson.title} /></h3>
+          <h3>图形与读数</h3>
         </div>
         <button className="icon-btn" onClick={reset} aria-label={"重置演示"}>
           <RotateCcw size={17} />
@@ -1124,7 +1120,8 @@ function PlanarVisual({
       )}
       <div className="plot-label">
         <span className="plot-equation"><MathText text={
-          k === "chain" || k === "substitution" ? "$u=x^2+1$"
+          comparison==="filled" ? `$x\\ne1$：$x+1$；$x=1$：$${fmt(c)}$`
+          : k === "chain" || k === "substitution" ? "$u=x^2+1$"
           : k === "transform" ? "$y=(x-h)^2+k$"
           : k === "related" ? "$y=\\sqrt{25-x^2}$"
           : k === "antiderivative" ? "$F(x)=\\frac{x^3}{3}+C$"
@@ -1141,9 +1138,14 @@ function PlanarVisual({
         {overlay}
       </Plot>
       {extra}
+      {isTangent&&<div className="plot-legend"><span><i className="legend-function"/>函数曲线</span><span><i className="legend-tangent"/>切线（虚线）</span>{k==="derivative"&&<span><i className="legend-secant"/>割线</span>}</div>}
+      {k==="accumulation"&&<div className="plot-legend"><span><i className="legend-function"/>被积函数的高度</span><span><i style={{borderColor:"#487454"}}/>累积函数</span><span><i className="legend-tangent"/>累积函数的切线</span></div>}
+      {k==="signed-area"&&<div className="plot-legend"><span><i className="legend-positive"/>横轴上方：正贡献</span><span><i className="legend-negative"/>横轴下方：负贡献</span></div>}
       {comparison !== "original" && (
         <p className="comparison-insight">
-          <MathText text={comparison === "jump"
+          <MathText text={comparison === "filled"
+            ? (c===2?"点值与左右极限都为 $2$，补后的函数在这里连续。":"左右极限仍为 $2$，但现在的点值不同，所以仍不连续。")
+            : comparison === "jump"
             ? "左侧极限为 $1$，右侧极限为 $3$。把距离缩得再小，也不会变成同一个数。"
             : "在 $a=0$，右侧差商为 $1$，左侧为 $-1$。函数连续，却没有唯一的导数。切换第二点方向检查。"} />
         </p>

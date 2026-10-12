@@ -48,6 +48,8 @@ export function searchLessons(query: string) {
       l.subtitle,
       l.concept,
       l.intuition,
+      l.teaching.explain,
+      ...l.teaching.steps.flatMap(s=>[s.title,s.instruction,s.observation]),
       l.learningCheck.question,
       l.interactiveVisual.prediction,
       ...l.body.map((b) => b.text),

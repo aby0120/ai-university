@@ -148,7 +148,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -167,5 +167,40 @@
     ],
     "correctIndex": 1,
     "explanation": "$\\arcsin$ 的输出限制在 $[\\frac{- \\pi }{2} , \\frac{\\pi }{2}]$。超出这个区间，原角通常不能被恢复。"
+  },
+  "teaching": {
+    "explain": "反函数把输入输出交换，局部伸缩倍率也取倒数。先找到对应点，再取原导数的倒数，别在错误的输入上计算。",
+    "steps": [
+      {
+        "title": "中央的斜率",
+        "instruction": "反正切的切点取 0。",
+        "preset": {
+          "a": 0,
+          "h": 0.01,
+          "side": 1
+        },
+        "observation": "精确斜率为 1。"
+      },
+      {
+        "title": "移动一个单位",
+        "instruction": "切点取 1。",
+        "preset": {
+          "a": 1,
+          "h": 0.01,
+          "side": 1
+        },
+        "observation": "斜率为 $\\frac12$，曲线继续上升但变缓。"
+      },
+      {
+        "title": "再向远处移动",
+        "instruction": "切点取 3。",
+        "preset": {
+          "a": 3,
+          "h": 0.01,
+          "side": 1
+        },
+        "observation": "斜率为 $\\frac1{10}$，仍为正；公式不表示曲线在这里停止上升。"
+      }
+    ]
   }
 }

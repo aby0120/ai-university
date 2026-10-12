@@ -146,7 +146,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -165,5 +165,39 @@
     ],
     "correctIndex": 1,
     "explanation": "竖片从 $y = 0$ 延伸到 $y = x^{2}$，高是 $x^{2}$。薄壳体积约为 $2 \\pi  x \\cdot x^{2} \\cdot \\mathrm{d}x$。"
+  },
+  "teaching": {
+    "explain": "平行于旋转轴的窄条扫成薄壳。壳的体积贡献是周长乘高度乘厚度；不能把周长误换成圆盘面积。",
+    "steps": [
+      {
+        "title": "看较小半径",
+        "instruction": "完成一圈，选中半径 0.25 的壳。",
+        "preset": {
+          "dimension": "3d",
+          "degrees": 360,
+          "slice": 0.25
+        },
+        "observation": "高度为 $\\frac1{16}$，周长为 $\\frac\\pi2$。"
+      },
+      {
+        "title": "把半径加倍",
+        "instruction": "选中半径 0.5 的壳。",
+        "preset": {
+          "dimension": "3d",
+          "degrees": 360,
+          "slice": 0.5
+        },
+        "observation": "高度变为四倍，周长变为两倍；每单位厚度的贡献变为八倍。"
+      },
+      {
+        "title": "回到二维条带",
+        "instruction": "在二维把位置设为 0.5。",
+        "preset": {
+          "dimension": "2d",
+          "x": 0.5
+        },
+        "observation": "竖条高度是 $x^2$，半径是 $x$；两者在积分里分别出现。"
+      }
+    ]
   }
 }

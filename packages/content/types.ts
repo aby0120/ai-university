@@ -38,6 +38,7 @@ export interface Lesson {
   concept: string;
   intuition: string;
   objectives: string[];
+  teaching: { explain: string; steps: ExperimentStep[] };
   learningCheck: {
     question: string;
     choices: string[];
@@ -73,3 +74,6 @@ export interface Lesson {
   };
   sources: string[];
 }
+
+export interface TeachingPreset { a?: number; x?: number; h?: number; b?: number; c?: number; eps?: number; n?: number; side?: number; slice?: number; degrees?: number; method?: string; comparison?: string; dimension?: "2d" | "3d"; model?: "disk" | "washer"; }
+export interface ExperimentStep { title: string; instruction: string; observation: string; preset: TeachingPreset; }

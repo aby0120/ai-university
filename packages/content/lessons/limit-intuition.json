@@ -148,7 +148,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -168,5 +168,40 @@
     ],
     "correctIndex": 1,
     "explanation": "极限检查 1 附近、但不等于 1 的输入。单独改变点上的值不会改变两侧的趋势。"
+  },
+  "teaching": {
+    "explain": "把到达某点和靠近某点分开。极限看附近输出的趋势；点本身缺着一个洞，也可以有稳定趋势。",
+    "steps": [
+      {
+        "title": "先看右侧",
+        "instruction": "从右侧距目标 0.5 的位置观察。",
+        "preset": {
+          "h": 0.5,
+          "side": 1,
+          "comparison": "original"
+        },
+        "observation": "$x=1.5$ 时输出为 2.5。"
+      },
+      {
+        "title": "从左侧靠近",
+        "instruction": "改成左侧，距离缩到 0.01。",
+        "preset": {
+          "h": 0.01,
+          "side": -1,
+          "comparison": "original"
+        },
+        "observation": "左侧输出为 1.99；再看右侧是 2.01，两边都靠近 2。"
+      },
+      {
+        "title": "比较跳跃",
+        "instruction": "切换到左右不相同的函数。",
+        "preset": {
+          "h": 0.01,
+          "side": 1,
+          "comparison": "jump"
+        },
+        "observation": "左侧一直为 1，右侧一直为 3；缩小距离也无法得到共同极限。"
+      }
+    ]
   }
 }

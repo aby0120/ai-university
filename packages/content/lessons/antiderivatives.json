@@ -195,7 +195,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -215,5 +215,34 @@
     ],
     "correctIndex": 0,
     "explanation": "$x^{2}$、$x^{2} + 3$ 等都求导得到 $2 x$。$C$ 记录这一族原函数；在同一个区间讨论。"
+  },
+  "teaching": {
+    "explain": "把求导倒着读，可以找到一种原函数。所有竖直平移都有相同导数；积分常数记录这份尚未确定的信息。",
+    "steps": [
+      {
+        "title": "先固定常数",
+        "instruction": "积分常数取 0。",
+        "preset": {
+          "c": 0
+        },
+        "observation": "原函数是 $\\frac{x^3}{3}$，导数是 $x^2$。"
+      },
+      {
+        "title": "向上平移",
+        "instruction": "常数改为 1。",
+        "preset": {
+          "c": 1
+        },
+        "observation": "原函数整条上移，导函数不变。"
+      },
+      {
+        "title": "再向下平移",
+        "instruction": "常数改为 −1。",
+        "preset": {
+          "c": -1
+        },
+        "observation": "原函数位置改变，但各点斜率仍由同一导函数给出。"
+      }
+    ]
   }
 }

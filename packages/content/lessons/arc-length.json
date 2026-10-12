@@ -150,7 +150,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -169,5 +169,38 @@
     ],
     "correctIndex": 1,
     "explanation": "窄带沿曲线展开，宽度是弧长 $\\mathrm{d}s$。只乘 $\\mathrm{d}x$ 会漏掉倾斜带来的长度；这里只算侧面。"
+  },
+  "teaching": {
+    "explain": "长度计算要把横向和纵向变化一起算进去。旋转侧面积再把这段斜长扫成窄带，因此不能只用水平宽度。",
+    "steps": [
+      {
+        "title": "先用少量线段",
+        "instruction": "在二维用 4 段折线。",
+        "preset": {
+          "dimension": "2d",
+          "n": 4
+        },
+        "observation": "折线近似曲线长度，但仍有误差。"
+      },
+      {
+        "title": "继续细分",
+        "instruction": "改成 60 段折线。",
+        "preset": {
+          "dimension": "2d",
+          "n": 60
+        },
+        "observation": "折线长度更接近弧长；注意斜长大于对应水平宽度。"
+      },
+      {
+        "title": "看旋转窄带",
+        "instruction": "切换三维曲面，完成一圈。",
+        "preset": {
+          "dimension": "3d",
+          "degrees": 360,
+          "slice": 0.7
+        },
+        "observation": "侧面积要乘旋转周长与斜长；当前模型不加入端盖。"
+      }
+    ]
   }
 }

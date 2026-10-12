@@ -152,7 +152,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -172,5 +172,34 @@
     ],
     "correctIndex": 0,
     "explanation": "上限增加 $h$ 时，新增积分约为 $f (x) h$。除以 $h$ 再取极限，得到当前的 $f (x)$。"
+  },
+  "teaching": {
+    "explain": "累积上限多走一点，就多添一条很窄的贡献。除以走过的宽度，这条的平均高度趋近当前高度，所以累积的导数恢复原函数。",
+    "steps": [
+      {
+        "title": "从起点开始",
+        "instruction": "累积上限取 0。",
+        "preset": {
+          "x": 0
+        },
+        "observation": "累积与当前新增高度都为零。"
+      },
+      {
+        "title": "累积到中间",
+        "instruction": "上限取 0.5。",
+        "preset": {
+          "x": 0.5
+        },
+        "observation": "累积为 $\\frac1{24}$，当前高度与累积导数都为 $\\frac14$。"
+      },
+      {
+        "title": "累积到终点",
+        "instruction": "上限取 1。",
+        "preset": {
+          "x": 1
+        },
+        "observation": "累积为 $\\frac13$，当前高度为 1；累积值和累积速度不是同一个量。"
+      }
+    ]
   }
 }

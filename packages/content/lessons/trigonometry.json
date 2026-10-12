@@ -145,7 +145,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -164,5 +164,34 @@
     ],
     "correctIndex": 1,
     "explanation": "$\\frac{\\sin h}{h} \\to 1$ 要求 $h$ 用弧度。若用角度，换算会带来 $\\frac{\\pi }{180}$ 的系数。"
+  },
+  "teaching": {
+    "explain": "正弦记录单位圆上的高度。绕一圈回到同一个点，高度就重复；横轴使用弧度，整圈是两个圆周率。",
+    "steps": [
+      {
+        "title": "从零角开始",
+        "instruction": "把输入设为 0。",
+        "preset": {
+          "x": 0
+        },
+        "observation": "$\\sin0=0$。"
+      },
+      {
+        "title": "走四分之一圈",
+        "instruction": "输入设为接近 $\\frac\\pi2$ 的 1.57。",
+        "preset": {
+          "x": 1.57
+        },
+        "observation": "高度接近 1，位于正弦波峰附近。"
+      },
+      {
+        "title": "走完一圈",
+        "instruction": "输入设为接近 $2\\pi$ 的 6.28。",
+        "preset": {
+          "x": 6.28
+        },
+        "observation": "输出再次接近 0；预设值是小数近似，不是精确圆周率。"
+      }
+    ]
   }
 }

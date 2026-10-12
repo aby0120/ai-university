@@ -51,6 +51,8 @@ for (const [ci, c] of book.chapters.entries()) {
     const l = allLessons.find((l) => l.id === id);
     md += `\n## ${l.number} ${l.title}\n\n*${l.subtitle}*\n\n### 核心意思\n\n${l.concept}\n\n### 怎么理解？\n\n${l.intuition}\n`;
     html += `<section class="lesson" id="${id}"><p class="kicker">SECTION ${l.number}</p><h2>${rich(l.title)}</h2><p class="subtitle">${rich(l.subtitle)}</p><div class="idea">${p(l.concept)}</div><h3>怎么理解？</h3>${p(l.intuition)}`;
+    md += `\n### 换个角度理解\n\n${l.teaching.explain}\n`;
+    html += `<h3>换个角度理解</h3>${p(l.teaching.explain)}`;
     const check = l.learningCheck;
     md += `\n### 先想一下\n\n${check.question}\n\n${check.choices.map((s, i) => `${String.fromCharCode(65 + i)}. ${s}`).join("\n")}\n\n答案：${String.fromCharCode(65 + check.correctIndex)}。${check.explanation}\n`;
     html += `<div class="concept-check"><h3>先想一下</h3>${p(check.question)}${`<ol type="A" class="concept-check-choices">${check.choices.map(choice => `<li>${rich(choice)}</li>`).join("")}</ol>`}<details><summary>查看答案与解释</summary>${p(`${String.fromCharCode(65 + check.correctIndex)}。${check.explanation}`)}</details></div>`;
@@ -66,6 +68,8 @@ for (const [ci, c] of book.chapters.entries()) {
     }
     md += `\n### 交互演示\n\n先预测：${l.interactiveVisual.prediction}\n\n${l.interactiveVisual.caption}\n\n在网站打开知识点：#/lesson/${l.id}。图像用于探索，不替代数学证明。\n\n### 例题\n`;
     html += `<div class="visual-link"><strong>交互演示</strong>${p(l.interactiveVisual.prediction)}${p(l.interactiveVisual.caption)}<a href="./#/lesson/${l.id}?view=visual">打开 ${l.number} 的互动图 →</a></div><h3>例题</h3>`;
+    md += `\n三步实验：\n${l.teaching.steps.map((s,i)=>`\n${i+1}. **${s.title}** ${s.instruction}\n\n预设下的观察：${s.observation}\n`).join("")}`;
+    html += `<div class="experiment"><h3>三步实验</h3>${l.teaching.steps.map((s,i)=>`<h4>${i+1}. ${rich(s.title)}</h4>${p(s.instruction)}${p(`预设下的观察：${s.observation}`)}`).join("")}</div>`;
     for (const [i, e] of l.workedExamples.entries()) {
       md += `\n#### 例 ${i + 1}：${e.title}\n\n${e.problem}\n\n${e.steps.map((s) => `- ${s}`).join("\n")}\n\n**答案：${e.answer}**\n`;
       html += `<article class="example"><h4>例 ${i + 1}：${rich(e.title)}</h4>${p(e.problem)}${list(e.steps)}<div class="answer">${p(e.answer)}</div></article>`;
