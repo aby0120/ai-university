@@ -145,7 +145,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -164,5 +164,34 @@
     ],
     "correctIndex": 0,
     "explanation": "先算内层 $g (2) = 3$，再算外层 $f (3) = 9$。交换顺序会得到 $g (f (2)) = 5$。"
+  },
+  "teaching": {
+    "explain": "正着算可以丢掉信息：平方会把正负两种输入合到同一输出。倒着算要唯一，就得先保留一个分支。",
+    "steps": [
+      {
+        "title": "先取正输入",
+        "instruction": "输入取 1，记下平方的输出。",
+        "preset": {
+          "x": 1
+        },
+        "observation": "$1^2=1$。"
+      },
+      {
+        "title": "再取负输入",
+        "instruction": "输入换成 −1，比较输出。",
+        "preset": {
+          "x": -1
+        },
+        "observation": "$(-1)^2=1$：不同输入得到同一输出。"
+      },
+      {
+        "title": "换一对输入",
+        "instruction": "再取 −2，并与正输入 2 比较。",
+        "preset": {
+          "x": -2
+        },
+        "observation": "两边都会输出 4。限制到非负分支，反向才有唯一选择。"
+      }
+    ]
   }
 }

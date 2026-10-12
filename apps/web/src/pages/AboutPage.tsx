@@ -179,7 +179,19 @@ export function AboutPage() {
       ) : part === "versions" ? (
         <div className="versions-page">
           <div className="version-entry">
-            <span className="badge">当前网站 · 教材 v0.3.0</span>
+            <span className="badge">当前网站 · 教材 v0.3.1</span>
+            <h2>v0.7.0 · 回答式教学与引导实验</h2>
+            <time>2026 年 10 月 12 日</time>
+            <ul>
+              <li>全书 35 节增加另一角度的解释与 105 个三步实验预设。</li>
+              <li>操作、观察、核对结论连成一条学习路径，支持自由探索与重新载入。</li>
+              <li>统一可直接输入的数学参数、二维图例与三维控件，延伸模型按需展开。</li>
+              <li>练习提供分层提示和对应误区反馈；数值正确后由读者确认理解。</li>
+              <li>保留完整教材、数学条件、打印版本和纯静态运行。</li>
+            </ul>
+          </div>
+          <div className="version-entry">
+            <span className="badge">教材 v0.3.0</span>
             <h2>v0.6.0 · 微积分 I 内容补全与复核</h2>
             <time>2026 年 10 月 12 日</time>
             <ul>

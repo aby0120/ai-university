@@ -45,6 +45,7 @@ test("answer drafts survive question navigation and checked progress survives re
   await first.getByRole("textbox").fill("5");
   await first.getByRole("button", { name: "检查数值", exact: true }).click();
   await expect(first.getByRole("status")).toContainText("数值正确");
+  await first.getByRole("button",{name:"我能说明步骤，标记已理解",exact:true}).click();
   await first
     .getByRole("button", { name: "给我一点提示", exact: true })
     .click();

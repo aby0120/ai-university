@@ -17,6 +17,7 @@ import { book, lessonById, lessons } from "../../../../packages/content";
 import type { Lesson } from "../../../../packages/content/types";
 import { Formula, MathText } from "../components/MathText";
 import { Practice } from "../components/Practice";
+import { TeachingExplanation } from "../components/Teaching";
 import { LearningCheck } from "../components/LearningCheck";
 import { Visual } from "../components/Visual";
 
@@ -89,7 +90,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
   return (
     <div
       className={
-        "lesson-page " +
+        "lesson-page view-" + view + " " +
         (reading.large ? "large-text " : "") +
         (focused ? "read-focus" : "")
       }
@@ -189,6 +190,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
                   <MathText text={l.intuition} />
                 </p>
               </section>
+              <TeachingExplanation key={l.id} lesson={l}/>
               <LearningCheck key={l.id} check={l.learningCheck} />
               <section id="section-visual" className="embedded-visual">
                 <div className="visual-section-heading">
@@ -204,7 +206,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
                 <Visual lesson={l} compact />
               </section>
               <section id="section-explain">
-                <SectionTitle num="02" title="三个关键问题" />
+                <SectionTitle num="02" title="你可能会问" />
                 {l.body.map((b) => (
                   <div className="body-part" key={b.title}>
                     <h3><MathText text={b.title} /></h3>
@@ -251,7 +253,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
                 </ol>
               </section>
               <section id="section-examples">
-                <SectionTitle num="05" title="两道例题" />
+                <SectionTitle num="05" title="试着解一个问题" />
                 {l.workedExamples.map((ex, i) => (
                   <div className="worked-example" key={i}>
                     <header>
@@ -330,8 +332,8 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
           ) : view === "visual" ? (
             <div className="focus-visual">
               <div className="focus-visual-intro">
-                <Eyebrow>EXPLORE THE IDEA</Eyebrow>
-                <h2><MathText text={l.title} /> · 交互演示</h2>
+                <Eyebrow>改变一个量，看清一个关系</Eyebrow>
+                <h2>带着问题探索</h2>
                 <p>
                   <MathText text={l.concept} />
                 </p>

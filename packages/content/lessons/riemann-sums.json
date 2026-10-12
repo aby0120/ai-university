@@ -148,7 +148,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -168,5 +168,37 @@
     ],
     "correctIndex": 1,
     "explanation": "每段右端点的函数值不小于左端点，所以右端点矩形的高度不小于左端点。"
+  },
+  "teaching": {
+    "explain": "先用有限小块近似，再让最大块宽趋零。有限和一般不是积分本身；不同取样方法会从不同方向靠近。",
+    "steps": [
+      {
+        "title": "两个右端矩形",
+        "instruction": "分割数取 2，使用右端。",
+        "preset": {
+          "n": 2,
+          "method": "right"
+        },
+        "observation": "右端和为 $\\frac58=0.625$，高于精确积分。"
+      },
+      {
+        "title": "同样分割换左端",
+        "instruction": "分割数仍为 2，改为左端。",
+        "preset": {
+          "n": 2,
+          "method": "left"
+        },
+        "observation": "左端和为 $\\frac18=0.125$，低于精确积分。"
+      },
+      {
+        "title": "增加细分",
+        "instruction": "改为 60 个右端矩形。",
+        "preset": {
+          "n": 60,
+          "method": "right"
+        },
+        "observation": "近似更接近 $\\frac13$；误差仍有限，不能把数值采样当证明。"
+      }
+    ]
   }
 }

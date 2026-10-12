@@ -148,7 +148,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -168,5 +168,43 @@
     ],
     "correctIndex": 1,
     "explanation": "差商是 $\\frac{(1 + h)^{2} - 1}{h} = 2 + h$。$h = 0.1$ 得到 2.1；让 $h \\to 0$，才得到导数 2。"
+  },
+  "teaching": {
+    "explain": "先用一段路算平均变化率，再把这段路缩短。导数是这个过程的极限，不是某条很短的割线本身。",
+    "steps": [
+      {
+        "title": "先留一段间隔",
+        "instruction": "切点为 1，右侧间隔为 1。",
+        "preset": {
+          "a": 1,
+          "h": 1,
+          "side": 1,
+          "comparison": "original"
+        },
+        "observation": "割线斜率为 3；切线斜率是 2，仍有差距。"
+      },
+      {
+        "title": "把间隔缩小",
+        "instruction": "保持切点不变，间隔改为 0.01。",
+        "preset": {
+          "a": 1,
+          "h": 0.01,
+          "side": 1,
+          "comparison": "original"
+        },
+        "observation": "割线斜率为 2.01，更接近 2，但还不是极限。"
+      },
+      {
+        "title": "检查尖角",
+        "instruction": "切换绝对值函数，切点为 0。",
+        "preset": {
+          "a": 0,
+          "h": 0.01,
+          "side": 1,
+          "comparison": "corner"
+        },
+        "observation": "右侧差商为 1，左侧为 −1。它连续，却没有同一个双侧导数。"
+      }
+    ]
   }
 }

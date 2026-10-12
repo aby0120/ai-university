@@ -2,9 +2,10 @@ import { useState, type ReactNode } from 'react';
 import { RotateCcw } from 'lucide-react';
 import { squareAverage, sectionSolid, pumpWater, waterPressure } from '../../../../packages/visuals/applications.mjs';
 import { MathText, Formula, plainMathText } from './MathText';
+import { ParameterControl } from './ParameterControl';
 const number = (x: number) => Number(x.toFixed(4)).toString();
-function Control({ label, value, min, max, onChange }: { label: string; value: number; min: number; max: number; onChange: (v: number) => void }) {
-  return <label className="slider"><span><MathText text={label} /><output>{number(value)}</output></span><input aria-label={plainMathText(label)} type="range" min={min} max={max} step="0.01" value={value} onChange={e=>onChange(+e.target.value)} /></label>;
+function Control({label,value,min,max,step=.01,onChange}:{label:string;value:number;min:number;max:number;step?:number;onChange:(n:number)=>void}) {
+  return <ParameterControl label={label} value={value} min={min} max={max} step={step} onChange={onChange}/>;
 }
 function Frame({ title, children, reset }: { title: string; children: ReactNode; reset: () => void }) {
   return <section className="visual-card application-visual" aria-label={title}><header><div><span className="eyebrow">MODEL & CHECK</span><h3>{title}</h3></div><button className="icon-btn" aria-label={`重置${title}`} onClick={reset}><RotateCcw size={17}/></button></header>{children}<p className="visual-note">改变参数，核对模型；图示不代替正文中的条件与论证。</p></section>;

@@ -150,7 +150,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -170,5 +170,34 @@
     ],
     "correctIndex": 0,
     "explanation": "外层变化率是 $3 (x^{2} + 1)^{2}$，内层变化率是 $2 x$。链式法则把两段变化率相乘。"
+  },
+  "teaching": {
+    "explain": "复合变化要经过两道关：输入怎样改变内层，内层怎样改变外层。总变化率把两道关的倍率相乘。",
+    "steps": [
+      {
+        "title": "内层停止变化",
+        "instruction": "输入取 0。",
+        "preset": {
+          "x": 0
+        },
+        "observation": "外层变化率为 3，但内层变化率为 0；总导数为 0。"
+      },
+      {
+        "title": "正向变化",
+        "instruction": "输入取 1。",
+        "preset": {
+          "x": 1
+        },
+        "observation": "内层输出 2、变化率 2；外层变化率 12，总导数为 24。"
+      },
+      {
+        "title": "反向变化",
+        "instruction": "输入取 −1。",
+        "preset": {
+          "x": -1
+        },
+        "observation": "内层输出仍为 2，但变化率为 −2；总导数为 −24。"
+      }
+    ]
   }
 }

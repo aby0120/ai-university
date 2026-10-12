@@ -153,7 +153,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -172,5 +172,34 @@
     ],
     "correctIndex": 2,
     "explanation": "最大值可能落在端点；内部还要考虑导数为零或不存在的临界点。最后比较函数值。"
+  },
+  "teaching": {
+    "explain": "先把限制写进模型，再比较合法方案。这里周长固定，一边加长就会挤短另一边，所以面积并非一直增加。",
+    "steps": [
+      {
+        "title": "先看细长矩形",
+        "instruction": "一边取 2。",
+        "preset": {
+          "x": 2
+        },
+        "observation": "另一边为 10，面积为 20，周长仍为 24。"
+      },
+      {
+        "title": "取平衡尺寸",
+        "instruction": "一边取 6。",
+        "preset": {
+          "x": 6
+        },
+        "observation": "另一边也是 6，面积达到 36。"
+      },
+      {
+        "title": "继续加长",
+        "instruction": "一边取 10。",
+        "preset": {
+          "x": 10
+        },
+        "observation": "另一边变为 2，面积回到 20；检查可行区间与转折点。"
+      }
+    ]
   }
 }

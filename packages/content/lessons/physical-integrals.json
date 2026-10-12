@@ -222,7 +222,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -241,5 +241,34 @@
     ],
     "correctIndex": 1,
     "explanation": "位移积分带方向的 $v (t)$，路程积分速率 $|v (t)|$。往返运动的位移会抵消，路程不会。"
+  },
+  "teaching": {
+    "explain": "先给每个小段的贡献配上正确单位，再积分。负速度影响方向，重量乘提升距离给功，密度乘体积给质量。",
+    "steps": [
+      {
+        "title": "向回走的一段",
+        "instruction": "速度模型的上限取 1。",
+        "preset": {
+          "b": 1
+        },
+        "observation": "位移为 $-\\frac12$，路程为 $\\frac12$。"
+      },
+      {
+        "title": "返回起点",
+        "instruction": "上限取 2。",
+        "preset": {
+          "b": 2
+        },
+        "observation": "正负位移抵消为零，但总路程是 1。"
+      },
+      {
+        "title": "继续向前",
+        "instruction": "上限取 3。",
+        "preset": {
+          "b": 3
+        },
+        "observation": "位移为 $\\frac32$，路程为 $\\frac52$；观察数值前先分清要求的量。"
+      }
+    ]
   }
 }

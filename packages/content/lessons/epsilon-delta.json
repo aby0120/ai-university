@@ -149,7 +149,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -169,5 +169,34 @@
     ],
     "correctIndex": 0,
     "explanation": "无论要求多小的输出误差 $\\varepsilon$，都要能找到足够小的 $\\delta$。$\\delta$ 可以依赖 $\\varepsilon$。"
+  },
+  "teaching": {
+    "explain": "先要求输出误差够小，再给出输入能动多远的保证。不是挑一个好点，而是保证范围内所有合法点都够好。",
+    "steps": [
+      {
+        "title": "较宽的误差",
+        "instruction": "输出误差设为 1。",
+        "preset": {
+          "eps": 1
+        },
+        "observation": "可选 $\\delta=0.2$。"
+      },
+      {
+        "title": "缩小输出误差",
+        "instruction": "误差改为 0.1。",
+        "preset": {
+          "eps": 0.1
+        },
+        "observation": "保证范围缩为 $\\delta=0.02$。"
+      },
+      {
+        "title": "继续缩小一半",
+        "instruction": "误差改为 0.05。",
+        "preset": {
+          "eps": 0.05
+        },
+        "observation": "$\\delta=0.01$；用 $|x^2-4|=|x-2||x+2|$ 说明整个色带内的保证。"
+      }
+    ]
   }
 }

@@ -6,6 +6,7 @@ import Ajv from "ajv";
 import katex from "katex";
 import { validateMathNotation } from "./math-notation.mjs";
 import { book, allLessons, walkStrings, root } from "./content-utils.mjs";
+import { validateGuidance } from "../packages/visuals/guidance.mjs";
 import { functions } from "../packages/visuals/math.mjs";
 export function validateContent() {
   const schema = JSON.parse(
@@ -18,6 +19,7 @@ export function validateContent() {
   let mathCount = 0;
   for (const l of allLessons) {
     validateMathNotation(l, l.id);
+    validateGuidance(l);
     assert(validate(l), `${l.id}: ${JSON.stringify(validate.errors)}`);
     assert(
       l.learningCheck.correctIndex < l.learningCheck.choices.length,

@@ -145,7 +145,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -164,5 +164,34 @@
     ],
     "correctIndex": 1,
     "explanation": "根号要求 $x - 2 \\ge 0$，分母又不能是零。两个条件合起来是 $x > 2$。"
+  },
+  "teaching": {
+    "explain": "把函数想成一条有入口限制的规则。先检查输入能不能进去，再问输出是多少。平方根这条规则在实数里只接受非负输入。",
+    "steps": [
+      {
+        "title": "合法输入",
+        "instruction": "先把输入设为 4。",
+        "preset": {
+          "x": 4
+        },
+        "observation": "$\\sqrt4=2$：图上有对应的点。"
+      },
+      {
+        "title": "边界输入",
+        "instruction": "再把输入设为 0。",
+        "preset": {
+          "x": 0
+        },
+        "observation": "$\\sqrt0=0$，边界仍属于定义域。"
+      },
+      {
+        "title": "越过边界",
+        "instruction": "把输入设为 −1。",
+        "preset": {
+          "x": -1
+        },
+        "observation": "实数范围没有输出；图上不应补出一个点。"
+      }
+    ]
   }
 }

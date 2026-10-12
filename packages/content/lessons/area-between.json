@@ -152,7 +152,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -171,5 +171,34 @@
     ],
     "correctIndex": 1,
     "explanation": "面积不能靠正负抵消。先找交点与上下关系，再分段积分，也可写成高度差的绝对值积分。"
+  },
+  "teaching": {
+    "explain": "先问小条有多高，再把小条面积加起来。高度是上减下；两条曲线换位置，就要换减法顺序或分段。",
+    "steps": [
+      {
+        "title": "看一个端点",
+        "instruction": "条带位置取 0。",
+        "preset": {
+          "x": 0
+        },
+        "observation": "两曲线相交，条带高度为零。"
+      },
+      {
+        "title": "看区间中间",
+        "instruction": "条带位置取 0.5。",
+        "preset": {
+          "x": 0.5
+        },
+        "observation": "上边为 $x$，下边为 $x^2$，高度为 $\\frac14$。"
+      },
+      {
+        "title": "看另一个端点",
+        "instruction": "位置取 1。",
+        "preset": {
+          "x": 1
+        },
+        "observation": "高度再次为零；积分累积整个区间的小条，不只看中间一条。"
+      }
+    ]
   }
 }

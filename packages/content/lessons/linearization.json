@@ -151,7 +151,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -170,5 +170,37 @@
     ],
     "correctIndex": 0,
     "explanation": "近似从点 $(a , f (a))$ 出发，沿该点的斜率变化。除非函数本来就是直线，否则一般不是精确等式。"
+  },
+  "teaching": {
+    "explain": "用熟悉点的切线估计附近输出。它抓住第一阶变化，离中心越远越要检查误差；近似不能偷换成等式。",
+    "steps": [
+      {
+        "title": "就在中心",
+        "instruction": "平方根的中心与估计位置都取 4。",
+        "preset": {
+          "a": 4,
+          "x": 4
+        },
+        "observation": "切线与曲线都输出 2，误差为零。"
+      },
+      {
+        "title": "估计附近",
+        "instruction": "中心仍为 4，估计位置取 4.1。",
+        "preset": {
+          "a": 4,
+          "x": 4.1
+        },
+        "observation": "切线估计为 2.025，略高于真实平方根。"
+      },
+      {
+        "title": "离开中心",
+        "instruction": "估计位置改为 6。",
+        "preset": {
+          "a": 4,
+          "x": 6
+        },
+        "observation": "切线估计为 2.5，误差明显更大；这是局部模型。"
+      }
+    ]
   }
 }
