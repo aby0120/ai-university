@@ -180,6 +180,16 @@ export function AboutPage() {
         <div className="versions-page">
           <div className="version-entry">
             <span className="badge">当前网站 · 教材 v0.3.1</span>
+            <h2>v0.8.2 · 动画完整运行到终点</h2>
+            <time>2026 年 10 月 14 日</time>
+            <ul>
+              <li>修正统一计时导致的提前停止，极限与导数运行到最小正距离。</li>
+              <li>细分到最大分割数，参数扫描到本次区间终点。</li>
+              <li>明确显示有限近似的边界，动画不代替极限与证明。</li>
+            </ul>
+          </div>
+          <div className="version-entry">
+            <span className="badge">教材 v0.3.1</span>
             <h2>v0.8.1 · 滑块圆点更清楚</h2>
             <time>2026 年 10 月 14 日</time>
             <ul>

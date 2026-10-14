@@ -21,6 +21,7 @@ import { Formula, MathText, plainMathText } from "./MathText";
 import { ParameterControl } from "./ParameterControl";
 import { ApplicationVisual } from "./ApplicationVisual";
 import { GuidedExperiment } from "./Teaching";
+import { playbackStep, MIN_APPROACH_DISTANCE } from '../../../../packages/visuals/playback.mjs';
 const fmt = (v: number) =>
   Number.isFinite(v) ? Number(v.toFixed(5)).toString() : "无有限值";
 function Slider({label,value,min,max,step=.01,onChange}:{label:string;value:number;min:number;max:number;step?:number;onChange:(n:number)=>void}) {
@@ -301,6 +302,7 @@ function PlanarVisual({
     setC(scenario.c??0);setEps(scenario.eps??.5);setSide(scenario.side??1);setComparison(scenario.comparison??"original");setMethod(scenario.method??"right");
   },[scenario]);
   const [speed, setSpeed] = useState(1);
+  const [playbackComplete, setPlaybackComplete] = useState(false);
   const cardRef = useRef<HTMLElement>(null);
   const clock = useRef(0);
   useEffect(() => {
@@ -308,6 +310,10 @@ function PlanarVisual({
     let id = 0,
       last = 0;
     clock.current = 0;
+    const mode = k === 'limit' || k === 'derivative' ? 'approach' : k === 'riemann' || k === 'arc' ? 'refine' : 'sweep';
+    const initial = mode === 'approach'
+      ? (k === 'derivative' && spec.function === 'circle' ? Math.min(h, Math.max(MIN_APPROACH_DISTANCE, (side === 1 ? 2 - a : a + 2) * 0.99)) : h)
+      : mode === 'refine' ? n : x;
     const tick = (now: number) => {
       if (document.hidden) {
         setPlaying(false);
@@ -317,17 +323,17 @@ function PlanarVisual({
       last = now;
       const elapsed = dt * speed;
       clock.current += elapsed;
-      if (k === "limit" || k === "derivative")
-        setH((z) => Math.max(0.0001, z * Math.exp(-elapsed * 0.8)));
-      else if (k === "riemann" || k === "arc")
-        setN(Math.min(80, Math.floor(4 + clock.current * 9)));
-      else setX((z) => (z + elapsed * 0.25 > 1 ? 0 : z + elapsed * 0.25));
-      if (clock.current >= 8) setPlaying(false);
+      const frame = playbackStep(mode, initial, clock.current);
+      if (mode === 'approach') setH(frame.value);
+      else if (mode === 'refine') setN(frame.value);
+      else setX(frame.value);
+      if (frame.done) { setPlaying(false); setPlaybackComplete(true); }
       else id = requestAnimationFrame(tick);
     };
     id = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(id);
   }, [playing, k, speed]);
+  useEffect(() => { setPlaybackComplete(false); }, [scenario]);
   useEffect(() => {
     const element = cardRef.current;
     if (!element) return;
@@ -339,6 +345,7 @@ function PlanarVisual({
   }, []);
   function reset() {
     setPlaying(false);
+    setPlaybackComplete(false);
     setA(initialA);
     setX(initialX);
     setH(1);
@@ -1075,7 +1082,8 @@ function PlanarVisual({
   return (
     <section
       ref={cardRef}
-      onChangeCapture={()=>setPlaying(false)}
+      onChangeCapture={()=>{setPlaying(false);setPlaybackComplete(false);}}
+      onClickCapture={e=>{if((e.target as Element).closest('button'))setPlaybackComplete(false);}}
       onFocusCapture={e=>{if((e.target as Element).closest(".parameter-value"))setPlaying(false);}}
       className={`visual-card ${compact ? "compact" : ""}`}
       aria-label={"交互演示"}
@@ -1197,6 +1205,12 @@ function PlanarVisual({
           </label>
         </div>
       )}
+      {playbackComplete && <p className="playback-finish" role="status"><MathText text={
+        k === 'derivative' ? '已到最小距离 $h=0.0001$。两点仍未重合，读数仍是差商。'
+        : k === 'limit' ? '已到最小距离 $|x-a|=0.0001$。移动点仍不等于目标点。'
+        : k === 'riemann' || k === 'arc' ? '已到最大分割数 $n=80$。这是有限近似，仍需与精确值比较。'
+        : '本次参数变化已播完。可以重新播放，或手动调整。'
+      }/></p>}
       <p className="visual-caption">
         <MoveHorizontal size={15} />
         <MathText text={caption} />

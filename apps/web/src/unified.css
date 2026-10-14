@@ -804,6 +804,7 @@ input[type=range] { accent-color: #4c855b; }
 
 /* Keep the draggable thumb distinct from the dark instrument and track.
    Engine-specific pseudo-elements stay in separate rules for Firefox/WebKit. */
+.visual-card .playback-finish { margin: 14px 0; padding: 12px 14px; border: 1px solid #83ab8d66; border-radius: 8px; background: #d4f8dc0c; color: #d4ecd7; font-size: 13px; line-height: 1.85; }
 :is(.visual-card,.solid-visual,.sculpture-parameter) input[type="range"] {
   appearance: none; width: 100%; height: 36px; margin: 0; padding: 0;
   border: 0; background: transparent; cursor: pointer;
