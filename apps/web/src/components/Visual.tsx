@@ -310,6 +310,7 @@ function PlanarVisual({
     let id = 0,
       last = 0;
     clock.current = 0;
+    // Capture one starting state per play; editing any control pauses playback.
     const mode = k === 'limit' || k === 'derivative' ? 'approach' : k === 'riemann' || k === 'arc' ? 'refine' : 'sweep';
     const initial = mode === 'approach'
       ? (k === 'derivative' && spec.function === 'circle' ? Math.min(h, Math.max(MIN_APPROACH_DISTANCE, (side === 1 ? 2 - a : a + 2) * 0.99)) : h)
@@ -1213,7 +1214,7 @@ function PlanarVisual({
       }/></p>}
       <p className="visual-caption">
         <MoveHorizontal size={15} />
-        <MathText text={caption} />
+        <span><MathText text={caption} /></span>
       </p>
       <p className="visual-note">
         图像用于探索；有限采样与动画不能替代正文中的数学论证。
