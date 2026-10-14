@@ -579,3 +579,225 @@ input[type=range] { accent-color: #4c855b; }
 .exercise .feedback.feedback-invalid { background: #fbefec; color: #7d4d3e; }
 .exercise .feedback.feedback-correct { background: #edf5e9; color: #31583d; }
 .exercise .staged-hint { font-size: 14px; line-height: 1.9; }
+
+/* v0.8: refinement of the existing exhibition and reading room.
+   Contrast belongs to the instruments; the mathematical plot stays on paper. */
+:root {
+  --surface-shadow: 0 8px 30px #0d292008, 0 1px 3px #0d292007;
+  --surface-radius: 12px;
+  --instrument: #102625;
+  --instrument-line: #31504a;
+  --instrument-muted: #b2c9c1;
+}
+.site-header.immersive-header {
+  background: #090f14ed;
+  box-shadow: 0 1px 0 #bce6d608, 0 6px 24px #040e0b12;
+}
+.immersive-header .search-trigger {
+  border-radius: 8px; background: #ffffff04;
+  transition: border-color .2s, background .2s;
+}
+.immersive-header .search-trigger:hover { border-color: #6b9a89; background: #c7eed00a; }
+.immersive-header .global-nav > a.active:after { box-shadow: 0 -2px 12px #b6e4c544; }
+:is(.primary-btn,.secondary-btn,.small-btn,.animation-btn) { border-radius: 8px; }
+.primary-btn { background: #244f43; border-color: #244f43; box-shadow: 0 3px 8px #142f2412; }
+.secondary-btn { box-shadow: 0 1px 3px #142f2408; }
+.icon-btn { border-radius: 8px; }
+:is(.primary-btn,.secondary-btn,.small-btn,.icon-btn):active { transform: translateY(1px); }
+/* Hero: retain the mathematical sculpture, polish the live control console. */
+.stage-title h1 > span { color: #cceede; }
+.stage-title > .eyebrow { display: inline-block; padding: 8px 12px; border: 1px solid #36534a; border-radius: 6px; background: #244d351c; }
+.stage-primary { border-radius: 8px; box-shadow: 0 0 28px #b3f3c514, inset 0 1px 0 #ffffff66; }
+.stage-primary:hover { box-shadow: 0 8px 30px #b3f3c524; }
+.stage-console {
+  padding: 18px 20px; gap: 20px;
+  border: 1px solid #365046;
+  border-radius: 12px;
+  background: linear-gradient(120deg,#1b302be8,#0e1c20ed);
+  box-shadow: 0 18px 55px #00000033, inset 0 1px 0 #d9fbe811;
+  backdrop-filter: blur(18px);
+}
+.sculpture-select { gap: 6px; }
+.sculpture-select button { padding: 10px 12px; border-radius: 6px; min-height: 44px; transition: background .2s, color .2s; }
+.sculpture-select button small { color: #7fa799; }
+.sculpture-select button[aria-pressed="true"] { color: #e0f4e9; background: #355448; box-shadow: inset 0 0 0 1px #72967f66; }
+.sculpture-select button:hover { background: #29463b; color: #e0f4e9; }
+.sculpture-select button>span { display: none; }
+.sculpture-buttons :is(button,a) { border-radius: 6px; }
+.sculpture-buttons :is(button,a):hover { background: #c2f2d114; color: #e0f4e9; }
+.sculpture-equation { min-width: 0; }
+.sculpture-equation .formula .katex { font-size: 1.14em; }
+.sculpture-parameter output { color: #d4f4e5; font-variant-numeric: tabular-nums; }
+/* A common material for every catalogue masthead and book page. */
+.page-heading,.library-exhibition .page-heading,.book-overview,.chapter-heading,.lesson-heading {
+  background: radial-gradient(ellipse at 100% 0,#254d3f77,transparent 66%),linear-gradient(120deg,#112825,#101b21);
+  border-color: #325146; border-radius: var(--surface-radius);
+  box-shadow: 0 12px 32px #0a221214, inset 0 1px 0 #d9fbe817;
+}
+.page-heading .masthead-lines { opacity: .24; }
+.page-heading h1,.book-overview h1 { letter-spacing: -.05em; }
+.page-count,.library-edition strong { color: #d8f2e2; }
+:is(.page-tabs,.series-library-filter nav) > a { border-radius: 7px; }
+.series-library-filter nav>a.active { background: #e2eee5; box-shadow: inset 0 0 0 1px #c9ddcc; }
+.filter-bar select,.filter-search,.series-library-filter select { border-radius: 8px; }
+.featured-book { background: #fffefb; border-color: #d7e2d7; border-radius: 12px; box-shadow: var(--surface-shadow); }
+.library-exhibition .library-published .featured-book { background: #fffefb; border-color: #d7e2d7; border-radius: 12px; box-shadow: var(--surface-shadow); }
+.book-cover,.book-cover.small,.shelf-books .book-cover {
+  border-radius: 3px 9px 9px 3px;
+  background: radial-gradient(ellipse at 110% 35%,#527b62 0,transparent 60%),linear-gradient(125deg,#102d28,#24473a);
+  box-shadow: inset 5px 0 7px #00000030, inset 7px 0 0 #b8dcc514, 0 14px 26px #18322422;
+}
+.cover-link { transition: transform .25s, filter .25s; }
+.cover-link:hover { transform: translateY(-4px); filter: brightness(1.05); }
+.featured-book-copy .badge { display: inline-flex; border: 1px solid #ccdfce; border-radius: 5px; background: #eff6ed; }
+.featured-book-copy .book-stats { padding-top: 18px; border-top: 1px solid #dde6dd; }
+.featured-book-copy .book-stats strong { font-variant-numeric: lining-nums; }
+:is(.planned-book-card,.lab-card,.practice-card,.download-grid article,.learning-stats,.empty-state) { border-radius: var(--surface-radius); box-shadow: var(--surface-shadow); }
+.library-exhibition .planned-book-card { border-radius: 10px; background: #f7faf3; border-color: #d3dfcd; box-shadow: none; }
+.lab-preview { background: #eff4eb; padding: 22px; }
+.lab-preview>.plot { border-radius: 8px; }
+.lab-card:hover { box-shadow: 0 16px 36px #183b2114; }
+.practice-card-top { background: linear-gradient(110deg,#173b30,#132525); }
+:is(.reference-list article,.glossary-list article,.appendix-list article,.search-results>a,.learning-list>div) { border-radius: 10px; box-shadow: var(--surface-shadow); }
+:is(.quiet-note,.guide-intro,.about-statement,.chapter-goals,.book-end-grid>a) { border-radius: 10px; }
+.search-dialog { border-radius: 16px; }
+/* Reading: hierarchy and tactile controls, without busy decoration in prose. */
+.lesson-heading .lesson-section-number { color: #bbdfc70a; right: 32px; }
+.lesson-heading .lesson-tools .icon-btn { width: 36px; height: 36px; border: 1px solid #51665b66; background: #d5ead605; }
+.lesson-tabs { gap: 6px; padding: 6px; margin: 16px 0 30px; border: 1px solid #dce5dc; background: #f4f7f1; border-radius: 10px; width: fit-content; max-width: 100%; }
+.lesson-tabs>a { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; padding: 12px 16px; border-radius: 7px; font-size: 13px; }
+.lesson-tabs>a.active { background: #244f43; box-shadow: 0 2px 6px #17342a1a; }
+.lesson-tabs>a.active>span { background: #d9f2de20; color: #e3f7e6; }
+.lesson-tabs svg { flex-shrink: 0; }
+.textbook-article .essential-idea { border: 1px solid #c8dcc8; border-left: 3px solid #588674; border-radius: 10px; background: linear-gradient(120deg,#f0f6eb,#fcfdf8); box-shadow: var(--surface-shadow); padding: 28px 30px; }
+.textbook-article .essential-idea>p { font-size: 21px; line-height: 1.85; }
+.reading-section-title>span { border-radius: 6px; background: #e8f0e7; color: #40614e; }
+.teaching-response,.learning-check,.example,.definition-block,.proof-note { border-radius: 10px; }
+.check-choices button { border-radius: 8px; transition: border-color .2s, background .2s; }
+.check-choices button>span:first-child { border-radius: 6px; }
+.learning-check { background: #eff5ec; box-shadow: var(--surface-shadow); }
+.book-sidebar { background: linear-gradient(160deg,#0e2020,#0d191a 55%); }
+.sidebar-lessons a.active { background: #294c3e; box-shadow: inset 0 0 0 1px #7b9d7e26; border-radius: 6px; }
+.sidebar-search { border-radius: 8px; }
+.lesson-toc nav button { border-radius: 0 6px 6px 0; }
+.lesson-toc nav button.active { background: #edf3e9; }
+/* The guided stepper has a single clear active state. */
+.guided-experiment { background: #fffefb; border-color: #cdded2; border-radius: 12px; box-shadow: var(--surface-shadow); }
+.experiment-prompt { padding: 22px 24px 18px; }
+.experiment-prompt>.eyebrow { display: flex; align-items: center; gap: 8px; color: #52735e; }
+.experiment-prompt p { color: #203e32; }
+.experiment-steps { gap: 6px; padding: 8px; background: #f0f5ec; border-color: #dde7d8; }
+.experiment-steps button { background: transparent; border: 1px solid transparent; border-radius: 7px; padding: 12px 10px; transition: background .2s, border-color .2s; }
+.experiment-steps button:hover { background: #e2ebdd; }
+.experiment-steps button[aria-pressed="true"] { background: #21473b; color: #ebf6ef; border-color: #406655; box-shadow: 0 2px 7px #18362b18; }
+.step-index { border-color: #adc3b3; background: #fffefb; color: #4e725d; }
+.experiment-steps button[aria-pressed="true"] .step-index { background: #d0efd8; border-color: #d0efd8; color: #1a3b2c; }
+.experiment-task { padding: 18px 24px; }
+.experiment-observation { background: #eef5e9; border-radius: 0 8px 8px 0; }
+/* Planar and spatial instruments share a frame and readable value surfaces. */
+.visual-card,.solid-visual {
+  border: 1px solid var(--instrument-line); border-radius: 14px;
+  background: linear-gradient(135deg,#19372e,#10242a); color: #e5f3e8;
+  box-shadow: 0 14px 34px #112a201a, inset 0 1px 0 #d9fbe811;
+}
+.visual-card header,.solid-header { border-bottom: 1px solid #87b7952e; padding-bottom: 16px; }
+.visual-card header h3 { color: #ebf6eb; font-weight: 550; }
+.visual-card .eyebrow { color: #a7c7b4; }
+.visual-card .icon-btn { background: #d2ead10a; border-color: #54775b; color: #d6e8cf; border-radius: 8px; }
+.visual-card .icon-btn:hover { background: #c7efca18; border-color: #85af88; }
+.visual-card .comparison-tabs { margin-top: 18px; }
+.visual-card .comparison-tabs button { background: #102b24; color: #b8d0be; border-color: #44664e; border-radius: 7px; }
+.visual-card .comparison-tabs button.active { background: #d4edd1; color: #234734; border-color: #d4edd1; }
+.visual-card .comparison-tabs button:hover { border-color: #aed1aa; }
+.visual-card .plot-label { padding-block: 14px 10px; }
+.visual-card .plot-label,.visual-card .plot-label>.plot-equation { color: #cfe7d3; }
+.visual-card .plot { background: #fffefb; border-color: #d6e4d4; border-radius: 9px; box-shadow: 0 3px 12px #0000000f; }
+.visual-card .plot-legend { color: #3d5b46; background: #eff5eb; border-radius: 6px; padding: 12px; margin-top: 10px; gap: 12px 18px; }
+.visual-card .comparison-insight { background: #e8f2e2; border-color: #abc9a2; color: #365539; border-radius: 6px; }
+.visual-card .stats,.solid-visual .stats { gap: 8px; margin-block: 18px; }
+.visual-card .stats>div,.solid-visual .stats>div { background: #081c1c66; border: 1px solid #567f642e; border-radius: 8px; padding: 16px; min-width: 0; }
+.visual-card .stats>div>span,.solid-visual .stats>div>span { color: #acc9b7; line-height: 1.6; font-size: 11px; }
+.visual-card .stats strong,.solid-visual .stats strong { color: #ddf6de; font-variant-numeric: tabular-nums; }
+.visual-card .controls,.solid-visual .controls { border-color: #749d803b; padding-top: 20px; gap: 24px; }
+.visual-card .parameter-heading>label { color: #d0e3d2; }
+.visual-card .parameter-control>.parameter-heading>.parameter-value { color: #e3f4df; background: #0d2423; border-color: #5d8165; border-radius: 7px; }
+.visual-card .parameter-value:focus-visible,.solid-visual .parameter-value:focus-visible { outline-color: #9dcc9c; }
+.visual-card .parameter-help { color: #b1c8b6; }
+.visual-card .slider input::-webkit-slider-runnable-track { background: #577960; }
+.visual-card .slider input::-webkit-slider-thumb { box-shadow: 0 0 0 4px #8db99224; }
+.visual-card .slider input::-moz-range-track { background: #577960; }
+.visual-card .select-label { color: #bdd2c4; }
+.visual-card .select-label select { background: #0d2523; color: #dfeddf; border-color: #547559; border-radius: 7px; }
+.visual-card .animation-btn,.solid-visual .animation-btn { background: #d2efda; border-color: #d2efda; color: #193c2e; border-radius: 8px; }
+.visual-card .animation-btn:hover,.solid-visual .animation-btn:hover { background: #e3f8e4; }
+.visual-card .animation-transport label,.visual-card .animation-transport select { color: #cee4d3; }
+.visual-card .animation-transport select { background: #132e26; border-color: #53745d; }
+.visual-card .visual-caption,.visual-card .visual-caption>svg { color: #c1dac2; }
+.visual-card .visual-note { color: #b1c6b7; }
+.visual-card .small-btn { border-color: #5d7c60; background: #17362a; color: #d5ecd2; }
+.visual-card .small-btn:hover { background: #254c34; }
+.visual-card .warning { color: #f2d6aa; background: #7f563d33; border-color: #a8875c66; }
+.visual-card .flow-equation,.visual-card .legend { color: #c1d8c6; }
+.visual-card>.small-diagram { background: #fffefb; border-radius: 8px; padding: 12px; }
+.visual-card .select-label select:focus-visible { outline-color: #9dcc9c; }
+.solid-visual .solid-stage { border-radius: 10px; overflow: hidden; }
+.solid-header .eyebrow { color: #a7c7b4; }
+.solid-header .icon-btn { background: #d2ead10a; border-color: #54775b; color: #d6e8cf; }
+.solid-visual .solid-model-description,.solid-visual .visual-note { color: #b1c6b7; }
+.solid-visual .solid-formula { background: #081c1c66; border-color: #31504a; color: #d3e6d4; border-radius: 8px; }
+.solid-visual .animation-transport label { color: #cee4d3; }
+.solid-visual .animation-transport select { background: #132e26; border-color: #53745d; color: #cee4d3; }
+.solid-visual input[type="range"] { accent-color: #a9d5b1; }
+.solid-visual .parameter-control>.parameter-heading>.parameter-value { color: #e3f4df; background: #0d2423; border-color: #5d8165; border-radius: 7px; }
+.solid-visual .solid-model-tabs button,.solid-visual .solid-view-tabs button { border-radius: 7px; }
+.solid-visual .solid-model-tabs button { background: #102b24; border-color: #44664e; color: #b8d0be; }
+.solid-visual .solid-model-tabs button[aria-pressed="true"] { background: #d4edd1; border-color: #d4edd1; color: #234734; }
+.solid-visual .solid-view-tabs button { background: #17362a; border-color: #547559; color: #d0e4d0; }
+.solid-visual .solid-view-tabs button:hover { background: #2a4b35; }
+.dimension-switch button.active { background: #244f43; border-color: #244f43; color: #f1f8ef; }
+.supplemental-experiment { border-radius: 10px; background: #fafcf6; }
+/* Practice and support retain lighter surfaces and semantic feedback colors. */
+.exercise { border-radius: 12px; box-shadow: var(--surface-shadow); }
+.answer-label textarea { border-radius: 8px; }
+.question-navigator { border-radius: 10px; }
+.question-navigator>button { border-radius: 7px; }
+.feedback,.staged-hint { border-radius: 8px; }
+.feedback-wrong { border-left-color: #b38a51; }
+.feedback-invalid { border-left-color: #b9735d; }
+.feedback-correct { border-left-color: #639470; }
+/* Never put decorative motion in the reading flow. */
+@media(max-width:1100px) {
+  .stage-console { grid-template-columns: 230px minmax(0,1fr) 160px 132px; gap: 14px; }
+}
+@media(max-width:820px) {
+  .stage-console { grid-template-columns: minmax(0,1fr) 132px; padding: 16px; gap: 12px; }
+  .stage-art { bottom: 265px; }
+  .lesson-tabs { width: 100%; overflow-x: auto; scrollbar-width: thin; }
+}
+@media(max-width:700px) {
+  .experiment-steps { grid-template-columns: 1fr; }
+  .experiment-steps button { border: 1px solid transparent; padding: 10px 12px; }
+  .experiment-prompt { padding: 18px; }
+  .experiment-task { padding: 16px 18px; }
+  .visual-card .stats>div,.solid-visual .stats>div { padding: 12px; }
+  .lesson-tabs>a { padding: 11px 12px; font-size: 12px; gap: 6px; }
+  .textbook-article .essential-idea { padding: 23px 21px; }
+  .textbook-article .essential-idea>p { font-size: 19px; }
+}
+@media(max-width:600px) {
+  .lesson-tabs { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 6px; overflow: visible; }
+  .lesson-tabs>a { justify-content: center; min-width: 0; padding: 11px 8px; }
+  .stage-console { left: 18px; right: 18px; }
+  .sculpture-select { gap: 2px; }
+  .sculpture-select button { padding: 8px 10px; }
+  .stage-art { bottom: 295px; }
+  .page-heading,.library-exhibition .page-heading { border-radius: 10px; }
+  .visual-card,.solid-visual { border-radius: 11px; }
+  .lesson-heading .lesson-section-number { right: 20px; }
+  .visual-card .plot text,.lab-preview .plot text,.application-visual>svg text { font-size: 17px; }
+  .visual-card .plot .math-axis,.lab-preview .plot .math-axis { font-size: 19px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .cover-link,.sculpture-select button,.experiment-steps button,.check-choices button,.immersive-header .search-trigger { transition: none; }
+  :is(.primary-btn,.secondary-btn,.small-btn,.icon-btn):active { transform: none; }
+}

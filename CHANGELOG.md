@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0 · 2026-10-14
+
+- 精修全站视觉层次：统一面板、边框、阴影、圆角与操作状态。
+- 首页保留数学曲面，增加清晰的形态选择与控制台层次。
+- 二维与三维演示统一实验台外框，数学图形保留浅色坐标纸，读数与参数更易辨认。
+- 阅读页改用带图标的内容切换，强调核心解释、步骤与例题；教材库与资源页同步。
+- 支持窄屏与减少动态效果偏好；保持纯静态运行，教材版本仍为 v0.3.1。
+
 ## 0.7.0 · 2026-10-12
 
 - Textbook v0.3.1: author 35 alternate explanations and 105 bounded, replayable guided experiment states in the canonical schema and printed manuscript.

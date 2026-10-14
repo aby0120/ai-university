@@ -14,7 +14,7 @@ export function GuidedExperiment({lesson,index,modified,onApply}:{lesson:Lesson;
   const step=index===null?undefined:lesson.teaching.steps[index];
   function choose(i:number){setReveal(false);onApply(i);}
   return <div className="guided-experiment">
-    <div className="experiment-prompt"><span className="eyebrow">先带着一个问题</span><p><MathText text={lesson.interactiveVisual.prediction}/></p></div>
+    <div className="experiment-prompt"><span className="eyebrow"><Lightbulb size={14}/>先带着一个问题</span><p><MathText text={lesson.interactiveVisual.prediction}/></p></div>
     <div className="experiment-steps" role="group" aria-label="三步引导实验">
       {lesson.teaching.steps.map((s,i)=><button key={s.title} aria-pressed={i===index} onClick={()=>choose(i)}><span className="step-index">{i+1}</span><span>{s.title}</span><ArrowRight size={14}/></button>)}
     </div>

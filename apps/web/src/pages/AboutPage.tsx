@@ -180,6 +180,18 @@ export function AboutPage() {
         <div className="versions-page">
           <div className="version-entry">
             <span className="badge">当前网站 · 教材 v0.3.1</span>
+            <h2>v0.8.0 · 全站界面精修</h2>
+            <time>2026 年 10 月 14 日</time>
+            <ul>
+              <li>首页控制台、教材卡片与各页标题统一材质和层次。</li>
+              <li>二维与三维实验台统一外框，图形、读数和参数更易辨认。</li>
+              <li>阅读、演示、练习与知识连接以图标辅助识别，核心解释与提示更清楚。</li>
+              <li>改进窄屏控件、按钮和反馈状态；正文保留清晰的阅读底色。</li>
+              <li>教材内容仍为 v0.3.1，保持纯静态运行。</li>
+            </ul>
+          </div>
+          <div className="version-entry">
+            <span className="badge">教材 v0.3.1</span>
             <h2>v0.7.0 · 回答式教学与引导实验</h2>
             <time>2026 年 10 月 12 日</time>
             <ul>
