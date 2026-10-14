@@ -180,6 +180,15 @@ export function AboutPage() {
         <div className="versions-page">
           <div className="version-entry">
             <span className="badge">当前网站 · 教材 v0.3.1</span>
+            <h2>v0.8.1 · 滑块圆点更清楚</h2>
+            <time>2026 年 10 月 14 日</time>
+            <ul>
+              <li>深色面板的圆点改为亮色与白色边框，统一二维、三维和首页滑块。</li>
+              <li>扩大操作区域，增加悬停、拖动和键盘聚焦提示。</li>
+            </ul>
+          </div>
+          <div className="version-entry">
+            <span className="badge">教材 v0.3.1</span>
             <h2>v0.8.0 · 全站界面精修</h2>
             <time>2026 年 10 月 14 日</time>
             <ul>

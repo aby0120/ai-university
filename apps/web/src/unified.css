@@ -801,3 +801,42 @@ input[type=range] { accent-color: #4c855b; }
   .cover-link,.sculpture-select button,.experiment-steps button,.check-choices button,.immersive-header .search-trigger { transition: none; }
   :is(.primary-btn,.secondary-btn,.small-btn,.icon-btn):active { transform: none; }
 }
+
+/* Keep the draggable thumb distinct from the dark instrument and track.
+   Engine-specific pseudo-elements stay in separate rules for Firefox/WebKit. */
+:is(.visual-card,.solid-visual,.sculpture-parameter) input[type="range"] {
+  appearance: none; width: 100%; height: 36px; margin: 0; padding: 0;
+  border: 0; background: transparent; cursor: pointer;
+}
+:is(.visual-card,.solid-visual,.sculpture-parameter) input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px; border-radius: 999px; background: #668773;
+}
+:is(.visual-card,.solid-visual,.sculpture-parameter) input[type="range"]::-moz-range-track {
+  height: 4px; border-radius: 999px; background: #668773;
+}
+:is(.visual-card,.solid-visual,.sculpture-parameter) input[type="range"]::-webkit-slider-thumb {
+  appearance: none; box-sizing: border-box; width: 22px; height: 22px;
+  margin-top: -9px; border-radius: 50%; background: #d4f8dc;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 4px #d4f8dc22, 0 2px 6px #0000004d;
+  transition: box-shadow .15s;
+}
+:is(.visual-card,.solid-visual,.sculpture-parameter) input[type="range"]::-moz-range-thumb {
+  box-sizing: border-box; width: 22px; height: 22px;
+  border-radius: 50%; background: #d4f8dc; border: 2px solid #ffffff;
+  box-shadow: 0 0 0 4px #d4f8dc22, 0 2px 6px #0000004d;
+  transition: box-shadow .15s;
+}
+:is(.visual-card,.solid-visual,.sculpture-parameter) input[type="range"]:is(:hover,:active,:focus-visible)::-webkit-slider-thumb {
+  box-shadow: 0 0 0 6px #d4f8dc40, 0 2px 8px #00000066;
+}
+:is(.visual-card,.solid-visual,.sculpture-parameter) input[type="range"]:is(:hover,:active,:focus-visible)::-moz-range-thumb {
+  box-shadow: 0 0 0 6px #d4f8dc40, 0 2px 8px #00000066;
+}
+:is(.visual-card,.solid-visual,.sculpture-parameter) input[type="range"]:focus-visible {
+  outline: 2px solid #d4f8dc; outline-offset: 4px; border-radius: 8px;
+}
+@media(prefers-reduced-motion:reduce) {
+  :is(.visual-card,.solid-visual,.sculpture-parameter) input[type="range"]::-webkit-slider-thumb { transition: none; }
+  :is(.visual-card,.solid-visual,.sculpture-parameter) input[type="range"]::-moz-range-thumb { transition: none; }
+}
