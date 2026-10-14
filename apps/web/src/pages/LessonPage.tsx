@@ -8,6 +8,8 @@ import {
   Check,
   CircleCheck,
   Lightbulb,
+  Network,
+  PencilLine,
   Maximize2,
   Minimize2,
   X,
@@ -169,6 +171,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
             className={view === id ? "active" : ""}
             aria-current={view === id ? "page" : undefined}
           >
+            {id === "read" ? <BookOpen size={15} /> : id === "visual" ? <Beaker size={15} /> : id === "practice" ? <PencilLine size={15} /> : <Network size={15} />}
             {name}
             {id === "practice" && <span>{l.practice.length}</span>}
           </Link>
