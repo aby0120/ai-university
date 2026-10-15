@@ -1,0 +1,193 @@
+{
+  "id": "c2-trig-substitution",
+  "title": "三角代换",
+  "subtitle": "用恒等式消掉根号里的平方和或平方差",
+  "concept": "根号结构决定代换；选定角度区间，才能正确去掉绝对值。",
+  "intuition": "$x=a\\sin\\theta$ 把 $\\sqrt{a^2-x^2}$ 变成 $a|\\cos\\theta|$。选择 $-\\frac\\pi2\\leq\\theta\\leq\\frac\\pi2$ 后，余弦非负。",
+  "body": [
+    {
+      "title": "三种根式怎么选？",
+      "text": "$a^2-x^2$ 用正弦，$a^2+x^2$ 用正切，$x^2-a^2$ 可在 $x\\geq a$ 分支用正割；其中 $a>0$。"
+    },
+    {
+      "title": "为什么要画三角形？",
+      "text": "三角形帮助把角函数换回原变量。它只编码某个分支的比例，不能自动覆盖所有正负情况。"
+    },
+    {
+      "title": "代换后多出什么？",
+      "text": "除了根式，$dx$ 也会改变。分母的根号往往正好和微分里的因子抵消。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "用恒等式消掉根号里的平方和或平方差",
+    "latex": "x=a\\sin\\theta\\quad\\Longrightarrow\\quad dx=a\\cos\\theta\\,d\\theta,\\quad\\sqrt{a^2-x^2}=a\\cos\\theta",
+    "conditions": [
+      "$a>0$ 且 $\\theta\\in[-\\frac\\pi2,\\frac\\pi2]$；含分母时排除端点。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "对半圆面积积分做代换。",
+      "latex": "\\int\\sqrt{a^2-x^2}\\,dx=a^2\\int\\cos^2\\theta\\,d\\theta"
+    },
+    {
+      "text": "降幂后积分。",
+      "latex": "=\\frac{a^2}{2}(\\theta+\\sin\\theta\\cos\\theta)+C"
+    },
+    {
+      "text": "回到原变量。",
+      "latex": "=\\frac12\\left(a^2\\arcsin\\frac xa+x\\sqrt{a^2-x^2}\\right)+C"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "根式在分母",
+      "problem": "求 $\\int\\frac{dx}{\\sqrt{9-x^2}}$。",
+      "steps": [
+        "令 $x=3\\sin\\theta$，$dx=3\\cos\\theta d\\theta$，选余弦为正的分支。",
+        "积分变成 $\\int d\\theta$，最后换回反正弦。"
+      ],
+      "answer": "$\\arcsin\\frac x3+C$，$-3<x<3$。"
+    },
+    {
+      "title": "平方和",
+      "problem": "求 $\\int\\frac{dx}{x^2+4}$。",
+      "steps": [
+        "令 $x=2\\tan\\theta$，分母变为 $4\\sec^2\\theta$。",
+        "$dx=2\\sec^2\\theta d\\theta$，故积分为 $\\frac12\\theta+C$。"
+      ],
+      "answer": "$\\frac12\\arctan\\frac x2+C$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-trig-substitution-m1",
+      "claim": "$\\sqrt{\\cos^2\\theta}=\\cos\\theta$ 总成立。",
+      "correction": "应先写绝对值，再用角度分支去掉。"
+    },
+    {
+      "id": "c2-trig-substitution-m2",
+      "claim": "只代根号，不代微分。",
+      "correction": "$dx$ 的倍率与积分变量必须一起改变。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "求 $\\int\\frac{dx}{\\sqrt{16-x^2}}$。",
+      "answer": "$\\arcsin\\frac x4+C$。",
+      "hint": "把根式化为余弦。",
+      "solution": [
+        "$x=4\\sin\\theta$，分子分母的 $4\\cos\\theta$ 抵消。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-trig-substitution-p1"
+    },
+    {
+      "problem": "求 $\\int_0^2\\sqrt{4-x^2}\\,dx$。",
+      "answer": "$\\pi$。",
+      "hint": "四分之一圆也能复算。",
+      "solution": [
+        "半径为 2 的四分之一圆面积为 $\\frac14\\pi\\cdot4=\\pi$；代换积分同样得到 $4\\int_0^{\\pi/2}\\cos^2\\theta d\\theta$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 3.141592653589793,
+      "id": "c2-trig-substitution-p2"
+    },
+    {
+      "problem": "对 $\\sqrt{x^2+9}$，选什么代换？",
+      "answer": "$x=3\\tan\\theta$，$-\\frac\\pi2<\\theta<\\frac\\pi2$。",
+      "hint": "让平方和变为正割平方。",
+      "solution": [
+        "$x^2+9=9(1+\\tan^2\\theta)=9\\sec^2\\theta$，在此分支正割为正。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-trig-substitution-p3"
+    },
+    {
+      "problem": "在 $x>2$ 上，求 $\\int\\frac{dx}{x\\sqrt{x^2-4}}$。",
+      "answer": "$\\frac12\\arccos\\frac2x+C$。",
+      "hint": "使用正割分支。",
+      "solution": [
+        "$x=2\\sec\\theta$，$0<\\theta<\\frac\\pi2$，积分成为 $\\frac12\\int d\\theta$。",
+        "$\\cos\\theta=\\frac2x$；答案只声明在指定正分支上。"
+      ],
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "id": "c2-trig-substitution-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "$\\sqrt{9\\cos^2\\theta}$ 总等于什么？",
+    "choices": [
+      "$3\\cos\\theta$",
+      "$3|\\cos\\theta|$",
+      "$9\\cos\\theta$"
+    ],
+    "correctIndex": 1,
+    "explanation": "平方根取非负值，必须先保留绝对值。"
+  },
+  "teaching": {
+    "explain": "先让根式匹配一个三角恒等式，再用分支保证符号；最后换回原变量，才算完成代换。",
+    "steps": [
+      {
+        "title": "中心",
+        "instruction": "角度设为 0。",
+        "observation": "横坐标为零，根式高度为 2。",
+        "preset": {
+          "x": 0
+        }
+      },
+      {
+        "title": "中间角度",
+        "instruction": "角度设为 0.5。",
+        "observation": "横坐标增大，高度减小；直角三角形斜边保持 2。",
+        "preset": {
+          "x": 0.5
+        }
+      },
+      {
+        "title": "接近边缘",
+        "instruction": "角度设为 1.4。",
+        "observation": "根式高度很小，仍取非负分支。",
+        "preset": {
+          "x": 1.4
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-trig-integrals",
+    "inverse-trig"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-techniques",
+  "number": "1.3",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-trig-substitution",
+    "caption": "移动半圆上的点，对照 $x=2\\sin\\theta$ 与根式高度。",
+    "prediction": "接近半圆边缘时，横坐标与根式高度怎样变化？"
+  },
+  "misconceptionTags": [
+    "c2-trig-substitution-m1",
+    "c2-trig-substitution-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "按根式选择三角代换",
+    "用角度分支处理绝对值",
+    "把微分和结果换回原变量"
+  ]
+}

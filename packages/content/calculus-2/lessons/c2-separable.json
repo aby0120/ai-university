@@ -1,0 +1,192 @@
+{
+  "id": "c2-separable",
+  "title": "可分离变量方程",
+  "subtitle": "分离之前，先保存可能被除掉的解",
+  "concept": "若变化率能写成横变量函数乘纵变量函数，可分离后积分；除以纵变量因子前先找平衡解。",
+  "intuition": "$y\\prime=xy$ 可写为 $\\frac{dy}{y}=x dx$，但除以 $y$ 会暂时丢掉零解。",
+  "body": [
+    {
+      "title": "如何分离？",
+      "text": "在 $g(y)\\neq0$ 的区间，将 $y\\prime=f(x)g(y)$ 写成 $\\frac1{g(y)}dy=f(x)dx$，两边积分。"
+    },
+    {
+      "title": "平衡解怎么处理？",
+      "text": "每个满足 $g(c)=0$ 的常数函数 $y=c$ 都要代回检查。它可能不出现在除法之后的表达式里。"
+    },
+    {
+      "title": "初值与有效区间？",
+      "text": "用初值确定常数；若解的分母在有限点变零，只能取包含初值且不跨该点的区间。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "分离之前，先保存可能被除掉的解",
+    "latex": "y\\prime=f(x)g(y)\\quad\\Longrightarrow\\quad\\int\\frac{dy}{g(y)}=\\int f(x)dx+C",
+    "conditions": [
+      "在 $g(y)\\neq0$ 的解分支上操作，另外保留 $g(c)=0$ 的平衡解；最终检查初值和定义区间。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "以 $y\\prime=xy$ 为例分离。",
+      "latex": "\\frac{dy}{y}=x\\,dx\\quad(y\\neq0)"
+    },
+    {
+      "text": "两边积分。",
+      "latex": "\\ln|y|=\\frac{x^2}{2}+C"
+    },
+    {
+      "text": "合并正负分支并恢复平衡解。",
+      "latex": "y=Ae^{x^2/2},\\quad A\\in\\mathbb R"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "初值解",
+      "problem": "解 $y\\prime=2xy$、$y(0)=3$。",
+      "steps": [
+        "非零分支给 $\\ln|y|=x^2+C$。",
+        "$y=Ae^{x^2}$，初值给 $A=3$。"
+      ],
+      "answer": "$y=3e^{x^2}$。"
+    },
+    {
+      "title": "有限时刻爆破",
+      "problem": "解 $y\\prime=y^2$、$y(0)=1$，注明区间。",
+      "steps": [
+        "$\\int y^{-2}dy=\\int dx$，得 $-\\frac1y=x+C$。",
+        "初值给 $C=-1$，所以 $y=\\frac1{1-x}$。"
+      ],
+      "answer": "$y=\\frac1{1-x}$，包含初值的最大区间为 $(-\\infty,1)$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-separable-m1",
+      "claim": "除以未知函数不会丢解。",
+      "correction": "零因子对应的平衡解应先记录。"
+    },
+    {
+      "id": "c2-separable-m2",
+      "claim": "显式公式能算到哪就可以跨到哪。",
+      "correction": "不能跨越解的奇点把两段当作同一个初值解。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$y\\prime=-y,y(0)=4$ 的解？",
+      "answer": "$4e^{-x}$。",
+      "hint": "分离后取指数。",
+      "solution": [
+        "$\\ln|y|=-x+C$，初值给正系数 4。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-separable-p1"
+    },
+    {
+      "problem": "$y\\prime=y^2$ 的平衡解？",
+      "answer": "$y=0$。",
+      "hint": "检查使右端为零的常数。",
+      "solution": [
+        "零函数导数也为零；除以平方之前须保留。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-separable-p2"
+    },
+    {
+      "problem": "$y\\prime=xy,y(0)=1$，求 $y(1)$。",
+      "answer": "$e^{1/2}$。",
+      "hint": "先求初值解。",
+      "solution": [
+        "$y=e^{x^2/2}$，代入 1。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 1.6487212707001282,
+      "id": "c2-separable-p3"
+    },
+    {
+      "problem": "$y\\prime=y^2,y(0)=-1$ 的最大初值区间？",
+      "answer": "$(-1,\\infty)$。",
+      "hint": "找分母零点。",
+      "solution": [
+        "$y=-\\frac1{x+1}$，奇点为 $-1$；取包含零的那一侧。"
+      ],
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "id": "c2-separable-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "分离时除以含未知函数的因子前，应先？",
+    "choices": [
+      "忽略该因子为零的情况",
+      "检查平衡解",
+      "把初值也除掉"
+    ],
+    "correctIndex": 1,
+    "explanation": "除法只对非零分支合法。"
+  },
+  "teaching": {
+    "explain": "分离是一种计算路线，不能改变原来的解集。每做一次除法，就问有没有解被排除。",
+    "steps": [
+      {
+        "title": "较大步长",
+        "instruction": "分段数取 4。",
+        "observation": "固定区间 $[0,0.8]$ 上，精确终值为 5；四步近似明显偏低。",
+        "preset": {
+          "n": 4
+        }
+      },
+      {
+        "title": "减小步长",
+        "instruction": "分段数取 16。",
+        "observation": "步长降为 0.05，观察近似与精确解的差距。",
+        "preset": {
+          "n": 16
+        }
+      },
+      {
+        "title": "继续细分",
+        "instruction": "分段数取 64。",
+        "observation": "即使有限区间近似改善，也不能跨过精确解在 1 处的奇点。",
+        "preset": {
+          "n": 64
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-differential-models",
+    "c2-partial-fractions"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-ode",
+  "number": "8.2",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-separable",
+    "caption": "比较 $y\\prime=y^2$、$y(0)=1$ 在 $[0,0.8]$ 上的精确解与 Euler 近似。",
+    "prediction": "步长减小时，折线与精确曲线之间的差别怎样变化？"
+  },
+  "misconceptionTags": [
+    "c2-separable-m1",
+    "c2-separable-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "在合法分支上分离变量",
+    "保留被除法排除的平衡解",
+    "确定包含初值的有效区间"
+  ]
+}

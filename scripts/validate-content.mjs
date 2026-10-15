@@ -5,55 +5,47 @@ import assert from "node:assert/strict";
 import Ajv from "ajv";
 import katex from "katex";
 import { validateMathNotation } from "./math-notation.mjs";
-import { book, allLessons, walkStrings, root } from "./content-utils.mjs";
+import {
+  contentBooks,
+  libraryLessons,
+  walkStrings,
+  root,
+} from "./content-utils.mjs";
 import { validateGuidance } from "../packages/visuals/guidance.mjs";
 import { functions } from "../packages/visuals/math.mjs";
+import {
+  calculus2Controls,
+  calculus2Frame,
+  calculus2Defaults,
+} from "../packages/visuals/calculus2.mjs";
 export function validateContent() {
-  const schema = JSON.parse(
-    fs.readFileSync(`${root}/schemas/learning-object.schema.json`, "utf8"),
+  assert.equal(
+    new Set(contentBooks.map((c) => c.book.id)).size,
+    contentBooks.length,
+    "Duplicate book ID",
   );
-  const validate = new Ajv({ allErrors: true }).compile(schema),
-    ids = new Set(),
-    byId = Object.fromEntries(allLessons.map((l) => [l.id, l])),
-    sourceIds = new Set(book.sources.map((s) => s.id));
+  const chapterIds = contentBooks.flatMap((c) =>
+    c.book.chapters.map((ch) => ch.id),
+  );
+  assert.equal(
+    new Set(chapterIds).size,
+    chapterIds.length,
+    "Duplicate chapter ID",
+  );
+  const schema = JSON.parse(
+    fs.readFileSync(`${root}/schemas/learning-object.schema.json`),
+  );
+  const validate = new Ajv({ allErrors: true }).compile(schema);
+  const ids = new Set(),
+    questions = new Set(),
+    byId = Object.fromEntries(libraryLessons.map((l) => [l.id, l])),
+    order = libraryLessons.map((l) => l.id);
   let mathCount = 0;
-  for (const l of allLessons) {
-    validateMathNotation(l, l.id);
-    validateGuidance(l);
-    assert(validate(l), `${l.id}: ${JSON.stringify(validate.errors)}`);
-    assert(
-      l.learningCheck.correctIndex < l.learningCheck.choices.length,
-      `${l.id}: invalid learning check answer`,
-    );
-    assert(!ids.has(l.id), `Duplicate lesson ${l.id}`);
-    ids.add(l.id);
-    assert(
-      functions[l.interactiveVisual.function],
-      `${l.id}: missing visual function`,
-    );
-    assert(
-      l.prerequisites.every((id) => byId[id]),
-      `${l.id}: unknown prerequisite`,
-    );
-    assert(
-      l.sources.every((id) => sourceIds.has(id)),
-      `${l.id}: unknown source`,
-    );
-    assert(
-      l.practice.every((q) =>
-        q.misconceptionTags.every((id) => l.misconceptionTags.includes(id)),
-      ),
-      `${l.id}: unknown misconception tag`,
-    );
-    assert(
-      new Set(l.practice.map((q) => q.id)).size === l.practice.length,
-      `${l.id}: duplicate question id`,
-    );
-    walkStrings(l, (s, key) => {
-      assert(
-        !/[\x00-\x08\x0b-\x1f]/.test(s),
-        `${l.id}: control character in ${key}`,
-      );
+  const checkMath = (obj, context) => {
+    validateMathNotation(obj, context);
+    walkStrings(obj, (s, key) => {
+      assert(!/[\x00-\x08\x0b-\x1f]/.test(s), `${context}: control character`);
+      assert(!/TODO|TBD|待补|lorem ipsum/i.test(s), `${context}: placeholder`);
       if (key === "latex") {
         katex.renderToString(s, {
           throwOnError: true,
@@ -70,133 +62,151 @@ export function validateContent() {
         });
         mathCount++;
       }
-      assert(
-        !/TODO|TBD|待补|lorem ipsum/i.test(s),
-        `${l.id}: placeholder found`,
-      );
     });
+  };
+  const addQuestion = (q) => {
+    assert(!questions.has(q.id), `Duplicate question ${q.id}`);
+    questions.add(q.id);
+    assert(
+      q.problem && q.answer && q.hint && q.solution.length,
+      `Incomplete question ${q.id}`,
+    );
+    assert(q.difficulty >= 1 && q.difficulty <= 6);
+  };
+  for (const { book, allLessons, extra, directory } of contentBooks) {
+    const sourceIds = new Set(book.sources.map((s) => s.id));
+    for (const l of allLessons) {
+      checkMath(l, l.id);
+      validateGuidance(l);
+      assert(validate(l), `${l.id}: ${JSON.stringify(validate.errors)}`);
+      assert(!ids.has(l.id), `Duplicate lesson ${l.id}`);
+      ids.add(l.id);
+      assert(l.learningCheck.correctIndex < l.learningCheck.choices.length);
+      assert(
+        l.sources.every((id) => sourceIds.has(id)),
+        `${l.id}: unknown source`,
+      );
+      if (l.interactiveVisual.kind === "calculus2") {
+        assert.equal(
+          l.interactiveVisual.function,
+          l.id,
+          "Second-volume model must match its lesson",
+        );
+        assert(calculus2Controls(l.id), `${l.id}: missing controls`);
+        calculus2Frame(l.id, calculus2Defaults(l.id));
+      } else
+        assert(
+          functions[l.interactiveVisual.function],
+          `${l.id}: missing visual function`,
+        );
+      assert(
+        l.prerequisites.every((id) => byId[id]),
+        `${l.id}: unknown prerequisite`,
+      );
+      for (const p of l.prerequisites)
+        assert(
+          order.indexOf(p) < order.indexOf(l.id),
+          `Forward prerequisite ${p} -> ${l.id}`,
+        );
+      for (const q of l.practice) {
+        addQuestion(q);
+        assert(
+          q.misconceptionTags.every((id) => l.misconceptionTags.includes(id)),
+          `${q.id}: unknown misconception tag`,
+        );
+      }
+    }
+    const sorted = book.chapters.flatMap((ch, ci) =>
+      ch.lessonIds.map((id, li) => {
+        const l = byId[id];
+        assert(l && l.chapterId === ch.id, `Broken chapter link ${id}`);
+        assert.equal(l.number, `${ci + 1}.${li + 1}`);
+        return id;
+      }),
+    );
+    assert.deepEqual(sorted, book.lessonIds);
+    assert.equal(new Set(sorted).size, sorted.length);
+    const onDisk = fs
+      .readdirSync(`${root}/${directory}`)
+      .filter((p) => p.endsWith(".json"))
+      .map((p) => p.slice(0, -5))
+      .sort();
+    assert.deepEqual(
+      onDisk,
+      [...book.lessonIds].sort(),
+      "Unlisted lesson file",
+    );
+    assert.deepEqual(
+      extra.reviews.map((r) => r.chapterId),
+      book.chapters.map((c) => c.id),
+    );
+    checkMath(extra, book.id + " supplements");
+    checkMath(book.chapters, book.id + " chapters");
+    [...extra.exam, ...extra.reviews.flatMap((r) => r.questions)].forEach(
+      addQuestion,
+    );
+    assert(
+      extra.glossary.every((g) => book.lessonIds.includes(g.lessonId)),
+      "Unlinked glossary",
+    );
   }
-  const sorted = book.chapters.flatMap((c, ci) =>
-    c.lessonIds.map((id, li) => {
-      const l = byId[id];
-      assert(l && l.chapterId === c.id, `Broken chapter link ${id}`);
-      assert.equal(l.number, `${ci + 1}.${li + 1}`);
-      return id;
-    }),
-  );
-  assert.deepEqual(sorted, book.lessonIds);
-  assert.equal(new Set(sorted).size, sorted.length);
   const visiting = new Set(),
     visited = new Set();
   function visit(id) {
-    assert(!visiting.has(id), `Prerequisite cycle at ${id}`);
+    assert(!visiting.has(id), `Prerequisite cycle ${id}`);
     if (visited.has(id)) return;
     visiting.add(id);
-    for (const p of byId[id].prerequisites) visit(p);
+    byId[id].prerequisites.forEach(visit);
     visiting.delete(id);
     visited.add(id);
   }
-  for (const id of ids) visit(id);
-  for (const l of allLessons)
-    for (const p of l.prerequisites)
-      assert(
-        book.lessonIds.indexOf(p) < book.lessonIds.indexOf(l.id),
-        `Forward prerequisite ${p} -> ${l.id}`,
-      );
-  const onDisk = fs
-    .readdirSync(`${root}/packages/content/lessons`)
-    .filter((p) => p.endsWith(".json"))
-    .map((p) => p.slice(0, -5))
-    .sort();
-  assert.deepEqual(onDisk, [...ids].sort(), "Unlisted lesson file");
-  const extra = JSON.parse(
-    fs.readFileSync(`${root}/packages/content/supplements.json`, "utf8"),
-  );
-  assert.deepEqual(
-    extra.reviews.map((r) => r.chapterId),
-    book.chapters.map((c) => c.id),
-  );
-  validateMathNotation(extra, "supplements");
-  validateMathNotation(book.chapters, "chapters");
-  const more = [...extra.exam, ...extra.reviews.flatMap((r) => r.questions)];
-  assert.equal(new Set(more.map((q) => q.id)).size, more.length);
-  for (const q of more) {
-    assert(
-      q.problem && q.answer && q.hint && q.solution.length,
-      "Incomplete review question",
-    );
-    assert(q.difficulty >= 1 && q.difficulty <= 6);
-  }
-  assert(
-    extra.glossary.every((g) => byId[g.lessonId]),
-    "Unlinked glossary term",
-  );
-  walkStrings(extra, (s) => {
-    assert(!/[\x00-\x08\x0b-\x1f]/.test(s), "Control character in supplement");
-    for (const m of s.matchAll(/\$\$([\s\S]*?)\$\$|\$([^$]+)\$/g)) {
-      katex.renderToString(m[1] ?? m[2], {
-        throwOnError: true,
-        strict: "ignore",
-        trust: false,
-      });
-      mathCount++;
-    }
-  });
+  ids.forEach(visit);
   const library = JSON.parse(
-    fs.readFileSync(`${root}/packages/content/library.json`, "utf8"),
-  );
-  const librarySchema = JSON.parse(
-    fs.readFileSync(`${root}/schemas/library.schema.json`, "utf8"),
-  );
-  const validateLibrary = new Ajv({ allErrors: true }).compile(librarySchema);
-  assert(
-    validateLibrary(library),
-    `Library: ${JSON.stringify(validateLibrary.errors)}`,
-  );
-  const areaIds = new Set(library.areas.map((a) => a.id));
-  assert.equal(
-    areaIds.size,
-    library.areas.length,
-    "Duplicate mathematics area",
-  );
+      fs.readFileSync(`${root}/packages/content/library.json`),
+    ),
+    libSchema = JSON.parse(
+      fs.readFileSync(`${root}/schemas/library.schema.json`),
+    );
+  const validLibrary = new Ajv({ allErrors: true }).compile(libSchema);
+  assert(validLibrary(library), JSON.stringify(validLibrary.errors));
+  const areas = new Set(library.areas.map((a) => a.id));
+  assert.equal(areas.size, library.areas.length);
   assert.equal(
     new Set(library.volumes.map((v) => v.id)).size,
     library.volumes.length,
-    "Duplicate catalog volume",
   );
+  library.volumes.forEach((v) => assert(areas.has(v.areaId)));
   const published = library.volumes.filter((v) => v.status === "published");
-  for (const volume of library.volumes)
-    assert(areaIds.has(volume.areaId), `Unknown area: ${volume.id}`);
-  // Publication requires a complete canonical book, not just a catalog card.
   assert.deepEqual(
     published.map((v) => v.id).sort(),
-    [book.id],
-    "Published catalog must match implemented books",
+    contentBooks.map((c) => c.book.id).sort(),
+    "Published catalog must match complete books",
   );
   for (const volume of published) {
-    assert.equal(volume.route, `book/${volume.id}`);
+    const { book, allLessons, extra } = contentBooks.find(
+      (c) => c.book.id === volume.id,
+    );
+    assert.equal(volume.route, `book/${book.id}`);
     assert.deepEqual(volume.stats, {
       chapters: book.chapters.length,
       lessons: allLessons.length,
       examples: allLessons.reduce((n, l) => n + l.workedExamples.length, 0),
       exercises:
-        allLessons.reduce((n, l) => n + l.practice.length, 0) + more.length,
+        allLessons.reduce((n, l) => n + l.practice.length, 0) +
+        extra.exam.length +
+        extra.reviews.reduce((n, r) => n + r.questions.length, 0),
     });
     katex.renderToString(volume.coverFormula, {
       throwOnError: true,
-      strict: "ignore",
       trust: false,
     });
   }
   return {
-    mathematicsAreas: library.areas.length,
-    catalogVolumes: library.volumes.length,
     publishedVolumes: published.length,
-    chapters: book.chapters.length,
+    chapters: contentBooks.reduce((n, c) => n + c.book.chapters.length, 0),
     sections: ids.size,
-    examples: allLessons.reduce((n, l) => n + l.workedExamples.length, 0),
-    exercises: allLessons.reduce((n, l) => n + l.practice.length, 0),
-    reviewAndExamExercises: more.length,
+    examples: libraryLessons.reduce((n, l) => n + l.workedExamples.length, 0),
+    exercises: questions.size,
     renderedFormulas: mathCount,
   };
 }

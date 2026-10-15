@@ -1,3 +1,4 @@
+import {Calculus2Visual,Calculus2Preview} from "./Calculus2Visual";
 import { MoveHorizontal, Pause, Play, RotateCcw } from "lucide-react";
 import {
   lazy,
@@ -40,7 +41,7 @@ type PlotContext = {
     b: number,
   ) => string;
 };
-function Plot({
+export function Plot({
   fn,
   range,
   title,
@@ -222,7 +223,7 @@ export function Visual({
           </button>
         </div>
       )}
-      {dimension === "3d" ? (
+      {lesson.interactiveVisual.kind === "calculus2" ? <Calculus2Visual lesson={lesson} compact={compact} scenario={scenario}/> : dimension === "3d" ? (
         <Suspense
           fallback={<div className="solid-loading">准备三维数学模型…</div>}
         >
@@ -1225,6 +1226,7 @@ function PlanarVisual({
 
 /** A read-only snapshot of the same model used in the interactive lesson. */
 export function VisualPreview({ lesson }: { lesson: Lesson }) {
+  if(lesson.interactiveVisual.kind==="calculus2")return <Calculus2Preview lesson={lesson}/>;
   const spec = lesson.interactiveVisual;
   const F = functions[spec.function];
   const a = spec.a ?? 1;

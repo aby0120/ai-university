@@ -1,0 +1,696 @@
+{
+  "reviews": [
+    {
+      "chapterId": "c2-techniques",
+      "title": "积分技巧 · 章末回顾",
+      "questions": [
+        {
+          "problem": "求 $\\int x\\ln x\\,dx$，$x>0$。",
+          "answer": "$\\frac{x^2}{2}\\ln x-\\frac{x^2}{4}+C$。",
+          "hint": "让对数求导。",
+          "solution": [
+            "$u=\\ln x,v=\\frac{x^2}{2}$，剩余积分为 $\\frac12\\int x dx$。"
+          ],
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "c2-review-1-1"
+        },
+        {
+          "problem": "求 $\\int_0^{\\pi/2}\\cos^2x\\,dx$。",
+          "answer": "$\\frac\\pi4$。",
+          "hint": "先降幂。",
+          "solution": [
+            "$\\cos^2x=\\frac{1+\\cos2x}{2}$，正弦端点项为零。"
+          ],
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "c2-review-1-2"
+        },
+        {
+          "problem": "$\\int\\frac{x^3+1}{x^2}dx$ 应先做什么？求结果。",
+          "answer": "先除开，结果为 $\\frac{x^2}{2}-\\frac1x+C$。",
+          "hint": "先化简再选工具。",
+          "solution": [
+            "$\\frac{x^3+1}{x^2}=x+x^{-2}$，逐项积分；$x\\neq0$。"
+          ],
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "c2-review-1-3"
+        }
+      ]
+    },
+    {
+      "chapterId": "c2-extended-integrals",
+      "title": "积分的近似、延伸与建模 · 章末回顾",
+      "questions": [
+        {
+          "problem": "$\\int_1^\\infty\\frac{dx}{x^{3/2}}$ 与 $\\int_0^1\\frac{dx}{x^{3/2}}$ 同收敛吗？",
+          "answer": "前者收敛为 2，后者发散。",
+          "hint": "区分远处尾部和零处尖峰。",
+          "solution": [
+            "前者截断为 $2-\\frac2{\\sqrt R}\\to2$；后者为 $\\frac2{\\sqrt\\delta}-2\\to\\infty$。"
+          ],
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "c2-review-2-1"
+        },
+        {
+          "problem": "$[0,1]$ 上密度 $\\rho=1+2x$ 的杆质心？",
+          "answer": "$\\frac7{12}$。",
+          "hint": "质量和力矩分别积分。",
+          "solution": [
+            "$M=2$，$P=\\frac12+\\frac23=\\frac76$，所以 $P/M=\\frac7{12}$。"
+          ],
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "numericAnswer": 0.5833333333333334,
+          "id": "c2-review-2-2"
+        },
+        {
+          "problem": "$y=x$ 在 $[0,2]$ 绕横轴旋转，侧面积？",
+          "answer": "$4\\pi\\sqrt2$。",
+          "hint": "半径和弧长微元都保留。",
+          "solution": [
+            "$S=2\\pi\\int_0^2 x\\sqrt2 dx=4\\pi\\sqrt2$；不含端盖。"
+          ],
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "c2-review-2-3"
+        }
+      ]
+    },
+    {
+      "chapterId": "c2-sequences",
+      "title": "从数列到无穷和 · 章末回顾",
+      "questions": [
+        {
+          "problem": "求 $\\lim\\frac{2n-1}{n+3}$。",
+          "answer": "$2$。",
+          "hint": "同除最高次幂。",
+          "solution": [
+            "$\\frac{2-1/n}{1+3/n}\\to2$。"
+          ],
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "numericAnswer": 2,
+          "id": "c2-review-3-1"
+        },
+        {
+          "problem": "$a_1=1,a_{n+1}=\\frac{a_n+5}{2}$，求极限并说明收敛。",
+          "answer": "$5$。",
+          "hint": "跟踪到固定点的距离。",
+          "solution": [
+            "$5-a_{n+1}=\\frac12(5-a_n)$，所以 $a_n=5-\\frac4{2^{n-1}}\\to5$。"
+          ],
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "numericAnswer": 5,
+          "id": "c2-review-3-2"
+        },
+        {
+          "problem": "求 $\\sum_{n=1}^\\infty\\frac2{n(n+1)}$。",
+          "answer": "$2$。",
+          "hint": "拆成相邻倒数差。",
+          "solution": [
+            "$S_N=2(1-\\frac1{N+1})\\to2$。"
+          ],
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "numericAnswer": 2,
+          "id": "c2-review-3-3"
+        }
+      ]
+    },
+    {
+      "chapterId": "c2-convergence",
+      "title": "级数的收敛与误差 · 章末回顾",
+      "questions": [
+        {
+          "problem": "$\\sum_{n=1}^\\infty\\frac{4n+1}{n^3+1}$ 收敛吗？",
+          "answer": "收敛。",
+          "hint": "极限比较平方倒数。",
+          "solution": [
+            "比例 $\\frac{(4n+1)n^2}{n^3+1}\\to4$，同敛散。"
+          ],
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "c2-review-4-1"
+        },
+        {
+          "problem": "$\\sum_{n=0}^\\infty\\frac{5^n}{n!}$ 收敛吗？能只靠此判别给出和吗？",
+          "answer": "绝对收敛；比值判别本身不给精确和。",
+          "hint": "先算相邻项比。",
+          "solution": [
+            "比值 $\\frac5{n+1}\\to0$，尾部受几何衰减控制。"
+          ],
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "c2-review-4-2"
+        },
+        {
+          "problem": "$\\sum\\frac{(-1)^{n-1}}{n^3}$ 取前 9 项，误差上界？",
+          "answer": "$\\frac1{1000}$。",
+          "hint": "下一项幅度。",
+          "solution": [
+            "幅度递减到零，$b_{10}=\\frac1{10^3}$。"
+          ],
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "numericAnswer": 0.001,
+          "id": "c2-review-4-3"
+        }
+      ]
+    },
+    {
+      "chapterId": "c2-power",
+      "title": "从收敛到函数表示 · 章末回顾",
+      "questions": [
+        {
+          "problem": "$\\sum\\frac{(-1)^n}{n^{2/3}}$ 如何分类？",
+          "answer": "条件收敛。",
+          "hint": "分别检查带符号与绝对值。",
+          "solution": [
+            "交错幅度递减到零；绝对值幂指数 $\\frac23\\leq1$，发散。"
+          ],
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "c2-review-5-1"
+        },
+        {
+          "problem": "$\\sum_{n=1}^\\infty\\frac{(x+2)^n}{2^n n}$ 的收敛区间？",
+          "answer": "$[-4,0)$。",
+          "hint": "先得到开区间，再代两端。",
+          "solution": [
+            "$|x+2|<2$；左端为交错调和，右端为调和。"
+          ],
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "c2-review-5-2"
+        },
+        {
+          "problem": "$f(1)=2,f\\prime(1)=3,f^{(2)}(1)=-2$，二次 Taylor 多项式？",
+          "answer": "$2+3(x-1)-(x-1)^2$。",
+          "hint": "中心偏移和阶乘。",
+          "solution": [
+            "二次系数为 $-2/2!=-1$。"
+          ],
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "c2-review-5-3"
+        }
+      ]
+    },
+    {
+      "chapterId": "c2-taylor-use",
+      "title": "Taylor 展开与计算 · 章末回顾",
+      "questions": [
+        {
+          "problem": "用三次多项式近似 $e^{0.2}$，给一个 Taylor 误差界。",
+          "answer": "不超过 $e^{0.2}\\frac{0.2^4}{24}$。",
+          "hint": "四阶导数在整段上控制。",
+          "solution": [
+            "在 $[0,0.2]$ 上 $f^{(4)}\\leq e^{0.2}$，代入三次余项。"
+          ],
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "c2-review-6-1"
+        },
+        {
+          "problem": "求 $\\lim_{x\\to0}\\frac{\\tan x-x}{x^3}$。",
+          "answer": "$\\frac13$。",
+          "hint": "用正弦与余弦展开后相除。",
+          "solution": [
+            "$\\tan x=(x-\\frac{x^3}{6}+O(x^5))(1+\\frac{x^2}{2}+O(x^4))=x+\\frac{x^3}{3}+O(x^5)$。"
+          ],
+          "difficulty": 4,
+          "misconceptionTags": [],
+          "numericAnswer": 0.3333333333333333,
+          "id": "c2-review-6-2"
+        },
+        {
+          "problem": "写出 $(1+2x)^{1/2}$ 的二次展开与基本有效范围。",
+          "answer": "$1+x-\\frac{x^2}{2}$；无穷展开先保证 $|x|<\\frac12$。",
+          "hint": "整个输入一起替换。",
+          "solution": [
+            "将平方根展开中的小量换成 $2x$；端点另查。"
+          ],
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "c2-review-6-3"
+        }
+      ]
+    },
+    {
+      "chapterId": "c2-curves",
+      "title": "参数曲线与极坐标 · 章末回顾",
+      "questions": [
+        {
+          "problem": "$x=t^2,y=2t$ 在 $t=1$ 的斜率与速率？",
+          "answer": "斜率 1，速率 $2\\sqrt2$。",
+          "hint": "比值与向量长度是不同计算。",
+          "solution": [
+            "$x\\prime=2t,y\\prime=2$；斜率 $2/(2t)=1$，速率 $\\sqrt{4+4}=2\\sqrt2$。"
+          ],
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "c2-review-7-1"
+        },
+        {
+          "problem": "$(-3,\\frac\\pi2)$ 的直角坐标与正半径表示？",
+          "answer": "$(0,-3)$；$(3,\\frac{3\\pi}{2})$。",
+          "hint": "反方向走。",
+          "solution": [
+            "$x=-3\\cos\\frac\\pi2=0,y=-3\\sin\\frac\\pi2=-3$；半径改正时角度加半圈。"
+          ],
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "c2-review-7-2"
+        },
+        {
+          "problem": "$r=2+\\cos\\theta$ 的整圈面积？",
+          "answer": "$\\frac{9\\pi}{2}$。",
+          "hint": "平方后积分，正弦余弦项分别处理。",
+          "solution": [
+            "$A=\\frac12\\int_0^{2\\pi}(4+4\\cos\\theta+\\cos^2\\theta)d\\theta=\\frac12(8\\pi+\\pi)$。"
+          ],
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "c2-review-7-3"
+        }
+      ]
+    },
+    {
+      "chapterId": "c2-ode",
+      "title": "一阶微分方程入门 · 章末回顾",
+      "questions": [
+        {
+          "problem": "解 $y\\prime=3xy,y(0)=2$。",
+          "answer": "$2e^{3x^2/2}$。",
+          "hint": "先保留平衡解，再分离非零分支。",
+          "solution": [
+            "$\\ln|y|=\\frac32x^2+C$，初值给指数前系数为 2。"
+          ],
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "c2-review-8-1"
+        },
+        {
+          "problem": "解 $y\\prime+3y=6,y(0)=0$。",
+          "answer": "$2-2e^{-3x}$。",
+          "hint": "积分因子为指数。",
+          "solution": [
+            "$(e^{3x}y)\\prime=6e^{3x}$，积分后 $y=2+Ce^{-3x}$，初值给 $C=-2$。"
+          ],
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "c2-review-8-2"
+        },
+        {
+          "problem": "$y\\prime=y,y(0)=2$，取 $h=0.2$，两步 Euler 值？",
+          "answer": "$2.88$。",
+          "hint": "每步更新斜率。",
+          "solution": [
+            "$y_1=2+0.2\\cdot2=2.4$；$y_2=2.4+0.2\\cdot2.4=2.88$。"
+          ],
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "numericAnswer": 2.88,
+          "id": "c2-review-8-3"
+        }
+      ]
+    }
+  ],
+  "exam": [
+    {
+      "problem": "求 $\\int_0^1x^2e^x dx$。",
+      "answer": "$e-2$。",
+      "hint": "两次分部，并保留两端。",
+      "solution": [
+        "原函数为 $e^x(x^2-2x+2)$；代上下限为 $e-2$。"
+      ],
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "numericAnswer": 0.718281828459045,
+      "id": "c2-exam-1"
+    },
+    {
+      "problem": "求 $\\int_1^2\\frac{x^2+2}{x}dx$。",
+      "answer": "$\\frac32+2\\ln2$。",
+      "hint": "先拆成两项。",
+      "solution": [
+        "$\\int_1^2(x+\\frac2x)dx=[\\frac{x^2}{2}+2\\ln x]_1^2$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-exam-2"
+    },
+    {
+      "problem": "梯形误差界的 $M_2=3$、区间长 2，要求误差不超过 $0.005$，足够的最小整数段数？",
+      "answer": "$20$。",
+      "hint": "先整理误差界。",
+      "solution": [
+        "界为 $\\frac{3\\cdot8}{12n^2}=\\frac2{n^2}$，故 $n^2\\geq400$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 20,
+      "id": "c2-exam-3"
+    },
+    {
+      "problem": "求 $\\int_2^\\infty x^{-3}dx$。",
+      "answer": "$\\frac18$。",
+      "hint": "先截断，注意下限。",
+      "solution": [
+        "$[-\\frac1{2x^2}]_2^R=\\frac18-\\frac1{2R^2}\\to\\frac18$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.125,
+      "id": "c2-exam-4"
+    },
+    {
+      "problem": "求 $\\int_0^4x^{-1/2}dx$。",
+      "answer": "$4$。",
+      "hint": "下端取右极限。",
+      "solution": [
+        "$[2\\sqrt x]_\\delta^4=4-2\\sqrt\\delta\\to4$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 4,
+      "id": "c2-exam-5"
+    },
+    {
+      "problem": "$[0,2]$ 上线密度 $\\rho=x$ 的质心？",
+      "answer": "$\\frac43$。",
+      "hint": "力矩除质量。",
+      "solution": [
+        "$M=2$，$P=\\int_0^2x^2dx=\\frac83$，所以质心为 $\\frac43$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 1.3333333333333333,
+      "id": "c2-exam-6"
+    },
+    {
+      "problem": "求 $\\lim_{n\\to\\infty}\\sqrt{n^2+4n}-n$。",
+      "answer": "$2$。",
+      "hint": "共轭消去平方根相减。",
+      "solution": [
+        "原式为 $\\frac{4n}{\\sqrt{n^2+4n}+n}=\\frac4{\\sqrt{1+4/n}+1}\\to2$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 2,
+      "id": "c2-exam-7"
+    },
+    {
+      "problem": "$\\sum\\frac{2n+1}{n^3+4}$ 收敛吗？",
+      "answer": "收敛。",
+      "hint": "与平方倒数作极限比较。",
+      "solution": [
+        "比例 $\\frac{(2n+1)n^2}{n^3+4}\\to2$，参照级数收敛。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-exam-8"
+    },
+    {
+      "problem": "$\\sum_{n=1}^\\infty\\frac{(-1)^{n-1}}{n^2}$ 取前 9 项，误差上界与余项方向？",
+      "answer": "误差不超过 $0.01$，余项为负。",
+      "hint": "第一项舍弃的是第十项。",
+      "solution": [
+        "幅度递减到零；第十项为 $-\\frac1{100}$，真值在第九部分和下方。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-exam-9"
+    },
+    {
+      "problem": "$\\sum_{n=1}^\\infty\\frac{(2x-1)^n}{n}$ 的收敛区间？",
+      "answer": "$[0,1)$。",
+      "hint": "先限制公比绝对值，再查端点。",
+      "solution": [
+        "$|2x-1|<1$ 给 $0<x<1$；左端交错调和收敛，右端调和发散。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-exam-10"
+    },
+    {
+      "problem": "用 $1-\\frac{x^2}{2}+\\frac{x^4}{24}$ 估计 $\\cos0.3$，给下一非零阶对应的 Taylor 界。",
+      "answer": "误差不超过 $\\frac{0.3^6}{720}$。",
+      "hint": "五次项为零，可视为五次多项式。",
+      "solution": [
+        "六阶导数绝对值不超过 1，代五次余项界。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-exam-11"
+    },
+    {
+      "problem": "求 $\\lim_{x\\to0}\\frac{\\ln(1+x)-x}{x^2}$。",
+      "answer": "$-\\frac12$。",
+      "hint": "展开到二次并保留余项。",
+      "solution": [
+        "$\\ln(1+x)=x-\\frac{x^2}{2}+O(x^3)$，消去一次项，除以平方。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": -0.5,
+      "id": "c2-exam-12"
+    },
+    {
+      "problem": "$r=1+\\sin\\theta$ 所围面积？",
+      "answer": "$\\frac{3\\pi}{2}$。",
+      "hint": "完整一圈，用半径平方积分。",
+      "solution": [
+        "$A=\\frac12\\int_0^{2\\pi}(1+2\\sin\\theta+\\sin^2\\theta)d\\theta=\\frac12(2\\pi+\\pi)$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-exam-13"
+    },
+    {
+      "problem": "$y\\prime=-2y,y(0)=1$，Euler 步长 $h=1.5$ 的两步，与精确趋势是否一致？",
+      "answer": "$1\\to-2\\to4$，不一致。",
+      "hint": "计算离散倍率并比较连续解。",
+      "solution": [
+        "倍率为 $1-2h=-2$；精确解 $e^{-2x}$ 始终为正且衰减。"
+      ],
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "id": "c2-exam-14"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "分部积分",
+      "meaning": "分部积分把一个因子求导、另一个积分；目标是让剩下的积分更简单。",
+      "lessonId": "c2-parts"
+    },
+    {
+      "term": "三角函数的积分",
+      "meaning": "奇次幂留出一个因子做微分；偶次幂用降幂公式。",
+      "lessonId": "c2-trig-integrals"
+    },
+    {
+      "term": "三角代换",
+      "meaning": "根号结构决定代换；选定角度区间，才能正确去掉绝对值。",
+      "lessonId": "c2-trig-substitution"
+    },
+    {
+      "term": "部分分式",
+      "meaning": "分母能分解时，把一个分式拆成几个简单分式；先做除法，再比较系数。",
+      "lessonId": "c2-partial-fractions"
+    },
+    {
+      "term": "怎样选择积分方法",
+      "meaning": "先化简与找内层导数，再看乘积、根式或有理式；没有初等原函数，也不妨碍定积分存在。",
+      "lessonId": "c2-strategy"
+    },
+    {
+      "term": "数值积分与误差",
+      "meaning": "梯形用直线贴曲线，Simpson 用抛物线；误差界告诉你需要分多少段。",
+      "lessonId": "c2-numerical"
+    },
+    {
+      "term": "无穷区间上的积分",
+      "meaning": "无穷区间的积分是截断积分的极限；无穷远不是可以直接代入的普通数。",
+      "lessonId": "c2-improper-infinity"
+    },
+    {
+      "term": "有限区间里的无界点",
+      "meaning": "函数在端点或内部无界时，避开无界点积分，再取单侧极限。",
+      "lessonId": "c2-improper-singular"
+    },
+    {
+      "term": "旋转曲面的面积",
+      "meaning": "旋转侧面积把每段小弧转成窄带：窄带面积约为圆周长乘弧长。",
+      "lessonId": "c2-surface"
+    },
+    {
+      "term": "质量、力矩与质心",
+      "meaning": "质心是质量的加权平均位置，不是形状边界的简单平均。",
+      "lessonId": "c2-moments"
+    },
+    {
+      "term": "压力与做功的分层模型",
+      "meaning": "总力和总功都靠分层累积；每层的受力或移动距离可能不同。",
+      "lessonId": "c2-pressure"
+    },
+    {
+      "term": "数列与极限",
+      "meaning": "数列的极限描述后面的每一项是否最终留在某个数附近；前面有限项不决定极限。",
+      "lessonId": "c2-sequences"
+    },
+    {
+      "term": "单调有界与递推数列",
+      "meaning": "单调且有界的实数列必收敛；递推式只能在已经证明收敛后，合法地传递到极限。",
+      "lessonId": "c2-monotone"
+    },
+    {
+      "term": "无穷级数与部分和",
+      "meaning": "级数收敛，指部分和数列收敛；单项趋于零只是必要条件。",
+      "lessonId": "c2-series"
+    },
+    {
+      "term": "几何级数与望远镜求和",
+      "meaning": "先写有限部分和，再取极限；不要直接操作一个尚未证明收敛的无穷式。",
+      "lessonId": "c2-geometric"
+    },
+    {
+      "term": "积分判别与尾和估计",
+      "meaning": "正、连续、递减的函数，可以用积分判断对应级数，并夹住有限部分和之后的尾部。",
+      "lessonId": "c2-integral-test"
+    },
+    {
+      "term": "比较与极限比较",
+      "meaning": "正项级数可与已知级数比大小；极限比较则检查两种尾部是否只差有限正倍数。",
+      "lessonId": "c2-comparison"
+    },
+    {
+      "term": "比值与根值判别",
+      "meaning": "相邻比值或每项的根值小于一，就能被某个收敛几何尾部控制；等于一时不作结论。",
+      "lessonId": "c2-ratio-root"
+    },
+    {
+      "term": "交错级数与误差",
+      "meaning": "若正项幅度最终递减到零，正负交替的和收敛，截断误差不超过下一项幅度。",
+      "lessonId": "c2-alternating"
+    },
+    {
+      "term": "绝对收敛与条件收敛",
+      "meaning": "绝对值级数收敛叫绝对收敛；原级数收敛而绝对值级数发散，叫条件收敛。",
+      "lessonId": "c2-absolute"
+    },
+    {
+      "term": "幂级数与收敛区间",
+      "meaning": "幂级数在中心附近收敛，在半径外发散；边界两个点必须分别代回检查。",
+      "lessonId": "c2-power-series"
+    },
+    {
+      "term": "幂级数的求导与积分",
+      "meaning": "幂级数在收敛区间内部可逐项求导、积分，半径不变；端点结论可能变化。",
+      "lessonId": "c2-power-operations"
+    },
+    {
+      "term": "Taylor 多项式",
+      "meaning": "Taylor 多项式在中心处匹配函数值与前几阶导数；这是局部匹配，不自动保证远处也准确。",
+      "lessonId": "c2-taylor"
+    },
+    {
+      "term": "Taylor 余项与误差保证",
+      "meaning": "Taylor 多项式只给近似；高一阶导数的上界给出离真值最多多远。",
+      "lessonId": "c2-taylor-error"
+    },
+    {
+      "term": "常用 Taylor 级数",
+      "meaning": "指数、正弦、余弦、几何和对数展开能通过代入与微积分产生很多新展开；每个都要带收敛范围。",
+      "lessonId": "c2-standard-series"
+    },
+    {
+      "term": "用级数计算积分与极限",
+      "meaning": "级数能计算没有初等原函数的积分，也能找出极限里最先没有抵消的项。",
+      "lessonId": "c2-series-applications"
+    },
+    {
+      "term": "广义二项式展开",
+      "meaning": "二项式系数可延伸到任意实指数；非负整数时有限终止，其余通常是有收敛范围的无穷级数。",
+      "lessonId": "c2-binomial"
+    },
+    {
+      "term": "参数方程与运动轨迹",
+      "meaning": "参数方程给出点随参数怎样走；同一条几何曲线可以有不同方向和速度。",
+      "lessonId": "c2-parametric"
+    },
+    {
+      "term": "参数曲线的切线与弧长",
+      "meaning": "参数曲线的斜率是纵坐标变化率除以横坐标变化率；弧长是速率的累积。",
+      "lessonId": "c2-parametric-calculus"
+    },
+    {
+      "term": "极坐标与曲线",
+      "meaning": "极坐标用半径与角度描述位置；负半径表示沿指定方向的反方向走。",
+      "lessonId": "c2-polar"
+    },
+    {
+      "term": "极坐标的面积与弧长",
+      "meaning": "极坐标面积累积小扇形，弧长累积小弧；先确认曲线描绘范围，避免重复计数。",
+      "lessonId": "c2-polar-calculus"
+    },
+    {
+      "term": "微分方程与方向场",
+      "meaning": "微分方程指定斜率；初值指定从哪里出发。方向场把每个位置允许的局部方向画出来。",
+      "lessonId": "c2-differential-models"
+    },
+    {
+      "term": "可分离变量方程",
+      "meaning": "若变化率能写成横变量函数乘纵变量函数，可分离后积分；除以纵变量因子前先找平衡解。",
+      "lessonId": "c2-separable"
+    },
+    {
+      "term": "一阶线性方程",
+      "meaning": "对 $y\\prime+p(x)y=q(x)$，乘一个合适函数，就能把左边合成一次乘积求导。",
+      "lessonId": "c2-linear-ode"
+    },
+    {
+      "term": "Euler 法与 Logistic 模型",
+      "meaning": "Euler 法用当前点的斜率推进一步；Logistic 方程让增长率随资源余量降低。",
+      "lessonId": "c2-euler-logistic"
+    },
+    {
+      "term": "阶乘",
+      "meaning": "$n!=1\\cdot2\\cdots n$，并规定 $0!=1$。",
+      "lessonId": "c2-ratio-root"
+    },
+    {
+      "term": "$p$ 级数",
+      "meaning": "$\\sum_{n=1}^\\infty\\frac1{n^p}$，恰在 $p>1$ 收敛。",
+      "lessonId": "c2-integral-test"
+    },
+    {
+      "term": "大 O 记号",
+      "meaning": "$R(x)=O(x^k)$ 表示零附近存在固定常数 $C$ 使 $|R(x)|\\leq C|x|^k$。",
+      "lessonId": "c2-series-applications"
+    }
+  ],
+  "appendices": [
+    {
+      "title": "Taylor 定理为什么有中间点",
+      "text": "固定目标 $x\\neq a$，写 $F(t)=f(t)-T_m(t)-K(t-a)^{m+1}$，选择 $K$ 使 $F(x)=0$。函数在中心及其前 $m$ 阶导数都为零。对区间反复使用 Rolle 定理，得到某个中间点 $\\xi$ 使 $F^{(m+1)}(\\xi)=0$，故 $K=\\frac{f^{(m+1)}(\\xi)}{(m+1)!}$。这给出余项形式；在端点或零距离情形由连续性或直接等式处理。"
+    },
+    {
+      "title": "幂级数端点与 Abel 连续性定理",
+      "text": "若 $\\sum c_n$ 收敛，Abel 定理说明 $\\lim_{r\\to1^-}\\sum c_nr^n=\\sum c_n$。它为从开区间的函数表示延伸到收敛端点提供依据；本卷不完整证明该定理。有限几何和与求和分部可控制尾部，不能仅凭端点级数收敛就省略这个连接步骤。对数在 1、反正切在正负一的函数值连接使用这一结论。"
+    },
+    {
+      "title": "广义二项式为何表示原函数",
+      "text": "非终止时，相邻项比值证明级数在 $|x|<1$ 收敛。在内部逐项求导，其系数满足递推，和函数 $S$ 满足 $(1+x)S\\prime=\\alpha S$ 且 $S(0)=1$。原函数 $(1+x)^\\alpha$ 满足同一初值问题；在该区间系数连续，由一阶线性方程唯一性，两者相等。比值法本身只证明收敛，不足以识别和函数。"
+    },
+    {
+      "title": "微分方程存在唯一性的范围",
+      "text": "若右端与关于纵变量的偏导在初值附近连续，局部存在唯一解。本卷引用该定理，不完整证明。局部唯一不保证解在整个实轴存在；例如 $y\\prime=y^2$、$y(0)=1$ 在有限时刻爆破。高阶方程、系统、严格数值稳定性与完整存在理论留给后续微分方程教材。"
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "id": "c2-integral-test",
+  "title": "积分判别与尾和估计",
+  "subtitle": "用面积夹住一串正项",
+  "concept": "正、连续、递减的函数，可以用积分判断对应级数，并夹住有限部分和之后的尾部。",
+  "intuition": "递减曲线两侧的单位宽矩形，一边高于面积，一边低于面积；尾和被两段积分夹住。",
+  "body": [
+    {
+      "title": "哪些条件不能省？",
+      "text": "函数在足够往后的区间上为正、连续且递减，并在整数点给出级数项。有限开头可另外处理。"
+    },
+    {
+      "title": "积分值等于级数和吗？",
+      "text": "一般不等。判别法说二者同收敛或同发散，尾部积分给的是上下界。"
+    },
+    {
+      "title": "怎样选部分和项数？",
+      "text": "若尾部积分的上界已经低于容差，前面的部分和就满足误差要求。常用基准 $\\sum_{n=1}^\\infty n^{-p}$ 称为 $p$ 级数，恰在 $p>1$ 收敛。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "用面积夹住一串正项",
+    "latex": "\\int_{N+1}^\\infty f(x)dx\\leq R_N:=\\sum_{n=N+1}^\\infty f(n)\\leq\\int_N^\\infty f(x)dx",
+    "conditions": [
+      "$f$ 在 $[N,\\infty)$ 正、连续、递减，且反常积分收敛。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "递减性把每个矩形与相邻积分比较。",
+      "latex": "\\int_n^{n+1}f(x)dx\\leq f(n)\\leq\\int_{n-1}^{n}f(x)dx"
+    },
+    {
+      "text": "从尾部第一项相加。",
+      "latex": "\\int_{N+1}^{M+1}f(x)dx\\leq\\sum_{n=N+1}^M f(n)\\leq\\int_N^M f(x)dx"
+    },
+    {
+      "text": "上端趋于无穷得到尾和界。",
+      "latex": "\\int_{N+1}^\\infty f\\leq R_N\\leq\\int_N^\\infty f"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "平方倒数的尾部",
+      "problem": "$\\sum\\frac1{n^2}$ 在前 10 项后的误差范围？",
+      "steps": [
+        "函数正、连续、递减，尾积分易算。",
+        "$\\int_{11}^\\infty x^{-2}dx\\leq R_{10}\\leq\\int_{10}^\\infty x^{-2}dx$。"
+      ],
+      "answer": "$\\frac1{11}\\leq R_{10}\\leq\\frac1{10}$。"
+    },
+    {
+      "title": "对数边界",
+      "problem": "$\\sum_{n=2}^\\infty\\frac1{n(\\ln n)^2}$ 收敛吗？",
+      "steps": [
+        "对应函数在 $x\\geq2$ 正且递减。",
+        "令 $u=\\ln x$，积分为 $\\int_{\\ln2}^\\infty u^{-2}du$，有限。"
+      ],
+      "answer": "收敛。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-integral-test-m1",
+      "claim": "只要能写成函数就能用。",
+      "correction": "必须检查正性、连续与最终递减。"
+    },
+    {
+      "id": "c2-integral-test-m2",
+      "claim": "级数和就是从一开始的积分。",
+      "correction": "矩形与曲线有差别；本结论是收敛性与尾部界。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$\\sum\\frac1{n^p}$ 何时收敛？",
+      "answer": "$p>1$。",
+      "hint": "比较尾积分。",
+      "solution": [
+        "$\\int_1^\\infty x^{-p}dx$ 恰在 $p>1$ 收敛；$p\\leq0$ 也可直接用项判别。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-integral-test-p1"
+    },
+    {
+      "problem": "平方倒数级数取多少项，可保证尾误差不超过 $0.01$？",
+      "answer": "$100$ 项足够。",
+      "hint": "使用尾部上界。",
+      "solution": [
+        "$R_N\\leq\\frac1N$，取 $N=100$ 即可。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 100,
+      "id": "c2-integral-test-p2"
+    },
+    {
+      "problem": "$\\sum_{n=2}^\\infty\\frac1{n\\ln n}$ 收敛吗？",
+      "answer": "发散。",
+      "hint": "令新变量为对数。",
+      "solution": [
+        "$\\int_2^R\\frac{dx}{x\\ln x}=\\ln\\ln R-\\ln\\ln2\\to\\infty$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-integral-test-p3"
+    },
+    {
+      "problem": "$\\sum\\frac1{n^3}$ 前 10 项后的尾和上界？",
+      "answer": "$\\frac1{200}$。",
+      "hint": "积分从十开始。",
+      "solution": [
+        "$R_{10}\\leq\\int_{10}^\\infty x^{-3}dx=\\frac1{2\\cdot10^2}$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.005,
+      "id": "c2-integral-test-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "积分判别法一般给出？",
+    "choices": [
+      "级数的精确和",
+      "同收敛性及适用时的尾和界",
+      "任何带负项级数的和"
+    ],
+    "correctIndex": 1,
+    "explanation": "正递减曲线与矩形可以夹住尾部，通常不会精确相等。"
+  },
+  "teaching": {
+    "explain": "把看不见的无限尾巴，换成两段会计算的面积；这比只说“收敛”更有用。",
+    "steps": [
+      {
+        "title": "十项",
+        "instruction": "项数取 10。",
+        "observation": "尾部在 $\\frac1{11}$ 与 $\\frac1{10}$ 之间。",
+        "preset": {
+          "n": 10
+        }
+      },
+      {
+        "title": "四十项",
+        "instruction": "项数取 40。",
+        "observation": "尾部在 $\\frac1{41}$ 与 $\\frac1{40}$ 之间。",
+        "preset": {
+          "n": 40
+        }
+      },
+      {
+        "title": "八十项",
+        "instruction": "项数取 80。",
+        "observation": "尾部上界为 $\\frac1{80}$，有限部分和仍不是总和。",
+        "preset": {
+          "n": 80
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-geometric",
+    "c2-improper-infinity"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-convergence",
+  "number": "4.1",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-integral-test",
+    "caption": "显示平方倒数部分和与 $\\frac1{N+1}\\leq R_N\\leq\\frac1N$ 的尾部界。",
+    "prediction": "增加项数后，尾部可能范围收窄多少？"
+  },
+  "misconceptionTags": [
+    "c2-integral-test-m1",
+    "c2-integral-test-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "检查积分判别的条件",
+    "判别正项幂与对数尾部",
+    "用尾积分确定截断误差"
+  ]
+}

@@ -1,3 +1,5 @@
+import {VolumeSwitcher} from "../components/VolumeSwitcher";
+import {useCurriculum} from "../lib/curriculum";
 import { MathText, plainMathText } from "../components/MathText";
 import {
   ArrowLeft,
@@ -5,8 +7,8 @@ import {
   ArrowUpRight,
   GraduationCap,
 } from "lucide-react";
-import { bookStats, book, lessons } from "../../../../packages/content";
-import supplements from "../../../../packages/content/supplements.json";
+import {lessonById, allLessons, collections} from "../../../../packages/content";
+
 import type { Exercise } from "../../../../packages/content/types";
 import { PracticeSet } from "../components/Practice";
 import { VisualPreview } from "../components/Visual";
@@ -24,6 +26,7 @@ import {
 import { chapterPath, lessonPath } from "../lib/catalog";
 import { useApp } from "../lib/state";
 export function ExplorePage({ mode }: { mode: "lab" | "practice" }) {
+  const {book,lessons,bookStats,supplements,BOOK,filename,printFile}=useCurriculum();
   const { route, progress } = useApp();
   const params = Object.fromEntries(route.params);
   const query = (params.q || "").toLowerCase();
@@ -46,7 +49,7 @@ export function ExplorePage({ mode }: { mode: "lab" | "practice" }) {
       >
         <span className="page-count">
           {mode === "lab" ? `${bookStats.lessons} 节演示` : `${bookStats.exercises} 道练习`}
-          <small>Calculus I</small>
+          <small>{book.title}</small>
         </span>
       </PageTitle>
       {mode === "practice" && (
@@ -54,7 +57,7 @@ export function ExplorePage({ mode }: { mode: "lab" | "practice" }) {
           <GraduationCap size={32} />
           <div>
             <h2>整本书 · 综合测试</h2>
-            <p>14 道题，检查函数、极限、导数与积分的理解。</p>
+            <p>{supplements.exam.length} 道题，连接本卷各章的概念与方法。</p>
           </div>
           <Link to="practice/exam" className="primary-btn">
             开始测试
@@ -62,6 +65,7 @@ export function ExplorePage({ mode }: { mode: "lab" | "practice" }) {
           </Link>
         </div>
       )}
+      <VolumeSwitcher path={mode}/>
       <Filters path={mode} values={params} />
       {list.length ? (
         <div className={mode === "lab" ? "lab-grid" : "practice-grid"}>
@@ -84,7 +88,7 @@ export function ExplorePage({ mode }: { mode: "lab" | "practice" }) {
                 ) : (
                   <div className="practice-card-top">
                     <span>SECTION {l.number}</span>
-                    <span>{done} / 4 已掌握</span>
+                    <span>{done} / {l.practice.length} 已掌握</span>
                   </div>
                 )}
                 <div className="explore-card-body">
@@ -136,6 +140,7 @@ export function ExplorePage({ mode }: { mode: "lab" | "practice" }) {
 }
 
 export function ReviewPage() {
+  const {book,lessons,bookStats,supplements,BOOK,filename,printFile}=useCurriculum();
   const { route, progress, mark } = useApp();
   const chId = route.path.replace("practice/review/", "");
   const review = supplements.reviews.find((r) => r.chapterId === chId);
@@ -154,7 +159,7 @@ export function ReviewPage() {
         description="先独立完成，再展开解答对照思路。每一道题都有提示和完整答案。"
       />
       <PracticeSet
-        key={route.path}
+        key={book.id+route.path}
         questions={(review?.questions || supplements.exam) as Exercise[]}
         progress={progress}
         onMark={mark}

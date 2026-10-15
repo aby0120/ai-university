@@ -1,3 +1,5 @@
+import {VolumeSwitcher} from "../components/VolumeSwitcher";
+import {useCurriculum} from "../lib/curriculum";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -10,8 +12,8 @@ import {
   Search,
   Settings2,
 } from "lucide-react";
-import { bookStats, book, lessonById, lessons } from "../../../../packages/content";
-import supplements from "../../../../packages/content/supplements.json";
+import {lessonById, allLessons, collections} from "../../../../packages/content";
+
 import { Formula, MathText, plainMathText } from "../components/MathText";
 import { pageWindow, routeHref } from "../lib/navigation";
 
@@ -33,6 +35,7 @@ import {
 } from "../lib/catalog";
 import { useApp } from "../lib/state";
 export function ReferencePage() {
+  const {book,lessons,bookStats,supplements,BOOK,filename,printFile}=useCurriculum();
   const { route } = useApp();
   const tab = route.params.get("tab") || "formulas";
   const query = route.params.get("q") || "";
@@ -45,6 +48,7 @@ export function ReferencePage() {
         title="知识索引"
         description="公式是理解的索引。查到一个定义，再回到它的条件与推导。"
       />
+      <VolumeSwitcher path={"reference"}/>
       <nav className="page-tabs" aria-label="索引分类">
         {[
           ["formulas", "公式与定义"],
@@ -137,12 +141,13 @@ export function ReferencePage() {
 }
 
 export function LearningPage() {
+  const {book,lessons,bookStats,supplements,BOOK,filename,printFile}=useCurriculum();
   const { reading, progress, route } = useApp();
   const tab = route.params.get("tab") || "recent";
   const reviewLessons = lessons.filter((l) =>
     l.practice.some((q) => progress[q.id] === "review"),
   );
-  const ids =
+  const selectedIds =
     tab === "saved"
       ? reading.saved
       : tab === "read"
@@ -150,6 +155,8 @@ export function LearningPage() {
         : tab === "review"
           ? reviewLessons.map((l) => l.id)
           : reading.recent;
+  const ids=selectedIds.filter(id=>book.lessonIds.includes(id));
+  const localProgress=Object.entries(progress).filter(([id])=>[...lessons.flatMap(l=>l.practice),...supplements.exam,...supplements.reviews.flatMap(r=>r.questions)].some(q=>q.id===id)).map(([,v])=>v);
   return (
     <>
       <PageTitle
@@ -157,23 +164,24 @@ export function LearningPage() {
         title="我的学习"
         description="接着上次的地方读，把想回来的知识点留在这里。记录只属于当前浏览器。"
       />
+      <VolumeSwitcher path={"learning"}/>
       <div className="learning-stats">
         {[
-          [reading.read.length, "已读知识点"],
-          [reading.saved.length, "收藏知识点"],
+          [reading.read.filter(id=>book.lessonIds.includes(id)).length, "已读知识点"],
+          [reading.saved.filter(id=>book.lessonIds.includes(id)).length, "收藏知识点"],
           [
-            Object.values(progress).filter((x) => x === "understood").length,
+            localProgress.filter((x) => x === "understood").length,
             "已掌握练习",
           ],
           [
-            Object.values(progress).filter((x) => x === "review").length,
+            localProgress.filter((x) => x === "review").length,
             "待回顾练习",
           ],
         ].map(([n, s]) => (
           <div key={s}>
             <strong>
               {n}
-              <small>{s === "已读知识点" ? " / 35" : ""}</small>
+              <small>{s === "已读知识点" ? " / "+lessons.length : ""}</small>
             </strong>
             <span>{s}</span>
           </div>
@@ -237,7 +245,7 @@ export function LearningPage() {
               : "打开教材，阅读和练习记录会留在这个浏览器。"
           }
           to={BOOK}
-          label="打开微积分 I"
+          label={"打开"+book.titleZh}
         />
       )}
       <div className="quiet-note">
@@ -301,7 +309,7 @@ export function SearchPage() {
               <div>
                 <small>
                   微积分 I /{" "}
-                  {book.chapters.find((c) => c.id === l.chapterId)!.title}
+                  {collections.find(c=>c.book.lessonIds.includes(l.id))!.book.titleZh+" · "+collections.flatMap(c=>c.book.chapters).find(c=>c.id===l.chapterId)!.title}
                 </small>
                 <h2><MathText text={l.title} /></h2>
                 <p>
@@ -333,6 +341,7 @@ export function SearchPage() {
 }
 
 export function GuidePage() {
+  const {book,lessons,bookStats,supplements,BOOK,filename,printFile}=useCurriculum();
   return (
     <>
       <PageTitle
@@ -384,7 +393,7 @@ export function GuidePage() {
         {[
           [
             "不知道从哪里开始？",
-            "如果函数与代数已经熟悉，可以从第二章极限开始；遇到先修概念不熟悉时，在“知识连接”里回到对应小节。",
+            "从本卷第一章开始；已熟悉的部分可跳过。遇到先修概念不熟悉时，在“知识连接”里回到对应小节。",
           ],
           [
             "需要多久完成？",
@@ -421,12 +430,12 @@ export function GuidePage() {
       </div>
       <div className="guide-cta">
         <h2>从第一节开始。</h2>
-        <Link to={lessonPath("domain")} className="primary-btn">
-          函数与定义域
+        <Link to={lessonPath(book.lessonIds[0])} className="primary-btn">
+          {lessons[0].title}
           <ArrowRight size={16} />
         </Link>
-        <Link to={chapterPath("limits")} className="text-btn">
-          已熟悉函数？直接进入极限
+        <Link to={chapterPath(book.chapters[1].id)} className="text-btn">
+          跳到第二章
           <ArrowRight size={16} />
         </Link>
       </div>
@@ -435,6 +444,7 @@ export function GuidePage() {
 }
 
 export function DownloadsPage() {
+  const {book,lessons,bookStats,supplements,BOOK,filename,printFile}=useCurriculum();
   return (
     <>
       <PageTitle
@@ -442,6 +452,7 @@ export function DownloadsPage() {
         title="下载与离线阅读"
         description="整本书可以带走。正文、练习与答案来自同一份固定教材内容。"
       />
+      <VolumeSwitcher path={"downloads"}/>
       <div className="download-grid">
         <article>
           <Download size={28} />
@@ -451,7 +462,7 @@ export function DownloadsPage() {
             包含全部 {bookStats.lessons} 节正文、{bookStats.examples} 个例题、{bookStats.exercises}
             道练习与解答，以及术语和附录。适合本地阅读与编辑。
           </p>
-          <a href="Calculus-I.md" download className="primary-btn">
+          <a href={filename} download className="primary-btn">
             下载 Markdown
             <Download size={16} />
           </a>
@@ -465,7 +476,7 @@ export function DownloadsPage() {
             PDF”保存。交互演示请使用网站。
           </p>
           <a
-            href="book.html"
+            href={printFile}
             target="_blank"
             rel="noreferrer"
             className="primary-btn"

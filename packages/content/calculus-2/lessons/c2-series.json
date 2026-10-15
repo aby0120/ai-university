@@ -1,0 +1,191 @@
+{
+  "id": "c2-series",
+  "title": "无穷级数与部分和",
+  "subtitle": "无穷相加，先定义每一次有限相加",
+  "concept": "级数收敛，指部分和数列收敛；单项趋于零只是必要条件。",
+  "intuition": "每项越来越小，总量仍可能一直增加。$\\frac1n$ 就是最重要的反例。",
+  "body": [
+    {
+      "title": "数列和级数有什么不同？",
+      "text": "$a_n$ 是第几块，$S_N$ 是前面全部块的和。分别观察二者，不能混用极限。"
+    },
+    {
+      "title": "第几项不趋于零会怎样？",
+      "text": "若部分和有有限极限，$a_n=S_n-S_{n-1}\\to0$。所以项不趋零，级数一定发散。反向不成立。"
+    },
+    {
+      "title": "有限项能改变收敛性吗？",
+      "text": "增删有限项只会改变总和，不改变是否收敛。判断的是无穷尾部。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "无穷相加，先定义每一次有限相加",
+    "latex": "S_N=\\sum_{n=1}^N a_n,\\qquad\\sum_{n=1}^\\infty a_n=S\\iff\\lim_{N\\to\\infty}S_N=S",
+    "conditions": [
+      "通常按指定顺序相加；有限实数极限才叫收敛。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "假设部分和收敛。",
+      "latex": "S_n\\to S,\\quad S_{n-1}\\to S"
+    },
+    {
+      "text": "相邻部分和的差是单项。",
+      "latex": "a_n=S_n-S_{n-1}"
+    },
+    {
+      "text": "极限相减给出必要条件。",
+      "latex": "a_n\\to S-S=0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "项不趋零",
+      "problem": "$\\sum_{n=1}^\\infty\\frac n{n+1}$ 收敛吗？",
+      "steps": [
+        "单项 $\\frac n{n+1}\\to1$。",
+        "必要条件失败，不需要再测试部分和。"
+      ],
+      "answer": "发散。"
+    },
+    {
+      "title": "调和级数",
+      "problem": "为什么 $\\sum\\frac1n$ 的项趋零，但和发散？",
+      "steps": [
+        "按 $[2^{k-1}+1,2^k]$ 分组，每组有 $2^{k-1}$ 项。",
+        "组内每项至少 $\\frac1{2^k}$，每组和至少 $\\frac12$；组数无界。"
+      ],
+      "answer": "部分和无界，级数发散。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-series-m1",
+      "claim": "$a_n\\to0$ 就能推出级数收敛。",
+      "correction": "调和级数直接否定这一推断。"
+    },
+    {
+      "id": "c2-series-m2",
+      "claim": "级数发散意味着单项趋于无穷。",
+      "correction": "可能单项趋零，只是累积仍无界。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$\\sum_{n=1}^\\infty\\frac{n+2}{n}$ 收敛吗？",
+      "answer": "发散。",
+      "hint": "先检查单项。",
+      "solution": [
+        "单项趋于 1，不趋于零。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-series-p1"
+    },
+    {
+      "problem": "$\\sum_{n=1}^\\infty(-1)^n$ 的部分和是什么趋势？",
+      "answer": "在两个值之间振荡，不收敛。",
+      "hint": "分别算奇数和偶数部分和。",
+      "solution": [
+        "$S_{2k}=0$，$S_{2k-1}=-1$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-series-p2"
+    },
+    {
+      "problem": "一个收敛级数的第一项增加 7，收敛性和总和怎样变化？",
+      "answer": "仍收敛，总和增加 7。",
+      "hint": "比较两个部分和。",
+      "solution": [
+        "所有部分和都增加固定量 7，极限也增加 7。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-series-p3"
+    },
+    {
+      "problem": "$a_n\\to0$，应接着检查什么才能判断 $\\sum a_n$？",
+      "answer": "检查部分和或适用的收敛判别法。",
+      "hint": "必要条件不能当充分条件。",
+      "solution": [
+        "单项趋零只排除了最直接的发散原因；例如几何尾部与调和尾部有不同结局。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-series-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "$a_n\\to0$ 能推出什么？",
+    "choices": [
+      "级数一定收敛",
+      "级数一定发散",
+      "还不能判断级数"
+    ],
+    "correctIndex": 2,
+    "explanation": "这是收敛的必要条件，调和级数说明它不充分。"
+  },
+  "teaching": {
+    "explain": "别只盯着最后添进去的一块。级数问的是整个累计读数最后是否稳定。",
+    "steps": [
+      {
+        "title": "十项",
+        "instruction": "项数取 10。",
+        "observation": "最后一项为 0.1，但部分和已大于 2。",
+        "preset": {
+          "n": 10
+        }
+      },
+      {
+        "title": "四十项",
+        "instruction": "项数取 40。",
+        "observation": "项继续变小，部分和继续增大。",
+        "preset": {
+          "n": 40
+        }
+      },
+      {
+        "title": "八十项",
+        "instruction": "项数取 80。",
+        "observation": "有限窗口无法证明无界；正文的分组给出证明。",
+        "preset": {
+          "n": 80
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-sequences",
+    "c2-monotone"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-sequences",
+  "number": "3.3",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-series",
+    "caption": "同时显示调和项 $a_n$ 与部分和 $S_n$。",
+    "prediction": "单项变小，累计读数也会变小吗？"
+  },
+  "misconceptionTags": [
+    "c2-series-m1",
+    "c2-series-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "区分单项与部分和",
+    "使用单项必要条件判发散",
+    "用分组证明调和级数发散"
+  ]
+}

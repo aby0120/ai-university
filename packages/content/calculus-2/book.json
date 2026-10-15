@@ -1,0 +1,216 @@
+{
+  "id": "calculus-2",
+  "title": "Calculus II",
+  "titleZh": "微积分 II",
+  "subtitle": "从积分技巧到无穷逼近",
+  "version": "0.1.0",
+  "language": "zh-CN",
+  "author": "AI University · AI-generated",
+  "description": "完整的一元微积分进阶：积分技巧与误差、反常积分、数列级数、Taylor 展开、参数曲线与极坐标、一阶微分方程入门。",
+  "audience": "已掌握微积分 I 的极限、求导、定积分与换元的学习者",
+  "scope": "八章完整进阶范围；包括积分几何与物理建模、一阶方程和数值法入门。多元微积分、高阶微分方程、复数级数与完整实分析另属后续教材。",
+  "chapters": [
+    {
+      "id": "c2-techniques",
+      "title": "积分技巧",
+      "subtitle": "把未知积分改写成熟悉的形式",
+      "intro": "先化简，再选择换元、分部、三角恒等式或部分分式。每个方法都用求导或通分复查。",
+      "goals": [
+        "选择积分方法",
+        "处理根式与有理式",
+        "用反求导检查结果"
+      ],
+      "lessonIds": [
+        "c2-parts",
+        "c2-trig-integrals",
+        "c2-trig-substitution",
+        "c2-partial-fractions",
+        "c2-strategy"
+      ]
+    },
+    {
+      "id": "c2-extended-integrals",
+      "title": "积分的近似、延伸与建模",
+      "subtitle": "给无限、几何与物理累积明确条件",
+      "intro": "数值方法回答算到多准，反常积分回答极限是否存在；表面积、质心和压力则从不同的小块建立积分。",
+      "goals": [
+        "给近似配误差界",
+        "分别检查尾部与奇点",
+        "建立面积、质心和力的模型"
+      ],
+      "lessonIds": [
+        "c2-numerical",
+        "c2-improper-infinity",
+        "c2-improper-singular",
+        "c2-surface",
+        "c2-moments",
+        "c2-pressure"
+      ]
+    },
+    {
+      "id": "c2-sequences",
+      "title": "从数列到无穷和",
+      "subtitle": "先看项，再看累积",
+      "intro": "数列的极限是级数的基础。先理解后续每项如何靠近，再追踪部分和是否稳定。",
+      "goals": [
+        "解释数列收敛",
+        "检查单调有界与递推",
+        "计算几何与望远镜和"
+      ],
+      "lessonIds": [
+        "c2-sequences",
+        "c2-monotone",
+        "c2-series",
+        "c2-geometric"
+      ]
+    },
+    {
+      "id": "c2-convergence",
+      "title": "级数的收敛与误差",
+      "subtitle": "每个判别法都有适用条件",
+      "intro": "先做项判别，再按正项、比例或交错结构选择方法；收敛性与总和、误差是不同任务。",
+      "goals": [
+        "选择比较、积分、比值或根值",
+        "检查交错条件",
+        "估计尾和与截断误差"
+      ],
+      "lessonIds": [
+        "c2-integral-test",
+        "c2-comparison",
+        "c2-ratio-root",
+        "c2-alternating"
+      ]
+    },
+    {
+      "id": "c2-power",
+      "title": "从收敛到函数表示",
+      "subtitle": "输入变了，级数也随之改变",
+      "intro": "区分绝对与条件收敛，把输入当成参数，建立幂级数、逐项运算与 Taylor 多项式。",
+      "goals": [
+        "分类绝对与条件收敛",
+        "求半径并检查端点",
+        "构造匹配导数的多项式"
+      ],
+      "lessonIds": [
+        "c2-absolute",
+        "c2-power-series",
+        "c2-power-operations",
+        "c2-taylor"
+      ]
+    },
+    {
+      "id": "c2-taylor-use",
+      "title": "Taylor 展开与计算",
+      "subtitle": "近似有范围，也要有精度",
+      "intro": "用余项控制误差，从基本展开产生新工具，再用于非初等积分、极限和根式近似。",
+      "goals": [
+        "估计 Taylor 余项",
+        "变换常见展开",
+        "用级数求积分与极限"
+      ],
+      "lessonIds": [
+        "c2-taylor-error",
+        "c2-standard-series",
+        "c2-series-applications",
+        "c2-binomial"
+      ]
+    },
+    {
+      "id": "c2-curves",
+      "title": "参数曲线与极坐标",
+      "subtitle": "换一种坐标，看清曲线怎样走",
+      "intro": "位置、方向与重复次数都由参数决定。建立切线、弧长与扇形面积时，先确认描绘范围。",
+      "goals": [
+        "读取参数运动",
+        "计算切线与弧长",
+        "处理极坐标与扫过的面积"
+      ],
+      "lessonIds": [
+        "c2-parametric",
+        "c2-parametric-calculus",
+        "c2-polar",
+        "c2-polar-calculus"
+      ]
+    },
+    {
+      "id": "c2-ode",
+      "title": "一阶微分方程入门",
+      "subtitle": "从变化规律到整条轨迹",
+      "intro": "用初值选择解，检查平衡与有效区间。分离变量与积分因子给解析解，Euler 法给可比较的离散近似。",
+      "goals": [
+        "验证初值解与区间",
+        "使用分离变量和积分因子",
+        "比较模型平衡与数值误差"
+      ],
+      "lessonIds": [
+        "c2-differential-models",
+        "c2-separable",
+        "c2-linear-ode",
+        "c2-euler-logistic"
+      ]
+    }
+  ],
+  "lessonIds": [
+    "c2-parts",
+    "c2-trig-integrals",
+    "c2-trig-substitution",
+    "c2-partial-fractions",
+    "c2-strategy",
+    "c2-numerical",
+    "c2-improper-infinity",
+    "c2-improper-singular",
+    "c2-surface",
+    "c2-moments",
+    "c2-pressure",
+    "c2-sequences",
+    "c2-monotone",
+    "c2-series",
+    "c2-geometric",
+    "c2-integral-test",
+    "c2-comparison",
+    "c2-ratio-root",
+    "c2-alternating",
+    "c2-absolute",
+    "c2-power-series",
+    "c2-power-operations",
+    "c2-taylor",
+    "c2-taylor-error",
+    "c2-standard-series",
+    "c2-series-applications",
+    "c2-binomial",
+    "c2-parametric",
+    "c2-parametric-calculus",
+    "c2-polar",
+    "c2-polar-calculus",
+    "c2-differential-models",
+    "c2-separable",
+    "c2-linear-ode",
+    "c2-euler-logistic"
+  ],
+  "sources": [
+    {
+      "id": "openstax-calculus-2",
+      "title": "OpenStax · Calculus Volume 2",
+      "url": "https://openstax.org/books/calculus-volume-2/pages/preface",
+      "usage": "仅用于公开课程主题与数学条件核对；本卷解释、例题、练习、解答与图示均独立编写，未复制教材段落、题目或图像。"
+    },
+    {
+      "id": "active-calculus",
+      "title": "Active Calculus · Second Edition",
+      "url": "https://activecalculus.org/acs2e/",
+      "usage": "课程组织与 Taylor 逼近教学思路参考；不复制正文或活动，不声称本书教学效果已被该资料验证。"
+    }
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "humanReviewed": false,
+    "checks": "结构、排版、先修关系与选定解析/数值复算；不等于逐式形式化证明。"
+  },
+  "bridge": [
+    "fundamental-theorem",
+    "substitution",
+    "derivative-rules",
+    "trigonometry",
+    "exponential-log"
+  ]
+}

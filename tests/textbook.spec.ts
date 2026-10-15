@@ -160,3 +160,36 @@ test("typing a precise parameter during playback pauses and preserves the intend
   await expect(page.getByRole("button",{name:"让割线靠近切线",exact:true})).toBeVisible();
   await expect(page.locator(".stats")).toContainText("2.02");
 });
+
+test('second volume has complete reading, visuals, exercises and independent downloads',async({page})=>{
+ const volume=JSON.parse(fs.readFileSync('packages/content/calculus-2/book.json','utf8'));
+ for(const id of volume.lessonIds){
+  await page.goto('/#/lesson/'+id);
+  await expect(page.locator('.sidebar-top')).toContainText('Calculus II');
+  await expect(page.locator('.worked-example')).toHaveCount(2);
+  await expect(page.locator('.katex-error')).toHaveCount(0);
+  await page.getByRole('link',{name:'交互演示',exact:true}).click();
+  await expect(page.locator('.calculus2-plot')).toBeVisible();
+  for(const slider of await page.getByRole('slider').all()){await slider.press('Home');await slider.press('End')}
+  await expect(page.locator('svg [d*="NaN"],svg [d*="Infinity"]')).toHaveCount(0);
+  await page.getByRole('link',{name:'练习与解答 4',exact:true}).click();
+  await expect(page.locator('.exercise')).toHaveCount(4);
+ }
+ await page.goto('/#/downloads?book=calculus-2');
+ await expect(page.getByRole('link',{name:'下载 Markdown',exact:true})).toHaveAttribute('href','Calculus-II.md');
+ await page.goto('/calculus-2.html');
+ await expect(page.locator('.lesson')).toHaveCount(35);
+ await expect(page.locator('.problem')).toHaveCount(178);
+ await expect(page.locator('.katex-error')).toHaveCount(0);
+});
+test('switching shared tools keeps each book chapter filters and review targets separate',async({page})=>{
+ await page.goto('/#/lab?book=calculus-2');
+ await page.getByLabel('筛选章节',{exact:true}).selectOption('c2-ode');
+ await expect(page.locator('.lab-card')).toHaveCount(4);
+ await page.getByLabel('切换教材',{exact:true}).selectOption('calculus-1');
+ await expect(page.getByLabel('筛选章节',{exact:true})).toContainText('极限与连续');
+ await expect(page.getByLabel('筛选章节',{exact:true})).not.toContainText('一阶微分方程入门');
+ await page.goto('/#/lesson/c2-euler-logistic');
+ await page.getByRole('link',{name:'完成阅读后 整本书综合测试',exact:true}).click();
+ await expect(page).toHaveURL(/book=calculus-2/);
+});

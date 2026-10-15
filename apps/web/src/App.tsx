@@ -34,6 +34,8 @@ import {
   ReferencePage,
   SearchPage,
 } from "./pages/Resources";
+import {collectionForRoute} from "../../../packages/content";
+import {Curriculum} from "./lib/curriculum";
 export default function App() {
   const [route, setRoute] = useState(() => parseRoute(location.hash));
   const [progress, setProgress] = useState<Progress>(initialProgress);
@@ -45,6 +47,8 @@ export default function App() {
   const searchButton = useRef<HTMLButtonElement>(null);
   const menuButton = useRef<HTMLButtonElement>(null);
   const firstLoad = useRef(true);
+  const curriculum=collectionForRoute(route.path,route.params.get("book"));
+  const BOOK=curriculum.BOOK;
   const current = findLesson(route.path);
   const reader = !!current || route.path.startsWith("chapter/");
   function save(key: string, data: unknown) {
@@ -124,7 +128,7 @@ export default function App() {
     storageOk,
   };
   return (
-    <State.Provider value={state}>
+    <Curriculum.Provider value={curriculum}><State.Provider value={state}>
       <a
         className="skip-link"
         href="#main"
@@ -232,7 +236,7 @@ export default function App() {
           >
             <List size={18} /> 教材目录
           </button>
-          <span>Calculus I</span>
+          <span>{curriculum.book.title}</span>
           <Link to={BOOK}>
             教材主页
             <ArrowUpRight size={14} />
@@ -319,6 +323,6 @@ export default function App() {
           searchButton.current?.focus();
         }}
       />
-    </State.Provider>
+    </State.Provider></Curriculum.Provider>
   );
 }
