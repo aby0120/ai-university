@@ -1,0 +1,193 @@
+{
+  "id": "c3-multivariable-limits",
+  "chapterId": "c3-differentiation",
+  "number": "3.2",
+  "title": "多元极限与连续",
+  "subtitle": "所有靠近路径必须指向同一个值",
+  "concept": "多元极限约束从定义域内任意方向靠近的函数值；两条路径冲突就能否定，几条一致不能证明。",
+  "intuition": "从不同道路走向同一个路口。若某条路的高度趋向不同值，就没有统一的终点高度。",
+  "objectives": [
+    "用路径冲突否定极限",
+    "用距离估计证明极限"
+  ],
+  "body": [
+    {
+      "title": "定义里什么变小？",
+      "text": "输入点到目标点的欧氏距离变小，函数值到目标值也要受控；选择的输入半径必须对所有合法方向有效。"
+    },
+    {
+      "title": "路径法能证明什么？",
+      "text": "找到两条合法路径给不同极限，可以否定极限；只算有限条一致路径不够，甚至所有直线路径一致也不够。"
+    },
+    {
+      "title": "怎样证明存在？",
+      "text": "常用夹逼或距离估计，把函数误差统一压在只依赖距离且趋零的量下。连续则要求该极限等于目标点函数值。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "所有靠近路径必须指向同一个值",
+    "latex": "\\forall\\varepsilon>0\\ \\exists\\delta>0:\\quad0<\\|\\mathbf x-\\mathbf a\\|<\\delta\\ \\Longrightarrow\\ |f(\\mathbf x)-L|<\\varepsilon",
+    "conditions": [
+      "输入从函数定义域内靠近，目标点是其聚点；连续还要求目标点在定义域且 $L=f(\\mathbf a)$。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "直线斜率改变时检查路径值。",
+      "latex": "f(x,y)=\\frac{xy}{x^2+y^2},\\quad f(t,mt)=\\frac m{1+m^2}"
+    },
+    {
+      "text": "两条路径值不一致即可反证。",
+      "latex": "m=0\\Rightarrow0,\\quad m=1\\Rightarrow\\frac12"
+    },
+    {
+      "text": "统一估计则可证明另一例的极限。",
+      "latex": "\\left|\\frac{x^2y}{x^2+y^2}\\right|\\le|y|\\le\\sqrt{x^2+y^2}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "路径冲突",
+      "problem": "$\\frac{xy}{x^2+y^2}$ 在原点有极限吗？",
+      "steps": [
+        "沿横轴函数恒为零。",
+        "沿 $y=x$ 函数恒为 $1/2$，两者冲突。"
+      ],
+      "answer": "没有极限。"
+    },
+    {
+      "title": "统一夹逼",
+      "problem": "求 $\\frac{x^2y}{x^2+y^2}$ 在原点的极限。",
+      "steps": [
+        "绝对值不超过 $|y|$。",
+        "又 $|y|\\le\\sqrt{x^2+y^2}\\to0$，适用于所有路径。"
+      ],
+      "answer": "0。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-multivariable-limits-m1",
+      "claim": "横轴和纵轴极限相同就证明存在。",
+      "correction": "这只检查了两条路径，必须统一控制所有方向。"
+    },
+    {
+      "id": "c3-multivariable-limits-m2",
+      "claim": "没有定义函数值就不能讨论极限。",
+      "correction": "极限只看目标点附近；目标点本身可以不在定义域。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-multivariable-limits-q1",
+      "problem": "$\\frac{x^2-y^2}{x^2+y^2}$ 在原点有极限吗？",
+      "hint": "比较两条坐标轴。",
+      "solution": [
+        "横轴给 1，纵轴给 $-1$，所以矛盾。"
+      ],
+      "answer": "不存在。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-multivariable-limits-q2",
+      "problem": "证明 $x^2y\\to0$。",
+      "hint": "用距离同时控制两个坐标。",
+      "solution": [
+        "设 $r=\\sqrt{x^2+y^2}$，则 $|x^2y|\\le r^3$。",
+        "令 $r\\to0$，右端趋零。"
+      ],
+      "answer": "极限为 0。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-multivariable-limits-q3",
+      "problem": "所有直线路径都趋零能保证极限为零吗？",
+      "hint": "考虑弯曲路径。",
+      "solution": [
+        "$\\frac{x^2y}{x^4+y^2}$ 沿每条过原点直线趋零。",
+        "沿 $y=x^2$ 却恒为 $1/2$。"
+      ],
+      "answer": "不能。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-multivariable-limits-q4",
+      "problem": "在原点补一个值能让 $\\frac{xy}{x^2+y^2}$ 连续吗？",
+      "hint": "补值会改变附近路径吗？",
+      "solution": [
+        "路径冲突与原点值无关。",
+        "没有统一极限，任何补值都无效。"
+      ],
+      "answer": "不能。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "两条路径极限不同，结论是什么？",
+    "choices": [
+      "极限不存在",
+      "再求平均值",
+      "仅说明不可导"
+    ],
+    "correctIndex": 0,
+    "explanation": "同一个极限必须适用于每条合法路径。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-multivariable-limits",
+    "caption": "$f(x,y)=\\frac{xy}{x^2+y^2}$ 沿方向角 $\\theta$ 接近原点。有限路径用于展示反例，不作存在性证明。",
+    "prediction": "距离趋近零后，不同方向的函数值会合到一起吗？"
+  },
+  "teaching": {
+    "explain": "两条路不同就能否定极限；要证明存在，误差估计必须对所有方向同时有效。",
+    "steps": [
+      {
+        "title": "沿横轴",
+        "instruction": "将方向角 $\\theta$设为 $0$，比较图形和读数。",
+        "preset": {
+          "a": 0
+        },
+        "observation": "路径高度恒为零。"
+      },
+      {
+        "title": "沿对角线",
+        "instruction": "将方向角 $\\theta$设为 $\\frac\\pi4$，比较图形和读数。",
+        "preset": {
+          "a": 0.7853981633974483
+        },
+        "observation": "路径高度为一半，和横轴不一致。"
+      },
+      {
+        "title": "从更近处观察",
+        "instruction": "将到原点距离 $h$设为 $0.0001$，比较图形和读数。",
+        "preset": {
+          "h": 0.0001
+        },
+        "observation": "距离很小仍保留方向差异，缩小显示距离不会消除冲突。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-surfaces",
+    "epsilon-delta"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "c3-multivariable-limits-m1",
+    "c3-multivariable-limits-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

@@ -1,0 +1,239 @@
+{
+  "id": "calculus-3",
+  "title": "Calculus III",
+  "titleZh": "微积分 III",
+  "subtitle": "从多元变化到空间中的守恒",
+  "version": "0.1.0",
+  "language": "zh-CN",
+  "author": "AI University · AI-generated",
+  "description": "完整的多元与向量微积分：空间几何、向量曲线、偏导与优化、重积分、曲线和曲面积分、Green、Stokes、散度定理及守恒应用。",
+  "audience": "已掌握一元求导、积分、换元和参数曲线的学习者",
+  "scope": "九章完整多元微积分范围；包含空间运动、Jacobian、通量与积分定理。完整线性代数、扭率理论、微分形式、二阶方程和偏微分方程求解另属后续教材。",
+  "chapters": [
+    {
+      "id": "c3-space",
+      "title": "向量与空间",
+      "subtitle": "用坐标表达方向、投影与曲面",
+      "intro": "先把位置、方向和形状分开。点积测对齐，叉积给法向量；直线、平面与坐标系为后面的微积分准备语言。",
+      "goals": [
+        "进行向量运算",
+        "建立直线与平面方程",
+        "读懂空间曲面与坐标"
+      ],
+      "lessonIds": [
+        "c3-vectors",
+        "c3-dot",
+        "c3-cross",
+        "c3-lines-planes",
+        "c3-quadrics",
+        "c3-coordinates"
+      ]
+    },
+    {
+      "id": "c3-curves",
+      "title": "空间曲线与运动",
+      "subtitle": "位置、速度、弯曲程度",
+      "intro": "对三个分量分别做微积分，再把结果读回几何：速度切着走，加速度既能改变快慢，也能转弯。",
+      "goals": [
+        "求空间速度与加速度",
+        "计算弧长",
+        "分解切向与法向变化"
+      ],
+      "lessonIds": [
+        "c3-vector-curves",
+        "c3-motion",
+        "c3-curvature"
+      ]
+    },
+    {
+      "id": "c3-differentiation",
+      "title": "多元变化与微分",
+      "subtitle": "从方向切片走向统一的线性近似",
+      "intro": "偏导数只查看坐标方向；可微性要求一个线性模型同时解释所有足够小的位移。梯度与链式法则把它用起来。",
+      "goals": [
+        "检查多元极限",
+        "区分偏导存在与可微",
+        "用梯度预测方向变化"
+      ],
+      "lessonIds": [
+        "c3-surfaces",
+        "c3-multivariable-limits",
+        "c3-partials",
+        "c3-differentiability",
+        "c3-chain",
+        "c3-gradient"
+      ]
+    },
+    {
+      "id": "c3-optimization",
+      "title": "局部近似与优化",
+      "subtitle": "先找候选，再检查方向与边界",
+      "intro": "二阶项告诉我们局部怎样弯曲；求全局最值还必须检查边界。约束将允许的方向限制在曲线或曲面上。",
+      "goals": [
+        "用二阶模型分类",
+        "检查边界与退化点",
+        "正确使用 Lagrange 乘子"
+      ],
+      "lessonIds": [
+        "c3-taylor",
+        "c3-critical-points",
+        "c3-closed-domains",
+        "c3-lagrange"
+      ]
+    },
+    {
+      "id": "c3-double",
+      "title": "二重积分",
+      "subtitle": "把整个平面的贡献加起来",
+      "intro": "每小块面积乘局部高度或密度，再累积。画好区域，积分次序与坐标选择就有了依据。",
+      "goals": [
+        "从小块建立二重积分",
+        "交换积分次序",
+        "用极坐标与密度建模"
+      ],
+      "lessonIds": [
+        "c3-double-integrals",
+        "c3-regions-order",
+        "c3-polar-integrals",
+        "c3-double-applications"
+      ]
+    },
+    {
+      "id": "c3-triple",
+      "title": "三重积分与换元",
+      "subtitle": "把空间切成小体积",
+      "intro": "先投影确定底面，再写上下表面。柱坐标、球坐标和一般换元都要把实际体积的缩放算进去。",
+      "goals": [
+        "建立空间积分限",
+        "选择柱坐标与球坐标",
+        "理解 Jacobian 的绝对值"
+      ],
+      "lessonIds": [
+        "c3-triple-integrals",
+        "c3-cylindrical",
+        "c3-spherical",
+        "c3-change-variables"
+      ]
+    },
+    {
+      "id": "c3-line-integrals",
+      "title": "向量场与曲线积分",
+      "subtitle": "沿路径累积的两种方式",
+      "intro": "长度加权累积标量，位移点积累积功。势函数与 Green 定理能把路径计算改写成端点或区域计算。",
+      "goals": [
+        "区分标量积分与功",
+        "寻找势函数并检查定义域",
+        "正确使用 Green 定理"
+      ],
+      "lessonIds": [
+        "c3-fields",
+        "c3-line-scalar",
+        "c3-line-work",
+        "c3-potential",
+        "c3-green"
+      ]
+    },
+    {
+      "id": "c3-surface-integrals",
+      "title": "曲面与通量",
+      "subtitle": "面积要缩放，通量还要方向",
+      "intro": "两个参数铺开一张曲面。两条切向量的叉积给面积倍率和法向，让曲面积分回到熟悉的二重积分。",
+      "goals": [
+        "建立规则曲面参数",
+        "计算曲面面积和标量积分",
+        "计算有向通量与 div/curl"
+      ],
+      "lessonIds": [
+        "c3-parametric-surfaces",
+        "c3-surface-area",
+        "c3-flux",
+        "c3-div-curl"
+      ]
+    },
+    {
+      "id": "c3-theorems",
+      "title": "从局部到边界",
+      "subtitle": "Green、Stokes 与散度定理",
+      "intro": "内部小块的公共边或公共面会抵消，局部变化因此与整体边界连接。先检查光滑性、闭合性和方向，再选择最省力的计算。",
+      "goals": [
+        "匹配边界与法向",
+        "使用 Stokes 和散度定理",
+        "建立守恒与局部变化的联系"
+      ],
+      "lessonIds": [
+        "c3-stokes",
+        "c3-divergence",
+        "c3-choosing-theorem",
+        "c3-conservation"
+      ]
+    }
+  ],
+  "lessonIds": [
+    "c3-vectors",
+    "c3-dot",
+    "c3-cross",
+    "c3-lines-planes",
+    "c3-quadrics",
+    "c3-coordinates",
+    "c3-vector-curves",
+    "c3-motion",
+    "c3-curvature",
+    "c3-surfaces",
+    "c3-multivariable-limits",
+    "c3-partials",
+    "c3-differentiability",
+    "c3-chain",
+    "c3-gradient",
+    "c3-taylor",
+    "c3-critical-points",
+    "c3-closed-domains",
+    "c3-lagrange",
+    "c3-double-integrals",
+    "c3-regions-order",
+    "c3-polar-integrals",
+    "c3-double-applications",
+    "c3-triple-integrals",
+    "c3-cylindrical",
+    "c3-spherical",
+    "c3-change-variables",
+    "c3-fields",
+    "c3-line-scalar",
+    "c3-line-work",
+    "c3-potential",
+    "c3-green",
+    "c3-parametric-surfaces",
+    "c3-surface-area",
+    "c3-flux",
+    "c3-div-curl",
+    "c3-stokes",
+    "c3-divergence",
+    "c3-choosing-theorem",
+    "c3-conservation"
+  ],
+  "sources": [
+    {
+      "id": "mit-1802",
+      "title": "MIT OCW · 18.02SC Multivariable Calculus",
+      "url": "https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/pages/syllabus/",
+      "usage": "公开课程范围和概念顺序核对；解释、例题、练习、解答和可视化均独立编写，不复制讲义或题库。"
+    },
+    {
+      "id": "openstax-calculus-3",
+      "title": "OpenStax · Calculus Volume 3",
+      "url": "https://openstax.org/books/calculus-volume-3/pages/preface",
+      "usage": "数学定义与定理假设核对，特别是换元、Stokes 和散度定理；不复制教材段落、例题或图片，不把来源授权延伸为本项目素材许可。"
+    }
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "humanReviewed": false,
+    "checks": "结构、公式、先修图、选定独立解析与数值复算及真实页面检查；不是逐式形式化证明。"
+  },
+  "bridge": [
+    "derivative-rules",
+    "chain-rule",
+    "fundamental-theorem",
+    "substitution",
+    "c2-parametric-calculus"
+  ]
+}

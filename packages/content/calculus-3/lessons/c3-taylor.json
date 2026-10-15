@@ -1,0 +1,193 @@
+{
+  "id": "c3-taylor",
+  "chapterId": "c3-optimization",
+  "number": "4.1",
+  "title": "二阶 Taylor 模型",
+  "subtitle": "用二阶项补上切平面漏掉的弯曲",
+  "concept": "二阶 Taylor 多项式在切平面之上再记录各方向的曲率及相互作用。",
+  "intuition": "切平面只记斜率；二次项补上碗、鞍面和斜向耦合。混合项记录两个输入一起变化时多出的贡献。",
+  "objectives": [
+    "构造二阶多元模型",
+    "检查混合项与余项条件"
+  ],
+  "body": [
+    {
+      "title": "Hessian 是什么？",
+      "text": "把所有二阶偏导排成矩阵，称 Hessian。二阶偏导连续时矩阵对称；乘位移向量两次得到一个标量二次式。"
+    },
+    {
+      "title": "混合项为何有两份？",
+      "text": "横后纵与纵后横各出现一次，外面的二分之一抵消了重复。不能又漏掉其中一次。"
+    },
+    {
+      "title": "余项如何控制？",
+      "text": "二阶连续可导给小于距离平方的余项；若三阶导数在连线附近有界，可沿连线套一元 Taylor 定理得到三次误差界。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "用二阶项补上切平面漏掉的弯曲",
+    "latex": "T_2=f+f_xh+f_yk+\\frac12(f_{xx}h^2+2f_{xy}hk+f_{yy}k^2),\\quad R=o(h^2+k^2)",
+    "conditions": [
+      "各系数在展开中心取值；函数在中心邻域二阶连续可导；显式三次误差界另需三阶条件。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "把多元函数限制到位移连线上。",
+      "latex": "g(t)=f(a+th,b+tk)"
+    },
+    {
+      "text": "两次链式求导产生二次式。",
+      "latex": "g^{\\prime\\prime}(0)=f_{xx}h^2+2f_{xy}hk+f_{yy}k^2"
+    },
+    {
+      "text": "对连线参数应用一元 Taylor 定理。",
+      "latex": "g(1)=g(0)+g\\prime(0)+\\frac12g^{\\prime\\prime}(0)+R"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "指数的二阶模型",
+      "problem": "$f=e^{x+y}$ 在原点的二阶多项式？",
+      "steps": [
+        "常数为 1，一阶为 $x+y$。",
+        "二阶为 $(x+y)^2/2=x^2/2+xy+y^2/2$。"
+      ],
+      "answer": "$1+x+y+\\frac{x^2}2+xy+\\frac{y^2}2$。"
+    },
+    {
+      "title": "明确误差",
+      "problem": "用该模型近似 $e^{0.1+0.1}$，给误差界。",
+      "steps": [
+        "多项式给 $1+0.2+0.02=1.22$。",
+        "沿连线指数的三阶余项不超过 $e^{0.2}(0.2)^3/6<0.00163$。"
+      ],
+      "answer": "近似 1.22，误差小于 0.00163。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-taylor-m1",
+      "claim": "二阶项只含两个纯平方。",
+      "correction": "混合项常不可省，它能改变斜方向的弯曲。"
+    },
+    {
+      "id": "c3-taylor-m2",
+      "claim": "Taylor 多项式等于原函数。",
+      "correction": "通常只在局部近似，必须区分等式中的余项。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-taylor-q1",
+      "problem": "$x^2+3xy+2y^2$ 在原点的 Hessian？",
+      "hint": "对两个变量再求一次导。",
+      "solution": [
+        "纯二阶偏导为 2 和 4，混合偏导为 3。"
+      ],
+      "answer": "$\\begin{pmatrix}2&3\\\\3&4\\end{pmatrix}$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-taylor-q2",
+      "problem": "$\\sin(x+y)$ 在原点的二阶多项式？",
+      "hint": "正弦在零点的二阶导为零。",
+      "solution": [
+        "常数零，一阶 $x+y$，所有二阶项为零。"
+      ],
+      "answer": "$x+y$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-taylor-q3",
+      "problem": "$e^{x+y}$ 的二阶模型中混合项系数是多少？",
+      "hint": "展开平方或看双重贡献。",
+      "solution": [
+        "$\\frac12(2xy)=xy$，系数为 1。"
+      ],
+      "answer": "1",
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "numericAnswer": 1
+    },
+    {
+      "id": "c3-taylor-q4",
+      "problem": "仅知道二阶偏导在一个点存在，足以直接使用本节余项定理吗？",
+      "hint": "检查邻域条件。",
+      "solution": [
+        "定理使用邻域内二阶连续可导。",
+        "一个点的数值不足以直接满足这个充分条件。"
+      ],
+      "answer": "不足以直接套用。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "二阶模型中的混合项是怎样产生的？",
+    "choices": [
+      "两个变量联动的贡献",
+      "任意添加的修正",
+      "总是零"
+    ],
+    "correctIndex": 0,
+    "explanation": "两次链式法则各产生一次，合起来形成混合项。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-taylor",
+    "caption": "$f=e^{x+y}$ 在原点的二阶模型，沿 $(h,h)$ 比较真实高度与近似。",
+    "prediction": "二阶模型在中心之外一定精确吗？"
+  },
+  "teaching": {
+    "explain": "先用直线连接中心和目标点，再对这条线上得到的一元函数做 Taylor 展开。",
+    "steps": [
+      {
+        "title": "较大位移",
+        "instruction": "将相同坐标位移 $h$设为 $0.5$，比较图形和读数。",
+        "preset": {
+          "h": 0.5
+        },
+        "observation": "二阶近似仍有可见余项。"
+      },
+      {
+        "title": "小位移",
+        "instruction": "将相同坐标位移 $h$设为 $0.1$，比较图形和读数。",
+        "preset": {
+          "h": 0.1
+        },
+        "observation": "二阶模型比切平面更接近指数曲面。"
+      },
+      {
+        "title": "更小位移",
+        "instruction": "将相同坐标位移 $h$设为 $0.01$，比较图形和读数。",
+        "preset": {
+          "h": 0.01
+        },
+        "observation": "三阶误差界继续减小，等式仍需保留余项。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-chain",
+    "c3-differentiability",
+    "c2-taylor-error"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "c3-taylor-m1",
+    "c3-taylor-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

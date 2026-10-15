@@ -1,0 +1,192 @@
+{
+  "id": "c3-motion",
+  "chapterId": "c3-curves",
+  "number": "2.2",
+  "title": "速度、加速度与路程",
+  "subtitle": "速度有方向，速率没有",
+  "concept": "速度描述位移怎样变；速率是速度的长度；路程累积速率，位移累积速度。",
+  "intuition": "绕圈一周可以回到起点，但确实走了路。向量积分会抵消，长度积分不会。",
+  "objectives": [
+    "计算位移与路程",
+    "从加速度和初值恢复轨迹"
+  ],
+  "body": [
+    {
+      "title": "加速度一定让人更快吗？",
+      "text": "只有沿速度的分量直接改变速率。垂直速度的加速度改变方向，匀速圆周运动仍有加速度。"
+    },
+    {
+      "title": "怎样从加速度求轨迹？",
+      "text": "先积分得到速度并使用初速度，再积分得到位置并使用初始位置。两层初值不能省略。"
+    },
+    {
+      "title": "弧长为什么用速率？",
+      "text": "小段长度约等于速度长度乘小时间。分段光滑曲线的弧长是这些长度的累积；重复走过会重复计数。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "速度有方向，速率没有",
+    "latex": "\\mathbf v=\\mathbf r\\prime,\\quad\\mathbf a=\\mathbf r^{\\prime\\prime},\\quad L=\\int_\\alpha^\\beta\\|\\mathbf r\\prime(t)\\|dt,\\quad\\Delta\\mathbf r=\\int_\\alpha^\\beta\\mathbf v(t)dt",
+    "conditions": [
+      "轨迹分段连续可导时使用弧长积分；讨论加速度要求二阶导数存在；比较距离与路程时使用同一时间段。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "短时间内用速度近似位移。",
+      "latex": "\\Delta\\mathbf r\\approx\\mathbf v\\Delta t"
+    },
+    {
+      "text": "取长度后累积得到路程。",
+      "latex": "L=\\int\\|\\mathbf v\\|dt"
+    },
+    {
+      "text": "速率平方的导数给出加速度的作用。",
+      "latex": "\\frac d{dt}\\|\\mathbf v\\|^2=2\\mathbf v\\cdot\\mathbf a"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "螺旋路程",
+      "problem": "$\\mathbf r(t)=(2\\cos t,2\\sin t,3t)$ 从零到一周的路程？",
+      "steps": [
+        "速度长度 $\\sqrt{4+9}=\\sqrt{13}$。",
+        "时间区间长度是 $2\\pi$，积分常数速率。"
+      ],
+      "answer": "$2\\pi\\sqrt{13}$。"
+    },
+    {
+      "title": "抛体位置",
+      "problem": "$\\mathbf a=(0,0,-2),\\mathbf v(0)=(1,2,3),\\mathbf r(0)=(0,0,1)$。",
+      "steps": [
+        "积分加速度得 $\\mathbf v=(1,2,3-2t)$。",
+        "再积分并用初始位置，得到 $(t,2t,1+3t-t^2)$。"
+      ],
+      "answer": "$\\mathbf r(t)=(t,2t,1+3t-t^2)$；仅在模型有效时间内解释。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-motion-m1",
+      "claim": "加速度非零就一定加快。",
+      "correction": "加速度也能只改变速度方向。"
+    },
+    {
+      "id": "c3-motion-m2",
+      "claim": "路程等于位移向量的长度。",
+      "correction": "通常路程更大，方向变化会让位移发生抵消。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-motion-q1",
+      "problem": "半径 3 的圆以每单位时间转一弧度运动，速率是多少？",
+      "hint": "求参数导数的长度。",
+      "solution": [
+        "$\\mathbf r=(3\\cos t,3\\sin t,0)$ 的导数长度为 3。"
+      ],
+      "answer": "3",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 3
+    },
+    {
+      "id": "c3-motion-q2",
+      "problem": "单位圆一周的位移与路程？",
+      "hint": "分别积分向量和长度。",
+      "solution": [
+        "起终点相同，所以位移为零。",
+        "速率为 1，路程为 $2\\pi$。"
+      ],
+      "answer": "位移 $\\mathbf0$，路程 $2\\pi$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-motion-q3",
+      "problem": "$\\mathbf v\\cdot\\mathbf a=0$ 且速度非零，瞬时速率导数是多少？",
+      "hint": "对速率平方求导。",
+      "solution": [
+        "$2v v\\prime=2\\mathbf v\\cdot\\mathbf a=0$，因 $v>0$ 得 $v\\prime=0$。"
+      ],
+      "answer": "0",
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "numericAnswer": 0
+    },
+    {
+      "id": "c3-motion-q4",
+      "problem": "速度恒为零和速率恒定是同一件事吗？",
+      "hint": "找匀速绕圈反例。",
+      "solution": [
+        "匀速圆周运动速率为正常数，但速度方向不断变化。"
+      ],
+      "answer": "不是。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "匀速绕圆时加速度怎样？",
+    "choices": [
+      "始终为零",
+      "垂直速度并朝向圆心",
+      "与速度同向"
+    ],
+    "correctIndex": 1,
+    "explanation": "切向分量为零，法向分量使轨迹转弯。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-motion",
+    "caption": "$\\mathbf r(t)=(\\cos t,\\sin t,0)$；绿色为速度，蓝色为加速度。",
+    "prediction": "速率不变，为什么仍有加速度？"
+  },
+  "teaching": {
+    "explain": "积分速度得到位移，积分速度长度得到路程；先取长度就不会抵消。",
+    "steps": [
+      {
+        "title": "开始运动",
+        "instruction": "将路径参数 $t$设为 $0$，比较图形和读数。",
+        "preset": {
+          "x": 0
+        },
+        "observation": "速度沿圆的切向，加速度朝向圆心。"
+      },
+      {
+        "title": "四分之一周",
+        "instruction": "将路径参数 $t$设为 $\\frac\\pi2$，比较图形和读数。",
+        "preset": {
+          "x": 1.5707963267948966
+        },
+        "observation": "速度转向，长度保持不变。"
+      },
+      {
+        "title": "完整一周",
+        "instruction": "将路径参数 $t$设为 $2\\pi$，比较图形和读数。",
+        "preset": {
+          "x": 6.283185307179586
+        },
+        "observation": "位移为零，累计路程仍为一周的周长。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-vector-curves"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-motion-m1",
+    "c3-motion-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

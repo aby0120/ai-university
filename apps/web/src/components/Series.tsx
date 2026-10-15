@@ -166,7 +166,7 @@ export function PublishedBook({ volume }: { volume: PublishedVolume }) {
             打开教材
             <ArrowRight size={17} />
           </Link>
-          <Link to="downloads" className="text-btn">
+          <Link to="downloads" params={{book:volume.id}} className="text-btn">
             下载与打印
             <ArrowUpRight size={16} />
           </Link>

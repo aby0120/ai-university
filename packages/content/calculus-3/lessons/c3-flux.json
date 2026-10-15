@@ -1,0 +1,193 @@
+{
+  "id": "c3-flux",
+  "chapterId": "c3-surface-integrals",
+  "number": "8.3",
+  "title": "通量与有向面积元",
+  "subtitle": "只累积穿过表面的那一部分",
+  "concept": "通量把场在选定法向上的分量按面积累积；沿表面流动的部分不穿过它。",
+  "intuition": "把曲面看作一张网。迎面穿网贡献最多，平着擦过没有贡献；把网的正面反过来，符号就反过来。",
+  "objectives": [
+    "计算有向曲面通量",
+    "检查法向和面积元的一致性"
+  ],
+  "body": [
+    {
+      "title": "单位法向还是叉积？",
+      "text": "用单位法向时还乘真实面积元；参数公式可直接用未归一化叉积，里面已经包含面积倍率，不能再乘一次。"
+    },
+    {
+      "title": "闭曲面向外怎样选？",
+      "text": "法向从包围的体积指向外部。内腔边界的向外方向指向空腔，不能简单按离原点远近判断。"
+    },
+    {
+      "title": "零通量代表没有流动吗？",
+      "text": "可能场与面相切，也可能正负穿过相互抵消。净通量不等于总穿过量。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "只累积穿过表面的那一部分",
+    "latex": "\\iint_S\\mathbf F\\cdot\\mathbf n\\,dS=\\iint_U\\mathbf F(\\mathbf r)\\cdot(\\mathbf r_u\\times\\mathbf r_v)\\,dudv",
+    "conditions": [
+      "曲面可定向且分片规则，场沿曲面连续；参数叉积须与所选法向一致，否则整体加负号。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "只取穿面的法向分量。",
+      "latex": "F_n=\\mathbf F\\cdot\\mathbf n"
+    },
+    {
+      "text": "乘每片真实面积。",
+      "latex": "d\\Phi=F_n\\,dS"
+    },
+    {
+      "text": "将单位法向与面积倍率合并。",
+      "latex": "\\mathbf n\\,dS=(\\mathbf r_u\\times\\mathbf r_v)dudv"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "斜面通量",
+      "problem": "$\\mathbf F=(0,0,2)$ 穿过 $z=x$ 在单位正方形上方的向上通量？",
+      "steps": [
+        "有向面积元为 $(-1,0,1)dxdy$。",
+        "点积恒为 2，积分得 2；倾斜倍率已包含。"
+      ],
+      "answer": "2。"
+    },
+    {
+      "title": "球面径向场",
+      "problem": "$\\mathbf F=(x,y,z)$ 穿过半径 2 球面的向外通量？",
+      "steps": [
+        "球面单位法向是位置除以 2，法向场分量恒为 2。",
+        "球面面积为 $16\\pi$，相乘得 $32\\pi$。"
+      ],
+      "answer": "$32\\pi$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-flux-m1",
+      "claim": "用参数叉积后还要乘面积倍率。",
+      "correction": "叉积本身已带倍率，再乘会重复。"
+    },
+    {
+      "id": "c3-flux-m2",
+      "claim": "净通量零就意味着场处处为零。",
+      "correction": "切向流和进出抵消都可能给零净值。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-flux-q1",
+      "problem": "常场 $(0,0,3)$ 穿过面积 2 的水平向上面，通量？",
+      "hint": "法向场分量乘面积。",
+      "solution": [
+        "$3\\cdot2=6$。"
+      ],
+      "answer": "6",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 6
+    },
+    {
+      "id": "c3-flux-q2",
+      "problem": "将上题面反向，通量？",
+      "hint": "法向变号。",
+      "solution": [
+        "积分从 6 变成 $-6$。"
+      ],
+      "answer": "$-6$",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": -6
+    },
+    {
+      "id": "c3-flux-q3",
+      "problem": "水平场穿过水平面，通量是多少？",
+      "hint": "点乘竖直法向。",
+      "solution": [
+        "点积处处为零。"
+      ],
+      "answer": "0",
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "numericAnswer": 0
+    },
+    {
+      "id": "c3-flux-q4",
+      "problem": "用未归一化叉积计算通量时，还需要单独写 $\\sqrt{1+g_x^2+g_y^2}$ 吗？",
+      "hint": "倍率是否已经存在？",
+      "solution": [
+        "叉积同时含方向与面积缩放，再乘根号会重复。"
+      ],
+      "answer": "不需要。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "反转曲面定向时，通量怎样？",
+    "choices": [
+      "不变",
+      "反号",
+      "变为面积"
+    ],
+    "correctIndex": 1,
+    "explanation": "通量是有向量，法向决定符号。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-flux",
+    "caption": "竖直场 $(0,0,1)$ 穿过 $z=cx$ 的向上方格；同时显示单位法向与面积倍率。",
+    "prediction": "斜面面积增加时，竖直通量一定增加吗？"
+  },
+  "teaching": {
+    "explain": "先取穿面的法向分量，再乘真实面积；直接用参数叉积时不再额外乘倍率。",
+    "steps": [
+      {
+        "title": "水平面",
+        "instruction": "将倾斜或形状参数 $c$设为 $0$，比较图形和读数。",
+        "preset": {
+          "c": 0
+        },
+        "observation": "竖直场正面穿过，单位参数格的通量为 1。"
+      },
+      {
+        "title": "倾斜面",
+        "instruction": "将倾斜或形状参数 $c$设为 $1$，比较图形和读数。",
+        "preset": {
+          "c": 1
+        },
+        "observation": "法向分量减小、真实面积增大，两者相抵。"
+      },
+      {
+        "title": "更陡面",
+        "instruction": "将倾斜或形状参数 $c$设为 $2$，比较图形和读数。",
+        "preset": {
+          "c": 2
+        },
+        "observation": "相同水平投影下通量仍为 1，真实面积却更大。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-surface-area",
+    "c3-fields"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "c3-flux-m1",
+    "c3-flux-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

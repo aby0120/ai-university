@@ -1,0 +1,193 @@
+{
+  "id": "c3-green",
+  "chapterId": "c3-line-integrals",
+  "number": "7.5",
+  "title": "Green 定理与平面通量",
+  "subtitle": "把边界的绕行换成内部的旋转",
+  "concept": "Green 定理把平面正向边界的环流，换成区域内局部旋转率的积分；另一个形式计算向外通量。",
+  "intuition": "把区域分成小格，内部公共边的两次行进方向相反，彼此抵消，最后只剩外边界。",
+  "objectives": [
+    "计算平面环流与向外通量",
+    "检查洞边界和场的光滑性"
+  ],
+  "body": [
+    {
+      "title": "正向怎样选？",
+      "text": "沿边界走时区域留在左手边。外边界逆时针，洞边界顺时针；有洞时不能忘记内边界。"
+    },
+    {
+      "title": "环流与通量差在哪？",
+      "text": "环流沿切向累积，通量沿向外法向累积。二者用不同偏导组合，不能混用。"
+    },
+    {
+      "title": "什么时候不能套？",
+      "text": "场需在包含整个区域的开邻域一阶连续可导。区域内有未定义点时，应挖洞并把新边界的贡献补回来。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "把边界的绕行换成内部的旋转",
+    "latex": "\\oint_{\\partial D}Pdx+Qdy=\\iint_D(Q_x-P_y)dA,\\quad\\oint_{\\partial D}Pdy-Qdx=\\iint_D(P_x+Q_y)dA",
+    "conditions": [
+      "区域有界且边界由有限条分段光滑简单闭曲线组成，按区域在左侧定向；场在含闭区域的开邻域一阶连续可导。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "矩形上相对两边用基本定理合并。",
+      "latex": "\\int(P_{\\rm bottom}-P_{\\rm top})dx=-\\iint P_y\\,dA"
+    },
+    {
+      "text": "另两边合并。",
+      "latex": "\\int(Q_{\\rm right}-Q_{\\rm left})dy=\\iint Q_x\\,dA"
+    },
+    {
+      "text": "分块后公共边抵消，只留边界。",
+      "latex": "\\oint_{\\partial D}Pdx+Qdy=\\iint_D(Q_x-P_y)dA"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "椭圆环流",
+      "problem": "$\\mathbf F=(-y,x)$ 沿半轴 2 和 1 的椭圆逆时针一圈？",
+      "steps": [
+        "旋转率 $Q_x-P_y=2$。",
+        "椭圆面积为 $2\\pi$，乘以 2。"
+      ],
+      "answer": "$4\\pi$。"
+    },
+    {
+      "title": "平面向外通量",
+      "problem": "$\\mathbf F=(x,y)$ 穿过半径 3 圆周的向外通量？",
+      "steps": [
+        "散度 $P_x+Q_y=2$。",
+        "乘圆盘面积 $9\\pi$。"
+      ],
+      "answer": "$18\\pi$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-green-m1",
+      "claim": "正向边界总是逆时针。",
+      "correction": "外边界逆时针，洞的边界要顺时针。"
+    },
+    {
+      "id": "c3-green-m2",
+      "claim": "场只在边界光滑就能用 Green。",
+      "correction": "要覆盖内部及其开邻域，内部奇点不能忽略。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-green-q1",
+      "problem": "单位正方形正向边界上的 $\\oint x\\,dy$？",
+      "hint": "取 $P=0,Q=x$。",
+      "solution": [
+        "旋转率为 1，区域面积为 1。"
+      ],
+      "answer": "1",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 1
+    },
+    {
+      "id": "c3-green-q2",
+      "problem": "将上题边界反向，积分是多少？",
+      "hint": "定向改变符号。",
+      "solution": [
+        "反向边界积分为 $-1$。"
+      ],
+      "answer": "$-1$",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": -1
+    },
+    {
+      "id": "c3-green-q3",
+      "problem": "半径 2、内半径 1 的圆环，径向场 $(x,y)$ 的总向外通量？",
+      "hint": "区域面积乘散度，含内边界。",
+      "solution": [
+        "圆环面积 $3\\pi$，散度为 2，总通量 $6\\pi$。"
+      ],
+      "answer": "$6\\pi$。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-green-q4",
+      "problem": "场在区域中心有奇点，能用旋转率零断言环流零吗？",
+      "hint": "定理假设覆盖了哪个集合？",
+      "solution": [
+        "假设在内部失败。",
+        "应挖掉奇点附近小区并计入内边界，不能直接断言。"
+      ],
+      "answer": "不能。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "有洞区域的内边界怎样定向？",
+    "choices": [
+      "逆时针",
+      "顺时针",
+      "随便都一样"
+    ],
+    "correctIndex": 1,
+    "explanation": "让实际区域始终在行进方向左侧。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-green",
+    "caption": "场 $(-y,x)$ 与半径可变的圆盘；环流等于常旋转率二乘圆盘面积。",
+    "prediction": "半径翻倍，环流会翻倍还是变四倍？"
+  },
+  "teaching": {
+    "explain": "区域内相邻小格的公共边互相抵消，留下的才是整个区域的正向边界。",
+    "steps": [
+      {
+        "title": "小圆",
+        "instruction": "将圆盘半径 $R$设为 $0.5$，比较图形和读数。",
+        "preset": {
+          "b": 0.5
+        },
+        "observation": "旋转率仍为二，环流随面积变化。"
+      },
+      {
+        "title": "单位圆",
+        "instruction": "将圆盘半径 $R$设为 $1$，比较图形和读数。",
+        "preset": {
+          "b": 1
+        },
+        "observation": "环流为 $2\\pi$。"
+      },
+      {
+        "title": "大圆",
+        "instruction": "将圆盘半径 $R$设为 $2$，比较图形和读数。",
+        "preset": {
+          "b": 2
+        },
+        "observation": "半径翻倍，面积和环流都变为四倍。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-potential",
+    "c3-double-integrals"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "c3-green-m1",
+    "c3-green-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

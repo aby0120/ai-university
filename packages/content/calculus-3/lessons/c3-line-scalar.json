@@ -1,0 +1,191 @@
+{
+  "id": "c3-line-scalar",
+  "chapterId": "c3-line-integrals",
+  "number": "7.2",
+  "title": "标量曲线积分",
+  "subtitle": "沿细线按长度加权",
+  "concept": "标量曲线积分把一条细线上的密度按实际弧长累积；改变走向不改变结果。",
+  "intuition": "把曲线切成很多小线段，每段质量约为线密度乘长度。参数走快了，小时间内线段也更长。",
+  "objectives": [
+    "计算标量弧长积分",
+    "处理反向与重复描绘"
+  ],
+  "body": [
+    {
+      "title": "为什么要速度长度？",
+      "text": "参数微分不是实际长度，弧长元等于速率乘参数增量。漏掉速率会依赖走路快慢。"
+    },
+    {
+      "title": "反向会变号吗？",
+      "text": "标量弧长积分不因反向变号，因为长度非负；若被积函数有负值，结果仍可有符号。"
+    },
+    {
+      "title": "曲线质心怎么算？",
+      "text": "用位置乘线密度做同一种弧长积分，再除以总质量。重复路径代表重复累积，不是自动去重的线材。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "沿细线按长度加权",
+    "latex": "\\int_C f\\,ds=\\int_a^b f(\\mathbf r(t))\\|\\mathbf r\\prime(t)\\|dt",
+    "conditions": [
+      "路径分段光滑、函数沿路径连续；线材模型避免重复描绘；重新参数化单调规则时结果不依赖速度与方向。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "用短线段近似弧长。",
+      "latex": "\\Delta s\\approx\\|\\mathbf r\\prime(t)\\|\\Delta t"
+    },
+    {
+      "text": "每段累积密度乘长度。",
+      "latex": "\\Delta m\\approx f(\\mathbf r(t))\\Delta s"
+    },
+    {
+      "text": "加总并取网格极限。",
+      "latex": "\\int_Cf\\,ds=\\int_a^b f(\\mathbf r(t))\\|\\mathbf r\\prime(t)\\|dt"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "圆环质量",
+      "problem": "半径 2 的圆形细线，线密度为 3，质量？",
+      "steps": [
+        "可取 $\\mathbf r=(2\\cos t,2\\sin t,0)$，速率为 2。",
+        "积分 $3\\cdot2\\cdot2\\pi=12\\pi$。"
+      ],
+      "answer": "$12\\pi$。"
+    },
+    {
+      "title": "斜线密度",
+      "problem": "从 $(0,0,0)$ 到 $(1,1,0)$ 的直线，密度为 $x+y$，质量？",
+      "steps": [
+        "取 $(t,t,0)$，零到一，密度 $2t$，速率 $\\sqrt2$。",
+        "积分 $\\int_0^12t\\sqrt2dt=\\sqrt2$。"
+      ],
+      "answer": "$\\sqrt2$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-line-scalar-m1",
+      "claim": "参数微分就是弧长元。",
+      "correction": "还要乘速度长度，除非已经是弧长参数。"
+    },
+    {
+      "id": "c3-line-scalar-m2",
+      "claim": "反向走一定让所有曲线积分反号。",
+      "correction": "标量弧长积分不反号，功积分才反号。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-line-scalar-q1",
+      "problem": "长度 4 的线段密度恒为 2，质量？",
+      "hint": "线密度乘长度。",
+      "solution": [
+        "$2\\cdot4=8$。"
+      ],
+      "answer": "8",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 8
+    },
+    {
+      "id": "c3-line-scalar-q2",
+      "problem": "单位半圆上积分常数一？",
+      "hint": "就是弧长。",
+      "solution": [
+        "半径一，半周弧长为 $\\pi$。"
+      ],
+      "answer": "$\\pi$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-line-scalar-q3",
+      "problem": "将上题半圆反向走，积分变吗？",
+      "hint": "看弧长元是否有向。",
+      "solution": [
+        "弧长不随方向变号，因此仍为 $\\pi$。"
+      ],
+      "answer": "不变。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-line-scalar-q4",
+      "problem": "同一圆形细线绕两遍积分质量会怎样？",
+      "hint": "数覆盖次数。",
+      "solution": [
+        "两遍把每段重复累积，得到物理单圈质量的两倍。"
+      ],
+      "answer": "加倍，需要选单圈来描述线材。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "标量弧长积分反向后怎样？",
+    "choices": [
+      "变号",
+      "不变",
+      "变为零"
+    ],
+    "correctIndex": 1,
+    "explanation": "长度不带行进方向。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-line-scalar",
+    "caption": "单位圆上按实际弧长累积密度一；已走过的弧以亮色显示。",
+    "prediction": "把路径方向反过来，细线质量会变负吗？"
+  },
+  "teaching": {
+    "explain": "密度沿小线段累积，走快了就用更长的小段补偿，方向不会让长度变负。",
+    "steps": [
+      {
+        "title": "短弧",
+        "instruction": "将路径参数 $t$设为 $\\frac\\pi2$，比较图形和读数。",
+        "preset": {
+          "x": 1.5707963267948966
+        },
+        "observation": "常密度一的积分等于四分之一圆弧长。"
+      },
+      {
+        "title": "半圆",
+        "instruction": "将路径参数 $t$设为 $\\pi$，比较图形和读数。",
+        "preset": {
+          "x": 3.141592653589793
+        },
+        "observation": "积分随路径长度继续增加。"
+      },
+      {
+        "title": "一圈",
+        "instruction": "将路径参数 $t$设为 $2\\pi$，比较图形和读数。",
+        "preset": {
+          "x": 6.283185307179586
+        },
+        "observation": "整圈弧长为 $2\\pi$。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-fields",
+    "c3-curvature"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-line-scalar-m1",
+    "c3-line-scalar-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

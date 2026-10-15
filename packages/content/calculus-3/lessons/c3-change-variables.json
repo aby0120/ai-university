@@ -1,0 +1,193 @@
+{
+  "id": "c3-change-variables",
+  "chapterId": "c3-triple",
+  "number": "6.4",
+  "title": "一般换元与 Jacobian",
+  "subtitle": "算出局部小块被放大多少",
+  "concept": "Jacobian 行列式给出光滑坐标变换在局部对面积或体积的缩放；积分使用其绝对值。",
+  "intuition": "把参数小方格变成小平行四边形。两条边的导数向量决定面积，三条边则决定体积。",
+  "objectives": [
+    "计算 Jacobian 与面积倍率",
+    "检查一一覆盖和定向符号"
+  ],
+  "body": [
+    {
+      "title": "Jacobian 矩阵是什么？",
+      "text": "将输出各坐标对输入各参数的偏导排成矩阵。二维行列式是两导数向量张成的有向面积倍率。"
+    },
+    {
+      "title": "为什么取绝对值？",
+      "text": "负行列式表示方向翻转，不表示负面积或负体积；定向曲面积分另有方向规则。"
+    },
+    {
+      "title": "哪些变换不能直接套？",
+      "text": "局部行列式非零还不足以保证全局不重叠。必须检查一一覆盖；折叠映射需要分块并处理覆盖次数。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "算出局部小块被放大多少",
+    "latex": "J=\\frac{\\partial(x,y)}{\\partial(u,v)}=x_uy_v-x_vy_u,\\quad\\iint_D f\\,dxdy=\\iint_U f(T(u,v))|J|\\,dudv",
+    "conditions": [
+      "本节使用内部一一的连续可微变换，内部 Jacobian 非零，边界退化只在可忽略集合；函数可积；三维用三阶行列式。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "参数小边由偏导向量映射。",
+      "latex": "d\\mathbf r_u=\\mathbf r_u du,\\quad d\\mathbf r_v=\\mathbf r_v dv"
+    },
+    {
+      "text": "平行四边形面积为行列式绝对值。",
+      "latex": "dA=|x_uy_v-x_vy_u|\\,dudv"
+    },
+    {
+      "text": "将函数与区域一同代入。",
+      "latex": "f(x,y)=f(x(u,v),y(u,v))"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "椭圆面积",
+      "problem": "$x=3u,y=2v$ 把单位圆盘映到椭圆，面积？",
+      "steps": [
+        "Jacobian 为 $3\\cdot2=6$。",
+        "原圆盘面积为 $\\pi$，放大六倍。"
+      ],
+      "answer": "$6\\pi$。"
+    },
+    {
+      "title": "斜方格换元",
+      "problem": "$x=u+v,y=u-v$，参数单位正方形的像面积？",
+      "steps": [
+        "行列式为 $-2$。",
+        "面积使用绝对值 2，乘参数面积一。"
+      ],
+      "answer": "2；负号只表示翻转定向。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-change-variables-m1",
+      "claim": "负行列式会产生负质量。",
+      "correction": "无向面积元使用绝对值。"
+    },
+    {
+      "id": "c3-change-variables-m2",
+      "claim": "行列式不为零就保证整个映射不重复。",
+      "correction": "它是局部信息，全局一一性还要另查。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-change-variables-q1",
+      "problem": "$x=2u,y=5v$ 的面积倍率？",
+      "hint": "求对角矩阵行列式。",
+      "solution": [
+        "$|2\\cdot5|=10$。"
+      ],
+      "answer": "10",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 10
+    },
+    {
+      "id": "c3-change-variables-q2",
+      "problem": "$x=v,y=u$ 的面积倍率与定向？",
+      "hint": "交换两个坐标。",
+      "solution": [
+        "行列式为 $-1$，绝对面积倍率为 1。"
+      ],
+      "answer": "面积不变，定向翻转。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-change-variables-q3",
+      "problem": "$x=u^2,y=v$ 在 $-1\\le u\\le1$ 上能直接按一一换元吗？",
+      "hint": "比较相反的参数。",
+      "solution": [
+        "正负参数给同一个横坐标，内部重复覆盖。",
+        "必须分支处理，不能直接把两支都当一次面积。"
+      ],
+      "answer": "不能。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-change-variables-q4",
+      "problem": "三维线性缩放 $x=2u,y=3v,z=4w$ 的体积倍率？",
+      "hint": "三个独立倍率相乘。",
+      "solution": [
+        "行列式绝对值为 $2\\cdot3\\cdot4=24$。"
+      ],
+      "answer": "24",
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "numericAnswer": 24
+    }
+  ],
+  "learningCheck": {
+    "question": "积分面积时 Jacobian 为负怎么办？",
+    "choices": [
+      "取绝对值",
+      "丢掉该区域",
+      "质量也变负"
+    ],
+    "correctIndex": 0,
+    "explanation": "面积无方向，负号记录的是变换定向。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-change-variables",
+    "caption": "映射 $x=u+cv,y=v$ 对单位正方形作剪切；形状改变而面积保持。",
+    "prediction": "看起来更斜的格子，面积一定变大吗？"
+  },
+  "teaching": {
+    "explain": "导数先把小方格变成平行四边形，行列式再量它放大了多少。",
+    "steps": [
+      {
+        "title": "弱剪切",
+        "instruction": "将倾斜或形状参数 $c$设为 $0$，比较图形和读数。",
+        "preset": {
+          "c": 0
+        },
+        "observation": "参数正方形未剪切，面积为一。"
+      },
+      {
+        "title": "中等剪切",
+        "instruction": "将倾斜或形状参数 $c$设为 $1$，比较图形和读数。",
+        "preset": {
+          "c": 1
+        },
+        "observation": "形状变斜，但面积仍为一。"
+      },
+      {
+        "title": "较大剪切",
+        "instruction": "将倾斜或形状参数 $c$设为 $2$，比较图形和读数。",
+        "preset": {
+          "c": 2
+        },
+        "observation": "平行四边形更斜，行列式仍等于一。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-cross",
+    "c3-polar-integrals"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "c3-change-variables-m1",
+    "c3-change-variables-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

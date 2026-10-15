@@ -1,0 +1,191 @@
+{
+  "id": "c3-critical-points",
+  "chapterId": "c3-optimization",
+  "number": "4.2",
+  "title": "临界点与二阶判别",
+  "subtitle": "梯度为零后，看曲面怎样弯",
+  "concept": "内部可微极值点必须梯度为零；二阶形状决定它是碗底、碗顶还是鞍点。",
+  "intuition": "斜率为零只说明一阶看起来平。还要向四周走，看看是都升高、都降低，还是有高有低。",
+  "objectives": [
+    "求驻点并使用二阶判别",
+    "处理判别退化的情形"
+  ],
+  "body": [
+    {
+      "title": "临界点包括什么？",
+      "text": "本卷把梯度为零或梯度不存在的定义域内点列为临界候选；二阶判别只适用于足够光滑的驻点。"
+    },
+    {
+      "title": "判别式在检查什么？",
+      "text": "Hessian 的二次式若正定则各方向向上，负定则各方向向下，不定则出现鞍形。二维判别式是该矩阵的行列式。"
+    },
+    {
+      "title": "判别式为零怎么办？",
+      "text": "二次项可能没提供足够信息。检查更高阶项或直接用定义，不能直接判为鞍点。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "梯度为零后，看曲面怎样弯",
+    "latex": "D=f_{xx}f_{yy}-f_{xy}^2:\\quad D>0,f_{xx}>0\\Rightarrow\\min;\\quad D>0,f_{xx}<0\\Rightarrow\\max;\\quad D<0\\Rightarrow\\text{鞍点}",
+    "conditions": [
+      "函数在驻点附近二阶连续可导，梯度在该点为零；这里结论为严格局部最值；$D=0$ 无结论。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "内部极值沿每条坐标线也是一元极值。",
+      "latex": "f_x=f_y=0"
+    },
+    {
+      "text": "二阶模型主导足够小位移的符号。",
+      "latex": "f(a+h,b+k)-f(a,b)=\\frac12\\begin{pmatrix}h&k\\end{pmatrix}H\\binom hk+o(h^2+k^2)"
+    },
+    {
+      "text": "二维完成平方得到判别条件。",
+      "latex": "f_{xx}h^2+2f_{xy}hk+f_{yy}k^2=f_{xx}\\left(h+\\frac{f_{xy}}{f_{xx}}k\\right)^2+\\frac D{f_{xx}}k^2"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "有混合项的碗底",
+      "problem": "$f=x^2+xy+y^2$ 的原点是什么？",
+      "steps": [
+        "梯度在原点为零。",
+        "$D=2\\cdot2-1=3>0$ 且 $f_{xx}=2>0$。"
+      ],
+      "answer": "严格局部极小，也是全局最小。"
+    },
+    {
+      "title": "退化却有极小",
+      "problem": "$f=x^4+y^4$ 的原点是什么？",
+      "steps": [
+        "二阶偏导在原点全为零，判别无结论。",
+        "直接看函数非负，且仅原点为零。"
+      ],
+      "answer": "严格全局最小。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-critical-points-m1",
+      "claim": "梯度为零就一定最小。",
+      "correction": "鞍点和极大点也有零梯度。"
+    },
+    {
+      "id": "c3-critical-points-m2",
+      "claim": "判别式为零说明不是极值。",
+      "correction": "它只表示该判别法无法决定。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-critical-points-q1",
+      "problem": "$f=-x^2-2y^2$ 的原点是哪类点？",
+      "hint": "看二次项符号。",
+      "solution": [
+        "除原点外附近函数都为负，原点值零。"
+      ],
+      "answer": "严格极大点。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-critical-points-q2",
+      "problem": "$f=xy$ 的原点是哪类点？",
+      "hint": "比较两条对角线。",
+      "solution": [
+        "沿 $y=x$ 为 $x^2$，沿 $y=-x$ 为 $-x^2$。"
+      ],
+      "answer": "鞍点。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-critical-points-q3",
+      "problem": "$f=x^4-y^4$ 在原点 Hessian 为零，是什么点？",
+      "hint": "使用高阶项而非二阶判别。",
+      "solution": [
+        "沿横轴增大，沿纵轴减小。"
+      ],
+      "answer": "鞍点。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-critical-points-q4",
+      "problem": "二阶判别能直接分类边界上的最值吗？",
+      "hint": "内部可移动方向是否仍完整？",
+      "solution": [
+        "边界限制了允许方向，一阶零梯度条件也可能不成立。",
+        "必须单独分析边界。"
+      ],
+      "answer": "不能。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "$D=0$ 的正确结论是什么？",
+    "choices": [
+      "一定鞍点",
+      "一定无极值",
+      "此判别无结论"
+    ],
+    "correctIndex": 2,
+    "explanation": "高阶项或直接比较可以继续判断。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-critical-points",
+    "caption": "$f=x^2+c y^2$，改变 Hessian 的一个系数，观察碗、退化谷和鞍面。",
+    "prediction": "梯度一直为零，为什么点的类型还能改变？"
+  },
+  "teaching": {
+    "explain": "零梯度只筛出候选；二次项若在不同方向正负都有，就是鞍形。",
+    "steps": [
+      {
+        "title": "正定",
+        "instruction": "将纵向二次系数 $c$设为 $1$，比较图形和读数。",
+        "preset": {
+          "c": 1
+        },
+        "observation": "两个坐标方向都升高，原点为碗底。"
+      },
+      {
+        "title": "退化",
+        "instruction": "将纵向二次系数 $c$设为 $0$，比较图形和读数。",
+        "preset": {
+          "c": 0
+        },
+        "observation": "沿纵向完全平坦，二阶判别不能给严格极小。"
+      },
+      {
+        "title": "不定",
+        "instruction": "将纵向二次系数 $c$设为 $-1$，比较图形和读数。",
+        "preset": {
+          "c": -1
+        },
+        "observation": "沿纵向下降，原点为鞍点。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-taylor",
+    "c3-gradient"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "c3-critical-points-m1",
+    "c3-critical-points-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

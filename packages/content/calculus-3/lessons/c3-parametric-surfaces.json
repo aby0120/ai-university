@@ -1,0 +1,190 @@
+{
+  "id": "c3-parametric-surfaces",
+  "chapterId": "c3-surface-integrals",
+  "number": "8.1",
+  "title": "参数曲面与定向",
+  "subtitle": "用两条参数方向铺开曲面",
+  "concept": "两个参数在空间生成一张曲面；两条独立切向量的叉积给出局部法向。",
+  "intuition": "一张网布上横走和竖走的两个方向，落到空间后可能倾斜伸缩。它们的叉积既给垂直方向，也给面积倍率。",
+  "objectives": [
+    "建立曲面参数与法向",
+    "识别规则性和定向"
+  ],
+  "body": [
+    {
+      "title": "规则条件是什么？",
+      "text": "两个偏导向量不能平行，即叉积非零。极点等参数退化处可换图或单独处理零面积边界。"
+    },
+    {
+      "title": "为什么可能多张参数图？",
+      "text": "球面没有一张处处规则且无重复的普通矩形参数图；可分片覆盖并避免正面积重复计数。"
+    },
+    {
+      "title": "定向是什么意思？",
+      "text": "在整张曲面连续选择法向的一侧。交换参数次序会反转法向；Möbius 带等不可定向曲面没有全局连续单位法向。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "用两条参数方向铺开曲面",
+    "latex": "\\mathbf r(u,v)=\\langle x(u,v),y(u,v),z(u,v)\\rangle,\\quad\\mathbf n=\\frac{\\mathbf r_u\\times\\mathbf r_v}{\\|\\mathbf r_u\\times\\mathbf r_v\\|}",
+    "conditions": [
+      "参数图连续可微且内部叉积非零；面积计算不重复覆盖正面积部分；全局通量须使用可定向曲面并保持各片方向一致。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "固定一个参数得到一族曲线。",
+      "latex": "u\\mapsto\\mathbf r(u,v_0),\\quad v\\mapsto\\mathbf r(u_0,v)"
+    },
+    {
+      "text": "两曲线的导数张成切平面。",
+      "latex": "\\mathbf r_u,\\ \\mathbf r_v"
+    },
+    {
+      "text": "叉积给垂直方向，归一化给单位法向。",
+      "latex": "\\mathbf n=\\pm\\frac{\\mathbf r_u\\times\\mathbf r_v}{\\|\\mathbf r_u\\times\\mathbf r_v\\|}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "图面法向",
+      "problem": "曲面 $\\mathbf r(u,v)=(u,v,u^2+v^2)$ 的向上法向？",
+      "steps": [
+        "两切向量为 $(1,0,2u)$ 和 $(0,1,2v)$。",
+        "叉积为 $(-2u,-2v,1)$，竖分量为正。"
+      ],
+      "answer": "单位法向 $\\frac{(-2u,-2v,1)}{\\sqrt{1+4u^2+4v^2}}$。"
+    },
+    {
+      "title": "圆柱参数",
+      "problem": "半径 2 的圆柱侧面如何定向向外？",
+      "steps": [
+        "取 $\\mathbf r(\\theta,z)=(2\\cos\\theta,2\\sin\\theta,z)$。",
+        "按方位角后高度的次序叉乘，得 $(2\\cos\\theta,2\\sin\\theta,0)$，向外。"
+      ],
+      "answer": "单位法向 $(\\cos\\theta,\\sin\\theta,0)$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-parametric-surfaces-m1",
+      "claim": "单位法向等于两个参数导数的叉积。",
+      "correction": "叉积通常未归一化，它同时带面积倍率。"
+    },
+    {
+      "id": "c3-parametric-surfaces-m2",
+      "claim": "交换参数只改变符号的写法。",
+      "correction": "它改变曲面的定向，通量因此反号。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-parametric-surfaces-q1",
+      "problem": "平面参数 $(u,v,0)$ 的单位法向？",
+      "hint": "叉乘标准基。",
+      "solution": [
+        "$(1,0,0)\\times(0,1,0)=(0,0,1)$。"
+      ],
+      "answer": "向上单位向量。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-parametric-surfaces-q2",
+      "problem": "$\\mathbf r(u,v)=(u,0,v)$ 按给定次序的法向？",
+      "hint": "叉乘第一与第三基方向。",
+      "solution": [
+        "$(1,0,0)\\times(0,0,1)=(0,-1,0)$。"
+      ],
+      "answer": "负纵轴方向。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-parametric-surfaces-q3",
+      "problem": "叉积为零时能直接归一化吗？",
+      "hint": "检查除数。",
+      "solution": [
+        "长度为零，公式没有定义，需要换参数或研究退化。"
+      ],
+      "answer": "不能。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-parametric-surfaces-q4",
+      "problem": "球面参数图的极点退化是否说明球面本身不光滑？",
+      "hint": "区分参数与几何。",
+      "solution": [
+        "极点只是常用角坐标退化；球面可用其他局部图描述。"
+      ],
+      "answer": "不说明。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "交换两个参数次序后，法向怎样？",
+    "choices": [
+      "不变",
+      "反向",
+      "自动消失"
+    ],
+    "correctIndex": 1,
+    "explanation": "叉积反交换。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-parametric-surfaces",
+    "caption": "参数平面 $\\mathbf r(u,v)=(u,v,cu)$，显示两条参数切向量与向上单位法向。",
+    "prediction": "网格投影面积和真实面积何时相等？"
+  },
+  "teaching": {
+    "explain": "两条参数方向张开局部切平面；它们的叉积同时记录法向和面积倍率。",
+    "steps": [
+      {
+        "title": "平坦面",
+        "instruction": "将倾斜或形状参数 $c$设为 $0$，比较图形和读数。",
+        "preset": {
+          "c": 0
+        },
+        "observation": "两参数切向量张成水平面，法向向上。"
+      },
+      {
+        "title": "较缓倾斜",
+        "instruction": "将倾斜或形状参数 $c$设为 $0.5$，比较图形和读数。",
+        "preset": {
+          "c": 0.5
+        },
+        "observation": "平面倾斜，叉积的长度大于一。"
+      },
+      {
+        "title": "更陡倾斜",
+        "instruction": "将倾斜或形状参数 $c$设为 $1$，比较图形和读数。",
+        "preset": {
+          "c": 1
+        },
+        "observation": "参数面积的实际放大量继续增加。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-cross",
+    "c3-change-variables"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-parametric-surfaces-m1",
+    "c3-parametric-surfaces-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

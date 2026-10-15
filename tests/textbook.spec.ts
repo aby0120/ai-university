@@ -193,3 +193,29 @@ test('switching shared tools keeps each book chapter filters and review targets 
  await page.getByRole('link',{name:'完成阅读后 整本书综合测试',exact:true}).click();
  await expect(page).toHaveURL(/book=calculus-2/);
 });
+
+const thirdBook=JSON.parse(fs.readFileSync("packages/content/calculus-3/book.json","utf8"));
+test("Calculus III renders all learning surfaces and spatial controls",async({page})=>{
+ for(const id of thirdBook.lessonIds){
+  const lesson=JSON.parse(fs.readFileSync("packages/content/calculus-3/lessons/"+id+".json","utf8"));
+  await page.goto("/#/lesson/"+id);
+  await expect(page.getByRole("heading",{name:lesson.title,exact:true})).toBeVisible();
+  await expect(page.locator(".worked-example")).toHaveCount(2);
+  await page.getByRole("link",{name:"交互演示",exact:true}).click();
+  await expect(page.locator(".spatial-plot")).toHaveCount(1);
+  for(const slider of await page.getByRole("slider").all()){await slider.press("Home");await slider.press("End");}
+  await page.getByRole("button",{name:"俯视",exact:true}).click();
+  await expect(page.getByRole("button",{name:"俯视",exact:true})).toHaveAttribute("aria-pressed","true");
+  await page.getByRole("button",{name:"三维",exact:true}).click();
+  await page.locator(".spatial-plot").press("ArrowRight");
+  await page.locator(".spatial-plot").press("Home");
+  await expect(page.locator(".katex-error")).toHaveCount(0);
+  await expect(page.locator('svg [d*="NaN"],svg [d*="Infinity"]')).toHaveCount(0);
+  await page.getByRole("link",{name:"练习与解答 4",exact:true}).click();
+  await expect(page.locator(".exercise")).toHaveCount(4);
+ }
+ await page.goto("/calculus-3.html");
+ await expect(page.locator(".lesson")).toHaveCount(40);
+ await expect(page.locator(".problem")).toHaveCount(203);
+ await expect(page.locator(".katex-error")).toHaveCount(0);
+});

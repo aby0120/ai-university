@@ -1,0 +1,194 @@
+{
+  "id": "c3-partials",
+  "chapterId": "c3-differentiation",
+  "number": "3.3",
+  "title": "偏导数与高阶偏导",
+  "subtitle": "只让一个输入动",
+  "concept": "偏导数衡量一个变量变化、其他变量固定时的瞬时变化率。",
+  "intuition": "把曲面沿一条坐标方向切开，在这条一元曲线上求导。不同方向可以有不同斜率。",
+  "objectives": [
+    "计算一阶与混合偏导",
+    "辨认偏导存在的局限"
+  ],
+  "body": [
+    {
+      "title": "其他变量怎样处理？",
+      "text": "求横坐标偏导时，把纵坐标当固定常数；然后交换角色。偏导描述切片，不自动给所有方向的统一近似。"
+    },
+    {
+      "title": "混合偏导能交换吗？",
+      "text": "二阶混合偏导在点附近连续时可以交换。没有相应条件，不能只凭符号位置互换。"
+    },
+    {
+      "title": "偏导存在就平滑吗？",
+      "text": "不保证连续，更不保证可微。轴向切片正常，斜向路径仍可能出现异常。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "只让一个输入动",
+    "latex": "f_x(a,b)=\\lim_{h\\to0}\\frac{f(a+h,b)-f(a,b)}h,\\quad f_{xy}=\\frac\\partial{\\partial y}(f_x)",
+    "conditions": [
+      "差商须在定义域内；交换混合偏导的充分条件是二阶混合偏导在点附近连续。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先把一个变量固定。",
+      "latex": "g(x)=f(x,b)"
+    },
+    {
+      "text": "对切片应用一元导数。",
+      "latex": "g\\prime(a)=f_x(a,b)"
+    },
+    {
+      "text": "再对偏导函数求偏导。",
+      "latex": "f_{xy}=\\frac\\partial{\\partial y}\\left(\\frac{\\partial f}{\\partial x}\\right)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "分别求导",
+      "problem": "$f=x^2y+\\sin y$ 的两个偏导？",
+      "steps": [
+        "固定纵坐标得到 $f_x=2xy$。",
+        "固定横坐标得到 $f_y=x^2+\\cos y$。"
+      ],
+      "answer": "$f_x=2xy,f_y=x^2+\\cos y$。"
+    },
+    {
+      "title": "混合检查",
+      "problem": "$f=x^2y^3$ 的两个混合偏导？",
+      "steps": [
+        "$f_x=2xy^3$，再对纵坐标求导得 $6xy^2$。",
+        "反序也得 $6xy^2$；它是多项式，连续性条件满足。"
+      ],
+      "answer": "两者都是 $6xy^2$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-partials-m1",
+      "claim": "求偏导时要把另一个变量求导为一。",
+      "correction": "另一个变量此时固定，其导数为零。"
+    },
+    {
+      "id": "c3-partials-m2",
+      "claim": "偏导存在就说明函数连续。",
+      "correction": "轴向检查不足，多元极限可能失败。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-partials-q1",
+      "problem": "$f=e^{xy}$ 的 $f_x$？",
+      "hint": "内层关于横坐标的导数是纵坐标。",
+      "solution": [
+        "链式法则得 $f_x=ye^{xy}$。"
+      ],
+      "answer": "$ye^{xy}$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-partials-q2",
+      "problem": "$f=x^2+3xy+y^2$ 在 $(1,2)$ 的 $f_y$？",
+      "hint": "先求函数再代点。",
+      "solution": [
+        "$f_y=3x+2y$。",
+        "代入得 7。"
+      ],
+      "answer": "7",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 7
+    },
+    {
+      "id": "c3-partials-q3",
+      "problem": "$g=\\frac{xy}{x^2+y^2}$ 且原点补零，在原点的两个偏导是多少？",
+      "hint": "沿坐标轴看差商。",
+      "solution": [
+        "两坐标轴上的函数恒为零，两个轴向差商均为零。",
+        "但斜线函数值不趋零，所以函数不连续。"
+      ],
+      "answer": "两个偏导都是零，仍不连续。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-partials-q4",
+      "problem": "混合偏导总可以交换吗？",
+      "hint": "说出使用的条件。",
+      "solution": [
+        "附近二阶混合偏导连续是充分条件。",
+        "条件不满足时必须分别计算或另作证明。"
+      ],
+      "answer": "不可以无条件交换。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "求 $x^2y$ 关于横坐标的偏导时，纵坐标怎样处理？",
+    "choices": [
+      "也随横坐标变化",
+      "固定为常数",
+      "必须设为零"
+    ],
+    "correctIndex": 1,
+    "explanation": "偏导固定其余自变量。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-partials",
+    "caption": "曲面 $z=x^2+y^2$ 在点 $(a,0,a^2)$ 的横向切线，读数为偏导 $2a$。",
+    "prediction": "同一曲面上，不同位置的横向斜率会一样吗？"
+  },
+  "teaching": {
+    "explain": "偏导只问一个输入单独改变时发生什么；另一个输入此刻固定。",
+    "steps": [
+      {
+        "title": "负的切片",
+        "instruction": "将切点横坐标 $a$设为 $-1$，比较图形和读数。",
+        "preset": {
+          "a": -1
+        },
+        "observation": "碗面固定横坐标后的横向斜率为负。"
+      },
+      {
+        "title": "中心切片",
+        "instruction": "将切点横坐标 $a$设为 $0$，比较图形和读数。",
+        "preset": {
+          "a": 0
+        },
+        "observation": "中心点横向斜率为零。"
+      },
+      {
+        "title": "正的切片",
+        "instruction": "将切点横坐标 $a$设为 $1$，比较图形和读数。",
+        "preset": {
+          "a": 1
+        },
+        "observation": "横向斜率变正；斜率属于指定位置和方向。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-surfaces",
+    "derivative-rules"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-partials-m1",
+    "c3-partials-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

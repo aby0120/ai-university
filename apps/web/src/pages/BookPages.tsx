@@ -200,7 +200,7 @@ export function BookPage() {
               <ArrowUpRight size={16} />
             </Link>
           </div>
-          {book.id==="calculus-2"&&<Link to="book/calculus-1" className="text-btn">需要复习？打开微积分 I<ArrowUpRight size={15}/></Link>}
+          {book.id!=="calculus-1"&&<Link to={book.id==="calculus-3"?"book/calculus-2":"book/calculus-1"} className="text-btn">需要复习？打开前一卷<ArrowUpRight size={15}/></Link>}
           <BookStats volume={volume}/>
         </div>
         <BookCover small volume={volume}/>
