@@ -1,0 +1,194 @@
+{
+  "id": "c2-monotone",
+  "title": "单调有界与递推数列",
+  "subtitle": "先证明不会跑远，再寻找可能的终点",
+  "concept": "单调且有界的实数列必收敛；递推式只能在已经证明收敛后，合法地传递到极限。",
+  "intuition": "一直向上但有天花板的数列，最终会逼近一个高度；它不必在有限步达到那个高度。",
+  "body": [
+    {
+      "title": "“有界”是哪一侧？",
+      "text": "递增数列只需有上界；递减数列只需有下界。单调但无界的数列可以趋于无穷。上确界是所有上界中最小的一个。"
+    },
+    {
+      "title": "递推极限怎么找？",
+      "text": "先用归纳法证明不变区间和单调性。之后利用递推函数的连续性，把极限代入递推关系。"
+    },
+    {
+      "title": "方程的根都是极限吗？",
+      "text": "不是。初值和不变区间决定可能分支；还要有收敛证明，不能只靠解出固定点。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "先证明不会跑远，再寻找可能的终点",
+    "latex": "a_n\\uparrow,\\ a_n\\leq M\\ \\Longrightarrow\\ a_n\\to\\sup\\{a_n:n\\geq1\\}",
+    "conditions": [
+      "实数完备性；单调性与相应方向的有限界缺一不可。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "以上确界作为候选极限。",
+      "latex": "L=\\sup\\{a_n:n\\geq1\\}"
+    },
+    {
+      "text": "任何更低的数都不再是上界。",
+      "latex": "\\forall\\varepsilon>0\\ \\exists N:\\ a_N>L-\\varepsilon"
+    },
+    {
+      "text": "单调性把后续项留在窄带。",
+      "latex": "L-\\varepsilon<a_N\\leq a_n\\leq L\\quad(n\\geq N)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "平方根递推",
+      "problem": "$a_1=1$，$a_{n+1}=\\sqrt{2+a_n}$，求极限。",
+      "steps": [
+        "若 $1\\leq a_n<2$，下一项仍在此区间；且 $\\sqrt{2+x}>x$ 对 $1\\leq x<2$ 成立。",
+        "递增有上界，故收敛；$L=\\sqrt{2+L}$ 的非负解为 2。"
+      ],
+      "answer": "$2$。"
+    },
+    {
+      "title": "平均递推",
+      "problem": "$a_1=0$，$a_{n+1}=\\frac{a_n+3}{2}$，求极限。",
+      "steps": [
+        "$3-a_{n+1}=\\frac12(3-a_n)$，所以 $a_n=3-\\frac3{2^{n-1}}$。",
+        "误差几何衰减，递增且不超过 3。"
+      ],
+      "answer": "$3$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-monotone-m1",
+      "claim": "递推方程有固定点，就一定收敛。",
+      "correction": "$a_{n+1}=-a_n$ 有固定点零，但非零初值会振荡。"
+    },
+    {
+      "id": "c2-monotone-m2",
+      "claim": "有界就可以省掉单调性。",
+      "correction": "有界振荡未必收敛。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$a_n=1-\\frac1n$ 单调且有界吗？极限？",
+      "answer": "递增，上界为 1，极限为 1。",
+      "hint": "比较相邻项。",
+      "solution": [
+        "$a_{n+1}-a_n=\\frac1n-\\frac1{n+1}>0$；$a_n<1$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 1,
+      "id": "c2-monotone-p1"
+    },
+    {
+      "problem": "$a_1=0,a_{n+1}=\\frac{a_n+4}{2}$，极限？",
+      "answer": "$4$。",
+      "hint": "写出到固定点的误差。",
+      "solution": [
+        "$4-a_{n+1}=\\frac12(4-a_n)$，故误差趋于零。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 4,
+      "id": "c2-monotone-p2"
+    },
+    {
+      "problem": "$a_n=n$ 单调，能否用本定理得有限极限？",
+      "answer": "不能，缺少上界。",
+      "hint": "检查两个条件。",
+      "solution": [
+        "数列严格递增且无界，趋于正无穷。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-monotone-p3"
+    },
+    {
+      "problem": "$a_1=1,a_{n+1}=2-a_n$；若 $a_1$ 改为 0，极限仍为 1 吗？",
+      "answer": "初值 1 时恒为 1；初值 0 时在 0、2 之间振荡。",
+      "hint": "固定点不是收敛保证。",
+      "solution": [
+        "直接计算前四项即可发现周期；两个子序列极限不同。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [
+        "c2-monotone-m2"
+      ],
+      "id": "c2-monotone-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "解递推极限时，哪一步应先做？",
+    "choices": [
+      "假设收敛并把根都当答案",
+      "证明有界与单调等收敛条件",
+      "忽略初值"
+    ],
+    "correctIndex": 1,
+    "explanation": "代入极限需要先有收敛依据。"
+  },
+  "teaching": {
+    "explain": "固定点方程只告诉你“如果到了，会在哪里”；单调和有界才说明它确实会靠近那里。",
+    "steps": [
+      {
+        "title": "初期",
+        "instruction": "项数取 3。",
+        "observation": "数列递增，仍小于 2。",
+        "preset": {
+          "n": 3
+        }
+      },
+      {
+        "title": "更多项",
+        "instruction": "项数取 10。",
+        "observation": "误差减小；显示精度可能使读数看起来相同。",
+        "preset": {
+          "n": 10
+        }
+      },
+      {
+        "title": "继续递推",
+        "instruction": "项数取 20。",
+        "observation": "数值近似不能取代单调有界的收敛证明。",
+        "preset": {
+          "n": 20
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-sequences"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-sequences",
+  "number": "3.2",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-monotone",
+    "caption": "显示递推 $a_1=1,a_{n+1}=\\sqrt{2+a_n}$ 与上界 2。",
+    "prediction": "曲线看似达到 2，是否说明某个有限项已经精确等于 2？"
+  },
+  "misconceptionTags": [
+    "c2-monotone-m1",
+    "c2-monotone-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "证明单调与不变区间",
+    "在收敛后代入递推极限",
+    "用初值排除错误固定点"
+  ]
+}

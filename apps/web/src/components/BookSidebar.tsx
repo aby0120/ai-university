@@ -1,3 +1,4 @@
+import {useCurriculum} from "../lib/curriculum";
 import { MathText } from "./MathText";
 import {
   ArrowRight,
@@ -12,7 +13,7 @@ import {
   X,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { book, lessonById } from "../../../../packages/content";
+import {lessonById, allLessons, collections} from "../../../../packages/content";
 import type { Lesson } from "../../../../packages/content/types";
 
 import { Link } from "../components/UI";
@@ -27,6 +28,7 @@ export function BookSidebar({
   drawer: boolean;
   close: () => void;
 }) {
+  const {book,lessons,BOOK}=useCurriculum();
   const { route, reading, search } = useApp();
   const activeChapter = current?.chapterId || route.path.slice(8);
   const [expanded, setExpanded] = useState<string[]>([activeChapter]);
@@ -71,7 +73,7 @@ export function BookSidebar({
         <Link to={BOOK}>
           <BookOpen size={20} />
           <span>
-            Calculus I<small>微积分 I</small>
+            {book.title}<small>{book.titleZh}</small>
           </span>
         </Link>
         <button
@@ -88,9 +90,9 @@ export function BookSidebar({
       </button>
       <div className="sidebar-progress">
         <span>
-          阅读进度<b>{reading.read.length} / 35</b>
+          阅读进度<b>{reading.read.filter(id=>book.lessonIds.includes(id)).length} / {lessons.length}</b>
         </span>
-        <progress max={35} value={reading.read.length} />
+        <progress max={lessons.length} value={reading.read.filter(id=>book.lessonIds.includes(id)).length} />
       </div>
       <nav aria-label="章节目录">
         {book.chapters.map((ch, i) => (
@@ -123,7 +125,7 @@ export function BookSidebar({
                     aria-current={current?.id === id ? "page" : undefined}
                   >
                     <span>{lessonById[id].number}</span>
-                    {lessonById[id].title}
+                    <MathText text={lessonById[id].title}/>
                     {reading.read.includes(id) && <Check size={12} />}
                   </Link>
                 ))}

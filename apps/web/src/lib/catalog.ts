@@ -1,5 +1,5 @@
 import { plainMathText } from "../../../../packages/content/math-text.mjs";
-import { book, lessonById, lessons } from "../../../../packages/content";
+import { book, lessonById, allLessons as lessons, collections } from "../../../../packages/content";
 import type { Lesson } from "../../../../packages/content/types";
 import type { Route } from "./navigation";
 export const REPO = "https://github.com/b1n9ui/ai-university";
@@ -14,7 +14,9 @@ export function findLesson(path: string) {
 export function labelFor(route: Route) {
   const l = findLesson(route.path);
   if (l) return plainMathText(l.title);
-  const ch = book.chapters.find((c) => chapterPath(c.id) === route.path);
+  const selectedBook=collections.find(c=>route.path===c.BOOK);
+  if(selectedBook)return selectedBook.book.titleZh;
+  const ch = collections.flatMap(c=>c.book.chapters).find((c) => chapterPath(c.id) === route.path);
   if (ch) return ch.title;
   return (
     (

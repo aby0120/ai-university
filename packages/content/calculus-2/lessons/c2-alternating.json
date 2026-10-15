@@ -1,0 +1,191 @@
+{
+  "id": "c2-alternating",
+  "title": "交错级数与误差",
+  "subtitle": "正负交替，把偏差夹在下一项以内",
+  "concept": "若正项幅度最终递减到零，正负交替的和收敛，截断误差不超过下一项幅度。",
+  "intuition": "部分和一边偏高一边偏低，夹出的区间越来越窄；下一项就是一次可用的误差尺。",
+  "body": [
+    {
+      "title": "哪两个条件？",
+      "text": "幅度最终单调递减，且趋于零；单有正负交替不够。有限开头不影响收敛。"
+    },
+    {
+      "title": "误差的符号呢？",
+      "text": "余项与第一个被舍弃项同号。算完部分和后，你能知道真值在哪一侧。"
+    },
+    {
+      "title": "非交错级数能这样估吗？",
+      "text": "不能直接用下一项界；正项尾部可累积很多项，需要积分或几何等其他估计。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "正负交替，把偏差夹在下一项以内",
+    "latex": "\\sum_{n=1}^\\infty(-1)^{n-1}b_n=S,\\quad b_n\\downarrow0\\ \\Longrightarrow\\ |S-S_N|\\leq b_{N+1}",
+    "conditions": [
+      "$b_n\\geq0$，从足够往后开始单调递减并趋零；误差界用于该递减尾部内的截断。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "相邻两项组合使偶数部分和递增。",
+      "latex": "S_{2k+2}-S_{2k}=b_{2k+1}-b_{2k+2}\\geq0"
+    },
+    {
+      "text": "奇数部分和递减，且始终在偶数部分和之上。",
+      "latex": "S_{2k}\\leq S\\leq S_{2k+1}"
+    },
+    {
+      "text": "两边差距趋零，并得到下一项误差界。",
+      "latex": "S_{2k+1}-S_{2k}=b_{2k+1}\\to0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "交错调和",
+      "problem": "前 100 项估计 $1-\\frac12+\\frac13-\\cdots$，误差至多？",
+      "steps": [
+        "$b_n=\\frac1n$ 递减到零。",
+        "下一项幅度为 $\\frac1{101}$，且下一项为正，因此真值在部分和上方。"
+      ],
+      "answer": "$0\\leq S-S_{100}\\leq\\frac1{101}$。"
+    },
+    {
+      "title": "选项数",
+      "problem": "$\\sum_{n=1}^\\infty\\frac{(-1)^{n-1}}{n^2}$ 要使误差不超过 $0.001$，取多少项足够？",
+      "steps": [
+        "要求 $\\frac1{(N+1)^2}\\leq0.001$。",
+        "$N+1\\geq\\sqrt{1000}$，取 $N=31$ 足够。"
+      ],
+      "answer": "31 项足够。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-alternating-m1",
+      "claim": "只要交错就收敛。",
+      "correction": "$1-1+1-1+\\cdots$ 的幅度不趋零，部分和振荡。"
+    },
+    {
+      "id": "c2-alternating-m2",
+      "claim": "误差小于最后一项就叫精确。",
+      "correction": "有限截断仍是近似，应用下一项给出误差界。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "交错调和前 9 项的余项符号？",
+      "answer": "非正。",
+      "hint": "下一项是负项。",
+      "solution": [
+        "第十项为 $-\\frac1{10}$，余项也非正，真值不大于第九部分和。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-alternating-p1"
+    },
+    {
+      "problem": "交错调和前 99 项，误差至多多少？",
+      "answer": "$0.01$。",
+      "hint": "看第一项被舍弃的项。",
+      "solution": [
+        "$b_{100}=\\frac1{100}=0.01$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.01,
+      "id": "c2-alternating-p2"
+    },
+    {
+      "problem": "$\\sum(-1)^n\\frac{n}{n+1}$ 收敛吗？",
+      "answer": "发散。",
+      "hint": "先检查幅度是否趋零。",
+      "solution": [
+        "幅度趋于 1，单项不趋零；不能用交错判别得收敛。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-alternating-p3"
+    },
+    {
+      "problem": "$\\sum\\frac{(-1)^{n-1}}{\\sqrt n}$ 收敛吗？",
+      "answer": "收敛。",
+      "hint": "检查幅度的两个条件。",
+      "solution": [
+        "$n^{-1/2}$ 正、递减到零，因此交错级数收敛。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-alternating-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "交错级数的下一项误差界依赖什么？",
+    "choices": [
+      "只依赖正负交替",
+      "幅度最终递减到零",
+      "只依赖项数够大"
+    ],
+    "correctIndex": 1,
+    "explanation": "交替与幅度递减共同把尾部夹住。"
+  },
+  "teaching": {
+    "explain": "不要只读“收敛”。下一项告诉你还差多少，以及真值在当前读数的哪一边。",
+    "steps": [
+      {
+        "title": "奇数项",
+        "instruction": "项数取 5。",
+        "observation": "下一项为负，当前部分和在真值上方。",
+        "preset": {
+          "n": 5
+        }
+      },
+      {
+        "title": "偶数项",
+        "instruction": "项数取 6。",
+        "observation": "下一项为正，当前部分和在真值下方。",
+        "preset": {
+          "n": 6
+        }
+      },
+      {
+        "title": "减小误差",
+        "instruction": "项数取 60。",
+        "observation": "误差不超过 $\\frac1{61}$，真值仍位于相邻部分和间。",
+        "preset": {
+          "n": 60
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-ratio-root"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-convergence",
+  "number": "4.4",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-alternating",
+    "caption": "显示交错调和的部分和、真实值 $\\ln2$ 与下一项误差界。",
+    "prediction": "奇数与偶数部分和分别落在真值哪一侧？"
+  },
+  "misconceptionTags": [
+    "c2-alternating-m1",
+    "c2-alternating-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "检查幅度递减到零",
+    "给出下一项截断误差界",
+    "确定真值位于部分和哪一侧"
+  ]
+}

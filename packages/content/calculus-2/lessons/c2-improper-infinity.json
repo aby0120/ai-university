@@ -1,0 +1,198 @@
+{
+  "id": "c2-improper-infinity",
+  "title": "无穷区间上的积分",
+  "subtitle": "先截成有限区间，再让边界走远",
+  "concept": "无穷区间的积分是截断积分的极限；无穷远不是可以直接代入的普通数。",
+  "intuition": "面积延伸得无限远，仍可能总共有限。关键是尾部衰减多快。",
+  "body": [
+    {
+      "title": "什么时候叫收敛？",
+      "text": "$\\int_a^R f$ 在 $R\\to\\infty$ 时趋于有限实数，才叫收敛。趋于无穷或持续振荡都叫发散。"
+    },
+    {
+      "title": "两边都无穷呢？",
+      "text": "选有限点把积分拆成两半，两半必须分别收敛。只把左右截断长度设成相同，得到的可能只是主值。"
+    },
+    {
+      "title": "幂函数的分界在哪里？",
+      "text": "在 $[1,\\infty)$ 上，$\\int x^{-p}dx$ 当且仅当 $p>1$ 收敛。$p=1$ 的对数增长再慢也会无界。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "先截成有限区间，再让边界走远",
+    "latex": "\\int_a^\\infty f(x)dx:=\\lim_{R\\to\\infty}\\int_a^R f(x)dx,\\qquad\\int_1^\\infty\\frac{dx}{x^p}=\\frac1{p-1}\\ (p>1)",
+    "conditions": [
+      "每个有限截断区间可积；极限必须有限。双向无穷积分的两半各自收敛。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "对有限截断先算。",
+      "latex": "\\int_1^R x^{-p}dx=\\frac{R^{1-p}-1}{1-p}\\quad(p\\neq1)"
+    },
+    {
+      "text": "当指数为负时，远端项趋于零。",
+      "latex": "p>1\\Longrightarrow R^{1-p}\\to0"
+    },
+    {
+      "text": "临界情形单独检查。",
+      "latex": "\\int_1^R\\frac{dx}{x}=\\ln R\\to\\infty"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "有限的尾部面积",
+      "problem": "求 $\\int_1^\\infty x^{-2}dx$。",
+      "steps": [
+        "截断为 $[-\\frac1x]_1^R=1-\\frac1R$。",
+        "令 $R\\to\\infty$，尾部 $\\frac1R$ 趋于零。"
+      ],
+      "answer": "$1$。"
+    },
+    {
+      "title": "指数尾部",
+      "problem": "求 $\\int_0^\\infty e^{-2x}dx$。",
+      "steps": [
+        "有限积分为 $\\frac12(1-e^{-2R})$。",
+        "指数趋于零，得到有限极限。"
+      ],
+      "answer": "$\\frac12$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-improper-infinity-m1",
+      "claim": "曲线趋于零就保证积分收敛。",
+      "correction": "$\\frac1x\\to0$，但从 1 到无穷的积分发散。"
+    },
+    {
+      "id": "c2-improper-infinity-m2",
+      "claim": "左右无穷可以相消。",
+      "correction": "普通反常积分要求两半分别收敛；主值是另一种定义。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "求 $\\int_1^\\infty x^{-3}dx$。",
+      "answer": "$\\frac12$。",
+      "hint": "先用有限上限。",
+      "solution": [
+        "$\\int_1^R x^{-3}dx=\\frac12(1-R^{-2})\\to\\frac12$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.5,
+      "id": "c2-improper-infinity-p1"
+    },
+    {
+      "problem": "$\\int_1^\\infty x^{-1/2}dx$ 是否收敛？",
+      "answer": "发散。",
+      "hint": "看原函数增长。",
+      "solution": [
+        "$2(\\sqrt R-1)\\to\\infty$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-improper-infinity-p2"
+    },
+    {
+      "problem": "求 $\\int_0^\\infty xe^{-x}dx$。",
+      "answer": "$1$。",
+      "hint": "分部后再取极限。",
+      "solution": [
+        "原函数为 $-(x+1)e^{-x}$，截断值 $1-(R+1)e^{-R}\\to1$。"
+      ],
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "numericAnswer": 1,
+      "id": "c2-improper-infinity-p3"
+    },
+    {
+      "problem": "$\\int_{-\\infty}^{\\infty}x dx$ 能因对称而取零吗？",
+      "answer": "不能，普通反常积分发散。",
+      "hint": "分别算两半。",
+      "solution": [
+        "从 0 到 $R$ 的积分为 $\\frac{R^2}{2}\\to\\infty$；对称主值为零不代表积分收敛。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [
+        "c2-improper-infinity-m2"
+      ],
+      "id": "c2-improper-infinity-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "$f(x)\\to0$ 是否保证 $\\int_1^\\infty f(x)dx$ 收敛？",
+    "choices": [
+      "保证",
+      "不保证",
+      "只有正函数才保证"
+    ],
+    "correctIndex": 1,
+    "explanation": "$f(x)=\\frac1x$ 是正函数反例。"
+  },
+  "teaching": {
+    "explain": "无限长不等于无限大；把越来越远的面积记成一个数列，问这些数是否稳定在有限值。",
+    "steps": [
+      {
+        "title": "收敛尾部",
+        "instruction": "指数取 2，上限取 4。",
+        "observation": "截断面积为 $\\frac34$，离极限 1 仍差 $\\frac14$。",
+        "preset": {
+          "c": 2,
+          "b": 4
+        }
+      },
+      {
+        "title": "拉远边界",
+        "instruction": "指数取 2，上限取 40。",
+        "observation": "截断面积为 $\\frac{39}{40}$，尾部为 $\\frac1{40}$。",
+        "preset": {
+          "c": 2,
+          "b": 40
+        }
+      },
+      {
+        "title": "临界指数",
+        "instruction": "指数取 1，上限取 40。",
+        "observation": "面积为 $\\ln40$；上限继续增大时没有有限极限。",
+        "preset": {
+          "c": 1,
+          "b": 40
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-numerical",
+    "infinite-limits"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-extended-integrals",
+  "number": "2.2",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-improper-infinity",
+    "caption": "截断 $\\int_1^R x^{-p}dx$，同时改变指数与远端。",
+    "prediction": "同样扩大上限，指数在一的两侧会出现什么差别？"
+  },
+  "misconceptionTags": [
+    "c2-improper-infinity-m1",
+    "c2-improper-infinity-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "用截断极限定义无穷区间积分",
+    "判断幂尾部的收敛条件",
+    "区分普通反常积分与主值"
+  ]
+}

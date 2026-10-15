@@ -9,7 +9,7 @@ export function ParameterControl({label,value,min,max,step=.01,onChange}:{label:
   function commit(){
     const n=parseParameter(draft);
     if(!draft.trim()||!Number.isFinite(n)){setDraft(format(value));setError('可输入小数、分数或 pi/2 等简单值。');return;}
-    if(step>=1&&!Number.isInteger(n)){setError('此参数需要整数，已恢复当前值。');setDraft(format(value));return;}
+    if(step>=1&&(!Number.isInteger(n)||(n-min)%step!==0)){setError(step===1?'此参数需要整数，已恢复当前值。':`此参数需要从 ${min} 开始、步长为 ${step} 的整数，已恢复当前值。`);setDraft(format(value));return;}
     if(n<min||n>max){setError(`范围是 ${format(min)} 到 ${format(max)}，已恢复当前值。`);setDraft(format(value));return;}
     setError('');onChange(n);
   }

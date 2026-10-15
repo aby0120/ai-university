@@ -1,0 +1,196 @@
+{
+  "id": "c2-binomial",
+  "title": "广义二项式展开",
+  "subtitle": "非整数次幂也能在局部展开",
+  "concept": "二项式系数可延伸到任意实指数；非负整数时有限终止，其余通常是有收敛范围的无穷级数。",
+  "intuition": "平方根也能像多项式一样逐项近似，但它的展开只在中心附近有效。",
+  "body": [
+    {
+      "title": "系数如何定义？",
+      "text": "从指数开始连续往下乘，再除以阶乘；零次系数为一。不需要把负数或分数的阶乘当成定义。"
+    },
+    {
+      "title": "有效范围？",
+      "text": "对任意实指数，$|x|<1$ 内可表示 $(1+x)^\\alpha$；端点另查。非负整数指数是普通有限多项式，不受这个半径限制。"
+    },
+    {
+      "title": "近似后怎么验？",
+      "text": "在中心代入检查常数，求导检查前几阶系数；要保证误差，再用 Taylor 余项而不是仅凭项小。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "非整数次幂也能在局部展开",
+    "latex": "(1+x)^\\alpha=\\sum_{n=0}^\\infty{\\alpha\\choose n}x^n,\\quad{\\alpha\\choose n}=\\frac{\\alpha(\\alpha-1)\\cdots(\\alpha-n+1)}{n!},\\quad{\\alpha\\choose0}=1",
+    "conditions": [
+      "$\\alpha\\in\\mathbb R$，$|x|<1$；非负整数时级数终止，成为对所有实数成立的多项式恒等式。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "计算幂函数在零点的各阶导数。",
+      "latex": "f^{(n)}(0)=\\alpha(\\alpha-1)\\cdots(\\alpha-n+1)"
+    },
+    {
+      "text": "除以阶乘得到 Taylor 系数。",
+      "latex": "(1+x)^\\alpha=1+\\alpha x+\\frac{\\alpha(\\alpha-1)}2x^2+\\cdots"
+    },
+    {
+      "text": "非终止情形，相邻项绝对比趋于输入绝对值；函数表示由二项式定理保证。",
+      "latex": "\\left|\\frac{a_{n+1}}{a_n}\\right|=\\left|\\frac{\\alpha-n}{n+1}x\\right|\\to|x|"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "平方根",
+      "problem": "写出 $\\sqrt{1+x}$ 的二次近似。",
+      "steps": [
+        "$\\alpha=\\frac12$，一次系数为 $\\frac12$。",
+        "二次系数为 $\\frac{(1/2)(-1/2)}2=-\\frac18$。"
+      ],
+      "answer": "$1+\\frac x2-\\frac{x^2}{8}$。"
+    },
+    {
+      "title": "负整数指数也不终止",
+      "problem": "展开 $\\frac1{(1+x)^2}$。",
+      "steps": [
+        "$\\alpha=-2$，系数依次为 $1,-2,3,-4,\\ldots$。",
+        "一般系数为 $(-1)^n(n+1)$，有效范围为 $|x|<1$。"
+      ],
+      "answer": "$\\sum_{n=0}^\\infty(-1)^n(n+1)x^n$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-binomial-m1",
+      "claim": "所有整数指数都会终止。",
+      "correction": "只有非负整数指数会终止；负整数通常产生无穷级数。"
+    },
+    {
+      "id": "c2-binomial-m2",
+      "claim": "根式定义域就是展开的收敛区间。",
+      "correction": "函数可在更大范围有定义，当前中心的展开仍受半径限制。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "写出 $(1+x)^3$ 的展开。",
+      "answer": "$1+3x+3x^2+x^3$。",
+      "hint": "非负整数会终止。",
+      "solution": [
+        "四次起的系数含零因子，因此后续项全零。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-binomial-p1"
+    },
+    {
+      "problem": "写出 $(1+x)^{-1/2}$ 的前三项。",
+      "answer": "$1-\\frac x2+\\frac{3x^2}{8}$。",
+      "hint": "代入广义系数。",
+      "solution": [
+        "二次系数为 $\\frac{(-1/2)(-3/2)}2=\\frac38$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-binomial-p2"
+    },
+    {
+      "problem": "用二次展开估计 $\\sqrt{1.04}$。",
+      "answer": "$1.0198$。",
+      "hint": "令小量为零点零四。",
+      "solution": [
+        "$1+\\frac{0.04}{2}-\\frac{0.04^2}{8}=1.0198$，仍为近似。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 1.0198,
+      "id": "c2-binomial-p3"
+    },
+    {
+      "problem": "能把 $x=2$ 代入 $\\sqrt{1+x}$ 的零点无穷展开吗？",
+      "answer": "不能直接使用，超出收敛半径。",
+      "hint": "函数存在不等于这个展开有效。",
+      "solution": [
+        "非整数二项式的零点展开半径为 1，输入 2 在外部。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [
+        "c2-binomial-m2"
+      ],
+      "id": "c2-binomial-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "哪种指数保证二项式展开有限终止？",
+    "choices": [
+      "任何整数",
+      "非负整数",
+      "任何实数"
+    ],
+    "correctIndex": 1,
+    "explanation": "只有非负整数能在下降连乘中产生零因子。"
+  },
+  "teaching": {
+    "explain": "它是普通二项式的延伸，但无穷版本多了一件必须记住的事：使用范围。",
+    "steps": [
+      {
+        "title": "低阶",
+        "instruction": "阶数取 2，输入取 0.5。",
+        "observation": "有限多项式匹配低阶导数；读数保留实际误差。",
+        "preset": {
+          "n": 2,
+          "x": 0.5
+        }
+      },
+      {
+        "title": "增加阶数",
+        "instruction": "阶数取 6，输入仍取 0.5。",
+        "observation": "在这个输入处，观察实际误差的变化。",
+        "preset": {
+          "n": 6,
+          "x": 0.5
+        }
+      },
+      {
+        "title": "靠近边界或远处",
+        "instruction": "阶数取 10，输入取 0.9。",
+        "observation": "近似质量随输入与函数变化；仍需正文中的范围与余项条件。",
+        "preset": {
+          "n": 10,
+          "x": 0.9
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-standard-series"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-taylor-use",
+  "number": "6.4",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-binomial",
+    "caption": "比较 $\\sqrt{1+x}$ 与零点展开的有限近似，读取误差。",
+    "prediction": "增加阶数后，远处是否与中心附近一样准确？"
+  },
+  "misconceptionTags": [
+    "c2-binomial-m1",
+    "c2-binomial-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "计算广义二项式系数",
+    "区分有限多项式与无限展开",
+    "在有效范围内近似根式"
+  ]
+}

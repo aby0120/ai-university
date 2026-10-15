@@ -12,6 +12,36 @@ export const allLessons = book.lessonIds.map((id) =>
     ),
   ),
 );
+export const contentBooks = [
+  {
+    book,
+    allLessons,
+    extra: JSON.parse(
+      fs.readFileSync(`${root}/packages/content/supplements.json`),
+    ),
+    directory: "packages/content/lessons",
+    filename: "Calculus-I.md",
+    printFile: "book.html",
+  },
+];
+const book2 = JSON.parse(
+  fs.readFileSync(`${root}/packages/content/calculus-2/book.json`),
+);
+contentBooks.push({
+  book: book2,
+  allLessons: book2.lessonIds.map((id) =>
+    JSON.parse(
+      fs.readFileSync(`${root}/packages/content/calculus-2/lessons/${id}.json`),
+    ),
+  ),
+  extra: JSON.parse(
+    fs.readFileSync(`${root}/packages/content/calculus-2/supplements.json`),
+  ),
+  directory: "packages/content/calculus-2/lessons",
+  filename: "Calculus-II.md",
+  printFile: "calculus-2.html",
+});
+export const libraryLessons = contentBooks.flatMap((c) => c.allLessons);
 export function walkStrings(value, fn, key = "") {
   if (typeof value === "string") fn(value, key);
   else if (value && typeof value === "object")

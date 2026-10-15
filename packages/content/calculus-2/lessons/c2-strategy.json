@@ -1,0 +1,195 @@
+{
+  "id": "c2-strategy",
+  "title": "怎样选择积分方法",
+  "subtitle": "先看结构，再决定工具",
+  "concept": "先化简与找内层导数，再看乘积、根式或有理式；没有初等原函数，也不妨碍定积分存在。",
+  "intuition": "同样带指数，$\\int2xe^{x^2}dx$ 适合换元，$\\int xe^x dx$ 适合分部。关键是内部的导数是否在外面。",
+  "body": [
+    {
+      "title": "第一眼看什么？",
+      "text": "先做代数、三角恒等变换与长除法。改写后，题目可能直接落入基本公式。"
+    },
+    {
+      "title": "方法可以组合吗？",
+      "text": "可以。分部后可能需要换元；三角代换后可能需要三角积分。每一步要减少某种复杂度。"
+    },
+    {
+      "title": "什么时候停止找原函数？",
+      "text": "$e^{-x^2}$ 等函数没有初等原函数。可保留定积分，用数值方法或后面学到的级数求近似，并报告误差。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "先看结构，再决定工具",
+    "latex": "\\int_a^b f(x)\\,dx=F(b)-F(a)\\quad(F\\prime=f)",
+    "conditions": [
+      "基本定理要求 $f$ 在有限闭区间连续；初等公式不是积分存在的必要条件。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先识别复合函数。",
+      "latex": "\\int2xe^{x^2}dx=\\int e^u du,\\quad u=x^2"
+    },
+    {
+      "text": "另一个乘积则需要分部。",
+      "latex": "\\int xe^x dx=e^x(x-1)+C"
+    },
+    {
+      "text": "所有候选原函数都用求导检查。",
+      "latex": "\\frac d{dx}F(x)=f(x)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "先展开更短",
+      "problem": "求 $\\int\\frac{x^2+2x+1}{x}dx$。",
+      "steps": [
+        "在 $x\\neq0$ 时拆成 $x+2+\\frac1x$。",
+        "逐项积分，不必分部。"
+      ],
+      "answer": "$\\frac{x^2}{2}+2x+\\ln|x|+C$。"
+    },
+    {
+      "title": "两种方法交叉",
+      "problem": "求 $\\int x\\ln(x^2)dx$，$x>0$。",
+      "steps": [
+        "先令 $u=x^2$，得 $\\frac12\\int\\ln u\\,du$。",
+        "再分部得 $\\frac12(u\\ln u-u)+C$。"
+      ],
+      "answer": "$\\frac12[x^2\\ln(x^2)-x^2]+C$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-strategy-m1",
+      "claim": "每题只能用一种方法。",
+      "correction": "结构变化后可以换工具，检查每一步即可。"
+    },
+    {
+      "id": "c2-strategy-m2",
+      "claim": "找不到初等原函数，积分就不存在。",
+      "correction": "连续性可保证有限区间的定积分存在。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$\\int\\frac{2x}{1+x^2}dx$ 优先用什么方法？",
+      "answer": "换元 $u=1+x^2$，结果为 $\\ln(1+x^2)+C$。",
+      "hint": "分母导数在分子。",
+      "solution": [
+        "$du=2x dx$，积分变成 $\\int\\frac1u du$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-strategy-p1"
+    },
+    {
+      "problem": "$\\int x\\sin x dx$ 优先用什么方法？",
+      "answer": "分部，结果为 $-x\\cos x+\\sin x+C$。",
+      "hint": "让多项式求导。",
+      "solution": [
+        "$u=x,v=-\\cos x$，剩余积分为 $\\int\\cos x dx$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-strategy-p2"
+    },
+    {
+      "problem": "求 $\\int_0^1\\frac{x^2+1}{x+1}dx$。",
+      "answer": "$2\\ln2-\\frac12$。",
+      "hint": "先除法。",
+      "solution": [
+        "$\\frac{x^2+1}{x+1}=x-1+\\frac2{x+1}$，端点积分得到答案。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.8862943611198906,
+      "id": "c2-strategy-p3"
+    },
+    {
+      "problem": "$\\int_0^1e^{-x^2}dx$ 没有初等原函数，能否定义？",
+      "answer": "可以，且值在 0 与 1 之间。",
+      "hint": "先检查有限区间的连续性。",
+      "solution": [
+        "被积函数连续且满足 $0<e^{-x^2}\\leq1$；积分存在，可用带误差控制的近似。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [
+        "c2-strategy-m2"
+      ],
+      "id": "c2-strategy-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "哪一步应优先做？",
+    "choices": [
+      "看见乘积就分部",
+      "先化简并寻找复合结构",
+      "先猜一个更复杂的原函数"
+    ],
+    "correctIndex": 1,
+    "explanation": "方法取决于化简后的结构，而不只取决于表面符号。"
+  },
+  "teaching": {
+    "explain": "先问“哪种改写能让下一步更简单？”求得候选结果后，再问“求导能否回去？”",
+    "steps": [
+      {
+        "title": "小区间",
+        "instruction": "上限设为 0.5。",
+        "observation": "面积为 $1-\\frac12e^{1/2}$，分部右侧给出同值。",
+        "preset": {
+          "b": 0.5
+        }
+      },
+      {
+        "title": "核对端点",
+        "instruction": "上限设为 1。",
+        "observation": "积分为 1；边界项减剩余积分也为 1。",
+        "preset": {
+          "b": 1
+        }
+      },
+      {
+        "title": "放大区间",
+        "instruction": "上限设为 2。",
+        "observation": "积分为 $e^2+1$；边界项与剩余项都必须计算。",
+        "preset": {
+          "b": 2
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-parts",
+    "c2-trig-integrals",
+    "c2-partial-fractions"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-techniques",
+  "number": "1.5",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-strategy",
+    "caption": "显示 $\\int_0^b xe^x dx$ 与边界项、剩余积分的关系。",
+    "prediction": "上限扩大时，两种写法的累计值是否一致？"
+  },
+  "misconceptionTags": [
+    "c2-strategy-m1",
+    "c2-strategy-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "从化简与内层导数选择方法",
+    "组合两种积分工具",
+    "区分初等原函数与积分存在"
+  ]
+}

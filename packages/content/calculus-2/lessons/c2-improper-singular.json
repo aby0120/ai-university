@@ -1,0 +1,197 @@
+{
+  "id": "c2-improper-singular",
+  "title": "有限区间里的无界点",
+  "subtitle": "每个危险点都要单独靠近",
+  "concept": "函数在端点或内部无界时，避开无界点积分，再取单侧极限。",
+  "intuition": "曲线在原点冲向无穷，不代表附近面积一定无穷。高度和宽度需要一起看。",
+  "body": [
+    {
+      "title": "内部无界点怎么处理？",
+      "text": "必须在无界点处分段，两侧各自收敛。不能把原函数跨过奇点直接相减。"
+    },
+    {
+      "title": "和无穷远的幂积分一样吗？",
+      "text": "恰好相反：$\\int_0^1x^{-p}dx$ 当且仅当 $p<1$ 收敛。这里考察的是靠近零的尖峰，而不是远处的尾部。"
+    },
+    {
+      "title": "比较法能用吗？",
+      "text": "能。若非负函数被一个已知可积的尖峰压住，它也可积；若压在发散尖峰之上，则发散。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "每个危险点都要单独靠近",
+    "latex": "\\int_0^1x^{-p}dx=\\lim_{\\delta\\to0^+}\\int_\\delta^1x^{-p}dx=\\frac1{1-p}\\quad(p<1)",
+    "conditions": [
+      "截断点从区间内部靠近奇点；每个奇点的每个相关侧都要检查。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先避开零。",
+      "latex": "\\int_\\delta^1x^{-p}dx=\\frac{1-\\delta^{1-p}}{1-p}\\quad(p\\neq1)"
+    },
+    {
+      "text": "正指数使下端项消失。",
+      "latex": "p<1\\Longrightarrow\\delta^{1-p}\\to0"
+    },
+    {
+      "text": "临界值仍发散。",
+      "latex": "\\int_\\delta^1\\frac{dx}{x}=-\\ln\\delta\\to\\infty"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "无界但可积",
+      "problem": "求 $\\int_0^1\\frac{dx}{\\sqrt x}$。",
+      "steps": [
+        "截断积分为 $2-2\\sqrt\\delta$。",
+        "令 $\\delta\\to0^+$，下端贡献消失。"
+      ],
+      "answer": "$2$。"
+    },
+    {
+      "title": "中间奇点不能跨过去",
+      "problem": "$\\int_{-1}^1\\frac{dx}{x}$ 是否存在？",
+      "steps": [
+        "左半积分为 $\\ln\\delta\\to-\\infty$，右半为 $-\\ln\\delta\\to\\infty$。",
+        "两半均不收敛，不能相消。"
+      ],
+      "answer": "发散；对称主值为零是另一个概念。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-improper-singular-m1",
+      "claim": "有竖直渐近线就一定面积无限。",
+      "correction": "$x^{-1/2}$ 在零点无界，但积分有限。"
+    },
+    {
+      "id": "c2-improper-singular-m2",
+      "claim": "直接代端点，算出原函数之差就行。",
+      "correction": "先检查区间内的所有奇点，不能跨奇点使用基本定理。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "求 $\\int_0^1x^{-1/3}dx$。",
+      "answer": "$\\frac32$。",
+      "hint": "下端用极限。",
+      "solution": [
+        "$[\\frac32x^{2/3}]_\\delta^1\\to\\frac32$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 1.5,
+      "id": "c2-improper-singular-p1"
+    },
+    {
+      "problem": "$\\int_0^1x^{-2}dx$ 收敛吗？",
+      "answer": "发散。",
+      "hint": "注意是零附近。",
+      "solution": [
+        "$[-x^{-1}]_\\delta^1=\\delta^{-1}-1\\to\\infty$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-improper-singular-p2"
+    },
+    {
+      "problem": "求 $\\int_0^1\\ln x dx$。",
+      "answer": "$-1$。",
+      "hint": "先分部，再用下端极限。",
+      "solution": [
+        "$[x\\ln x-x]_\\delta^1=-1-\\delta\\ln\\delta+\\delta$；$\\delta\\ln\\delta\\to0$。"
+      ],
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "numericAnswer": -1,
+      "id": "c2-improper-singular-p3"
+    },
+    {
+      "problem": "$\\int_0^2\\frac{dx}{(x-1)^2}$ 的原函数端点差为负数，哪里错了？",
+      "answer": "越过内部无界点，错误使用基本定理。",
+      "hint": "在 1 分成两段。",
+      "solution": [
+        "两边被积函数均为正，且靠近 1 的积分均趋于正无穷；积分发散。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [
+        "c2-improper-singular-m2"
+      ],
+      "id": "c2-improper-singular-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "$\\int_0^1x^{-p}dx$ 收敛的范围？",
+    "choices": [
+      "$p>1$",
+      "$p<1$",
+      "$p=1$"
+    ],
+    "correctIndex": 1,
+    "explanation": "零附近要求尖峰足够弱，与无穷远的尾部条件相反。"
+  },
+  "teaching": {
+    "explain": "先把积分区间画出来，标出所有无界点。每个点单独过关，整段积分才有定义。",
+    "steps": [
+      {
+        "title": "可积尖峰",
+        "instruction": "指数取 0.5，下界取 0.1。",
+        "observation": "总面积的极限为 2，但目前仍漏掉 $2\\sqrt{0.1}$。",
+        "preset": {
+          "c": 0.5,
+          "h": 0.1
+        }
+      },
+      {
+        "title": "靠近零",
+        "instruction": "指数取 0.5，下界取 0.001。",
+        "observation": "高度更大，但漏掉的面积反而更小。",
+        "preset": {
+          "c": 0.5,
+          "h": 0.001
+        }
+      },
+      {
+        "title": "不可积尖峰",
+        "instruction": "指数取 1，下界取 0.001。",
+        "observation": "截断面积为 $-\\ln0.001$，随下界继续缩小而无界。",
+        "preset": {
+          "c": 1,
+          "h": 0.001
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-improper-infinity"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-extended-integrals",
+  "number": "2.3",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-improper-singular",
+    "caption": "截去 $[0,\\delta)$ 的尖峰，显示 $\\int_\\delta^1x^{-p}dx$。",
+    "prediction": "下界缩小时，哪些指数能使面积保持有限？"
+  },
+  "misconceptionTags": [
+    "c2-improper-singular-m1",
+    "c2-improper-singular-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "逐个检查端点与内部奇点",
+    "判断零附近幂尖峰的可积性",
+    "识别跨奇点使用基本定理的错误"
+  ]
+}

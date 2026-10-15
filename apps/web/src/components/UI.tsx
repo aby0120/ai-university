@@ -7,7 +7,8 @@ import {
   SlidersHorizontal,
 } from "lucide-react";
 import { type ReactNode } from "react";
-import { book } from "../../../../packages/content";
+import {collections} from "../../../../packages/content";
+import {useCurriculum} from "../lib/curriculum";
 import type { Lesson } from "../../../../packages/content/types";
 import { Formula, MathText } from "../components/MathText";
 import { pageWindow, routeHref } from "../lib/navigation";
@@ -29,8 +30,11 @@ export function Link({
   "aria-label"?: string;
   "aria-current"?: "page" | "step";
 }) {
+  const {book}=useCurriculum();
+  const scoped=["lab","practice","reference","learning","search","downloads","guide"].includes(to)||to==="practice/exam";
+  const values=scoped?{book:book.id,...params}:params;
   return (
-    <a className={className} href={routeHref(to, params)} {...props}>
+    <a className={className} href={routeHref(to, values)} {...props}>
       {children}
     </a>
   );
@@ -174,9 +178,11 @@ export function Filters({
   values: Record<string, string>;
   chapter?: boolean;
 }) {
+  const {book}=useCurriculum();
   function change(key: string, value: string) {
     location.hash = routeHref(path, {
       ...values,
+      book:book.id,
       [key]: value,
       page: undefined,
     });

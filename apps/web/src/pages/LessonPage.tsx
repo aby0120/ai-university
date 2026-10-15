@@ -1,3 +1,4 @@
+import {useCurriculum} from "../lib/curriculum";
 import {
   ArrowLeft,
   ArrowRight,
@@ -15,7 +16,7 @@ import {
   X,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { book, lessonById, lessons } from "../../../../packages/content";
+import {lessonById, allLessons, collections} from "../../../../packages/content";
 import type { Lesson } from "../../../../packages/content/types";
 import { Formula, MathText } from "../components/MathText";
 import { Practice } from "../components/Practice";
@@ -45,6 +46,7 @@ const sections = [
 ];
 
 export function LessonPage({ lesson: l }: { lesson: Lesson }) {
+  const {book,lessons,bookStats,supplements,BOOK,filename,printFile}=useCurriculum();
   const { route, reading, update, progress, mark } = useApp();
   const view = route.params.get("view") || "read";
   const index = lessons.indexOf(l);
@@ -103,7 +105,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
       />
       <Breadcrumb
         items={[
-          { label: "微积分 I", to: BOOK },
+          { label: book.titleZh, to: BOOK },
           { label: ch.title, to: chapterPath(ch.id) },
           { label: l.number },
         ]}
@@ -456,7 +458,8 @@ export function SectionTitle({ num, title }: { num: string; title: string }) {
 }
 
 export function Connections({ lesson }: { lesson: Lesson }) {
-  const next = lessons.filter((l) => l.prerequisites.includes(lesson.id));
+  const {book,lessons,bookStats,supplements,BOOK,filename,printFile}=useCurriculum();
+  const next = allLessons.filter((l) => l.prerequisites.includes(lesson.id));
   return (
     <section className="connections">
       <Eyebrow>KNOWLEDGE CONNECTIONS</Eyebrow>
@@ -472,7 +475,7 @@ export function Connections({ lesson }: { lesson: Lesson }) {
               <LessonRow key={id} lesson={lessonById[id]} />
             ))
           ) : (
-            <p>具备初等代数即可开始。</p>
+            <p>{book.audience}。</p>
           )}
         </div>
         <div className="current-concept">

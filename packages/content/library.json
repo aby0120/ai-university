@@ -84,10 +84,18 @@
         "II"
       ],
       "tagline": "延伸累积与逼近的方法",
-      "description": "积分技巧、反常积分、数列与级数；继续拓展一元微积分。",
+      "description": "积分技巧与误差、反常积分、数列级数、Taylor 展开、参数曲线与极坐标，以及一阶微分方程入门。",
       "audience": "已掌握微积分 I 的学习者",
-      "scope": "积分技巧 · 反常积分 · 数列与级数",
-      "status": "planned"
+      "scope": "积分技巧 · 无穷级数 · Taylor 展开 · 参数曲线 · 一阶方程",
+      "status": "published",
+      "route": "book/calculus-2",
+      "stats": {
+        "chapters": 8,
+        "lessons": 35,
+        "examples": 70,
+        "exercises": 178
+      },
+      "coverFormula": "T_m(x)=\\sum_{n=0}^{m}\\frac{f^{(n)}(a)}{n!}(x-a)^n"
     },
     {
       "id": "linear-algebra",

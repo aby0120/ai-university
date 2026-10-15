@@ -1,0 +1,194 @@
+{
+  "id": "c2-moments",
+  "title": "质量、力矩与质心",
+  "subtitle": "平均位置要按质量加权",
+  "concept": "质心是质量的加权平均位置，不是形状边界的简单平均。",
+  "intuition": "两块质量相同才取中点。连续分布则把小块的质量乘位置，再除以总质量。",
+  "body": [
+    {
+      "title": "细杆怎样积分？",
+      "text": "线密度为 $\\rho(x)$ 时，$dm=\\rho(x)dx$。质量为 $\\int dm$，关于原点的力矩为 $\\int x\\,dm$。"
+    },
+    {
+      "title": "平面薄片呢？",
+      "text": "均匀薄片夹在 $g(x)$ 与 $f(x)$ 之间。竖条面积为 $(f-g)dx$，条的中点高度为 $\\frac{f+g}{2}$。"
+    },
+    {
+      "title": "对称性能省什么？",
+      "text": "质量分布关于一条轴对称，质心在该轴上。密度不对称时，仅形状对称还不够。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "平均位置要按质量加权",
+    "latex": "\\bar x=\\frac{\\int x\\,dm}{\\int dm},\\qquad\\bar y=\\frac{\\int y\\,dm}{\\int dm}",
+    "conditions": [
+      "质量为正且有限，力矩存在；均匀薄片公式要求相同面密度。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "总质量由小块相加。",
+      "latex": "M=\\int_a^b\\rho(x)dx"
+    },
+    {
+      "text": "质量乘位置再相加。",
+      "latex": "P=\\int_a^b x\\rho(x)dx"
+    },
+    {
+      "text": "用集中在质心的质量匹配力矩。",
+      "latex": "M\\bar x=P"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "密度向右增加的杆",
+      "problem": "$0\\leq x\\leq1$ 上 $\\rho(x)=2x$，求质心。",
+      "steps": [
+        "$M=\\int_0^1 2x dx=1$。",
+        "$P=\\int_0^1 2x^2dx=\\frac23$，所以 $\\bar x=\\frac23$。"
+      ],
+      "answer": "$\\bar x=\\frac23$。"
+    },
+    {
+      "title": "三角形薄片",
+      "problem": "均匀薄片 $0\\leq y\\leq x$，$0\\leq x\\leq1$，求质心。",
+      "steps": [
+        "面积为 $A=\\int_0^1x dx=\\frac12$。",
+        "关于纵轴力矩为 $\\int_0^1x^2dx=\\frac13$；关于横轴力矩为 $\\frac12\\int_0^1x^2dx=\\frac16$。"
+      ],
+      "answer": "$(\\bar x,\\bar y)=(\\frac23,\\frac13)$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-moments-m1",
+      "claim": "质心一定在区间或图形的几何中心。",
+      "correction": "应按质量加权；薄片有洞时，质心甚至可在材料之外。"
+    },
+    {
+      "id": "c2-moments-m2",
+      "claim": "横轴力矩直接积分横坐标。",
+      "correction": "关于横轴的距离是纵坐标；先画力臂。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "质量 1 在 $x=0$、质量 3 在 $x=2$，质心？",
+      "answer": "$\\frac32$。",
+      "hint": "加权平均。",
+      "solution": [
+        "$\\bar x=\\frac{1\\cdot0+3\\cdot2}{4}=\\frac32$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 1.5,
+      "id": "c2-moments-p1"
+    },
+    {
+      "problem": "均匀细杆 $[2,6]$ 的质心？",
+      "answer": "$4$。",
+      "hint": "利用对称性。",
+      "solution": [
+        "密度恒定，质心在区间中点 $\\frac{2+6}{2}=4$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 4,
+      "id": "c2-moments-p2"
+    },
+    {
+      "problem": "$[0,1]$ 上密度 $\\rho=3x^2$ 的质心？",
+      "answer": "$\\frac34$。",
+      "hint": "分别算质量与力矩。",
+      "solution": [
+        "$M=1$，$P=3\\int_0^1x^3dx=\\frac34$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.75,
+      "id": "c2-moments-p3"
+    },
+    {
+      "problem": "矩形 $0\\leq x\\leq2,0\\leq y\\leq4$ 均匀，质心？",
+      "answer": "$(1,2)$。",
+      "hint": "两条对称轴。",
+      "solution": [
+        "对横纵中线均对称，质心位于交点。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-moments-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "杆右边密度更大，质心通常向哪边偏？",
+    "choices": [
+      "左边",
+      "右边",
+      "密度不影响质心"
+    ],
+    "correctIndex": 1,
+    "explanation": "右侧的小块在质量加权平均中占更大比重。"
+  },
+  "teaching": {
+    "explain": "把每一小块的位置当作一票，但每票的分量等于这块的质量。",
+    "steps": [
+      {
+        "title": "均匀杆",
+        "instruction": "密度系数取 0。",
+        "observation": "质心在 0.5，质量为 1。",
+        "preset": {
+          "c": 0
+        }
+      },
+      {
+        "title": "右端更重",
+        "instruction": "密度系数取 2。",
+        "observation": "质量为 2，质心为 $\\frac7{12}$。",
+        "preset": {
+          "c": 2
+        }
+      },
+      {
+        "title": "继续增加",
+        "instruction": "密度系数取 6。",
+        "observation": "质心为 $\\frac58$，仍在杆内。",
+        "preset": {
+          "c": 6
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "physical-integrals",
+    "c2-strategy"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-extended-integrals",
+  "number": "2.5",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-moments",
+    "caption": "在 $[0,1]$ 上调整密度 $\\rho(x)=1+cx$，观察质心。",
+    "prediction": "右侧更重时，质心是否仍在正中间？"
+  },
+  "misconceptionTags": [
+    "c2-moments-m1",
+    "c2-moments-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "建立质量和力矩积分",
+    "按质量加权计算质心",
+    "使用分布的对称性"
+  ]
+}
