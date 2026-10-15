@@ -7,7 +7,9 @@ npm run check
 
 最终目录为 `dist/`。它只有 HTML、CSS、JS、字体、图片与书稿；没有 server function，不需要环境变量。放到任意静态托管即可。网站用 hash 路由与相对资源路径，适用于根域名和子目录。
 
-3D 使用打包到网站的 Three.js，需要浏览器支持 WebGL2；不调用外部渲染服务。模块仅在打开三维演示时加载。WebGL 不可用时可切回二维；静态正文、公式与下载书稿不依赖 WebGL。
+首页和第一卷旋转体 3D 使用打包到网站的 Three.js，需要浏览器支持 WebGL2；不调用外部渲染服务。模块仅在打开三维演示时加载。WebGL 不可用时可切回二维；静态正文、公式与下载书稿不依赖 WebGL。
+
+第三卷的 40 个空间图示使用本地 SVG 三维投影，不需要 WebGL；支持旋转、缩放与正交投影切换。三卷完整打印页分别为 book.html、calculus-2.html、calculus-3.html，均无需 JavaScript。
 
 ## GitHub Pages
 

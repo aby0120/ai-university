@@ -1,0 +1,191 @@
+{
+  "id": "c3-div-curl",
+  "chapterId": "c3-surface-integrals",
+  "number": "8.4",
+  "title": "散度与旋度",
+  "subtitle": "分开测净流出与局部旋转",
+  "concept": "散度测单位体积的净流出率；旋度沿法向的分量测单位面积的局部环流。",
+  "intuition": "小盒子看流出比流入多多少，小叶轮看局部有多想转。一个场可以有其中一个，也可以都有或都没有。",
+  "objectives": [
+    "计算散度与旋度",
+    "说明局部解释与光滑条件"
+  ],
+  "body": [
+    {
+      "title": "散度为何是一个数？",
+      "text": "分别比较三对相反面的净流出，再除以体积，得到三个方向伸缩率的和。"
+    },
+    {
+      "title": "旋度为何是向量？",
+      "text": "空间中能绕不同轴旋转，三个分量分别对应三个坐标平面正向小环的环流密度。"
+    },
+    {
+      "title": "两个恒等式有什么条件？",
+      "text": "足够光滑时梯度场旋度为零，旋度场散度为零。偏导交换依赖连续性，不能越过奇点使用。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "分开测净流出与局部旋转",
+    "latex": "\\nabla\\cdot\\mathbf F=P_x+Q_y+R_z,\\quad\\nabla\\times\\mathbf F=(R_y-Q_z,P_z-R_x,Q_x-P_y)",
+    "conditions": [
+      "局部解释及本节公式使用一阶连续可导场；恒等式使用相应二阶连续偏导；本节讨论经典导数，不含奇点的分布解释。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "小盒子相对两面流出差由偏导控制。",
+      "latex": "\\Phi_{\\rm net}\\approx(P_x+Q_y+R_z)\\Delta V"
+    },
+    {
+      "text": "小平面环流差由交叉偏导控制。",
+      "latex": "\\Gamma_{xy}\\approx(Q_x-P_y)\\Delta A"
+    },
+    {
+      "text": "二阶混合偏导连续时相消。",
+      "latex": "\\nabla\\times\\nabla f=0,\\quad\\nabla\\cdot(\\nabla\\times\\mathbf F)=0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "径向场",
+      "problem": "$\\mathbf F=(2x,2y,2z)$ 的散度与旋度？",
+      "steps": [
+        "三个纯偏导都是 2，散度为 6。",
+        "所有相应交叉偏导为零，旋度为零。"
+      ],
+      "answer": "散度 6，旋度 $\\mathbf0$。"
+    },
+    {
+      "title": "旋转场",
+      "problem": "$\\mathbf F=(-3y,3x,0)$ 的散度与旋度？",
+      "steps": [
+        "散度为零。",
+        "旋度竖分量 $3-(-3)=6$，其余零。"
+      ],
+      "answer": "散度 0，旋度 $(0,0,6)$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-div-curl-m1",
+      "claim": "场箭头弯曲就等于旋度非零。",
+      "correction": "旋度是局部环流密度，不能仅凭流线形状判定。"
+    },
+    {
+      "id": "c3-div-curl-m2",
+      "claim": "散度零说明各处不流动。",
+      "correction": "可有强烈旋转或等量进出，只是局部净流出为零。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-div-curl-q1",
+      "problem": "$\\mathbf F=(x^2,y,z)$ 的散度？",
+      "hint": "每个分量对自己的坐标求导。",
+      "solution": [
+        "$2x+1+1=2x+2$。"
+      ],
+      "answer": "$2x+2$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-div-curl-q2",
+      "problem": "$\\mathbf F=(y,0,0)$ 的旋度？",
+      "hint": "按给定次序求交叉偏导。",
+      "solution": [
+        "竖分量 $Q_x-P_y=0-1=-1$。"
+      ],
+      "answer": "$(0,0,-1)$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-div-curl-q3",
+      "problem": "平滑梯度场的旋度？",
+      "hint": "混合偏导抵消。",
+      "solution": [
+        "各分量都由相同混合偏导相减构成，二阶连续时为零。"
+      ],
+      "answer": "$\\mathbf0$。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-div-curl-q4",
+      "problem": "能在奇点处直接说径向奇异场散度为零吗？",
+      "hint": "导数是否定义？",
+      "solution": [
+        "场本身不定义时经典散度也不定义，不能把域外公式延伸到该点。"
+      ],
+      "answer": "不能。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "散度零是否排除局部旋转？",
+    "choices": [
+      "排除",
+      "不排除",
+      "场必须为零"
+    ],
+    "correctIndex": 1,
+    "explanation": "纯旋转场散度为零而旋度非零。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-div-curl",
+    "caption": "三维场 $(-y+cx,x+cy,0)$ 的水平切片；二维膨胀给散度 $2c$，旋度为 $(0,0,2)$。",
+    "prediction": "同一个场能同时向外流又旋转吗？"
+  },
+  "teaching": {
+    "explain": "散度看小盒子的净流出，旋度看小回路的环流；两者问的是不同问题。",
+    "steps": [
+      {
+        "title": "纯旋转",
+        "instruction": "将径向场系数 $c$设为 $0$，比较图形和读数。",
+        "preset": {
+          "c": 0
+        },
+        "observation": "旋度竖分量为二，散度为零。"
+      },
+      {
+        "title": "加入膨胀",
+        "instruction": "将径向场系数 $c$设为 $0.5$，比较图形和读数。",
+        "preset": {
+          "c": 0.5
+        },
+        "observation": "平面径向分量带来正散度，旋度不变。"
+      },
+      {
+        "title": "更强膨胀",
+        "instruction": "将径向场系数 $c$设为 $1$，比较图形和读数。",
+        "preset": {
+          "c": 1
+        },
+        "observation": "净流出增加，局部旋转率保持二。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-green",
+    "c3-flux",
+    "c3-partials"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "c3-div-curl-m1",
+    "c3-div-curl-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

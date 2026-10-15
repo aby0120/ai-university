@@ -272,7 +272,7 @@ export function Home() {
             <span>从这里，继续向前。</span>
           </h2>
           <p>
-            微积分 I 与 II 已开放阅读。
+            微积分 I、II、III 已开放阅读。
             <br />
             每本完成后，开放整本阅读。
           </p>

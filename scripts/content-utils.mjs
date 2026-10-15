@@ -41,6 +41,25 @@ contentBooks.push({
   filename: "Calculus-II.md",
   printFile: "calculus-2.html",
 });
+const book3 = JSON.parse(
+  fs.readFileSync(root + "/packages/content/calculus-3/book.json"),
+);
+contentBooks.push({
+  book: book3,
+  allLessons: book3.lessonIds.map((id) =>
+    JSON.parse(
+      fs.readFileSync(
+        root + "/packages/content/calculus-3/lessons/" + id + ".json",
+      ),
+    ),
+  ),
+  extra: JSON.parse(
+    fs.readFileSync(root + "/packages/content/calculus-3/supplements.json"),
+  ),
+  directory: "packages/content/calculus-3/lessons",
+  filename: "Calculus-III.md",
+  printFile: "calculus-3.html",
+});
 export const libraryLessons = contentBooks.flatMap((c) => c.allLessons);
 export function walkStrings(value, fn, key = "") {
   if (typeof value === "string") fn(value, key);

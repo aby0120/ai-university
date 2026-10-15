@@ -1,0 +1,190 @@
+{
+  "id": "c3-fields",
+  "chapterId": "c3-line-integrals",
+  "number": "7.1",
+  "title": "向量场与流线",
+  "subtitle": "每个位置都有自己的箭头",
+  "concept": "向量场给空间每个点一个向量；流线的切向在每个点与场一致。",
+  "intuition": "风场图不是一条轨迹，而是各处此刻的风向和风速。粒子从初始位置出发，才沿场走出一条流线。",
+  "objectives": [
+    "区分场与单条轨迹",
+    "验证候选流线"
+  ],
+  "body": [
+    {
+      "title": "箭头长短表示什么？",
+      "text": "长度表示场的大小，方向表示场方向。图上常会统一缩短箭头以避免遮挡，必须注明显示倍率，不能把归一化箭头当真实大小。"
+    },
+    {
+      "title": "场和轨迹有什么区别？",
+      "text": "场是位置到向量的规则；轨迹是时间到位置的函数。自治场的粒子轨迹满足速度等于当前位置场值。"
+    },
+    {
+      "title": "怎样检查一条曲线是流线？",
+      "text": "把轨迹代入场并与导数比较；若只方向平行但倍率不同，可能是重新参数化的同一条几何流线。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "每个位置都有自己的箭头",
+    "latex": "\\mathbf F:\\mathbb R^n\\supset D\\to\\mathbb R^n,\\quad\\mathbf r\\prime(t)=\\mathbf F(\\mathbf r(t))",
+    "conditions": [
+      "存在性与唯一性需要相应连续和局部 Lipschitz 条件；本卷常用连续一阶偏导的场；不得跨越场未定义的点。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "在位置上读取场向量。",
+      "latex": "\\mathbf v=\\mathbf F(\\mathbf r)"
+    },
+    {
+      "text": "把速度写成轨迹导数。",
+      "latex": "\\mathbf r\\prime=\\mathbf F(\\mathbf r)"
+    },
+    {
+      "text": "旋转场的导数保持半径不变。",
+      "latex": "\\mathbf F=(-y,x,0)\\Rightarrow\\frac d{dt}(x^2+y^2)=0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "验证圆形流线",
+      "problem": "$\\mathbf F=(-y,x,0)$，$\\mathbf r(t)=(2\\cos t,2\\sin t,0)$ 是流线吗？",
+      "steps": [
+        "轨迹导数为 $(-2\\sin t,2\\cos t,0)$。",
+        "代入场得到完全相同向量。"
+      ],
+      "answer": "是，且速率为 2。"
+    },
+    {
+      "title": "径向增长",
+      "problem": "$\\mathbf F=(x,y,z)$、初点 $(1,0,1)$ 的轨迹？",
+      "steps": [
+        "逐分量解 $x\\prime=x,y\\prime=y,z\\prime=z$。",
+        "用初值得 $(e^t,0,e^t)$。"
+      ],
+      "answer": "$\\mathbf r(t)=(e^t,0,e^t)$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-fields-m1",
+      "claim": "向量场图中的每根箭头都是一条完整轨迹。",
+      "correction": "箭头只给所在位置的局部方向与大小。"
+    },
+    {
+      "id": "c3-fields-m2",
+      "claim": "场箭头方向一样就说明大小也一样。",
+      "correction": "平行箭头仍可能有不同长度，须看场公式与图例。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-fields-q1",
+      "problem": "场 $(x,y,0)$ 在 $(2,-1,3)$ 的值？",
+      "hint": "只代入场依赖的分量。",
+      "solution": [
+        "得到 $(2,-1,0)$。"
+      ],
+      "answer": "$\\langle2,-1,0\\rangle$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-fields-q2",
+      "problem": "场 $(-y,x,0)$ 在 $(1,0,0)$ 朝哪里？",
+      "hint": "直接代入。",
+      "solution": [
+        "向量为 $(0,1,0)$，朝正纵轴。"
+      ],
+      "answer": "正纵轴方向。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-fields-q3",
+      "problem": "场恒为 $(1,0,0)$，初点 $(0,2,3)$ 的轨迹？",
+      "hint": "积分常速度。",
+      "solution": [
+        "$\\mathbf r=(t,2,3)$，保持另两个坐标不变。"
+      ],
+      "answer": "$(t,2,3)$。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-fields-q4",
+      "problem": "单位圆上的向量场 $(-y,x,0)$ 与径向场 $(x,y,0)$ 有何方向关系？",
+      "hint": "做点积。",
+      "solution": [
+        "$-xy+xy=0$，且圆上两者非零。"
+      ],
+      "answer": "互相垂直。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "向量场与单条轨迹的关系是？",
+    "choices": [
+      "场给各处局部速度，初值选出轨迹",
+      "场只定义一个点",
+      "两者完全相同"
+    ],
+    "correctIndex": 0,
+    "explanation": "位置规则与时间函数是不同对象。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-fields",
+    "caption": "场 $\\mathbf F=(-y+cx,x+cy,0)$；箭头按统一倍率 0.22 显示，保留大小比例。",
+    "prediction": "给旋转场增加径向分量后，圆还会是流线吗？"
+  },
+  "teaching": {
+    "explain": "先给各个位置一个速度规则，再给初始位置，才能确定粒子怎样走。",
+    "steps": [
+      {
+        "title": "纯旋转",
+        "instruction": "将径向场系数 $c$设为 $0$，比较图形和读数。",
+        "preset": {
+          "c": 0
+        },
+        "observation": "场箭头切于圆，径向贡献为零。"
+      },
+      {
+        "title": "旋转加外流",
+        "instruction": "将径向场系数 $c$设为 $0.5$，比较图形和读数。",
+        "preset": {
+          "c": 0.5
+        },
+        "observation": "箭头同时有切向与径向分量。"
+      },
+      {
+        "title": "更强外流",
+        "instruction": "将径向场系数 $c$设为 $1$，比较图形和读数。",
+        "preset": {
+          "c": 1
+        },
+        "observation": "外向分量增大；圆仍只是参考曲线，不再是流线。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-motion",
+    "c2-differential-models"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-fields-m1",
+    "c3-fields-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

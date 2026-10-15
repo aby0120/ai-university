@@ -1,0 +1,192 @@
+{
+  "id": "c3-dot",
+  "chapterId": "c3-space",
+  "number": "1.2",
+  "title": "点积与投影",
+  "subtitle": "把一个方向上的贡献取出来",
+  "concept": "点积测量两个向量的对齐程度；投影给出其中沿指定方向的部分。",
+  "intuition": "顺着走有正贡献，横着走没有，反着走给负贡献。点积把这个方向信息压成一个数。",
+  "objectives": [
+    "计算投影与夹角",
+    "用点积检查垂直"
+  ],
+  "body": [
+    {
+      "title": "点积为什么是数？",
+      "text": "逐分量相乘再相加，等于一个向量的长度乘另一个沿它的有向分量。结果有符号，但没有向量方向。"
+    },
+    {
+      "title": "垂直怎样判断？",
+      "text": "两个非零向量点积为零时互相垂直。零向量也和所有向量点积为零，因此用夹角解释时要排除它。"
+    },
+    {
+      "title": "投影与分量差在哪？",
+      "text": "标量投影是有符号长度；向量投影还乘上目标方向的单位向量。投影后的余量与目标方向垂直。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "把一个方向上的贡献取出来",
+    "latex": "\\mathbf u\\cdot\\mathbf v=\\sum_{i=1}^{3}u_iv_i=\\|\\mathbf u\\|\\|\\mathbf v\\|\\cos\\theta,\\quad\\operatorname{proj}_{\\mathbf u}\\mathbf v=\\frac{\\mathbf v\\cdot\\mathbf u}{\\mathbf u\\cdot\\mathbf u}\\mathbf u",
+    "conditions": [
+      "夹角与投影方向要求 $\\mathbf u\\ne0$，夹角还要求 $\\mathbf v\\ne0$；$0\\le\\theta\\le\\pi$。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "把两向量放在同一起点，用余弦定理。",
+      "latex": "\\|\\mathbf u-\\mathbf v\\|^2=\\|\\mathbf u\\|^2+\\|\\mathbf v\\|^2-2\\|\\mathbf u\\|\\|\\mathbf v\\|\\cos\\theta"
+    },
+    {
+      "text": "展开分量平方，得到点积。",
+      "latex": "\\mathbf u\\cdot\\mathbf v=\\|\\mathbf u\\|\\|\\mathbf v\\|\\cos\\theta"
+    },
+    {
+      "text": "要求投影余量垂直于目标方向。",
+      "latex": "(\\mathbf v-\\lambda\\mathbf u)\\cdot\\mathbf u=0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "垂直检查",
+      "problem": "$\\mathbf u=\\langle1,2,-1\\rangle,\\mathbf v=\\langle2,0,2\\rangle$ 是否垂直？",
+      "steps": [
+        "点积 $2+0-2=0$。",
+        "两向量都非零，可以用垂直结论。"
+      ],
+      "answer": "互相垂直。"
+    },
+    {
+      "title": "投影分解",
+      "problem": "把 $\\langle3,1,0\\rangle$ 投影到 $\\langle1,1,0\\rangle$。",
+      "steps": [
+        "系数为 $\\frac{3+1}{1+1}=2$。",
+        "投影为 $\\langle2,2,0\\rangle$；余量 $\\langle1,-1,0\\rangle$ 与目标点积为零。"
+      ],
+      "answer": "投影 $\\langle2,2,0\\rangle$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-dot-m1",
+      "claim": "点积就是两个长度相乘。",
+      "correction": "还要乘夹角的余弦，反向时为负。"
+    },
+    {
+      "id": "c3-dot-m2",
+      "claim": "投影总和原向量一样长。",
+      "correction": "投影长度不超过原长度；垂直时为零。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-dot-q1",
+      "problem": "$\\langle1,-2,3\\rangle\\cdot\\langle4,1,-1\\rangle$ 是多少？",
+      "hint": "相应分量相乘。",
+      "solution": [
+        "$4-2-3=-1$。"
+      ],
+      "answer": "$-1$",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": -1
+    },
+    {
+      "id": "c3-dot-q2",
+      "problem": "$\\langle2,2,0\\rangle$ 与正横轴夹角是多少？",
+      "hint": "先求长度再求余弦。",
+      "solution": [
+        "长度 $2\\sqrt2$，余弦为 $1/\\sqrt2$。"
+      ],
+      "answer": "$\\frac\\pi4$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-dot-q3",
+      "problem": "将 $\\langle-3,4,0\\rangle$ 投影到正横轴，标量投影是多少？",
+      "hint": "只取有向水平分量。",
+      "solution": [
+        "水平分量为 $-3$，负号表示与正横轴反向。"
+      ],
+      "answer": "$-3$",
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "numericAnswer": -3
+    },
+    {
+      "id": "c3-dot-q4",
+      "problem": "零向量与另一个向量夹角是直角吗？",
+      "hint": "余弦公式的分母是多少？",
+      "solution": [
+        "点积虽为零，但长度乘积也为零。",
+        "夹角公式不可用。"
+      ],
+      "answer": "不能给零向量定义这个夹角。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "点积为负说明什么？",
+    "choices": [
+      "两个非零向量夹角是钝角",
+      "一定垂直",
+      "向量长度为负"
+    ],
+    "correctIndex": 0,
+    "explanation": "长度为正，负号来自夹角余弦。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-dot",
+    "caption": "固定 $\\mathbf u=\\langle1.5,0,0\\rangle$，旋转等长的 $\\mathbf v$，比较点积与投影。",
+    "prediction": "两个向量垂直时，投影会在哪里？"
+  },
+  "teaching": {
+    "explain": "点积等于一个长度乘另一个沿它的有向分量；负号表示反着贡献。",
+    "steps": [
+      {
+        "title": "同向",
+        "instruction": "将夹角 $\\theta$设为 $0$，比较图形和读数。",
+        "preset": {
+          "a": 0
+        },
+        "observation": "点积为正，投影沿正向。"
+      },
+      {
+        "title": "垂直",
+        "instruction": "将夹角 $\\theta$设为 $\\frac\\pi2$，比较图形和读数。",
+        "preset": {
+          "a": 1.5707963267948966
+        },
+        "observation": "点积在数值精度内为零，投影消失。"
+      },
+      {
+        "title": "反向",
+        "instruction": "将夹角 $\\theta$设为 $\\pi$，比较图形和读数。",
+        "preset": {
+          "a": 3.141592653589793
+        },
+        "observation": "点积为负，投影反向。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-vectors"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-dot-m1",
+    "c3-dot-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

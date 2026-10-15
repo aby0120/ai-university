@@ -98,6 +98,29 @@
       "coverFormula": "T_m(x)=\\sum_{n=0}^{m}\\frac{f^{(n)}(a)}{n!}(x-a)^n"
     },
     {
+      "id": "calculus-3",
+      "areaId": "calculus",
+      "title": "微积分 III",
+      "englishTitle": "Calculus III",
+      "coverTitle": [
+        "Calculus",
+        "III"
+      ],
+      "tagline": "看见多元变化与空间守恒",
+      "description": "空间向量、偏导与优化、重积分、曲线与曲面积分、Green、Stokes 和散度定理。",
+      "audience": "已掌握一元微积分与参数曲线的学习者",
+      "scope": "空间几何 · 多元变化 · 重积分 · 向量微积分",
+      "status": "published",
+      "route": "book/calculus-3",
+      "stats": {
+        "chapters": 9,
+        "lessons": 40,
+        "examples": 80,
+        "exercises": 203
+      },
+      "coverFormula": "\\iint_{\\partial E}\\mathbf F\\cdot\\mathbf n\\,dS=\\iiint_E\\nabla\\cdot\\mathbf F\\,dV"
+    },
+    {
       "id": "linear-algebra",
       "areaId": "linear-algebra",
       "title": "线性代数",

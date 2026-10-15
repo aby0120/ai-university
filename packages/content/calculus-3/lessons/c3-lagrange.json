@@ -1,0 +1,193 @@
+{
+  "id": "c3-lagrange",
+  "chapterId": "c3-optimization",
+  "number": "4.4",
+  "title": "Lagrange 乘子与约束优化",
+  "subtitle": "最优点处，允许方向的一阶变化为零",
+  "concept": "光滑等式约束上的极值，目标梯度通常平行于约束梯度；乘子把这种平行关系写成方程。",
+  "intuition": "只能沿约束曲线走。若目标梯度还留有切向分量，就还能沿某一侧增加，所以最优候选处两条法向应对齐。",
+  "objectives": [
+    "建立乘子候选方程",
+    "检查正则性与遗漏候选"
+  ],
+  "body": [
+    {
+      "title": "为什么不是直接令目标梯度零？",
+      "text": "约束只允许部分方向。目标可以在被禁止的方向继续上升，而在合法方向已经不能增加。"
+    },
+    {
+      "title": "哪些点会漏？",
+      "text": "约束梯度为零时乘子必要条件可能失效，必须单独检查奇异点；边界、不等式约束和无界逃逸也需额外处理。"
+    },
+    {
+      "title": "多约束怎么办？",
+      "text": "当约束梯度线性无关时，目标梯度是它们的线性组合；若不独立，先检查约束退化和候选遗漏。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "最优点处，允许方向的一阶变化为零",
+    "latex": "\\nabla f=\\lambda\\nabla g,\\quad g=c;\\qquad \\nabla f=\\lambda\\nabla g+\\mu\\nabla h",
+    "conditions": [
+      "函数与约束附近一阶连续可导；单约束点要求梯度非零，多约束梯度线性无关；解出的只是候选，须比较并检查遗漏。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "合法切向量与约束梯度正交。",
+      "latex": "\\nabla g\\cdot\\mathbf v=0"
+    },
+    {
+      "text": "极值点沿每个合法切向的一阶变化为零。",
+      "latex": "\\nabla f\\cdot\\mathbf v=0"
+    },
+    {
+      "text": "两个法向因此平行。",
+      "latex": "\\nabla f=\\lambda\\nabla g"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "圆上的线性目标",
+      "problem": "$f=2x+y$ 在 $x^2+y^2=5$ 的最值？",
+      "steps": [
+        "$(2,1)=\\lambda(2x,2y)$，所以 $(x,y)$ 与 $(2,1)$ 平行。",
+        "约束给点 $(2,1)$ 与 $(-2,-1)$，目标为正负 5。"
+      ],
+      "answer": "最大 5，最小 $-5$。"
+    },
+    {
+      "title": "球上的乘积",
+      "problem": "最大化 $xy$，约束 $x^2+y^2+z^2=2$。",
+      "steps": [
+        "$2xy\\le x^2+y^2\\le2$，故 $xy\\le1$。",
+        "在 $(1,1,0)$ 和 $(-1,-1,0)$ 取得等号，可复查乘子候选。"
+      ],
+      "answer": "最大 1。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-lagrange-m1",
+      "claim": "乘子方程的解全是极值。",
+      "correction": "它们只是候选，可能是非最优驻点。"
+    },
+    {
+      "id": "c3-lagrange-m2",
+      "claim": "约束梯度为零就没有极值。",
+      "correction": "必要条件的正则性失效；奇异点必须另外检查。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-lagrange-q1",
+      "problem": "$x+y$ 在单位圆上的最大值？",
+      "hint": "用梯度平行或点积上界。",
+      "solution": [
+        "$(1,1)\\cdot(x,y)\\le\\sqrt2$。",
+        "在 $(1/\\sqrt2,1/\\sqrt2)$ 取等号。"
+      ],
+      "answer": "$\\sqrt2$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-lagrange-q2",
+      "problem": "$x^2+y^2$ 在直线 $x+y=4$ 上的最小值？",
+      "hint": "消去一个变量。",
+      "solution": [
+        "$x^2+(4-x)^2=2(x-2)^2+8$。"
+      ],
+      "answer": "8",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 8
+    },
+    {
+      "id": "c3-lagrange-q3",
+      "problem": "约束 $x^2+y^2=0$ 上最小化 $f=x$，普通乘子方程能找到候选吗？",
+      "hint": "可行集合只有一个点。",
+      "solution": [
+        "原点当然是唯一最优点，但约束梯度为零。",
+        "目标梯度非零，普通乘子方程无法成立。"
+      ],
+      "answer": "不能，需单独检查奇异点。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-lagrange-q4",
+      "problem": "有两个约束时，何时能直接使用两个乘子必要条件？",
+      "hint": "检查法向是否独立。",
+      "solution": [
+        "各函数需连续可导，两个约束梯度在该点线性无关。"
+      ],
+      "answer": "满足光滑性与约束梯度独立条件时。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "乘子法解出候选之后，还要做什么？",
+    "choices": [
+      "直接宣布最大值",
+      "比较函数值并查奇异点、边界和存在性",
+      "忽略约束"
+    ],
+    "correctIndex": 1,
+    "explanation": "乘子法是必要条件工具，不自动提供最优结论。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-lagrange",
+    "caption": "在单位圆上移动点，固定目标 $f=2x+y$；比较目标梯度与约束法向。",
+    "prediction": "两条梯度平行的位置一定是最大值吗？"
+  },
+  "teaching": {
+    "explain": "最优点不能沿约束切向继续一阶增加，所以目标梯度必须落在约束法向方向。",
+    "steps": [
+      {
+        "title": "同向候选",
+        "instruction": "将方向角 $\\theta$设为 $0.463648$，比较图形和读数。",
+        "preset": {
+          "a": 0.4636476090008061
+        },
+        "observation": "单位圆上位置方向与 $(2,1)$ 同向，线性目标达到最大。"
+      },
+      {
+        "title": "垂直方向",
+        "instruction": "将方向角 $\\theta$设为 $2.03444$，比较图形和读数。",
+        "preset": {
+          "a": 2.0344439357957027
+        },
+        "observation": "目标值为零，不是该圆上的最大或最小。"
+      },
+      {
+        "title": "反向候选",
+        "instruction": "将方向角 $\\theta$设为 $3.60524$，比较图形和读数。",
+        "preset": {
+          "a": 3.6052402625905993
+        },
+        "observation": "位置与目标梯度反向，目标达到最小。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-gradient",
+    "c3-closed-domains"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "c3-lagrange-m1",
+    "c3-lagrange-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

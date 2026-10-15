@@ -18,6 +18,11 @@ import {
   calculus2Frame,
   calculus2Defaults,
 } from "../packages/visuals/calculus2.mjs";
+import {
+  calculus3Controls,
+  calculus3Frame,
+  calculus3Defaults,
+} from "../packages/visuals/calculus3.mjs";
 export function validateContent() {
   assert.equal(
     new Set(contentBooks.map((c) => c.book.id)).size,
@@ -86,7 +91,11 @@ export function validateContent() {
         l.sources.every((id) => sourceIds.has(id)),
         `${l.id}: unknown source`,
       );
-      if (l.interactiveVisual.kind === "calculus2") {
+      if (l.interactiveVisual.kind === "calculus3") {
+        assert.equal(l.interactiveVisual.function, l.id);
+        assert(calculus3Controls(l.id));
+        calculus3Frame(l.id, calculus3Defaults(l.id));
+      } else if (l.interactiveVisual.kind === "calculus2") {
         assert.equal(
           l.interactiveVisual.function,
           l.id,

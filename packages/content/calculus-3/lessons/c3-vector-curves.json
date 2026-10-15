@@ -1,0 +1,194 @@
+{
+  "id": "c3-vector-curves",
+  "chapterId": "c3-curves",
+  "number": "2.1",
+  "title": "向量值函数与切线",
+  "subtitle": "让一个参数控制空间轨迹",
+  "concept": "向量值函数给出移动点的位置；导数是沿轨迹的瞬时速度方向。",
+  "intuition": "三个坐标各自是一元函数，它们共用同一个参数。把每个分量分别求导，就得到空间速度。",
+  "objectives": [
+    "求空间曲线的速度与切线",
+    "从速度和初值恢复位置"
+  ],
+  "body": [
+    {
+      "title": "极限怎样求？",
+      "text": "有限维向量极限等于逐分量极限；连续与可导也可逐分量判断。一个分量出问题，整个向量就出问题。"
+    },
+    {
+      "title": "切线为什么用导数？",
+      "text": "短时间位移除以时间差趋向速度。速度非零时，它确定一条切线；速度为零的点要另行分析。"
+    },
+    {
+      "title": "积分代表什么？",
+      "text": "速度积分给位移；加上初始位置才是位置函数。每个分量都有自己的积分常数。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "让一个参数控制空间轨迹",
+    "latex": "\\mathbf r\\prime(t)=\\langle x\\prime(t),y\\prime(t),z\\prime(t)\\rangle,\\quad\\ell(s)=\\mathbf r(t_0)+s\\mathbf r\\prime(t_0)",
+    "conditions": [
+      "切线公式要求曲线在该点可导且速度非零；分量积分按所在区间计算。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "把位移差商逐分量展开。",
+      "latex": "\\frac{\\mathbf r(t+h)-\\mathbf r(t)}h=\\left\\langle\\frac{x(t+h)-x(t)}h,\\frac{y(t+h)-y(t)}h,\\frac{z(t+h)-z(t)}h\\right\\rangle"
+    },
+    {
+      "text": "取极限得到速度。",
+      "latex": "\\mathbf v(t)=\\mathbf r\\prime(t)"
+    },
+    {
+      "text": "用位置和非零速度写切线。",
+      "latex": "\\ell(s)=\\mathbf r(t_0)+s\\mathbf v(t_0)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "螺旋线的切线",
+      "problem": "$\\mathbf r(t)=\\langle\\cos t,\\sin t,t\\rangle$ 在零时刻的切线？",
+      "steps": [
+        "位置为 $(1,0,0)$。",
+        "速度 $\\langle-\\sin t,\\cos t,1\\rangle$ 在零时刻为 $\\langle0,1,1\\rangle$。"
+      ],
+      "answer": "$\\ell(s)=(1,s,s)$。"
+    },
+    {
+      "title": "从速度恢复位置",
+      "problem": "$\\mathbf v(t)=\\langle2t,1,-2\\rangle,\\mathbf r(0)=(1,0,3)$。",
+      "steps": [
+        "逐分量积分得 $\\langle t^2+C_1,t+C_2,-2t+C_3\\rangle$。",
+        "代入初始位置选出三个常数。"
+      ],
+      "answer": "$\\mathbf r(t)=\\langle1+t^2,t,3-2t\\rangle$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-vector-curves-m1",
+      "claim": "空间曲线必须写成高度函数。",
+      "correction": "封闭圆、螺旋线等适合参数表示，不必成为单一坐标的函数。"
+    },
+    {
+      "id": "c3-vector-curves-m2",
+      "claim": "速度为零就一定没有切线。",
+      "correction": "例如 $\\mathbf r(t)=(t^3,0,0)$ 在零点仍沿横轴，需另作极限分析。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-vector-curves-q1",
+      "problem": "求 $\\langle t,t^2,t^3\\rangle$ 在 $t=1$ 的速度。",
+      "hint": "逐分量求导。",
+      "solution": [
+        "速度为 $\\langle1,2t,3t^2\\rangle$。",
+        "代入得 $\\langle1,2,3\\rangle$。"
+      ],
+      "answer": "$\\langle1,2,3\\rangle$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-vector-curves-q2",
+      "problem": "$\\mathbf r(t)=(2\\cos t,2\\sin t,0)$ 速率是多少？",
+      "hint": "先求速度长度。",
+      "solution": [
+        "速度 $\\langle-2\\sin t,2\\cos t,0\\rangle$ 的长度恒为 2。"
+      ],
+      "answer": "2",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 2
+    },
+    {
+      "id": "c3-vector-curves-q3",
+      "problem": "$\\mathbf r(t)=(t^2,t^2,0)$ 在零点能直接用导数作非零切向量吗？",
+      "hint": "检查速度。",
+      "solution": [
+        "零点速度为零，给出的方向退化。",
+        "曲线在直线 $y=x,z=0$ 上，需额外分析得到切线。"
+      ],
+      "answer": "不能直接使用非零速度公式。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-vector-curves-q4",
+      "problem": "位置积分中的常数是一个标量吗？",
+      "hint": "数一数分量。",
+      "solution": [
+        "每个分量各有一个常数。",
+        "合在一起是常向量。"
+      ],
+      "answer": "是常向量。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "空间曲线的速度方向在规则点指向哪里？",
+    "choices": [
+      "法线方向",
+      "切线方向",
+      "永远指向原点"
+    ],
+    "correctIndex": 1,
+    "explanation": "速度是小位移差商的极限。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-vector-curves",
+    "caption": "$\\mathbf r(t)=(\\cos t,\\sin t,0.2t)$；箭头给出真实导数方向，曲线不因水平投影闭合而闭合。",
+    "prediction": "绕完一圈，空间位置会回到起点吗？"
+  },
+  "teaching": {
+    "explain": "位置的三个分量分别求导后，合在一起就是空间速度。",
+    "steps": [
+      {
+        "title": "起点",
+        "instruction": "将路径参数 $t$设为 $0$，比较图形和读数。",
+        "preset": {
+          "x": 0
+        },
+        "observation": "点在螺旋线起点，切向量同时沿水平和竖直方向。"
+      },
+      {
+        "title": "半周",
+        "instruction": "将路径参数 $t$设为 $\\pi$，比较图形和读数。",
+        "preset": {
+          "x": 3.141592653589793
+        },
+        "observation": "点绕轴半圈并上升，切向量随位置旋转。"
+      },
+      {
+        "title": "一周",
+        "instruction": "将路径参数 $t$设为 $2\\pi$，比较图形和读数。",
+        "preset": {
+          "x": 6.283185307179586
+        },
+        "observation": "水平位置回到起点，高度增加，所以空间位置没有闭合。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-vectors",
+    "c2-parametric-calculus"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-vector-curves-m1",
+    "c3-vector-curves-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

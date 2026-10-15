@@ -1,7 +1,9 @@
 import {calculus2Bounds,calculus2Controls} from './calculus2.mjs';
+import {calculus3Bounds} from './calculus3.mjs';
 import { functions } from './math.mjs';
 export function guidanceBounds(lesson, preset) {
   const k=lesson.interactiveVisual.kind,f=lesson.interactiveVisual.function;
+  if(k==='calculus3')return calculus3Bounds(f);
   if(k==='calculus2')return calculus2Bounds(f);
   const range=functions[f].range;
   if(preset.dimension==='3d')return {degrees:[0,360],slice:[0,1],model:['disk','washer'],dimension:['3d']};

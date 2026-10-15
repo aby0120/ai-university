@@ -1,0 +1,190 @@
+{
+  "id": "c3-coordinates",
+  "chapterId": "c3-space",
+  "number": "1.6",
+  "title": "柱坐标与球坐标",
+  "subtitle": "让坐标顺着几何形状走",
+  "concept": "柱坐标适合绕轴的形状，球坐标适合到原点距离自然固定的形状。",
+  "intuition": "圆柱坐标是在极坐标上加高度；球坐标用距离、方位角和从正竖轴量起的倾角定位。",
+  "objectives": [
+    "在三种空间坐标间转换",
+    "识别角度约定与退化点"
+  ],
+  "body": [
+    {
+      "title": "角度从哪里量？",
+      "text": "本卷方位角 $\\theta$ 在水平面从正横轴量起；倾角 $\\phi$ 从正竖轴向下量，范围从零到 $\\pi$。"
+    },
+    {
+      "title": "坐标唯一吗？",
+      "text": "角度加整周不改变点。在轴上方位角不唯一，原点的角度都不唯一；这是坐标退化，并不是多个空间点。"
+    },
+    {
+      "title": "先记变换还是体积元？",
+      "text": "先把位置关系画清。面积、体积缩放因子会在重积分中推导，不能把三个微分直接相乘当真实体积。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "让坐标顺着几何形状走",
+    "latex": "x=r\\cos\\theta,\\ y=r\\sin\\theta;\\quad x=\\rho\\sin\\phi\\cos\\theta,\\ y=\\rho\\sin\\phi\\sin\\theta,\\ z=\\rho\\cos\\phi",
+    "conditions": [
+      "柱坐标 $r\\ge0$；球坐标 $\\rho\\ge0,0\\le\\phi\\le\\pi$；方位角按整周等价；角度使用弧度。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先将点投影到水平面。",
+      "latex": "r=\\sqrt{x^2+y^2}"
+    },
+    {
+      "text": "再用到原点的距离和倾角。",
+      "latex": "\\rho=\\sqrt{r^2+z^2},\\quad r=\\rho\\sin\\phi"
+    },
+    {
+      "text": "在水平面分解半径。",
+      "latex": "x=r\\cos\\theta,\\quad y=r\\sin\\theta"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "读出球坐标",
+      "problem": "$(x,y,z)=(1,1,\\sqrt2)$ 的球坐标？",
+      "steps": [
+        "距离 $\\rho=2$，水平半径 $r=\\sqrt2$。",
+        "第一象限给 $\\theta=\\frac\\pi4$，$\\cos\\phi=\\frac{\\sqrt2}2$。"
+      ],
+      "answer": "$(\\rho,\\theta,\\phi)=(2,\\frac\\pi4,\\frac\\pi4)$。"
+    },
+    {
+      "title": "坐标面",
+      "problem": "球坐标 $\\phi=\\frac\\pi3$ 描述什么？",
+      "steps": [
+        "$z=\\rho/2\\ge0$，$r=\\sqrt3\\rho/2$。",
+        "消去距离得到 $z=r/\\sqrt3$。"
+      ],
+      "answer": "上半空间的圆锥面，含原点。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-coordinates-m1",
+      "claim": "球坐标两个角的符号所有书都一样。",
+      "correction": "先检查约定；本卷倾角从正竖轴量起。"
+    },
+    {
+      "id": "c3-coordinates-m2",
+      "claim": "柱坐标的半径等于到原点的距离。",
+      "correction": "它是到竖轴的距离，除非高度为零。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-coordinates-q1",
+      "problem": "柱坐标 $(r,\\theta,z)=(2,\\frac\\pi2,-1)$ 的直角坐标？",
+      "hint": "代入正弦余弦。",
+      "solution": [
+        "$x=0,y=2$，高度保持 $-1$。"
+      ],
+      "answer": "$(0,2,-1)$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-coordinates-q2",
+      "problem": "球坐标 $\\rho=3$ 是什么曲面？",
+      "hint": "距离固定。",
+      "solution": [
+        "所有点到原点的距离为 3。"
+      ],
+      "answer": "半径 3 的球面。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-coordinates-q3",
+      "problem": "$(0,0,2)$ 的方位角唯一吗？",
+      "hint": "看水平投影。",
+      "solution": [
+        "水平半径为零，方位角的任何选择都给同一个点。"
+      ],
+      "answer": "不唯一。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-coordinates-q4",
+      "problem": "球坐标的赤道对应哪个倾角？",
+      "hint": "令高度为零且距离非零。",
+      "solution": [
+        "$\\cos\\phi=0$，所以 $\\phi=\\frac\\pi2$。"
+      ],
+      "answer": "$\\frac\\pi2$。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "本卷球坐标的倾角为零时，点在哪里？",
+    "choices": [
+      "正竖轴上或原点",
+      "赤道上",
+      "负横轴上"
+    ],
+    "correctIndex": 0,
+    "explanation": "倾角从正竖轴量起。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-coordinates",
+    "caption": "固定球半径 $\\rho=1.5$，改变倾角与方位角；虚线分别表示水平投影与到原点的距离。",
+    "prediction": "靠近极点时，相同的方位角变化会走过同样的距离吗？"
+  },
+  "teaching": {
+    "explain": "柱坐标的半径量到轴，球坐标的半径量到原点；倾角从正竖轴量。",
+    "steps": [
+      {
+        "title": "北极",
+        "instruction": "将倾角 $\\phi$设为 $0$，比较图形和读数。",
+        "preset": {
+          "a": 0
+        },
+        "observation": "点位于正竖轴，方位角不改变位置。"
+      },
+      {
+        "title": "赤道",
+        "instruction": "将倾角 $\\phi$设为 $\\frac\\pi2$，比较图形和读数。",
+        "preset": {
+          "a": 1.5707963267948966
+        },
+        "observation": "高度为零，水平半径等于球半径。"
+      },
+      {
+        "title": "南极",
+        "instruction": "将倾角 $\\phi$设为 $\\pi$，比较图形和读数。",
+        "preset": {
+          "a": 3.141592653589793
+        },
+        "observation": "点位于负竖轴，水平半径再次为零。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-quadrics",
+    "c2-polar"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-coordinates-m1",
+    "c3-coordinates-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "id": "c3-choosing-theorem",
+  "chapterId": "c3-theorems",
+  "number": "9.3",
+  "title": "怎样选择积分定理",
+  "subtitle": "先认积分对象，再看条件和方向",
+  "concept": "沿路功、旋度通量与闭面通量是不同对象；选定理前先写清积分的维度、方向和场。",
+  "intuition": "看到积分号先问：是在沿线走，还是穿过面？面有边界还是闭合？这几个问题通常就能排除错误工具。",
+  "objectives": [
+    "按积分对象选择定理",
+    "核对定义域、闭合性与方向"
+  ],
+  "body": [
+    {
+      "title": "端点法何时最省？",
+      "text": "若场有全局势，开放或闭合路径都可直接看端点势差；若不满足保守条件，再看具体路径或其他定理。"
+    },
+    {
+      "title": "Green 和 Stokes 怎样分？",
+      "text": "Green 针对平面区域边界，Stokes 针对空间曲面的边界。两者都连接环流与局部旋转，平面情形相容。"
+    },
+    {
+      "title": "散度定理管什么？",
+      "text": "完整向外闭面通量。它累积散度而不是旋度；对开放面通常补面，补面方向要随体积统一。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "先认积分对象，再看条件和方向",
+    "latex": "\\nabla\\varphi\\ \\longleftrightarrow\\ \\text{端点差};\\quad \\nabla\\times\\mathbf F\\ \\longleftrightarrow\\ \\text{边界环流};\\quad\\nabla\\cdot\\mathbf F\\ \\longleftrightarrow\\ \\text{闭面外向通量}",
+    "conditions": [
+      "每种转换必须独立满足相应定理的定义域、光滑性、几何与定向假设；没有一个公式可省掉这些检查。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "用链式法则连接势与端点。",
+      "latex": "\\int_C\\nabla\\varphi\\cdot d\\mathbf r=\\varphi(B)-\\varphi(A)"
+    },
+    {
+      "text": "用有向曲面连接旋度与环流。",
+      "latex": "\\int_{\\partial S}\\mathbf F\\cdot d\\mathbf r=\\iint_S(\\nabla\\times\\mathbf F)\\cdot\\mathbf n\\,dS"
+    },
+    {
+      "text": "用完整边界连接散度与体积。",
+      "latex": "\\iint_{\\partial E}\\mathbf F\\cdot\\mathbf n\\,dS=\\iiint_E\\nabla\\cdot\\mathbf F\\,dV"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "同一场，两种积分",
+      "problem": "$\\mathbf F=(-y/2,x/2,z)$，单位水平圆的正向环流与单位球外向通量分别多少？",
+      "steps": [
+        "旋度为 $(0,0,1)$，圆的环流为 $\\pi$。",
+        "散度为 1，球的外向通量为体积 $4\\pi/3$。"
+      ],
+      "answer": "分别为 $\\pi$ 与 $\\frac{4\\pi}3$，不是同一问题。"
+    },
+    {
+      "title": "什么时候选端点",
+      "problem": "场 $(2x,2y,2z)$ 沿任意路径从原点到 $(1,1,1)$ 的功？",
+      "steps": [
+        "识别势 $x^2+y^2+z^2$。",
+        "直接相减得 3，不必建立空间曲面。"
+      ],
+      "answer": "3。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-choosing-theorem-m1",
+      "claim": "看到曲面积分就用 Stokes。",
+      "correction": "只有旋度通量对应边界环流，任意通量不直接这样变换。"
+    },
+    {
+      "id": "c3-choosing-theorem-m2",
+      "claim": "散度和旋度可以互换。",
+      "correction": "它们分别描述净流出和局部旋转，类型和几何对象都不同。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-choosing-theorem-q1",
+      "problem": "平面闭路上的 $Pdx+Qdy$ 优先考虑哪个区域定理？",
+      "hint": "积分沿边界切向。",
+      "solution": [
+        "场覆盖区域且定向正确时可用 Green 环流形式。"
+      ],
+      "answer": "Green 定理。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-choosing-theorem-q2",
+      "problem": "完整球面的向外通量优先考虑什么？",
+      "hint": "对象是完整闭面。",
+      "solution": [
+        "场覆盖球体且连续一阶可导时可用散度定理。"
+      ],
+      "answer": "散度定理。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-choosing-theorem-q3",
+      "problem": "非闭合路径上的保守场功，必须补成闭路吗？",
+      "hint": "已有势函数时怎么做？",
+      "solution": [
+        "端点势差直接给功，补路没有必要。"
+      ],
+      "answer": "不需要。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-choosing-theorem-q4",
+      "problem": "场在拟补曲面内部有奇点，可以直接换面吗？",
+      "hint": "新面假设是否满足？",
+      "solution": [
+        "必须检查场在新面所需邻域的光滑性，不能跨过失效区域盲目变换。"
+      ],
+      "answer": "不能直接换。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "空间闭路的功想改成曲面积分，使用哪个定理？",
+    "choices": [
+      "散度定理",
+      "Stokes 定理",
+      "Taylor 定理"
+    ],
+    "correctIndex": 1,
+    "explanation": "边界环流对应旋度通量。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-choosing-theorem",
+    "caption": "场 $(-y/2,x/2,z)$，曲面 $z=c(1-r^2)$ 与底盘围成实体。分别读边界环流和完整闭面的外向通量。",
+    "prediction": "保持边界不变，环流不变时闭面通量也必须不变吗？"
+  },
+  "teaching": {
+    "explain": "先写清沿线还是穿面，再检查有没有边界、有没有势函数，最后才选定理。",
+    "steps": [
+      {
+        "title": "平面",
+        "instruction": "将曲面鼓起高度 $c$设为 $0$，比较图形和读数。",
+        "preset": {
+          "c": 0
+        },
+        "observation": "同一单位圆的环流为 $\\pi$；闭合实体退化，体积为零。"
+      },
+      {
+        "title": "鼓起",
+        "instruction": "将曲面鼓起高度 $c$设为 $0.5$，比较图形和读数。",
+        "preset": {
+          "c": 0.5
+        },
+        "observation": "边界环流不变；补底后体积和闭面通量为 $\\pi/4$。"
+      },
+      {
+        "title": "更高",
+        "instruction": "将曲面鼓起高度 $c$设为 $1$，比较图形和读数。",
+        "preset": {
+          "c": 1
+        },
+        "observation": "边界环流仍为 $\\pi$，闭面通量增为 $\\pi/2$。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-stokes",
+    "c3-divergence"
+  ],
+  "difficulty": 5,
+  "misconceptionTags": [
+    "c3-choosing-theorem-m1",
+    "c3-choosing-theorem-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

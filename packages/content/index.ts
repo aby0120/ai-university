@@ -2,11 +2,17 @@ import metadata from "./book.json";
 import supplements1 from "./supplements.json";
 import metadata2 from "./calculus-2/book.json";
 import supplements2 from "./calculus-2/supplements.json";
+import metadata3 from "./calculus-3/book.json";
+import supplements3 from "./calculus-3/supplements.json";
 import type { Lesson } from "./types";
 export type Book = typeof metadata;
 export type Supplements = typeof supplements1;
 const modules = import.meta.glob(
-  ["./lessons/*.json", "./calculus-2/lessons/*.json"],
+  [
+    "./lessons/*.json",
+    "./calculus-2/lessons/*.json",
+    "./calculus-3/lessons/*.json",
+  ],
   { eager: true, import: "default" },
 ) as Record<string, Lesson>;
 function collection(
@@ -45,6 +51,13 @@ export const collections = [
     "./calculus-2/lessons",
     "Calculus-II.md",
     "calculus-2.html",
+  ),
+  collection(
+    metadata3,
+    supplements3,
+    "./calculus-3/lessons",
+    "Calculus-III.md",
+    "calculus-3.html",
   ),
 ];
 export type Collection = (typeof collections)[number];

@@ -1,4 +1,8 @@
-# 第一版验证记录
+# 验证记录
+
+最新网站 v0.10.0 与完整第三卷的检查见 [Calculus III](CALCULUS_III_AUDIT.md)；第二卷见 [Calculus II](CALCULUS_II_AUDIT.md)，第一卷后续补全见 [Calculus I](CALCULUS_I_AUDIT.md)。以下为历史记录。
+
+## 第一版
 
 当前 v0.4.0 的检查、实际浏览器截图与验证边界见 [数学展览馆](IMMERSIVE.md)。v0.3.0 的教材与交互检查见 [教材与交互改进](FRONTIER.md)。以下早期记录保留当时版本的数据，不代表当前公式数量。
 

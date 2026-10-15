@@ -1,0 +1,191 @@
+{
+  "id": "c3-double-applications",
+  "chapterId": "c3-double",
+  "number": "5.4",
+  "title": "密度、质心与转动惯量",
+  "subtitle": "先写每一小块贡献什么",
+  "concept": "密度乘面积得到质量；再乘位置得到一阶矩，再乘轴距平方得到转动惯量。",
+  "intuition": "同样面积的两块板不一定一样重；离转轴更远的同样质量更难转动，所以距离以平方加权。",
+  "objectives": [
+    "从密度建立质量与质心积分",
+    "按指定转轴建立惯量"
+  ],
+  "body": [
+    {
+      "title": "质心是坐标平均吗？",
+      "text": "是按质量加权的坐标平均。只有密度均匀且对称时，才能直接用几何对称性找位置。"
+    },
+    {
+      "title": "惯量对应哪条轴？",
+      "text": "关于横轴用纵坐标平方，关于纵轴用横坐标平方，关于垂直纸面的轴用两者平方和。"
+    },
+    {
+      "title": "概率怎样连接？",
+      "text": "若非负密度总积分为一，它也可表示连续概率密度；区域概率与期望都是同一种加权积分。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "先写每一小块贡献什么",
+    "latex": "M=\\iint_D\\sigma\\,dA,\\quad\\bar x=\\frac{\\iint_Dx\\sigma\\,dA}M,\\quad\\bar y=\\frac{\\iint_Dy\\sigma\\,dA}M,\\quad I_z=\\iint_D(x^2+y^2)\\sigma\\,dA",
+    "conditions": [
+      "质量密度非负且可积，质心要求总质量有限且正；惯量要求对应二阶矩有限；单位须与坐标长度一致。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "小块质量由局部密度决定。",
+      "latex": "dm=\\sigma\\,dA"
+    },
+    {
+      "text": "位置加权总量除以总质量。",
+      "latex": "\\bar x=\\frac{\\int x\\,dm}{\\int dm}"
+    },
+    {
+      "text": "到竖直轴的距离平方给惯量。",
+      "latex": "I_z=\\int r^2\\,dm"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "非均匀板的质心",
+      "problem": "单位正方形密度 $\\sigma=2x$，求质量与质心。",
+      "steps": [
+        "质量 $\\int_0^1\\int_0^12x\\,dy\\,dx=1$。",
+        "横向矩为 $2/3$，纵向矩为 $1/2$，除以质量。"
+      ],
+      "answer": "$M=1,(\\bar x,\\bar y)=(\\frac23,\\frac12)$。"
+    },
+    {
+      "title": "圆盘惯量",
+      "problem": "半径 2、均匀面密度 3 的圆盘关于中心竖轴的惯量。",
+      "steps": [
+        "极坐标给 $I_z=3\\int_0^{2\\pi}\\int_0^2r^3drd\\theta=24\\pi$。",
+        "质量为 $12\\pi$，也等于 $\\frac12MR^2$。"
+      ],
+      "answer": "$24\\pi$，单位为质量乘长度平方。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-double-applications-m1",
+      "claim": "质心总是几何中心。",
+      "correction": "不均匀密度使质心偏向更重的一侧。"
+    },
+    {
+      "id": "c3-double-applications-m2",
+      "claim": "所有转动惯量用同一个距离。",
+      "correction": "必须是到指定转轴的垂直距离。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-double-applications-q1",
+      "problem": "单位正方形均匀面密度 4 的质量？",
+      "hint": "常密度乘面积。",
+      "solution": [
+        "面积为 1，质量为 4。"
+      ],
+      "answer": "4",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 4
+    },
+    {
+      "id": "c3-double-applications-q2",
+      "problem": "单位正方形均匀密度一，关于横轴惯量？",
+      "hint": "距离横轴是纵坐标的绝对值。",
+      "solution": [
+        "$\\int_0^1\\int_0^1y^2dy\\,dx=1/3$。"
+      ],
+      "answer": "$\\frac13$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-double-applications-q3",
+      "problem": "若密度整体乘以 5，质心变吗？",
+      "hint": "看分子分母的共同因子。",
+      "solution": [
+        "质量和一阶矩都乘以 5，比值不变。"
+      ],
+      "answer": "不变。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-double-applications-q4",
+      "problem": "合法概率密度必须满足什么？",
+      "hint": "考虑非负与总量。",
+      "solution": [
+        "密度非负，整个样本区域上的积分为一。"
+      ],
+      "answer": "非负且总积分为 1。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "同一块板把密度整体翻倍，质心怎样？",
+    "choices": [
+      "向右移动",
+      "不变",
+      "也翻倍"
+    ],
+    "correctIndex": 1,
+    "explanation": "加权总量和总质量同倍变化。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-double-applications",
+    "caption": "单位正方形密度 $\\sigma=1+cx$，柱高表示密度，亮点表示质量加权的质心。",
+    "prediction": "把整块板等比例变重，会移动质心吗？"
+  },
+  "teaching": {
+    "explain": "质心是一阶位置的质量加权平均，惯量是轴距平方的质量加权总和。",
+    "steps": [
+      {
+        "title": "均匀密度",
+        "instruction": "将密度变化系数 $c$设为 $0$，比较图形和读数。",
+        "preset": {
+          "c": 0
+        },
+        "observation": "单位正方形质心在正中间。"
+      },
+      {
+        "title": "右侧略重",
+        "instruction": "将密度变化系数 $c$设为 $1$，比较图形和读数。",
+        "preset": {
+          "c": 1
+        },
+        "observation": "密度为 $1+x$，质心向右偏。"
+      },
+      {
+        "title": "右侧更重",
+        "instruction": "将密度变化系数 $c$设为 $3$，比较图形和读数。",
+        "preset": {
+          "c": 3
+        },
+        "observation": "密度为 $1+3x$，横向质心进一步右移，纵向不变。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-regions-order",
+    "c3-polar-integrals"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-double-applications-m1",
+    "c3-double-applications-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

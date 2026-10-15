@@ -30,7 +30,7 @@ test("second volume is a complete independently indexed manuscript, not catalog 
     178,
   );
   const ids = libraryLessons.map((l) => l.id);
-  assert.equal(new Set(ids).size, 70);
+  assert.equal(new Set(ids).size, 110);
   const questionIds = contentBooks
     .flatMap((c) => [
       ...c.allLessons.flatMap((l) => l.practice),
@@ -38,7 +38,7 @@ test("second volume is a complete independently indexed manuscript, not catalog 
       ...c.extra.reviews.flatMap((r) => r.questions),
     ])
     .map((q) => q.id);
-  assert.equal(new Set(questionIds).size, 369);
+  assert.equal(new Set(questionIds).size, 572);
   const sectionQuestions = new Set(
     second.allLessons.flatMap((l) => l.practice).map((q) => q.problem),
   );
