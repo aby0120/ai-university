@@ -200,7 +200,7 @@ test("Calculus III renders all learning surfaces and spatial controls",async({pa
  for(const id of thirdBook.lessonIds){
   const lesson=JSON.parse(fs.readFileSync("packages/content/calculus-3/lessons/"+id+".json","utf8"));
   await page.goto("/#/lesson/"+id);
-  await expect(page.getByRole("heading",{name:lesson.title,exact:true})).toBeVisible();
+  await expect(page.getByRole("heading",{name:lesson.title,level:1,exact:true})).toBeVisible();
   await expect(page.locator(".worked-example")).toHaveCount(lesson.workedExamples.length);
   await page.getByRole("link",{name:"交互演示",exact:true}).click();
   await expect(page.locator(".spatial-plot")).toHaveCount(1);
