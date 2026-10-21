@@ -1,0 +1,191 @@
+{
+  "id": "la-column-row",
+  "chapterId": "la-fundamental",
+  "number": "4.2",
+  "title": "列空间与行空间",
+  "subtitle": "可达输出与输入测量方向",
+  "concept": "列空间是可达到的输出；行空间由矩阵的行作为输入空间中的向量张成。",
+  "intuition": "列空间回答右端能不能出现；行空间记录哪些输入方向会影响输出中的线性测量。",
+  "objectives": [
+    "从原主元列选列空间基",
+    "用非零阶梯行求行空间基"
+  ],
+  "body": [
+    {
+      "title": "列空间怎样求基？",
+      "text": "消元确定主元列位置，然后回到原矩阵取这些列。行变换可能移动列空间，不能用化简后的列冒充原列空间。"
+    },
+    {
+      "title": "行空间怎样求基？",
+      "text": "阶梯形的非零行构成原行空间的一组基。等价行变换不改变行的张成。"
+    },
+    {
+      "title": "它们的维数为什么相等？",
+      "text": "阶梯形有多少非零行，就有多少主元列。行秩和列秩均等于这个主元数。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "列空间与行空间",
+    "latex": "\\operatorname{col}A=\\{Ax:x\\in\\mathbb R^n\\},\\quad\\dim\\operatorname{row}A=\\dim\\operatorname{col}A=\\operatorname{rank}A",
+    "conditions": [
+      "对 $m\\times n$ 矩阵，列空间属于 $\\mathbb R^m$，行空间属于 $\\mathbb R^n$；不把两者直接当同一空间。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "列组合正是矩阵乘法。",
+      "latex": "Ax=\\sum_jx_ja_j"
+    },
+    {
+      "text": "消元保留列之间的依赖系数。",
+      "latex": "Ax=0\\iff R x=0"
+    },
+    {
+      "text": "选择原主元列；非零阶梯行无关。",
+      "latex": "\\dim\\operatorname{col}A=\\dim\\operatorname{row}A=r"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "原主元列",
+      "problem": "$A=\\begin{pmatrix}1&2&0\\\\0&0&1\\end{pmatrix}$ 的列空间基？",
+      "steps": [
+        "主元在第一、第三列。",
+        "取原列 $(1,0),(0,1)$。"
+      ],
+      "answer": "列空间为 $\\mathbb R^2$。"
+    },
+    {
+      "title": "行空间所在位置",
+      "problem": "同一矩阵的行空间基？",
+      "steps": [
+        "两非零行已无关。",
+        "它们分别是 $(1,2,0),(0,0,1)$，属于三维输入空间。"
+      ],
+      "answer": "$\\operatorname{span}((1,2,0),(0,0,1))$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-column-row-m1",
+      "claim": "列空间与行空间维数相同，因此集合相同。",
+      "correction": "它们可能连环境空间都不同。"
+    },
+    {
+      "id": "la-column-row-m2",
+      "claim": "行化简不改变列空间。",
+      "correction": "行变换保留依赖关系，但会改变列向量的位置。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$b\\notin\\operatorname{col}A$ 时 $Ax=b$ 怎样？",
+      "hint": "列空间就是可达到的右端。",
+      "solution": [
+        "没有输入能给出该右端。"
+      ],
+      "answer": "无解。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-column-row-q1"
+    },
+    {
+      "problem": "$A=\\begin{pmatrix}1&2\\\\2&4\\end{pmatrix}$ 的列空间维数？",
+      "hint": "两列相关但不是全零。",
+      "solution": [
+        "由 $(1,2)$ 生成。"
+      ],
+      "answer": "1",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 1,
+      "id": "la-column-row-q2"
+    },
+    {
+      "problem": "$3\\times5$ 矩阵的行空间属于哪里？",
+      "hint": "一行有五个分量。",
+      "solution": [
+        "$\\mathbb R^5$。"
+      ],
+      "answer": "$\\mathbb R^5$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-column-row-q3"
+    },
+    {
+      "problem": "为什么取阶梯形的非零行作行空间基？",
+      "hint": "行变换可逆且主元错开。",
+      "solution": [
+        "张成不变，错开的首非零位置保证无关。"
+      ],
+      "answer": "生成原行空间且线性无关。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-column-row-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-basis",
+    "la-elimination"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "la-column-row-m1",
+    "la-column-row-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-column-row",
+    "caption": "固定 $A=\\begin{pmatrix}1&1&0\\\\0&0&1\\end{pmatrix}$，分别查看输入端与输出端的四个空间。",
+    "prediction": "行空间与列空间的维数相同，为什么仍要分开看？"
+  },
+  "learningCheck": {
+    "question": "原矩阵列空间的一组基应取自哪里？",
+    "choices": [
+      "化简后的所有列",
+      "原矩阵的主元列",
+      "原矩阵的零行"
+    ],
+    "correctIndex": 1,
+    "explanation": "主元位置在化简后判断，基向量从原矩阵取。"
+  },
+  "teaching": {
+    "explain": "列空间在输出端，行空间在输入端。先写清它们属于哪个空间，很多看似矛盾的结论就不会混在一起。",
+    "steps": [
+      {
+        "title": "输入核",
+        "instruction": "选择零空间。",
+        "preset": {
+          "n": 0
+        },
+        "observation": "核为 $(1,-1,0)$ 的张成，维数一。"
+      },
+      {
+        "title": "输入行空间",
+        "instruction": "选择行空间。",
+        "preset": {
+          "n": 1
+        },
+        "observation": "行空间是 $x=y$ 的平面，与核垂直，维数二。"
+      },
+      {
+        "title": "输出列空间",
+        "instruction": "选择列空间。",
+        "preset": {
+          "n": 2
+        },
+        "observation": "列空间为整个二维输出空间；左核为零，可用第四个选项检查。"
+      }
+    ]
+  }
+}

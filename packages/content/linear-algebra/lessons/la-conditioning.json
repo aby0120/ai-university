@@ -1,0 +1,196 @@
+{
+  "id": "la-conditioning",
+  "chapterId": "la-svd",
+  "number": "9.5",
+  "title": "条件数与误差放大",
+  "subtitle": "可逆不代表数值可靠",
+  "concept": "条件数衡量某些方向的微小输入误差，可能造成多大的相对解误差。",
+  "intuition": "一个方向被压得极薄时，恢复它需要很大的反向放大。数学上可逆，并不代表浮点求解可靠。",
+  "objectives": [
+    "计算二范数条件数",
+    "区分问题敏感性与算法稳定性"
+  ],
+  "body": [
+    {
+      "title": "二范数条件数怎样定义？",
+      "text": "可逆方阵的 $\\kappa_2(A)=\\|A\\|_2\\|A^{-1}\\|_2=\\sigma_{\\max}/\\sigma_{\\min}$。奇异时通常记为无穷。"
+    },
+    {
+      "title": "小行列式就是病态吗？",
+      "text": "不是。整体缩放会使行列式很小，却不改变条件数；关键是不同方向的缩放比例。"
+    },
+    {
+      "title": "病态与算法不稳定一样吗？",
+      "text": "病态是问题本身对数据敏感；算法不稳定是额外引入过大误差。稳定算法也不能凭空恢复输入中没有的精度。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "条件数与误差放大",
+    "latex": "\\frac{\\|\\delta x\\|}{\\|x\\|}\\le\\kappa_2(A)\\frac{\\|\\delta b\\|}{\\|b\\|},\\qquad A\\delta x=\\delta b",
+    "conditions": [
+      "此界只扰动右端，$A$ 固定且可逆、$b$ 非零；扰动矩阵系数时需要另加条件和界。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先界定解扰动。",
+      "latex": "\\|\\delta x\\|\\le\\|A^{-1}\\|\\|\\delta b\\|"
+    },
+    {
+      "text": "原右端也满足。",
+      "latex": "\\|b\\|\\le\\|A\\|\\|x\\|"
+    },
+    {
+      "text": "相除并合并两界。",
+      "latex": "\\frac{\\|\\delta x\\|}{\\|x\\|}\\le\\|A\\|\\|A^{-1}\\|\\frac{\\|\\delta b\\|}{\\|b\\|}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "被压薄的方向",
+      "problem": "$A=\\operatorname{diag}(1,0.01),b=(1,0.01)$，右端纵分量增加 $0.001$。",
+      "steps": [
+        "原解为 $(1,1)$。",
+        "新解为 $(1,1.1)$，输入只改千分之一，纵向解改了十分之一。",
+        "条件数为 $100$，相对误差放大符合上界。"
+      ],
+      "answer": "$\\delta x=(0,0.1)$。"
+    },
+    {
+      "title": "整体小不等于病态",
+      "problem": "$A=10^{-6}I_2$ 条件数？",
+      "steps": [
+        "两个奇异值相同，均为 $10^{-6}$。",
+        "比值为一。"
+      ],
+      "answer": "1。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-conditioning-m1",
+      "claim": "行列式接近零就能单独判定病态。",
+      "correction": "需要相对尺度，如奇异值比。"
+    },
+    {
+      "id": "la-conditioning-m2",
+      "claim": "残差小一定保证解误差小。",
+      "correction": "病态系统可把微小残差放大为明显的解误差。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$\\operatorname{diag}(10,0.1)$ 的条件数？",
+      "hint": "最大奇异值除最小。",
+      "solution": [
+        "$10/0.1=100$。"
+      ],
+      "answer": "100",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 100,
+      "id": "la-conditioning-q1"
+    },
+    {
+      "problem": "正交矩阵的二范数条件数？",
+      "hint": "全部奇异值为一。",
+      "solution": [
+        "比值一。"
+      ],
+      "answer": "1",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 1,
+      "id": "la-conditioning-q2"
+    },
+    {
+      "problem": "将可逆 $A$ 整体乘非零常数，条件数怎样变化？",
+      "hint": "分子分母同步缩放。",
+      "solution": [
+        "比值不变。"
+      ],
+      "answer": "不变。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-conditioning-q3"
+    },
+    {
+      "problem": "方阵奇异时，能使用有限逆矩阵条件数界吗？",
+      "hint": "逆不存在。",
+      "solution": [
+        "不能直接套用，需要讨论伪逆、秩或正则化。"
+      ],
+      "answer": "不能。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-conditioning-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-svd",
+    "la-inverse"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "la-conditioning-m1",
+    "la-conditioning-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-conditioning",
+    "caption": "$A=\\operatorname{diag}(1,c)$，原右端为 $(1,c)$，扰动只加在右端纵分量。图示采用同一单位，较大的解可能需要较宽视窗。",
+    "prediction": "同样大小的右端扰动，在被压薄方向上会放大多少？"
+  },
+  "learningCheck": {
+    "question": "哪个矩阵可能行列式很小但条件数为一？",
+    "choices": [
+      "$\\varepsilon I$",
+      "$\\operatorname{diag}(1,\\varepsilon)$",
+      "所有奇异矩阵"
+    ],
+    "correctIndex": 0,
+    "explanation": "整体缩放不改变不同方向之间的缩放比例。"
+  },
+  "teaching": {
+    "explain": "求解结果不仅受计算步骤影响，也受题目本身影响。条件数告诉你，数据精度是否足以支持你想要的答案精度。",
+    "steps": [
+      {
+        "title": "均匀缩放",
+        "instruction": "取 $c=1,\\delta=0.01$。",
+        "preset": {
+          "c": 1,
+          "eps": 0.01
+        },
+        "observation": "解的纵向改变 $0.01$，条件数一。"
+      },
+      {
+        "title": "压薄十倍",
+        "instruction": "取 $c=0.1,\\delta=0.01$。",
+        "preset": {
+          "c": 0.1,
+          "eps": 0.01
+        },
+        "observation": "解纵向改变 $0.1$，条件数十。"
+      },
+      {
+        "title": "压薄百倍",
+        "instruction": "取 $c=0.01,\\delta=0.01$。",
+        "preset": {
+          "c": 0.01,
+          "eps": 0.01
+        },
+        "observation": "解纵向改变一，条件数一百。"
+      }
+    ]
+  }
+}

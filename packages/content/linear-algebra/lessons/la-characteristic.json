@@ -1,0 +1,195 @@
+{
+  "id": "la-characteristic",
+  "chapterId": "la-eigen",
+  "number": "6.2",
+  "title": "特征多项式、迹与行列式",
+  "subtitle": "先找缩放值，再找方向",
+  "concept": "特征多项式找出使矩阵失去可逆性的所有缩放值。",
+  "intuition": "把每个方向统一减去同一个缩放；当某个非零方向正好被抵消，便找到了特征值。",
+  "objectives": [
+    "计算特征多项式",
+    "用迹与行列式核对根"
+  ],
+  "body": [
+    {
+      "title": "怎样求特征值？",
+      "text": "解 $\\det(\\lambda I-A)=0$，再对每个根解 $(A-\\lambda I)v=0$。根本身不等于特征向量。"
+    },
+    {
+      "title": "代数重数是什么？",
+      "text": "一个根在特征多项式中重复出现的次数。它不直接说明能找到多少独立特征向量。"
+    },
+    {
+      "title": "迹能告诉什么？",
+      "text": "在复数域计代数重数后，特征值之和等于迹、乘积等于行列式。迹只加对角线，不是所有元素。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "特征多项式、迹与行列式",
+    "latex": "p_A(\\lambda)=\\det(\\lambda I-A),\\quad\\sum_i\\lambda_i=\\operatorname{tr}A,\\quad\\prod_i\\lambda_i=\\det A",
+    "conditions": [
+      "特征值在复数域按代数重数计算；实矩阵的非实根成共轭对。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "非零特征向量存在等价于奇异。",
+      "latex": "\\lambda\\text{ 是特征值}\\iff\\det(\\lambda I-A)=0"
+    },
+    {
+      "text": "多项式首两项给出总和。",
+      "latex": "p_A(\\lambda)=\\lambda^n-(\\operatorname{tr}A)\\lambda^{n-1}+\\cdots"
+    },
+    {
+      "text": "常数项给出乘积。",
+      "latex": "p_A(0)=(-1)^n\\det A"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "对称二阶",
+      "problem": "$A=\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix}$ 的特征多项式？",
+      "steps": [
+        "$p=(\\lambda-2)^2-1$。",
+        "$p=(\\lambda-3)(\\lambda-1)$。"
+      ],
+      "answer": "根为 $3,1$，和为 $4$，积为 $3$。"
+    },
+    {
+      "title": "三角矩阵",
+      "problem": "$A=\\begin{pmatrix}2&7&0\\\\0&-1&4\\\\0&0&2\\end{pmatrix}$ 的特征值？",
+      "steps": [
+        "特征矩阵仍为三角形，取对角积。",
+        "$p=(\\lambda-2)^2(\\lambda+1)$。"
+      ],
+      "answer": "$2$ 的代数重数为 $2$，$-1$ 的重数为 $1$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-characteristic-m1",
+      "claim": "迹相同意味着特征值逐个相同。",
+      "correction": "迹只提供总和这一个约束。"
+    },
+    {
+      "id": "la-characteristic-m2",
+      "claim": "重根必然给出同样数量的独立特征向量。",
+      "correction": "还须计算特征空间维数。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$\\operatorname{tr}\\begin{pmatrix}1&4\\\\2&3\\end{pmatrix}$ 是多少？",
+      "hint": "只加对角线。",
+      "solution": [
+        "$1+3=4$。"
+      ],
+      "answer": "4",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 4,
+      "id": "la-characteristic-q1"
+    },
+    {
+      "problem": "二阶矩阵特征值为 $2,5$，行列式？",
+      "hint": "按重数取积。",
+      "solution": [
+        "$2\\cdot5=10$。"
+      ],
+      "answer": "10",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 10,
+      "id": "la-characteristic-q2"
+    },
+    {
+      "problem": "$\\begin{pmatrix}1&9\\\\0&1\\end{pmatrix}$ 的特征多项式？",
+      "hint": "三角形对角积。",
+      "solution": [
+        "$(\\lambda-1)^2$。"
+      ],
+      "answer": "$(\\lambda-1)^2$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-characteristic-q3"
+    },
+    {
+      "problem": "特征多项式有某个根后，特征向量怎样找？",
+      "hint": "回到齐次系统。",
+      "solution": [
+        "求 $\\ker(A-\\lambda I)$ 中的非零向量。"
+      ],
+      "answer": "解对应齐次方程。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-characteristic-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-eigenvectors",
+    "la-cramer"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "la-characteristic-m1",
+    "la-characteristic-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-characteristic",
+    "caption": "$A=\\begin{pmatrix}2&c\\\\c&2\\end{pmatrix}$。蓝色为单位输入，金色为输出；特征方向上两者共线。",
+    "prediction": "特征值之和与乘积如何对照矩阵的迹和行列式？"
+  },
+  "learningCheck": {
+    "question": "特征多项式的根是什么？",
+    "choices": [
+      "矩阵的每个元素",
+      "特征值",
+      "特征向量坐标"
+    ],
+    "correctIndex": 1,
+    "explanation": "根是标量；向量还需解另一个齐次系统。"
+  },
+  "teaching": {
+    "explain": "特征方程先找可能的缩放，再找实现这些缩放的方向。不要把这两个计算步骤混成一个。",
+    "steps": [
+      {
+        "title": "第一特征方向",
+        "instruction": "取 $c=1,\\theta=\\pi/4$。",
+        "preset": {
+          "c": 1,
+          "a": 0.7853981633974483
+        },
+        "observation": "输出长度三，方向相同，对应特征值三。"
+      },
+      {
+        "title": "第二特征方向",
+        "instruction": "取 $c=1,\\theta=3\\pi/4$。",
+        "preset": {
+          "c": 1,
+          "a": 2.356194490192345
+        },
+        "observation": "输出长度一，对应特征值一；两方向垂直。"
+      },
+      {
+        "title": "重复但不缺方向",
+        "instruction": "取 $c=0$。",
+        "preset": {
+          "c": 0,
+          "a": 0.7853981633974483
+        },
+        "observation": "矩阵为 $2I$，每条非零方向都是特征方向。"
+      }
+    ]
+  }
+}

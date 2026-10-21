@@ -1,0 +1,201 @@
+{
+  "id": "la-choosing-tools",
+  "chapterId": "la-applications",
+  "number": "10.5",
+  "title": "怎样选择线性代数工具",
+  "subtitle": "按问题目标选择分解",
+  "concept": "先判断问题要精确求解、近似拟合、反复迭代，还是减少信息，再选择分解。",
+  "intuition": "矩阵式写出来只是开始。右端是否可达、解是否唯一、误差是否重要，决定后面用什么。",
+  "objectives": [
+    "先检查尺寸、秩与相容性",
+    "为求解、拟合、迭代和降维选择工具"
+  ],
+  "body": [
+    {
+      "title": "精确求解先问什么？",
+      "text": "先看尺寸与秩，再看相容性。解集用特解加核描述；同一可逆矩阵多次求解可复用 LU，正定系统可用 Cholesky。"
+    },
+    {
+      "title": "有误差时怎样选？",
+      "text": "最小二乘找最近输出，QR 处理列满秩拟合，SVD 和伪逆处理秩缺失及最小范数。关注敏感性时检查奇异值和条件数。"
+    },
+    {
+      "title": "特征分解与 SVD 如何区分？",
+      "text": "研究同一状态反复更新，优先看特征结构；研究长度缩放、长方矩阵和降维，优先看 SVD。不能只因某个公式熟悉就套用。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "怎样选择线性代数工具",
+    "latex": "\\text{精确解： }Ax=b;\\quad\\text{拟合： }\\min\\|Ax-b\\|;\\quad\\text{迭代： }A^k;\\quad\\text{压缩： }A_k",
+    "conditions": [
+      "每种工具都需满足各自尺寸、秩、对称性和数值条件；本节是整卷方法选择，不新增无条件保证。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先检查结构与可达性。",
+      "latex": "b\\in\\operatorname{col}A\\ ?"
+    },
+    {
+      "text": "区分输出与输入唯一性。",
+      "latex": "\\ker A=\\{0\\}\\ ?"
+    },
+    {
+      "text": "再选择匹配目标的分解。",
+      "latex": "PA=LU,\\quad A=QR,\\quad A=Q\\Lambda Q^T,\\quad A=U\\Sigma V^T"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "可解仍需选择最短输入",
+      "problem": "$x+y=2$ 的精确解与最小范数解怎样区分？",
+      "steps": [
+        "所有精确解为 $(1+t,1-t)$。",
+        "输入长度平方为 $2+2t^2$，最小范数点是 $(1,1)$。"
+      ],
+      "answer": "核解释不唯一，伪逆选择最短者。"
+    },
+    {
+      "title": "正定系统选分解",
+      "problem": "多次求解 $\\begin{pmatrix}4&2\\\\2&3\\end{pmatrix}x=b$，应复用什么？",
+      "steps": [
+        "矩阵实对称且顺序主子式为正。",
+        "可保存 $L=\\begin{pmatrix}2&0\\\\1&\\sqrt2\\end{pmatrix}$，各右端做两次三角求解。"
+      ],
+      "answer": "复用 Cholesky；不必每次求逆。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-choosing-tools-m1",
+      "claim": "每个问题都先算逆矩阵。",
+      "correction": "长方或奇异矩阵没有通常逆，且直接分解常更合适。"
+    },
+    {
+      "id": "la-choosing-tools-m2",
+      "claim": "图示与几个数值吻合，就说明一般结论已经证明。",
+      "correction": "图示检查具体模型，定理还依赖严格条件与论证。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "有观测噪声且方程一般无解，首选什么问题形式？",
+      "hint": "先明确目标。",
+      "solution": [
+        "最小化 $\\|Ax-b\\|^2$，并检查模型假设。"
+      ],
+      "answer": "最小二乘。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-choosing-tools-q1"
+    },
+    {
+      "problem": "矩阵无实特征方向时还能用 SVD 吗？",
+      "hint": "SVD 不依赖 $A$ 的实特征基。",
+      "solution": [
+        "任意实矩阵都有 SVD。"
+      ],
+      "answer": "能。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-choosing-tools-q2"
+    },
+    {
+      "problem": "已知两个解之差应放到哪个空间？",
+      "hint": "同一右端相减。",
+      "solution": [
+        "$A(x_1-x_2)=0$。"
+      ],
+      "answer": "零空间。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-choosing-tools-q3"
+    },
+    {
+      "problem": "只想保留最重要的 $k$ 个长度变化方向，用什么？",
+      "hint": "矩阵可为长方形。",
+      "solution": [
+        "按奇异值降序截断。"
+      ],
+      "answer": "截断 SVD。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-choosing-tools-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-pseudoinverse",
+    "la-conditioning",
+    "la-pca",
+    "la-networks"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "la-choosing-tools-m1",
+    "la-choosing-tools-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-choosing-tools",
+    "caption": "蓝色是原网格与单位圆，绿色是矩阵 $A$ 的像；金色是输入 $(1,1)$ 的输出。四个输入框分别改变矩阵元素。",
+    "prediction": "矩阵把哪些方向保留、压缩或消掉，分别影响哪些求解工具？"
+  },
+  "learningCheck": {
+    "question": "面对一个新问题，第一步最好是什么？",
+    "choices": [
+      "先求逆",
+      "先写清输入、输出、约束和目标",
+      "先删小元素"
+    ],
+    "correctIndex": 1,
+    "explanation": "工具的条件由问题结构决定。"
+  },
+  "teaching": {
+    "explain": "整卷不是互不相关的公式。核与像解释求解，正交性解释最近，特征值解释迭代，奇异值解释一般矩阵的缩放与近似。",
+    "steps": [
+      {
+        "title": "保持原样",
+        "instruction": "取 $A=I$。",
+        "preset": {
+          "a": 1,
+          "b": 0,
+          "c": 0,
+          "h": 1
+        },
+        "observation": "网格、圆和向量都不变。"
+      },
+      {
+        "title": "剪切",
+        "instruction": "取 $A=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$。",
+        "preset": {
+          "a": 1,
+          "b": 1,
+          "c": 0,
+          "h": 1
+        },
+        "observation": "单位正方形变斜，面积仍为一。"
+      },
+      {
+        "title": "压到直线",
+        "instruction": "取 $A=\\operatorname{diag}(1,0)$。",
+        "preset": {
+          "a": 1,
+          "b": 0,
+          "c": 0,
+          "h": 0
+        },
+        "observation": "纵向信息被消掉，秩降为一。"
+      }
+    ]
+  }
+}

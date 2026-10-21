@@ -1,0 +1,194 @@
+{
+  "id": "la-nullspace",
+  "chapterId": "la-fundamental",
+  "number": "4.1",
+  "title": "核与零空间",
+  "subtitle": "哪些输入变化不会影响输出",
+  "concept": "零空间包含所有被矩阵送到零的输入方向。",
+  "intuition": "两个输入若产生相同输出，它们之差就在零空间里。矩阵不区分的那些方向，正是信息损失的位置。",
+  "objectives": [
+    "求零空间的一组基",
+    "用核判断映射是否一一"
+  ],
+  "body": [
+    {
+      "title": "怎样求一组基？",
+      "text": "消元解 $Ax=0$。每次让一个自由变量为一、其余自由变量为零，得到特殊解；这些特殊解构成零空间的基。"
+    },
+    {
+      "title": "核属于哪里？",
+      "text": "$m\\times n$ 矩阵的核属于输入空间 $\\mathbb R^n$，不是输出空间。"
+    },
+    {
+      "title": "核与一一性怎样连接？",
+      "text": "映射一一当且仅当核只有零向量。若 $Ax=Ay$，就有 $A(x-y)=0$。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "核与零空间",
+    "latex": "\\ker A=\\{x\\in\\mathbb R^n:Ax=0\\},\\qquad A\\text{ 一一}\\iff\\ker A=\\{0\\}",
+    "conditions": [
+      "矩阵代表线性映射；零空间自动是输入空间的子空间。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "等输出相减。",
+      "latex": "Ax=Ay\\Rightarrow A(x-y)=0"
+    },
+    {
+      "text": "零核强制输入相同。",
+      "latex": "\\ker A=\\{0\\}\\Rightarrow x=y"
+    },
+    {
+      "text": "非零核向量给不同的同输出输入。",
+      "latex": "Az=0,z\\ne0\\Rightarrow A(x+z)=Ax"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "从自由变量找核",
+      "problem": "$A=\\begin{pmatrix}1&2&0\\\\0&0&1\\end{pmatrix}$ 的核？",
+      "steps": [
+        "$x+2y=0,z=0$。",
+        "令 $y=t$，得 $(-2t,t,0)$。"
+      ],
+      "answer": "$\\ker A=\\operatorname{span}((-2,1,0))$。"
+    },
+    {
+      "title": "压缩映射",
+      "problem": "$T(x,y,z)=(x,y)$ 是否一一？",
+      "steps": [
+        "$T(0,0,1)=0$。",
+        "不同高度产生同一输出。"
+      ],
+      "answer": "不一一，核为竖轴。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-nullspace-m1",
+      "claim": "零空间就是只含零的空间。",
+      "correction": "名称表示输出为零，输入可以非零。"
+    },
+    {
+      "id": "la-nullspace-m2",
+      "claim": "核里的向量长度必须为零。",
+      "correction": "被消掉的是输出，并非输入长度。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$A=(1\\ 1)$ 的核？",
+      "hint": "求两个坐标和为零。",
+      "solution": [
+        "$(x,y)=t(1,-1)$。"
+      ],
+      "answer": "$\\operatorname{span}((1,-1))$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-nullspace-q1"
+    },
+    {
+      "problem": "可逆矩阵的零空间维数？",
+      "hint": "可逆映射不合并输入。",
+      "solution": [
+        "核只有零向量，基为空。"
+      ],
+      "answer": "0",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0,
+      "id": "la-nullspace-q2"
+    },
+    {
+      "problem": "$Ax=b$ 有两个不同解，核是否非零？",
+      "hint": "两解相减。",
+      "solution": [
+        "非零差向量属于核。"
+      ],
+      "answer": "非零。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-nullspace-q3"
+    },
+    {
+      "problem": "行变换会改变零空间吗？",
+      "hint": "左乘可逆消元矩阵。",
+      "solution": [
+        "$EAx=0\\iff Ax=0$。"
+      ],
+      "answer": "不改变。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-nullspace-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-parametric",
+    "la-subspaces"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "la-nullspace-m1",
+    "la-nullspace-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-nullspace",
+    "caption": "$A=\\begin{pmatrix}1&c\\\\0&0\\end{pmatrix}$ 的核方向为 $(-c,1)$。金色输入沿核移动，输出始终为零。",
+    "prediction": "沿着哪个方向移动输入，输出完全不动？"
+  },
+  "learningCheck": {
+    "question": "$A$ 有 $5$ 列，核向量有几个分量？",
+    "choices": [
+      "行数决定",
+      "5",
+      "只需一个"
+    ],
+    "correctIndex": 1,
+    "explanation": "核位于输入空间，其维数环境由列数决定。"
+  },
+  "teaching": {
+    "explain": "零空间描述看不见的输入变化。它越大，同一个输出可能对应的输入就越多。",
+    "steps": [
+      {
+        "title": "非零核向量",
+        "instruction": "取 $c=1,t=1$。",
+        "preset": {
+          "c": 1,
+          "x": 1
+        },
+        "observation": "输入 $(-1,1)$ 被送到零。"
+      },
+      {
+        "title": "改变长度",
+        "instruction": "保持 $c=1$，取 $t=2$。",
+        "preset": {
+          "c": 1,
+          "x": 2
+        },
+        "observation": "输入 $(-2,2)$ 仍被送到零。"
+      },
+      {
+        "title": "改变被消掉的方向",
+        "instruction": "取 $c=0,t=1$。",
+        "preset": {
+          "c": 0,
+          "x": 1
+        },
+        "observation": "核变为纵轴，输入 $(0,1)$ 输出零。"
+      }
+    ]
+  }
+}

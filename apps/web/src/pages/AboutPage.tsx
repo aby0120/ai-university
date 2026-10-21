@@ -75,7 +75,7 @@ export function AboutPage() {
             {[
               [
                 "完整，而不是摘选",
-                "每本教材都沿着系统的课程结构完成。微积分 I、II、III 已提供完整正文与演示；其他未出版教材在书库中明确标注为规划中。",
+                "每本教材都沿着系统的课程结构完成。微积分 I、II、III 和线性代数已提供完整正文与演示；其他未出版教材在书库中明确标注为规划中。",
               ],
               [
                 "清楚，也保留必要条件",
@@ -178,7 +178,8 @@ export function AboutPage() {
         </div>
       ) : part === "versions" ? (
         <div className="versions-page">
-          <div className="version-entry"><span className="badge">当前网站 · 三卷修订</span><h2>v0.11.0 · 补全方法，校准图示</h2><time>2026 年 10 月 21 日</time><ul><li>补充根式三角代换、不可约二次因子和非线性 Jacobian 的完整例题。</li><li>明确抽水几何与固定出口；说明交错误差界必须从递减尾部使用。</li><li>偏导图同时展示两条切线；Jacobian 图比较局部倍率与总面积。</li><li>精简演示、练习和阅读指南的中文提示，删除重复口号。</li><li>微积分 I v0.3.2，II、III v0.1.1；保留原链接与学习记录。</li></ul></div>
+          <div className="version-entry"><span className="badge">当前网站 · Linear Algebra v0.1.0</span><h2>v0.12.0 · 线性代数完整首版</h2><time>2026 年 10 月 21 日</time><ul><li>10 章 50 节、100 个例题、250 道练习与完整解答。</li><li>从方程组、向量空间和特征值，到正交投影、SVD、网络与 PCA。</li><li>50 个二维或三维交互演示，支持矩阵参数输入、消元步骤和退化情形。</li><li>整本阅读、目录、练习、索引和下载均可独立使用，无需先修微积分。</li></ul></div>
+          <div className="version-entry"><span className="badge">历史网站版本</span><h2>v0.11.0 · 补全方法，校准图示</h2><time>2026 年 10 月 21 日</time><ul><li>补充根式三角代换、不可约二次因子和非线性 Jacobian 的完整例题。</li><li>明确抽水几何与固定出口；说明交错误差界必须从递减尾部使用。</li><li>偏导图同时展示两条切线；Jacobian 图比较局部倍率与总面积。</li><li>精简演示、练习和阅读指南的中文提示，删除重复口号。</li><li>微积分 I v0.3.2，II、III v0.1.1；保留原链接与学习记录。</li></ul></div>
           <div className="version-entry"><span className="badge">历史网站版本</span><h2>v0.10.1 · 图形拖动不再误选文字</h2><time>2026 年 10 月 21 日</time><p>修复坐标文字被划选的问题；拖动、键盘和正文复制可正常使用。</p></div>
           <div className="version-entry"><span className="badge">Calculus III v0.1.0</span><h2>v0.10.0 · 微积分 III 完整首版</h2><time>2026 年 10 月 14 日</time><ul><li>9 章 40 节、80 个例题与 203 道练习解答。</li><li>多元变化、优化、重积分、向量积分与三个积分定理。</li><li>40 个可旋转的本地三维图，支持俯视、正视、缩放和键盘操作；无需 WebGL。</li></ul></div>
           <div className="version-entry"><span className="badge">Calculus II · v0.1.0</span><h2>v0.9.0 · 微积分 II 完整首版</h2><time>2026 年 10 月 14 日</time><ul><li>新增 8 章 35 节、70 个例题与 178 道练习解答。</li><li>接入积分、收敛、Taylor、参数与极坐标、一阶方程的本地交互图示。</li><li>目录、练习、索引、下载与学习记录按教材区分，保留微积分 I 的旧链接与记录。</li></ul></div>

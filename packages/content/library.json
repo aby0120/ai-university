@@ -130,10 +130,18 @@
         "Algebra"
       ],
       "tagline": "看见空间的结构",
-      "description": "从向量与方程组到线性变换、特征值与正交性。",
+      "description": "从方程组、矩阵与向量空间，到特征值、正交投影、SVD、网络与 PCA。",
       "audience": "有初等代数基础的学习者",
-      "scope": "向量 · 矩阵 · 线性映射 · 特征值",
-      "status": "planned"
+      "scope": "方程组 · 向量空间 · 特征值 · 正交与最小二乘 · SVD",
+      "status": "published",
+      "route": "book/linear-algebra",
+      "stats": {
+        "chapters": 10,
+        "lessons": 50,
+        "examples": 100,
+        "exercises": 250
+      },
+      "coverFormula": "A=U\\Sigma V^T"
     },
     {
       "id": "differential-equations",

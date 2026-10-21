@@ -1,0 +1,925 @@
+{
+  "reviews": [
+    {
+      "chapterId": "la-systems",
+      "title": "向量与线性方程组 · 章末回顾",
+      "questions": [
+        {
+          "problem": "解 $x+2y=7,3x+5y=18$。",
+          "hint": "用第二式减第一式三倍。",
+          "solution": [
+            "$-y=-3$，所以 $y=3$；代回得 $x=1$。"
+          ],
+          "answer": "$(1,3)$。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-1-1"
+        },
+        {
+          "problem": "方程 $x-y+z=2,2x-2y+2z=k$ 对哪些 $k$ 相容？",
+          "hint": "比较两个左端。",
+          "solution": [
+            "第二个左端是第一个的两倍，因此必须 $k=4$。",
+            "此时 $(x,y,z)=(2+s-t,s,t)$。"
+          ],
+          "answer": "仅 $k=4$，有两个自由参数。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-1-2"
+        },
+        {
+          "problem": "若 $Ax=b$ 相容且核由 $(1,-2,1)$ 生成，特解为 $(0,1,2)$，写出所有解。",
+          "hint": "特解加核。",
+          "solution": [
+            "$x=(0,1,2)+t(1,-2,1)$，$t\\in\\mathbb R$。"
+          ],
+          "answer": "$(t,1-2t,2+t)$。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-1-3"
+        }
+      ]
+    },
+    {
+      "chapterId": "la-matrices",
+      "title": "矩阵与线性映射 · 章末回顾",
+      "questions": [
+        {
+          "problem": "$T(x,y)=(x-y,2x+y)$，求标准矩阵和 $T(1,2)$。",
+          "hint": "先算两个标准基的像。",
+          "solution": [
+            "矩阵为 $\\begin{pmatrix}1&-1\\\\2&1\\end{pmatrix}$。",
+            "代入给 $(-1,4)$。"
+          ],
+          "answer": "矩阵如上，输出 $(-1,4)$。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-2-1"
+        },
+        {
+          "problem": "求 $\\begin{pmatrix}2&1\\\\0&3\\end{pmatrix}^{-1}$。",
+          "hint": "先解第二个输出，再恢复第一个。",
+          "solution": [
+            "$y=b_2/3$，$x=b_1/2-b_2/6$。"
+          ],
+          "answer": "$\\begin{pmatrix}1/2&-1/6\\\\0&1/3\\end{pmatrix}$。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-2-2"
+        },
+        {
+          "problem": "$L=\\begin{pmatrix}1&0\\\\3&1\\end{pmatrix},U=\\begin{pmatrix}2&1\\\\0&2\\end{pmatrix}$，解 $LUx=(4,14)$。",
+          "hint": "先做下三角前代。",
+          "solution": [
+            "$y_1=4,y_2=14-12=2$。",
+            "$x_2=1,x_1=3/2$。"
+          ],
+          "answer": "$(3/2,1)$。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-2-3"
+        }
+      ]
+    },
+    {
+      "chapterId": "la-spaces",
+      "title": "向量空间、基与坐标 · 章末回顾",
+      "questions": [
+        {
+          "problem": "$W=\\{(x,y,z):x=2y,z=-y\\}$，给出基和维数。",
+          "hint": "用 $y$ 作参数。",
+          "solution": [
+            "所有向量为 $t(2,1,-1)$，非零生成向量本身无关。"
+          ],
+          "answer": "基 $((2,1,-1))$，维数一。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-3-1"
+        },
+        {
+          "problem": "基 $B=((1,2),(2,1))$，向量 $(5,4)$ 的坐标？",
+          "hint": "解基列组成的系统。",
+          "solution": [
+            "$a+2b=5,2a+b=4$，解得 $a=1,b=2$。"
+          ],
+          "answer": "$(1,2)^T$。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-3-2"
+        },
+        {
+          "problem": "$1,1+t,t^2$ 能否作为次数不超过二的多项式空间的基？",
+          "hint": "展开齐次组合的系数。",
+          "solution": [
+            "$a+b(1+t)+ct^2=0$ 使 $b=c=0$，再使 $a=0$。",
+            "共有三个无关向量，空间维数三。"
+          ],
+          "answer": "能。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-3-3"
+        }
+      ]
+    },
+    {
+      "chapterId": "la-fundamental",
+      "title": "零空间、像与秩 · 章末回顾",
+      "questions": [
+        {
+          "problem": "$A=\\begin{pmatrix}1&0&2\\\\0&1&-1\\end{pmatrix}$，求核的一组基。",
+          "hint": "第三变量自由。",
+          "solution": [
+            "$x=-2z,y=z$。"
+          ],
+          "answer": "基 $((-2,1,1))$。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-4-1"
+        },
+        {
+          "problem": "$A$ 为 $6\\times4$、秩 $3$，四空间维数分别是多少？",
+          "hint": "先分清输入四维与输出六维。",
+          "solution": [
+            "行、列维数均三；核为 $4-3=1$，左核为 $6-3=3$。"
+          ],
+          "answer": "行三、列三、右核一、左核三。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-4-2"
+        },
+        {
+          "problem": "$A=\\begin{pmatrix}1&1\\\\2&2\\\\3&3\\end{pmatrix}$，$b=(1,2,4)$ 可达吗？",
+          "hint": "列都在同一直线上。",
+          "solution": [
+            "列空间由 $(1,2,3)$ 生成，右端前两坐标强制倍率一，第三坐标却不符。"
+          ],
+          "answer": "不可达。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-4-3"
+        }
+      ]
+    },
+    {
+      "chapterId": "la-determinants",
+      "title": "行列式 · 章末回顾",
+      "questions": [
+        {
+          "problem": "求 $\\det\\begin{pmatrix}2&1&0\\\\0&3&2\\\\0&0&-1\\end{pmatrix}$。",
+          "hint": "三角矩阵。",
+          "solution": [
+            "对角积 $2\\cdot3\\cdot(-1)=-6$。"
+          ],
+          "answer": "$-6$",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "numericAnswer": -6,
+          "id": "la-review-5-1"
+        },
+        {
+          "problem": "$A$ 为四阶，行列式为三；先交换两行，再把一行乘二，结果行列式？",
+          "hint": "分开记录每步倍率。",
+          "solution": [
+            "交换反号，再乘二，结果 $-6$。"
+          ],
+          "answer": "$-6$",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "numericAnswer": -6,
+          "id": "la-review-5-2"
+        },
+        {
+          "problem": "用行列式求 $2x+y=5,x+y=3$ 的 $x$。",
+          "hint": "替换第一列。",
+          "solution": [
+            "系数行列式一，替列行列式 $5-3=2$。"
+          ],
+          "answer": "$x=2$。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-5-3"
+        }
+      ]
+    },
+    {
+      "chapterId": "la-eigen",
+      "title": "特征值与对角化 · 章末回顾",
+      "questions": [
+        {
+          "problem": "$A=\\begin{pmatrix}4&1\\\\0&2\\end{pmatrix}$，给出两条特征方向。",
+          "hint": "先读三角矩阵对角，再解核。",
+          "solution": [
+            "特征值四对应 $(1,0)$。",
+            "特征值二要求 $2x+y=0$，可取 $(1,-2)$。"
+          ],
+          "answer": "$(1,0)$ 与 $(1,-2)$。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-6-1"
+        },
+        {
+          "problem": "$A=\\begin{pmatrix}3&1\\\\0&3\\end{pmatrix}$ 是否可对角化？",
+          "hint": "比较代数与几何重数。",
+          "solution": [
+            "三的代数重数二，特征空间只有横轴一维。"
+          ],
+          "answer": "不可对角化。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-6-2"
+        },
+        {
+          "problem": "$A=\\begin{pmatrix}0&-2\\\\2&0\\end{pmatrix}$ 的特征值和行列式？",
+          "hint": "特征多项式为平方加常数。",
+          "solution": [
+            "$p=\\lambda^2+4$，根 $\\pm2i$，积为四。"
+          ],
+          "answer": "特征值 $\\pm2i$，行列式四。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-6-3"
+        }
+      ]
+    },
+    {
+      "chapterId": "la-orthogonal",
+      "title": "正交、投影与最小二乘 · 章末回顾",
+      "questions": [
+        {
+          "problem": "把 $(4,0)$ 投到 $(1,2)$ 上。",
+          "hint": "点积除以方向长度平方。",
+          "solution": [
+            "系数 $4/5$，投影为 $(4/5,8/5)$。"
+          ],
+          "answer": "$(4/5,8/5)$。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-7-1"
+        },
+        {
+          "problem": "对 $(1,0,1),(1,1,0)$ 作正交化，写出未归一化的第二余量。",
+          "hint": "第一方向长度平方为二。",
+          "solution": [
+            "投影系数 $1/2$，余量 $(1/2,1,-1/2)$。"
+          ],
+          "answer": "$(1/2,1,-1/2)$。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-7-2"
+        },
+        {
+          "problem": "用一条水平直线拟合数值 2、2、5，求最佳常数与残差平方和。",
+          "hint": "常数是平均值。",
+          "solution": [
+            "平均值三，残差 $(-1,-1,2)$，平方和六。"
+          ],
+          "answer": "最佳常数三，平方和六。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-7-3"
+        }
+      ]
+    },
+    {
+      "chapterId": "la-symmetric",
+      "title": "对称矩阵与二次型 · 章末回顾",
+      "questions": [
+        {
+          "problem": "$A=\\begin{pmatrix}3&1\\\\1&3\\end{pmatrix}$ 的特征值及正定性？",
+          "hint": "用对角线和反对角线方向。",
+          "solution": [
+            "特征值四和二，均正。"
+          ],
+          "answer": "正定。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-8-1"
+        },
+        {
+          "problem": "对 $A=\\begin{pmatrix}9&3\\\\3&2\\end{pmatrix}$ 求正对角 Cholesky 因子。",
+          "hint": "先取首对角平方根。",
+          "solution": [
+            "$l_{11}=3,l_{21}=1,l_{22}=1$。"
+          ],
+          "answer": "$L=\\begin{pmatrix}3&0\\\\1&1\\end{pmatrix}$。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-8-2"
+        },
+        {
+          "problem": "$q=3x^2+2xy+3y^2$ 在单位圆上的最值？",
+          "hint": "矩阵特征值给界。",
+          "solution": [
+            "矩阵为 $\\begin{pmatrix}3&1\\\\1&3\\end{pmatrix}$，特征值四与二。"
+          ],
+          "answer": "最小二，最大四。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-8-3"
+        }
+      ]
+    },
+    {
+      "chapterId": "la-svd",
+      "title": "奇异值分解与数值稳定性 · 章末回顾",
+      "questions": [
+        {
+          "problem": "$A=\\operatorname{diag}(6,-2,0)$，求秩和伪逆。",
+          "hint": "奇异值非负，伪逆须恢复原来的符号。",
+          "solution": [
+            "两个非零奇异值，所以秩二。",
+            "伪逆为 $\\operatorname{diag}(1/6,-1/2,0)$。"
+          ],
+          "answer": "秩二；伪逆如上。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-9-1"
+        },
+        {
+          "problem": "奇异值 $8,4,1$，最佳秩二近似的两种误差？",
+          "hint": "只舍弃一个方向。",
+          "solution": [
+            "谱误差一，Frobenius 误差也一。"
+          ],
+          "answer": "均为一。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-9-2"
+        },
+        {
+          "problem": "$A=\\operatorname{diag}(100,0.5)$，条件数？若整体除以十呢？",
+          "hint": "计算奇异值比。",
+          "solution": [
+            "$100/0.5=200$；整体缩放比值不变。"
+          ],
+          "answer": "两者均为 200。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-9-3"
+        }
+      ]
+    },
+    {
+      "chapterId": "la-applications",
+      "title": "迭代、网络与数据分析 · 章末回顾",
+      "questions": [
+        {
+          "problem": "$P=\\begin{pmatrix}0.6&0.2\\\\0.4&0.8\\end{pmatrix}$ 的稳态？",
+          "hint": "平衡两状态间的转移。",
+          "solution": [
+            "$0.4p_1=0.2p_2$，归一化得 $(1/3,2/3)$。"
+          ],
+          "answer": "$(1/3,2/3)^T$。",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "id": "la-review-10-1"
+        },
+        {
+          "problem": "连通五节点六边的图，循环流空间维数？",
+          "hint": "关联矩阵秩为节点数减一。",
+          "solution": [
+            "秩四，边空间维数六，所以核维数二。"
+          ],
+          "answer": "2",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "numericAnswer": 2,
+          "id": "la-review-10-2"
+        },
+        {
+          "problem": "中心化数据协方差为 $\\operatorname{diag}(5,2,1)$，一维 PCA 保留方差比例？",
+          "hint": "首特征值除总和。",
+          "solution": [
+            "$5/(5+2+1)=5/8$。"
+          ],
+          "answer": "$5/8$",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "numericAnswer": 0.625,
+          "id": "la-review-10-3"
+        }
+      ]
+    }
+  ],
+  "exam": [
+    {
+      "problem": "解 $x+y+z=3,x-y+z=1$，并给核方向。",
+      "hint": "先相减，再设自由参数。",
+      "solution": [
+        "$y=1,x+z=2$，故 $(x,y,z)=(2,1,0)+t(-1,0,1)$。"
+      ],
+      "answer": "全部解如上，核方向 $(-1,0,1)$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-exam-1"
+    },
+    {
+      "problem": "$A=\\begin{pmatrix}1&1\\\\0&2\\end{pmatrix}$，求将输出 $(3,4)$ 还原的输入。",
+      "hint": "直接回代。",
+      "solution": [
+        "$2y=4$ 给 $y=2$，再由 $x+y=3$ 得 $x=1$。"
+      ],
+      "answer": "$(1,2)$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "la-exam-2"
+    },
+    {
+      "problem": "$T(x,y)=(x+y,0,x-y)$ 是否一一且满到三维空间？",
+      "hint": "比较两列与输出限制。",
+      "solution": [
+        "核为零，因此一一；输出第二分量恒零，不满到三维。"
+      ],
+      "answer": "一一，但不满射到三维。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-exam-3"
+    },
+    {
+      "problem": "给出 $x+2y-z=0$ 的解空间基。",
+      "hint": "自由取 $y$、$z$。",
+      "solution": [
+        "$(x,y,z)=s(-2,1,0)+t(1,0,1)$，两列无关。"
+      ],
+      "answer": "$((-2,1,0),(1,0,1))$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-exam-4"
+    },
+    {
+      "problem": "$B=((1,1),(2,-1))$，求 $(4,1)$ 的基坐标。",
+      "hint": "解系数。",
+      "solution": [
+        "$a+2b=4,a-b=1$，得 $b=1,a=2$。"
+      ],
+      "answer": "$(2,1)^T$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-exam-5"
+    },
+    {
+      "problem": "$A$ 为 $7\\times5$，核维数二，求秩与左核维数。",
+      "hint": "先对输入用秩—零度。",
+      "solution": [
+        "秩为 $5-2=3$，左核维数为 $7-3=4$。"
+      ],
+      "answer": "秩三，左核四。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-exam-6"
+    },
+    {
+      "problem": "求 $\\det\\begin{pmatrix}1&0&2\\\\2&3&0\\\\0&1&1\\end{pmatrix}$。",
+      "hint": "沿第一行展开。",
+      "solution": [
+        "第一项三；第三项为 $2\\cdot2=4$。"
+      ],
+      "answer": "7",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 7,
+      "id": "la-exam-7"
+    },
+    {
+      "problem": "$A=\\begin{pmatrix}5&2\\\\0&1\\end{pmatrix}$ 的两个特征空间？",
+      "hint": "分别解两个齐次系统。",
+      "solution": [
+        "$E_5=\\operatorname{span}((1,0))$；$E_1$ 要求 $4x+2y=0$。"
+      ],
+      "answer": "$E_1=\\operatorname{span}((1,-2))$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-exam-8"
+    },
+    {
+      "problem": "$J=\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}$ 的 $J^k$？",
+      "hint": "写成单位加平方为零的矩阵。",
+      "solution": [
+        "$N=J-I$ 满足 $N^2=0$，所以 $J^k=I+kN$。"
+      ],
+      "answer": "$\\begin{pmatrix}1&2k\\\\0&1\\end{pmatrix}$。",
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "id": "la-exam-9"
+    },
+    {
+      "problem": "将 $(2,1,2)$ 投到法向量 $(1,1,1)$ 的平面上。",
+      "hint": "先减去法向投影。",
+      "solution": [
+        "法向投影为 $(5/3,5/3,5/3)$。",
+        "平面投影为 $(1/3,-2/3,1/3)$，分量和零。"
+      ],
+      "answer": "$(1/3,-2/3,1/3)$。",
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "id": "la-exam-10"
+    },
+    {
+      "problem": "求 $W=\\operatorname{span}((1,0,1),(0,1,1))$ 的正交补。",
+      "hint": "对两个生成向量分别点积零。",
+      "solution": [
+        "$x+z=0,y+z=0$。"
+      ],
+      "answer": "$\\operatorname{span}((-1,-1,1))$。",
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "id": "la-exam-11"
+    },
+    {
+      "problem": "用常数拟合 1、3、5、7，最小平方误差？",
+      "hint": "平均数为四。",
+      "solution": [
+        "残差为 $(-3,-1,1,3)$，平方和二十。"
+      ],
+      "answer": "20",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 20,
+      "id": "la-exam-12"
+    },
+    {
+      "problem": "$A=\\begin{pmatrix}2&-1\\\\-1&2\\end{pmatrix}$ 的最小单位球二次型值及方向？",
+      "hint": "同向与反向测试。",
+      "solution": [
+        "特征值一对应 $(1,1)$，三对应 $(1,-1)$。"
+      ],
+      "answer": "最小一，在 $\\pm(1,1)/\\sqrt2$ 取到。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-exam-13"
+    },
+    {
+      "problem": "$A=\\begin{pmatrix}1&2\\\\2&5\\end{pmatrix}$ 的 Cholesky 因子？",
+      "hint": "首根一，减掉平方四。",
+      "solution": [
+        "$L=\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}$，乘回可验证。"
+      ],
+      "answer": "$\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-exam-14"
+    },
+    {
+      "problem": "$A=\\operatorname{diag}(-4,2)$，奇异值与条件数？",
+      "hint": "长度缩放忽略方向反号。",
+      "solution": [
+        "奇异值四、二，条件数二。"
+      ],
+      "answer": "奇异值四、二；条件数二。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-exam-15"
+    },
+    {
+      "problem": "$A=(2\\ 0),b=6$，求最小范数解。",
+      "hint": "满足第一坐标后，核坐标取零。",
+      "solution": [
+        "$x_1=3,x_2$ 任意；长度最小时 $x_2=0$。"
+      ],
+      "answer": "$(3,0)^T$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-exam-16"
+    },
+    {
+      "problem": "奇异值 $7,3,2,1$，最佳秩一截断的 Frobenius 误差？",
+      "hint": "将舍弃项平方后求和。",
+      "solution": [
+        "$\\sqrt{9+4+1}=\\sqrt{14}$。"
+      ],
+      "answer": "$\\sqrt{14}$。",
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "id": "la-exam-17"
+    },
+    {
+      "problem": "$P=\\begin{pmatrix}0.75&0.5\\\\0.25&0.5\\end{pmatrix}$，求稳态第一分量。",
+      "hint": "概率守恒加转移平衡。",
+      "solution": [
+        "$0.25p_1=0.5p_2$，所以 $p_1=2/3$。"
+      ],
+      "answer": "$2/3$",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.6666666666666666,
+      "id": "la-exam-18"
+    },
+    {
+      "problem": "有两个连通分量、共六节点七边的无自环图，关联矩阵秩与核维数？",
+      "hint": "每个分量有一个常量势自由度。",
+      "solution": [
+        "秩为 $6-2=4$，循环空间维数 $7-4=3$。"
+      ],
+      "answer": "秩四，核维数三。",
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "id": "la-exam-19"
+    },
+    {
+      "problem": "中心化数据奇异值为 $6,3,1$，保留两个主成分的方差比例？",
+      "hint": "协方差比例中的样本数约掉。",
+      "solution": [
+        "保留平方和为四十五，总平方和四十六。"
+      ],
+      "answer": "$45/46$",
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "numericAnswer": 0.9782608695652174,
+      "id": "la-exam-20"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "向量与线性组合",
+      "meaning": "线性组合用几个固定向量及其系数表示一个新向量。",
+      "lessonId": "la-vectors"
+    },
+    {
+      "term": "方程组的行图像与列图像",
+      "meaning": "同一个方程组，既是几个几何条件的交集，也是一次线性组合。",
+      "lessonId": "la-equations"
+    },
+    {
+      "term": "高斯消元与等价行变换",
+      "meaning": "消元逐步消掉未知量，同时保持整个解集不变。",
+      "lessonId": "la-elimination"
+    },
+    {
+      "term": "主元、相容性与自由变量",
+      "meaning": "主元说明哪些变量受独立条件约束；矛盾行判断无解。",
+      "lessonId": "la-pivots"
+    },
+    {
+      "term": "参数形式与完整解集",
+      "meaning": "一个特解加上齐次解，给出相容线性方程组的全部解。",
+      "lessonId": "la-parametric"
+    },
+    {
+      "term": "矩阵、转置与矩阵乘法",
+      "meaning": "矩阵乘向量，就是把矩阵的列按输入系数相加。",
+      "lessonId": "la-matrix-product"
+    },
+    {
+      "term": "线性映射与标准矩阵",
+      "meaning": "线性映射保留加法和数乘，因而由基向量的像完全确定。",
+      "lessonId": "la-linear-maps"
+    },
+    {
+      "term": "复合、旋转与剪切",
+      "meaning": "复合映射的矩阵按作用顺序从右往左相乘。",
+      "lessonId": "la-composition"
+    },
+    {
+      "term": "逆矩阵与可逆矩阵定理",
+      "meaning": "方阵可逆，意味着每个输出都能唯一地还原为输入。",
+      "lessonId": "la-inverse"
+    },
+    {
+      "term": "LU 分解与重复求解",
+      "meaning": "LU 把消元步骤保存下来，同一系数矩阵换右端时可以重复使用。",
+      "lessonId": "la-lu"
+    },
+    {
+      "term": "向量空间与子空间",
+      "meaning": "子空间是在原空间中，对加法和数乘仍封闭的一部分。",
+      "lessonId": "la-subspaces"
+    },
+    {
+      "term": "张成与生成集",
+      "meaning": "张成是给定向量的所有线性组合组成的集合。",
+      "lessonId": "la-span"
+    },
+    {
+      "term": "线性无关与冗余方向",
+      "meaning": "线性无关意味着零向量只有全零系数这一种组合表示。",
+      "lessonId": "la-independence"
+    },
+    {
+      "term": "基与唯一表示",
+      "meaning": "一组基既能张成整个空间，又没有任何冗余，因此坐标唯一。",
+      "lessonId": "la-basis"
+    },
+    {
+      "term": "维数、扩充与基的数量",
+      "meaning": "有限维空间的所有基都含相同数量的向量，这个数量叫维数。",
+      "lessonId": "la-dimension"
+    },
+    {
+      "term": "基坐标与换基",
+      "meaning": "换基改变同一向量的坐标，不改变向量本身。",
+      "lessonId": "la-coordinates"
+    },
+    {
+      "term": "核与零空间",
+      "meaning": "零空间包含所有被矩阵送到零的输入方向。",
+      "lessonId": "la-nullspace"
+    },
+    {
+      "term": "列空间与行空间",
+      "meaning": "列空间是可达到的输出；行空间由矩阵的行作为输入空间中的向量张成。",
+      "lessonId": "la-column-row"
+    },
+    {
+      "term": "秩—零度定理与一一、满射",
+      "meaning": "输入维数等于保留为独立输出的维数，加上被完全消掉的维数。",
+      "lessonId": "la-rank-nullity"
+    },
+    {
+      "term": "四个基本子空间",
+      "meaning": "矩阵的行、列和两个核，将输入与输出分别分成互补的正交部分。",
+      "lessonId": "la-four-spaces"
+    },
+    {
+      "term": "行列式与有向体积",
+      "meaning": "行列式的绝对值是体积倍率，符号记录定向是否翻转。",
+      "lessonId": "la-det-geometry"
+    },
+    {
+      "term": "行列式的运算规则",
+      "meaning": "行操作和乘积规则，让行列式计算可以跟着消元走。",
+      "lessonId": "la-det-properties"
+    },
+    {
+      "term": "余子式展开与行列式定义",
+      "meaning": "沿一行或一列展开，把高阶行列式递归拆成低阶行列式。",
+      "lessonId": "la-cofactors"
+    },
+    {
+      "term": "行列式、逆与 Cramer 法则",
+      "meaning": "方阵行列式非零等价于可逆；Cramer 法则用替换列的行列式表达唯一解。",
+      "lessonId": "la-cramer"
+    },
+    {
+      "term": "特征向量与特征空间",
+      "meaning": "特征向量是变换后仍与原向量共线的非零向量。",
+      "lessonId": "la-eigenvectors"
+    },
+    {
+      "term": "特征多项式、迹与行列式",
+      "meaning": "特征多项式找出使矩阵失去可逆性的所有缩放值。",
+      "lessonId": "la-characteristic"
+    },
+    {
+      "term": "重根与特征空间的维数",
+      "meaning": "重复特征值不保证有足够的独立特征向量。",
+      "lessonId": "la-multiplicity"
+    },
+    {
+      "term": "对角化与相似矩阵",
+      "meaning": "找到一组特征向量作基，矩阵就变成按坐标分别缩放的对角矩阵。",
+      "lessonId": "la-diagonalization"
+    },
+    {
+      "term": "复特征值与平面旋转",
+      "meaning": "实矩阵可能没有实特征方向；复数把旋转也纳入特征值语言。",
+      "lessonId": "la-complex-eigen"
+    },
+    {
+      "term": "内积、长度与角度",
+      "meaning": "内积把对齐程度变成一个数，并由此定义长度和距离。",
+      "lessonId": "la-inner-products"
+    },
+    {
+      "term": "向量投影与最近点",
+      "meaning": "正交投影是在给定子空间中，离目标最近的向量。",
+      "lessonId": "la-projection"
+    },
+    {
+      "term": "正交补与正交分解",
+      "meaning": "正交补包含与子空间每个向量都垂直的向量。",
+      "lessonId": "la-orthogonal-complements"
+    },
+    {
+      "term": "Gram–Schmidt 正交化",
+      "meaning": "正交化逐次减去已知方向上的投影，保留新的独立部分。",
+      "lessonId": "la-gram-schmidt"
+    },
+    {
+      "term": "QR 分解",
+      "meaning": "QR 把矩阵的列改写为标准正交方向及其组合系数。",
+      "lessonId": "la-qr"
+    },
+    {
+      "term": "最小二乘与正则方程",
+      "meaning": "精确方程无解时，最小二乘让残差的平方长度最小。",
+      "lessonId": "la-least-squares"
+    },
+    {
+      "term": "实对称矩阵与谱定理",
+      "meaning": "实对称矩阵总能用标准正交特征基对角化。",
+      "lessonId": "la-spectral"
+    },
+    {
+      "term": "二次型与主轴",
+      "meaning": "对称矩阵的二次型可以换到一组标准正交基，写成带符号的平方和。",
+      "lessonId": "la-quadratic-forms"
+    },
+    {
+      "term": "正定、半正定与判别",
+      "meaning": "正定要求每个非零方向的二次型都严格为正。",
+      "lessonId": "la-positive-definite"
+    },
+    {
+      "term": "Cholesky 分解与完成平方",
+      "meaning": "实对称正定矩阵可以唯一分解为正对角下三角矩阵与其转置的乘积。",
+      "lessonId": "la-cholesky"
+    },
+    {
+      "term": "Rayleigh 商与单位球上的最值",
+      "meaning": "对称矩阵在单位球上的二次型最值，正好是最大、最小特征值。",
+      "lessonId": "la-rayleigh"
+    },
+    {
+      "term": "奇异值与长度缩放",
+      "meaning": "奇异值描述矩阵沿特殊正交输入方向的长度缩放，永远非负。",
+      "lessonId": "la-singular-values"
+    },
+    {
+      "term": "奇异值分解",
+      "meaning": "任何实矩阵都能分解为输入端的正交变换、各方向的非负缩放和输出端的正交变换。",
+      "lessonId": "la-svd"
+    },
+    {
+      "term": "伪逆与最小范数解",
+      "meaning": "伪逆在最小二乘解中，选出长度最小的那个输入。",
+      "lessonId": "la-pseudoinverse"
+    },
+    {
+      "term": "截断 SVD 与最佳低秩近似",
+      "meaning": "保留最大的几个奇异值，可以用更少的方向近似矩阵，并精确计算截断误差。",
+      "lessonId": "la-low-rank"
+    },
+    {
+      "term": "条件数与误差放大",
+      "meaning": "条件数衡量某些方向的微小输入误差，可能造成多大的相对解误差。",
+      "lessonId": "la-conditioning"
+    },
+    {
+      "term": "Markov 矩阵与稳态",
+      "meaning": "Markov 矩阵用非负转移概率更新状态分布，稳态是特征值为一的概率向量。",
+      "lessonId": "la-markov"
+    },
+    {
+      "term": "矩阵幂与线性递推",
+      "meaning": "线性递推重复使用同一个矩阵，特征方向决定各分量如何增长、衰减或振荡。",
+      "lessonId": "la-recurrences"
+    },
+    {
+      "term": "图、关联矩阵与网络守恒",
+      "meaning": "关联矩阵把边上的有向流量转换为节点的净流入。",
+      "lessonId": "la-networks"
+    },
+    {
+      "term": "主成分分析与中心化",
+      "meaning": "PCA 在中心化数据中寻找保留方差最多的正交方向。",
+      "lessonId": "la-pca"
+    },
+    {
+      "term": "怎样选择线性代数工具",
+      "meaning": "先判断问题要精确求解、近似拟合、反复迭代，还是减少信息，再选择分解。",
+      "lessonId": "la-choosing-tools"
+    }
+  ],
+  "appendices": [
+    {
+      "title": "向量空间的运算公理",
+      "text": "在实数域上，向量集合配有加法与数乘。加法封闭、交换且结合，存在零向量，每个向量有加法逆元；数乘封闭，满足 $a(u+v)=au+av$、$(a+b)v=av+bv$、$a(bv)=(ab)v$、$1v=v$。这些规则共同定义实向量空间。矩阵与有界次数多项式都使用通常加法与数乘，因而逐分量或逐系数满足这些公理。换一套运算后必须重新检查，不能只凭对象名称判断。"
+    },
+    {
+      "title": "符号、矩阵范数与复数约定",
+      "text": "向量默认列向量；$A^T$ 为转置，$A^*=\\bar A^T$ 为共轭转置。实标准内积为 $x^Ty$，复标准内积本书约定为 $x^*y$，第一变量共轭线性。矩阵二范数为 $\\max_{\\|x\\|=1}\\|Ax\\|$；Frobenius 范数为 $\\|A\\|_F=(\\sum_{i,j}|a_{ij}|^2)^{1/2}$。单位向量集合上的最大值存在来自有限维连续函数在紧集上取最值；这是本卷使用的基础分析事实，不要求读者先完成微积分计算课程。"
+    },
+    {
+      "title": "交换引理为何保证维数唯一",
+      "text": "设 $u_1,\\ldots,u_k$ 无关，而 $v_1,\\ldots,v_m$ 生成空间。把 $u_1$ 写成后者的组合，至少一个系数非零，可反解并用 $u_1$ 替换对应的 $v_j$，仍保持生成。处理 $u_2$ 时，若只能由已换入的 $u_1$ 表示就违反无关性，因此又能替换一个尚未换出的向量。重复直到处理完所有无关向量，必须 $k\\le m$。对两组基互换角色即得相同数量，也得到有限维扩充与删减结论。"
+    },
+    {
+      "title": "行秩、列秩与零度的依据",
+      "text": "等价行操作保持行空间，也保持齐次解与各列依赖关系。阶梯形的非零行由于首非零位置错开而无关。主元列无关，且其余列由主元列组合；相同列关系可逆着行操作带回原矩阵。因此行秩、列秩同为主元数。每个自由变量取一、其他自由变量取零得到齐次特殊解；它们由自由坐标立即可见无关，且参数式说明它们张成核。这样得到秩加零度等于列数。"
+    },
+    {
+      "title": "行列式与体积的定义范围",
+      "text": "行列式可由对列分别线性、交换两列变号、单位矩阵取一唯一确定；将各列按标准基展开，只剩每行列恰选一次的项，便得到带置换符号的求和式。重复列使行列式为零；剪切不变、缩放相乘和交换反号可由这些性质推出。非奇异线性变换可拆成初等变换，对各自的体积倍率相乘，得到绝对行列式；奇异变换的像降维，同维体积为零。"
+    },
+    {
+      "title": "实对称谱定理的证明轮廓",
+      "text": "在单位球上取 $x^TAx$ 的最大点 $v$。对任意与 $v$ 垂直的单位 $w$，考察 $q(v\\cos t+w\\sin t)$；若 $v^TAw\\ne0$，选择足够小且同号的 $t$ 会使一次变化压过二次项，从而超过最大值。因此 $Av$ 与 $v$ 平行。对称性保证 $v^\\perp$ 在 $A$ 下不变：$v^TAw=(Av)^Tw=0$。把问题限制到低一维正交补，再归纳得到完整标准正交特征基。"
+    },
+    {
+      "title": "重数上界与最小范数解",
+      "text": "把某个特征空间的基扩充为全空间基，在该基下矩阵含左上角 $\\lambda I_g$ 且左下块为零，所以特征多项式至少含因子 $(t-\\lambda)^g$，几何重数不超过代数重数。伪逆的最小范数结论则用正交分解：所有最小二乘输入相差核向量；伪逆解属于行空间，和核垂直，因此加入核向量只会增加长度平方。"
+    },
+    {
+      "title": "Frobenius 低秩最优性",
+      "text": "对任意秩至多 $k$ 的近似 $B$，设其列空间包含于某个至多 $k$ 维空间 $W$，正交投影为 $P$。逐列的最近点性质给 $\\|A-B\\|_F^2\\ge\\|(I-P)A\\|_F^2=\\|A\\|_F^2-\\|PA\\|_F^2$。在左奇异基中，保留项为 $\\sum_i\\sigma_i^2\\|Pu_i\\|^2$。这些权重在零与一之间，且总和不超过 $k$，故至多为最大的 $k$ 个奇异值平方和。取前 $k$ 个左奇异方向可达到此界。"
+    },
+    {
+      "title": "Markov 收敛结论与本卷边界",
+      "text": "有限严格正列随机矩阵的稳态存在唯一、其余特征值模长严格小于一，是 Perron–Frobenius 理论的一个结论，本卷引用而不完整证明。非负但不严格正的矩阵需另外检查不可约与非周期，不能由有限次数动画推断。全 Jordan 标准形、抽象对偶与张量、一般域、无限维算子、FFT 和线性规划的系统算法属于后续范围；本卷已完成有限维实矩阵与向量空间的一门完整入门课。"
+    },
+    {
+      "title": "有限图示与计算精度",
+      "text": "几何图使用有限网格与浮点数。几乎相关与精确相关的秩不同；某些参数会让交点或逆像很远，图中可不绘制超出视窗的点，但必须保留说明。数值测试只能复核具体例子与模型，不能替代一般定理。方阵小奇异值是否作为零处理是数值建模选择，本卷精确案例与图示不把任意小非零数暗中改成零。"
+    }
+  ]
+}

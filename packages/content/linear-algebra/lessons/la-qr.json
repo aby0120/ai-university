@@ -1,0 +1,193 @@
+{
+  "id": "la-qr",
+  "chapterId": "la-orthogonal",
+  "number": "7.5",
+  "title": "QR 分解",
+  "subtitle": "正交方向加三角系数",
+  "concept": "QR 把矩阵的列改写为标准正交方向及其组合系数。",
+  "intuition": "正交化负责选方向，三角矩阵记录每一列用了哪些已有方向。",
+  "objectives": [
+    "把正交化写成薄 QR",
+    "区分长方 Q 与方正交矩阵"
+  ],
+  "body": [
+    {
+      "title": "薄 QR 是什么？",
+      "text": "对列满秩的 $m\\times n$ 矩阵（$m\\ge n$），写成 $A=QR$，$Q^TQ=I_n$，$R$ 为可逆上三角矩阵。"
+    },
+    {
+      "title": "系数怎么得到？",
+      "text": "$R=Q^TA$。第 $j$ 个原列在第 $j$ 步之前不会用到未来方向，因此下三角部分为零。"
+    },
+    {
+      "title": "非方的 $Q$ 能当逆吗？",
+      "text": "$Q^TQ=I$ 不代表 $QQ^T=I$；后者是投到列空间的投影。方正交矩阵才满足 $Q^{-1}=Q^T$。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "QR 分解",
+    "latex": "A=QR,\\quad Q^TQ=I,\\quad R=Q^TA",
+    "conditions": [
+      "本节薄 QR 的可逆三角部分要求列满秩；对角取正时分解唯一。依赖列也可有一般 QR，但此构造不能直接归一化零余量。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "第一个原列只用第一个方向。",
+      "latex": "a_1=r_{11}q_1"
+    },
+    {
+      "text": "后续列只用当前及更早的方向。",
+      "latex": "a_j=\\sum_{i\\le j}r_{ij}q_i"
+    },
+    {
+      "text": "把列等式并排。",
+      "latex": "[a_1\\ \\cdots\\ a_n]=Q R"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "将正交化写成分解",
+      "problem": "$A=\\begin{pmatrix}1&1\\\\1&0\\end{pmatrix}$ 的薄 QR？",
+      "steps": [
+        "$Q=\\frac1{\\sqrt2}\\begin{pmatrix}1&1\\\\1&-1\\end{pmatrix}$。",
+        "$Q^TA=\\begin{pmatrix}\\sqrt2&1/\\sqrt2\\\\0&1/\\sqrt2\\end{pmatrix}$，相乘复原。"
+      ],
+      "answer": "$A=QR$。"
+    },
+    {
+      "title": "正交列已准备好",
+      "problem": "$A=\\begin{pmatrix}2&0\\\\0&3\\\\0&0\\end{pmatrix}$ 的薄 QR？",
+      "steps": [
+        "归一化列得 $Q=(e_1,e_2)$。",
+        "$R=\\operatorname{diag}(2,3)$。"
+      ],
+      "answer": "$QQ^T=\\operatorname{diag}(1,1,0)$，并非三阶单位矩阵。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-qr-m1",
+      "claim": "$Q$ 有正交列就可以处处用 $Q^{-1}$。",
+      "correction": "长方形 $Q$ 没有本节意义的双侧逆。"
+    },
+    {
+      "id": "la-qr-m2",
+      "claim": "QR 只换符号，不改变方向基。",
+      "correction": "它将一般列方向改写到正交基。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "薄 $Q$ 为 $5\\times3$，$R$ 尺寸？",
+      "hint": "乘积要恢复五行三列。",
+      "solution": [
+        "$R$ 为 $3\\times3$。"
+      ],
+      "answer": "$3\\times3$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-qr-q1"
+    },
+    {
+      "problem": "$Q^TQ=I$ 时 $\\|Qx\\|$ 与 $\\|x\\|$ 什么关系？",
+      "hint": "展开平方。",
+      "solution": [
+        "$\\|Qx\\|^2=x^TQ^TQx=x^Tx$。"
+      ],
+      "answer": "相等。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-qr-q2"
+    },
+    {
+      "problem": "QR 的 $R$ 为什么上三角？",
+      "hint": "第 $j$ 列的构造还未使用未来方向。",
+      "solution": [
+        "$a_j$ 只在 $q_1,\\ldots,q_j$ 的张成里。"
+      ],
+      "answer": "未来方向的系数为零。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-qr-q3"
+    },
+    {
+      "problem": "列不满秩时，薄 QR 中 $R$ 还能可逆吗？",
+      "hint": "若 $R$ 可逆则所有列独立。",
+      "solution": [
+        "秩不满意味着三角部分必失去满秩。"
+      ],
+      "answer": "不能。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-qr-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-gram-schmidt",
+    "la-matrix-product"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "la-qr-m1",
+    "la-qr-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-qr",
+    "caption": "列向量为 $(1,0),(1,c)$。切换原列、减投影、归一化，查看依赖列如何产生零余量。",
+    "prediction": "正交化留下的系数怎样组成上三角矩阵？"
+  },
+  "learningCheck": {
+    "question": "长方形 $Q$ 满足 $Q^TQ=I$，$QQ^T$ 一般是什么？",
+    "choices": [
+      "整个空间的单位矩阵",
+      "列空间的正交投影",
+      "零矩阵"
+    ],
+    "correctIndex": 1,
+    "explanation": "它保持列空间、消去其正交补。"
+  },
+  "teaching": {
+    "explain": "QR 不只是换一种写法。正交方向保持长度，留下的上三角系统可以直接回代。",
+    "steps": [
+      {
+        "title": "原列",
+        "instruction": "取 $c=1$，选择原列。",
+        "preset": {
+          "c": 1,
+          "n": 0
+        },
+        "observation": "第二列包含横轴分量。"
+      },
+      {
+        "title": "减投影",
+        "instruction": "选择减去投影。",
+        "preset": {
+          "c": 1,
+          "n": 1
+        },
+        "observation": "余量为 $(0,1)$，与第一方向垂直。"
+      },
+      {
+        "title": "相关列",
+        "instruction": "取 $c=0$，选择归一化。",
+        "preset": {
+          "c": 0,
+          "n": 2
+        },
+        "observation": "余量为零，当前逐列正交化不能归一化；一般 QR 分解仍可能存在。"
+      }
+    ]
+  }
+}

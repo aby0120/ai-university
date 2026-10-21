@@ -1,0 +1,191 @@
+{
+  "id": "la-complex-eigen",
+  "chapterId": "la-eigen",
+  "number": "6.5",
+  "title": "复特征值与平面旋转",
+  "subtitle": "用复数描述旋转",
+  "concept": "实矩阵可能没有实特征方向；复数把旋转也纳入特征值语言。",
+  "intuition": "旋转把每条实直线都转走时，实缩放解释不够。复数乘法同时包含缩放和旋转。",
+  "objectives": [
+    "计算实矩阵的复特征值",
+    "区分实与复对角化"
+  ],
+  "body": [
+    {
+      "title": "复数的运算怎样用？",
+      "text": "$i^2=-1$；共轭将 $a+bi$ 变成 $a-bi$。复向量仍逐分量相加与数乘，但内积需使用共轭。"
+    },
+    {
+      "title": "实矩阵为何共轭成对？",
+      "text": "若 $Av=\\lambda v$，对等式取共轭得到 $A\\bar v=\\bar\\lambda\\bar v$。非实特征值因此成对出现。"
+    },
+    {
+      "title": "有复特征值就能实对角化吗？",
+      "text": "不能。实对角矩阵只含实特征值。复数域的对角化与实数域必须分开；一般矩阵在复数域也可能缺少独立特征向量。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "复特征值与平面旋转",
+    "latex": "R_\\theta:\\quad\\lambda=\\cos\\theta\\pm i\\sin\\theta,\\qquad |\\lambda|=1",
+    "conditions": [
+      "实旋转矩阵使用弧度；除角度为整数倍的半周外，特征值非实。复内积约定见附录。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "写出二阶特征多项式。",
+      "latex": "p(\\lambda)=\\lambda^2-2\\cos\\theta\\lambda+1"
+    },
+    {
+      "text": "解二次方程。",
+      "latex": "\\lambda=\\cos\\theta\\pm\\sqrt{-\\sin^2\\theta}"
+    },
+    {
+      "text": "复数根落在单位圆。",
+      "latex": "|\\lambda|^2=\\cos^2\\theta+\\sin^2\\theta=1"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "四分之一周旋转",
+      "problem": "$R=\\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix}$ 的特征值与一个复特征向量？",
+      "steps": [
+        "$p=\\lambda^2+1$，根为 $i,-i$。",
+        "对 $i$，$v=(1,-i)^T$，代入 $Rv=(i,1)^T=iv$。"
+      ],
+      "answer": "特征值 $\\pm i$；无实特征向量。"
+    },
+    {
+      "title": "旋转同时放大",
+      "problem": "$A=2R$ 的特征值模长？",
+      "steps": [
+        "原特征值乘二，得到 $\\pm2i$。",
+        "模长表示每次长度放大两倍。"
+      ],
+      "answer": "模长为 2。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-complex-eigen-m1",
+      "claim": "实矩阵的特征值必为实数。",
+      "correction": "实对称矩阵有此保证，一般实矩阵没有。"
+    },
+    {
+      "id": "la-complex-eigen-m2",
+      "claim": "没有实特征值就不是合法变换。",
+      "correction": "平面旋转是最普通的实线性变换之一。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$i^2$ 是多少？",
+      "hint": "复数的定义。",
+      "solution": [
+        "$i^2=-1$。"
+      ],
+      "answer": "$-1$",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": -1,
+      "id": "la-complex-eigen-q1"
+    },
+    {
+      "problem": "$3+4i$ 的模长？",
+      "hint": "实部与虚部平方和开根号。",
+      "solution": [
+        "$\\sqrt{9+16}=5$。"
+      ],
+      "answer": "5",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 5,
+      "id": "la-complex-eigen-q2"
+    },
+    {
+      "problem": "实矩阵有特征值 $1+2i$，还必须有哪个？",
+      "hint": "取共轭。",
+      "solution": [
+        "$1-2i$。"
+      ],
+      "answer": "$1-2i$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-complex-eigen-q3"
+    },
+    {
+      "problem": "平面旋转半周是否有实特征向量？",
+      "hint": "矩阵等于负单位矩阵。",
+      "solution": [
+        "$R_\\pi=-I$，每个非零实向量都对应特征值 $-1$。"
+      ],
+      "answer": "有。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-complex-eigen-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-characteristic"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "la-complex-eigen-m1",
+    "la-complex-eigen-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-complex-eigen",
+    "caption": "单位圆上的两个点是旋转矩阵的复特征值；横轴表示实部，纵轴表示虚部。",
+    "prediction": "旋转角变化时，复特征值在复平面上怎样移动？"
+  },
+  "learningCheck": {
+    "question": "一般实矩阵的非实特征值有什么配对关系？",
+    "choices": [
+      "互为倒数",
+      "互为共轭",
+      "互为负数"
+    ],
+    "correctIndex": 1,
+    "explanation": "对特征方程取共轭，实矩阵本身不变。"
+  },
+  "teaching": {
+    "explain": "复特征值并不神秘。它让旋转也能写成“乘上一个数”，但这个数需要两个实坐标来记录。",
+    "steps": [
+      {
+        "title": "零角度",
+        "instruction": "取 $\\theta=0$。",
+        "preset": {
+          "a": 0
+        },
+        "observation": "两个特征值均为一。"
+      },
+      {
+        "title": "四分之一周",
+        "instruction": "取 $\\theta=\\pi/2$。",
+        "preset": {
+          "a": 1.5707963267948966
+        },
+        "observation": "特征值为 $i,-i$；没有实特征方向。"
+      },
+      {
+        "title": "半周",
+        "instruction": "取 $\\theta=\\pi$。",
+        "preset": {
+          "a": 3.141592653589793
+        },
+        "observation": "两个特征值均为负一，每条实直线恢复共线。"
+      }
+    ]
+  }
+}

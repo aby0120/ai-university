@@ -1,0 +1,192 @@
+{
+  "id": "la-composition",
+  "chapterId": "la-matrices",
+  "number": "2.3",
+  "title": "复合、旋转与剪切",
+  "subtitle": "从右往左执行变换",
+  "concept": "复合映射的矩阵按作用顺序从右往左相乘。",
+  "intuition": "先剪切再拉伸，与先拉伸再剪切，通常会到不同的位置。",
+  "objectives": [
+    "计算复合矩阵",
+    "解释旋转、反射与剪切的顺序"
+  ],
+  "body": [
+    {
+      "title": "乘积为什么反着读？",
+      "text": "$(AB)x=A(Bx)$，最右边先接触输入。写出中间向量可以避免记反。"
+    },
+    {
+      "title": "旋转怎样写？",
+      "text": "将两个标准基各旋转同一角度，得到旋转矩阵的两列。角度使用弧度，正角为逆时针。"
+    },
+    {
+      "title": "线性与仿射怎样区分？",
+      "text": "仿射映射 $Ax+b$ 可以平移；若 $b\\ne0$，在原空间中不线性。齐次坐标可用更大矩阵编码，但不能因此说原映射线性。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "复合、旋转与剪切",
+    "latex": "R_\\theta=\\begin{pmatrix}\\cos\\theta&-\\sin\\theta\\\\\\sin\\theta&\\cos\\theta\\end{pmatrix},\\quad (T_A\\circ T_B)(x)=ABx",
+    "conditions": [
+      "复合的输入输出维数必须相容；矩阵乘法满足结合律，但一般不满足交换律。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先作用右侧映射。",
+      "latex": "y=Bx"
+    },
+    {
+      "text": "再作用左侧映射。",
+      "latex": "z=Ay=A(Bx)"
+    },
+    {
+      "text": "合并为一个矩阵。",
+      "latex": "z=(AB)x"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "顺序改变结果",
+      "problem": "将 $(0,1)$ 先剪切 $S=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$ 再按 $D=\\operatorname{diag}(2,1)$ 拉伸。",
+      "steps": [
+        "$S(0,1)=(1,1)$。",
+        "$D(1,1)=(2,1)$；反过来只得到 $(1,1)$。"
+      ],
+      "answer": "顺序 $DS$，结果 $(2,1)$。"
+    },
+    {
+      "title": "旋转两次",
+      "problem": "连续逆时针旋转 $\\pi/2$ 两次，将 $(2,1)$ 送到哪里？",
+      "steps": [
+        "第一次变为 $(-1,2)$。",
+        "第二次变为 $(-2,-1)$，等于旋转 $\\pi$。"
+      ],
+      "answer": "$(-2,-1)$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-composition-m1",
+      "claim": "$AB$ 表示先做 $A$。",
+      "correction": "作用在列向量上时先做右边。"
+    },
+    {
+      "id": "la-composition-m2",
+      "claim": "所有保持面积的变换都只是旋转。",
+      "correction": "剪切也可保持面积，却改变角度。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "逆时针旋转 $\\pi/2$ 的矩阵？",
+      "hint": "看标准基的像。",
+      "solution": [
+        "$e_1\\mapsto e_2,e_2\\mapsto-e_1$。"
+      ],
+      "answer": "$\\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix}$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-composition-q1"
+    },
+    {
+      "problem": "沿横轴反射的矩阵？",
+      "hint": "横坐标不变，纵坐标反号。",
+      "solution": [
+        "$(x,y)\\mapsto(x,-y)$。"
+      ],
+      "answer": "$\\operatorname{diag}(1,-1)$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-composition-q2"
+    },
+    {
+      "problem": "$R_\\theta R_{-\\theta}$ 等于什么？",
+      "hint": "先反转再转回。",
+      "solution": [
+        "所有向量回到原位。"
+      ],
+      "answer": "$I$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-composition-q3"
+    },
+    {
+      "problem": "一般能交换剪切与不均匀拉伸的顺序吗？",
+      "hint": "用例题中的向量试。",
+      "solution": [
+        "$DS(0,1)=(2,1)$，$SD(0,1)=(1,1)$。"
+      ],
+      "answer": "不能。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-composition-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-linear-maps"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "la-composition-m1",
+    "la-composition-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-composition",
+    "caption": "固定剪切 $S$ 与横向二倍拉伸 $D$，改变输入方向并切换作用顺序。",
+    "prediction": "先剪切与先拉伸，会得到相同的结果吗？"
+  },
+  "learningCheck": {
+    "question": "$(AB)x$ 中先作用哪个矩阵？",
+    "choices": [
+      "$A$",
+      "$B$",
+      "同时作用"
+    ],
+    "correctIndex": 1,
+    "explanation": "先得到中间向量，再把它交给左边矩阵。"
+  },
+  "teaching": {
+    "explain": "把复合看作两台连续的机器：输入先进入右边那台，输出再进入左边那台。",
+    "steps": [
+      {
+        "title": "先剪切",
+        "instruction": "取 $\\theta=\\pi/2$，先剪切再拉伸。",
+        "preset": {
+          "a": 1.5707963267948966,
+          "n": 0
+        },
+        "observation": "输入 $(0,1)$ 先到 $(1,1)$，再到 $(2,1)$。"
+      },
+      {
+        "title": "交换顺序",
+        "instruction": "保持方向，改为先拉伸再剪切。",
+        "preset": {
+          "a": 1.5707963267948966,
+          "n": 1
+        },
+        "observation": "输入先不变，最后到 $(1,1)$。"
+      },
+      {
+        "title": "检查另一个方向",
+        "instruction": "取 $\\theta=0$。",
+        "preset": {
+          "a": 0,
+          "n": 1
+        },
+        "observation": "这个输入在两种顺序下都到 $(2,0)$；个别输入相同不代表矩阵相同。"
+      }
+    ]
+  }
+}

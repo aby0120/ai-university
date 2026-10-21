@@ -60,6 +60,11 @@ contentBooks.push({
   filename: "Calculus-III.md",
   printFile: "calculus-3.html",
 });
+const book4 = JSON.parse(fs.readFileSync(root + '/packages/content/linear-algebra/book.json'));
+contentBooks.push({book:book4,
+  allLessons:book4.lessonIds.map(id=>JSON.parse(fs.readFileSync(root+'/packages/content/linear-algebra/lessons/'+id+'.json'))),
+  extra:JSON.parse(fs.readFileSync(root+'/packages/content/linear-algebra/supplements.json')),
+  directory:'packages/content/linear-algebra/lessons',filename:'Linear-Algebra.md',printFile:'linear-algebra.html'});
 export const libraryLessons = contentBooks.flatMap((c) => c.allLessons);
 export function walkStrings(value, fn, key = "") {
   if (typeof value === "string") fn(value, key);

@@ -1,0 +1,194 @@
+{
+  "id": "la-singular-values",
+  "chapterId": "la-svd",
+  "number": "9.1",
+  "title": "奇异值与长度缩放",
+  "subtitle": "一般矩阵的独立长度缩放",
+  "concept": "奇异值描述矩阵沿特殊正交输入方向的长度缩放，永远非负。",
+  "intuition": "一般矩阵会把单位圆变成椭圆。椭圆的半轴长度就是二维情况下的奇异值；压扁时某条半轴为零。",
+  "objectives": [
+    "由转置乘积求奇异值",
+    "区分奇异值与特征值"
+  ],
+  "body": [
+    {
+      "title": "怎样计算？",
+      "text": "$A^TA$ 对称半正定，特征值非负；它们的非负平方根就是奇异值，通常从大到小排列。"
+    },
+    {
+      "title": "为什么与长度有关？",
+      "text": "$\\|Av\\|^2=v^TA^TAv$。若 $v$ 是 $A^TA$ 的单位特征向量，输出长度就是该特征值的平方根。"
+    },
+    {
+      "title": "与特征值有什么不同？",
+      "text": "特征值要求方阵且关注输出是否仍在同一方向；奇异值允许长方矩阵，只关注长度缩放。负特征值的方向翻转不产生负奇异值。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "奇异值与长度缩放",
+    "latex": "\\sigma_i=\\sqrt{\\lambda_i(A^TA)}\\ge0,\\quad\\|A\\|_2=\\sigma_1",
+    "conditions": [
+      "本节为实矩阵；非零奇异值的数量等于秩。长方矩阵的完整对角因子有 $\\min(m,n)$ 个位置，额外的输入核方向对应零特征值。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "平方长度写成二次型。",
+      "latex": "\\|Ax\\|^2=x^TA^TAx"
+    },
+    {
+      "text": "对称谱定理提供正交输入方向。",
+      "latex": "A^TAv_i=\\sigma_i^2v_i"
+    },
+    {
+      "text": "单位输入的输出长度。",
+      "latex": "\\|Av_i\\|^2=\\sigma_i^2"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "符号不会带进奇异值",
+      "problem": "$A=\\operatorname{diag}(-3,2)$ 的奇异值？",
+      "steps": [
+        "$A^TA=\\operatorname{diag}(9,4)$。",
+        "开非负平方根并排序。"
+      ],
+      "answer": "3、2。"
+    },
+    {
+      "title": "长方矩阵",
+      "problem": "$A=\\begin{pmatrix}2&0&0\\\\0&1&0\\end{pmatrix}$ 的非零奇异值与核？",
+      "steps": [
+        "$A^TA=\\operatorname{diag}(4,1,0)$。",
+        "非零奇异值为 $2,1$，核为第三坐标轴。"
+      ],
+      "answer": "两个非零奇异值；一个输入方向被消掉。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-singular-values-m1",
+      "claim": "奇异值就是特征值。",
+      "correction": "一般不同，长方矩阵甚至没有通常意义的特征值。"
+    },
+    {
+      "id": "la-singular-values-m2",
+      "claim": "奇异值可以为负。",
+      "correction": "它是长度缩放，按定义非负。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$A=\\operatorname{diag}(4,-1)$ 的最大奇异值？",
+      "hint": "先平方再开非负根。",
+      "solution": [
+        "得到 $4,1$。"
+      ],
+      "answer": "4",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 4,
+      "id": "la-singular-values-q1"
+    },
+    {
+      "problem": "正交矩阵的奇异值是多少？",
+      "hint": "看转置乘自身。",
+      "solution": [
+        "$Q^TQ=I$，所有特征值一。"
+      ],
+      "answer": "全为一。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-singular-values-q2"
+    },
+    {
+      "problem": "零奇异值表示什么？",
+      "hint": "某个输入方向输出长度为零。",
+      "solution": [
+        "矩阵存在被消掉的方向；相应矩阵不满对应秩。"
+      ],
+      "answer": "存在退化方向。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-singular-values-q3"
+    },
+    {
+      "problem": "$\\|A\\|_2$ 表示哪个最大值？",
+      "hint": "限制输入长度一。",
+      "solution": [
+        "$\\max_{\\|x\\|=1}\\|Ax\\|=\\sigma_1$。"
+      ],
+      "answer": "最大单位输入长度放大倍数。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-singular-values-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-spectral",
+    "la-rank-nullity"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "la-singular-values-m1",
+    "la-singular-values-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-singular-values",
+    "caption": "$A=R_\\theta\\operatorname{diag}(2,s)$：单位圆先按两个方向缩放，再旋转。两条半轴的长度是奇异值。",
+    "prediction": "单位圆变成椭圆后，两条半轴怎样反映长度缩放？"
+  },
+  "learningCheck": {
+    "question": "奇异值可以是什么符号？",
+    "choices": [
+      "任意实数",
+      "只能严格为正",
+      "非负，允许零"
+    ],
+    "correctIndex": 2,
+    "explanation": "退化方向对应零，方向反转不会产生负长度。"
+  },
+  "teaching": {
+    "explain": "特征值问“方向还一样吗”，奇异值问“长度放大多少”。一般矩阵要分开回答这两个问题。",
+    "steps": [
+      {
+        "title": "两个非零方向",
+        "instruction": "取 $\\theta=0,s=1$。",
+        "preset": {
+          "a": 0,
+          "b": 1
+        },
+        "observation": "半轴长度为二和一，秩二。"
+      },
+      {
+        "title": "只改变输出方向",
+        "instruction": "取 $\\theta=\\pi/4,s=1$。",
+        "preset": {
+          "a": 0.7853981633974483,
+          "b": 1
+        },
+        "observation": "半轴转动，长度不变。"
+      },
+      {
+        "title": "零奇异值",
+        "instruction": "取 $\\theta=\\pi/4,s=0$。",
+        "preset": {
+          "a": 0.7853981633974483,
+          "b": 0
+        },
+        "observation": "椭圆退化为线段，秩一。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "id": "la-parametric",
+  "chapterId": "la-systems",
+  "number": "1.5",
+  "title": "参数形式与完整解集",
+  "subtitle": "特解决定位置，齐次解决定方向",
+  "concept": "一个特解加上齐次解，给出相容线性方程组的全部解。",
+  "intuition": "两个解都满足同样的右端，它们相减后右端消失。所有解之间的差，都属于同一个齐次解集。",
+  "objectives": [
+    "用自由参数写出全部解",
+    "区分线性子空间与仿射解集"
+  ],
+  "body": [
+    {
+      "title": "参数从哪里来？",
+      "text": "给自由变量各取一个参数，用主元方程表达其余变量。不要额外限制未被方程限制的参数。"
+    },
+    {
+      "title": "为什么要分成两部分？",
+      "text": "固定一个特解 $\\mathbf x_p$，再加任意齐次解 $\\mathbf z$。$A\\mathbf z=0$ 保证右端不变。"
+    },
+    {
+      "title": "解集一定经过原点吗？",
+      "text": "齐次解集一定经过原点；非齐次相容解集通常是它的平移，称仿射集合。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "参数形式与完整解集",
+    "latex": "\\{x:Ax=b\\}=x_p+\\ker A\\qquad(Ax_p=b)",
+    "conditions": [
+      "公式要求存在特解；无解时不能写一个虚构特解。参数遍历整个实数域。",
+      "这里 $\\ker A=\\{z:Az=0\\}$，就是齐次方程组的解集。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "任意两个解相减。",
+      "latex": "A(x-x_p)=b-b=0"
+    },
+    {
+      "text": "反过来加上齐次解。",
+      "latex": "A(x_p+z)=b+0=b"
+    },
+    {
+      "text": "这就证明没有遗漏。",
+      "latex": "x=x_p+z,\\quad z\\in\\ker A"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "一条仿射直线",
+      "problem": "解 $x+y+z=2,x-y+z=0$。",
+      "steps": [
+        "两式相减得 $y=1$，再得 $x+z=1$。",
+        "令 $z=t$，则 $(x,y,z)=(1,1,0)+t(-1,0,1)$。"
+      ],
+      "answer": "$t\\in\\mathbb R$ 的整条直线。"
+    },
+    {
+      "title": "两个自由变量",
+      "problem": "解 $x+2y-z=3$。",
+      "steps": [
+        "令 $y=s,z=t$。",
+        "$x=3-2s+t$，整理常量与两个参数。"
+      ],
+      "answer": "$(x,y,z)=(3,0,0)+s(-2,1,0)+t(1,0,1)$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-parametric-m1",
+      "claim": "只找到一个解就解完了。",
+      "correction": "必须检查并描述所有自由变量。"
+    },
+    {
+      "id": "la-parametric-m2",
+      "claim": "非齐次解集一定是子空间。",
+      "correction": "右端非零时通常不含原点。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$x+y=4$ 的全部解怎么写？",
+      "hint": "选一个自由变量。",
+      "solution": [
+        "令 $y=t$，则 $x=4-t$。"
+      ],
+      "answer": "$(4-t,t)$，$t\\in\\mathbb R$。",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "la-parametric-m1"
+      ],
+      "id": "la-parametric-q1"
+    },
+    {
+      "problem": "$x-y=0$ 的解集经过原点吗？",
+      "hint": "代入零向量。",
+      "solution": [
+        "$(t,t)=t(1,1)$。"
+      ],
+      "answer": "经过。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "la-parametric-q2"
+    },
+    {
+      "problem": "$A x_1=A x_2=b$，$A(x_1-x_2)$ 等于多少？",
+      "hint": "用线性性。",
+      "solution": [
+        "$b-b=0$。"
+      ],
+      "answer": "零向量。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-parametric-q3"
+    },
+    {
+      "problem": "$x+y=1$ 的两个解之和仍是解吗？",
+      "hint": "右端也相加。",
+      "solution": [
+        "两解相加满足 $x+y=2$。"
+      ],
+      "answer": "不是。",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "la-parametric-m2"
+      ],
+      "id": "la-parametric-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-pivots"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "la-parametric-m1",
+    "la-parametric-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-parametric",
+    "caption": "解集 $(1,1,0)+t(-1,0,1)$ 同时满足 $x+y+z=2$、$x-y+z=0$。",
+    "prediction": "沿着齐次方向移动，为什么右端保持不变？"
+  },
+  "learningCheck": {
+    "question": "已知一个特解后，还要补上什么才是全部解？",
+    "choices": [
+      "所有齐次解",
+      "任意向量",
+      "另一个右端"
+    ],
+    "correctIndex": 0,
+    "explanation": "只有齐次方向不会改变右端。"
+  },
+  "teaching": {
+    "explain": "特解决定这条线或这个平面放在哪里；齐次解决定沿哪些方向移动仍不违反条件。",
+    "steps": [
+      {
+        "title": "选特解",
+        "instruction": "取 $t=0$。",
+        "preset": {
+          "x": 0
+        },
+        "observation": "得到特解 $(1,1,0)$。"
+      },
+      {
+        "title": "沿齐次方向",
+        "instruction": "取 $t=1$。",
+        "preset": {
+          "x": 1
+        },
+        "observation": "得到 $(0,1,1)$，两个方程的左侧仍为二与零。"
+      },
+      {
+        "title": "反向移动",
+        "instruction": "取 $t=-1$。",
+        "preset": {
+          "x": -1
+        },
+        "observation": "得到 $(2,1,-1)$；方向可取负参数。"
+      }
+    ]
+  }
+}

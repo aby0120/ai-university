@@ -1,0 +1,194 @@
+{
+  "id": "la-cramer",
+  "chapterId": "la-determinants",
+  "number": "5.4",
+  "title": "行列式、逆与 Cramer 法则",
+  "subtitle": "非零行列式给出唯一解",
+  "concept": "方阵行列式非零等价于可逆；Cramer 法则用替换列的行列式表达唯一解。",
+  "intuition": "若所有输入方向都保留了独立性，体积不塌缩，就能唯一求回输入。",
+  "objectives": [
+    "连接行列式与可逆性",
+    "在条件满足时使用 Cramer 法则"
+  ],
+  "body": [
+    {
+      "title": "非零为什么保证可逆？",
+      "text": "消元若缺主元，三角化后有零对角积；若满主元，交换和非零缩放不会使行列式从非零变零。"
+    },
+    {
+      "title": "Cramer 怎么写？",
+      "text": "将 $A$ 的第 $j$ 列替换成右端，得到 $A_j(b)$，再用行列式比值求 $x_j$。"
+    },
+    {
+      "title": "什么时候不建议算？",
+      "text": "理论表达与小矩阵有用；大系统逐个算行列式通常不如直接分解。行列式为零时不能除，也不能凭一个比值分类所有解。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "行列式、逆与 Cramer 法则",
+    "latex": "\\det A\\ne0\\iff A\\text{ 可逆},\\qquad x_j=\\frac{\\det A_j(b)}{\\det A}",
+    "conditions": [
+      "Cramer 法则要求方阵且行列式非零；可逆性也等价于零不是特征值，后章说明。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "右端写成列组合。",
+      "latex": "b=\\sum_i x_i a_i"
+    },
+    {
+      "text": "替换列后按该列线性展开。",
+      "latex": "\\det A_j(b)=\\sum_i x_i\\det[a_1,\\ldots,a_i,\\ldots,a_n]"
+    },
+    {
+      "text": "重复列项为零，只剩本列。",
+      "latex": "\\det A_j(b)=x_j\\det A"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "二阶解方程",
+      "problem": "$x+y=3,2x+3y=8$，用 Cramer 求解。",
+      "steps": [
+        "$\\det A=3-2=1$。",
+        "替第一列行列式为 $9-8=1$；替第二列为 $8-6=2$。"
+      ],
+      "answer": "$x=1,y=2$。"
+    },
+    {
+      "title": "零分母须回消元",
+      "problem": "$x+y=1,2x+2y=2$ 能用 Cramer 比值吗？",
+      "steps": [
+        "系数行列式为零。",
+        "原系统相容但有自由变量，不能除以零。"
+      ],
+      "answer": "不能；应写出全部解。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-cramer-m1",
+      "claim": "行列式为零一定无解。",
+      "correction": "也可能有无穷多解，要检查右端。"
+    },
+    {
+      "id": "la-cramer-m2",
+      "claim": "矩阵元素小就意味着不可逆。",
+      "correction": "可逆性取决于独立性，不取决于整体大小。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$A=\\begin{pmatrix}2&1\\\\1&1\\end{pmatrix}$ 可逆吗？",
+      "hint": "计算二阶行列式。",
+      "solution": [
+        "$2-1=1\\ne0$。"
+      ],
+      "answer": "可逆。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-cramer-q1"
+    },
+    {
+      "problem": "$\\det A=3,\\det A_2(b)=12$，求 $x_2$。",
+      "hint": "应用非零分母比值。",
+      "solution": [
+        "$x_2=12/3=4$。"
+      ],
+      "answer": "4",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 4,
+      "id": "la-cramer-q2"
+    },
+    {
+      "problem": "$\\det A=0$ 时，唯一解是否可能？",
+      "hint": "方阵有非零核。",
+      "solution": [
+        "若有一个解，加非零核向量得到另一个解。"
+      ],
+      "answer": "不可能。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-cramer-q3"
+    },
+    {
+      "problem": "$\\det A=0.0001$ 是否足以认定数值病态？",
+      "hint": "比较整体缩放。",
+      "solution": [
+        "$A=0.01I_2$ 的行列式很小，但两个方向缩放相同，条件数为一。"
+      ],
+      "answer": "不足以。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-cramer-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-cofactors",
+    "la-inverse"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "la-cramer-m1",
+    "la-cramer-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-cramer",
+    "caption": "两条约束为 $x+y=2$ 和 $x+cy=b$。矩阵奇异时，区分重合与平行异线。",
+    "prediction": "两条约束变成平行时，行列式比值为什么失效？"
+  },
+  "learningCheck": {
+    "question": "方阵行列式为零时，方程组可能怎样？",
+    "choices": [
+      "必无解",
+      "必唯一",
+      "无解或无穷多解"
+    ],
+    "correctIndex": 2,
+    "explanation": "是否相容取决于右端；唯一性已被非零核排除。"
+  },
+  "teaching": {
+    "explain": "行列式能一眼排除唯一解，却不能在奇异时替你判断右端有没有冲突。",
+    "steps": [
+      {
+        "title": "唯一交点",
+        "instruction": "取 $c=2,b=3$。",
+        "preset": {
+          "c": 2,
+          "b": 3
+        },
+        "observation": "解为 $(1,1)$，行列式为一。"
+      },
+      {
+        "title": "约束重复",
+        "instruction": "取 $c=1,b=2$。",
+        "preset": {
+          "c": 1,
+          "b": 2
+        },
+        "observation": "两条线重合，系数秩一，有无穷多解。"
+      },
+      {
+        "title": "约束冲突",
+        "instruction": "保持 $c=1$，把 $b$ 改为 $3$。",
+        "preset": {
+          "c": 1,
+          "b": 3
+        },
+        "observation": "两条平行异线无交点，增广矩阵秩大于系数秩。"
+      }
+    ]
+  }
+}
