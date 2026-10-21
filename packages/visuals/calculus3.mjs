@@ -20,7 +20,7 @@ const C = (key, label, min, max, step, value) => ({
 });
 const angle = () => C("a", "方向角 $\\theta$", 0, tau, 0.01, 0.7);
 const time = () => C("x", "路径参数 $t$", 0, tau, 0.01, 1);
-const height = () => C("c", "倾斜或形状参数 $c$", 0, 2, 0.01, 0.6);
+const height = () => C("c", "斜面坡度 $c$", 0, 2, 0.01, 0.6);
 const slice = () => C("slice", "相对切片高度", 0, 1, 0.01, 0.5);
 const specs = {
   vectors: [C("c", "水平分量 $c$", -2, 2, 0.01, 1)],
@@ -40,7 +40,10 @@ const specs = {
     angle(),
     C("h", "到原点距离 $h$", 0.0001, 1, 0.0001, 0.6),
   ],
-  partials: [C("a", "切点横坐标 $a$", -1, 1, 0.01, 0.5)],
+  partials: [
+    C("a", "切点横坐标 $a$", -1, 1, 0.01, 0.5),
+    C("b", "切点纵坐标 $b$", -1, 1, 0.01, 0.5),
+  ],
   differentiability: [C("h", "对角线位移 $h$", 0.0001, 1, 0.0001, 0.3)],
   chain: [C("x", "路径参数 $t$", 0, pi / 2, 0.01, 0.5)],
   gradient: [C("a", "与梯度的夹角 $\\theta$", 0, pi, 0.01, 0.8)],
@@ -55,7 +58,10 @@ const specs = {
   "triple-integrals": [slice()],
   cylindrical: [slice()],
   spherical: [C("a", "倾角 $\\phi$", 0.1, pi - 0.1, 0.01, pi / 2)],
-  "change-variables": [height()],
+  "change-variables": [
+    C("c", "变形系数 $c$", 0, 2, 0.01, 1),
+    C("x", "局部位置 $u$", 0, 1, 0.01, 0.5),
+  ],
   fields: [C("c", "径向场系数 $c$", 0, 1, 0.01, 0)],
   "line-scalar": [time()],
   "line-work": [time()],
@@ -366,21 +372,23 @@ export function calculus3Frame(id, params = {}) {
       f.formula = "z=x^2+y^2,\\quad x=\\text{常数}";
     }
     if (k === "partials") {
-      const pt = [p.a, 0, p.a * p.a];
+      const pt = [p.a, p.b, p.a * p.a + p.b * p.b];
       dotAt(pt);
       line(
         "横向切片",
-        path((x) => [x, 0, x * x], -1, 1),
+        path((x) => [x, p.b, x * x + p.b * p.b], -1, 1),
         gold,
       );
       line(
         "横向切线",
-        path((t) => [p.a + t, 0, p.a * p.a + 2 * p.a * t], -0.5, 0.5),
-        blue,
+        path((t) => [p.a + t, p.b, pt[2] + 2 * p.a * t], -0.5, 0.5),
+        gold,
       );
+      line("纵向切片", path((y) => [p.a, y, p.a * p.a + y * y], -1, 1), blue);
+      line("纵向切线", path((t) => [p.a, p.b + t, pt[2] + 2 * p.b * t], -0.5, 0.5), blue);
       stat("横向偏导", 2 * p.a);
-      stat("纵向偏导", 0);
-      f.formula = "f_x(a,0)=2a";
+      stat("纵向偏导", 2 * p.b);
+      f.formula = "f_x(a,b)=2a,\\quad f_y(a,b)=2b";
     }
     if (k === "differentiability") {
       mesh((x, y) => [x, y, x + y - 0.5], -1, 1, -1, 1, 8, blue, 0.12);
@@ -656,7 +664,7 @@ export function calculus3Frame(id, params = {}) {
     f.formula = "V=\\int_0^2\\pi\\,dz=2\\pi";
   } else if (k === "change-variables") {
     const c = p.c,
-      T = (u, v) => [u + c * v, v, 0];
+      T = (u, v) => [u, (1 + c * u) * v, 0];
     poly(
       [
         [0, 0, 0],
@@ -669,14 +677,17 @@ export function calculus3Frame(id, params = {}) {
     );
     for (let i = 0; i <= 5; i++) {
       const t = i / 5;
-      line("变换网格", [T(t, 0), T(t, 1)], green);
+      line("像区域网格", [T(t, 0), T(t, 1)], green);
       line("", [T(0, t), T(1, t)], green);
     }
     poly([T(0, 0), T(1, 0), T(1, 1), T(0, 1)], green, 0.2);
-    stat("Jacobian", 1);
-    stat("像的面积", 1);
-    f.formula = "x=u+cv,\\quad y=v,\\quad J=1";
-    f.extent = 4;
+    line("当前参数切片", [T(p.x, 0), T(p.x, 1)], gold);
+    dotAt(T(p.x, 0.5));
+    stat("当前位置的 Jacobian", 1 + c * p.x);
+    stat("像的总面积", 1 + c / 2);
+    stat("像区域的纵向一阶矩", (1 + c + c * c / 3) / 2);
+    f.formula = "x=u,\\quad y=(1+cu)v,\\quad J=1+cu";
+    f.note += " 蓝色为原单位正方形，绿色为像区域；金色标出当前参数切片。局部倍率不是总面积。";
   } else if (k === "fields" || k === "div-curl") {
     for (let x = -1.5; x <= 1.5; x += 0.5)
       for (let y = -1.5; y <= 1.5; y += 0.5)
@@ -850,7 +861,7 @@ export function calculus3Frame(id, params = {}) {
     "polar-integrals": [2.5, [0, 0, 0]],
     "triple-integrals": [1.15, [0.25, 0.25, 0.3]],
     cylindrical: [2.2, [0, 0, 1]],
-    "change-variables": [2.3, [1, 0.5, 0]],
+    "change-variables": [2.5, [0.5, 1.4, 0]],
     fields: [2.4, [0, 0, 0]],
     "div-curl": [2.4, [0, 0, 0]],
     "line-scalar": [1.7, [0, 0, 0]],

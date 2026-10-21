@@ -5,7 +5,7 @@
   "title": "两曲线之间的面积",
   "subtitle": "每一条窄带的高度是多少？",
   "concept": "两曲线之间的面积，用每条小条的高度乘宽度，再积分。竖条是上减下，横条是右减左。",
-  "intuition": "$y = x$ 与 $y = x^{2}$ 在 [0,1] 之间，竖条高度为 $x - x^{2}$，所以面积为 $\\int _{0}^{1} (x - x^{2}) \\mathrm{d}x = \\frac{1}{6}$。",
+  "intuition": "$y = x$ 与 $y = x^{2}$ 在 $[0,1]$ 之间，竖条高度为 $x - x^{2}$，所以面积为 $\\int _{0}^{1} (x - x^{2}) \\mathrm{d}x = \\frac{1}{6}$。",
   "objectives": [
     "先找交点和顺序",
     "横切有时更简单",
@@ -34,7 +34,7 @@
   },
   "derivation": [
     {
-      "text": "在 [0,1]，$x \\ge x^{2}$，所以条带高度是 $x - x^{2}$。",
+      "text": "在 $[0,1]$，$x \\ge x^{2}$，所以条带高度是 $x - x^{2}$。",
       "latex": "dA=(x-x^2)dx"
     },
     {
@@ -49,7 +49,7 @@
   "interactiveVisual": {
     "kind": "area-between",
     "function": "square",
-    "caption": "高亮 $y = x$ 与 $y = x^{2}$ 在 [0,1] 的窄条：高度 $x - x^{2}$，总面积 $\\frac{1}{6}$。",
+    "caption": "高亮 $y = x$ 与 $y = x^{2}$ 在 $[0,1]$ 的窄条：高度 $x - x^{2}$，总面积 $\\frac{1}{6}$。",
     "prediction": "$y = x$ 与 $y = x^{2}$ 之间，窄条的高度是多少？哪些端点的高度为零？"
   },
   "workedExamples": [
@@ -64,7 +64,7 @@
     },
     {
       "title": "顺序交换",
-      "problem": "求 $y = x$ 与 $y = - x$ 在 [−1,1] 之间的面积。",
+      "problem": "求 $y = x$ 与 $y = - x$ 在 $[-1,1]$ 之间的面积。",
       "steps": [
         "左半段上−下为 $- 2 x$，右半段为 $2 x$。",
         "两块三角形面积各为 1。"
@@ -92,7 +92,7 @@
         "area-between-m1",
         "area-between-m2"
       ],
-      "problem": "求 $y = 2$ 与 $y = x$ 在 [0,2] 的面积。",
+      "problem": "求 $y = 2$ 与 $y = x$ 在 $[0,2]$ 的面积。",
       "answer": "$2$。",
       "solution": [
         "$\\int _{0}^{2} (2 - x) \\mathrm{d}x = 4 - 2$。"
@@ -106,7 +106,7 @@
       "misconceptionTags": [
         "area-between-m2"
       ],
-      "problem": "求 $y = x^{2}$ 与 $x$ 轴在 [−1,1] 的面积。",
+      "problem": "求 $y = x^{2}$ 与 $x$ 轴在 $[-1,1]$ 的面积。",
       "answer": "$\\frac{2}{3}$。",
       "solution": [
         "函数非负，$\\int _{-1}^{1} x^{2} \\mathrm{d}x = \\frac{2}{3}$。"
@@ -121,7 +121,7 @@
         "area-between-m1",
         "area-between-m2"
       ],
-      "problem": "$y = \\sqrt{x}$ 与 $y = x$ 在 [0,1] 的面积？",
+      "problem": "$y = \\sqrt{x}$ 与 $y = x$ 在 $[0,1]$ 的面积？",
       "answer": "$\\frac{1}{6}$。",
       "solution": [
         "$\\sqrt{x} \\ge x$；积分为 $\\frac{2}{3} - \\frac{1}{2} = \\frac{1}{6}$。"
@@ -152,7 +152,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "status": "revised",
     "humanReviewed": false
   },

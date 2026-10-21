@@ -146,7 +146,7 @@
     "steps": [
       {
         "title": "初始时刻",
-        "instruction": "将时间 $t$设为 $0$，比较图形和读数。",
+        "instruction": "将时间 $t$ 设为 $0$。",
         "preset": {
           "x": 0
         },
@@ -154,7 +154,7 @@
       },
       {
         "title": "稍后",
-        "instruction": "将时间 $t$设为 $0.5$，比较图形和读数。",
+        "instruction": "将时间 $t$ 设为 $0.5$。",
         "preset": {
           "x": 0.5
         },
@@ -162,7 +162,7 @@
       },
       {
         "title": "末时刻",
-        "instruction": "将时间 $t$设为 $1$，比较图形和读数。",
+        "instruction": "将时间 $t$ 设为 $1$。",
         "preset": {
           "x": 1
         },
@@ -181,8 +181,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [

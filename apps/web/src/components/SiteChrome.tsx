@@ -149,7 +149,7 @@ export function SearchDialog({
           </>
         ) : (
           <>
-            <span className="search-caption">从这里探索</span>
+            <span className="search-caption">常用入口</span>
             {["极限", "导数", "Taylor", "级数"].map((q) => (
               <button
                 className="search-suggestion"

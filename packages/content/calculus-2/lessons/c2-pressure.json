@@ -11,7 +11,7 @@
     },
     {
       "title": "抽水功又多了什么？",
-      "text": "一层水的重量为 $\\rho g\\,dV$，还要乘它到出口的提升距离：$dW=\\rho g\\ell\\,dV$。"
+      "text": "一层水的重量为 $\\rho g\\,dV$，还要乘它到出口的提升距离：$dW=\\rho g\\ell\\,dV$。 水箱形状由水平截面积 $A(y)$ 决定，底面积本身不够。以下水的算例均取 $\\rho=1000\\,\\mathrm{kg/m^3}$、$g=9.8\\,\\mathrm{m/s^2}$。"
     },
     {
       "title": "先画坐标有什么用？",
@@ -51,10 +51,10 @@
     },
     {
       "title": "圆柱水槽抽水",
-      "problem": "底面积 $1\\,\\mathrm{m^2}$、水深 $2\\,\\mathrm m$，抽到水面高度，求理想做功。",
+      "problem": "竖直圆柱水槽的水平截面积恒为 $1\\,\\mathrm{m^2}$，水深 $2\\,\\mathrm m$。将水抽空至距槽底 $2\\,\\mathrm m$ 的固定出口，忽略损耗，求功。",
       "steps": [
-        "以底部为 $y=0$，一层水提升 $2-y$。",
-        "$W=9800\\int_0^2(2-y)dy=19600$。"
+        "以槽底为 $y=0$。薄层体积为 $1\\,dy$，重量为 $9800\\,dy$；每层提升至固定出口，距离是 $2-y$。",
+        "$W=9800\\int_0^2(2-y)\\,dy=19600\\,\\mathrm J$。水面下降，出口高度保持不变。"
       ],
       "answer": "$19600\\,\\mathrm J$。"
     }
@@ -180,8 +180,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [

@@ -3,7 +3,7 @@
   "title": "Calculus II",
   "titleZh": "微积分 II",
   "subtitle": "从积分技巧到无穷逼近",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "language": "zh-CN",
   "author": "AI University · AI-generated",
   "description": "完整的一元微积分进阶：积分技巧与误差、反常积分、数列级数、Taylor 展开、参数曲线与极坐标、一阶微分方程入门。",
@@ -31,7 +31,7 @@
     {
       "id": "c2-extended-integrals",
       "title": "积分的近似、延伸与建模",
-      "subtitle": "给无限、几何与物理累积明确条件",
+      "subtitle": "反常积分与几何、物理应用",
       "intro": "数值方法回答算到多准，反常积分回答极限是否存在；表面积、质心和压力则从不同的小块建立积分。",
       "goals": [
         "给近似配误差界",
@@ -50,7 +50,7 @@
     {
       "id": "c2-sequences",
       "title": "从数列到无穷和",
-      "subtitle": "先看项，再看累积",
+      "subtitle": "数列极限与无穷求和",
       "intro": "数列的极限是级数的基础。先理解后续每项如何靠近，再追踪部分和是否稳定。",
       "goals": [
         "解释数列收敛",

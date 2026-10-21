@@ -14,7 +14,7 @@
   "body": [
     {
       "title": "最大最小值一定存在吗？",
-      "text": "连续函数在闭且有界的区间上一定取到最大最小值。开区间未必：$x$ 在 (0,1) 上没有最大值。"
+      "text": "连续函数在闭且有界的区间上一定取到最大最小值。开区间未必：$x$ 在 $(0,1)$ 上没有最大值。"
     },
     {
       "title": "哪些点是候选？",
@@ -38,7 +38,7 @@
       "latex": "f\\prime(x)=3(x^2-1)=0\\Rightarrow x=\\pm1"
     },
     {
-      "text": "在 [−2,2] 加入端点并算值。",
+      "text": "在 $[-2,2]$ 加入端点并算值。",
       "latex": "f(-2)=-2,\\quad f(-1)=2,\\quad f(1)=-2,\\quad f(2)=2"
     },
     {
@@ -65,7 +65,7 @@
     },
     {
       "title": "别忘端点",
-      "problem": "求 $f(x)=x^2$ 在 [−1,2] 的绝对极值。",
+      "problem": "求 $f(x)=x^2$ 在 $[-1,2]$ 的绝对极值。",
       "steps": [
         "内部临界点 $x = 0$，值为 0。",
         "端点值为 1 和 4。"
@@ -93,7 +93,7 @@
         "extrema-m1",
         "extrema-m2"
       ],
-      "problem": "求 $x^2-4x$ 在 [0,3] 的最小值。",
+      "problem": "求 $x^2-4x$ 在 $[0,3]$ 的最小值。",
       "answer": "$-4$。",
       "solution": [
         "导数 $2 x - 4 = 0$ 得 $x = 2$；值−4。",
@@ -119,7 +119,7 @@
       "id": "extrema-p3",
       "difficulty": 2,
       "misconceptionTags": [],
-      "problem": "$\\frac{1}{x}$ 在 (0,1) 有绝对最小值吗？",
+      "problem": "$\\frac{1}{x}$ 在 $(0,1)$ 有绝对最小值吗？",
       "answer": "没有。",
       "solution": [
         "输出大于 1，趋近 1 却从不取到。"
@@ -151,7 +151,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "status": "revised",
     "humanReviewed": false
   },

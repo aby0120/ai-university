@@ -144,7 +144,7 @@
     "steps": [
       {
         "title": "较小半径",
-        "instruction": "将小扇形起始半径 $r$设为 $0.5$，比较图形和读数。",
+        "instruction": "将小扇形起始半径 $r$ 设为 $0.5$。",
         "preset": {
           "b": 0.5
         },
@@ -152,7 +152,7 @@
       },
       {
         "title": "单位半径",
-        "instruction": "将小扇形起始半径 $r$设为 $1$，比较图形和读数。",
+        "instruction": "将小扇形起始半径 $r$ 设为 $1$。",
         "preset": {
           "b": 1
         },
@@ -160,7 +160,7 @@
       },
       {
         "title": "较大半径",
-        "instruction": "将小扇形起始半径 $r$设为 $2$，比较图形和读数。",
+        "instruction": "将小扇形起始半径 $r$ 设为 $2$。",
         "preset": {
           "b": 2
         },
@@ -179,8 +179,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [

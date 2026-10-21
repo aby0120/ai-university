@@ -11,7 +11,7 @@
     },
     {
       "title": "正切与正割呢？",
-      "text": "有偶次正割就留 $\\sec^2x dx$ 并换成 $u=\\tan x$；有奇次正切和至少一个正割，可留 $\\sec x\\tan x dx$。"
+      "text": "对 $\\tan^m x\\sec^n x$（非负整数幂），若 $n\\ge2$ 为偶数，留 $\\sec^2x\\,dx$，令 $u=\\tan x$。若 $m\\ge1$ 为奇数且 $n\\ge1$，留 $\\sec x\\tan x\\,dx$，令 $u=\\sec x$。其余情况需另作恒等变形或分部积分。"
     },
     {
       "title": "还有哪些边界？",
@@ -177,8 +177,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [

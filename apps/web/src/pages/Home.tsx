@@ -133,14 +133,14 @@ export function Home() {
           <p>
             AI 编写的开放数学教科书。
             <br />
-            先把问题说清楚，再亲手验证理解。
+            完整讲解、交互图示和逐步解答。
           </p>
           <div className="stage-actions">
             <Link to="library" className="stage-primary">
               进入教科书库 <ArrowUpRight size={21} />
             </Link>
             <Link to="lab" className="stage-secondary">
-              探索互动图示 <ArrowRight size={18} />
+              查看交互图示 <ArrowRight size={18} />
             </Link>
           </div>
         </div>
@@ -241,7 +241,7 @@ export function Home() {
                 })
             }
           >
-            向下探索 <ArrowDown size={16} />
+            浏览教材 <ArrowDown size={16} />
           </button>
         </div>
       </section>
@@ -314,9 +314,9 @@ export function Home() {
             <span>动起来。</span>
           </h2>
           <p>
-            移动一个点。改变一个参数。
+            拖动曲线上的点，调整参数，
             <br />
-            对照图像、数值和公式，再解释为什么。
+            看切线、面积和曲面怎样变化。
           </p>
           <div className="hands-on-steps">
             <span>
@@ -337,7 +337,7 @@ export function Home() {
       </section>
       <nav className="home-next" aria-label="学习入口">
         <Link to="guide"><small>01 / READ</small><h3>读懂一个概念</h3><span>从讲解到定义 <ArrowUpRight size={19} /></span></Link>
-        <Link to="lab"><small>02 / EXPLORE</small><h3>亲手验证直觉</h3><span>改变参数，观察结果 <ArrowUpRight size={19} /></span></Link>
+        <Link to="lab"><small>02 / EXPLORE</small><h3>观察图形变化</h3><span>改变参数，观察结果 <ArrowUpRight size={19} /></span></Link>
         <Link to="practice"><small>03 / PRACTICE</small><h3>独立解一道题</h3><span>先尝试，再看解答 <ArrowUpRight size={19} /></span></Link>
       </nav>
     </div>

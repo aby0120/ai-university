@@ -107,7 +107,7 @@
       "problem": "$y=x^2$ 在 $x = 2$ 的切线？",
       "answer": "$y=4x-4$。",
       "solution": [
-        "点 (2,4)、斜率 4；$y - 4 = 4 (x - 2)$。"
+        "点 $(2,4)$、斜率 4；$y - 4 = 4 (x - 2)$。"
       ],
       "hint": "点与斜率都需要。"
     },
@@ -148,7 +148,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "status": "revised",
     "humanReviewed": false
   },

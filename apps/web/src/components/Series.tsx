@@ -214,7 +214,7 @@ export function SeriesPrinciples() {
         <article>
           <span>01 / UNDERSTAND</span>
           <h3>先回答：它解决什么问题？</h3>
-          <p>用直觉打开概念，再给出定义和成立条件。每个符号都有具体含义。</p>
+          <p>先说明概念的含义，再列出定义、公式和适用条件。</p>
           <Formula
             latex={String.raw`\text{直觉}\;\longrightarrow\;\text{定义}`}
             display
@@ -222,8 +222,8 @@ export function SeriesPrinciples() {
         </article>
         <article>
           <span>02 / EXPLORE</span>
-          <h3>先预测，再改变一个参数。</h3>
-          <p>移动点、调整参数、播放变化。让图示和推导一起解释同一个概念。</p>
+          <h3>用图形看变化。</h3>
+          <p>拖动点或调整参数，对照图形和数值理解公式。</p>
           <span className="principle-line" aria-hidden="true">
             <i />
             <i />
@@ -236,7 +236,7 @@ export function SeriesPrinciples() {
           <span>03 / CONNECT</span>
           <h3>遮住解答，独立做一次。</h3>
           <p>
-            先试例题，再展开步骤。混合练习检查方法选择，先修关系帮你回到缺少的基础。
+            例题附逐步解答，练习附提示。遇到不熟悉的概念，可以跳转到前面的相关章节。
           </p>
           <div className="principle-chain" aria-hidden="true">
             <span>概念</span>

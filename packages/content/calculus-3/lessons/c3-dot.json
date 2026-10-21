@@ -147,7 +147,7 @@
     "steps": [
       {
         "title": "同向",
-        "instruction": "将夹角 $\\theta$设为 $0$，比较图形和读数。",
+        "instruction": "将夹角 $\\theta$ 设为 $0$。",
         "preset": {
           "a": 0
         },
@@ -155,7 +155,7 @@
       },
       {
         "title": "垂直",
-        "instruction": "将夹角 $\\theta$设为 $\\frac\\pi2$，比较图形和读数。",
+        "instruction": "将夹角 $\\theta$ 设为 $\\frac\\pi2$。",
         "preset": {
           "a": 1.5707963267948966
         },
@@ -163,7 +163,7 @@
       },
       {
         "title": "反向",
-        "instruction": "将夹角 $\\theta$设为 $\\pi$，比较图形和读数。",
+        "instruction": "将夹角 $\\theta$ 设为 $\\pi$。",
         "preset": {
           "a": 3.141592653589793
         },
@@ -181,8 +181,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [

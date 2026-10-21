@@ -69,7 +69,7 @@
     },
     {
       "title": "平均高度",
-      "problem": "$f (x) = 2 x + 1$ 在 [0,2] 的平均值？",
+      "problem": "$f (x) = 2 x + 1$ 在 $[0,2]$ 的平均值？",
       "steps": [
         "总积分由梯形面积为 6。",
         "除以区间长度 2。"
@@ -132,7 +132,7 @@
       "id": "definite-integral-p3",
       "difficulty": 2,
       "misconceptionTags": [],
-      "problem": "$f (x) = x$ 在 [0,4] 的平均值？",
+      "problem": "$f (x) = x$ 在 $[0,4]$ 的平均值？",
       "answer": "$2$。",
       "solution": [
         "三角形面积 8，除以长度 4。"
@@ -196,7 +196,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "status": "revised",
     "humanReviewed": false
   },
@@ -215,7 +215,7 @@
       "几何面积是 −1"
     ],
     "correctIndex": 1,
-    "explanation": "[0,1] 的积分是 $\\frac{- 1}{2}$，[1,2] 是 $\\frac{1}{2}$。几何面积要把两部分都取正，再相加。"
+    "explanation": "$[0,1]$ 的积分是 $\\frac{- 1}{2}$，$[1,2]$ 是 $\\frac{1}{2}$。几何面积要把两部分都取正，再相加。"
   },
   "teaching": {
     "explain": "累积保留方向。正贡献和负贡献可以抵消，所以总积分为零不等于没有发生变化，也不等于没有面积。",

@@ -302,7 +302,7 @@ export function ChapterPage() {
       </div>
       <section className="chapter-goals">
         <Eyebrow>AFTER THIS CHAPTER</Eyebrow>
-        <h2>这一章，你会学到</h2>
+        <h2>本章学习目标</h2>
         <ul>
           {ch.goals.map((g) => (
             <li key={g}>
@@ -366,8 +366,8 @@ export function ChapterPage() {
 const sections = [
   ["idea", "核心意思"],
   ["intuition", "建立直觉"],
-  ["visual", "亲手探索"],
-  ["explain", "展开理解"],
+  ["visual", "交互演示"],
+  ["explain", "关键问题"],
   ["definition", "定义与条件"],
   ["derivation", "一步步推导"],
   ["examples", "逐步例题"],

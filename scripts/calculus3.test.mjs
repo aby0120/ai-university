@@ -27,7 +27,7 @@ const near = (a, b, tol = 1e-8) =>
 test("third volume has an entire linked course with independent review and exam tasks", () => {
   assert.equal(third.book.chapters.length, 9);
   assert.equal(third.allLessons.length, 40);
-  assert.equal(third.allLessons.flatMap((l) => l.workedExamples).length, 80);
+  assert.equal(third.allLessons.flatMap((l) => l.workedExamples).length, 81);
   assert.equal(third.allLessons.flatMap((l) => l.practice).length, 160);
   assert.equal(third.extra.reviews.flatMap((r) => r.questions).length, 27);
   assert.equal(third.extra.exam.length, 16);

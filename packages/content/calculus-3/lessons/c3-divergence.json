@@ -146,7 +146,7 @@
     "steps": [
       {
         "title": "小球",
-        "instruction": "将球面半径 $R$设为 $0.5$，比较图形和读数。",
+        "instruction": "将球面半径 $R$ 设为 $0.5$。",
         "preset": {
           "b": 0.5
         },
@@ -154,7 +154,7 @@
       },
       {
         "title": "单位球",
-        "instruction": "将球面半径 $R$设为 $1$，比较图形和读数。",
+        "instruction": "将球面半径 $R$ 设为 $1$。",
         "preset": {
           "b": 1
         },
@@ -162,7 +162,7 @@
       },
       {
         "title": "大球",
-        "instruction": "将球面半径 $R$设为 $2$，比较图形和读数。",
+        "instruction": "将球面半径 $R$ 设为 $2$。",
         "preset": {
           "b": 2
         },
@@ -181,8 +181,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [

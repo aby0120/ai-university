@@ -18,7 +18,7 @@
     },
     {
       "title": "其他三角函数要死记吗？",
-      "text": "$\\tan = \\frac{\\sin}{\\cos}$，可由商法则得到 $\\sec^{2}$。$\\cot$、$\\sec$、$\\csc$ 同样可用商或倒数求导，注意定义域。"
+      "text": "用商法则或倒数求导即可补全：$(\\cot x)\\prime=-\\csc^2x$，$(\\sec x)\\prime=\\sec x\\tan x$，$(\\csc x)\\prime=-\\csc x\\cot x$。含正切、正割时要求 $\\cos x\\ne0$；含余切、余割时要求 $\\sin x\\ne0$。"
     },
     {
       "title": "为什么必须用弧度？",
@@ -149,7 +149,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "status": "revised",
     "humanReviewed": false
   },

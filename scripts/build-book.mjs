@@ -49,8 +49,8 @@ for (const [ci, c] of book.chapters.entries()) {
     const l = allLessons.find((l) => l.id === id);
     md += `\n## ${l.number} ${l.title}\n\n*${l.subtitle}*\n\n### 核心意思\n\n${l.concept}\n\n### 怎么理解？\n\n${l.intuition}\n`;
     html += `<section class="lesson" id="${id}"><p class="kicker">SECTION ${l.number}</p><h2>${rich(l.title)}</h2><p class="subtitle">${rich(l.subtitle)}</p><div class="idea">${p(l.concept)}</div><h3>怎么理解？</h3>${p(l.intuition)}`;
-    md += `\n### 换个角度理解\n\n${l.teaching.explain}\n`;
-    html += `<h3>换个角度理解</h3>${p(l.teaching.explain)}`;
+    md += `\n### 换个说法\n\n${l.teaching.explain}\n`;
+    html += `<h3>换个说法</h3>${p(l.teaching.explain)}`;
     const check = l.learningCheck;
     md += `\n### 先想一下\n\n${check.question}\n\n${check.choices.map((s, i) => `${String.fromCharCode(65 + i)}. ${s}`).join("\n")}\n\n答案：${String.fromCharCode(65 + check.correctIndex)}。${check.explanation}\n`;
     html += `<div class="concept-check"><h3>先想一下</h3>${p(check.question)}${`<ol type="A" class="concept-check-choices">${check.choices.map(choice => `<li>${rich(choice)}</li>`).join("")}</ol>`}<details><summary>查看答案与解释</summary>${p(`${String.fromCharCode(65 + check.correctIndex)}。${check.explanation}`)}</details></div>`;

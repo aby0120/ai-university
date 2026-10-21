@@ -64,12 +64,12 @@
     },
     {
       "title": "最小距离",
-      "problem": "直线 $y = x$ 上哪一点离 (2,0) 最近？",
+      "problem": "直线 $y = x$ 上哪一点离 $(2,0)$ 最近？",
       "steps": [
         "平方距离 $D^{2} = (x - 2)^{2} + x^{2}$，最小平方与最小距离位置相同。",
         "导数为 $4 x - 4$，唯一零点 $x = 1$，二阶为 $4 > 0$。"
       ],
-      "answer": "点 (1,1)，距离 $\\sqrt{2}$。"
+      "answer": "点 $(1,1)$，距离 $\\sqrt{2}$。"
     }
   ],
   "commonMistakes": [
@@ -153,7 +153,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "status": "revised",
     "humanReviewed": false
   },

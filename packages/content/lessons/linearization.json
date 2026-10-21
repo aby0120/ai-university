@@ -14,7 +14,7 @@
   "body": [
     {
       "title": "为什么能用直线近似？",
-      "text": "可导意味着 $f (a + h) = f (a) + f' (a) h + o (h)$：余项比 $h$ 更快趋于 0。它是局部近似，不是精确等式。"
+      "text": "可导意味着 $f(a+h)=f(a)+f\\prime(a)h+R(h)$，其中 $R(h)/h\\to0$；简写为 $R(h)=o(h)$。余项相对输入位移趋零，不代表有限位移时误差为零。"
     },
     {
       "title": "$\\mathrm{d}y$ 与 $\\Delta  y$ 一样吗？",
@@ -151,7 +151,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "status": "revised",
     "humanReviewed": false
   },

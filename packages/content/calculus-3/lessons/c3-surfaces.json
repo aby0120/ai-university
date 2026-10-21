@@ -144,7 +144,7 @@
     "steps": [
       {
         "title": "中心截面",
-        "instruction": "将固定横坐标 $x$设为 $0$，比较图形和读数。",
+        "instruction": "将固定横坐标 $x$ 设为 $0$。",
         "preset": {
           "x": 0
         },
@@ -152,7 +152,7 @@
       },
       {
         "title": "平移截面",
-        "instruction": "将固定横坐标 $x$设为 $0.5$，比较图形和读数。",
+        "instruction": "将固定横坐标 $x$ 设为 $0.5$。",
         "preset": {
           "x": 0.5
         },
@@ -160,7 +160,7 @@
       },
       {
         "title": "远处截面",
-        "instruction": "将固定横坐标 $x$设为 $1$，比较图形和读数。",
+        "instruction": "将固定横坐标 $x$ 设为 $1$。",
         "preset": {
           "x": 1
         },
@@ -178,8 +178,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [

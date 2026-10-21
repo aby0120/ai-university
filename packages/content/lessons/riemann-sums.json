@@ -34,7 +34,7 @@
   },
   "derivation": [
     {
-      "text": "对 $x^{2}$ 在 [0,1] 使用 $n$ 个右端矩形。",
+      "text": "对 $x^{2}$ 在 $[0,1]$ 使用 $n$ 个右端矩形。",
       "latex": "R_n=\\frac1n\\sum_{i=1}^n\\left(\\frac in\\right)^2=\\frac1{n^3}\\sum_{i=1}^n i^2"
     },
     {
@@ -49,13 +49,13 @@
   "interactiveVisual": {
     "kind": "riemann",
     "function": "square",
-    "caption": "切换左端、右端、中点与梯形，增加 $n$；$x^{2}$ 在 [0,1] 的精确积分为 $\\frac{1}{3}$。",
+    "caption": "切换左端、右端、中点与梯形，增加 $n$；$x^{2}$ 在 $[0,1]$ 的精确积分为 $\\frac{1}{3}$。",
     "prediction": "同样的分割数，左端与右端矩形谁更大？增加 $n$ 后，两者会怎样靠近？"
   },
   "workedExamples": [
     {
       "title": "两个右端矩形",
-      "problem": "对 $x^{2}$ 在 [0,1] 取 $n = 2$ 的右端和。",
+      "problem": "对 $x^{2}$ 在 $[0,1]$ 取 $n = 2$ 的右端和。",
       "steps": [
         "宽度 $\\frac{1}{2}$，高度分别为 $\\frac{1}{4}$、1。",
         "相加乘宽度得到 $(\\frac{1}{2}) (\\frac{1}{4} + 1)$。"
@@ -91,7 +91,7 @@
       "misconceptionTags": [
         "riemann-sums-m1"
       ],
-      "problem": "$f (x) = x$ 在 [0,1] 的 $n = 2$ 左端和？",
+      "problem": "$f (x) = x$ 在 $[0,1]$ 的 $n = 2$ 左端和？",
       "answer": "$\\frac{1}{4}$。",
       "solution": [
         "宽 $\\frac{1}{2}$，高度 0、$\\frac{1}{2}$，和为 $\\frac{1}{4}$。"
@@ -105,7 +105,7 @@
       "misconceptionTags": [
         "riemann-sums-m1"
       ],
-      "problem": "$x^{2}$ 在 [0,1] 的单个中点矩形值？",
+      "problem": "$x^{2}$ 在 $[0,1]$ 的单个中点矩形值？",
       "answer": "$\\frac{1}{4}$。",
       "solution": [
         "中点 $x = \\frac{1}{2}$，高度 $\\frac{1}{4}$，宽度 1。"
@@ -128,7 +128,7 @@
       "id": "riemann-sums-p4",
       "difficulty": 1,
       "misconceptionTags": [],
-      "problem": "常数函数 3 在 [0,2] 的任意黎曼和是多少？",
+      "problem": "常数函数 3 在 $[0,2]$ 的任意黎曼和是多少？",
       "answer": "$6$。",
       "solution": [
         "每块高度为 3，总宽度为 2，所以和恒为 6。"
@@ -148,7 +148,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "status": "revised",
     "humanReviewed": false
   },

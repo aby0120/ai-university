@@ -140,35 +140,38 @@
   "interactiveVisual": {
     "kind": "calculus3",
     "function": "c3-partials",
-    "caption": "曲面 $z=x^2+y^2$ 在点 $(a,0,a^2)$ 的横向切线，读数为偏导 $2a$。",
+    "caption": "曲面 $z=x^2+y^2$ 在 $(a,b,a^2+b^2)$ 的两条坐标切片和切线。金色沿横向，蓝色沿纵向；读数分别为 $2a$、$2b$。",
     "prediction": "同一曲面上，不同位置的横向斜率会一样吗？"
   },
   "teaching": {
     "explain": "偏导只问一个输入单独改变时发生什么；另一个输入此刻固定。",
     "steps": [
       {
-        "title": "负的切片",
-        "instruction": "将切点横坐标 $a$设为 $-1$，比较图形和读数。",
+        "title": "只看横向",
+        "instruction": "取 $a=-1,b=0$，沿金色切片看切线。",
         "preset": {
-          "a": -1
+          "a": -1,
+          "b": 0
         },
-        "observation": "碗面固定横坐标后的横向斜率为负。"
+        "observation": "横向偏导为 $-2$，纵向为零。偏导分别对应两条不同切片。"
       },
       {
-        "title": "中心切片",
-        "instruction": "将切点横坐标 $a$设为 $0$，比较图形和读数。",
+        "title": "只改纵坐标",
+        "instruction": "保持 $a=-1$，将 $b$ 改为 $1$。",
         "preset": {
-          "a": 0
+          "a": -1,
+          "b": 1
         },
-        "observation": "中心点横向斜率为零。"
+        "observation": "横向偏导仍为 $-2$，纵向偏导变为 $2$；它并不总为零。"
       },
       {
-        "title": "正的切片",
-        "instruction": "将切点横坐标 $a$设为 $1$，比较图形和读数。",
+        "title": "同一点比较",
+        "instruction": "取 $a=0.5,b=-0.5$，比较两条切线。",
         "preset": {
-          "a": 1
+          "a": 0.5,
+          "b": -0.5
         },
-        "observation": "横向斜率变正；斜率属于指定位置和方向。"
+        "observation": "同一点横向斜率为 $1$，纵向为 $-1$。固定另一变量，才是在算对应偏导。"
       }
     ]
   },
@@ -183,8 +186,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [

@@ -138,14 +138,14 @@
     "kind": "calculus3",
     "function": "c3-double-applications",
     "caption": "单位正方形密度 $\\sigma=1+cx$，柱高表示密度，亮点表示质量加权的质心。",
-    "prediction": "把整块板等比例变重，会移动质心吗？"
+    "prediction": "板的右侧密度增大时，质心向哪边移动？"
   },
   "teaching": {
     "explain": "质心是一阶位置的质量加权平均，惯量是轴距平方的质量加权总和。",
     "steps": [
       {
         "title": "均匀密度",
-        "instruction": "将密度变化系数 $c$设为 $0$，比较图形和读数。",
+        "instruction": "将密度变化系数 $c$ 设为 $0$。",
         "preset": {
           "c": 0
         },
@@ -153,7 +153,7 @@
       },
       {
         "title": "右侧略重",
-        "instruction": "将密度变化系数 $c$设为 $1$，比较图形和读数。",
+        "instruction": "将密度变化系数 $c$ 设为 $1$。",
         "preset": {
           "c": 1
         },
@@ -161,7 +161,7 @@
       },
       {
         "title": "右侧更重",
-        "instruction": "将密度变化系数 $c$设为 $3$，比较图形和读数。",
+        "instruction": "将密度变化系数 $c$ 设为 $3$。",
         "preset": {
           "c": 3
         },
@@ -180,8 +180,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [

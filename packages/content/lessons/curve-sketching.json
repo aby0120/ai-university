@@ -42,7 +42,7 @@
       "latex": "(-\\infty,-1):\\uparrow,\\quad(-1,1):\\downarrow,\\quad(1,\\infty):\\uparrow"
     },
     {
-      "text": "极大点 (−1,2)，极小点 (1,−2)，拐点 (0,0)。",
+      "text": "极大点 $(-1,2)$，极小点 $(1,-2)$，拐点 $(0,0)$。",
       "latex": null
     }
   ],
@@ -104,7 +104,7 @@
         "curve-sketching-m2"
       ],
       "problem": "$x^3$ 的拐点在哪里？",
-      "answer": "(0,0)。",
+      "answer": "$(0,0)$。",
       "solution": [
         "$f'' = 6 x$ 在 0 两侧变号，函数连续。"
       ],
@@ -148,7 +148,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "status": "revised",
     "humanReviewed": false
   },

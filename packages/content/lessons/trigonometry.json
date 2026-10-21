@@ -105,7 +105,7 @@
       "problem": "求 $\\cos\\pi$。",
       "answer": "$-1$。",
       "solution": [
-        "单位圆转半圈到达 (−1,0)。"
+        "单位圆转半圈到达 $(-1,0)$。"
       ],
       "hint": "看横坐标。",
       "numericAnswer": -1
@@ -145,7 +145,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "status": "revised",
     "humanReviewed": false
   },

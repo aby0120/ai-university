@@ -55,7 +55,7 @@
   "workedExamples": [
     {
       "title": "斜线长度",
-      "problem": "求 $y = 3 x + 1$ 在 [0,2] 的弧长。",
+      "problem": "求 $y = 3 x + 1$ 在 $[0,2]$ 的弧长。",
       "steps": [
         "导数为 3，长度因子 $\\sqrt{1 + 9} = \\sqrt{10}$。",
         "乘横向跨度 2。"
@@ -64,7 +64,7 @@
     },
     {
       "title": "可直接积分的曲线",
-      "problem": "求 $y = (\\frac{2}{3}) x^{\\frac{3}{2}}$ 在 [0,1] 的弧长。",
+      "problem": "求 $y = (\\frac{2}{3}) x^{\\frac{3}{2}}$ 在 $[0,1]$ 的弧长。",
       "steps": [
         "导数 $\\sqrt{x}$，所以长度积分 $\\int _{0}^{1} \\sqrt{1 + x} \\mathrm{d}x$。",
         "原函数 $(\\frac{2}{3}) (1 + x)^{\\frac{3}{2}}$。"
@@ -91,7 +91,7 @@
       "misconceptionTags": [
         "arc-length-m1"
       ],
-      "problem": "$y = 4 x$ 在 [0,1] 的弧长？",
+      "problem": "$y = 4 x$ 在 $[0,1]$ 的弧长？",
       "answer": "$\\sqrt{17}$。",
       "solution": [
         "长度因子 $\\sqrt{1 + 16}$，区间宽 1。"
@@ -104,7 +104,7 @@
       "misconceptionTags": [
         "arc-length-m1"
       ],
-      "problem": "水平线 $y = 2$ 在 [0,3] 的弧长？",
+      "problem": "水平线 $y = 2$ 在 $[0,3]$ 的弧长？",
       "answer": "$3$。",
       "solution": [
         "导数为 0，积分 1 得 3。"
@@ -150,7 +150,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "status": "revised",
     "humanReviewed": false
   },

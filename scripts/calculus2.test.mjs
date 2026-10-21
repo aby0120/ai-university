@@ -21,13 +21,13 @@ test("second volume is a complete independently indexed manuscript, not catalog 
   assert.equal(second.allLessons.length, 35);
   assert.equal(
     second.allLessons.reduce((n, l) => n + l.workedExamples.length, 0),
-    70,
+    72,
   );
   assert.equal(
     second.allLessons.reduce((n, l) => n + l.practice.length, 0) +
       second.extra.exam.length +
       second.extra.reviews.flatMap((r) => r.questions).length,
-    178,
+    179,
   );
   const ids = libraryLessons.map((l) => l.id);
   assert.equal(new Set(ids).size, 110);
@@ -38,7 +38,7 @@ test("second volume is a complete independently indexed manuscript, not catalog 
       ...c.extra.reviews.flatMap((r) => r.questions),
     ])
     .map((q) => q.id);
-  assert.equal(new Set(questionIds).size, 572);
+  assert.equal(new Set(questionIds).size, 573);
   const sectionQuestions = new Set(
     second.allLessons.flatMap((l) => l.practice).map((q) => q.problem),
   );
