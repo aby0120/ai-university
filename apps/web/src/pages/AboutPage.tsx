@@ -178,7 +178,8 @@ export function AboutPage() {
         </div>
       ) : part === "versions" ? (
         <div className="versions-page">
-          <div className="version-entry"><span className="badge">当前网站 · Calculus III v0.1.0</span><h2>v0.10.0 · 微积分 III 完整首版</h2><time>2026 年 10 月 14 日</time><ul><li>9 章 40 节、80 个例题与 203 道练习解答。</li><li>多元变化、优化、重积分、向量积分与三个积分定理。</li><li>40 个可旋转的本地三维图，支持俯视、正视、缩放和键盘操作；无需 WebGL。</li></ul></div>
+          <div className="version-entry"><span className="badge">当前网站 · 教材版本不变</span><h2>v0.10.1 · 图形拖动不再误选文字</h2><time>2026 年 10 月 21 日</time><p>修复坐标文字被划选的问题；拖动、键盘和正文复制可正常使用。</p></div>
+          <div className="version-entry"><span className="badge">Calculus III v0.1.0</span><h2>v0.10.0 · 微积分 III 完整首版</h2><time>2026 年 10 月 14 日</time><ul><li>9 章 40 节、80 个例题与 203 道练习解答。</li><li>多元变化、优化、重积分、向量积分与三个积分定理。</li><li>40 个可旋转的本地三维图，支持俯视、正视、缩放和键盘操作；无需 WebGL。</li></ul></div>
           <div className="version-entry"><span className="badge">Calculus II · v0.1.0</span><h2>v0.9.0 · 微积分 II 完整首版</h2><time>2026 年 10 月 14 日</time><ul><li>新增 8 章 35 节、70 个例题与 178 道练习解答。</li><li>接入积分、收敛、Taylor、参数与极坐标、一阶方程的本地交互图示。</li><li>目录、练习、索引、下载与学习记录按教材区分，保留微积分 I 的旧链接与记录。</li></ul></div>
           <div className="version-entry">
             <span className="badge">历史版本 · 教材 I v0.3.1</span>

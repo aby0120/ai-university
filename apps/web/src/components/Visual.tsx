@@ -126,8 +126,10 @@ export function Plot({
       role="img"
       aria-label={title}
       className={onX ? "plot interactive" : "plot"}
+      onDragStart={(e) => e.preventDefault()}
       onPointerDown={(e) => {
-        if (!onX) return;
+        if (!onX || e.button !== 0) return;
+        e.preventDefault();
         const r = e.currentTarget.getBoundingClientRect();
         onX(
           Math.max(

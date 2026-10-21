@@ -110,8 +110,13 @@ export function SpatialPlot({
           actions[e.key]();
         }
       }}
+      onDragStart={(e) => e.preventDefault()}
       onPointerDown={(e) => {
-        if (!interactive || view !== "space") return;
+        if (!interactive || e.button !== 0) return;
+        // Keep the gesture on the plot instead of starting native SVG text selection.
+        e.preventDefault();
+        e.currentTarget.focus({ preventScroll: true });
+        if (view !== "space") return;
         e.currentTarget.setPointerCapture(e.pointerId);
         drag.current = { x: e.clientX, y: e.clientY, camera };
       }}
@@ -133,6 +138,9 @@ export function SpatialPlot({
           e.currentTarget.releasePointerCapture(e.pointerId);
       }}
       onPointerCancel={() => {
+        drag.current = null;
+      }}
+      onLostPointerCapture={() => {
         drag.current = null;
       }}
     >
