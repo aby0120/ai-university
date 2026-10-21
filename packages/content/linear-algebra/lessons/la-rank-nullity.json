@@ -1,0 +1,194 @@
+{
+  "id": "la-rank-nullity",
+  "chapterId": "la-fundamental",
+  "number": "4.3",
+  "title": "秩—零度定理与一一、满射",
+  "subtitle": "保留与丢失的自由度",
+  "concept": "输入维数等于保留为独立输出的维数，加上被完全消掉的维数。",
+  "intuition": "每个输入自由度要么影响可见输出，要么落在核中。定理精确地计算这两部分的数量。",
+  "objectives": [
+    "使用秩—零度关系",
+    "分别判断一一性和满射性"
+  ],
+  "body": [
+    {
+      "title": "定理怎么数？",
+      "text": "对 $m\\times n$ 矩阵，秩为 $r$，齐次系统有 $n-r$ 个自由变量，所以核维数为 $n-r$。"
+    },
+    {
+      "title": "一一与满射分别要求什么？",
+      "text": "一一要求每列有主元，即 $r=n$。满射到指定的 $\\mathbb R^m$ 要求每行有主元，即 $r=m$。"
+    },
+    {
+      "title": "长方形矩阵有什么限制？",
+      "text": "若 $n>m$ 不可能一一；若 $m>n$ 不可能满到整个输出空间。满到自己的像是另一件事。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "秩—零度定理与一一、满射",
+    "latex": "\\dim\\ker T+\\dim\\operatorname{im}T=\\dim V,\\quad\\operatorname{rank}A+\\operatorname{nullity}A=n",
+    "conditions": [
+      "输入空间有限维；满射必须说明目标空间，不能默默把目标改成像。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "主元变量和自由变量分完全部未知量。",
+      "latex": "n=r+(n-r)"
+    },
+    {
+      "text": "齐次解的特殊解无关并张成核。",
+      "latex": "\\dim\\ker A=n-r"
+    },
+    {
+      "text": "像由原主元列生成。",
+      "latex": "\\dim\\operatorname{im}A=r"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "核有多大",
+      "problem": "$A$ 为 $4\\times6$、秩为 $3$，核维数？",
+      "steps": [
+        "输入维数是列数 $6$。",
+        "零度为 $6-3=3$。"
+      ],
+      "answer": "3；既不一一，也不满到整个四维输出空间。"
+    },
+    {
+      "title": "一一但不满",
+      "problem": "$T(x,y)=(x,y,x+y)$。",
+      "steps": [
+        "两个列向量无关，所以秩为 $2$，零度为零。",
+        "输出都满足 $z=x+y$，没有覆盖整个 $\\mathbb R^3$。"
+      ],
+      "answer": "一一但不满射到三维空间。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-rank-nullity-m1",
+      "claim": "秩加零度等于行数。",
+      "correction": "等于输入维数，也就是列数。"
+    },
+    {
+      "id": "la-rank-nullity-m2",
+      "claim": "一一与满射对所有矩阵都等价。",
+      "correction": "只在相同有限维输入输出的情形可直接等价。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$3\\times5$ 矩阵秩为 $3$，零度？",
+      "hint": "列数减秩。",
+      "solution": [
+        "$5-3=2$。"
+      ],
+      "answer": "2",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "la-rank-nullity-m1"
+      ],
+      "numericAnswer": 2,
+      "id": "la-rank-nullity-q1"
+    },
+    {
+      "problem": "$5\\times3$ 矩阵列满秩，是否一一？",
+      "hint": "看核是否为零。",
+      "solution": [
+        "$3-3=0$。"
+      ],
+      "answer": "一一。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-rank-nullity-q2"
+    },
+    {
+      "problem": "一个三维空间到二维空间的线性映射能一一吗？",
+      "hint": "像维数至多二。",
+      "solution": [
+        "核维数至少一。"
+      ],
+      "answer": "不能。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-rank-nullity-q3"
+    },
+    {
+      "problem": "四维到四维的线性映射若满射，是否可逆？",
+      "hint": "满射给秩四。",
+      "solution": [
+        "核为零，方阵满秩，因而可逆。"
+      ],
+      "answer": "可逆。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-rank-nullity-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-nullspace",
+    "la-column-row",
+    "la-dimension"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "la-rank-nullity-m1",
+    "la-rank-nullity-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-rank-nullity",
+    "caption": "矩阵 $\\operatorname{diag}(1,c,0)$ 把三维输入送到水平面；$c$ 为零时，像进一步缩为横轴。",
+    "prediction": "一个方向的输出缩放恰好变成零时，秩和零度怎样此消彼长？"
+  },
+  "learningCheck": {
+    "question": "$2\\times4$ 矩阵秩为 $2$，零度是多少？",
+    "choices": [
+      "0",
+      "2",
+      "4"
+    ],
+    "correctIndex": 1,
+    "explanation": "四个输入自由度中有两个落在核中。"
+  },
+  "teaching": {
+    "explain": "秩数输出方向，零度数丢失的输入方向。两者相加必须回到输入维数。",
+    "steps": [
+      {
+        "title": "保留两个方向",
+        "instruction": "取 $c=1$。",
+        "preset": {
+          "c": 1
+        },
+        "observation": "秩二，零度一。"
+      },
+      {
+        "title": "改变定向",
+        "instruction": "取 $c=-1$。",
+        "preset": {
+          "c": -1
+        },
+        "observation": "方向翻转但未丢失，秩仍二。"
+      },
+      {
+        "title": "再丢一个方向",
+        "instruction": "取 $c=0$。",
+        "preset": {
+          "c": 0
+        },
+        "observation": "秩一，零度二；相加始终为三。"
+      }
+    ]
+  }
+}

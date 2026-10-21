@@ -1,0 +1,194 @@
+{
+  "id": "la-positive-definite",
+  "chapterId": "la-symmetric",
+  "number": "8.3",
+  "title": "正定、半正定与判别",
+  "subtitle": "所有非零方向都向上",
+  "concept": "正定要求每个非零方向的二次型都严格为正。",
+  "intuition": "矩阵元素全正也可能有向下的方向；要检查的是所有向量，而不是每个数字。",
+  "objectives": [
+    "用特征值与顺序主子式判正定",
+    "区分正定、半正定和不定"
+  ],
+  "body": [
+    {
+      "title": "怎样用特征值判断？",
+      "text": "实对称矩阵正定当且仅当所有特征值严格为正；半正定允许零，负特征值会给负方向。"
+    },
+    {
+      "title": "能只看行列式吗？",
+      "text": "不能。行列式只是全部特征值的乘积。对称矩阵正定等价于所有顺序主子式为正，称 Sylvester 判据。"
+    },
+    {
+      "title": "半正定能照搬非负顺序主子式吗？",
+      "text": "一般不能。半正定可由所有主子式非负判断，不能只检查左上角的顺序主子式。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "正定、半正定与判别",
+    "latex": "A=A^T:\\quad A\\succ0\\iff x^TAx>0\\ (x\\ne0)\\iff\\lambda_i>0\\ \\forall i",
+    "conditions": [
+      "正定判据使用对称矩阵；本卷的正定默认实对称。顺序主子式是依次取左上角子矩阵的行列式。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "换到标准正交特征坐标。",
+      "latex": "x^TAx=\\sum_i\\lambda_i y_i^2"
+    },
+    {
+      "text": "所有特征值正则非零方向严格正。",
+      "latex": "\\lambda_i>0\\Rightarrow x^TAx\\ge\\lambda_{\\min}\\|x\\|^2>0"
+    },
+    {
+      "text": "反过来测试每条特征方向。",
+      "latex": "q(v_i)=\\lambda_i\\|v_i\\|^2>0\\Rightarrow\\lambda_i>0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "二阶顺序主子式",
+      "problem": "$A=\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix}$ 是否正定？",
+      "steps": [
+        "第一个顺序主子式为 $2>0$。",
+        "二阶行列式为 $3>0$。"
+      ],
+      "answer": "正定。"
+    },
+    {
+      "title": "行列式正仍不够",
+      "problem": "$A=-I_2$ 是否正定？",
+      "steps": [
+        "行列式为一。",
+        "但任意非零向量给 $x^TAx=-\\|x\\|^2<0$。"
+      ],
+      "answer": "负定，不是正定。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-positive-definite-m1",
+      "claim": "行列式正就正定。",
+      "correction": "两个负特征值的乘积也可能正。"
+    },
+    {
+      "id": "la-positive-definite-m2",
+      "claim": "半正定与正定一样可逆。",
+      "correction": "半正定可含零特征值，因此可奇异。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$\\operatorname{diag}(1,0)$ 是哪类？",
+      "hint": "检查平方和。",
+      "solution": [
+        "$q=x^2\\ge0$，但纵轴非零向量取零。"
+      ],
+      "answer": "半正定但非正定。",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "la-positive-definite-m2"
+      ],
+      "id": "la-positive-definite-q1"
+    },
+    {
+      "problem": "$\\begin{pmatrix}1&2\\\\2&1\\end{pmatrix}$ 是否正定？",
+      "hint": "沿反向坐标测试。",
+      "solution": [
+        "对 $(1,-1)$ 得 $1-4+1=-2$。"
+      ],
+      "answer": "不是，不定。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-positive-definite-q2"
+    },
+    {
+      "problem": "正定矩阵是否可逆？",
+      "hint": "所有特征值严格正。",
+      "solution": [
+        "没有零特征值。"
+      ],
+      "answer": "可逆。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-positive-definite-q3"
+    },
+    {
+      "problem": "$A=\\operatorname{diag}(0,-1)$ 的顺序主子式均为零，是否半正定？",
+      "hint": "测试纵轴。",
+      "solution": [
+        "$q(0,1)=-1$。"
+      ],
+      "answer": "不是；非负顺序主子式不够。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-positive-definite-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-quadratic-forms"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "la-positive-definite-m1",
+    "la-positive-definite-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-positive-definite",
+    "caption": "二次型 $q=x^2+cy^2$；金色点在单位圆上，竖线和高度对应该方向的二次型值。",
+    "prediction": "最小特征值到达零时，严格正定性在哪里失效？"
+  },
+  "learningCheck": {
+    "question": "正定要求二次型在哪些输入上为正？",
+    "choices": [
+      "所有输入，包括零",
+      "所有非零输入",
+      "只要标准基向量"
+    ],
+    "correctIndex": 1,
+    "explanation": "零向量必取零；只测坐标轴会漏掉斜方向。"
+  },
+  "teaching": {
+    "explain": "正定是每个方向都向上的保证。若只看几个矩阵元素或只看行列式，可能遗漏负方向。",
+    "steps": [
+      {
+        "title": "正定",
+        "instruction": "取 $c=1,\\theta=\\pi/2$。",
+        "preset": {
+          "c": 1,
+          "a": 1.5707963267948966
+        },
+        "observation": "单位圆上取值恒为一。"
+      },
+      {
+        "title": "半正定",
+        "instruction": "取 $c=0,\\theta=\\pi/2$。",
+        "preset": {
+          "c": 0,
+          "a": 1.5707963267948966
+        },
+        "observation": "纵向非零输入给零，严格正定失效。"
+      },
+      {
+        "title": "出现负方向",
+        "instruction": "取 $c=-1,\\theta=\\pi/2$。",
+        "preset": {
+          "c": -1,
+          "a": 1.5707963267948966
+        },
+        "observation": "纵向取负一，横向取正一，成为不定二次型。"
+      }
+    ]
+  }
+}

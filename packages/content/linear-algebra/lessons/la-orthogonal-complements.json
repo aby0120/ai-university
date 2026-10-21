@@ -1,0 +1,194 @@
+{
+  "id": "la-orthogonal-complements",
+  "chapterId": "la-orthogonal",
+  "number": "7.3",
+  "title": "正交补与正交分解",
+  "subtitle": "把向量唯一拆成正交两部分",
+  "concept": "正交补包含与子空间每个向量都垂直的向量。",
+  "intuition": "一个子空间与它的正交补能唯一拼出整个欧氏空间，不会重叠计算任何非零方向。",
+  "objectives": [
+    "求正交补的基与维数",
+    "解释正交分解的唯一性"
+  ],
+  "body": [
+    {
+      "title": "与几个向量垂直够吗？",
+      "text": "若这些向量已经张成子空间，逐个垂直就足够；否则可能漏条件。"
+    },
+    {
+      "title": "维数怎样配对？",
+      "text": "在 $\\mathbb R^n$ 中，$\\dim W+\\dim W^\\perp=n$，且 $W\\cap W^\\perp=\\{0\\}$。"
+    },
+    {
+      "title": "如何计算？",
+      "text": "把生成向量写成行，解齐次系统。正交分解中的两个分量分别为投影与余量。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "正交补与正交分解",
+    "latex": "W^\\perp=\\{z:z^Tw=0\\ \\forall w\\in W\\},\\quad \\mathbb R^n=W\\oplus W^\\perp",
+    "conditions": [
+      "使用有限维实欧氏空间；直和表示表示唯一，不只是两个集合的并集。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "对子空间取标准正交基。",
+      "latex": "Q=[q_1,\\ldots,q_r]"
+    },
+    {
+      "text": "投影与余量给存在性。",
+      "latex": "b=QQ^Tb+(I-QQ^T)b"
+    },
+    {
+      "text": "两种分解相减，交集只有零。",
+      "latex": "w=z\\in W\\cap W^\\perp\\Rightarrow\\|w\\|^2=0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "平面直线的正交补",
+      "problem": "$W=\\operatorname{span}((1,1))$ 的正交补？",
+      "steps": [
+        "要求 $x+y=0$。",
+        "因此由 $(1,-1)$ 生成。"
+      ],
+      "answer": "$W^\\perp=\\operatorname{span}((1,-1))$。"
+    },
+    {
+      "title": "空间平面的正交补",
+      "problem": "$W=\\{(x,y,z):x+2y+3z=0\\}$ 的正交补？",
+      "steps": [
+        "平面内每个向量都与 $(1,2,3)$ 垂直。",
+        "平面二维，正交补一维。"
+      ],
+      "answer": "$\\operatorname{span}((1,2,3))$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-orthogonal-complements-m1",
+      "claim": "正交补是不在原空间里的所有向量。",
+      "correction": "它是满足全部垂直条件的另一个子空间，不是集合差。"
+    },
+    {
+      "id": "la-orthogonal-complements-m2",
+      "claim": "任意两个互补子空间都正交。",
+      "correction": "直和不必正交。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$\\{0\\}^\\perp$ 是什么？",
+      "hint": "所有向量与零点积都零。",
+      "solution": [
+        "整个 $\\mathbb R^n$。"
+      ],
+      "answer": "$\\mathbb R^n$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "la-orthogonal-complements-q1"
+    },
+    {
+      "problem": "$\\mathbb R^n$ 的正交补？",
+      "hint": "必须与自身也垂直。",
+      "solution": [
+        "只能为零。"
+      ],
+      "answer": "零子空间。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-orthogonal-complements-q2"
+    },
+    {
+      "problem": "$\\mathbb R^5$ 中三维子空间的正交补维数？",
+      "hint": "用维数相加。",
+      "solution": [
+        "$5-3=2$。"
+      ],
+      "answer": "2",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 2,
+      "id": "la-orthogonal-complements-q3"
+    },
+    {
+      "problem": "$(W^\\perp)^\\perp$ 等于什么？",
+      "hint": "先看包含关系再比较维数。",
+      "solution": [
+        "$W$ 包含于其中，两者维数相同。"
+      ],
+      "answer": "$W$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-orthogonal-complements-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-projection",
+    "la-four-spaces"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "la-orthogonal-complements-m1",
+    "la-orthogonal-complements-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-orthogonal-complements",
+    "caption": "固定正交方向 $(1,1)$ 与 $(1,-1)$，用两个系数拼出输入；两部分唯一。",
+    "prediction": "一个向量怎样唯一拆成沿直线与垂直直线的两部分？"
+  },
+  "learningCheck": {
+    "question": "正交补要求与子空间里的哪些向量垂直？",
+    "choices": [
+      "任意一个非零向量",
+      "每个向量",
+      "只有最长的向量"
+    ],
+    "correctIndex": 1,
+    "explanation": "检查一组生成向量可代替检查所有向量，但不能随便少检查。"
+  },
+  "teaching": {
+    "explain": "正交补不是“其余所有点”。它只保留那些完全不含原子空间分量的方向。",
+    "steps": [
+      {
+        "title": "只沿原直线",
+        "instruction": "取 $a=1,b=0$。",
+        "preset": {
+          "a": 1,
+          "b": 0
+        },
+        "observation": "向量完全属于原直线。"
+      },
+      {
+        "title": "加入正交余量",
+        "instruction": "取 $a=1,b=1$。",
+        "preset": {
+          "a": 1,
+          "b": 1
+        },
+        "observation": "两部分相加为 $(2,0)$，各自平方长度为二。"
+      },
+      {
+        "title": "只留正交补",
+        "instruction": "取 $a=0,b=1$。",
+        "preset": {
+          "a": 0,
+          "b": 1
+        },
+        "observation": "投影到原直线为零。"
+      }
+    ]
+  }
+}

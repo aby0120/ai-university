@@ -1,4 +1,5 @@
 export type VisualKind =
+  | "linear-algebra"
   | "calculus3"
   | "calculus2"
   | "graph"

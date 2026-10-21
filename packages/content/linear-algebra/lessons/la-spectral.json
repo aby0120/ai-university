@@ -1,0 +1,193 @@
+{
+  "id": "la-spectral",
+  "chapterId": "la-symmetric",
+  "number": "8.1",
+  "title": "实对称矩阵与谱定理",
+  "subtitle": "对称性保证正交特征基",
+  "concept": "实对称矩阵总能用标准正交特征基对角化。",
+  "intuition": "不必使用斜坐标，就能把不同方向的作用分开；所有特征值都为实数。",
+  "objectives": [
+    "构造实对称矩阵谱分解",
+    "处理重复特征空间中的正交基"
+  ],
+  "body": [
+    {
+      "title": "为什么特征值是实数？",
+      "text": "允许复特征向量暂时计算，$v^*Av$ 在实对称矩阵下为实数，而它等于 $\\lambda v^*v$。"
+    },
+    {
+      "title": "不同特征值为何正交？",
+      "text": "对称性让 $u^TAv=(Au)^Tv$；两端分别提取特征值，得到不同特征空间互相垂直。"
+    },
+    {
+      "title": "重根怎么办？",
+      "text": "在每个特征空间中选标准正交基。谱定理保证这些空间合起来覆盖全部维数；证明轮廓见附录。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "实对称矩阵与谱定理",
+    "latex": "A=A^T\\Rightarrow A=Q\\Lambda Q^T,\\quad Q^TQ=I,\\quad \\Lambda\\text{ 为实对角矩阵}",
+    "conditions": [
+      "实对称方阵；一般实矩阵不能套用谱定理。复数对应结论使用 Hermitian 共轭对称矩阵。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "对称性比较两种内积。",
+      "latex": "\\lambda_u u^Tv=(Au)^Tv=u^TAv=\\lambda_v u^Tv"
+    },
+    {
+      "text": "特征值不同则正交。",
+      "latex": "(\\lambda_u-\\lambda_v)u^Tv=0"
+    },
+    {
+      "text": "选满一组标准正交特征向量。",
+      "latex": "AQ=Q\\Lambda\\Rightarrow A=Q\\Lambda Q^T"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "标准正交谱分解",
+      "problem": "$A=\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix}$。",
+      "steps": [
+        "单位特征向量为 $(1,1)/\\sqrt2,(1,-1)/\\sqrt2$。",
+        "对应特征值 $3,1$；将两列排成 $Q$，有 $Q^{-1}=Q^T$。"
+      ],
+      "answer": "$A=Q\\operatorname{diag}(3,1)Q^T$。"
+    },
+    {
+      "title": "对角化不等于正交对角化",
+      "problem": "$J=\\begin{pmatrix}1&1\\\\0&2\\end{pmatrix}$ 能用实正交矩阵对角化吗？",
+      "steps": [
+        "若能写成 $QDQ^T$，转置后会等于自身。",
+        "$J\\ne J^T$。"
+      ],
+      "answer": "不能；它虽可一般对角化，却不能实正交对角化。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-spectral-m1",
+      "claim": "每个实矩阵都有实正交特征基。",
+      "correction": "该保证需要对称性。"
+    },
+    {
+      "id": "la-spectral-m2",
+      "claim": "同一重复特征值的任意特征向量都正交。",
+      "correction": "可在该空间内正交化，并非任取都正交。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$\\operatorname{diag}(2,-1)$ 是对称矩阵吗？",
+      "hint": "检查转置。",
+      "solution": [
+        "对角矩阵等于自身转置。"
+      ],
+      "answer": "是。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "la-spectral-q1"
+    },
+    {
+      "problem": "实对称矩阵会有非实特征值吗？",
+      "hint": "使用谱定理。",
+      "solution": [
+        "所有特征值为实数。"
+      ],
+      "answer": "不会。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-spectral-q2"
+    },
+    {
+      "problem": "正交换基为何保持长度？",
+      "hint": "将 $Q$ 的转置当逆。",
+      "solution": [
+        "$\\|Qx\\|^2=x^TQ^TQx=\\|x\\|^2$。"
+      ],
+      "answer": "内积与长度保持。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-spectral-q3"
+    },
+    {
+      "problem": "$A=QDQ^T$，求 $A^T$。",
+      "hint": "转置反序且 $D$ 对称。",
+      "solution": [
+        "$A^T=QD^TQ^T=QDQ^T=A$。"
+      ],
+      "answer": "$A$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-spectral-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-diagonalization",
+    "la-inner-products"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "la-spectral-m1",
+    "la-spectral-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-spectral",
+    "caption": "$A=\\begin{pmatrix}2&c\\\\c&2\\end{pmatrix}$。蓝色为单位输入，金色为输出；特征方向上两者共线。",
+    "prediction": "对称矩阵的两条特征方向为什么能选成互相垂直？"
+  },
+  "learningCheck": {
+    "question": "实正交对角化的矩阵一定具有什么性质？",
+    "choices": [
+      "对称",
+      "每个元素为正",
+      "可逆"
+    ],
+    "correctIndex": 0,
+    "explanation": "实对角矩阵经正交共轭后仍对称。"
+  },
+  "teaching": {
+    "explain": "对称性让特征方向既独立又垂直，所以可以分开计算而不扭曲原来的长度。",
+    "steps": [
+      {
+        "title": "第一特征方向",
+        "instruction": "取 $c=1,\\theta=\\pi/4$。",
+        "preset": {
+          "c": 1,
+          "a": 0.7853981633974483
+        },
+        "observation": "输出长度三，方向相同，对应特征值三。"
+      },
+      {
+        "title": "第二特征方向",
+        "instruction": "取 $c=1,\\theta=3\\pi/4$。",
+        "preset": {
+          "c": 1,
+          "a": 2.356194490192345
+        },
+        "observation": "输出长度一，对应特征值一；两方向垂直。"
+      },
+      {
+        "title": "重复但不缺方向",
+        "instruction": "取 $c=0$。",
+        "preset": {
+          "c": 0,
+          "a": 0.7853981633974483
+        },
+        "observation": "矩阵为 $2I$，每条非零方向都是特征方向。"
+      }
+    ]
+  }
+}

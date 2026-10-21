@@ -1,0 +1,194 @@
+{
+  "id": "la-inner-products",
+  "chapterId": "la-orthogonal",
+  "number": "7.1",
+  "title": "内积、长度与角度",
+  "subtitle": "对齐程度、长度与角度",
+  "concept": "内积把对齐程度变成一个数，并由此定义长度和距离。",
+  "intuition": "同向贡献为正、反向贡献为负；垂直方向的贡献抵消为零。",
+  "objectives": [
+    "计算内积、范数和距离",
+    "检查夹角公式的条件"
+  ],
+  "body": [
+    {
+      "title": "标准内积怎么算？",
+      "text": "实坐标向量逐分量相乘再求和。长度为 $\\|x\\|=\\sqrt{x^Tx}$，距离为差向量的长度。"
+    },
+    {
+      "title": "怎样读出角度？",
+      "text": "非零向量的夹角满足 $\\cos\\theta=x^Ty/(\\|x\\|\\|y\\|)$。零向量没有这样定义的角度。"
+    },
+    {
+      "title": "什么保证这些定义可靠？",
+      "text": "实内积对两个变量线性、对称，并且对非零向量正定。任意双线性式未必能定义长度。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "内积、长度与角度",
+    "latex": "\\langle x,y\\rangle=x^Ty,\\quad |x^Ty|\\le\\|x\\|\\|y\\|,\\quad \\|x+y\\|\\le\\|x\\|+\\|y\\|",
+    "conditions": [
+      "本节使用实欧氏内积；夹角要求两个向量都非零。Cauchy–Schwarz 与三角不等式的证明见附录。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "非负平方构造约束。",
+      "latex": "0\\le\\|x-ty\\|^2=\\|x\\|^2-2t x^Ty+t^2\\|y\\|^2"
+    },
+    {
+      "text": "在非零方向取最优标量。",
+      "latex": "t=\\frac{x^Ty}{\\|y\\|^2}\\Rightarrow (x^Ty)^2\\le\\|x\\|^2\\|y\\|^2"
+    },
+    {
+      "text": "展开和的平方得到三角不等式。",
+      "latex": "\\|x+y\\|^2\\le(\\|x\\|+\\|y\\|)^2"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "长度与夹角",
+      "problem": "$u=(1,0),v=(1,1)$ 的夹角？",
+      "steps": [
+        "点积为一，长度分别为一和 $\\sqrt2$。",
+        "余弦为 $1/\\sqrt2$。"
+      ],
+      "answer": "$\\pi/4$。"
+    },
+    {
+      "title": "距离",
+      "problem": "$(1,2,3)$ 与 $(3,1,1)$ 的距离？",
+      "steps": [
+        "差向量为 $(2,-1,-2)$。",
+        "平方长度 $4+1+4=9$。"
+      ],
+      "answer": "3。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-inner-products-m1",
+      "claim": "点积为零就能给零向量定义直角。",
+      "correction": "零向量也与所有向量点积零，但夹角公式分母为零。"
+    },
+    {
+      "id": "la-inner-products-m2",
+      "claim": "长度满足可加性。",
+      "correction": "通常只有不等式，同向时才取等号。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$(1,-2,3)\\cdot(2,1,0)$？",
+      "hint": "逐分量相乘求和。",
+      "solution": [
+        "$2-2+0=0$。"
+      ],
+      "answer": "0",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0,
+      "id": "la-inner-products-q1"
+    },
+    {
+      "problem": "$\\|(2,3,6)\\|$？",
+      "hint": "平方和开方。",
+      "solution": [
+        "$\\sqrt{4+9+36}=7$。"
+      ],
+      "answer": "7",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 7,
+      "id": "la-inner-products-q2"
+    },
+    {
+      "problem": "$x^Ty$ 为负说明夹角怎样？",
+      "hint": "非零时看余弦符号。",
+      "solution": [
+        "余弦为负，夹角大于 $\\pi/2$。"
+      ],
+      "answer": "钝角。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-inner-products-q3"
+    },
+    {
+      "problem": "$B(x,y)=x_1y_1-x_2y_2$ 是实内积吗？",
+      "hint": "检查正定性。",
+      "solution": [
+        "$B((0,1),(0,1))=-1$。"
+      ],
+      "answer": "不是。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-inner-products-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-vectors"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "la-inner-products-m1",
+    "la-inner-products-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-inner-products",
+    "caption": "固定 $u=(1,0)$，另一个向量长度为 $b$、夹角为角度控件读数。零长度时不定义夹角。",
+    "prediction": "方向从同向转到反向时，内积如何经过零？"
+  },
+  "learningCheck": {
+    "question": "用内积计算夹角之前，必须排除什么？",
+    "choices": [
+      "负坐标",
+      "零向量",
+      "分量个数为三"
+    ],
+    "correctIndex": 1,
+    "explanation": "零向量的长度为零，角度公式无定义。"
+  },
+  "teaching": {
+    "explain": "内积不只是算角度的公式；后面“最近”“误差最小”“投影”都要依赖它提供的长度。",
+    "steps": [
+      {
+        "title": "同向",
+        "instruction": "取 $b=1,\\theta=0$。",
+        "preset": {
+          "b": 1,
+          "a": 0
+        },
+        "observation": "点积为一。"
+      },
+      {
+        "title": "垂直",
+        "instruction": "取 $b=1,\\theta=\\pi/2$。",
+        "preset": {
+          "b": 1,
+          "a": 1.5707963267948966
+        },
+        "observation": "点积为零。"
+      },
+      {
+        "title": "反向",
+        "instruction": "取 $b=1,\\theta=\\pi$。",
+        "preset": {
+          "b": 1,
+          "a": 3.141592653589793
+        },
+        "observation": "点积为负一。"
+      }
+    ]
+  }
+}

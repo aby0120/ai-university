@@ -1,0 +1,193 @@
+{
+  "id": "la-svd",
+  "chapterId": "la-svd",
+  "number": "9.2",
+  "title": "奇异值分解",
+  "subtitle": "两套正交方向，中间只有缩放",
+  "concept": "任何实矩阵都能分解为输入正交换坐标、各方向缩放和输出正交换坐标。",
+  "intuition": "先转到适合输入的方向，分别拉伸，再放到适合输出的方向。长方矩阵和奇异矩阵也适用。",
+  "objectives": [
+    "写出完整与紧 SVD 的尺寸",
+    "连接非零奇异方向与秩"
+  ],
+  "body": [
+    {
+      "title": "完整分解的尺寸？",
+      "text": "$A$ 为 $m\\times n$ 时，$U$ 为 $m\\times m$、$V$ 为 $n\\times n$ 正交矩阵，$\\Sigma$ 为 $m\\times n$ 非负矩形对角因子。"
+    },
+    {
+      "title": "非零方向怎样对应？",
+      "text": "$Av_i=\\sigma_i u_i$。不同右奇异方向的输出正交；当奇异值为零时，不用除以零构造 $u_i$，而是补全输出正交基。"
+    },
+    {
+      "title": "紧分解是什么？",
+      "text": "只保留 $r$ 个非零奇异值，得 $A=U_r\\Sigma_rV_r^T$。左右奇异向量可能因符号或重复值而不唯一，但奇异值唯一。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "奇异值分解",
+    "latex": "A=U\\Sigma V^T=\\sum_{i=1}^r\\sigma_i u_i v_i^T",
+    "conditions": [
+      "实矩阵均存在 SVD；对复矩阵将转置换为共轭转置。分解不要求方阵或可逆。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "对输入端的对称矩阵选特征基。",
+      "latex": "A^TAv_i=\\sigma_i^2v_i"
+    },
+    {
+      "text": "正奇异值定义单位输出方向。",
+      "latex": "u_i=Av_i/\\sigma_i,\\quad u_i^Tu_j=\\delta_{ij}"
+    },
+    {
+      "text": "零方向送到零，补全基后得到矩阵式。",
+      "latex": "AV=U\\Sigma\\Rightarrow A=U\\Sigma V^T"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "含反向的对角矩阵",
+      "problem": "$A=\\operatorname{diag}(-3,1)$ 的一个 SVD？",
+      "steps": [
+        "取 $V=I,\\Sigma=\\operatorname{diag}(3,1)$。",
+        "用 $U=\\operatorname{diag}(-1,1)$ 记录反向，三者相乘复原。"
+      ],
+      "answer": "$A=U\\Sigma V^T$。"
+    },
+    {
+      "title": "秩一矩阵",
+      "problem": "$A=\\begin{pmatrix}1&1\\\\0&0\\end{pmatrix}$ 的紧 SVD？",
+      "steps": [
+        "$v_1=(1,1)/\\sqrt2,u_1=(1,0)$。",
+        "$Av_1=(\\sqrt2,0)$，故 $\\sigma_1=\\sqrt2$。"
+      ],
+      "answer": "$A=\\sqrt2(1,0)^T(1,1)/\\sqrt2$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-svd-m1",
+      "claim": "SVD 与对角化都要求特征向量够多。",
+      "correction": "SVD 对任意矩阵存在，用的是两套方向。"
+    },
+    {
+      "id": "la-svd-m2",
+      "claim": "零奇异值需要计算零除以零的左向量。",
+      "correction": "零方向单独处理并补全正交基。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$A$ 为 $4\\times2$，完整 $U$ 尺寸？",
+      "hint": "输出空间的完整正交基。",
+      "solution": [
+        "$4\\times4$。"
+      ],
+      "answer": "$4\\times4$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-svd-q1"
+    },
+    {
+      "problem": "秩为 $2$ 的 $5\\times3$ 矩阵，紧 $\\Sigma_r$ 尺寸？",
+      "hint": "只保留非零方向。",
+      "solution": [
+        "$2\\times2$。"
+      ],
+      "answer": "$2\\times2$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-svd-q2"
+    },
+    {
+      "problem": "交换同一奇异值对应的左右向量符号，会改变 $A$ 吗？",
+      "hint": "看外积两个负号。",
+      "solution": [
+        "$(-u)(-v)^T=uv^T$。"
+      ],
+      "answer": "不改变。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-svd-q3"
+    },
+    {
+      "problem": "$A=U\\Sigma V^T$ 中哪个矩阵先作用于输入？",
+      "hint": "从右向左读。",
+      "solution": [
+        "$V^T$。"
+      ],
+      "answer": "$V^T$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-svd-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-singular-values",
+    "la-orthogonal-complements"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "la-svd-m1",
+    "la-svd-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-svd",
+    "caption": "$A=R_\\theta\\operatorname{diag}(2,s)$：单位圆先按两个方向缩放，再旋转。两条半轴的长度是奇异值。",
+    "prediction": "两套正交方向如何把一般矩阵拆成独立的缩放？"
+  },
+  "learningCheck": {
+    "question": "奇异值分解存在需要什么矩阵条件？",
+    "choices": [
+      "必须对称",
+      "必须方阵且可逆",
+      "任意有限维实矩阵"
+    ],
+    "correctIndex": 2,
+    "explanation": "左右两套正交基允许输入输出维数不同。"
+  },
+  "teaching": {
+    "explain": "SVD 不要求输出方向等于输入方向，所以比特征分解更普遍。中间只有非负缩放，复杂性在两侧的坐标方向里。",
+    "steps": [
+      {
+        "title": "两个非零方向",
+        "instruction": "取 $\\theta=0,s=1$。",
+        "preset": {
+          "a": 0,
+          "b": 1
+        },
+        "observation": "半轴长度为二和一，秩二。"
+      },
+      {
+        "title": "只改变输出方向",
+        "instruction": "取 $\\theta=\\pi/4,s=1$。",
+        "preset": {
+          "a": 0.7853981633974483,
+          "b": 1
+        },
+        "observation": "半轴转动，长度不变。"
+      },
+      {
+        "title": "零奇异值",
+        "instruction": "取 $\\theta=\\pi/4,s=0$。",
+        "preset": {
+          "a": 0.7853981633974483,
+          "b": 0
+        },
+        "observation": "椭圆退化为线段，秩一。"
+      }
+    ]
+  }
+}

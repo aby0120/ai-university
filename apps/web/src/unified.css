@@ -868,3 +868,6 @@ input[type=range] { accent-color: #4c855b; }
 .spatial-plot text, .plot text {
   pointer-events: none;
 }
+
+/* Shared matrix and spatial controls for the linear algebra volume. */
+.linear-matrix{overflow-x:auto;border:1px solid #8dae8b35;background:#071a1d50;border-radius:10px;padding:18px 20px;margin:14px 0;color:#edf5dc}.linear-matrix .katex{font-size:1.12em}.linear-choice{display:flex;flex-direction:column;gap:10px;color:#c6d8bf;font-size:13px;padding:14px 0}.linear-choice select{width:100%;padding:12px 14px;background:#142e2e;color:#e8f2df;border:1px solid #789c7d;border-radius:7px;font:inherit}.linear-choice select:focus-visible{outline:2px solid #d4ec9d;outline-offset:3px}.linear-planar-plot{touch-action:pan-y;cursor:default}.linear-planar-plot:active{cursor:default}@media(max-width:600px){.linear-matrix{padding:14px 12px}.linear-matrix .katex{font-size:.95em}}

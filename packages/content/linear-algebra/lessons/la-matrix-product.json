@@ -1,0 +1,199 @@
+{
+  "id": "la-matrix-product",
+  "chapterId": "la-matrices",
+  "number": "2.1",
+  "title": "矩阵、转置与矩阵乘法",
+  "subtitle": "按列组合，按行计算",
+  "concept": "矩阵乘向量，就是把矩阵的列按输入系数相加。",
+  "intuition": "先确定输入和输出各有几个分量，再计算；维数不匹配时，乘法没有定义。",
+  "objectives": [
+    "检查矩阵运算尺寸",
+    "计算乘积与转置"
+  ],
+  "body": [
+    {
+      "title": "矩阵尺寸表示什么？",
+      "text": "$m\\times n$ 矩阵接收 $n$ 个数，输出 $m$ 个数。矩阵加法要求尺寸一致，转置交换行与列。"
+    },
+    {
+      "title": "矩阵怎样乘？",
+      "text": "$AB$ 的第 $j$ 列是 $A$ 乘 $B$ 的第 $j$ 列。逐元素写，就是左边一行与右边一列的乘积之和。"
+    },
+    {
+      "title": "顺序重要吗？",
+      "text": "通常 $AB\\ne BA$，有时其中一种顺序甚至没有定义。转置会反转乘积顺序。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "矩阵、转置与矩阵乘法",
+    "latex": "(AB)_{ij}=\\sum_{k=1}^n A_{ik}B_{kj},\\quad(AB)^T=B^TA^T",
+    "conditions": [
+      "若 $A$ 为 $m\\times n$，则 $B$ 的行数须为 $n$；结果行数来自 $A$、列数来自 $B$。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先把右矩阵看成列。",
+      "latex": "B=[b_1\\ \\cdots\\ b_p]"
+    },
+    {
+      "text": "左矩阵逐列作用。",
+      "latex": "AB=[Ab_1\\ \\cdots\\ Ab_p]"
+    },
+    {
+      "text": "按分量展开。",
+      "latex": "(Ab_j)_i=\\sum_k A_{ik}(b_j)_k"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "按列计算",
+      "problem": "$A=\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}$，求 $A(3,1)^T$。",
+      "steps": [
+        "按列是 $3(1,0)+(2,1)$。",
+        "得到 $(5,1)$。"
+      ],
+      "answer": "$(5,1)^T$。"
+    },
+    {
+      "title": "非交换",
+      "problem": "$S=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix},D=\\operatorname{diag}(2,1)$，比较 $DS$ 与 $SD$。",
+      "steps": [
+        "$DS=\\begin{pmatrix}2&2\\\\0&1\\end{pmatrix}$。",
+        "$SD=\\begin{pmatrix}2&1\\\\0&1\\end{pmatrix}$。"
+      ],
+      "answer": "不相等。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-matrix-product-m1",
+      "claim": "矩阵乘法就是对应元素相乘。",
+      "correction": "那是另一种运算，不是本书的矩阵乘法。"
+    },
+    {
+      "id": "la-matrix-product-m2",
+      "claim": "$(AB)^T=A^TB^T$。",
+      "correction": "转置后必须反转顺序。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$2\\times3$ 矩阵乘 $3\\times4$ 矩阵，结果尺寸？",
+      "hint": "检查中间维数并保留外侧。",
+      "solution": [
+        "中间的 $3$ 匹配，结果 $2\\times4$。"
+      ],
+      "answer": "$2\\times4$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "la-matrix-product-q1"
+    },
+    {
+      "problem": "$A=\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}$，求 $(A^T)_{12}$。",
+      "hint": "转置交换下标。",
+      "solution": [
+        "等于 $A_{21}=3$。"
+      ],
+      "answer": "3",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 3,
+      "id": "la-matrix-product-q2"
+    },
+    {
+      "problem": "$A=\\operatorname{diag}(2,3)$，求 $A^2$。",
+      "hint": "相同方向各缩放两次。",
+      "solution": [
+        "$A^2=\\operatorname{diag}(4,9)$。"
+      ],
+      "answer": "$\\operatorname{diag}(4,9)$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-matrix-product-q3"
+    },
+    {
+      "problem": "$AB=0$ 是否推出 $A=0$ 或 $B=0$？",
+      "hint": "试两个互补方向的投影。",
+      "solution": [
+        "$A=\\operatorname{diag}(1,0),B=\\operatorname{diag}(0,1)$ 均非零，乘积为零。"
+      ],
+      "answer": "不推出。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-matrix-product-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-vectors"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "la-matrix-product-m1",
+    "la-matrix-product-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-matrix-product",
+    "caption": "蓝色是原网格与单位圆，绿色是矩阵 $A$ 的像；金色是输入 $(1,1)$ 的输出。四个输入框分别改变矩阵元素。",
+    "prediction": "单位正方形的两条边变成了矩阵的哪两列？"
+  },
+  "learningCheck": {
+    "question": "$A$ 为 $3\\times2$，输入向量有几个分量？",
+    "choices": [
+      "2",
+      "3",
+      "6"
+    ],
+    "correctIndex": 0,
+    "explanation": "输入长度等于列数。"
+  },
+  "teaching": {
+    "explain": "矩阵的列告诉你：每个输入方向会被送到哪里。乘法只是把这些贡献相加。",
+    "steps": [
+      {
+        "title": "保持原样",
+        "instruction": "取 $A=I$。",
+        "preset": {
+          "a": 1,
+          "b": 0,
+          "c": 0,
+          "h": 1
+        },
+        "observation": "网格、圆和向量都不变。"
+      },
+      {
+        "title": "剪切",
+        "instruction": "取 $A=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$。",
+        "preset": {
+          "a": 1,
+          "b": 1,
+          "c": 0,
+          "h": 1
+        },
+        "observation": "单位正方形变斜，面积仍为一。"
+      },
+      {
+        "title": "压到直线",
+        "instruction": "取 $A=\\operatorname{diag}(1,0)$。",
+        "preset": {
+          "a": 1,
+          "b": 0,
+          "c": 0,
+          "h": 0
+        },
+        "observation": "纵向信息被消掉，秩降为一。"
+      }
+    ]
+  }
+}

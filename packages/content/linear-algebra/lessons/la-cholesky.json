@@ -1,0 +1,192 @@
+{
+  "id": "la-cholesky",
+  "chapterId": "la-symmetric",
+  "number": "8.4",
+  "title": "Cholesky 分解与完成平方",
+  "subtitle": "把正定二次型写成平方和",
+  "concept": "实对称正定矩阵可以唯一分解为正对角下三角矩阵与其转置的乘积。",
+  "intuition": "完成平方把交叉项吸收到新的线性表达式中，剩下的平方系数继续保持正。",
+  "objectives": [
+    "计算正对角 Cholesky 因子",
+    "用两个三角系统求解"
+  ],
+  "body": [
+    {
+      "title": "怎样逐步算？",
+      "text": "先对第一个对角元素开正平方根，再确定同列下方元素；减去已解释部分后，对剩余子块重复。"
+    },
+    {
+      "title": "为什么正定很重要？",
+      "text": "正定保证过程中的剩余主元严格为正，可以继续取实的正平方根。半正定或不定情形不能直接照搬这个无主元版本。"
+    },
+    {
+      "title": "分解怎么用于求解？",
+      "text": "先解 $Ly=b$，再解 $L^Tx=y$。二次型则成为 $\\|L^Tx\\|^2$，正定性一目了然。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "Cholesky 分解与完成平方",
+    "latex": "A=LL^T,\\quad L\\text{ 下三角且 }l_{ii}>0,\\qquad x^TAx=\\|L^Tx\\|^2",
+    "conditions": [
+      "实对称正定方阵；正对角约定使分解唯一。浮点误差可能使接近退化的判别需要谨慎处理。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "对称二阶矩阵先取第一个根。",
+      "latex": "l_{11}=\\sqrt{a_{11}},\\quad l_{21}=a_{21}/l_{11}"
+    },
+    {
+      "text": "从第二个对角元素扣掉已贡献部分。",
+      "latex": "l_{22}=\\sqrt{a_{22}-l_{21}^2}"
+    },
+    {
+      "text": "正定保证根号内为正。",
+      "latex": "a_{22}-\\frac{a_{21}^2}{a_{11}}>0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "一个实际分解",
+      "problem": "$A=\\begin{pmatrix}4&2\\\\2&3\\end{pmatrix}$。",
+      "steps": [
+        "$l_{11}=2,l_{21}=1$。",
+        "$l_{22}=\\sqrt{3-1}=\\sqrt2$。"
+      ],
+      "answer": "$L=\\begin{pmatrix}2&0\\\\1&\\sqrt2\\end{pmatrix}$。"
+    },
+    {
+      "title": "读成平方和",
+      "problem": "将 $4x^2+4xy+3y^2$ 完成平方。",
+      "steps": [
+        "由上例 $L^T(x,y)=(2x+y,\\sqrt2y)$。",
+        "取长度平方得到 $(2x+y)^2+2y^2$。"
+      ],
+      "answer": "$(2x+y)^2+2y^2$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-cholesky-m1",
+      "claim": "$A=LL$ 就是 Cholesky。",
+      "correction": "第二项是转置，不是重复同一个下三角因子。"
+    },
+    {
+      "id": "la-cholesky-m2",
+      "claim": "只要对称就能按正平方根继续。",
+      "correction": "不定矩阵会产生非正主元。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$A=\\operatorname{diag}(4,9)$ 的正对角 Cholesky 因子？",
+      "hint": "逐个开正根。",
+      "solution": [
+        "$L=\\operatorname{diag}(2,3)$。"
+      ],
+      "answer": "$\\operatorname{diag}(2,3)$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-cholesky-q1"
+    },
+    {
+      "problem": "$L=\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}$，$LL^T$？",
+      "hint": "直接相乘。",
+      "solution": [
+        "得到 $\\begin{pmatrix}1&2\\\\2&5\\end{pmatrix}$。"
+      ],
+      "answer": "$\\begin{pmatrix}1&2\\\\2&5\\end{pmatrix}$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-cholesky-q2"
+    },
+    {
+      "problem": "$A=\\operatorname{diag}(1,-1)$ 能有正对角实 Cholesky 吗？",
+      "hint": "若存在，二次型应是平方长度。",
+      "solution": [
+        "它在纵轴取负，不可能等于实平方长度。"
+      ],
+      "answer": "不能。",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "la-cholesky-m2"
+      ],
+      "id": "la-cholesky-q3"
+    },
+    {
+      "problem": "为什么对角要求正而不随意选平方根符号？",
+      "hint": "同一平方有两个根。",
+      "solution": [
+        "统一正根消除符号歧义，使因子唯一。"
+      ],
+      "answer": "确定唯一约定。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-cholesky-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-positive-definite",
+    "la-lu"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "la-cholesky-m1",
+    "la-cholesky-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-cholesky",
+    "caption": "$L=\\begin{pmatrix}1&0\\\\c&1\\end{pmatrix}$，$A=LL^T$。单位圆经 $L^T$ 变形，平方长度对应 $A$ 的二次型。",
+    "prediction": "交叉项改变时，完成平方后的矩阵为什么仍保持正定？"
+  },
+  "learningCheck": {
+    "question": "$A=LL^T$，二次型等于哪个平方长度？",
+    "choices": [
+      "$\\|Lx\\|^2$",
+      "$\\|L^Tx\\|^2$",
+      "$\\|x\\|^2$"
+    ],
+    "correctIndex": 1,
+    "explanation": "展开长度平方是 $x$ 转置乘 $L$ 再乘 $L$ 转置再乘 $x$。"
+  },
+  "teaching": {
+    "explain": "Cholesky 把“所有方向都正”变成可以直接检查的平方和，也留下两个好求解的三角系统。",
+    "steps": [
+      {
+        "title": "无交叉项",
+        "instruction": "取 $c=0$。",
+        "preset": {
+          "c": 0
+        },
+        "observation": "$A$ 为单位矩阵。"
+      },
+      {
+        "title": "正交叉项",
+        "instruction": "取 $c=1$。",
+        "preset": {
+          "c": 1
+        },
+        "observation": "$q=(x+y)^2+y^2$，非零输入总为正。"
+      },
+      {
+        "title": "负交叉项",
+        "instruction": "取 $c=-1$。",
+        "preset": {
+          "c": -1
+        },
+        "observation": "$q=(x-y)^2+y^2$，仍保持正定。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "id": "la-dimension",
+  "chapterId": "la-spaces",
+  "number": "3.5",
+  "title": "维数、扩充与基的数量",
+  "subtitle": "需要几个独立系数",
+  "concept": "有限维空间的所有基都含相同数量的向量，这个数量叫维数。",
+  "intuition": "不同基可以很不一样，但完成同一个空间的唯一表示，需要的独立系数数量相同。",
+  "objectives": [
+    "求有限维空间的基与维数",
+    "扩充无关列表或删减生成集"
+  ],
+  "body": [
+    {
+      "title": "维数怎样算？",
+      "text": "找任意一组基并计数。对矩阵的列空间，可以数主元；对子空间也可先参数化再找无关生成向量。"
+    },
+    {
+      "title": "为什么不同基一样长？",
+      "text": "交换引理表明：无关列表长度不超过任何生成列表的长度。两组基互相应用这一结论，数量只能相等。"
+    },
+    {
+      "title": "如何补全或删减？",
+      "text": "有限维空间里，无关列表可逐个加入尚未张成的向量，直到成为基；生成列表可逐个删去冗余，直到成为基。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "维数、扩充与基的数量",
+    "latex": "\\dim V=n\\Rightarrow\\#\\{\\text{无关向量}\\}\\le n\\le\\#\\{\\text{生成向量}\\}",
+    "conditions": [
+      "本节结论针对有限维空间；零空间维数为零。空间所在环境的维数不一定等于子空间维数。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "无关列表不能比生成列表长。",
+      "latex": "|I|\\le|G|"
+    },
+    {
+      "text": "对两组基交换角色。",
+      "latex": "|B_1|\\le|B_2|,\\quad|B_2|\\le|B_1|"
+    },
+    {
+      "text": "两边夹住同一数量。",
+      "latex": "|B_1|=|B_2|=\\dim V"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "一个约束少一维",
+      "problem": "$W=\\{(x,y,z):x+y+z=0\\}$ 维数？",
+      "steps": [
+        "写成 $(-s-t,s,t)=s(-1,1,0)+t(-1,0,1)$。",
+        "两生成向量无关。"
+      ],
+      "answer": "$\\dim W=2$。"
+    },
+    {
+      "title": "多项式次数",
+      "problem": "次数不超过 $4$ 的实多项式空间维数？",
+      "steps": [
+        "基为 $1,t,t^2,t^3,t^4$。",
+        "常数项也占一个独立系数。"
+      ],
+      "answer": "5。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-dimension-m1",
+      "claim": "处在三维坐标中就一定三维。",
+      "correction": "一条空间直线仍只有一个独立方向。"
+    },
+    {
+      "id": "la-dimension-m2",
+      "claim": "次数至多二的多项式空间是二维。",
+      "correction": "还要计入常数项，所以是三维。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "一条过原点且非退化的空间直线维数？",
+      "hint": "一个非零向量可生成。",
+      "solution": [
+        "任意点为该向量的倍数。"
+      ],
+      "answer": "1",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "la-dimension-m1"
+      ],
+      "numericAnswer": 1,
+      "id": "la-dimension-q1"
+    },
+    {
+      "problem": "$\\mathbb R^{2\\times3}$ 的维数？",
+      "hint": "每个矩阵位置各有独立系数。",
+      "solution": [
+        "六个单位置为一的矩阵构成基。"
+      ],
+      "answer": "6",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 6,
+      "id": "la-dimension-q2"
+    },
+    {
+      "problem": "三维空间中已有两个无关向量，是否总能补成基？",
+      "hint": "有限维的扩充结论。",
+      "solution": [
+        "选一个不在二者张成平面内的向量。"
+      ],
+      "answer": "能。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-dimension-q3"
+    },
+    {
+      "problem": "$n$ 维空间中恰好 $n$ 个无关向量是否构成基？",
+      "hint": "无关列表若不张成，还能增加向量。",
+      "solution": [
+        "增加后会出现超过 $n$ 个无关向量，矛盾。"
+      ],
+      "answer": "构成基。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-dimension-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-basis"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "la-dimension-m1",
+    "la-dimension-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-dimension",
+    "caption": "矩阵 $\\operatorname{diag}(1,c,0)$ 把三维输入送到水平面；$c$ 为零时，像进一步缩为横轴。",
+    "prediction": "矩阵压掉一个独立方向后，像空间的维数减少多少？"
+  },
+  "learningCheck": {
+    "question": "$\\mathbb R^3$ 内的一个过原点平面维数为多少？",
+    "choices": [
+      "1",
+      "2",
+      "3"
+    ],
+    "correctIndex": 1,
+    "explanation": "环境有三个坐标，但平面只需两个独立系数。"
+  },
+  "teaching": {
+    "explain": "维数数的是独立方向，不是纸上写了几个坐标，也不是生成列表里列了几个箭头。",
+    "steps": [
+      {
+        "title": "保留两个方向",
+        "instruction": "取 $c=1$。",
+        "preset": {
+          "c": 1
+        },
+        "observation": "秩二，零度一。"
+      },
+      {
+        "title": "改变定向",
+        "instruction": "取 $c=-1$。",
+        "preset": {
+          "c": -1
+        },
+        "observation": "方向翻转但未丢失，秩仍二。"
+      },
+      {
+        "title": "再丢一个方向",
+        "instruction": "取 $c=0$。",
+        "preset": {
+          "c": 0
+        },
+        "observation": "秩一，零度二；相加始终为三。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "id": "la-coordinates",
+  "chapterId": "la-spaces",
+  "number": "3.6",
+  "title": "基坐标与换基",
+  "subtitle": "向量不动，表示改变",
+  "concept": "换基改变同一向量的坐标，不改变向量本身。",
+  "intuition": "同一个地点可以用不同路网描述。坐标是描述方法，不是地点本身。",
+  "objectives": [
+    "计算指定基下的坐标",
+    "写出换基与相似变换"
+  ],
+  "body": [
+    {
+      "title": "坐标向量怎样求？",
+      "text": "将基向量作为列排成 $P_B$，解 $P_B[v]_B=v$。在子空间中矩阵可为长方形，但表示仍由基保证唯一。"
+    },
+    {
+      "title": "两个基之间怎么换？",
+      "text": "在整个 $\\mathbb R^n$ 的基之间，$[v]_C=P_C^{-1}P_B[v]_B$。先恢复标准坐标，再换到新基。"
+    },
+    {
+      "title": "映射矩阵怎样换？",
+      "text": "同一空间的线性算子在两组基下矩阵相似。若 $P$ 把新坐标转成旧坐标，新矩阵为 $P^{-1}AP$。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "基坐标与换基",
+    "latex": "v=P_B[v]_B,\\quad[v]_C=P_C^{-1}P_B[v]_B,\\quad[T]_{\\rm new}=P^{-1}[T]_{\\rm old}P",
+    "conditions": [
+      "写逆矩阵时，两组基均为整个同维坐标空间的基；先明确每个变换的输入输出坐标系。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "新坐标还原成旧坐标。",
+      "latex": "x_{\\rm old}=Px_{\\rm new}"
+    },
+    {
+      "text": "在旧坐标中作用。",
+      "latex": "y_{\\rm old}=APx_{\\rm new}"
+    },
+    {
+      "text": "输出再转回新坐标。",
+      "latex": "y_{\\rm new}=P^{-1}APx_{\\rm new}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "求斜基坐标",
+      "problem": "$B=((1,1),(1,-1))$，求 $(4,2)$ 的基坐标。",
+      "steps": [
+        "$a+b=4,a-b=2$。",
+        "$a=3,b=1$。"
+      ],
+      "answer": "$[(4,2)]_B=(3,1)^T$。"
+    },
+    {
+      "title": "换基后的矩阵",
+      "problem": "$A=\\operatorname{diag}(2,1),P=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$，求 $P^{-1}AP$。",
+      "steps": [
+        "$AP=\\begin{pmatrix}2&2\\\\0&1\\end{pmatrix}$。",
+        "左乘 $P^{-1}=\\begin{pmatrix}1&-1\\\\0&1\\end{pmatrix}$。"
+      ],
+      "answer": "$\\begin{pmatrix}2&1\\\\0&1\\end{pmatrix}$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-coordinates-m1",
+      "claim": "换了坐标就移动了向量。",
+      "correction": "向量固定，改变的是基和系数。"
+    },
+    {
+      "id": "la-coordinates-m2",
+      "claim": "换基时左右都乘同一个矩阵。",
+      "correction": "通常需要一边乘基变换、一边乘其逆。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$B=((2,0),(0,1))$，$(6,4)$ 的坐标？",
+      "hint": "分别除以对应缩放。",
+      "solution": [
+        "$3(2,0)+4(0,1)=(6,4)$。"
+      ],
+      "answer": "$(3,4)^T$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-coordinates-q1"
+    },
+    {
+      "problem": "$[v]_B=(1,-2)$，$B=((1,0),(1,1))$，求标准坐标。",
+      "hint": "按基向量线性组合。",
+      "solution": [
+        "$(1,0)-2(1,1)=(-1,-2)$。"
+      ],
+      "answer": "$(-1,-2)$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-coordinates-q2"
+    },
+    {
+      "problem": "基向量交换顺序，坐标会怎样？",
+      "hint": "同一系数须跟随对应基向量。",
+      "solution": [
+        "两个坐标分量也交换。"
+      ],
+      "answer": "交换顺序。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-coordinates-q3"
+    },
+    {
+      "problem": "$P^{-1}AP$ 与 $A$ 表示的算子一定不同吗？",
+      "hint": "区分矩阵数字与坐标选择。",
+      "solution": [
+        "它们可以是同一个算子在不同基下的矩阵。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-coordinates-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-basis",
+    "la-inverse"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "la-coordinates-m1",
+    "la-coordinates-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-coordinates",
+    "caption": "固定向量 $v=(1,1)$，基为 $(1,0),(c,1)$。改变基时，向量不动，只改变坐标与分解。",
+    "prediction": "基向量变斜后，同一个向量的坐标怎样改变？"
+  },
+  "learningCheck": {
+    "question": "换基时保持不变的是什么？",
+    "choices": [
+      "向量本身",
+      "每个坐标分量",
+      "基向量列表"
+    ],
+    "correctIndex": 0,
+    "explanation": "向量是对象，基坐标是它在某个基下的表示。"
+  },
+  "teaching": {
+    "explain": "遇到换基公式先问：这个矩阵把哪套坐标变成哪套坐标？把方向写清楚，比背左右顺序更可靠。",
+    "steps": [
+      {
+        "title": "标准基",
+        "instruction": "取 $c=0$。",
+        "preset": {
+          "c": 0
+        },
+        "observation": "坐标为 $(1,1)$。"
+      },
+      {
+        "title": "斜基",
+        "instruction": "取 $c=1$。",
+        "preset": {
+          "c": 1
+        },
+        "observation": "坐标变为 $(0,1)$，向量本身仍为 $(1,1)$。"
+      },
+      {
+        "title": "向另一侧倾斜",
+        "instruction": "取 $c=-1$。",
+        "preset": {
+          "c": -1
+        },
+        "observation": "坐标变为 $(2,1)$。"
+      }
+    ]
+  }
+}

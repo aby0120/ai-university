@@ -1,0 +1,197 @@
+{
+  "id": "la-det-geometry",
+  "chapterId": "la-determinants",
+  "number": "5.1",
+  "title": "行列式与有向体积",
+  "subtitle": "有向体积缩放了多少",
+  "concept": "行列式的绝对值是体积倍率，符号记录定向是否翻转。",
+  "intuition": "单位正方形或立方体被矩阵送成平行四边形或平行六面体；压成低维时，面积或体积倍率变为零。",
+  "objectives": [
+    "计算面积和体积倍率",
+    "区分定向符号与几何大小"
+  ],
+  "body": [
+    {
+      "title": "二维怎样计算？",
+      "text": "两列 $(a,c),(b,d)$ 张成的有向面积为 $ad-bc$。面积是其绝对值，不是有符号数。"
+    },
+    {
+      "title": "三维怎样理解？",
+      "text": "三列张成平行六面体。交换两列改变定向但不改变几何体积；三列共面时体积为零。"
+    },
+    {
+      "title": "行列式能概括一切吗？",
+      "text": "不能。同样的体积倍率可以来自不同的拉伸和剪切。面积保持也不保证长度或角度保持。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "行列式与有向体积",
+    "latex": "\\det\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}=ad-bc,\\quad \\operatorname{vol}(A[0,1]^n)=|\\det A|",
+    "conditions": [
+      "行列式对方阵定义；体积使用同维欧氏体积，退化像的该维体积为零。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先看对角拉伸。",
+      "latex": "\\det\\operatorname{diag}(s_1,\\ldots,s_n)=\\prod_i s_i"
+    },
+    {
+      "text": "交换两方向反转定向。",
+      "latex": "\\det[a_2,a_1,\\ldots]=-\\det[a_1,a_2,\\ldots]"
+    },
+    {
+      "text": "线性依赖使同维体积消失。",
+      "latex": "\\operatorname{rank}A<n\\Rightarrow\\det A=0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "面积与定向",
+      "problem": "$A=\\begin{pmatrix}1&2\\\\3&1\\end{pmatrix}$ 将单位正方形变成多大面积？",
+      "steps": [
+        "$\\det A=1-6=-5$。",
+        "取绝对值为面积倍率，负号表示定向反转。"
+      ],
+      "answer": "面积为 5，定向反转。"
+    },
+    {
+      "title": "空间体积",
+      "problem": "$A=\\operatorname{diag}(2,3,-1)$ 的体积倍率？",
+      "steps": [
+        "行列式为 $-6$。",
+        "几何体积取绝对值。"
+      ],
+      "answer": "6，定向反转。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-det-geometry-m1",
+      "claim": "负行列式表示负面积。",
+      "correction": "面积非负；符号描述定向。"
+    },
+    {
+      "id": "la-det-geometry-m2",
+      "claim": "行列式相同就表示相同变换。",
+      "correction": "行列式只有一个数，不能确定整个矩阵。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$\\det\\operatorname{diag}(2,5)$ 是多少？",
+      "hint": "相乘对角元素。",
+      "solution": [
+        "$2\\cdot5=10$。"
+      ],
+      "answer": "10",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 10,
+      "id": "la-det-geometry-q1"
+    },
+    {
+      "problem": "两列相同的二阶矩阵面积倍率？",
+      "hint": "两方向重合。",
+      "solution": [
+        "平行四边形退化成线段。"
+      ],
+      "answer": "0",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0,
+      "id": "la-det-geometry-q2"
+    },
+    {
+      "problem": "反射会保持面积吗？",
+      "hint": "分开看绝对值与符号。",
+      "solution": [
+        "正交反射行列式为 $-1$，绝对值为一。"
+      ],
+      "answer": "保持，但翻转定向。",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "la-det-geometry-m1"
+      ],
+      "id": "la-det-geometry-q3"
+    },
+    {
+      "problem": "$\\det A=2$ 的三维变换，是否每个长度都翻倍？",
+      "hint": "考虑对角矩阵。",
+      "solution": [
+        "$\\operatorname{diag}(2,1,1)$ 只拉伸一个方向。"
+      ],
+      "answer": "不是。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-det-geometry-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-matrix-product",
+    "la-independence"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "la-det-geometry-m1",
+    "la-det-geometry-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-det-geometry",
+    "caption": "三列为 $(1,0,0),(0,1,0),(c,0,a)$。剪切改变形状，$a$ 改变有向体积。",
+    "prediction": "体积变成零时，哪些方向重合了？"
+  },
+  "learningCheck": {
+    "question": "行列式的负号表示什么？",
+    "choices": [
+      "负长度",
+      "定向反转",
+      "没有定义"
+    ],
+    "correctIndex": 1,
+    "explanation": "同维几何体积使用行列式的绝对值。"
+  },
+  "teaching": {
+    "explain": "行列式把复杂的空间变形压缩成一个体积读数。这个数能判断是否压扁，却不能告诉你每个方向拉伸多少。",
+    "steps": [
+      {
+        "title": "单位体积",
+        "instruction": "取 $a=1,c=0$。",
+        "preset": {
+          "a": 1,
+          "c": 0
+        },
+        "observation": "行列式与体积均为一。"
+      },
+      {
+        "title": "剪切",
+        "instruction": "取 $a=1,c=1$。",
+        "preset": {
+          "a": 1,
+          "c": 1
+        },
+        "observation": "形状倾斜，体积仍为一。"
+      },
+      {
+        "title": "反转定向",
+        "instruction": "取 $a=-1,c=1$。",
+        "preset": {
+          "a": -1,
+          "c": 1
+        },
+        "observation": "有向体积变为负一，几何体积仍为一。"
+      }
+    ]
+  }
+}

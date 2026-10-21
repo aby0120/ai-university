@@ -7,6 +7,9 @@ export interface Control3 {
   value: number;
 }
 export interface Frame3 {
+  dimension?: number;
+  matrix?: string;
+  axisLabels?: string[];
   lines: { label: string; points: number[][]; color: string; dash: boolean }[];
   polygons: { points: number[][]; color: string; opacity: number }[];
   arrows: { label: string; at: number[]; vector: number[]; color: string }[];

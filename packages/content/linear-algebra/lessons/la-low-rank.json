@@ -1,0 +1,195 @@
+{
+  "id": "la-low-rank",
+  "chapterId": "la-svd",
+  "number": "9.4",
+  "title": "截断 SVD 与最佳低秩近似",
+  "subtitle": "用较少方向保留主要变化",
+  "concept": "保留最大的几个奇异值，可以用更少的方向近似矩阵，并精确计算截断误差。",
+  "intuition": "把最弱的独立变化先删掉，比随便删行、删列或删小元素更有整体依据。",
+  "objectives": [
+    "构造截断 SVD",
+    "计算谱与 Frobenius 截断误差"
+  ],
+  "body": [
+    {
+      "title": "怎样截断？",
+      "text": "$A_k=\\sum_{i=1}^k\\sigma_i u_i v_i^T$；当 $k<r$ 时秩为 $k$。"
+    },
+    {
+      "title": "误差由什么决定？",
+      "text": "谱范数误差为下一奇异值；Frobenius 平方误差为舍弃奇异值平方和。这是 Eckart–Young 低秩最优结论。 Frobenius 范数是矩阵全部元素平方和的平方根。"
+    },
+    {
+      "title": "最优意味着唯一吗？",
+      "text": "不一定。截断边界有重复奇异值时，可有多种同样好的方向选择。最优也只针对声明的范数与秩约束，不保证所有应用目标最佳。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "截断 SVD 与最佳低秩近似",
+    "latex": "\\min_{\\operatorname{rank}B\\le k}\\|A-B\\|_2=\\sigma_{k+1},\\quad\\|A-A_k\\|_F^2=\\sum_{i>k}\\sigma_i^2",
+    "conditions": [
+      "奇异值降序；$0\\le k<r$，大于等于秩时误差为零。谱范数最优性的维数论证见推导；Frobenius 最优性在附录说明。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "截断余项在奇异方向中仍对角。",
+      "latex": "A-A_k=\\sum_{i>k}\\sigma_i u_i v_i^T"
+    },
+    {
+      "text": "秩至多 $k$ 的 $B$ 在前 $k+1$ 个输入方向内必有非零核向量。",
+      "latex": "\\exists x\\in\\operatorname{span}(v_1,\\ldots,v_{k+1}),\\quad\\|x\\|=1,\\quad Bx=0"
+    },
+    {
+      "text": "沿这个输入，任何近似都至少留下下一奇异值。",
+      "latex": "\\|(A-B)x\\|=\\|Ax\\|\\ge\\sigma_{k+1}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "对角截断",
+      "problem": "$A=\\operatorname{diag}(5,2,1)$ 的最佳秩一截断和误差？",
+      "steps": [
+        "保留最大奇异方向，得 $A_1=\\operatorname{diag}(5,0,0)$。",
+        "谱误差为 $2$，Frobenius 误差为 $\\sqrt{2^2+1^2}$。"
+      ],
+      "answer": "误差分别为 $2$ 与 $\\sqrt5$。"
+    },
+    {
+      "title": "保留多少方向",
+      "problem": "奇异值为 $10,1,0.1$，要求谱误差不超过 $0.2$，最少保留几个？",
+      "steps": [
+        "保留一个时下一值为一，超标。",
+        "保留两个时下一值为 $0.1$。"
+      ],
+      "answer": "至少两个。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-low-rank-m1",
+      "claim": "低秩近似就是删最小的矩阵元素。",
+      "correction": "应按奇异方向的整体贡献判断。"
+    },
+    {
+      "id": "la-low-rank-m2",
+      "claim": "保留 $k$ 项一定得到唯一近似。",
+      "correction": "重复奇异值可能造成最优方向不唯一。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "奇异值 $4,3,2$，秩二截断的谱误差？",
+      "hint": "看下一项。",
+      "solution": [
+        "$\\sigma_3=2$。"
+      ],
+      "answer": "2",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 2,
+      "id": "la-low-rank-q1"
+    },
+    {
+      "problem": "同一矩阵秩一截断的 Frobenius 误差？",
+      "hint": "舍弃平方和开根号。",
+      "solution": [
+        "$\\sqrt{3^2+2^2}=\\sqrt{13}$。"
+      ],
+      "answer": "$\\sqrt{13}$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-low-rank-q2"
+    },
+    {
+      "problem": "矩阵已经秩一，保留两个方向会进一步减少精确误差吗？",
+      "hint": "零奇异方向没有贡献。",
+      "solution": [
+        "保留全部非零方向后已经无误差。"
+      ],
+      "answer": "不会。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-low-rank-q3"
+    },
+    {
+      "problem": "两个最大奇异值相同时，最佳秩一方向一定唯一吗？",
+      "hint": "在相同缩放子空间中旋转。",
+      "solution": [
+        "不同单位方向可以达到同样误差。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "la-low-rank-m2"
+      ],
+      "id": "la-low-rank-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-svd"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "la-low-rank-m1",
+    "la-low-rank-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-low-rank",
+    "caption": "原矩阵奇异值为 $2,s$。切换保留方向数，对照原椭圆、近似像和谱范数误差。",
+    "prediction": "删去较小奇异方向后，椭圆的形状和误差怎样变化？"
+  },
+  "learningCheck": {
+    "question": "最佳秩 $k$ 截断的谱误差由哪个量给出？",
+    "choices": [
+      "最大元素",
+      "第 $k$+1 个奇异值",
+      "迹"
+    ],
+    "correctIndex": 1,
+    "explanation": "保留 $k$ 个后，最强的未保留方向决定最大剩余放大。"
+  },
+  "teaching": {
+    "explain": "低秩近似让你在存储或模型复杂度与误差之间做可计算的取舍，而不是凭图像感觉删信息。",
+    "steps": [
+      {
+        "title": "截掉一条方向",
+        "instruction": "取 $s=1$，保留一个方向。",
+        "preset": {
+          "b": 1,
+          "n": 1
+        },
+        "observation": "近似像变成线段，谱误差一。"
+      },
+      {
+        "title": "保留全部",
+        "instruction": "取 $s=1$，保留两个方向。",
+        "preset": {
+          "b": 1,
+          "n": 2
+        },
+        "observation": "完全恢复原矩阵，误差零。"
+      },
+      {
+        "title": "更弱的被删方向",
+        "instruction": "取 $s=0.2$，保留一个方向。",
+        "preset": {
+          "b": 0.2,
+          "n": 1
+        },
+        "observation": "谱误差为 $0.2$。"
+      }
+    ]
+  }
+}

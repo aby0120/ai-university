@@ -1,0 +1,194 @@
+{
+  "id": "la-eigenvectors",
+  "chapterId": "la-eigen",
+  "number": "6.1",
+  "title": "特征向量与特征空间",
+  "subtitle": "变换后仍在同一直线上的方向",
+  "concept": "特征向量是变换后仍与原向量共线的非零向量。",
+  "intuition": "一般向量会改变方向；特征方向只被拉伸、压缩、反向，或在零特征值下被消掉。",
+  "objectives": [
+    "验证特征向量与特征值",
+    "求对应特征空间"
+  ],
+  "body": [
+    {
+      "title": "特征值表示什么？",
+      "text": "$Av=\\lambda v$ 中，$\\lambda$ 给出该方向的有符号缩放。$\\lambda=0$ 允许，但 $v=0$ 不能叫特征向量。"
+    },
+    {
+      "title": "同一特征值的向量组成什么？",
+      "text": "加上零向量后，所有对应向量构成 $\\ker(A-\\lambda I)$，称特征空间。"
+    },
+    {
+      "title": "任意矩阵都有实特征向量吗？",
+      "text": "不一定。平面旋转通常没有实特征方向；允许复数后情况不同。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "特征向量与特征空间",
+    "latex": "Av=\\lambda v,\\quad v\\ne0,\\qquad E_\\lambda=\\ker(A-\\lambda I)",
+    "conditions": [
+      "特征值针对同一有限维空间到自身的方阵；必须说明所用实数域或复数域。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "把数乘移到左侧。",
+      "latex": "(A-\\lambda I)v=0"
+    },
+    {
+      "text": "需要非零齐次解。",
+      "latex": "\\ker(A-\\lambda I)\\ne\\{0\\}"
+    },
+    {
+      "text": "得到特征空间中的所有方向。",
+      "latex": "v\\in E_\\lambda\\setminus\\{0\\}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "直接验证方向",
+      "problem": "$A=\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix}$，检查 $(1,1)$ 和 $(1,-1)$。",
+      "steps": [
+        "$A(1,1)=(3,3)=3(1,1)$。",
+        "$A(1,-1)=(1,-1)$。"
+      ],
+      "answer": "特征值分别为 $3$ 和 $1$。"
+    },
+    {
+      "title": "零特征值",
+      "problem": "$A=\\operatorname{diag}(2,0)$ 的零特征空间？",
+      "steps": [
+        "$Av=0$ 要求第一分量为零。",
+        "所有 $(0,t)$ 构成该空间。"
+      ],
+      "answer": "$E_0=\\operatorname{span}((0,1))$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-eigenvectors-m1",
+      "claim": "零向量也是特征向量。",
+      "correction": "零向量满足所有缩放关系，无法确定特征值，定义排除它。"
+    },
+    {
+      "id": "la-eigenvectors-m2",
+      "claim": "特征值只能正。",
+      "correction": "可以负、零或复数。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$\\operatorname{diag}(2,5)$ 作用于 $(0,3)$，对应特征值？",
+      "hint": "只看该方向缩放。",
+      "solution": [
+        "输出 $(0,15)=5(0,3)$。"
+      ],
+      "answer": "5",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 5,
+      "id": "la-eigenvectors-q1"
+    },
+    {
+      "problem": "$A=-I$ 的每个非零向量都是特征向量吗？",
+      "hint": "对任意向量直接作用。",
+      "solution": [
+        "$Av=-v$。"
+      ],
+      "answer": "是，特征值为负一。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-eigenvectors-q2"
+    },
+    {
+      "problem": "$A$ 可逆时零能是特征值吗？",
+      "hint": "非零零特征向量属于核。",
+      "solution": [
+        "可逆矩阵的核为零。"
+      ],
+      "answer": "不能。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-eigenvectors-q3"
+    },
+    {
+      "problem": "同一特征空间中两个向量相加仍在其中吗？",
+      "hint": "使用线性性。",
+      "solution": [
+        "$A(u+v)=\\lambda(u+v)$；结果可能为零，仍在空间中。"
+      ],
+      "answer": "仍在特征空间中。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-eigenvectors-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-nullspace",
+    "la-linear-maps"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "la-eigenvectors-m1",
+    "la-eigenvectors-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-eigenvectors",
+    "caption": "$A=\\begin{pmatrix}2&c\\\\c&2\\end{pmatrix}$。蓝色为单位输入，金色为输出；特征方向上两者共线。",
+    "prediction": "哪些角度的输入经过矩阵后不改变方向直线？"
+  },
+  "learningCheck": {
+    "question": "特征向量允许被矩阵消成零吗？",
+    "choices": [
+      "允许，对应零特征值",
+      "不允许",
+      "只允许零向量"
+    ],
+    "correctIndex": 0,
+    "explanation": "定义要求输入非零，并不要求输出非零。"
+  },
+  "teaching": {
+    "explain": "特征方向让一个多坐标变换变成一个数的乘法。这是后面简化矩阵幂与动力系统的原因。",
+    "steps": [
+      {
+        "title": "第一特征方向",
+        "instruction": "取 $c=1,\\theta=\\pi/4$。",
+        "preset": {
+          "c": 1,
+          "a": 0.7853981633974483
+        },
+        "observation": "输出长度三，方向相同，对应特征值三。"
+      },
+      {
+        "title": "第二特征方向",
+        "instruction": "取 $c=1,\\theta=3\\pi/4$。",
+        "preset": {
+          "c": 1,
+          "a": 2.356194490192345
+        },
+        "observation": "输出长度一，对应特征值一；两方向垂直。"
+      },
+      {
+        "title": "重复但不缺方向",
+        "instruction": "取 $c=0$。",
+        "preset": {
+          "c": 0,
+          "a": 0.7853981633974483
+        },
+        "observation": "矩阵为 $2I$，每条非零方向都是特征方向。"
+      }
+    ]
+  }
+}

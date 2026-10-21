@@ -1,0 +1,190 @@
+{
+  "id": "la-diagonalization",
+  "chapterId": "la-eigen",
+  "number": "6.4",
+  "title": "对角化与相似矩阵",
+  "subtitle": "换到不混合的坐标",
+  "concept": "找到一组特征向量作基，矩阵就变成按坐标分别缩放的对角矩阵。",
+  "intuition": "换到不互相混合的方向后，矩阵作用不再把不同坐标掺在一起。",
+  "objectives": [
+    "构造特征向量矩阵",
+    "判断可对角化并计算矩阵幂"
+  ],
+  "body": [
+    {
+      "title": "分解如何组成？",
+      "text": "将独立特征向量排成 $S$，对应特征值按相同顺序放在 $D$ 的对角线上；有 $AS=SD$。"
+    },
+    {
+      "title": "什么时候存在？",
+      "text": "$n$ 阶矩阵在给定数域内可对角化，当且仅当存在 $n$ 个无关特征向量。互异的 $n$ 个特征值是充分条件，不是必要条件。"
+    },
+    {
+      "title": "相似保留什么？",
+      "text": "相似矩阵是同一算子的不同坐标表示，保留特征多项式、迹、行列式和秩；一般不保留逐元素数值或欧氏长度。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "对角化与相似矩阵",
+    "latex": "A=SDS^{-1},\\quad A^k=SD^kS^{-1}\\quad(k\\ge0)",
+    "conditions": [
+      "必须有可逆的特征向量矩阵 $S$；特征向量列与对角元素顺序对应。负幂还要求特征值非零。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "逐列应用矩阵。",
+      "latex": "AS=[Av_1\\ \\cdots\\ Av_n]=[\\lambda_1v_1\\ \\cdots\\ \\lambda_nv_n]=SD"
+    },
+    {
+      "text": "右乘逆得到分解。",
+      "latex": "A=SDS^{-1}"
+    },
+    {
+      "text": "反复相乘，中间的逆抵消。",
+      "latex": "A^k=S D^kS^{-1}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "分解再求幂",
+      "problem": "$A=\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix}$，求 $A^2$。",
+      "steps": [
+        "取 $S=\\begin{pmatrix}1&1\\\\1&-1\\end{pmatrix}$，$D=\\operatorname{diag}(3,1)$。",
+        "$SD^2S^{-1}=\\begin{pmatrix}5&4\\\\4&5\\end{pmatrix}$，直接乘法复查。"
+      ],
+      "answer": "$A^2=\\begin{pmatrix}5&4\\\\4&5\\end{pmatrix}$。"
+    },
+    {
+      "title": "重复根也可对角化",
+      "problem": "$A=2I_3$ 是否可对角化？",
+      "steps": [
+        "它已经是对角矩阵。",
+        "标准基提供三个无关特征向量，特征值均为 $2$。"
+      ],
+      "answer": "可对角化。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-diagonalization-m1",
+      "claim": "对角化等于把非对角元素直接删掉。",
+      "correction": "那会改变算子，必须使用换基。"
+    },
+    {
+      "id": "la-diagonalization-m2",
+      "claim": "特征值重复就不能对角化。",
+      "correction": "重复本身不妨碍，只需足够多独立方向。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$D=\\operatorname{diag}(2,-1)$，$D^3$？",
+      "hint": "对角元素分别乘三次。",
+      "solution": [
+        "$D^3=\\operatorname{diag}(8,-1)$。"
+      ],
+      "answer": "$\\operatorname{diag}(8,-1)$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-diagonalization-q1"
+    },
+    {
+      "problem": "可对角化矩阵的特征向量矩阵可否列相关？",
+      "hint": "分解里需要逆。",
+      "solution": [
+        "列相关则矩阵不可逆。"
+      ],
+      "answer": "不可以。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-diagonalization-q2"
+    },
+    {
+      "problem": "$A=SDS^{-1}$，$A^0$ 是什么？",
+      "hint": "非零与零特征值都不妨碍零次矩阵幂。",
+      "solution": [
+        "$A^0=I$，用 $D^0=I$ 得到。"
+      ],
+      "answer": "$I$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-diagonalization-q3"
+    },
+    {
+      "problem": "相似矩阵是否总有相同的奇异值？",
+      "hint": "换基未必正交。",
+      "solution": [
+        "$\\begin{pmatrix}1&c\\\\0&2\\end{pmatrix}$ 与 $\\operatorname{diag}(1,2)$ 相似，但非正交剪切会改变长度缩放。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "id": "la-diagonalization-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-multiplicity",
+    "la-coordinates"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "la-diagonalization-m1",
+    "la-diagonalization-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-diagonalization",
+    "caption": "$S=\\begin{pmatrix}1&c\\\\0&1\\end{pmatrix}$，$D=\\operatorname{diag}(2,1)$，$A=SDS^{-1}$。两列 $S$ 给出两条特征方向。",
+    "prediction": "换到特征基后，原来混合的两个坐标如何分别缩放？"
+  },
+  "learningCheck": {
+    "question": "哪一个是可对角化的必要且充分条件？",
+    "choices": [
+      "所有元素非零",
+      "有足够多线性无关的特征向量",
+      "特征值总和非零"
+    ],
+    "correctIndex": 1,
+    "explanation": "对角化的基必须完全由特征向量组成。"
+  },
+  "teaching": {
+    "explain": "对角化不是简化矩阵外观，而是找到一套能把各方向彻底分开的坐标。",
+    "steps": [
+      {
+        "title": "标准特征基",
+        "instruction": "取 $c=0$。",
+        "preset": {
+          "c": 0
+        },
+        "observation": "矩阵已对角，各坐标独立缩放。"
+      },
+      {
+        "title": "倾斜特征基",
+        "instruction": "取 $c=1$。",
+        "preset": {
+          "c": 1
+        },
+        "observation": "第二特征方向为 $(1,1)$，它仍按一倍缩放。"
+      },
+      {
+        "title": "反向倾斜",
+        "instruction": "取 $c=-1$。",
+        "preset": {
+          "c": -1
+        },
+        "observation": "特征方向改变，但特征值仍为二和一。"
+      }
+    ]
+  }
+}

@@ -226,7 +226,7 @@ export function Visual({
           </button>
         </div>
       )}
-      {lesson.interactiveVisual.kind === "calculus3" ? <Calculus3Visual lesson={lesson} compact={compact} scenario={scenario}/> : lesson.interactiveVisual.kind === "calculus2" ? <Calculus2Visual lesson={lesson} compact={compact} scenario={scenario}/> : dimension === "3d" ? (
+      {['calculus3','linear-algebra'].includes(lesson.interactiveVisual.kind) ? <Calculus3Visual lesson={lesson} compact={compact} scenario={scenario}/> : lesson.interactiveVisual.kind === "calculus2" ? <Calculus2Visual lesson={lesson} compact={compact} scenario={scenario}/> : dimension === "3d" ? (
         <Suspense
           fallback={<div className="solid-loading">准备三维数学模型…</div>}
         >
@@ -1229,7 +1229,7 @@ function PlanarVisual({
 
 /** A read-only snapshot of the same model used in the interactive lesson. */
 export function VisualPreview({ lesson }: { lesson: Lesson }) {
-  if(lesson.interactiveVisual.kind==="calculus3")return <Calculus3Preview lesson={lesson}/>;
+  if(['calculus3','linear-algebra'].includes(lesson.interactiveVisual.kind))return <Calculus3Preview lesson={lesson}/>;
   if(lesson.interactiveVisual.kind==="calculus2")return <Calculus2Preview lesson={lesson}/>;
   const spec = lesson.interactiveVisual;
   const F = functions[spec.function];

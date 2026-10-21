@@ -1,0 +1,194 @@
+{
+  "id": "la-det-properties",
+  "chapterId": "la-determinants",
+  "number": "5.2",
+  "title": "行列式的运算规则",
+  "subtitle": "跟着消元计算行列式",
+  "concept": "行操作和乘积规则，让行列式计算可以跟着消元走。",
+  "intuition": "加上一行的倍数只是剪切，体积不变；交换两行改变符号；缩放一行按同样倍数缩放行列式。",
+  "objectives": [
+    "记录行操作对行列式的影响",
+    "使用乘积与转置公式"
+  ],
+  "body": [
+    {
+      "title": "三种行操作分别怎样影响？",
+      "text": "交换两行乘 $-1$；一行乘 $c$，行列式也乘 $c$；一行加另一行的倍数不变。列操作也有同样规则。"
+    },
+    {
+      "title": "三角矩阵怎样算？",
+      "text": "上、下三角矩阵的行列式都是对角线元素之积。消元过程中必须记录交换和缩放的影响。"
+    },
+    {
+      "title": "乘积与转置呢？",
+      "text": "$\\det(AB)=\\det A\\det B$，$\\det A^T=\\det A$；通常没有 $\\det(A+B)=\\det A+\\det B$。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "行列式的运算规则",
+    "latex": "\\det(AB)=\\det A\\det B,\\quad\\det A^T=\\det A,\\quad\\det(cA)=c^n\\det A",
+    "conditions": [
+      "乘积公式中矩阵同为 $n\\times n$；整矩阵乘常数会缩放所有行。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "把一行的线性组合展开。",
+      "latex": "\\det(\\ldots,r_i+cr_j,\\ldots)=\\det A+c\\det(\\ldots,r_j,\\ldots)"
+    },
+    {
+      "text": "后一项有相同行，故为零。",
+      "latex": "R_i\\leftarrow R_i+cR_j\\Rightarrow\\det\\text{ 不变}"
+    },
+    {
+      "text": "化成三角形并补回交换符号。",
+      "latex": "\\det A=(-1)^s\\prod_i u_{ii}\\quad\\text{若仅加行与交换}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "消元不必展开",
+      "problem": "求 $\\det\\begin{pmatrix}1&2&0\\\\2&5&1\\\\0&0&3\\end{pmatrix}$。",
+      "steps": [
+        "第二行减第一行两倍，变为 $(0,1,1)$。",
+        "上三角对角积为 $1\\cdot1\\cdot3$。"
+      ],
+      "answer": "3。"
+    },
+    {
+      "title": "整矩阵缩放",
+      "problem": "$A$ 为三阶且 $\\det A=2$，求 $\\det(3A)$。",
+      "steps": [
+        "三行都乘三，总倍率 $3^3$。",
+        "$27\\cdot2=54$。"
+      ],
+      "answer": "54。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-det-properties-m1",
+      "claim": "$\\det(cA)=c\\det A$ 总成立。",
+      "correction": "对 $n$ 阶矩阵应乘 $c^n$。"
+    },
+    {
+      "id": "la-det-properties-m2",
+      "claim": "交换两行不影响行列式。",
+      "correction": "绝对值不变，但符号反转。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "一行加另一行五倍，行列式怎样变化？",
+      "hint": "这是一种剪切。",
+      "solution": [
+        "该操作保持行列式。"
+      ],
+      "answer": "不变。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "la-det-properties-q1"
+    },
+    {
+      "problem": "$\\det A=4$，交换两行后是多少？",
+      "hint": "交换反号。",
+      "solution": [
+        "$-4$。"
+      ],
+      "answer": "$-4$",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "la-det-properties-m2"
+      ],
+      "numericAnswer": -4,
+      "id": "la-det-properties-q2"
+    },
+    {
+      "problem": "$A$ 可逆且 $\\det A=2$，$\\det A^{-1}$？",
+      "hint": "对乘积为单位矩阵取行列式。",
+      "solution": [
+        "$\\det A\\det A^{-1}=1$。"
+      ],
+      "answer": "$1/2$",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.5,
+      "id": "la-det-properties-q3"
+    },
+    {
+      "problem": "$A=B=I_2$，行列式对加法可分配吗？",
+      "hint": "直接比较两侧。",
+      "solution": [
+        "$\\det(A+B)=\\det(2I_2)=4$，而 $\\det A+\\det B=2$。"
+      ],
+      "answer": "不可。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-det-properties-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-det-geometry",
+    "la-elimination"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "la-det-properties-m1",
+    "la-det-properties-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-det-properties",
+    "caption": "剪切矩阵 $\\begin{pmatrix}1&c\\\\0&1\\end{pmatrix}$ 改变形状，行列式恒为一。",
+    "prediction": "剪切改变形状时，面积为什么可以不变？"
+  },
+  "learningCheck": {
+    "question": "只把一行乘三，行列式乘多少？",
+    "choices": [
+      "3",
+      "$3^n$",
+      "不变"
+    ],
+    "correctIndex": 0,
+    "explanation": "只有整矩阵缩放才同时改变全部行。"
+  },
+  "teaching": {
+    "explain": "用行列式计算时，每次都记录你做了哪种行操作。不要把消元的变化悄悄忽略掉。",
+    "steps": [
+      {
+        "title": "无剪切",
+        "instruction": "取 $c=0$。",
+        "preset": {
+          "c": 0
+        },
+        "observation": "单位正方形面积一。"
+      },
+      {
+        "title": "向右剪切",
+        "instruction": "取 $c=1$。",
+        "preset": {
+          "c": 1
+        },
+        "observation": "顶边横移，底与高不变。"
+      },
+      {
+        "title": "向左剪切",
+        "instruction": "取 $c=-1$。",
+        "preset": {
+          "c": -1
+        },
+        "observation": "方向相反，面积仍一。"
+      }
+    ]
+  }
+}

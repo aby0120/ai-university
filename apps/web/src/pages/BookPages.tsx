@@ -175,6 +175,7 @@ export function BookPage() {
   const { reading } = useApp();
   const resume=reading.recent.find(id=>book.lessonIds.includes(id));
   const volume=volumes.find(v=>v.id===book.id) as PublishedVolume;
+  const previous=({"calculus-2":"calculus-1","calculus-3":"calculus-2"} as Record<string,string|undefined>)[book.id];
   return (
     <>
       <Breadcrumb
@@ -200,7 +201,7 @@ export function BookPage() {
               <ArrowUpRight size={16} />
             </Link>
           </div>
-          {book.id!=="calculus-1"&&<Link to={book.id==="calculus-3"?"book/calculus-2":"book/calculus-1"} className="text-btn">需要复习？打开前一卷<ArrowUpRight size={15}/></Link>}
+          {previous&&<Link to={'book/'+previous} className="text-btn">需要复习？打开前一卷<ArrowUpRight size={15}/></Link>}
           <BookStats volume={volume}/>
         </div>
         <BookCover small volume={volume}/>

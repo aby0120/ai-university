@@ -220,3 +220,26 @@ test("Calculus III renders all learning surfaces and spatial controls",async({pa
  await expect(page.locator(".problem")).toHaveCount(203);
  await expect(page.locator(".katex-error")).toHaveCount(0);
 });
+
+const linearBook=JSON.parse(fs.readFileSync('packages/content/linear-algebra/book.json','utf8'));
+test('Linear Algebra is independently navigable with complete reading, models and printable exercises',async({page})=>{
+ await page.goto('/#/book/linear-algebra');
+ await expect(page.getByRole('link',{name:'需要复习？打开前一卷',exact:true})).toHaveCount(0);
+ for(const id of linearBook.lessonIds){
+  const lesson=JSON.parse(fs.readFileSync('packages/content/linear-algebra/lessons/'+id+'.json','utf8'));
+  await page.goto('/#/lesson/'+id);
+  await expect(page.getByRole('heading',{name:lesson.title,level:1,exact:true})).toBeVisible();
+  await expect(page.locator('.worked-example')).toHaveCount(2);
+  await expect(page.locator('.katex-error')).toHaveCount(0);
+  await page.getByRole('link',{name:'交互演示',exact:true}).click();
+  await expect(page.locator('.spatial-plot')).toBeVisible();
+  for(const slider of await page.getByRole('slider').all()){await slider.press('Home');await slider.press('End');}
+  await expect(page.locator('svg [d*="NaN"],svg [d*="Infinity"]')).toHaveCount(0);
+  await page.getByRole('link',{name:'练习与解答 4',exact:true}).click();
+  await expect(page.locator('.exercise')).toHaveCount(4);
+ }
+ await page.goto('/linear-algebra.html');
+ await expect(page.locator('.lesson')).toHaveCount(50);
+ await expect(page.locator('.problem')).toHaveCount(250);
+ await expect(page.locator('.katex-error')).toHaveCount(0);
+});

@@ -23,6 +23,7 @@ import {
 } from "../../../../packages/visuals/calculus3.mjs";
 import { Formula, MathText, plainMathText } from "./MathText";
 import { ParameterControl } from "./ParameterControl";
+import {linearControls,linearDefaults,linearFrame,linearPlayback,type LinearControl} from '../../../../packages/visuals/linear-algebra.mjs';
 type View = "space" | "top" | "front";
 type Camera = { yaw: number; elevation: number; zoom: number };
 const initialCamera: Camera = { yaw: -0.85, elevation: 0.58, zoom: 1 };
@@ -46,11 +47,12 @@ export function SpatialPlot({
     pad = 32,
     id = useId().replace(/:/g, ""),
     drag = useRef<{ x: number; y: number; camera: Camera } | null>(null);
+  const planar=frame.dimension===2;
   const yaw = view === "top" ? 0 : view === "front" ? 0 : camera.yaw,
     el = view === "top" ? Math.PI / 2 : view === "front" ? 0 : camera.elevation,
     s = ((H - 2 * pad) / (2 * frame.extent)) * camera.zoom;
   const project = (p: number[]) => {
-    const q = projectPoint(
+    const q = planar ? [p[0]-frame.focus[0],p[1]-frame.focus[1],0] : projectPoint(
       p.map((v, i) => v - frame.focus[i]),
       yaw,
       el,
@@ -80,13 +82,13 @@ export function SpatialPlot({
     });
   return (
     <svg
-      className={"spatial-plot" + (interactive ? " spatial-interactive" : "")}
+      className={"spatial-plot" + (interactive ? " spatial-interactive" : "")+(planar?' linear-planar-plot':'')}
       viewBox={"0 0 " + W + " " + H}
       role="img"
       aria-label={
         title +
         "；" +
-        (view === "space"
+        (planar ? "二维坐标图" : view === "space"
           ? "可旋转三维图"
           : view === "top"
             ? "俯视投影"
@@ -95,6 +97,7 @@ export function SpatialPlot({
       tabIndex={interactive ? 0 : undefined}
       onKeyDown={(e) => {
         if (!interactive) return;
+        if(planar&&e.key.startsWith('Arrow'))return;
         const actions: Record<string, () => void> = {
           ArrowLeft: () => change(-0.12, 0),
           ArrowRight: () => change(0.12, 0),
@@ -116,12 +119,12 @@ export function SpatialPlot({
         // Keep the gesture on the plot instead of starting native SVG text selection.
         e.preventDefault();
         e.currentTarget.focus({ preventScroll: true });
-        if (view !== "space") return;
+        if (view !== "space" || planar) return;
         e.currentTarget.setPointerCapture(e.pointerId);
         drag.current = { x: e.clientX, y: e.clientY, camera };
       }}
       onPointerMove={(e) => {
-        if (!drag.current || !interactive || view !== "space") return;
+        if (!drag.current || !interactive || view !== "space" || planar) return;
         const d = drag.current;
         onCamera?.({
           ...d.camera,
@@ -146,9 +149,8 @@ export function SpatialPlot({
     >
       <title>{title}</title>
       <desc>
-        本地计算的三维几何。三根坐标轴使用相同单位，投影会压缩深度。
-        {interactive ? "拖动旋转；键盘方向键旋转，加减号缩放，Home 恢复。" : ""}
-        切换俯视或正视可以检查二维投影。数值与公式在图下提供。
+        {planar?'二维坐标图，横轴向右、纵轴向上。加减键缩放，Home 恢复。':'三维几何，三轴使用相同单位。拖动或方向键旋转，加减键缩放，Home 恢复；可切换俯视或正视。'}
+        数值与公式在图下提供。
       </desc>
       <defs>
         <radialGradient id={"glow" + id}>
@@ -184,11 +186,14 @@ export function SpatialPlot({
             strokeWidth=".55"
           />
         ))}
-        {[0, 1, 2].map((axis) => {
+        {(planar?[0,1]:[0,1,2]).map((axis) => {
           const from = [0, 0, 0],
             to = [0, 0, 0];
-          from[axis] = -2;
-          to[axis] = 2.3;
+          from[axis] = planar?frame.focus[axis]-frame.extent*.9:-2;
+          to[axis] = planar?frame.focus[axis]+frame.extent*.9:2.3;
+          const power=10**Math.floor(Math.log10(frame.extent));
+          const step=power*(frame.extent/power<2?.5:frame.extent/power<5?1:2);
+          const ticks=planar?Array.from({length:Math.ceil(2*frame.extent/step)+1},(_,i)=>(Math.ceil((frame.focus[axis]-frame.extent*.8)/step)+i)*step).filter(x=>x!==0&&x<frame.focus[axis]+frame.extent*.8):[-1,1,2];
           const end = project(to);
           return (
             <g key={axis}>
@@ -205,9 +210,9 @@ export function SpatialPlot({
                 className="axis-letter"
                 fill={["#bfe3b6", "#9bd7e6", "#eed3aa"][axis]}
               >
-                {["x", "y", "z"][axis]}
+                {(frame.axisLabels??["x", "y", "z"])[axis]}
               </text>
-              {[-1, 1, 2].map((v) => {
+              {ticks.map((v) => {
                 const point = [0, 0, 0];
                 point[axis] = v;
                 const q = project(point);
@@ -310,7 +315,7 @@ export function SpatialPlot({
       </g>
       {interactive && (
         <text x="20" y={H - 18} fill="#9ebcac" fontSize="11">
-          {view === "space"
+          {planar ? "加减键缩放 · Home 恢复" : view === "space"
             ? "拖动旋转 · 方向键也可操作"
             : view === "top"
               ? "俯视：高度被投影到同一平面"
@@ -329,8 +334,10 @@ export default function Calculus3Visual({
   compact?: boolean;
   scenario?: TeachingPreset & { revision: number };
 }) {
-  const controls = useMemo(() => calculus3Controls(lesson.id), [lesson.id]),
-    defaults = useMemo(() => calculus3Defaults(lesson.id), [lesson.id]);
+  const linear=lesson.interactiveVisual.kind==='linear-algebra';
+  const controls = useMemo<LinearControl[]>(() => linear?linearControls(lesson.id):calculus3Controls(lesson.id), [lesson.id,linear]),
+    defaults = useMemo(() => linear?linearDefaults(lesson.id):calculus3Defaults(lesson.id), [lesson.id,linear]);
+  const playback=linear?linearPlayback:calculus3Playback;
   const [values, setValues] = useState(defaults),
     [playing, setPlaying] = useState(false),
     [done, setDone] = useState(false),
@@ -365,7 +372,7 @@ export default function Calculus3Visual({
       }
       progress.current += last ? Math.min(0.1, (now - last) / 1000) * speed : 0;
       last = now;
-      const a = calculus3Playback(lesson.id, seed.current, progress.current);
+      const a = playback(lesson.id, seed.current, progress.current);
       setValues((v) => ({ ...v, [a.key]: a.value }));
       if (a.done) {
         setPlaying(false);
@@ -374,7 +381,7 @@ export default function Calculus3Visual({
     };
     req = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(req);
-  }, [playing, speed, lesson.id]);
+  }, [playing, speed, lesson.id,playback]);
   useEffect(() => {
     const el = card.current;
     if (!el) return;
@@ -392,8 +399,8 @@ export default function Calculus3Visual({
     };
   }, []);
   const frame = useMemo(
-    () => calculus3Frame(lesson.id, values),
-    [lesson.id, values],
+    () => linear?linearFrame(lesson.id, values):calculus3Frame(lesson.id, values),
+    [lesson.id, values,linear],
   );
   const legend = [
     ...frame.lines.filter((l) => l.label),
@@ -419,7 +426,7 @@ export default function Calculus3Visual({
       return;
     }
     let next = { ...values };
-    const target = calculus3Playback(lesson.id, next, 6);
+    const target = playback(lesson.id, next, 6);
     if (next[target.key] === target.value) {
       const c = controls.find((c) => c.key === target.key)!;
       next[target.key] = target.key === "h" ? c.max : c.min;
@@ -438,7 +445,7 @@ export default function Calculus3Visual({
     >
       <div className="visual-heading">
         <div>
-          <span className="eyebrow">SPATIAL THINKING / CALCULUS III</span>
+          <span className="eyebrow">{linear?'LINEAR ALGEBRA':'SPATIAL THINKING / CALCULUS III'}</span>
           <h3>{lesson.title}</h3>
         </div>
         <button className="icon-btn" aria-label="重置演示" onClick={reset}>
@@ -448,9 +455,9 @@ export default function Calculus3Visual({
       <div className="c3-stage-head">
         <span className="c3-local-badge">
           <Move3D size={13} />
-          本地三维几何
+          {linear?(frame.dimension===2?'二维图示':'三维图示'):'本地三维几何'}
         </span>
-        <div className="c3-views" role="group" aria-label="投影视角">
+        {frame.dimension!==2&&<div className="c3-views" role="group" aria-label="投影视角">
           {(
             [
               ["space", "三维"],
@@ -466,8 +473,9 @@ export default function Calculus3Visual({
               {label}
             </button>
           ))}
-        </div>
+        </div>}
       </div>
+      {frame.matrix&&<div className="linear-matrix"><Formula latex={frame.matrix}/></div>}
       <div className="c3-formula">
         <Formula latex={frame.formula} />
       </div>
@@ -483,7 +491,7 @@ export default function Calculus3Visual({
         <div className="c3-camera-tools">
           <button
             className="icon-btn"
-            aria-label="放大三维图"
+            aria-label={frame.dimension===2?'放大图形':'放大三维图'}
             onClick={() =>
               setCamera((c) => ({ ...c, zoom: Math.min(1.9, c.zoom + 0.15) }))
             }
@@ -492,7 +500,7 @@ export default function Calculus3Visual({
           </button>
           <button
             className="icon-btn"
-            aria-label="缩小三维图"
+            aria-label={frame.dimension===2?'缩小图形':'缩小三维图'}
             onClick={() =>
               setCamera((c) => ({ ...c, zoom: Math.max(0.6, c.zoom - 0.15) }))
             }
@@ -501,7 +509,7 @@ export default function Calculus3Visual({
           </button>
           <button
             className="icon-btn"
-            aria-label="恢复三维视角"
+            aria-label={frame.dimension===2?'恢复图形视角':'恢复三维视角'}
             onClick={() => {
               setView("space");
               setCamera(initialCamera);
@@ -534,7 +542,7 @@ export default function Calculus3Visual({
         ))}
       </div>
       <div className="controls">
-        {controls.map((c) => (
+        {controls.map((c) => c.options ? <label className="linear-choice" key={c.key}><MathText text={c.label}/><select aria-label={plainMathText(c.label)} value={values[c.key]} onChange={e=>update(c.key,+e.target.value)}>{c.options.map(o=><option key={o.value} value={o.value}>{o.label}</option>)}</select></label> : (
           <ParameterControl
             key={c.key}
             label={c.label}
@@ -569,7 +577,7 @@ export default function Calculus3Visual({
       </div>
       {done && (
         <p className="playback-finish" role="status">
-          已到本次参数的明确终点。趋零演示保留正数下界；有限图示不等于无穷极限的证明。
+          {linear?'本次参数变化已播完。':'已到本次参数的明确终点。趋零演示保留正数下界；有限图示不等于无穷极限的证明。'}
         </p>
       )}
       <p className="visual-caption">
@@ -578,7 +586,7 @@ export default function Calculus3Visual({
         </span>
       </p>
       <p className="visual-disclaimer">{frame.note}</p>
-      <details className="c3-help">
+      {frame.dimension!==2&&<details className="c3-help">
         <summary>
           <ArrowUpRight size={13} />
           操作与投影说明
@@ -588,11 +596,11 @@ export default function Calculus3Visual({
           恢复。手机请在图内拖动，正文区域仍可正常滚动。俯视和正视压缩一个方向；切回三维可以检查遮挡。所有几何在本地用向量坐标计算，无需
           WebGL。
         </p>
-      </details>
+      </details>}
     </section>
   );
 }
 export function Calculus3Preview({ lesson }: { lesson: Lesson }) {
-  const frame = calculus3Frame(lesson.id);
+  const frame = lesson.interactiveVisual.kind==='linear-algebra'?linearFrame(lesson.id):calculus3Frame(lesson.id);
   return <SpatialPlot frame={frame} title={lesson.title} />;
 }

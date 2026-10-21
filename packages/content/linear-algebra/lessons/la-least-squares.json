@@ -1,0 +1,196 @@
+{
+  "id": "la-least-squares",
+  "chapterId": "la-orthogonal",
+  "number": "7.6",
+  "title": "最小二乘与正则方程",
+  "subtitle": "找最近的可达输出",
+  "concept": "精确方程无解时，最小二乘让残差的平方长度最小。",
+  "intuition": "把无法达到的右端投到列空间，再找一个输入产生这个最近的可达输出。",
+  "objectives": [
+    "建立并求解正则方程",
+    "区分最优输出与最优输入的唯一性"
+  ],
+  "body": [
+    {
+      "title": "正则方程从哪来？",
+      "text": "最优残差 $r=b-A\\hat x$ 与每一列垂直，所以 $A^T(A\\hat x-b)=0$。"
+    },
+    {
+      "title": "解是否唯一？",
+      "text": "最优输出 $A\\hat x$ 总唯一；最优输入当且仅当列满秩时唯一。列相关时可沿核平移，误差不变。"
+    },
+    {
+      "title": "实际怎样计算？",
+      "text": "列满秩时可用 QR，解 $R\\hat x=Q^Tb$。直接形成 $A^TA$ 可能放大条件数，不是所有场合的最佳数值办法。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "最小二乘与正则方程",
+    "latex": "\\hat x\\in\\arg\\min_x\\|Ax-b\\|^2\\iff A^TA\\hat x=A^Tb",
+    "conditions": [
+      "有限维实欧氏范数；若写 $(A^TA)^{-1}$，须另有列满秩条件。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "最优余量与列空间正交。",
+      "latex": "A^T(b-A\\hat x)=0"
+    },
+    {
+      "text": "任意其他输入只增加平方误差。",
+      "latex": "\\|b-Ax\\|^2=\\|b-A\\hat x\\|^2+\\|A(x-\\hat x)\\|^2"
+    },
+    {
+      "text": "列满秩才使输入也唯一。",
+      "latex": "A(x-\\hat x)=0\\Rightarrow x=\\hat x\\quad\\text{若 }\\ker A=0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "拟合一条直线",
+      "problem": "用 $y=\\beta_0+\\beta_1x$ 拟合 $(0,1),(1,2),(2,2)$。",
+      "steps": [
+        "$A=\\begin{pmatrix}1&0\\\\1&1\\\\1&2\\end{pmatrix}$，正则方程为 $\\begin{pmatrix}3&3\\\\3&5\\end{pmatrix}\\binom{\\beta_0}{\\beta_1}=\\binom56$。",
+        "解得 $\\beta_1=1/2,\\beta_0=7/6$。",
+        "残差为 $(-1/6,1/3,-1/6)$，平方和 $1/6$。"
+      ],
+      "answer": "$\\hat y=7/6+x/2$。"
+    },
+    {
+      "title": "最优输入不唯一",
+      "problem": "最小化 $(x+y-1)^2$。",
+      "steps": [
+        "只要 $x+y=1$，误差都为零。",
+        "例如 $(1,0)$、$(0,1)$ 都是最优。"
+      ],
+      "answer": "输出唯一为一，输入不唯一。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-least-squares-m1",
+      "claim": "最小二乘总能让每个误差为零。",
+      "correction": "只有右端在列空间时才能零残差。"
+    },
+    {
+      "id": "la-least-squares-m2",
+      "claim": "正则方程永远可直接求逆。",
+      "correction": "列相关时其系数矩阵奇异。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "用一个常数拟合数值 1、2、3，最优常数？",
+      "hint": "投到全一向量方向。",
+      "solution": [
+        "$c=(1+2+3)/3=2$。"
+      ],
+      "answer": "2",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 2,
+      "id": "la-least-squares-q1"
+    },
+    {
+      "problem": "最优残差与 $A$ 的列有什么关系？",
+      "hint": "正则方程。",
+      "solution": [
+        "$A^Tr=0$。"
+      ],
+      "answer": "与每一列垂直。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-least-squares-q2"
+    },
+    {
+      "problem": "$b\\in\\operatorname{col}A$ 时最小误差？",
+      "hint": "存在精确解。",
+      "solution": [
+        "可取残差零。"
+      ],
+      "answer": "0",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0,
+      "id": "la-least-squares-q3"
+    },
+    {
+      "problem": "同一个最优输入加核向量后，误差会变吗？",
+      "hint": "矩阵作用不变。",
+      "solution": [
+        "$A(\\hat x+z)=A\\hat x$。"
+      ],
+      "answer": "不变。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-least-squares-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-qr",
+    "la-column-row"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "la-least-squares-m1",
+    "la-least-squares-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-least-squares",
+    "caption": "用 $y=ax+b$ 拟合三点 $(0,1),(1,2),(2,2)$，图中竖线是每个残差。",
+    "prediction": "调整直线时，残差平方和在哪里最小？"
+  },
+  "learningCheck": {
+    "question": "最小二乘中的最优输出是否唯一？",
+    "choices": [
+      "总唯一",
+      "只有方阵才唯一",
+      "从不唯一"
+    ],
+    "correctIndex": 0,
+    "explanation": "正交投影唯一；输入是否唯一另取决于核。"
+  },
+  "teaching": {
+    "explain": "无解不等于没有合理答案。先找最近的可达输出，再区分产生它的输入是否只有一个。",
+    "steps": [
+      {
+        "title": "常数拟合",
+        "instruction": "取 $a=0,b=1$。",
+        "preset": {
+          "a": 0,
+          "b": 1
+        },
+        "observation": "残差平方和为二。"
+      },
+      {
+        "title": "过陡的直线",
+        "instruction": "取 $a=1,b=1$。",
+        "preset": {
+          "a": 1,
+          "b": 1
+        },
+        "observation": "残差平方和为一。"
+      },
+      {
+        "title": "最优直线",
+        "instruction": "取 $a=1/2,b=7/6$。",
+        "preset": {
+          "a": 0.5,
+          "b": 1.1666666666666667
+        },
+        "observation": "残差平方和降为 $1/6$，仍有非零残差。"
+      }
+    ]
+  }
+}
