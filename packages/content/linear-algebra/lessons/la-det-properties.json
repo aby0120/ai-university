@@ -41,7 +41,7 @@
       "latex": "R_i\\leftarrow R_i+cR_j\\Rightarrow\\det\\text{ 不变}"
     },
     {
-      "text": "化成三角形并补回交换符号。",
+      "text": "化成上三角矩阵，再计入交换行造成的变号。",
       "latex": "\\det A=(-1)^s\\prod_i u_{ii}\\quad\\text{若仅加行与交换}"
     }
   ],
