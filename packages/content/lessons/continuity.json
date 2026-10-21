@@ -65,12 +65,12 @@
     },
     {
       "title": "保证方程有根",
-      "problem": "说明 $x^3+x-1=0$ 在 (0,1) 有根。",
+      "problem": "说明 $x^3+x-1=0$ 在 $(0,1)$ 有根。",
       "steps": [
-        "多项式在 [0,1] 连续。",
+        "多项式在 $[0,1]$ 连续。",
         "$f (0) = - 1$，$f (1) = 1$，零在端点值之间。"
       ],
-      "answer": "由介值定理，至少有一个根在 (0,1)。"
+      "answer": "由介值定理，至少有一个根在 $(0,1)$。"
     }
   ],
   "commonMistakes": [
@@ -119,7 +119,7 @@
       "misconceptionTags": [
         "continuity-m2"
       ],
-      "problem": "用介值定理说明 $\\cos x=x$ 在 (0,1) 有解。",
+      "problem": "用介值定理说明 $\\cos x=x$ 在 $(0,1)$ 有解。",
       "answer": "存在解。",
       "solution": [
         "$g (x) = \\cos x - x$ 连续；$g (0) = 1 > 0$，$g (1) = \\cos 1 - 1 < 0$。",
@@ -152,7 +152,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "status": "revised",
     "humanReviewed": false
   },

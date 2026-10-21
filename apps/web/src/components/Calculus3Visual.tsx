@@ -439,7 +439,7 @@ export default function Calculus3Visual({
       <div className="visual-heading">
         <div>
           <span className="eyebrow">SPATIAL THINKING / CALCULUS III</span>
-          <h3>把变化放进空间</h3>
+          <h3>{lesson.title}</h3>
         </div>
         <button className="icon-btn" aria-label="重置演示" onClick={reset}>
           <RotateCcw size={17} />

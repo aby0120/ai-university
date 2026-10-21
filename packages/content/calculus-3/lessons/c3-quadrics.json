@@ -147,7 +147,7 @@
     "steps": [
       {
         "title": "向上弯曲",
-        "instruction": "将平方项系数 $c$设为 $1$，比较图形和读数。",
+        "instruction": "将平方项系数 $c$ 设为 $1$。",
         "preset": {
           "c": 1
         },
@@ -155,7 +155,7 @@
       },
       {
         "title": "柱面",
-        "instruction": "将平方项系数 $c$设为 $0$，比较图形和读数。",
+        "instruction": "将平方项系数 $c$ 设为 $0$。",
         "preset": {
           "c": 0
         },
@@ -163,7 +163,7 @@
       },
       {
         "title": "鞍面",
-        "instruction": "将平方项系数 $c$设为 $-1$，比较图形和读数。",
+        "instruction": "将平方项系数 $c$ 设为 $-1$。",
         "preset": {
           "c": -1
         },
@@ -181,8 +181,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [

@@ -270,7 +270,7 @@ export function Calculus2Visual({
       <div className="visual-heading">
         <div>
           <span className="eyebrow">EXPLORE THE IDEA / CALCULUS II</span>
-          <h3>图形、近似与条件</h3>
+          <h3>{lesson.title}</h3>
         </div>
         <button
           className="icon-btn"

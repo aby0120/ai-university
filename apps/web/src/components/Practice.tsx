@@ -56,7 +56,7 @@ export function PracticeSet({
       <div className="section-heading">
         <span className="eyebrow">PRACTICE & REFLECT</span>
         <h2 ref={heading} tabIndex={-1} style={{ scrollMarginTop: 140 }}>
-          先尝试，再看解答
+          练习
         </h2>
         <p>数字题可检查数值；推导题请对照步骤自评。记录只保存在当前浏览器。</p>
       </div>
@@ -166,7 +166,7 @@ function Question({
     setFeedback(
       ok
         ? "数值正确。请继续检查单位与推导步骤。"
-        : "数值暂不一致。先检查这一步，再试一次。",
+        : "答案不一致，请检查计算和单位。",
     );
     if(!ok)onMark("review");
   }
@@ -179,7 +179,7 @@ function Question({
         <span>难度 {q.difficulty}/6</span>
         {status && (
           <span className={"status " + status}>
-            {status === "understood" ? "已掌握 · 自评/数值检查" : "需要回顾"}
+            {status === "understood" ? "已掌握" : "需要回顾"}
           </span>
         )}
       </header>
@@ -235,8 +235,8 @@ function Question({
       )}
       {hint && (
         <div className="hint staged-hint">
-          <span>先找入口</span><p><MathText text={q.hint}/></p>
-          {!nextHint?<button className="text-btn" onClick={()=>setNextHint(true)}>再给一步<ArrowRight size={14}/></button>:<><span>第一步可以这样开始</span><p><MathText text={q.solution[0]}/></p></>}
+          <span>提示</span><p><MathText text={q.hint}/></p>
+          {!nextHint?<button className="text-btn" onClick={()=>setNextHint(true)}>再看一步<ArrowRight size={14}/></button>:<><span>解题第一步</span><p><MathText text={q.solution[0]}/></p></>}
         </div>
       )}
       {reveal && (

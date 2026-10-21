@@ -146,7 +146,7 @@
     "steps": [
       {
         "title": "平面圆盘",
-        "instruction": "将曲面鼓起高度 $c$设为 $0$，比较图形和读数。",
+        "instruction": "将曲面鼓起高度 $c$ 设为 $0$。",
         "preset": {
           "c": 0
         },
@@ -154,7 +154,7 @@
       },
       {
         "title": "抬起内部",
-        "instruction": "将曲面鼓起高度 $c$设为 $0.5$，比较图形和读数。",
+        "instruction": "将曲面鼓起高度 $c$ 设为 $0.5$。",
         "preset": {
           "c": 0.5
         },
@@ -162,7 +162,7 @@
       },
       {
         "title": "更高曲面",
-        "instruction": "将曲面鼓起高度 $c$设为 $1$，比较图形和读数。",
+        "instruction": "将曲面鼓起高度 $c$ 设为 $1$。",
         "preset": {
           "c": 1
         },
@@ -181,8 +181,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [

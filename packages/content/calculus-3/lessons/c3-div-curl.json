@@ -144,7 +144,7 @@
     "steps": [
       {
         "title": "纯旋转",
-        "instruction": "将径向场系数 $c$设为 $0$，比较图形和读数。",
+        "instruction": "将径向场系数 $c$ 设为 $0$。",
         "preset": {
           "c": 0
         },
@@ -152,7 +152,7 @@
       },
       {
         "title": "加入膨胀",
-        "instruction": "将径向场系数 $c$设为 $0.5$，比较图形和读数。",
+        "instruction": "将径向场系数 $c$ 设为 $0.5$。",
         "preset": {
           "c": 0.5
         },
@@ -160,7 +160,7 @@
       },
       {
         "title": "更强膨胀",
-        "instruction": "将径向场系数 $c$设为 $1$，比较图形和读数。",
+        "instruction": "将径向场系数 $c$ 设为 $1$。",
         "preset": {
           "c": 1
         },
@@ -180,8 +180,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [

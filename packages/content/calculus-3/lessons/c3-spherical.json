@@ -145,7 +145,7 @@
     "steps": [
       {
         "title": "靠近北极",
-        "instruction": "将倾角 $\\phi$设为 $0.1$，比较图形和读数。",
+        "instruction": "将倾角 $\\phi$ 设为 $0.1$。",
         "preset": {
           "a": 0.1
         },
@@ -153,7 +153,7 @@
       },
       {
         "title": "中纬度",
-        "instruction": "将倾角 $\\phi$设为 $\\frac\\pi4$，比较图形和读数。",
+        "instruction": "将倾角 $\\phi$ 设为 $\\frac\\pi4$。",
         "preset": {
           "a": 0.7853981633974483
         },
@@ -161,7 +161,7 @@
       },
       {
         "title": "赤道",
-        "instruction": "将倾角 $\\phi$设为 $\\frac\\pi2$，比较图形和读数。",
+        "instruction": "将倾角 $\\phi$ 设为 $\\frac\\pi2$。",
         "preset": {
           "a": 1.5707963267948966
         },
@@ -180,8 +180,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [

@@ -55,7 +55,7 @@
   "workedExamples": [
     {
       "title": "找到保证的点",
-      "problem": "对 $f(x)=x^2$ 在 [1,3] 找中值定理中的 $c$。",
+      "problem": "对 $f(x)=x^2$ 在 $[1,3]$ 找中值定理中的 $c$。",
       "steps": [
         "割线斜率为 $\\frac{9 - 1}{3 - 1} = 4$。",
         "令 $f' (c) = 2 c = 4$ 得 $c = 2$，位于内部。"
@@ -64,7 +64,7 @@
     },
     {
       "title": "条件缺一个就不行",
-      "problem": "为什么 $f(x)=|x|$ 在 [−1,1] 不适用罗尔定理？",
+      "problem": "为什么 $f(x)=|x|$ 在 $[-1,1]$ 不适用罗尔定理？",
       "steps": [
         "虽然连续且端点同为 1。",
         "但在 0 不可导；其他点导数只为 $\\pm 1$，没有零导数。"
@@ -91,7 +91,7 @@
       "misconceptionTags": [
         "mean-value-m2"
       ],
-      "problem": "$f (x) = x^{3}$ 在 [0,1]，求满足中值定理的 $c$。",
+      "problem": "$f (x) = x^{3}$ 在 $[0,1]$，求满足中值定理的 $c$。",
       "answer": "$\\frac{1}{\\sqrt{3}}$。",
       "solution": [
         "割线斜率 1，$3 c^{2} = 1$，取区间内正根。"
@@ -115,7 +115,7 @@
       "misconceptionTags": [
         "mean-value-m2"
       ],
-      "problem": "$f (x) = 2 x + 1$ 在 [0,4] 的 $c$ 是哪一个？",
+      "problem": "$f (x) = 2 x + 1$ 在 $[0,4]$ 的 $c$ 是哪一个？",
       "answer": "任意 $c \\in (0 , 4)$ 都可以。",
       "solution": [
         "所有导数与割线斜率都为 2。"
@@ -145,7 +145,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "status": "revised",
     "humanReviewed": false
   },

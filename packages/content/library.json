@@ -92,8 +92,8 @@
       "stats": {
         "chapters": 8,
         "lessons": 35,
-        "examples": 70,
-        "exercises": 178
+        "examples": 72,
+        "exercises": 179
       },
       "coverFormula": "T_m(x)=\\sum_{n=0}^{m}\\frac{f^{(n)}(a)}{n!}(x-a)^n"
     },
@@ -115,7 +115,7 @@
       "stats": {
         "chapters": 9,
         "lessons": 40,
-        "examples": 80,
+        "examples": 81,
         "exercises": 203
       },
       "coverFormula": "\\iint_{\\partial E}\\mathbf F\\cdot\\mathbf n\\,dS=\\iiint_E\\nabla\\cdot\\mathbf F\\,dV"

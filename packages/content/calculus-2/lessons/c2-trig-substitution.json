@@ -57,6 +57,16 @@
         "$dx=2\\sec^2\\theta d\\theta$，故积分为 $\\frac12\\theta+C$。"
       ],
       "answer": "$\\frac12\\arctan\\frac x2+C$。"
+    },
+    {
+      "title": "平方和根式：代换后再分解",
+      "problem": "求 $\\int\\frac{x^2}{\\sqrt{x^2+4}}\\,dx$。",
+      "steps": [
+        "令 $x=2\\tan\\theta$，取 $-\\pi/2<\\theta<\\pi/2$，于是 $\\sqrt{x^2+4}=2\\sec\\theta>0$，$dx=2\\sec^2\\theta\\,d\\theta$。",
+        "积分变成 $4\\int(\\sec^3\\theta-\\sec\\theta)\\,d\\theta$。由分部积分得 $\\int\\sec^3\\theta\\,d\\theta=\\tfrac12(\\sec\\theta\\tan\\theta+\\ln|\\sec\\theta+\\tan\\theta|)+C$，故结果是 $2\\sec\\theta\\tan\\theta-2\\ln|\\sec\\theta+\\tan\\theta|+C$。",
+        "代回 $\\tan\\theta=x/2$、$\\sec\\theta=\\sqrt{x^2+4}/2$。对数中的常数因子并入 $C$；$x+\\sqrt{x^2+4}>0$ 对所有实数成立。"
+      ],
+      "answer": "$\\frac{x\\sqrt{x^2+4}}2-2\\ln(x+\\sqrt{x^2+4})+C$，$x\\in\\mathbb R$。"
     }
   ],
   "commonMistakes": [
@@ -177,8 +187,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [

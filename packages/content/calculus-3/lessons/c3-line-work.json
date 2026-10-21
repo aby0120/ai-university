@@ -148,7 +148,7 @@
     "steps": [
       {
         "title": "逆时针局部",
-        "instruction": "将路径参数 $t$设为 $\\frac\\pi2$，比较图形和读数。",
+        "instruction": "将路径参数 $t$ 设为 $\\frac\\pi2$。",
         "preset": {
           "x": 1.5707963267948966
         },
@@ -156,7 +156,7 @@
       },
       {
         "title": "半周",
-        "instruction": "将路径参数 $t$设为 $\\pi$，比较图形和读数。",
+        "instruction": "将路径参数 $t$ 设为 $\\pi$。",
         "preset": {
           "x": 3.141592653589793
         },
@@ -164,7 +164,7 @@
       },
       {
         "title": "完整闭路",
-        "instruction": "将路径参数 $t$设为 $2\\pi$，比较图形和读数。",
+        "instruction": "将路径参数 $t$ 设为 $2\\pi$。",
         "preset": {
           "x": 6.283185307179586
         },
@@ -183,8 +183,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [

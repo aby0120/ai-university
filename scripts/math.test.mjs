@@ -14,8 +14,8 @@ const near = (a, b, tol = 1e-7) =>
 test("entire manuscript is linked, schema valid, formula-renderable and acyclic", () => {
   const result = validateContent();
   assert.equal(result.sections, 110);
-  assert.equal(result.exercises, 572);
-  assert.equal(result.examples, 229);
+  assert.equal(result.exercises, 573);
+  assert.equal(result.examples, 232);
   assert.equal(result.publishedVolumes, 3);
   assert.equal(result.chapters, 24);
 });

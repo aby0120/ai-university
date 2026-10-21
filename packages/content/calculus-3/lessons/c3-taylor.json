@@ -146,7 +146,7 @@
     "steps": [
       {
         "title": "较大位移",
-        "instruction": "将相同坐标位移 $h$设为 $0.5$，比较图形和读数。",
+        "instruction": "将相同坐标位移 $h$ 设为 $0.5$。",
         "preset": {
           "h": 0.5
         },
@@ -154,7 +154,7 @@
       },
       {
         "title": "小位移",
-        "instruction": "将相同坐标位移 $h$设为 $0.1$，比较图形和读数。",
+        "instruction": "将相同坐标位移 $h$ 设为 $0.1$。",
         "preset": {
           "h": 0.1
         },
@@ -162,7 +162,7 @@
       },
       {
         "title": "更小位移",
-        "instruction": "将相同坐标位移 $h$设为 $0.01$，比较图形和读数。",
+        "instruction": "将相同坐标位移 $h$ 设为 $0.01$。",
         "preset": {
           "h": 0.01
         },
@@ -182,8 +182,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [

@@ -147,7 +147,7 @@
     "steps": [
       {
         "title": "粗网格",
-        "instruction": "将每方向分块数 $n$设为 $2$，比较图形和读数。",
+        "instruction": "将每方向分块数 $n$ 设为 $2$。",
         "preset": {
           "n": 2
         },
@@ -155,7 +155,7 @@
       },
       {
         "title": "较细网格",
-        "instruction": "将每方向分块数 $n$设为 $6$，比较图形和读数。",
+        "instruction": "将每方向分块数 $n$ 设为 $6$。",
         "preset": {
           "n": 6
         },
@@ -163,7 +163,7 @@
       },
       {
         "title": "细网格",
-        "instruction": "将每方向分块数 $n$设为 $16$，比较图形和读数。",
+        "instruction": "将每方向分块数 $n$ 设为 $16$。",
         "preset": {
           "n": 16
         },
@@ -183,8 +183,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [

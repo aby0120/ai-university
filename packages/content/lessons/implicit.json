@@ -57,10 +57,10 @@
   "workedExamples": [
     {
       "title": "圆上的斜率",
-      "problem": "圆 $x^2+y^2=25$ 在 (3,4) 的切线？",
+      "problem": "圆 $x^2+y^2=25$ 在 $(3,4)$ 的切线？",
       "steps": [
         "隐式求导给 $y' = \\frac{- x}{y}$。",
-        "斜率为 $\\frac{- 3}{4}$，通过 (3,4)。"
+        "斜率为 $\\frac{- 3}{4}$，通过 $(3,4)$。"
       ],
       "answer": "$y-4=-\\frac34(x-3)$。"
     },
@@ -128,7 +128,7 @@
       "id": "implicit-p3",
       "difficulty": 1,
       "misconceptionTags": [],
-      "problem": "$x^2+y^2=25$ 在 (0,5) 的斜率？",
+      "problem": "$x^2+y^2=25$ 在 $(0,5)$ 的斜率？",
       "answer": "$0$。",
       "solution": [
         "$\\frac{- x}{y} = \\frac{- 0}{5} = 0$。"
@@ -177,7 +177,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "status": "revised",
     "humanReviewed": false
   },

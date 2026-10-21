@@ -37,7 +37,7 @@ import { useApp } from "../lib/state";
 const sections = [
   ["idea", "先看结论"],
   ["intuition", "怎么理解"],
-  ["visual", "亲手探索"],
+  ["visual", "交互演示"],
   ["explain", "关键问题"],
   ["definition", "定义与条件"],
   ["derivation", "一步步推导"],
@@ -201,7 +201,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
                 <div className="visual-section-heading">
                   <span>
                     <Beaker size={18} />
-                    亲手探索
+                    交互演示
                   </span>
                   <Link to={lessonPath(l.id)} params={{ view: "visual" }}>
                     专注演示
@@ -307,7 +307,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
               <div className="lesson-finish">
                 <div>
                   <Eyebrow>NOW, TRY IT YOURSELF</Eyebrow>
-                  <h2>用练习检验理解。</h2>
+                  <h2>本节练习</h2>
                   <p>{l.practice.length} 道练习，检查概念、计算与适用条件。</p>
                 </div>
                 <Link
@@ -337,26 +337,12 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
           ) : view === "visual" ? (
             <div className="focus-visual">
               <div className="focus-visual-intro">
-                <Eyebrow>改变一个量，看清一个关系</Eyebrow>
-                <h2>带着问题探索</h2>
-                <p>
-                  <MathText text={l.concept} />
-                </p>
+                <h2>交互演示</h2>
               </div>
               <Visual lesson={l} />
-              <div className="observation">
-                <Lightbulb size={20} />
-                <div>
-                  <h3>观察任务</h3>
-                  <p>
-                    先说出你的预测，再改变一个参数。数值与图像是否支持它？回到推导解释原因。
-                  </p>
-                  <Link to={lessonPath(l.id)}>
-                    回到定义与推导
-                    <ArrowRight size={15} />
-                  </Link>
-                </div>
-              </div>
+              <Link to={lessonPath(l.id)} className="text-btn">
+                查看定义与推导 <ArrowRight size={15} />
+              </Link>
             </div>
           ) : view === "practice" ? (
             <Practice lesson={l} progress={progress} onMark={mark} />

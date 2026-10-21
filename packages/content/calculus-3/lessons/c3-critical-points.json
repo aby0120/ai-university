@@ -138,14 +138,14 @@
     "kind": "calculus3",
     "function": "c3-critical-points",
     "caption": "$f=x^2+c y^2$，改变 Hessian 的一个系数，观察碗、退化谷和鞍面。",
-    "prediction": "梯度一直为零，为什么点的类型还能改变？"
+    "prediction": "原点的梯度始终为零，为什么它有时是极小点，有时是鞍点？"
   },
   "teaching": {
     "explain": "零梯度只筛出候选；二次项若在不同方向正负都有，就是鞍形。",
     "steps": [
       {
         "title": "正定",
-        "instruction": "将纵向二次系数 $c$设为 $1$，比较图形和读数。",
+        "instruction": "将纵向二次系数 $c$ 设为 $1$。",
         "preset": {
           "c": 1
         },
@@ -153,7 +153,7 @@
       },
       {
         "title": "退化",
-        "instruction": "将纵向二次系数 $c$设为 $0$，比较图形和读数。",
+        "instruction": "将纵向二次系数 $c$ 设为 $0$。",
         "preset": {
           "c": 0
         },
@@ -161,7 +161,7 @@
       },
       {
         "title": "不定",
-        "instruction": "将纵向二次系数 $c$设为 $-1$，比较图形和读数。",
+        "instruction": "将纵向二次系数 $c$ 设为 $-1$。",
         "preset": {
           "c": -1
         },
@@ -180,8 +180,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [

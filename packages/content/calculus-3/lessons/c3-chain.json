@@ -149,7 +149,7 @@
     "steps": [
       {
         "title": "路径起点",
-        "instruction": "将路径参数 $t$设为 $0$，比较图形和读数。",
+        "instruction": "将路径参数 $t$ 设为 $0$。",
         "preset": {
           "x": 0
         },
@@ -157,7 +157,7 @@
       },
       {
         "title": "路径中段",
-        "instruction": "将路径参数 $t$设为 $\\frac\\pi4$，比较图形和读数。",
+        "instruction": "将路径参数 $t$ 设为 $\\frac\\pi4$。",
         "preset": {
           "x": 0.7853981633974483
         },
@@ -165,7 +165,7 @@
       },
       {
         "title": "路径终点",
-        "instruction": "将路径参数 $t$设为 $\\frac\\pi2$，比较图形和读数。",
+        "instruction": "将路径参数 $t$ 设为 $\\frac\\pi2$。",
         "preset": {
           "x": 1.5707963267948966
         },
@@ -184,8 +184,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [

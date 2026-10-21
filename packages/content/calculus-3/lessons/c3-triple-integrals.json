@@ -146,7 +146,7 @@
     "steps": [
       {
         "title": "低切片",
-        "instruction": "将相对切片高度设为 $0$，比较图形和读数。",
+        "instruction": "将相对切片高度设为 $0$。",
         "preset": {
           "slice": 0
         },
@@ -154,7 +154,7 @@
       },
       {
         "title": "中切片",
-        "instruction": "将相对切片高度设为 $0.5$，比较图形和读数。",
+        "instruction": "将相对切片高度设为 $0.5$。",
         "preset": {
           "slice": 0.5
         },
@@ -162,7 +162,7 @@
       },
       {
         "title": "顶切片",
-        "instruction": "将相对切片高度设为 $1$，比较图形和读数。",
+        "instruction": "将相对切片高度设为 $1$。",
         "preset": {
           "slice": 1
         },
@@ -180,8 +180,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [

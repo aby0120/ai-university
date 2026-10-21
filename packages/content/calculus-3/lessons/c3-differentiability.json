@@ -148,7 +148,7 @@
     "steps": [
       {
         "title": "较远位移",
-        "instruction": "将对角线位移 $h$设为 $1$，比较图形和读数。",
+        "instruction": "将对角线位移 $h$ 设为 $1$。",
         "preset": {
           "h": 1
         },
@@ -156,7 +156,7 @@
       },
       {
         "title": "缩小位移",
-        "instruction": "将对角线位移 $h$设为 $0.2$，比较图形和读数。",
+        "instruction": "将对角线位移 $h$ 设为 $0.2$。",
         "preset": {
           "h": 0.2
         },
@@ -164,7 +164,7 @@
       },
       {
         "title": "逼近中心",
-        "instruction": "将对角线位移 $h$设为 $0.0001$，比较图形和读数。",
+        "instruction": "将对角线位移 $h$ 设为 $0.0001$。",
         "preset": {
           "h": 0.0001
         },
@@ -183,8 +183,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [

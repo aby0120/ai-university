@@ -57,6 +57,16 @@
         "最后一项原函数为 $\\frac1{x+1}$。"
       ],
       "answer": "$\\ln|x|-\\ln|x+1|+\\frac1{x+1}+C$。"
+    },
+    {
+      "title": "不可约二次因子",
+      "problem": "求 $\\int\\frac{2x+3}{x(x^2+1)}\\,dx$。",
+      "steps": [
+        "设为 $A/x+(Bx+C)/(x^2+1)$。通分比较 $2x+3=(A+B)x^2+Cx+A$，得 $A=3,B=-3,C=2$。",
+        "逐项积分 $3/x-3x/(x^2+1)+2/(x^2+1)$。第二项用 $u=x^2+1$，第三项用反正切。",
+        "$x^2+1>0$，只有 $x=0$ 是极点；在正、负半轴分别取积分常数。"
+      ],
+      "answer": "$3\\ln|x|-\\frac32\\ln(x^2+1)+2\\arctan x+C$，$x\\ne0$。"
     }
   ],
   "commonMistakes": [
@@ -175,8 +185,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [

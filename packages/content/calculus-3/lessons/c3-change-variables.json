@@ -63,6 +63,16 @@
         "面积使用绝对值 2，乘参数面积一。"
       ],
       "answer": "2；负号只表示翻转定向。"
+    },
+    {
+      "title": "面积倍率随位置变化",
+      "problem": "令 $x=u,y=(1+u)v$，$0\\le u,v\\le1$。求像区域面积及其上 $\\iint_D y\\,dA$。",
+      "steps": [
+        "逆变换为 $u=x,v=y/(1+x)$，所以像区域是 $0\\le x\\le1,0\\le y\\le1+x$，且映射一一。",
+        "$J=1+u>0$；面积为 $\\int_0^1\\int_0^1(1+u)\\,dv\\,du=3/2$，不能把某一个点的倍率当全域常数。",
+        "被积函数也须换元：$y=(1+u)v$。因此积分为 $\\int_0^1\\int_0^1(1+u)^2v\\,dv\\,du=\\frac12\\int_0^1(1+u)^2du=7/6$。"
+      ],
+      "answer": "面积 $3/2$，$\\iint_Dy\\,dA=7/6$。"
     }
   ],
   "commonMistakes": [
@@ -139,35 +149,38 @@
   "interactiveVisual": {
     "kind": "calculus3",
     "function": "c3-change-variables",
-    "caption": "映射 $x=u+cv,y=v$ 对单位正方形作剪切；形状改变而面积保持。",
-    "prediction": "看起来更斜的格子，面积一定变大吗？"
+    "caption": "单位参数正方形经 $x=u,y=(1+cu)v$ 变成梯形。移动 $u$，比较局部倍率 $J=1+cu$ 与整个像的面积 $1+c/2$。",
+    "prediction": "局部面积倍率不同，为什么不能只取某一点的倍率乘整个参数面积？"
   },
   "teaching": {
     "explain": "导数先把小方格变成平行四边形，行列式再量它放大了多少。",
     "steps": [
       {
-        "title": "弱剪切",
-        "instruction": "将倾斜或形状参数 $c$设为 $0$，比较图形和读数。",
+        "title": "没有变形",
+        "instruction": "先取 $c=0,u=0.5$。",
         "preset": {
-          "c": 0
+          "c": 0,
+          "x": 0.5
         },
-        "observation": "参数正方形未剪切，面积为一。"
+        "observation": "映射为恒等变换，局部倍率和总面积都为 $1$。"
       },
       {
-        "title": "中等剪切",
-        "instruction": "将倾斜或形状参数 $c$设为 $1$，比较图形和读数。",
+        "title": "靠近左侧",
+        "instruction": "取 $c=1,u=0$。",
         "preset": {
-          "c": 1
+          "c": 1,
+          "x": 0
         },
-        "observation": "形状变斜，但面积仍为一。"
+        "observation": "左侧局部倍率为 $1$，像区域总面积却为 $3/2$。局部读数不是全域倍率。"
       },
       {
-        "title": "较大剪切",
-        "instruction": "将倾斜或形状参数 $c$设为 $2$，比较图形和读数。",
+        "title": "移到右侧",
+        "instruction": "保持 $c=1$，把 $u$ 移到 $1$。",
         "preset": {
-          "c": 2
+          "c": 1,
+          "x": 1
         },
-        "observation": "平行四边形更斜，行列式仍等于一。"
+        "observation": "右侧局部倍率为 $2$，总面积仍为 $3/2$；积分把各位置的倍率累积起来。"
       }
     ]
   },
@@ -182,8 +195,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [

@@ -147,7 +147,7 @@
     "steps": [
       {
         "title": "同向候选",
-        "instruction": "将方向角 $\\theta$设为 $0.463648$，比较图形和读数。",
+        "instruction": "将方向角 $\\theta$ 设为 $0.463648$。",
         "preset": {
           "a": 0.4636476090008061
         },
@@ -155,7 +155,7 @@
       },
       {
         "title": "垂直方向",
-        "instruction": "将方向角 $\\theta$设为 $2.03444$，比较图形和读数。",
+        "instruction": "将方向角 $\\theta$ 设为 $2.03444$。",
         "preset": {
           "a": 2.0344439357957027
         },
@@ -163,7 +163,7 @@
       },
       {
         "title": "反向候选",
-        "instruction": "将方向角 $\\theta$设为 $3.60524$，比较图形和读数。",
+        "instruction": "将方向角 $\\theta$ 设为 $3.60524$。",
         "preset": {
           "a": 3.6052402625905993
         },
@@ -182,8 +182,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [

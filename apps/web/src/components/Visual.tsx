@@ -205,7 +205,7 @@ export function Visual({
   const apply = (i:number) => { const preset=lesson.teaching.steps[i].preset; setStep(i); setModified(false); setScenario({...preset,revision:(scenario?.revision??0)+1}); if(preset.dimension)setDimension(preset.dimension); };
   useEffect(()=>{setStep(null);setScenario(undefined);setModified(false);setDimension(spatial?"3d":"2d");},[lesson.id]);
   return (
-    <div className="visual-system" onChangeCapture={e=>{if(!(e.target as Element).closest(".application-visual"))setModified(true);}} onClickCapture={e=>{const target=e.target as Element;if(target.closest("button")&&target.closest(".visual-card,.solid-visual,.dimension-switch")&&!target.closest(".application-visual"))setModified(true);}}>
+    <div className="visual-system" onChangeCapture={e=>{if(!(e.target as Element).closest(".application-visual"))setModified(true);}} onKeyDownCapture={e=>{const target=e.target as Element;if(target.matches('input[type="range"]')&&!target.closest('.application-visual')&&['Home','End','ArrowLeft','ArrowRight','ArrowUp','ArrowDown','PageUp','PageDown'].includes(e.key))setModified(true);}} onClickCapture={e=>{const target=e.target as Element;if(target.closest("button")&&target.closest(".visual-card,.solid-visual,.dimension-switch")&&!target.closest(".application-visual"))setModified(true);}}>
       <GuidedExperiment key={lesson.id} lesson={lesson} index={step} modified={modified} onApply={apply}/>
       {spatial && (
         <div className="dimension-switch" role="group" aria-label={"演示维度"}>

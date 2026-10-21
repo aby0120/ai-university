@@ -147,7 +147,7 @@
     "steps": [
       {
         "title": "沿横轴",
-        "instruction": "将方向角 $\\theta$设为 $0$，比较图形和读数。",
+        "instruction": "将方向角 $\\theta$ 设为 $0$。",
         "preset": {
           "a": 0
         },
@@ -155,7 +155,7 @@
       },
       {
         "title": "沿对角线",
-        "instruction": "将方向角 $\\theta$设为 $\\frac\\pi4$，比较图形和读数。",
+        "instruction": "将方向角 $\\theta$ 设为 $\\frac\\pi4$。",
         "preset": {
           "a": 0.7853981633974483
         },
@@ -163,7 +163,7 @@
       },
       {
         "title": "从更近处观察",
-        "instruction": "将到原点距离 $h$设为 $0.0001$，比较图形和读数。",
+        "instruction": "将到原点距离 $h$ 设为 $0.0001$。",
         "preset": {
           "h": 0.0001
         },
@@ -182,8 +182,8 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.1.0",
-    "status": "first-edition",
+    "version": "0.1.1",
+    "status": "revised",
     "humanReviewed": false
   },
   "sources": [
