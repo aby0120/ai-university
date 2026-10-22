@@ -1,0 +1,195 @@
+{
+  "id": "ode-models",
+  "chapterId": "ode-first-order",
+  "number": "2.3",
+  "title": "增长、冷却与混合",
+  "subtitle": "先守恒，再求解",
+  "body": [
+    {
+      "title": "冷却模型",
+      "text": "环境温度为常数 $T_a$ 时，Newton 冷却模型为 $T'=-k(T-T_a)$，其中 $k>0$。"
+    },
+    {
+      "title": "混合模型",
+      "text": "恒体积 $V$、充分混合、等体积流率 $r$ 时，溶质量满足 $S'=rc_{\\rm in}-rS/V$。排出浓度是当前总量除以体积。"
+    },
+    {
+      "title": "模型哪里失效？",
+      "text": "体积变化、混合不均或环境改变时，要重新写方程。负溶质量没有物理意义，不能只靠代数公式解释。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "写总量守恒。",
+      "latex": "S'=\\text{流入溶质量率}-\\text{流出溶质量率}"
+    },
+    {
+      "text": "代入浓度与流率。",
+      "latex": "S'=rc_{\\rm in}-r\\frac SV"
+    },
+    {
+      "text": "移开稳态后得到指数衰减。",
+      "latex": "(S-Vc_{\\rm in})'=-\\frac rV(S-Vc_{\\rm in})"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "冷却",
+      "problem": "环境 $20$ 度，$k=1/2$，初温 $80$ 度，求温度。",
+      "steps": [
+        "令差温 $u=T-20$，有 $u'=-u/2$。",
+        "初值差温为 $60$。"
+      ],
+      "answer": "$T=20+60e^{-t/2}$。"
+    },
+    {
+      "title": "淡水冲洗",
+      "problem": "体积 $10$ 升，以每分钟 $2$ 升淡水等量进出，初有溶质 $5$ 克。",
+      "steps": [
+        "流入溶质为零，流出率为 $2S/10$。",
+        "解 $S'=-S/5,S(0)=5$。"
+      ],
+      "answer": "$S=5e^{-t/5}$ 克。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-models-q1",
+      "problem": "冷却中环境温度为 $15$ 度，长期温度趋向多少？",
+      "hint": "看差温。",
+      "solution": [
+        "正冷却系数使差温趋零。"
+      ],
+      "answer": "$15$ 度。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 15.0
+    },
+    {
+      "id": "ode-models-q2",
+      "problem": "恒体积 $20$ 升、流率每分钟 $4$ 升，冲洗时间尺度是多少分钟？",
+      "hint": "计算体积除以流率。",
+      "solution": [
+        "$V/r=20/4=5$。"
+      ],
+      "answer": "$5$ 分钟。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 5.0
+    },
+    {
+      "id": "ode-models-q3",
+      "problem": "恒体积 $6$ 升，流入浓度每升 $3$ 克，稳态溶质量多少克？",
+      "hint": "稳态浓度等于流入浓度。",
+      "solution": [
+        "$S_*=Vc_{\\rm in}=6\\times3$。"
+      ],
+      "answer": "$18$ 克。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 18.0
+    },
+    {
+      "id": "ode-models-q4",
+      "problem": "流入比流出快时，为什么不能沿用恒体积模型？",
+      "hint": "排出浓度的分母会变。",
+      "solution": [
+        "体积随时间增加，排出浓度应为 $S(t)/V(t)$。"
+      ],
+      "answer": "必须加入变化的体积。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-models-m1",
+      "claim": "排出浓度始终等于初始浓度。",
+      "correction": "充分混合后的浓度随总量变化。"
+    },
+    {
+      "id": "ode-models-m2",
+      "claim": "指数模型可以忽略时间单位。",
+      "correction": "参数的倒数与时间单位一致。"
+    }
+  ],
+  "prerequisites": [
+    "ode-linear-first"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-models-m1",
+    "ode-models-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "建模先计算流入与流出，解的物理意义由单位、初值和适用条件共同决定。",
+  "intuition": "总量的变化率等于进来的速率减去出去的速率。",
+  "objectives": [
+    "建立冷却与混合模型",
+    "解释稳态和时间尺度"
+  ],
+  "formalDefinition": {
+    "text": "增长、冷却与混合",
+    "latex": "S'=rc_{\\rm in}-\\frac rV S,\\qquad S(t)=Vc_{\\rm in}+(S_0-Vc_{\\rm in})e^{-rt/V}",
+    "conditions": [
+      "$V>0,r>0$ 恒定，流入与流出体积相等，槽内充分混合且不溢出。"
+    ]
+  },
+  "learningCheck": {
+    "question": "充分混合的槽内，排出浓度是什么？",
+    "choices": [
+      "初始浓度",
+      "当前溶质量除以当前体积",
+      "流入浓度"
+    ],
+    "correctIndex": 1,
+    "explanation": "排出口取走的是当前混合液。"
+  },
+  "teaching": {
+    "explain": "先列出每分钟进入和离开的实际总量，再处理方程，单位会帮助发现建模错误。",
+    "steps": [
+      {
+        "title": "从下方靠近",
+        "preset": {
+          "a": 0,
+          "b": 3
+        },
+        "observation": "解从零向稳态一上升。",
+        "instruction": "将初始值 $y_0$设为 $0$；将观察时间 $t$设为 $3$。"
+      },
+      {
+        "title": "从上方靠近",
+        "preset": {
+          "a": 2,
+          "b": 3
+        },
+        "observation": "解从二向稳态一下降。",
+        "instruction": "将初始值 $y_0$设为 $2$；将观察时间 $t$设为 $3$。"
+      },
+      {
+        "title": "稳态",
+        "preset": {
+          "a": 1,
+          "b": 3
+        },
+        "observation": "初值等于稳态时保持不变。",
+        "instruction": "将初始值 $y_0$设为 $1$；将观察时间 $t$设为 $3$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-models",
+    "caption": "稳态取一，金色曲线为不同初值下的一阶线性响应；与正文冷却和混合模型仅差尺度和平移。",
+    "prediction": "初值分别在稳态上下方时，会怎样靠近稳态？"
+  }
+}

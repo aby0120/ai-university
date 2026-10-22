@@ -1,0 +1,191 @@
+{
+  "id": "ode-wronskian",
+  "chapterId": "ode-second-order",
+  "number": "4.2",
+  "title": "Wronskian 与 Abel 公式",
+  "subtitle": "看初值矩阵是否可逆",
+  "body": [
+    {
+      "title": "怎样定义？",
+      "text": "二阶情形为 $W=y_1y_2'-y_2y_1'$。它正是上一节的初值矩阵行列式。"
+    },
+    {
+      "title": "为什么只测一个点？",
+      "text": "同一标准齐次线性方程的两解满足 Abel 公式，所以 Wronskian 在连续系数区间上要么处处零，要么处处非零。"
+    },
+    {
+      "title": "一般函数不能乱用",
+      "text": "对任意可微函数，Wronskian 恒零不总能推出线性相关。这里的充分必要判别依赖“同一线性方程的解”。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "求行列式的导数。",
+      "latex": "W'=y_1y_2''-y_2y_1''"
+    },
+    {
+      "text": "用原方程消去二阶导数。",
+      "latex": "W'=-p(y_1y_2'-y_2y_1')=-pW"
+    },
+    {
+      "text": "解这个一阶方程。",
+      "latex": "W=W(t_0)e^{-\\int_{t_0}^t p(s)ds}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "正弦与余弦",
+      "problem": "计算 $W(\\cos t,\\sin t)$。",
+      "steps": [
+        "代入 $y_1'=-\\sin t,y_2'=\\cos t$。",
+        "得 $\\cos^2t+\\sin^2t$。"
+      ],
+      "answer": "$W=1$，两解独立。"
+    },
+    {
+      "title": "指数对",
+      "problem": "计算 $W(e^t,e^{2t})$。",
+      "steps": [
+        "导数分别为 $e^t,2e^{2t}$。",
+        "相减得 $2e^{3t}-e^{3t}$。"
+      ],
+      "answer": "$W=e^{3t}\\ne0$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-wronskian-q1",
+      "problem": "$W(1,t)$ 是多少？",
+      "hint": "代入导数零和一。",
+      "solution": [
+        "$1\\times1-t\\times0=1$。"
+      ],
+      "answer": "$1$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 1.0
+    },
+    {
+      "id": "ode-wronskian-q2",
+      "problem": "$W(e^t,3e^t)$ 是多少？",
+      "hint": "两列成比例。",
+      "solution": [
+        "$3e^{2t}-3e^{2t}=0$。"
+      ],
+      "answer": "$0$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.0
+    },
+    {
+      "id": "ode-wronskian-q3",
+      "problem": "若标准方程中 $p=2$ 且 $W(0)=4$，求 Wronskian。",
+      "hint": "用 Abel 公式。",
+      "solution": [
+        "积分系数得到 $2t$。"
+      ],
+      "answer": "$W=4e^{-2t}$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-wronskian-q4",
+      "problem": "同一连续系数二阶方程的两解，Wronskian 能否从正数穿过零变负？",
+      "hint": "指数因子严格为正。",
+      "solution": [
+        "符号由初始 Wronskian 固定。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-wronskian-m1",
+      "claim": "任意函数的 Wronskian 为零都证明相关。",
+      "correction": "需额外条件；本节判别针对同一线性方程的解。"
+    },
+    {
+      "id": "ode-wronskian-m2",
+      "claim": "Wronskian 小就等于零。",
+      "correction": "数值接近与精确为零必须区分。"
+    }
+  ],
+  "prerequisites": [
+    "ode-superposition"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-wronskian-m1",
+    "ode-wronskian-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "Wronskian 是函数值与导数组成的行列式；对同一线性方程的解，它判断能否独立匹配初值。",
+  "intuition": "两个解若在初始位置与速度上只提供同一个方向，就缺少一个自由度。",
+  "objectives": [
+    "计算 Wronskian",
+    "理解判别结论的适用范围"
+  ],
+  "formalDefinition": {
+    "text": "Wronskian 与 Abel 公式",
+    "latex": "W(t)=W(t_0)\\exp\\left(-\\int_{t_0}^t p(s)ds\\right)",
+    "conditions": [
+      "$y_1,y_2$ 同解 $y''+py'+qy=0$，且 $p,q$ 在同一区间连续。"
+    ]
+  },
+  "learningCheck": {
+    "question": "Abel 公式中的指数因子会变成零吗？",
+    "choices": [
+      "有限时间必会",
+      "不会，只要系数积分有限",
+      "取决于初值的符号"
+    ],
+    "correctIndex": 1,
+    "explanation": "实指数严格为正。"
+  },
+  "teaching": {
+    "explain": "Wronskian 检查的是两个解的初始数据能否独立变化，不是比较两条曲线看起来像不像。",
+    "steps": [
+      {
+        "title": "起点",
+        "preset": {
+          "b": 0
+        },
+        "observation": "初值矩阵是单位矩阵。",
+        "instruction": "将观察时间 $t$设为 $0$。"
+      },
+      {
+        "title": "四分之一圈",
+        "preset": {
+          "b": 1.5707963267948966
+        },
+        "observation": "函数值和导数交换角色，行列式仍为一。",
+        "instruction": "将观察时间 $t$设为 $1.57079633$。"
+      },
+      {
+        "title": "半圈",
+        "preset": {
+          "b": 3.141592653589793
+        },
+        "observation": "两列同时反向，仍然独立。",
+        "instruction": "将观察时间 $t$设为 $3.14159265$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-wronskian",
+    "caption": "比较两条基解及其当前初始数据向量，Wronskian 读数在所有时间保持一。",
+    "prediction": "两条基解同时变化时，Wronskian 会变成零吗？"
+  }
+}

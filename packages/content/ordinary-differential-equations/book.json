@@ -1,0 +1,289 @@
+{
+  "id": "ordinary-differential-equations",
+  "title": "Ordinary Differential Equations",
+  "titleZh": "常微分方程",
+  "subtitle": "从局部变化到完整运动",
+  "version": "0.1.0",
+  "language": "zh-CN",
+  "author": "AI University · AI-generated",
+  "description": "一阶方程、存在唯一性、线性与非线性系统、阻尼和共振、Laplace 变换、级数解与数值方法。解释、推导、例题、习题与交互图示组成一门完整入门课程。",
+  "audience": "掌握一元微积分的学习者；线性系统使用矩阵与特征值，相关知识链接至线性代数卷",
+  "scope": "十一章五十五节。覆盖一门完整本科入门常微分方程课程，包含局部理论、二阶及高阶线性、Laplace、线性系统、基础非线性动力学、级数及基础数值法。偏微分方程单独成卷；完整流形动力系统、分布理论与数值求解器工程不在本卷范围。 Fourier 展开与完整 Sturm–Liouville 理论留在后续偏微分方程卷，本卷先建立最简单的边值特征问题。",
+  "chapters": [
+    {
+      "id": "ode-intro",
+      "title": "方程、解与变化率",
+      "subtitle": "把变化规律变成可检验的模型",
+      "intro": "先辨认方程在约束什么，再讨论怎样求解。解是满足条件的一段函数，不只是一个公式。",
+      "goals": [
+        "区分阶数与线性性",
+        "检验解与初值",
+        "阅读方向场"
+      ],
+      "lessonIds": [
+        "ode-meaning",
+        "ode-classification",
+        "ode-initial-values",
+        "ode-direction-fields"
+      ]
+    },
+    {
+      "id": "ode-first-order",
+      "title": "一阶方程的求解方法",
+      "subtitle": "按结构选择运算",
+      "intro": "分离变量、积分因子与变量代换解决不同结构。每次除法都要检查有没有丢失解。",
+      "goals": [
+        "分离变量并保留平衡解",
+        "使用积分因子",
+        "处理恰当方程与代换"
+      ],
+      "lessonIds": [
+        "ode-separable",
+        "ode-linear-first",
+        "ode-models",
+        "ode-exact",
+        "ode-substitutions",
+        "ode-bernoulli"
+      ]
+    },
+    {
+      "id": "ode-existence",
+      "title": "存在、唯一与延拓",
+      "subtitle": "知道公式之前，先知道解是否确定",
+      "intro": "区分存在、唯一、全局延拓和连续依赖，避免把局部结论扩大成全部时间的保证。",
+      "goals": [
+        "使用局部存在唯一性条件",
+        "识别非唯一与爆破",
+        "理解初值敏感性"
+      ],
+      "lessonIds": [
+        "ode-existence",
+        "ode-picard",
+        "ode-continuation",
+        "ode-sensitivity"
+      ]
+    },
+    {
+      "id": "ode-second-order",
+      "title": "二阶线性方程",
+      "subtitle": "从两个初始条件确定运动",
+      "intro": "先建立解空间，再解释特征根如何对应指数、振荡与重根解。",
+      "goals": [
+        "使用叠加与 Wronskian",
+        "求常系数齐次解",
+        "处理复根、重根和降阶"
+      ],
+      "lessonIds": [
+        "ode-superposition",
+        "ode-wronskian",
+        "ode-real-roots",
+        "ode-complex-roots",
+        "ode-repeated-roots"
+      ]
+    },
+    {
+      "id": "ode-forcing",
+      "title": "非齐次方程与振动",
+      "subtitle": "外力如何改变运动",
+      "intro": "从特解构造到阻尼与共振，同时分清瞬态、稳态和外力频率。",
+      "goals": [
+        "构造非齐次特解",
+        "使用参数变易",
+        "解释阻尼和共振"
+      ],
+      "lessonIds": [
+        "ode-undetermined",
+        "ode-variation",
+        "ode-damping",
+        "ode-resonance",
+        "ode-frequency-response"
+      ]
+    },
+    {
+      "id": "ode-higher-order",
+      "title": "高阶线性方程",
+      "subtitle": "把已有结构推广到更多初值",
+      "intro": "高阶常系数、Euler–Cauchy 方程与边值条件各有不同结构。",
+      "goals": [
+        "处理高阶特征根重数",
+        "化高阶方程为一阶系统",
+        "区别初值和边值问题"
+      ],
+      "lessonIds": [
+        "ode-higher-linear",
+        "ode-euler-cauchy",
+        "ode-system-reduction",
+        "ode-boundary-values"
+      ]
+    },
+    {
+      "id": "ode-laplace",
+      "title": "Laplace 变换",
+      "subtitle": "把初值与外力一起变成代数",
+      "intro": "从积分定义出发，逐步处理导数、分段输入、冲激和卷积。",
+      "goals": [
+        "计算变换与逆变换",
+        "处理开关和冲击",
+        "使用卷积表示一般响应"
+      ],
+      "lessonIds": [
+        "ode-laplace-definition",
+        "ode-laplace-rules",
+        "ode-laplace-ivp",
+        "ode-step-input",
+        "ode-impulse",
+        "ode-convolution"
+      ]
+    },
+    {
+      "id": "ode-systems",
+      "title": "线性微分方程组",
+      "subtitle": "让矩阵描述整个状态的变化",
+      "intro": "将线性代数中的特征方向放到连续时间，并处理重根、复根与非齐次系统。",
+      "goals": [
+        "构造矩阵指数",
+        "由特征结构读相图",
+        "计算系统外力响应"
+      ],
+      "lessonIds": [
+        "ode-linear-systems",
+        "ode-eigen-systems",
+        "ode-matrix-exponential",
+        "ode-defective-systems",
+        "ode-spirals",
+        "ode-system-forcing"
+      ]
+    },
+    {
+      "id": "ode-nonlinear",
+      "title": "非线性系统与定性分析",
+      "subtitle": "没有显式解，也能判断运动",
+      "intro": "从一维相线到二维线性化、能量与分岔，明确局部结论和失效边界。",
+      "goals": [
+        "判断平衡与局部稳定性",
+        "使用相线和零增长线",
+        "解释能量与基本分岔"
+      ],
+      "lessonIds": [
+        "ode-phase-line",
+        "ode-linearization-systems",
+        "ode-nullclines",
+        "ode-energy",
+        "ode-bifurcations"
+      ]
+    },
+    {
+      "id": "ode-series",
+      "title": "幂级数与 Frobenius 方法",
+      "subtitle": "没有初等公式时继续构造解",
+      "intro": "用系数递推求局部解，并明确普通点、正则奇点和收敛范围。",
+      "goals": [
+        "建立级数递推",
+        "区分普通点与正则奇点",
+        "处理指标根与对数解"
+      ],
+      "lessonIds": [
+        "ode-power-series",
+        "ode-frobenius",
+        "ode-frobenius-roots",
+        "ode-special-functions"
+      ]
+    },
+    {
+      "id": "ode-numerical",
+      "title": "数值解、误差与稳定性",
+      "subtitle": "计算结果需要误差意识",
+      "intro": "比较 Euler、二阶与四阶方法，再分析稳定性、刚性和自适应步长。",
+      "goals": [
+        "实现基本时间步进",
+        "区分局部误差与全局误差",
+        "检查稳定性与误差控制"
+      ],
+      "lessonIds": [
+        "ode-euler",
+        "ode-second-order-numerics",
+        "ode-rk4",
+        "ode-error-control",
+        "ode-stability-stiffness",
+        "ode-adaptive"
+      ]
+    }
+  ],
+  "lessonIds": [
+    "ode-meaning",
+    "ode-classification",
+    "ode-initial-values",
+    "ode-direction-fields",
+    "ode-separable",
+    "ode-linear-first",
+    "ode-models",
+    "ode-exact",
+    "ode-substitutions",
+    "ode-bernoulli",
+    "ode-existence",
+    "ode-picard",
+    "ode-continuation",
+    "ode-sensitivity",
+    "ode-superposition",
+    "ode-wronskian",
+    "ode-real-roots",
+    "ode-complex-roots",
+    "ode-repeated-roots",
+    "ode-undetermined",
+    "ode-variation",
+    "ode-damping",
+    "ode-resonance",
+    "ode-frequency-response",
+    "ode-higher-linear",
+    "ode-euler-cauchy",
+    "ode-system-reduction",
+    "ode-boundary-values",
+    "ode-laplace-definition",
+    "ode-laplace-rules",
+    "ode-laplace-ivp",
+    "ode-step-input",
+    "ode-impulse",
+    "ode-convolution",
+    "ode-linear-systems",
+    "ode-eigen-systems",
+    "ode-matrix-exponential",
+    "ode-defective-systems",
+    "ode-spirals",
+    "ode-system-forcing",
+    "ode-phase-line",
+    "ode-linearization-systems",
+    "ode-nullclines",
+    "ode-energy",
+    "ode-bifurcations",
+    "ode-power-series",
+    "ode-frobenius",
+    "ode-frobenius-roots",
+    "ode-special-functions",
+    "ode-euler",
+    "ode-second-order-numerics",
+    "ode-rk4",
+    "ode-error-control",
+    "ode-stability-stiffness",
+    "ode-adaptive"
+  ],
+  "bridge": [],
+  "sources": [
+    {
+      "id": "mit-1803",
+      "title": "MIT OCW · 18.03SC Differential Equations",
+      "url": "https://ocw.mit.edu/courses/18-03sc-differential-equations-fall-2011/pages/syllabus/syllabus/",
+      "usage": "核对本科常微分方程课程的线性方程、振动、变换与系统范围；正文、例题、习题及图形独立编写。"
+    },
+    {
+      "id": "lebl-diffyqs",
+      "title": "Jiří Lebl · Notes on Diffy Qs",
+      "url": "https://www.jirka.org/diffyqs/",
+      "usage": "核对一阶、系统、Laplace、幂级数与非线性内容边界；不复制来源的正文、题目或插图。"
+    }
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "humanReviewed": false,
+    "checks": "结构、公式排版、先修关系、独立代回、数值算法、图示边界与真实页面检查；不等同于逐式形式化证明。"
+  }
+}

@@ -9,7 +9,7 @@ npm run check
 
 首页和第一卷旋转体 3D 使用打包到网站的 Three.js，需要浏览器支持 WebGL2；不调用外部渲染服务。模块仅在打开三维演示时加载。WebGL 不可用时可切回二维；静态正文、公式与下载书稿不依赖 WebGL。
 
-第三卷的 40 个空间图示使用本地 SVG 三维投影，不需要 WebGL；支持旋转、缩放与正交投影切换。线性代数的 50 节演示也使用二维 SVG 或三维投影，不依赖 WebGL。四卷完整打印页分别为 book.html、calculus-2.html、calculus-3.html、linear-algebra.html，均无需 JavaScript。
+第三卷的 40 个空间图示使用本地 SVG 三维投影，不需要 WebGL；支持旋转、缩放与正交投影切换。线性代数的 50 节演示也使用二维 SVG 或三维投影，不依赖 WebGL。五卷完整打印页分别为 book.html、calculus-2.html、calculus-3.html、linear-algebra.html、ordinary-differential-equations.html，均无需 JavaScript。
 
 ## GitHub Pages
 
@@ -34,3 +34,5 @@ npm run preview
 ## Sites 预览
 
 `.openai/hosting.json` 是这个工作区已注册的私有 Sites 身份与 `dist` 配置。它不是 GitHub Pages 依赖，也不含凭据。复制项目到自己的 Sites 时，应注册自己的 Site，不要复用原 project_id。普通静态部署可忽略这个文件。
+
+常微分方程的数值计算、方向场和相平面全部在浏览器内执行；无需求解器服务或模型 API。

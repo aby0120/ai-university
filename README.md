@@ -2,7 +2,7 @@
 
 外部贡献先隔离、复核，再收录；正式版本由受保护的主分支发布。流程与验证边界见 [贡献保护](docs/CONTRIBUTION_SECURITY.md)。
 
-**AI 编写的开放数学教科书系列，一本一本完整完成。** 首页与书库面向微积分、线性代数、微分方程、概率统计、离散数学、实分析等方向。目前已出版 **Calculus I / 微积分 I**、**Calculus II / 微积分 II**、**Calculus III / 微积分 III**、**Linear Algebra / 线性代数**，分别为 35、35、40、50 节完整正文，均包含条件、推导、可操作图示、例题与完整练习解答。
+**AI 编写的开放数学教科书系列，一本一本完整完成。** 首页与书库面向微积分、线性代数、微分方程、概率统计、离散数学、实分析等方向。目前已出版 **Calculus I / 微积分 I**、**Calculus II / 微积分 II**、**Calculus III / 微积分 III**、**Linear Algebra / 线性代数**、**Ordinary Differential Equations / 常微分方程**，分别为 35、35、40、50、55 节完整正文，均包含条件、推导、可操作图示、例题与完整练习解答。
 
 | 教材 | 章 | 节 | 例题 | 节内练习 | 回顾 / 综合题 |
 |---|---:|---:|---:|---:|---:|
@@ -10,14 +10,15 @@
 | Calculus II · v0.1.1 | 8 | 35 | 72 | 141 | 24 / 14 |
 | Calculus III · v0.1.1 | 9 | 40 | 81 | 160 | 27 / 16 |
 | Linear Algebra · v0.1.0 | 10 | 50 | 100 | 200 | 30 / 20 |
+| Ordinary Differential Equations · v0.1.0 | 11 | 55 | 110 | 220 | 33 / 22 |
 
 网站是 React + TypeScript + SVG + KaTeX 的纯静态应用。没有聊天室、模型 API、账户、服务端或付费依赖。AI 用于离线编写与修订教材，读者得到可审查、可下载的固定版本。
 
-[在线阅读](https://b1n9ui.github.io/ai-university/) · [微积分 I](https://b1n9ui.github.io/ai-university/#/book/calculus-1) · [微积分 II](https://b1n9ui.github.io/ai-university/#/book/calculus-2) · [微积分 III](https://b1n9ui.github.io/ai-university/#/book/calculus-3) · [线性代数](https://b1n9ui.github.io/ai-university/#/book/linear-algebra) · [开源发布](https://github.com/b1n9ui/ai-university/releases)
+[在线阅读](https://b1n9ui.github.io/ai-university/) · [微积分 I](https://b1n9ui.github.io/ai-university/#/book/calculus-1) · [微积分 II](https://b1n9ui.github.io/ai-university/#/book/calculus-2) · [微积分 III](https://b1n9ui.github.io/ai-university/#/book/calculus-3) · [线性代数](https://b1n9ui.github.io/ai-university/#/book/linear-algebra) · [常微分方程](https://b1n9ui.github.io/ai-university/#/book/ordinary-differential-equations) · [开源发布](https://github.com/b1n9ui/ai-university/releases)
 
 ![新版网站首页](docs/images/series/home.jpg)
 
-当前出版与核验记录：[线性代数首版](docs/LINEAR_ALGEBRA_AUDIT.md) · [微积分三卷修订](docs/CALCULUS_SERIES_REVIEW.md)。
+当前出版与核验记录：[常微分方程首版](docs/ODE_AUDIT.md) · [线性代数首版](docs/LINEAR_ALGEBRA_AUDIT.md) · [微积分三卷修订](docs/CALCULUS_SERIES_REVIEW.md)。
 
 ## 直接运行
 
@@ -84,7 +85,7 @@ npm run preview   # 查看构建后的静态版本
 
 40 个本地三维图示可拖动旋转、缩放，以方向键操作，并切换俯视/正视。它们用等比例空间坐标和 SVG 投影，不要求 WebGL；解析读数、有限近似和显示倍率分别说明。每节有三步可载入实验，合计 120 个预设。检查范围见 [Calculus III 审查记录](docs/CALCULUS_III_AUDIT.md)。
 
-三卷分别版本化，课程划分不等同于所有学校；完整线性代数、高阶微分方程、扭率理论、微分形式与偏微分方程求解留给后续教材。
+三卷分别版本化，课程划分不等同于所有学校；线性代数与常微分方程已作为独立整卷出版；深入扭率理论、微分形式与偏微分方程留给后续教材。
 
 ## 数学展览馆界面
 
@@ -94,10 +95,10 @@ npm run preview   # 查看构建后的静态版本
 
 ## 阅读与下载
 
-- 网站 v0.12.0：数学系列首页、按方向和出版状态筛选的书库、教材主页、34 个章节主页、160 个知识点页面、实验室、分页练习中心、全文搜索、公式/术语/附录索引、阅读指南、下载、项目与贡献资料。
+- 网站 v0.13.0：数学系列首页、按方向和出版状态筛选的书库、教材主页、45 个章节主页、215 个知识点页面、实验室、分页练习中心、全文搜索、公式/术语/附录索引、阅读指南、下载、项目与贡献资料。
 - 阅读页：专注模式、嵌入演示、页内定位、上下节翻页、收藏、较大字号与已读标记。练习支持逐题/连续查看、提示、完整解答与数值检查。
-- [微积分 I 书稿](book/Calculus-I.md)与[微积分 II 书稿](book/Calculus-II.md)、[微积分 III 书稿](book/Calculus-III.md)与[线性代数书稿](book/Linear-Algebra.md)：版本化源产物，包含所有解答。
-- `dist/book.html` 与 `dist/calculus-2.html` 与 `dist/calculus-3.html` 与 `dist/linear-algebra.html`：四卷各自的完整阅读页，公式预先排版，支持浏览器打印为 PDF。
+- [微积分 I 书稿](book/Calculus-I.md)与[微积分 II 书稿](book/Calculus-II.md)、[微积分 III 书稿](book/Calculus-III.md)与[线性代数书稿](book/Linear-Algebra.md)、[常微分方程书稿](book/Ordinary-Differential-Equations.md)：版本化源产物，包含所有解答。
+- `dist/book.html` 与 `dist/calculus-2.html` 与 `dist/calculus-3.html` 与 `dist/linear-algebra.html`：五卷各自的完整阅读页（另含 `dist/ordinary-differential-equations.html`），公式预先排版，支持浏览器打印为 PDF。
 - `dist/Calculus-I.md` 与 `dist/Calculus-II.md` 与 `dist/Calculus-III.md` 与 `dist/Linear-Algebra.md`：供网站下载的同版书稿。
 - 阅读、收藏和练习记录仅保存在浏览器，可导出与导入。已读标记与练习掌握状态分别记录；数值题可以检查数值，其余题为明确标注的自评。没有认证成绩。
 
@@ -105,7 +106,7 @@ npm run preview   # 查看构建后的静态版本
 
 ```text
 apps/web/                  静态阅读网站与界面组件
-packages/content/          四卷目录、160 个 canonical learning objects、回顾与考试
+packages/content/          五卷目录、215 个 canonical learning objects、回顾与考试
 packages/visuals/          可复用数学模型与数值方法
 schemas/                   教材 JSON Schema
 scripts/                   校验、整本生成、数学回归测试、草稿脚手架
@@ -118,7 +119,7 @@ docs/                      架构、内容规范、生成检查流程、部署�
 
 ## 质量与版本
 
-网站版本 **v0.12.0**；微积分 I 内容为 **v0.3.2**，微积分 II、III 为 **v0.1.1**，线性代数为 **v0.1.0**。尚未逐节人工审校。结构校验、公式渲染、先修图与选定数值验证可以发现部分错误，但不等同于逐式形式化证明。欢迎用具体反例、章节位置和可复算步骤提交勘误。
+网站版本 **v0.13.0**；微积分 I 内容为 **v0.3.2**，微积分 II、III 为 **v0.1.1**，线性代数和常微分方程均为 **v0.1.0**。尚未逐节人工审校。结构校验、公式渲染、先修图与选定数值验证可以发现部分错误，但不等同于逐式形式化证明。欢迎用具体反例、章节位置和可复算步骤提交勘误。
 
 `npm run check` 检查所有章节结构、章节链接、公式语法、先修有向无环图、视觉函数配置与数学模型。浏览器验证记录见 [QA](docs/QA.md)。
 

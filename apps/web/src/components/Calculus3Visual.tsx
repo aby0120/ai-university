@@ -24,6 +24,7 @@ import {
 import { Formula, MathText, plainMathText } from "./MathText";
 import { ParameterControl } from "./ParameterControl";
 import {linearControls,linearDefaults,linearFrame,linearPlayback,type LinearControl} from '../../../../packages/visuals/linear-algebra.mjs';
+import {odeControls,odeDefaults,odeFrame,odePlayback} from '../../../../packages/visuals/ode.mjs';
 type View = "space" | "top" | "front";
 type Camera = { yaw: number; elevation: number; zoom: number };
 const initialCamera: Camera = { yaw: -0.85, elevation: 0.58, zoom: 1 };
@@ -34,6 +35,7 @@ export function SpatialPlot({
   view = "space",
   camera = initialCamera,
   onCamera,
+  onPlanarPoint,
 }: {
   frame: Frame3;
   title: string;
@@ -41,12 +43,14 @@ export function SpatialPlot({
   view?: View;
   camera?: Camera;
   onCamera?: (c: Camera) => void;
+  onPlanarPoint?: (point: number[]) => void;
 }) {
   const W = 680,
     H = 460,
     pad = 32,
     id = useId().replace(/:/g, ""),
-    drag = useRef<{ x: number; y: number; camera: Camera } | null>(null);
+    drag = useRef<{ x: number; y: number; camera: Camera } | null>(null),
+    pointDrag = useRef(false);
   const planar=frame.dimension===2;
   const yaw = view === "top" ? 0 : view === "front" ? 0 : camera.yaw,
     el = view === "top" ? Math.PI / 2 : view === "front" ? 0 : camera.elevation,
@@ -58,6 +62,12 @@ export function SpatialPlot({
       el,
     );
     return [W / 2 + s * q[0], H * 0.52 - s * q[1], q[2]];
+  };
+  const setPoint = (e: React.PointerEvent<SVGSVGElement>) => {
+    const matrix=e.currentTarget.getScreenCTM();
+    if(!matrix||!onPlanarPoint)return;
+    const q=new DOMPoint(e.clientX,e.clientY).matrixTransform(matrix.inverse());
+    onPlanarPoint([frame.focus[0]+(q.x-W/2)/s,frame.focus[1]-(q.y-H*.52)/s]);
   };
   const path = (ps: number[][]) =>
     ps
@@ -82,7 +92,7 @@ export function SpatialPlot({
     });
   return (
     <svg
-      className={"spatial-plot" + (interactive ? " spatial-interactive" : "")+(planar?' linear-planar-plot':'')}
+      className={"spatial-plot" + (interactive ? " spatial-interactive" : "")+(planar?' linear-planar-plot':'')+(onPlanarPoint?' ode-initial-plot':'')}
       viewBox={"0 0 " + W + " " + H}
       role="img"
       aria-label={
@@ -119,11 +129,18 @@ export function SpatialPlot({
         // Keep the gesture on the plot instead of starting native SVG text selection.
         e.preventDefault();
         e.currentTarget.focus({ preventScroll: true });
+        if(planar&&onPlanarPoint){
+          e.currentTarget.setPointerCapture(e.pointerId);
+          pointDrag.current=true;
+          setPoint(e);
+          return;
+        }
         if (view !== "space" || planar) return;
         e.currentTarget.setPointerCapture(e.pointerId);
         drag.current = { x: e.clientX, y: e.clientY, camera };
       }}
       onPointerMove={(e) => {
+        if(pointDrag.current&&interactive&&planar){setPoint(e);return;}
         if (!drag.current || !interactive || view !== "space" || planar) return;
         const d = drag.current;
         onCamera?.({
@@ -136,14 +153,17 @@ export function SpatialPlot({
         });
       }}
       onPointerUp={(e) => {
+        pointDrag.current=false;
         drag.current = null;
         if (e.currentTarget.hasPointerCapture(e.pointerId))
           e.currentTarget.releasePointerCapture(e.pointerId);
       }}
       onPointerCancel={() => {
+        pointDrag.current=false;
         drag.current = null;
       }}
       onLostPointerCapture={() => {
+        pointDrag.current=false;
         drag.current = null;
       }}
     >
@@ -335,9 +355,10 @@ export default function Calculus3Visual({
   scenario?: TeachingPreset & { revision: number };
 }) {
   const linear=lesson.interactiveVisual.kind==='linear-algebra';
-  const controls = useMemo<LinearControl[]>(() => linear?linearControls(lesson.id):calculus3Controls(lesson.id), [lesson.id,linear]),
-    defaults = useMemo(() => linear?linearDefaults(lesson.id):calculus3Defaults(lesson.id), [lesson.id,linear]);
-  const playback=linear?linearPlayback:calculus3Playback;
+  const ode=lesson.interactiveVisual.kind==='ode';
+  const controls = useMemo<LinearControl[]>(() => ode?odeControls(lesson.id):linear?linearControls(lesson.id):calculus3Controls(lesson.id), [lesson.id,linear,ode]),
+    defaults = useMemo(() => ode?odeDefaults(lesson.id):linear?linearDefaults(lesson.id):calculus3Defaults(lesson.id), [lesson.id,linear,ode]);
+  const playback=ode?odePlayback:linear?linearPlayback:calculus3Playback;
   const [values, setValues] = useState(defaults),
     [playing, setPlaying] = useState(false),
     [done, setDone] = useState(false),
@@ -399,8 +420,8 @@ export default function Calculus3Visual({
     };
   }, []);
   const frame = useMemo(
-    () => linear?linearFrame(lesson.id, values):calculus3Frame(lesson.id, values),
-    [lesson.id, values,linear],
+    () => ode?odeFrame(lesson.id, values):linear?linearFrame(lesson.id, values):calculus3Frame(lesson.id, values),
+    [lesson.id, values,linear,ode],
   );
   const legend = [
     ...frame.lines.filter((l) => l.label),
@@ -412,6 +433,18 @@ export default function Calculus3Visual({
     setPlaying(false);
     setDone(false);
     setValues((p) => ({ ...p, [key]: v }));
+  };
+  const initialDrag = ode && ['ode-direction-fields','ode-classification','ode-system-reduction','ode-nullclines','ode-linearization-systems'].includes(lesson.id);
+  const moveInitial = (point:number[]) => {
+    setPlaying(false);setDone(false);
+    setValues(previous=>{
+      const next={...previous};
+      for(const [key,v] of (lesson.id==='ode-direction-fields'||lesson.id==='ode-classification' ? [['a',point[1]]] : [['a',point[0]],['c',point[1]]]) as [string,number][]){
+        const control=controls.find(c=>c.key===key);
+        if(control)next[key]=Math.round(Math.min(control.max,Math.max(control.min,v))*100)/100;
+      }
+      return next;
+    });
   };
   const reset = () => {
     setPlaying(false);
@@ -445,7 +478,7 @@ export default function Calculus3Visual({
     >
       <div className="visual-heading">
         <div>
-          <span className="eyebrow">{linear?'LINEAR ALGEBRA':'SPATIAL THINKING / CALCULUS III'}</span>
+          <span className="eyebrow">{ode?'ORDINARY DIFFERENTIAL EQUATIONS':linear?'LINEAR ALGEBRA':'SPATIAL THINKING / CALCULUS III'}</span>
           <h3>{lesson.title}</h3>
         </div>
         <button className="icon-btn" aria-label="重置演示" onClick={reset}>
@@ -455,7 +488,7 @@ export default function Calculus3Visual({
       <div className="c3-stage-head">
         <span className="c3-local-badge">
           <Move3D size={13} />
-          {linear?(frame.dimension===2?'二维图示':'三维图示'):'本地三维几何'}
+          {ode?'本地动态模型':linear?(frame.dimension===2?'二维图示':'三维图示'):'本地三维几何'}
         </span>
         {frame.dimension!==2&&<div className="c3-views" role="group" aria-label="投影视角">
           {(
@@ -479,6 +512,7 @@ export default function Calculus3Visual({
       <div className="c3-formula">
         <Formula latex={frame.formula} />
       </div>
+      {frame.motion&&<SpringMotion motion={frame.motion}/>}
       <div className="c3-stage">
         <SpatialPlot
           frame={frame}
@@ -487,6 +521,7 @@ export default function Calculus3Visual({
           view={view}
           camera={camera}
           onCamera={setCamera}
+          onPlanarPoint={initialDrag?moveInitial:undefined}
         />
         <div className="c3-camera-tools">
           <button
@@ -519,6 +554,7 @@ export default function Calculus3Visual({
           </button>
         </div>
       </div>
+      {initialDrag&&<p className="ode-drag-hint">{lesson.id==='ode-direction-fields'||lesson.id==='ode-classification'?'在图内上下拖动可调整零时刻的初始值；下方输入框和滑块也可操作。':'在图内拖动可调整初始状态；下方输入框和滑块也可操作。'}</p>}
       {legend.length > 0 && (
         <div className="c2-legend c3-legend">
           {legend.map((l) => (
@@ -577,7 +613,7 @@ export default function Calculus3Visual({
       </div>
       {done && (
         <p className="playback-finish" role="status">
-          {linear?'本次参数变化已播完。':'已到本次参数的明确终点。趋零演示保留正数下界；有限图示不等于无穷极限的证明。'}
+          {linear||ode?'本次参数变化已播完。':'已到本次参数的明确终点。趋零演示保留正数下界；有限图示不等于无穷极限的证明。'}
         </p>
       )}
       <p className="visual-caption">
@@ -601,6 +637,20 @@ export default function Calculus3Visual({
   );
 }
 export function Calculus3Preview({ lesson }: { lesson: Lesson }) {
-  const frame = lesson.interactiveVisual.kind==='linear-algebra'?linearFrame(lesson.id):calculus3Frame(lesson.id);
+  const frame = lesson.interactiveVisual.kind==='ode'?odeFrame(lesson.id):lesson.interactiveVisual.kind==='linear-algebra'?linearFrame(lesson.id):calculus3Frame(lesson.id);
   return <SpatialPlot frame={frame} title={lesson.title} />;
+}
+function SpringMotion({motion}:{motion:NonNullable<Frame3['motion']>}){
+  const x=210+80*motion.position/motion.range;
+  const spring=Array.from({length:17},(_,i)=>`${i?'L':'M'}${40+(x-65)*i/16},${i===0||i===16?61:i%2?49:73}`).join('');
+  return <div className="ode-motion"><span>运动示意 · 与下图使用同一时刻</span><svg viewBox="0 0 400 115" role="img" aria-label={`弹簧运动，时间 ${motion.time.toFixed(2)}，位移 ${motion.position.toFixed(4)}；示意比例在本模型内固定`}>
+    <line x1="22" y1="25" x2="22" y2="92" stroke="#8aaf9d" strokeWidth="4"/>
+    <line x1="22" y1="92" x2="380" y2="92" stroke="#607e71"/>
+    <line x1="210" y1="20" x2="210" y2="90" stroke="#adc19b" strokeDasharray="4 5" opacity=".5"/>
+    <line x1="22" y1="61" x2="40" y2="61" stroke="#a8c9b5" strokeWidth="2"/>
+    <path d={spring} stroke="#b9dba7" strokeWidth="2" fill="none"/>
+    <rect x={x-25} y="36" width="50" height="50" rx="8" fill="#dbbe80" stroke="#f4e9b8"/>
+    <circle cx={x-14} cy="89" r="3" fill="#b2c5b1"/><circle cx={x+14} cy="89" r="3" fill="#b2c5b1"/>
+    <text x="210" y="111" textAnchor="middle" fill="#b8cab3" fontSize="10">平衡位置</text>
+  </svg></div>;
 }

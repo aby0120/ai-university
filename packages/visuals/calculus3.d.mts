@@ -7,6 +7,7 @@ export interface Control3 {
   value: number;
 }
 export interface Frame3 {
+  motion?: {position:number;velocity:number;time:number;range:number};
   dimension?: number;
   matrix?: string;
   axisLabels?: string[];

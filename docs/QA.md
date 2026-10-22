@@ -5,7 +5,7 @@
 在 Chrome 中从三维图坐标字母上开始拖动，几何投影变化且浏览器选中文字为空。图形维持键盘焦点，方向键仍可旋转。正文段落实际划选得到非空文字。390×844 布局下重复坐标拖动可旋转、无误选和横向溢出；第一卷二维函数图也确认图中文字不可误选。修复只作用于绘图区，不限制正文与公式的正常复制。完整构建和 60 项现有回归检查通过。
 
 
-当前网站 v0.12.0 和线性代数首版见 [Linear Algebra](LINEAR_ALGEBRA_AUDIT.md)。微积分三卷修订见 [三卷检查](CALCULUS_SERIES_REVIEW.md)。完整第三卷的检查见 [Calculus III](CALCULUS_III_AUDIT.md)；第二卷见 [Calculus II](CALCULUS_II_AUDIT.md)，第一卷后续补全见 [Calculus I](CALCULUS_I_AUDIT.md)。以下为历史记录。
+当前网站 v0.13.0 见 [常微分方程](ODE_AUDIT.md)。线性代数首版见 [Linear Algebra](LINEAR_ALGEBRA_AUDIT.md)。微积分三卷修订见 [三卷检查](CALCULUS_SERIES_REVIEW.md)。完整第三卷的检查见 [Calculus III](CALCULUS_III_AUDIT.md)；第二卷见 [Calculus II](CALCULUS_II_AUDIT.md)，第一卷后续补全见 [Calculus I](CALCULUS_I_AUDIT.md)。以下为历史记录。
 
 ## 第一版
 

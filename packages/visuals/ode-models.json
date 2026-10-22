@@ -1,0 +1,1128 @@
+{
+  "lessons": {
+    "ode-meaning": "exponential",
+    "ode-classification": "field",
+    "ode-initial-values": "blowup",
+    "ode-direction-fields": "field",
+    "ode-separable": "separable",
+    "ode-linear-first": "linear",
+    "ode-models": "linear",
+    "ode-exact": "exact",
+    "ode-substitutions": "homogeneous",
+    "ode-bernoulli": "logistic",
+    "ode-existence": "nonunique",
+    "ode-picard": "picard",
+    "ode-continuation": "blowup",
+    "ode-sensitivity": "sensitivity",
+    "ode-superposition": "oscillator",
+    "ode-wronskian": "wronskian",
+    "ode-real-roots": "real-roots",
+    "ode-complex-roots": "oscillator",
+    "ode-repeated-roots": "repeated",
+    "ode-undetermined": "forcing",
+    "ode-variation": "variation",
+    "ode-damping": "damping",
+    "ode-resonance": "forcing",
+    "ode-frequency-response": "frequency",
+    "ode-higher-linear": "higher",
+    "ode-euler-cauchy": "cauchy",
+    "ode-system-reduction": "state",
+    "ode-boundary-values": "boundary",
+    "ode-laplace-definition": "laplace",
+    "ode-laplace-rules": "laplace",
+    "ode-laplace-ivp": "laplace-ivp",
+    "ode-step-input": "step",
+    "ode-impulse": "impulse",
+    "ode-convolution": "convolution",
+    "ode-linear-systems": "phase",
+    "ode-eigen-systems": "phase",
+    "ode-matrix-exponential": "matrix-exp",
+    "ode-defective-systems": "defective",
+    "ode-spirals": "spiral",
+    "ode-system-forcing": "system-forcing",
+    "ode-phase-line": "logistic",
+    "ode-linearization-systems": "nonlinear",
+    "ode-nullclines": "predator",
+    "ode-energy": "pendulum",
+    "ode-bifurcations": "bifurcation",
+    "ode-power-series": "series",
+    "ode-frobenius": "frobenius",
+    "ode-frobenius-roots": "log-series",
+    "ode-special-functions": "bessel",
+    "ode-euler": "euler",
+    "ode-second-order-numerics": "heun",
+    "ode-rk4": "rk4",
+    "ode-error-control": "error",
+    "ode-stability-stiffness": "stability",
+    "ode-adaptive": "adaptive"
+  },
+  "families": {
+    "exponential": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "比例系数 $k$",
+          "min": -1,
+          "max": 1,
+          "value": 0.5,
+          "step": 0.01
+        },
+        {
+          "key": "c",
+          "label": "初始值 $y_0$",
+          "min": -2,
+          "max": 2,
+          "value": 1,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 3,
+          "value": 1,
+          "step": 0.01
+        }
+      ],
+      "formula": "y'=ky,\\quad y=y_0e^{kt}"
+    },
+    "field": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "初始值 $y_0$",
+          "min": -2,
+          "max": 2,
+          "value": 1,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 3,
+          "value": 1,
+          "step": 0.01
+        }
+      ],
+      "formula": "y'=y-t,\\quad y=t+1+(y_0-1)e^t"
+    },
+    "blowup": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "正初值 $y_0$",
+          "min": 0.25,
+          "max": 2,
+          "value": 1,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 3,
+          "value": 0.5,
+          "step": 0.01
+        }
+      ],
+      "formula": "y'=y^2,\\quad y=\\frac{y_0}{1-y_0t},\\quad T=1/y_0"
+    },
+    "separable": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "初始值 $y_0$",
+          "min": -2,
+          "max": 2,
+          "value": 1,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 3,
+          "value": 1,
+          "step": 0.01
+        }
+      ],
+      "formula": "y'=ty,\\quad y=y_0e^{t^2/2}"
+    },
+    "linear": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "初始值 $y_0$",
+          "min": -2,
+          "max": 2,
+          "value": 1,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 3,
+          "value": 1,
+          "step": 0.01
+        }
+      ],
+      "formula": "y'+y=1,\\quad y=1+(y_0-1)e^{-t}"
+    },
+    "exact": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "等值线半径 $R$",
+          "min": 0.5,
+          "max": 2,
+          "value": 1,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "轨迹角 $\\theta$",
+          "min": 0,
+          "max": 6.283185307179586,
+          "value": 1,
+          "step": 0.01
+        }
+      ],
+      "formula": "t\\,dt+y\\,dy=0,\\quad t^2+y^2=R^2"
+    },
+    "homogeneous": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "积分常数 $C$",
+          "min": -1,
+          "max": 1,
+          "value": 0,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "正时间 $t$",
+          "min": 0.25,
+          "max": 3,
+          "value": 1,
+          "step": 0.01
+        }
+      ],
+      "formula": "y'=1+y/t,\\quad y=t(\\ln t+C)"
+    },
+    "logistic": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "初始值 $y_0$",
+          "min": 0.1,
+          "max": 2,
+          "value": 0.5,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 6,
+          "value": 2,
+          "step": 0.01
+        }
+      ],
+      "formula": "y'=y(1-y),\\quad y=\\frac1{1+(1/y_0-1)e^{-t}}"
+    },
+    "nonunique": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "等待时间 $c$",
+          "min": 0,
+          "max": 2,
+          "value": 1,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 3,
+          "value": 2,
+          "step": 0.01
+        }
+      ],
+      "formula": "y'=3\\lvert y\\rvert^{2/3},\\quad y=(t-c)_+^3"
+    },
+    "picard": {
+      "controls": [
+        {
+          "key": "n",
+          "label": "迭代次数 $n$",
+          "min": 0,
+          "max": 8,
+          "value": 2,
+          "step": 1
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 2,
+          "value": 1,
+          "step": 0.01
+        }
+      ],
+      "formula": "y'=y,\\ y(0)=1,\\quad y_n=\\sum_{k=0}^n\\frac{t^k}{k!}"
+    },
+    "sensitivity": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "增长率 $k$",
+          "min": -1,
+          "max": 1,
+          "value": 0.5,
+          "step": 0.01
+        },
+        {
+          "key": "eps",
+          "label": "初值差 $\\varepsilon$",
+          "min": 0.01,
+          "max": 0.5,
+          "value": 0.1,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 3,
+          "value": 2,
+          "step": 0.01
+        }
+      ],
+      "formula": "y'=ky,\\quad\\Delta y=\\varepsilon e^{kt}"
+    },
+    "oscillator": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "角频率 $\\omega$",
+          "min": 0.5,
+          "max": 3,
+          "value": 1,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 6,
+          "value": 1,
+          "step": 0.01
+        }
+      ],
+      "formula": "y''+\\omega^2y=0,\\quad y(0)=1,\\ y'(0)=0"
+    },
+    "wronskian": {
+      "controls": [
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 6,
+          "value": 1,
+          "step": 0.01
+        }
+      ],
+      "formula": "y_1=\\cos t,\\quad y_2=\\sin t,\\quad W=1"
+    },
+    "real-roots": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "第一实根 $r_1$",
+          "min": -2,
+          "max": 1,
+          "value": -1,
+          "step": 0.01
+        },
+        {
+          "key": "c",
+          "label": "第二实根 $r_2$",
+          "min": -2,
+          "max": 1,
+          "value": -2,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 3,
+          "value": 1,
+          "step": 0.01
+        }
+      ],
+      "formula": "y_1=e^{r_1t},\\quad y_2=e^{r_2t},\\quad W=(r_2-r_1)e^{(r_1+r_2)t}"
+    },
+    "repeated": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "重复实根 $r$",
+          "min": -2,
+          "max": 1,
+          "value": -1,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 4,
+          "value": 1,
+          "step": 0.01
+        }
+      ],
+      "formula": "y_1=e^{rt},\\quad y_2=te^{rt}"
+    },
+    "forcing": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "外力角频率 $\\omega$",
+          "min": 0.25,
+          "max": 2,
+          "value": 1,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 8,
+          "value": 4,
+          "step": 0.01
+        }
+      ],
+      "formula": "y''+y=\\cos\\omega t,\\quad y(0)=y'(0)=0"
+    },
+    "variation": {
+      "controls": [
+        {
+          "key": "b",
+          "label": "正时间 $t$",
+          "min": 0.25,
+          "max": 3,
+          "value": 1,
+          "step": 0.01
+        }
+      ],
+      "formula": "y''=1/t,\\quad y=t\\ln t-t"
+    },
+    "damping": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "阻尼系数 $c$",
+          "min": 0,
+          "max": 4,
+          "value": 1,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 8,
+          "value": 3,
+          "step": 0.01
+        }
+      ],
+      "formula": "y''+cy'+y=0,\\quad y(0)=1,\\ y'(0)=0"
+    },
+    "frequency": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "驱动角频率 $\\omega$",
+          "min": 0,
+          "max": 3,
+          "value": 1,
+          "step": 0.01
+        },
+        {
+          "key": "c",
+          "label": "阻尼系数 $c$",
+          "min": 0.2,
+          "max": 2,
+          "value": 0.5,
+          "step": 0.01
+        }
+      ],
+      "formula": "A(\\omega)=\\frac1{\\sqrt{(1-\\omega^2)^2+c^2\\omega^2}}"
+    },
+    "higher": {
+      "controls": [
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 4,
+          "value": 1,
+          "step": 0.01
+        }
+      ],
+      "formula": "y'''-y'=0,\\quad y=C_0+C_1e^t+C_2e^{-t}"
+    },
+    "cauchy": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "对数项系数 $D$",
+          "min": -1,
+          "max": 1,
+          "value": 1,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "正时间 $t$",
+          "min": 0.25,
+          "max": 3,
+          "value": 1,
+          "step": 0.01
+        }
+      ],
+      "formula": "t^2y''+ty'=0,\\quad y=1+D\\ln t"
+    },
+    "state": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "初始位置 $x_0$",
+          "min": -2,
+          "max": 2,
+          "value": 1,
+          "step": 0.01
+        },
+        {
+          "key": "c",
+          "label": "初始速度 $v_0$",
+          "min": -2,
+          "max": 2,
+          "value": 0,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 6,
+          "value": 2,
+          "step": 0.01
+        }
+      ],
+      "formula": "x'=v,\\quad v'=-x"
+    },
+    "boundary": {
+      "controls": [
+        {
+          "key": "n",
+          "label": "模式编号 $n$",
+          "min": 1,
+          "max": 5,
+          "value": 1,
+          "step": 1
+        },
+        {
+          "key": "b",
+          "label": "位置 $t$",
+          "min": 0,
+          "max": 1,
+          "value": 0.5,
+          "step": 0.01
+        }
+      ],
+      "formula": "-y''=(n\\pi)^2y,\\quad y(0)=y(1)=0"
+    },
+    "laplace": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "信号指数率 $a$",
+          "min": -1,
+          "max": 1,
+          "value": 0.5,
+          "step": 0.01
+        },
+        {
+          "key": "c",
+          "label": "变换实参数 $s$",
+          "min": 0.1,
+          "max": 3,
+          "value": 2,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "截断上限 $T$",
+          "min": 0,
+          "max": 6,
+          "value": 3,
+          "step": 0.01
+        }
+      ],
+      "formula": "\\int_0^T e^{-st}e^{at}dt"
+    },
+    "laplace-ivp": {
+      "controls": [
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 4,
+          "value": 1,
+          "step": 0.01
+        }
+      ],
+      "formula": "y'+y=1,\\quad y(0)=0,\\quad y=1-e^{-t}"
+    },
+    "step": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "开关时刻 $a$",
+          "min": 0.5,
+          "max": 3,
+          "value": 1,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 6,
+          "value": 2,
+          "step": 0.01
+        }
+      ],
+      "formula": "y'+y=H(t-a),\\quad y(0)=0"
+    },
+    "impulse": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "冲击时刻 $a$",
+          "min": 0.5,
+          "max": 3,
+          "value": 1,
+          "step": 0.01
+        },
+        {
+          "key": "c",
+          "label": "冲量 $J$",
+          "min": -2,
+          "max": 2,
+          "value": 1,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 6,
+          "value": 2,
+          "step": 0.01
+        }
+      ],
+      "formula": "y''+y=J\\delta(t-a),\\quad y=JH(t-a)\\sin(t-a)"
+    },
+    "convolution": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "当前时刻 $t$",
+          "min": 0.1,
+          "max": 5,
+          "value": 2,
+          "step": 0.01
+        }
+      ],
+      "formula": "y(t)=\\int_0^t e^{-(t-\\tau)}d\\tau=1-e^{-t}"
+    },
+    "phase": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "第一指数率 $\\lambda_1$",
+          "min": -2,
+          "max": 1,
+          "value": -1,
+          "step": 0.01
+        },
+        {
+          "key": "c",
+          "label": "第二指数率 $\\lambda_2$",
+          "min": -2,
+          "max": 1,
+          "value": -0.5,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 3,
+          "value": 1,
+          "step": 0.01
+        }
+      ],
+      "formula": "x'=\\lambda_1x,\\quad y'=\\lambda_2y"
+    },
+    "matrix-exp": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "初始第一分量 $x_0$",
+          "min": -2,
+          "max": 2,
+          "value": 0,
+          "step": 0.01
+        },
+        {
+          "key": "c",
+          "label": "初始第二分量 $y_0$",
+          "min": -2,
+          "max": 2,
+          "value": 1,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 3,
+          "value": 1,
+          "step": 0.01
+        }
+      ],
+      "formula": "A=\\begin{pmatrix}0&1\\\\0&0\\end{pmatrix},\\quad e^{At}=I+tA"
+    },
+    "defective": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "重复特征值 $\\lambda$",
+          "min": -1,
+          "max": 0,
+          "value": -1,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 5,
+          "value": 2,
+          "step": 0.01
+        }
+      ],
+      "formula": "x'=\\lambda x+y,\\quad y'=\\lambda y,\\quad\\mathbf x(0)=(0,1)^T"
+    },
+    "spiral": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "径向指数率 $\\alpha$",
+          "min": -1,
+          "max": 1,
+          "value": -0.3,
+          "step": 0.01
+        },
+        {
+          "key": "c",
+          "label": "旋转角速度 $\\beta$",
+          "min": -2,
+          "max": 2,
+          "value": 1,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 5,
+          "value": 2,
+          "step": 0.01
+        }
+      ],
+      "formula": "x'=\\alpha x-\\beta y,\\quad y'=\\beta x+\\alpha y"
+    },
+    "system-forcing": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "初始第一分量 $x_0$",
+          "min": -1,
+          "max": 2,
+          "value": 0,
+          "step": 0.01
+        },
+        {
+          "key": "c",
+          "label": "初始第二分量 $y_0$",
+          "min": -1,
+          "max": 2,
+          "value": 0,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 4,
+          "value": 2,
+          "step": 0.01
+        }
+      ],
+      "formula": "x'=-x+1,\\quad y'=-2y+2"
+    },
+    "nonlinear": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "初始第一分量 $x_0$",
+          "min": -0.8,
+          "max": 1.5,
+          "value": 0.5,
+          "step": 0.01
+        },
+        {
+          "key": "c",
+          "label": "初始第二分量 $y_0$",
+          "min": -1,
+          "max": 1,
+          "value": 1,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 4,
+          "value": 2,
+          "step": 0.01
+        }
+      ],
+      "formula": "x'=-x+x^2,\\quad y'=-y"
+    },
+    "predator": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "初始群体 $x_0$",
+          "min": 0.3,
+          "max": 2,
+          "value": 1.4,
+          "step": 0.01
+        },
+        {
+          "key": "c",
+          "label": "初始群体 $y_0$",
+          "min": 0.3,
+          "max": 2,
+          "value": 0.6,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 8,
+          "value": 3,
+          "step": 0.01
+        }
+      ],
+      "formula": "x'=x(1-y),\\quad y'=y(x-1)"
+    },
+    "pendulum": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "初始角度 $\\theta_0$",
+          "min": -3,
+          "max": 3,
+          "value": 1.5,
+          "step": 0.01
+        },
+        {
+          "key": "c",
+          "label": "阻尼系数 $c$",
+          "min": 0,
+          "max": 1,
+          "value": 0.2,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 8,
+          "value": 3,
+          "step": 0.01
+        }
+      ],
+      "formula": "\\theta'=v,\\quad v'=-\\sin\\theta-cv"
+    },
+    "bifurcation": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "固定参数 $\\mu$",
+          "min": -1,
+          "max": 1,
+          "value": 0.5,
+          "step": 0.01
+        },
+        {
+          "key": "c",
+          "label": "初始值 $y_0$",
+          "min": -1,
+          "max": 1,
+          "value": 0,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 3,
+          "value": 1,
+          "step": 0.01
+        }
+      ],
+      "formula": "y'=\\mu-y^2"
+    },
+    "series": {
+      "controls": [
+        {
+          "key": "n",
+          "label": "截断次数 $n$",
+          "min": 0,
+          "max": 12,
+          "value": 4,
+          "step": 1
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 3,
+          "value": 1,
+          "step": 0.01
+        }
+      ],
+      "formula": "\\cos t=\\sum_{k=0}^\\infty\\frac{(-1)^kt^{2k}}{(2k)!}"
+    },
+    "frobenius": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "起始幂次 $r$",
+          "min": -1,
+          "max": 2,
+          "value": 0.5,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "正时间 $t$",
+          "min": 0.25,
+          "max": 3,
+          "value": 1,
+          "step": 0.01
+        }
+      ],
+      "formula": "t^2y''+ty'-r^2y=0,\\quad y=t^r"
+    },
+    "log-series": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "对数系数 $D$",
+          "min": -1,
+          "max": 1,
+          "value": 1,
+          "step": 0.01
+        },
+        {
+          "key": "b",
+          "label": "正时间 $t$",
+          "min": 0.25,
+          "max": 3,
+          "value": 1,
+          "step": 0.01
+        }
+      ],
+      "formula": "y=C+D\\ln t,\\quad C=1"
+    },
+    "bessel": {
+      "controls": [
+        {
+          "key": "n",
+          "label": "保留的级数项数 $n$",
+          "min": 1,
+          "max": 12,
+          "value": 4,
+          "step": 1
+        },
+        {
+          "key": "b",
+          "label": "观察时间 $t$",
+          "min": 0,
+          "max": 4,
+          "value": 2,
+          "step": 0.01
+        }
+      ],
+      "formula": "J_0(t)=\\sum_{k=0}^\\infty\\frac{(-1)^k(t^2/4)^k}{(k!)^2}"
+    },
+    "euler": {
+      "controls": [
+        {
+          "key": "n",
+          "label": "等分步数 $N$",
+          "min": 2,
+          "max": 32,
+          "value": 4,
+          "step": 1
+        },
+        {
+          "key": "b",
+          "label": "目标时间 $T$",
+          "min": 0.5,
+          "max": 3,
+          "value": 2,
+          "step": 0.01
+        }
+      ],
+      "formula": "y'=y,\\ y(0)=1,\\quad h=T/N"
+    },
+    "heun": {
+      "controls": [
+        {
+          "key": "n",
+          "label": "等分步数 $N$",
+          "min": 2,
+          "max": 32,
+          "value": 4,
+          "step": 1
+        },
+        {
+          "key": "b",
+          "label": "目标时间 $T$",
+          "min": 0.5,
+          "max": 3,
+          "value": 2,
+          "step": 0.01
+        }
+      ],
+      "formula": "y'=y,\\ y(0)=1,\\quad h=T/N"
+    },
+    "rk4": {
+      "controls": [
+        {
+          "key": "n",
+          "label": "等分步数 $N$",
+          "min": 2,
+          "max": 32,
+          "value": 4,
+          "step": 1
+        },
+        {
+          "key": "b",
+          "label": "目标时间 $T$",
+          "min": 0.5,
+          "max": 3,
+          "value": 2,
+          "step": 0.01
+        }
+      ],
+      "formula": "y'=y,\\ y(0)=1,\\quad h=T/N"
+    },
+    "error": {
+      "controls": [
+        {
+          "key": "n",
+          "label": "等分步数 $N$",
+          "min": 2,
+          "max": 32,
+          "value": 4,
+          "step": 1
+        },
+        {
+          "key": "b",
+          "label": "目标时间 $T$",
+          "min": 0.5,
+          "max": 3,
+          "value": 2,
+          "step": 0.01
+        }
+      ],
+      "formula": "y'=y,\\ y(0)=1,\\quad h=T/N"
+    },
+    "stability": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "负增长率 $\\lambda$",
+          "min": -10,
+          "max": -1,
+          "value": -4,
+          "step": 0.01
+        },
+        {
+          "key": "h",
+          "label": "步长 $h$",
+          "min": 0.05,
+          "max": 1,
+          "value": 0.3,
+          "step": 0.01
+        },
+        {
+          "key": "n",
+          "label": "推进步数 $N$",
+          "min": 1,
+          "max": 12,
+          "value": 6,
+          "step": 1
+        }
+      ],
+      "formula": "y'=\\lambda y,\\quad R_{EE}=1+h\\lambda,\\quad R_{IE}=1/(1-h\\lambda)"
+    },
+    "adaptive": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "局部绝对容差 $\\mathrm{tol}$",
+          "min": 1e-05,
+          "max": 0.01,
+          "value": 0.001,
+          "step": 1e-05
+        },
+        {
+          "key": "b",
+          "label": "目标时间 $T$",
+          "min": 0.5,
+          "max": 3,
+          "value": 2,
+          "step": 0.01
+        }
+      ],
+      "formula": "y'=y,\\quad y(0)=1"
+    }
+  }
+}

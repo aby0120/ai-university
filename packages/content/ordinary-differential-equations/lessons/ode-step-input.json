@@ -1,0 +1,192 @@
+{
+  "id": "ode-step-input",
+  "chapterId": "ode-laplace",
+  "number": "7.4",
+  "title": "阶跃输入与时间延迟",
+  "subtitle": "开关从哪一刻打开",
+  "body": [
+    {
+      "title": "阶跃函数",
+      "text": "$H(t-a)$ 在开关前为零、之后为一；单点取值不影响普通变换积分。"
+    },
+    {
+      "title": "延迟规则",
+      "text": "$H(t-a)f(t-a)$ 的变换是 $e^{-as}F(s)$。若写的是 $H(t-a)f(t)$，先重写成延迟变量的函数。"
+    },
+    {
+      "title": "解在开关处如何？",
+      "text": "有界阶跃外力通常使二阶运动的位置、速度连续，加速度可跳变；一阶状态连续，导数可跳变。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "开关前积分为零。",
+      "latex": "\\int_a^\\infty e^{-st}f(t-a)dt"
+    },
+    {
+      "text": "令延迟时间为新变量。",
+      "latex": "u=t-a"
+    },
+    {
+      "text": "常数因子提出。",
+      "latex": "e^{-as}\\int_0^\\infty e^{-su}f(u)du=e^{-as}F(s)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "延迟斜坡",
+      "problem": "求 $H(t-2)(t-2)$ 的变换。",
+      "steps": [
+        "识别从二开始的时间斜坡。",
+        "原函数的变换为 $1/s^2$。"
+      ],
+      "answer": "$e^{-2s}/s^2$。"
+    },
+    {
+      "title": "开关驱动",
+      "problem": "解 $y'+y=H(t-1),y(0)=0$。",
+      "steps": [
+        "零时刻单位阶跃响应是 $1-e^{-t}$。",
+        "延迟一单位并在此前置零。"
+      ],
+      "answer": "$y=H(t-1)(1-e^{-(t-1)})$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-step-input-q1",
+      "problem": "$H(t-3)$ 的变换？",
+      "hint": "延迟常数输入。",
+      "solution": [
+        "常数一的变换为 $1/s$。"
+      ],
+      "answer": "$e^{-3s}/s$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-step-input-q2",
+      "problem": "$H(t-2)t$ 能否直接写成 $e^{-2s}/s^2$？",
+      "hint": "开关后时间不是从零计。",
+      "solution": [
+        "$t=(t-2)+2$。"
+      ],
+      "answer": "不能；变换为 $e^{-2s}(1/s^2+2/s)$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-step-input-q3",
+      "problem": "有界阶跃外力会让质量块的位置瞬间跳跃吗？",
+      "hint": "连续速度的积分不会产生位置跳跃。",
+      "solution": [
+        "有限阶跃只改变加速度的分段值。"
+      ],
+      "answer": "不会。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-step-input-q4",
+      "problem": "在 $t=1$ 打开、$t=4$ 关闭的单位脉冲怎样写？",
+      "hint": "相减两个开关。",
+      "solution": [
+        "第一项打开，第二项关闭。"
+      ],
+      "answer": "$H(t-1)-H(t-4)$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-step-input-m1",
+      "claim": "只要乘阶跃，就可把任何函数直接套成延迟规则。",
+      "correction": "内部必须写成延迟时间的函数。"
+    },
+    {
+      "id": "ode-step-input-m2",
+      "claim": "阶跃与冲激是同一输入。",
+      "correction": "阶跃有有限高度；冲激描述集中面积。"
+    }
+  ],
+  "prerequisites": [
+    "ode-laplace-ivp"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-step-input-m1",
+    "ode-step-input-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "阶跃函数记录输入开始的时刻；延迟规则必须连同函数内部的时间一起移动。",
+  "intuition": "打开开关后的响应，像把一段从零开始的过程整体推迟。",
+  "objectives": [
+    "表达分段外力",
+    "正确使用第二平移规则"
+  ],
+  "formalDefinition": {
+    "text": "阶跃输入与时间延迟",
+    "latex": "\\mathcal L\\{H(t-a)f(t-a)\\}=e^{-as}F(s)",
+    "conditions": [
+      "$a\\ge0$，采用因果延迟；开关点按分段解理解，等式不依赖阶跃函数在单点的取值。"
+    ]
+  },
+  "learningCheck": {
+    "question": "第二平移规则的标准时间形式是什么？",
+    "choices": [
+      "$H(t-a)f(t-a)$",
+      "$f(t)-a$",
+      "$H(t-a)f(t)$"
+    ],
+    "correctIndex": 0,
+    "explanation": "开关和内部时间必须一起延迟。"
+  },
+  "teaching": {
+    "explain": "先问开关后已经过去多久，用这个新时间写函数，就不容易移错。",
+    "steps": [
+      {
+        "title": "开关前",
+        "preset": {
+          "a": 2,
+          "b": 1
+        },
+        "observation": "输入和响应均为零。",
+        "instruction": "将开关时刻 $a$设为 $2$；将观察时间 $t$设为 $1$。"
+      },
+      {
+        "title": "刚打开",
+        "preset": {
+          "a": 1,
+          "b": 1
+        },
+        "observation": "输出连续为零，右侧导数开始改变。",
+        "instruction": "将开关时刻 $a$设为 $1$；将观察时间 $t$设为 $1$。"
+      },
+      {
+        "title": "打开之后",
+        "preset": {
+          "a": 1,
+          "b": 3
+        },
+        "observation": "输出按已过去的两单位时间增长。",
+        "instruction": "将开关时刻 $a$设为 $1$；将观察时间 $t$设为 $3$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-step-input",
+    "caption": "开关前响应为零，之后为延迟的一阶响应。输入在开关处用断开线段显示，避免把跳跃画成斜坡。",
+    "prediction": "把开关延后，响应是否也整体延后？"
+  }
+}

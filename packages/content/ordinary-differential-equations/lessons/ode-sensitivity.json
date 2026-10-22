@@ -1,0 +1,195 @@
+{
+  "id": "ode-sensitivity",
+  "chapterId": "ode-existence",
+  "number": "3.4",
+  "title": "连续依赖与误差增长",
+  "subtitle": "起点差一点，后来会差多少",
+  "body": [
+    {
+      "title": "差异如何累积？",
+      "text": "两解起点不同，差异既来自初始误差，也来自此后变化率的差异。"
+    },
+    {
+      "title": "指数界说明什么？",
+      "text": "若共同区域的状态 Lipschitz 常数为 $L$，则前向误差至多为初始误差乘以 $e^{L(t-t_0)}$。这是上界，未必精确。"
+    },
+    {
+      "title": "衰减模型更强",
+      "text": "对 $y'=-ky$，误差实际乘以 $e^{-k(t-t_0)}$ 衰减；用正 Lipschitz 常数的粗界看不出这种稳定性。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "写积分差。",
+      "latex": "d(t)\\le d_0+L\\int_{t_0}^td(s)ds"
+    },
+    {
+      "text": "应用 Gronwall 不等式。",
+      "latex": "d(t)\\le d_0e^{L(t-t_0)}"
+    },
+    {
+      "text": "线性模型可直接给精确误差。",
+      "latex": "y'=ay\\Rightarrow \\Delta y(t)=e^{a(t-t_0)}\\Delta y_0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "误差放大",
+      "problem": "$y'=2y$，初值差为 $0.01$，一单位时间后差多少？",
+      "steps": [
+        "两解之差也满足同一线性方程。",
+        "精确倍率为 $e^2$。"
+      ],
+      "answer": "$0.01e^2$。"
+    },
+    {
+      "title": "误差衰减",
+      "problem": "$y'=-3y$ 的两解初值差为 $2$。",
+      "steps": [
+        "相减得到 $d'=-3d$。",
+        "初值差乘指数衰减。"
+      ],
+      "answer": "带符号差为 $2e^{-3t}$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-sensitivity-q1",
+      "problem": "$y'=y$ 的初值误差在 $t=2$ 放大几倍？",
+      "hint": "使用精确指数。",
+      "solution": [
+        "倍率为 $e^{1\\times2}$。"
+      ],
+      "answer": "$e^2$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-sensitivity-q2",
+      "problem": "唯一解一定对长期初值误差不敏感吗？",
+      "hint": "看正指数模型。",
+      "solution": [
+        "唯一解之间的差仍可能指数增长。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-sensitivity-q3",
+      "problem": "误差上界等于实际误差吗？",
+      "hint": "上界可有余量。",
+      "solution": [
+        "不等式只限制最大可能值。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-sensitivity-q4",
+      "problem": "若初值差为零，连续依赖界给出什么？",
+      "hint": "代入零差。",
+      "solution": [
+        "上界为零，因此两解重合。"
+      ],
+      "answer": "共同区间内相同。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-sensitivity-m1",
+      "claim": "连续依赖保证任意长时间都精确。",
+      "correction": "指数放大可能让长期预测失去精度。"
+    },
+    {
+      "id": "ode-sensitivity-m2",
+      "claim": "粗指数上界增长就证明系统不稳定。",
+      "correction": "上界可能不紧，需分析真实差异。"
+    }
+  ],
+  "prerequisites": [
+    "ode-continuation"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-sensitivity-m1",
+    "ode-sensitivity-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "在 Lipschitz 条件和共同存在区间内，初值误差可由指数上界控制。",
+  "intuition": "唯一不代表误差不会扩大；增长率决定预测精度能维持多久。",
+  "objectives": [
+    "应用连续依赖估计",
+    "区分绝对误差与稳定性"
+  ],
+  "formalDefinition": {
+    "text": "连续依赖与误差增长",
+    "latex": "\\lvert y(t)-z(t)\\rvert\\le\\lvert y(t_0)-z(t_0)\\rvert e^{L(t-t_0)},\\quad t\\ge t_0",
+    "conditions": [
+      "两解在同一区域、同一方程、共同存在区间内；右端对状态具有统一 Lipschitz 常数 $L$。向后估计用时间差的绝对值。"
+    ]
+  },
+  "learningCheck": {
+    "question": "连续依赖估计需要先满足什么？",
+    "choices": [
+      "两解处于共同存在区间与统一条件区域",
+      "两解必须有初等公式",
+      "两解画在同一屏幕内"
+    ],
+    "correctIndex": 0,
+    "explanation": "不需要显式公式，但需要定理条件。"
+  },
+  "teaching": {
+    "explain": "误差也在演化。研究误差方程，才能知道一个预测能信多久。",
+    "steps": [
+      {
+        "title": "误差放大",
+        "preset": {
+          "a": 1,
+          "eps": 0.1,
+          "b": 2
+        },
+        "observation": "正增长率使差值指数放大。",
+        "instruction": "将增长率 $k$设为 $1$；将初值差 $\\varepsilon$设为 $0.1$；将观察时间 $t$设为 $2$。"
+      },
+      {
+        "title": "误差衰减",
+        "preset": {
+          "a": -1,
+          "eps": 0.1,
+          "b": 2
+        },
+        "observation": "负增长率使差值衰减。",
+        "instruction": "将增长率 $k$设为 $-1$；将初值差 $\\varepsilon$设为 $0.1$；将观察时间 $t$设为 $2$。"
+      },
+      {
+        "title": "中性",
+        "preset": {
+          "a": 0,
+          "eps": 0.1,
+          "b": 2
+        },
+        "observation": "零增长率保持原差值。",
+        "instruction": "将增长率 $k$设为 $0$；将初值差 $\\varepsilon$设为 $0.1$；将观察时间 $t$设为 $2$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-sensitivity",
+    "caption": "比较初值一与一加误差的两条解析解，读数给出实际误差而非粗上界。",
+    "prediction": "正、负增长率对初值误差有什么不同影响？"
+  }
+}

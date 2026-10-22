@@ -1,0 +1,195 @@
+{
+  "id": "ode-separable",
+  "chapterId": "ode-first-order",
+  "number": "2.1",
+  "title": "可分离变量方程",
+  "subtitle": "把两种变量分到两边",
+  "body": [
+    {
+      "title": "什么时候能分？",
+      "text": "若 $y'=g(t)h(y)$，在 $h(y)\\ne0$ 的解段上写成 $dy/h(y)=g(t)dt$。"
+    },
+    {
+      "title": "零点怎么办？",
+      "text": "先求 $h(y_*)=0$。常数函数 $y=y_*$ 满足原方程，除法会把它们漏掉。"
+    },
+    {
+      "title": "怎样完成答案？",
+      "text": "积分关系可能是隐式的；取符合初值的分支，写明不能越过的奇点。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "以 $y'=ty$ 为例，先保留零解。",
+      "latex": "y\\equiv0"
+    },
+    {
+      "text": "非零解除以状态变量。",
+      "latex": "\\frac{dy}{y}=t\\,dt"
+    },
+    {
+      "text": "积分并吸收符号。",
+      "latex": "\\ln\\lvert y\\rvert=\\frac{t^2}{2}+C\\Rightarrow y=Ke^{t^2/2}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "随时间加快",
+      "problem": "解 $y'=ty,y(0)=2$。",
+      "steps": [
+        "非零解积分得 $y=Ke^{t^2/2}$。",
+        "初值给 $K=2$。"
+      ],
+      "answer": "$y=2e^{t^2/2}$，实轴上成立。"
+    },
+    {
+      "title": "不要丢平衡解",
+      "problem": "求 $y'=y(1-y)$ 的平衡解。",
+      "steps": [
+        "令状态因子为零。",
+        "$y(1-y)=0$ 给出两个常数值。"
+      ],
+      "answer": "$y\\equiv0$ 与 $y\\equiv1$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-separable-q1",
+      "problem": "解 $y'=2ty,y(0)=3$。",
+      "hint": "积分对数导数。",
+      "solution": [
+        "$\\ln\\lvert y\\rvert=t^2+C$；代初值得系数 $3$。"
+      ],
+      "answer": "$y=3e^{t^2}$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-separable-q2",
+      "problem": "$y'=y(y-2)$ 的平衡解？",
+      "hint": "先不除法。",
+      "solution": [
+        "右端为零给出 $y=0,2$。"
+      ],
+      "answer": "$y\\equiv0,2$。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-separable-q3",
+      "problem": "解 $y'=t/y,y(0)=2$。",
+      "hint": "乘以未知函数并积分。",
+      "solution": [
+        "$y^2=t^2+4$；初值选择正分支。"
+      ],
+      "answer": "$y=\\sqrt{t^2+4}$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-separable-q4",
+      "problem": "把 $y'=y^2$ 除以 $y^2$ 会遗漏什么解？",
+      "hint": "检查被除式为零。",
+      "solution": [
+        "零函数满足原方程，却不能进行除法。"
+      ],
+      "answer": "$y\\equiv0$。",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "ode-separable-m1"
+      ]
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-separable-m1",
+      "claim": "分离后得到的非零解就是全部解。",
+      "correction": "还要单独检查被除因子的零点。"
+    },
+    {
+      "id": "ode-separable-m2",
+      "claim": "开平方总取正号。",
+      "correction": "初值与连续性决定分支。"
+    }
+  ],
+  "prerequisites": [
+    "ode-direction-fields",
+    "antiderivatives"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ode-separable-m1",
+    "ode-separable-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "当变化率能写成时间因子与状态因子的乘积时，可以分别积分。",
+  "intuition": "分离变量是在同一条解上改写微分关系，除以状态因子前先留下它的零点解。",
+  "objectives": [
+    "分离并积分",
+    "检查平衡解与有效区间"
+  ],
+  "formalDefinition": {
+    "text": "可分离变量方程",
+    "latex": "\\int\\frac{dy}{h(y)}=\\int g(t)\\,dt+C",
+    "conditions": [
+      "分离式用于 $h(y)\\ne0$ 的解段；平衡解须单独检验；积分函数在所用区间连续。"
+    ]
+  },
+  "learningCheck": {
+    "question": "分离变量前最该检查什么？",
+    "choices": [
+      "被除因子是否为零",
+      "是否一定要画三维图",
+      "能否直接消掉常数"
+    ],
+    "correctIndex": 0,
+    "explanation": "被除因子的零点可能给出平衡解。"
+  },
+  "teaching": {
+    "explain": "先把静止的解收好，再对真正变化的解做除法和积分。",
+    "steps": [
+      {
+        "title": "正初值",
+        "preset": {
+          "a": 1,
+          "b": 1
+        },
+        "observation": "正解增长。",
+        "instruction": "将初始值 $y_0$设为 $1$；将观察时间 $t$设为 $1$。"
+      },
+      {
+        "title": "负初值",
+        "preset": {
+          "a": -1,
+          "b": 1
+        },
+        "observation": "负解仍满足同一分离变量方程。",
+        "instruction": "将初始值 $y_0$设为 $-1$；将观察时间 $t$设为 $1$。"
+      },
+      {
+        "title": "零解",
+        "preset": {
+          "a": 0,
+          "b": 2
+        },
+        "observation": "被除法排除的常数解确实存在。",
+        "instruction": "将初始值 $y_0$设为 $0$；将观察时间 $t$设为 $2$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-separable",
+    "caption": "选择正、负与零初值，对照非零解族和分离变量时须保留的零解。",
+    "prediction": "初值变成零时，曲线是否仍是合法解？"
+  }
+}

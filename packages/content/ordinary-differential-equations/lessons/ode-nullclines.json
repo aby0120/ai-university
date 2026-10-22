@@ -1,0 +1,195 @@
+{
+  "id": "ode-nullclines",
+  "chapterId": "ode-nonlinear",
+  "number": "9.3",
+  "title": "零增长线与捕食模型",
+  "subtitle": "某一分量不变，不等于整个状态静止",
+  "body": [
+    {
+      "title": "定义两组线",
+      "text": "平面系统 $x'=f,y'=g$ 中，$f=0$ 是横分量零增长线，$g=0$ 是纵分量零增长线。"
+    },
+    {
+      "title": "一个理想化模型",
+      "text": "取 $x'=x(1-y),y'=y(x-1)$。正变量代表两群体，分别受相遇率影响；此模型不包含资源上限等现实机制。"
+    },
+    {
+      "title": "能看见什么？",
+      "text": "在第一象限，以一为阈值即可判方向。零增长线不是通常意义上的轨迹；闭合的数值图也不自动证明一般模型存在周期解。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "分别令两个分量为零。",
+      "latex": "x'=0\\Rightarrow x=0\\ \\text{或}\\ y=1"
+    },
+    {
+      "text": "另一分量给另一组线。",
+      "latex": "y'=0\\Rightarrow y=0\\ \\text{或}\\ x=1"
+    },
+    {
+      "text": "同时满足得到平衡。",
+      "latex": "(x,y)=(0,0),(1,1)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "方向判读",
+      "problem": "在状态 $(2,1/2)$ 的变化方向？",
+      "steps": [
+        "横向速率为 $2(1-1/2)=1$。",
+        "纵向为 $(1/2)(2-1)=1/2$。"
+      ],
+      "answer": "两群体都增加。"
+    },
+    {
+      "title": "零增长不等于平衡",
+      "problem": "状态 $(2,1)$ 是否平衡？",
+      "steps": [
+        "横向导数为零。",
+        "纵向导数为一，仍向上运动。"
+      ],
+      "answer": "不是平衡。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-nullclines-q1",
+      "problem": "正象限内两条非轴零增长线是什么？",
+      "hint": "分别看阈值。",
+      "solution": [
+        "横向零线为一的水平线，纵向零线为一的竖线。"
+      ],
+      "answer": "$y=1,x=1$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-nullclines-q2",
+      "problem": "在 $(1/2,2)$，两个分量分别增减？",
+      "hint": "分别代入符号。",
+      "solution": [
+        "横向因子负，纵向阈值差负。"
+      ],
+      "answer": "两者都下降。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-nullclines-q3",
+      "problem": "正平衡点在哪里？",
+      "hint": "求两条非轴线的交点。",
+      "solution": [
+        "两个坐标都等于一。"
+      ],
+      "answer": "$(1,1)$。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-nullclines-q4",
+      "problem": "一条零增长线一定整条都是解轨迹吗？",
+      "hint": "另一分量可能把状态带离该线。",
+      "solution": [
+        "只有一项导数为零并不足以保持在线上。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-nullclines-m1",
+      "claim": "某分量导数为零就代表系统平衡。",
+      "correction": "所有分量都须同时为零。"
+    },
+    {
+      "id": "ode-nullclines-m2",
+      "claim": "理想捕食模型可直接预测任意现实生态。",
+      "correction": "参数与缺失机制限制了适用范围。"
+    }
+  ],
+  "prerequisites": [
+    "ode-linearization-systems"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ode-nullclines-m1",
+    "ode-nullclines-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "零增长线把相平面划成分量上升、下降的区域；它们的交点才是平衡。",
+  "intuition": "一条线可能只让一个分量暂停，另一个仍在移动。",
+  "objectives": [
+    "找零增长线与平衡",
+    "解释正状态区域中的方向"
+  ],
+  "formalDefinition": {
+    "text": "零增长线与捕食模型",
+    "latex": "x'=x(1-y),\\quad y'=y(x-1)",
+    "conditions": [
+      "本节在 $x,y>0$ 讨论群体含义；轴在系统中保持不变，数值方法应检查是否误出正区域。"
+    ]
+  },
+  "learningCheck": {
+    "question": "平衡点是两组零增长线的什么位置？",
+    "choices": [
+      "并集",
+      "交点",
+      "任意一点"
+    ],
+    "correctIndex": 1,
+    "explanation": "需要所有状态分量同时静止。"
+  },
+  "teaching": {
+    "explain": "零增长线帮助分区，分区里的符号给方向；先读这两件事，再解释轨迹。",
+    "steps": [
+      {
+        "title": "正平衡",
+        "preset": {
+          "a": 1,
+          "c": 1,
+          "b": 5
+        },
+        "observation": "两群体均保持不变。",
+        "instruction": "将初始群体 $x_0$设为 $1$；将初始群体 $y_0$设为 $1$；将观察时间 $t$设为 $5$。"
+      },
+      {
+        "title": "偏离平衡",
+        "preset": {
+          "a": 1.5,
+          "c": 0.5,
+          "b": 5
+        },
+        "observation": "运动跨过不同符号区域。",
+        "instruction": "将初始群体 $x_0$设为 $1.5$；将初始群体 $y_0$设为 $0.5$；将观察时间 $t$设为 $5$。"
+      },
+      {
+        "title": "另一初值",
+        "preset": {
+          "a": 0.5,
+          "c": 1.5,
+          "b": 5
+        },
+        "observation": "初始下降与后续转向由零增长线分区解释。",
+        "instruction": "将初始群体 $x_0$设为 $0.5$；将初始群体 $y_0$设为 $1.5$；将观察时间 $t$设为 $5$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-nullclines",
+    "caption": "相平面显示零增长线、方向场与 RK4 近似轨迹。总运动在正区域内，有限数值轨迹不作周期性证明。",
+    "prediction": "一条零增长线上的点，是否都保持静止？"
+  }
+}

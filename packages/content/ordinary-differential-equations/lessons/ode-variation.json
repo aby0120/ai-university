@@ -1,0 +1,190 @@
+{
+  "id": "ode-variation",
+  "chapterId": "ode-forcing",
+  "number": "5.2",
+  "title": "参数变易法",
+  "subtitle": "让齐次系数随时间变化",
+  "body": [
+    {
+      "title": "先标准化",
+      "text": "对 $a(t)y''+b(t)y'+c(t)y=g(t)$，先在 $a\\ne0$ 的区间除以最高项系数。"
+    },
+    {
+      "title": "多出来的自由度",
+      "text": "令 $y_p=u_1y_1+u_2y_2$，附加 $u_1'y_1+u_2'y_2=0$ 简化导数。"
+    },
+    {
+      "title": "求两个导数",
+      "text": "另一个关系是 $u_1'y_1'+u_2'y_2'=g$，此处右端指标准形式的外力。Wronskian 非零就可求出权重导数。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "附加消项条件。",
+      "latex": "u_1'y_1+u_2'y_2=0"
+    },
+    {
+      "text": "代入原式得到外力条件。",
+      "latex": "u_1'y_1'+u_2'y_2'=g"
+    },
+    {
+      "text": "解二元系统。",
+      "latex": "u_1'=-\\frac{y_2g}{W},\\qquad u_2'=\\frac{y_1g}{W}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "非多项式外力",
+      "problem": "求 $y''=1/t$ 的一个特解，$t>0$。",
+      "steps": [
+        "基解 $1,t$ 的 Wronskian 为一，权重导数为 $-1,1/t$。",
+        "积分后得 $-t+t\\ln t$。"
+      ],
+      "answer": "$y_p=t\\ln t-t$，其二阶导数为 $1/t$。"
+    },
+    {
+      "title": "简单外力核对",
+      "problem": "对 $y''+y=1$ 用参数变易求一个特解。",
+      "steps": [
+        "基解取余弦、正弦，Wronskian 为一。",
+        "取积分得 $u_1=\\cos t,u_2=\\sin t$。"
+      ],
+      "answer": "$y_p=\\cos^2t+\\sin^2t=1$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-variation-q1",
+      "problem": "标准形式 $y''+y=g$ 中基解可选什么？",
+      "hint": "用齐次方程。",
+      "solution": [
+        "齐次通解由余弦和正弦组成。"
+      ],
+      "answer": "$\\cos t,\\sin t$。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-variation-q2",
+      "problem": "为何不能选两个相关基解？",
+      "hint": "检查二元系统行列式。",
+      "solution": [
+        "Wronskian 为零，不能独立求权重。"
+      ],
+      "answer": "初值矩阵不可逆。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-variation-q3",
+      "problem": "$2y''+2y=6$ 标准化后的外力是多少？",
+      "hint": "整个方程除以二。",
+      "solution": [
+        "右端也要除以二。"
+      ],
+      "answer": "$3$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 3.0
+    },
+    {
+      "id": "ode-variation-q4",
+      "problem": "两个特解相差什么类型的函数？",
+      "hint": "相减消掉相同外力。",
+      "solution": [
+        "差满足齐次方程。"
+      ],
+      "answer": "一个齐次解。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-variation-m1",
+      "claim": "参数变易公式可直接使用未标准化的外力。",
+      "correction": "要同时除以最高项系数。"
+    },
+    {
+      "id": "ode-variation-m2",
+      "claim": "两个积分中的常数提供新的非齐次自由度。",
+      "correction": "它们只重复已有齐次项。"
+    }
+  ],
+  "prerequisites": [
+    "ode-undetermined"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ode-variation-m1",
+    "ode-variation-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "参数变易把齐次解前的常数改成函数，用两个线性条件求出外力造成的变化。",
+  "intuition": "继续使用熟悉的基解，但允许外力不断改变它们的权重。",
+  "objectives": [
+    "推导并使用参数变易公式",
+    "检查标准形式与 Wronskian"
+  ],
+  "formalDefinition": {
+    "text": "参数变易法",
+    "latex": "y_p=-y_1\\int\\frac{y_2g}{W}dt+y_2\\int\\frac{y_1g}{W}dt",
+    "conditions": [
+      "用于标准二阶线性方程；基解独立，系数与外力连续，$W\\ne0$；积分常数只增加齐次解。"
+    ]
+  },
+  "learningCheck": {
+    "question": "参数变易前最需要准备什么？",
+    "choices": [
+      "外力的全部零点",
+      "一组任意函数",
+      "对应齐次方程的独立基解"
+    ],
+    "correctIndex": 2,
+    "explanation": "基解和非零 Wronskian 是计算基础。"
+  },
+  "teaching": {
+    "explain": "外力并未改变齐次空间的结构，它改变的是沿各个基解累积了多少响应。",
+    "steps": [
+      {
+        "title": "低于一",
+        "preset": {
+          "b": 0.5
+        },
+        "observation": "导数为对数，处于负值。",
+        "instruction": "将正时间 $t$设为 $0.5$。"
+      },
+      {
+        "title": "驻点",
+        "preset": {
+          "b": 1
+        },
+        "observation": "导数为零。",
+        "instruction": "将正时间 $t$设为 $1$。"
+      },
+      {
+        "title": "大于一",
+        "preset": {
+          "b": 2
+        },
+        "observation": "导数为正，二阶导数仍为正。",
+        "instruction": "将正时间 $t$设为 $2$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-variation",
+    "caption": "画出一个参数变易得到的特解，与其一阶导数。函数只在正时间区间讨论。",
+    "prediction": "在时间一的两侧，特解的一阶导数怎样变号？"
+  }
+}

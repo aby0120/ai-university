@@ -1,0 +1,198 @@
+{
+  "id": "ode-linearization-systems",
+  "chapterId": "ode-nonlinear",
+  "number": "9.2",
+  "title": "Jacobian 与局部线性化",
+  "subtitle": "在平衡附近保留一阶变化",
+  "body": [
+    {
+      "title": "先找平衡",
+      "text": "对 $\\mathbf x'=\\mathbf f(\\mathbf x)$，先解 $\\mathbf f(\\mathbf x_*)=0$，不能在任意点直接套平衡判别。"
+    },
+    {
+      "title": "一阶矩阵",
+      "text": "写偏移后，$\\mathbf u'=J\\mathbf u+\\mathbf r(\\mathbf u)$，余项相对偏移趋零。$J$ 是平衡处的偏导矩阵。"
+    },
+    {
+      "title": "什么结论可靠？",
+      "text": "所有特征值实部严格负则局部渐近稳定；有正实部则不稳定。若有零实部，线性化可能无法决定，中心情形尤其要小心。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "平移到平衡点。",
+      "latex": "\\mathbf x=\\mathbf x_*+\\mathbf u"
+    },
+    {
+      "text": "多变量一阶展开。",
+      "latex": "\\mathbf f(\\mathbf x_*+\\mathbf u)=J\\mathbf u+\\mathbf r(\\mathbf u)"
+    },
+    {
+      "text": "双曲情形的一阶趋势不被足够小的高阶项推翻。",
+      "latex": "\\frac{\\lVert\\mathbf r(\\mathbf u)\\rVert}{\\lVert\\mathbf u\\rVert}\\to0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "稳定的局部模型",
+      "problem": "$x'=-x+x^2,y'=-2y$ 的原点怎样？",
+      "steps": [
+        "Jacobian 在原点为 $\\operatorname{diag}(-1,-2)$。",
+        "两实部严格负。"
+      ],
+      "answer": "原点局部渐近稳定，但未据此声称全局吸引。"
+    },
+    {
+      "title": "零根不能判断",
+      "problem": "比较 $x'=-x^3$ 与 $x'=x^3$ 的零点。",
+      "steps": [
+        "两者线性化都为零。",
+        "前者两侧向内，后者两侧向外。"
+      ],
+      "answer": "线性化相同，非线性稳定性相反。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-linearization-systems-q1",
+      "problem": "$x'=2x+xy,y'=-y$ 在原点的 Jacobian？",
+      "hint": "逐项求偏导。",
+      "solution": [
+        "交叉项在原点一阶贡献为零。"
+      ],
+      "answer": "$\\operatorname{diag}(2,-1)$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-linearization-systems-q2",
+      "problem": "上题原点是什么类型？",
+      "hint": "两个根异号。",
+      "solution": [
+        "存在扩张方向。"
+      ],
+      "answer": "不稳定鞍点。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-linearization-systems-q3",
+      "problem": "纯虚根的非线性平衡能否直接宣称中心？",
+      "hint": "高阶项可能改变半径。",
+      "solution": [
+        "线性项只给旋转，径向趋势可能来自高阶。"
+      ],
+      "answer": "不能。",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "ode-linearization-systems-m2"
+      ]
+    },
+    {
+      "id": "ode-linearization-systems-q4",
+      "problem": "局部渐近稳定是否意味着任意远初值都趋向该点？",
+      "hint": "“局部”限制初值邻域。",
+      "solution": [
+        "可能存在其他平衡或逃逸轨迹。"
+      ],
+      "answer": "不是。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-linearization-systems-m1",
+      "claim": "Jacobian 可以在任意位置当作平衡分类。",
+      "correction": "先确认该位置真是平衡。"
+    },
+    {
+      "id": "ode-linearization-systems-m2",
+      "claim": "线性化中心一定是非线性中心。",
+      "correction": "零实部时高阶项可能决定稳定性。"
+    }
+  ],
+  "prerequisites": [
+    "ode-phase-line",
+    "ode-spirals"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ode-linearization-systems-m1",
+    "ode-linearization-systems-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "非线性系统在平衡附近的一阶近似由 Jacobian 决定；双曲平衡的稳定类型可由线性化判断。",
+  "intuition": "放大平衡点附近，先看最早出现的一阶变化是否已经能决定趋势。",
+  "objectives": [
+    "计算平衡处的 Jacobian",
+    "识别线性化可判定和不可判定情形"
+  ],
+  "formalDefinition": {
+    "text": "Jacobian 与局部线性化",
+    "latex": "J=D\\mathbf f(\\mathbf x_*),\\quad\\mathbf u'=J\\mathbf u+o(\\lVert\\mathbf u\\rVert)",
+    "conditions": [
+      "右端在平衡附近一阶连续可微。无零实部的平衡称双曲；结论是局部的，不自动推广到全空间。"
+    ]
+  },
+  "learningCheck": {
+    "question": "所有 Jacobian 特征值实部严格负时，能得到什么？",
+    "choices": [
+      "附近解都是直线",
+      "所有状态全局趋零",
+      "平衡局部渐近稳定"
+    ],
+    "correctIndex": 2,
+    "explanation": "这是有条件的局部结论。"
+  },
+  "teaching": {
+    "explain": "线性化是局部放大镜，不是把整个非线性系统永久替换成一个矩阵。",
+    "steps": [
+      {
+        "title": "原点附近",
+        "preset": {
+          "a": 0.2,
+          "c": 0.5,
+          "b": 3
+        },
+        "observation": "两轨迹接近并趋向原点。",
+        "instruction": "将初始第一分量 $x_0$设为 $0.2$；将初始第二分量 $y_0$设为 $0.5$；将观察时间 $t$设为 $3$。"
+      },
+      {
+        "title": "更远但未越阈值",
+        "preset": {
+          "a": 0.8,
+          "c": 1,
+          "b": 3
+        },
+        "observation": "非线性影响更明显，仍趋零。",
+        "instruction": "将初始第一分量 $x_0$设为 $0.8$；将初始第二分量 $y_0$设为 $1$；将观察时间 $t$设为 $3$。"
+      },
+      {
+        "title": "跨过阈值",
+        "preset": {
+          "a": 1.5,
+          "c": 0,
+          "b": 3
+        },
+        "observation": "报告有限窗口或解端点，不能据局部结论声称全局吸引。",
+        "instruction": "将初始第一分量 $x_0$设为 $1.5$；将初始第二分量 $y_0$设为 $0$；将观察时间 $t$设为 $3$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-linearization-systems",
+    "caption": "对照非线性相轨迹与局部线性轨迹。原点只局部吸引，跨过第一分量阈值一后可离开并爆破。",
+    "prediction": "原点附近的结论能否推广到阈值另一侧？"
+  }
+}

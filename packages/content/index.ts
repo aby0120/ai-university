@@ -6,6 +6,8 @@ import metadata3 from "./calculus-3/book.json";
 import supplements3 from "./calculus-3/supplements.json";
 import metadata4 from "./linear-algebra/book.json";
 import supplements4 from "./linear-algebra/supplements.json";
+import metadata5 from "./ordinary-differential-equations/book.json";
+import supplements5 from "./ordinary-differential-equations/supplements.json";
 import type { Lesson } from "./types";
 export type Book = typeof metadata;
 export type Supplements = typeof supplements1;
@@ -15,6 +17,7 @@ const modules = import.meta.glob(
     "./calculus-2/lessons/*.json",
     "./calculus-3/lessons/*.json",
     "./linear-algebra/lessons/*.json",
+    "./ordinary-differential-equations/lessons/*.json",
   ],
   { eager: true, import: "default" },
 ) as Record<string, Lesson>;
@@ -63,6 +66,7 @@ export const collections = [
     "calculus-3.html",
   ),
   collection(metadata4, supplements4, "./linear-algebra/lessons", "Linear-Algebra.md", "linear-algebra.html"),
+  collection(metadata5, supplements5, "./ordinary-differential-equations/lessons", "Ordinary-Differential-Equations.md", "ordinary-differential-equations.html"),
 ];
 export type Collection = (typeof collections)[number];
 export const allLessons = collections.flatMap((c) => c.lessons);

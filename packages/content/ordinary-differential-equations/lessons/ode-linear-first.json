@@ -1,0 +1,192 @@
+{
+  "id": "ode-linear-first",
+  "chapterId": "ode-first-order",
+  "number": "2.2",
+  "title": "一阶线性方程与积分因子",
+  "subtitle": "把左侧凑成乘积导数",
+  "body": [
+    {
+      "title": "先写标准形式",
+      "text": "方程为 $y'+p(t)y=q(t)$。在选定区间上，系数应连续。"
+    },
+    {
+      "title": "为什么乘这个因子？",
+      "text": "取 $\\mu=e^{\\int p(t)dt}$，便有 $\\mu'=p\\mu$，所以左侧成为 $(\\mu y)'$。"
+    },
+    {
+      "title": "初值怎样进入？",
+      "text": "用从初始时刻起的定积分，可直接保留初值，不必反复整理积分常数。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "乘上待定因子。",
+      "latex": "\\mu y'+\\mu p y=\\mu q"
+    },
+    {
+      "text": "要求乘积法则中的系数一致。",
+      "latex": "\\mu'=p\\mu\\Rightarrow (\\mu y)'=\\mu q"
+    },
+    {
+      "text": "积分后除回因子。",
+      "latex": "\\mu y=C+\\int\\mu q\\,dt"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "常数输入",
+      "problem": "解 $y'+2y=6,y(0)=1$。",
+      "steps": [
+        "积分因子为 $e^{2t}$，故 $(e^{2t}y)'=6e^{2t}$。",
+        "积分得 $y=3+Ce^{-2t}$，初值给 $C=-2$。"
+      ],
+      "answer": "$y=3-2e^{-2t}$。"
+    },
+    {
+      "title": "有奇点的系数",
+      "problem": "解 $y'+y/t=t$，取 $t>0$。",
+      "steps": [
+        "积分因子可取 $t$。",
+        "$(ty)'=t^2$，积分得 $ty=t^3/3+C$。"
+      ],
+      "answer": "$y=t^2/3+C/t$，仅在所选正区间讨论。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-linear-first-q1",
+      "problem": "解 $y'+y=4,y(0)=2$。",
+      "hint": "先找平衡值。",
+      "solution": [
+        "通解为 $4+Ce^{-t}$，初值给 $C=-2$。"
+      ],
+      "answer": "$y=4-2e^{-t}$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-linear-first-q2",
+      "problem": "$y'+3ty=q(t)$ 的一个积分因子？",
+      "hint": "积分时间系数。",
+      "solution": [
+        "$\\int3t\\,dt=3t^2/2$。"
+      ],
+      "answer": "$e^{3t^2/2}$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-linear-first-q3",
+      "problem": "解 $y'-y=0,y(1)=2$。",
+      "hint": "初始时刻不是零。",
+      "solution": [
+        "$y=Ce^t$，$Ce=2$。"
+      ],
+      "answer": "$y=2e^{t-1}$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-linear-first-q4",
+      "problem": "$ty'+y=1$ 除以 $t$ 后，能直接宣称标准公式在零点成立吗？",
+      "hint": "检查除法。",
+      "solution": [
+        "标准形式的系数在零点未定义；需回原方程另查。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-linear-first-m1",
+      "claim": "积分因子应乘在未知函数项上。",
+      "correction": "它必须乘整个方程。"
+    },
+    {
+      "id": "ode-linear-first-m2",
+      "claim": "指数因子中的任意常数会改变最终解族。",
+      "correction": "非零常数倍率会被积分常数吸收。"
+    }
+  ],
+  "prerequisites": [
+    "ode-separable"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ode-linear-first-m1",
+    "ode-linear-first-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "积分因子把一阶线性方程变成一个乘积的导数，从而直接积分。",
+  "intuition": "我们要找一个权重，让未知函数和它的导数恰好合并。",
+  "objectives": [
+    "构造积分因子",
+    "求线性初值问题"
+  ],
+  "formalDefinition": {
+    "text": "一阶线性方程与积分因子",
+    "latex": "y(t)=\\frac{\\mu(t_0)y_0+\\int_{t_0}^t\\mu(s)q(s)\\,ds}{\\mu(t)},\\qquad \\mu=e^{\\int p(t)dt}",
+    "conditions": [
+      "$p,q$ 在区间连续；积分因子始终非零。"
+    ]
+  },
+  "learningCheck": {
+    "question": "积分因子的目标是什么？",
+    "choices": [
+      "让所有系数为一",
+      "消去右端",
+      "把左侧变成乘积导数"
+    ],
+    "correctIndex": 2,
+    "explanation": "关键是让因子的导数等于系数乘因子。"
+  },
+  "teaching": {
+    "explain": "这一步没有猜解，只是设计一个乘积，让微分运算可以倒过来积分。",
+    "steps": [
+      {
+        "title": "从下方靠近",
+        "preset": {
+          "a": 0,
+          "b": 3
+        },
+        "observation": "解从零向稳态一上升。",
+        "instruction": "将初始值 $y_0$设为 $0$；将观察时间 $t$设为 $3$。"
+      },
+      {
+        "title": "从上方靠近",
+        "preset": {
+          "a": 2,
+          "b": 3
+        },
+        "observation": "解从二向稳态一下降。",
+        "instruction": "将初始值 $y_0$设为 $2$；将观察时间 $t$设为 $3$。"
+      },
+      {
+        "title": "稳态",
+        "preset": {
+          "a": 1,
+          "b": 3
+        },
+        "observation": "初值等于稳态时保持不变。",
+        "instruction": "将初始值 $y_0$设为 $1$；将观察时间 $t$设为 $3$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-linear-first",
+    "caption": "稳态取一，金色曲线为不同初值下的一阶线性响应；与正文冷却和混合模型仅差尺度和平移。",
+    "prediction": "初值分别在稳态上下方时，会怎样靠近稳态？"
+  }
+}

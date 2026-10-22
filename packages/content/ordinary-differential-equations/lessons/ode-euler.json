@@ -1,0 +1,194 @@
+{
+  "id": "ode-euler",
+  "chapterId": "ode-numerical",
+  "number": "11.1",
+  "title": "Euler 方法",
+  "subtitle": "沿当前切线走一小步",
+  "body": [
+    {
+      "title": "一步怎么算？",
+      "text": "在节点 $(t_n,y_n)$ 计算 $f(t_n,y_n)$，再走长度 $h$ 的时间步。"
+    },
+    {
+      "title": "画线代表什么？",
+      "text": "节点间直线是数值插值，不是声称真实解逐段为直线。方向场随位置变化。"
+    },
+    {
+      "title": "什么时候收敛？",
+      "text": "固定有限区间，适当光滑和状态 Lipschitz 等条件下，步长趋零时 Euler 全局误差为一阶。遇到奇点不能任意跨越。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "精确解作一次 Taylor 展开。",
+      "latex": "y(t+h)=y(t)+hy'(t)+O(h^2)"
+    },
+    {
+      "text": "用方程替换导数。",
+      "latex": "y(t+h)=y(t)+hf(t,y(t))+O(h^2)"
+    },
+    {
+      "text": "省去单步二阶余项，得到迭代。",
+      "latex": "y_{n+1}=y_n+hf(t_n,y_n)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "一步增长",
+      "problem": "$y'=y,y_0=1,h=1/2$，算一步。",
+      "steps": [
+        "当前斜率为一。",
+        "增量为二分之一。"
+      ],
+      "answer": "$y_1=3/2$。"
+    },
+    {
+      "title": "两步增长",
+      "problem": "继续上题再走一步。",
+      "steps": [
+        "新斜率为 $3/2$。",
+        "新增 $3/4$。"
+      ],
+      "answer": "$y_2=9/4$，对应时间一；精确值为 $e$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-euler-q1",
+      "problem": "$y'=-2y,y_0=3,h=0.1$，一步值？",
+      "hint": "当前斜率为负六。",
+      "solution": [
+        "$3+0.1(-6)=2.4$。"
+      ],
+      "answer": "$2.4$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 2.4
+    },
+    {
+      "id": "ode-euler-q2",
+      "problem": "$y'=t,y(0)=1,h=1$，一步 Euler 值？",
+      "hint": "起点时间为零。",
+      "solution": [
+        "当前斜率零，第一次不增量。"
+      ],
+      "answer": "$1$，精确值是 $3/2$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-euler-q3",
+      "problem": "步长减半一般会让一阶全局误差约变为多少？",
+      "hint": "保持同一终点，进入渐近区间。",
+      "solution": [
+        "主误差与步长成正比。"
+      ],
+      "answer": "约一半。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-euler-q4",
+      "problem": "数值线段穿过爆破时刻后仍有有限节点，能说明经典解已穿过去吗？",
+      "hint": "数值递推与原解不同。",
+      "solution": [
+        "算法可以给数，但原方程解已失去延拓。"
+      ],
+      "answer": "不能。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-euler-m1",
+      "claim": "每步都用最初的斜率。",
+      "correction": "应在当前数值节点重新计算。"
+    },
+    {
+      "id": "ode-euler-m2",
+      "claim": "节点连线就是精确解。",
+      "correction": "它是数值插值。"
+    }
+  ],
+  "prerequisites": [
+    "ode-special-functions",
+    "ode-direction-fields"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ode-euler-m1",
+    "ode-euler-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "Euler 方法用当前斜率预测下一时刻，把连续变化近似成一段段切线推进。",
+  "intuition": "这一小步假设斜率暂时不变；步子越大，忽略斜率变化的代价通常越大。",
+  "objectives": [
+    "计算 Euler 迭代",
+    "区分数值节点与连续精确解"
+  ],
+  "formalDefinition": {
+    "text": "Euler 方法",
+    "latex": "t_{n+1}=t_n+h,\\qquad y_{n+1}=y_n+h f(t_n,y_n)",
+    "conditions": [
+      "显式 Euler；$h>0$，节点留在方程定义域。误差阶结论要求共同有限区间和足够正则性。"
+    ]
+  },
+  "learningCheck": {
+    "question": "Euler 每一步使用哪个斜率？",
+    "choices": [
+      "当前数值节点的斜率",
+      "整个区间平均斜率",
+      "下一点精确斜率"
+    ],
+    "correctIndex": 0,
+    "explanation": "它是显式的局部切线预测。"
+  },
+  "teaching": {
+    "explain": "Euler 的优点是透明：每个节点都能看出这一步为何这样走，也能看出误差从哪里进入。",
+    "steps": [
+      {
+        "title": "粗网格",
+        "preset": {
+          "n": 2,
+          "b": 2
+        },
+        "observation": "各方法在同一终点有不同误差。",
+        "instruction": "将等分步数 $N$设为 $2$；将目标时间 $T$设为 $2$。"
+      },
+      {
+        "title": "加密",
+        "preset": {
+          "n": 8,
+          "b": 2
+        },
+        "observation": "步长变为原来的四分之一。",
+        "instruction": "将等分步数 $N$设为 $8$；将目标时间 $T$设为 $2$。"
+      },
+      {
+        "title": "更细",
+        "preset": {
+          "n": 32,
+          "b": 2
+        },
+        "observation": "观察误差随阶数缩小，有限精度仍有下限。",
+        "instruction": "将等分步数 $N$设为 $32$；将目标时间 $T$设为 $2$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-euler",
+    "caption": "比较显式 Euler、Heun、RK4 与解析指数；直线段仅连接数值节点。误差在同一终点计算。",
+    "prediction": "固定终点并加密网格，Euler 误差怎样变化？"
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "id": "ode-superposition",
+  "chapterId": "ode-second-order",
+  "number": "4.1",
+  "title": "叠加原理与二阶解空间",
+  "subtitle": "两个独立解组成全部齐次解",
+  "body": [
+    {
+      "title": "为什么可以叠加？",
+      "text": "线性微分算子满足 $L[c_1y_1+c_2y_2]=c_1L[y_1]+c_2L[y_2]$。齐次解的线性组合仍为解。"
+    },
+    {
+      "title": "为什么是两个参数？",
+      "text": "标准二阶线性方程在连续系数区间上，每一对初始位置与速度给唯一解。解空间因此与二维初始数据对应。"
+    },
+    {
+      "title": "非齐次怎样处理？",
+      "text": "固定一个特解后，全部解是该特解加全部齐次解。两个同外力解相减会消掉外力。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "将线性算子作用于组合。",
+      "latex": "L[c_1y_1+c_2y_2]=0"
+    },
+    {
+      "text": "初始数据组成二元线性系统。",
+      "latex": "\\begin{pmatrix}y_1(t_0)&y_2(t_0)\\\\y_1'(t_0)&y_2'(t_0)\\end{pmatrix}\\begin{pmatrix}c_1\\\\c_2\\end{pmatrix}=\\begin{pmatrix}y_0\\\\v_0\\end{pmatrix}"
+    },
+    {
+      "text": "可逆初值矩阵给出全部初值解。",
+      "latex": "\\det\\begin{pmatrix}y_1&y_2\\\\y_1'&y_2'\\end{pmatrix}(t_0)\\ne0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "自由振动",
+      "problem": "解 $y''+y=0,y(0)=2,y'(0)=3$。",
+      "steps": [
+        "通解是 $c_1\\cos t+c_2\\sin t$。",
+        "零时刻分别给出 $c_1=2,c_2=3$。"
+      ],
+      "answer": "$y=2\\cos t+3\\sin t$。"
+    },
+    {
+      "title": "非齐次差",
+      "problem": "两函数都满足 $y''+y=5$，它们的差满足什么？",
+      "steps": [
+        "将两个等式相减。",
+        "右端相消，左侧保持线性。"
+      ],
+      "answer": "差满足 $z''+z=0$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-superposition-q1",
+      "problem": "$y''=0$ 的一般解？",
+      "hint": "积分两次。",
+      "solution": [
+        "第一次给常数导数，第二次给一次函数。"
+      ],
+      "answer": "$y=c_1+c_2t$。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-superposition-q2",
+      "problem": "$\\cos t$ 与 $2\\cos t$ 能否组成完整基解？",
+      "hint": "检查是否独立。",
+      "solution": [
+        "后者只是前者的倍数，无法匹配任意初始速度。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-superposition-q3",
+      "problem": "解 $y''+y=0,y(0)=0,y'(0)=-2$。",
+      "hint": "匹配正弦余弦系数。",
+      "solution": [
+        "余弦系数为零，正弦系数为负二。"
+      ],
+      "answer": "$y=-2\\sin t$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-superposition-q4",
+      "problem": "非齐次解的两倍仍一定满足原外力方程吗？",
+      "hint": "算子作用后右端也乘倍数。",
+      "solution": [
+        "若外力非零，右端变为两倍外力。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-superposition-m1",
+      "claim": "叠加对任意非线性方程也成立。",
+      "correction": "线性性是关键条件。"
+    },
+    {
+      "id": "ode-superposition-m2",
+      "claim": "随便两个解就能表示全部解。",
+      "correction": "两个解还必须线性无关。"
+    }
+  ],
+  "prerequisites": [
+    "ode-initial-values",
+    "la-independence"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-superposition-m1",
+    "ode-superposition-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "二阶齐次线性方程的全部解，由两个线性无关的解线性组合而成。",
+  "intuition": "初始位置和初始速度是两个独立参数；两个基解分别承载它们。",
+  "objectives": [
+    "判断叠加适用范围",
+    "用初值确定两个系数"
+  ],
+  "formalDefinition": {
+    "text": "叠加原理与二阶解空间",
+    "latex": "y''+p(t)y'+q(t)y=0\\Rightarrow y=c_1y_1+c_2y_2",
+    "conditions": [
+      "$p,q$ 在区间连续；$y_1,y_2$ 是该区间上的线性无关解。非齐次通解还需加一个特解。"
+    ]
+  },
+  "learningCheck": {
+    "question": "二阶齐次线性通解需要哪两个解？",
+    "choices": [
+      "任意两个非零解",
+      "两个不同表达式的解",
+      "两个线性无关解"
+    ],
+    "correctIndex": 2,
+    "explanation": "不同表达式可能仍互为倍数。"
+  },
+  "teaching": {
+    "explain": "解空间的基，与向量空间的基是同一思路：既能覆盖全部解，又没有冗余。",
+    "steps": [
+      {
+        "title": "单位频率",
+        "preset": {
+          "a": 1,
+          "b": 1.5707963267948966
+        },
+        "observation": "位移为零，速度为负一。",
+        "instruction": "将角频率 $\\omega$设为 $1$；将观察时间 $t$设为 $1.57079633$。"
+      },
+      {
+        "title": "更高频率",
+        "preset": {
+          "a": 2,
+          "b": 1.5707963267948966
+        },
+        "observation": "同一时间位移到负一，速度为零。",
+        "instruction": "将角频率 $\\omega$设为 $2$；将观察时间 $t$设为 $1.57079633$。"
+      },
+      {
+        "title": "一个周期",
+        "preset": {
+          "a": 1,
+          "b": 6
+        },
+        "observation": "六时间单位内接近完成一圈，但精确周期是两倍圆周率。",
+        "instruction": "将角频率 $\\omega$设为 $1$；将观察时间 $t$设为 $6$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-superposition",
+    "caption": "画出位移与速度的时间曲线；改变频率会同时改变周期与速度幅值。",
+    "prediction": "角频率加倍后，周期和速度幅值各怎样变？"
+  }
+}

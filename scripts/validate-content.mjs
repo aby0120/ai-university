@@ -13,6 +13,7 @@ import {
 } from "./content-utils.mjs";
 import { validateGuidance } from "../packages/visuals/guidance.mjs";
 import {linearControls,linearFrame,linearDefaults} from '../packages/visuals/linear-algebra.mjs';
+import {odeControls,odeFrame,odeDefaults} from '../packages/visuals/ode.mjs';
 import { functions } from "../packages/visuals/math.mjs";
 import {
   calculus2Controls,
@@ -92,7 +93,10 @@ export function validateContent() {
         l.sources.every((id) => sourceIds.has(id)),
         `${l.id}: unknown source`,
       );
-      if(l.interactiveVisual.kind==='linear-algebra') {
+      if(l.interactiveVisual.kind==='ode') {
+        assert.equal(l.interactiveVisual.function,l.id);
+        assert(odeControls(l.id));odeFrame(l.id,odeDefaults(l.id));
+      } else if(l.interactiveVisual.kind==='linear-algebra') {
         assert.equal(l.interactiveVisual.function,l.id);
         assert(linearControls(l.id));linearFrame(l.id,linearDefaults(l.id));
       } else if (l.interactiveVisual.kind === "calculus3") {

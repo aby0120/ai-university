@@ -144,19 +144,28 @@
       "coverFormula": "A=U\\Sigma V^T"
     },
     {
-      "id": "differential-equations",
+      "id": "ordinary-differential-equations",
       "areaId": "differential-equations",
-      "title": "微分方程",
-      "englishTitle": "Differential Equations",
+      "title": "常微分方程",
+      "englishTitle": "Ordinary Differential Equations",
       "coverTitle": [
+        "Ordinary",
         "Differential",
         "Equations"
       ],
-      "tagline": "把变化写成规律",
-      "description": "从一阶方程到高阶线性方程、方程组与定性分析。",
-      "audience": "已掌握微积分的学习者",
-      "scope": "一阶方程 · 线性方程 · 系统 · 动态模型",
-      "status": "planned"
+      "tagline": "从局部变化到完整运动",
+      "description": "一阶与高阶方程、存在唯一性、振动与共振、Laplace、线性与非线性系统、级数及数值方法。",
+      "audience": "掌握一元微积分，愿意补充矩阵与特征值的学习者",
+      "scope": "一阶 · 振动 · Laplace · 方程组 · 非线性 · 级数与数值法",
+      "status": "published",
+      "route": "book/ordinary-differential-equations",
+      "stats": {
+        "chapters": 11,
+        "lessons": 55,
+        "examples": 110,
+        "exercises": 275
+      },
+      "coverFormula": "\\mathbf x'=A\\mathbf x+\\mathbf b(t)"
     },
     {
       "id": "probability-statistics",
