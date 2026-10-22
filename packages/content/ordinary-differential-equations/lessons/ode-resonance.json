@@ -1,0 +1,194 @@
+{
+  "id": "ode-resonance",
+  "chapterId": "ode-forcing",
+  "number": "5.4",
+  "title": "受迫振动与共振",
+  "subtitle": "外力持续输入能量",
+  "body": [
+    {
+      "title": "离开共振",
+      "text": "对 $y''+\\omega_0^2y=F\\cos\\omega t$，当 $\\omega\\ne\\omega_0$，同频特解的系数为 $F/(\\omega_0^2-\\omega^2)$。"
+    },
+    {
+      "title": "恰好共振",
+      "text": "若 $\\omega=\\omega_0>0$，同频试解重合，特解成为 $Ft\\sin(\\omega_0t)/(2\\omega_0)$。"
+    },
+    {
+      "title": "有限频差",
+      "text": "频率接近但不相等时可出现拍振：波形的包络缓慢变化。不要把有限时间的增大都叫严格共振。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "试共振修正形式。",
+      "latex": "y_p=A t\\sin\\omega_0t"
+    },
+    {
+      "text": "二阶导数与回复项抵消时间部分。",
+      "latex": "y_p''+\\omega_0^2y_p=2A\\omega_0\\cos\\omega_0t"
+    },
+    {
+      "text": "匹配外力系数。",
+      "latex": "A=\\frac F{2\\omega_0}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "单位频率共振",
+      "problem": "解 $y''+y=\\cos t,y(0)=y'(0)=0$。",
+      "steps": [
+        "取共振特解 $t\\sin t/2$。",
+        "其初始值与导数均为零，不需齐次补项。"
+      ],
+      "answer": "$y=t\\sin t/2$。"
+    },
+    {
+      "title": "非共振零初值",
+      "problem": "解 $y''+y=\\cos2t$，零位置与速度起步。",
+      "steps": [
+        "特解为 $-\\cos2t/3$。",
+        "加 $\\cos t/3$ 满足零位置，正弦系数为零。"
+      ],
+      "answer": "$y=(\\cos t-\\cos2t)/3$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-resonance-q1",
+      "problem": "$y''+4y=\\cos\\omega t$ 的共振角频率？",
+      "hint": "读取固有频率。",
+      "solution": [
+        "$\\omega_0^2=4$，取正频率。"
+      ],
+      "answer": "$2$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 2.0
+    },
+    {
+      "id": "ode-resonance-q2",
+      "problem": "$y''+4y=\\cos2t$ 的一个特解？",
+      "hint": "代入共振公式。",
+      "solution": [
+        "$F=1,\\omega_0=2$。"
+      ],
+      "answer": "$t\\sin2t/4$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-resonance-q3",
+      "problem": "任意初值都能用齐次项消掉长期线性共振增长吗？",
+      "hint": "齐次项有界。",
+      "solution": [
+        "有界正弦余弦不能抵消持续增长包络。"
+      ],
+      "answer": "不能。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-resonance-q4",
+      "problem": "零外力时仍会出现本节的受迫共振增长吗？",
+      "hint": "检查外力幅度。",
+      "solution": [
+        "共振特解的系数随外力一起为零。"
+      ],
+      "answer": "不会。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-resonance-m1",
+      "claim": "频率差很小就等于严格相同。",
+      "correction": "非共振与严格共振的长期行为不同。"
+    },
+    {
+      "id": "ode-resonance-m2",
+      "claim": "有正阻尼也总按时间线性增幅。",
+      "correction": "正阻尼下稳态幅度有限。"
+    }
+  ],
+  "prerequisites": [
+    "ode-undetermined",
+    "ode-damping"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-resonance-m1",
+    "ode-resonance-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "无阻尼系统被固有频率持续驱动时，可出现随时间增长的共振项。",
+  "intuition": "推力每次与运动配合，能量便持续累积；阻尼会改变这一结论。",
+  "objectives": [
+    "区分强迫频率与固有频率",
+    "解释共振项的时间因子"
+  ],
+  "formalDefinition": {
+    "text": "受迫振动与共振",
+    "latex": "y_p=\\frac F{2\\omega_0}t\\sin(\\omega_0t)\\quad(\\omega=\\omega_0)",
+    "conditions": [
+      "无阻尼、常系数、正固有频率，外力持续正弦驱动；该增长结论不直接适用于有正阻尼的稳态。"
+    ]
+  },
+  "learningCheck": {
+    "question": "本节无界共振响应最关键的条件组合是？",
+    "choices": [
+      "无阻尼且外力频率等于固有频率",
+      "只要初始位置不为零",
+      "任意外力与任意阻尼"
+    ],
+    "correctIndex": 0,
+    "explanation": "外力频率匹配与无耗散共同产生持续累积。"
+  },
+  "teaching": {
+    "explain": "共振不是公式分母突然为零，而是原先的特解结构失效，需要新的时间增长项。",
+    "steps": [
+      {
+        "title": "低频驱动",
+        "preset": {
+          "a": 0.5,
+          "b": 6
+        },
+        "observation": "外力与固有振动叠加。",
+        "instruction": "将外力角频率 $\\omega$设为 $0.5$；将观察时间 $t$设为 $6$。"
+      },
+      {
+        "title": "严格共振",
+        "preset": {
+          "a": 1,
+          "b": 6
+        },
+        "observation": "响应含时间乘正弦，包络增长。",
+        "instruction": "将外力角频率 $\\omega$设为 $1$；将观察时间 $t$设为 $6$。"
+      },
+      {
+        "title": "较高频驱动",
+        "preset": {
+          "a": 2,
+          "b": 6
+        },
+        "observation": "非共振响应为两个有界余弦之差。",
+        "instruction": "将外力角频率 $\\omega$设为 $2$；将观察时间 $t$设为 $6$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-resonance",
+    "caption": "显示零初值解析响应与外力。频率为一时改用共振极限公式，避免除以零。",
+    "prediction": "驱动频率正好等于固有频率时，响应哪里不同？"
+  }
+}

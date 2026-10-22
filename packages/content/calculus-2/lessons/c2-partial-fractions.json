@@ -1,0 +1,201 @@
+{
+  "id": "c2-partial-fractions",
+  "title": "部分分式",
+  "subtitle": "把有理函数拆成能逐项积分的小块",
+  "concept": "分母能分解时，把一个分式拆成几个简单分式；先做除法，再比较系数。",
+  "intuition": "$\\frac1{x(x+1)}=\\frac1x-\\frac1{x+1}$。两项虽然各自更简单，合起来仍是原函数。",
+  "body": [
+    {
+      "title": "分子次数太高？",
+      "text": "先做多项式除法，让余下分子的次数低于分母。部分分式针对的是真分式。"
+    },
+    {
+      "title": "分母有重根或二次因子？",
+      "text": "重根 $(x-a)^m$ 要从一次列到 $m$ 次；不可约二次因子上方用一次式 $Ax+B$，重复二次因子也逐次列出。"
+    },
+    {
+      "title": "积分后怎样检查？",
+      "text": "先通分检查分解，再求导检查原函数。对数写绝对值；每个被极点分开的区间可有不同常数。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "把有理函数拆成能逐项积分的小块",
+    "latex": "\\frac1{x(x+1)}=\\frac1x-\\frac1{x+1},\\quad\\int\\frac{dx}{x(x+1)}=\\ln|x|-\\ln|x+1|+C",
+    "conditions": [
+      "$x\\neq0,-1$；在不跨极点的连通区间内积分。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "设未知系数并通分。",
+      "latex": "1=A(x+1)+Bx"
+    },
+    {
+      "text": "比较常数与一次项。",
+      "latex": "A=1,\\quad A+B=0"
+    },
+    {
+      "text": "逐项积分。",
+      "latex": "\\int\\left(\\frac1x-\\frac1{x+1}\\right)dx=\\ln\\left|\\frac{x}{x+1}\\right|+C"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "不同的一次因子",
+      "problem": "求 $\\int\\frac{3x+1}{x(x+1)}dx$。",
+      "steps": [
+        "令 $3x+1=A(x+1)+Bx$，得 $A=1,B=2$。",
+        "分别积分 $\\frac1x$ 与 $\\frac2{x+1}$。"
+      ],
+      "answer": "$\\ln|x|+2\\ln|x+1|+C$。"
+    },
+    {
+      "title": "重根不能漏",
+      "problem": "求 $\\int\\frac{dx}{x(x+1)^2}$。",
+      "steps": [
+        "分解为 $\\frac1x-\\frac1{x+1}-\\frac1{(x+1)^2}$，可通分复查。",
+        "最后一项原函数为 $\\frac1{x+1}$。"
+      ],
+      "answer": "$\\ln|x|-\\ln|x+1|+\\frac1{x+1}+C$。"
+    },
+    {
+      "title": "不可约二次因子",
+      "problem": "求 $\\int\\frac{2x+3}{x(x^2+1)}\\,dx$。",
+      "steps": [
+        "设为 $A/x+(Bx+C)/(x^2+1)$。通分比较 $2x+3=(A+B)x^2+Cx+A$，得 $A=3,B=-3,C=2$。",
+        "逐项积分 $3/x-3x/(x^2+1)+2/(x^2+1)$。第二项用 $u=x^2+1$，第三项用反正切。",
+        "$x^2+1>0$，只有 $x=0$ 是极点；在正、负半轴分别取积分常数。"
+      ],
+      "answer": "$3\\ln|x|-\\frac32\\ln(x^2+1)+2\\arctan x+C$，$x\\ne0$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-partial-fractions-m1",
+      "claim": "重根只列最高次。",
+      "correction": "较低幂次项通常也需要存在。"
+    },
+    {
+      "id": "c2-partial-fractions-m2",
+      "claim": "分母含 $x^2+1$，分子只设常数。",
+      "correction": "一般应设 $Ax+B$；求出的系数可以为零。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "分解 $\\frac1{x^2-1}$。",
+      "answer": "$\\frac1{2(x-1)}-\\frac1{2(x+1)}$。",
+      "hint": "分母是平方差。",
+      "solution": [
+        "写成 $\\frac A{x-1}+\\frac B{x+1}$，代入 $x=1,-1$ 得 $A=\\frac12,B=-\\frac12$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-partial-fractions-p1"
+    },
+    {
+      "problem": "求 $\\int_1^2\\frac{dx}{x(x+1)}$。",
+      "answer": "$\\ln\\frac43$。",
+      "hint": "用对数端点差。",
+      "solution": [
+        "$[\\ln x-\\ln(x+1)]_1^2=\\ln\\frac23-\\ln\\frac12=\\ln\\frac43$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.28768207245178085,
+      "id": "c2-partial-fractions-p2"
+    },
+    {
+      "problem": "求 $\\int\\frac{x^2}{x^2+1}dx$。",
+      "answer": "$x-\\arctan x+C$。",
+      "hint": "先做除法。",
+      "solution": [
+        "$\\frac{x^2}{x^2+1}=1-\\frac1{x^2+1}$，逐项积分。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-partial-fractions-p3"
+    },
+    {
+      "problem": "为 $\\frac1{(x-1)^2(x^2+1)}$ 写出分解形式，不求系数。",
+      "answer": "$\\frac A{x-1}+\\frac B{(x-1)^2}+\\frac{Cx+D}{x^2+1}$。",
+      "hint": "分别处理重根和不可约二次因子。",
+      "solution": [
+        "两个一次幂次都必须保留；二次因子的分子次数低一阶。"
+      ],
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "id": "c2-partial-fractions-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "分母含 $(x-2)^3$，对应分式项应有几个？",
+    "choices": [
+      "一个",
+      "两个",
+      "三个"
+    ],
+    "correctIndex": 2,
+    "explanation": "从一次幂列到三次幂，不能只保留最高次。"
+  },
+  "teaching": {
+    "explain": "分解是在保持函数不变的前提下，换一个更容易积分的写法。系数不是猜答案，通分就能逐个确定。",
+    "steps": [
+      {
+        "title": "正区间",
+        "instruction": "输入设为 0.5。",
+        "observation": "$\\frac1{x(x+1)}=\\frac43$，两个分式之差相同。",
+        "preset": {
+          "x": 0.5
+        }
+      },
+      {
+        "title": "另一个点",
+        "instruction": "输入设为 1。",
+        "observation": "原式与分解结果均为 $\\frac12$。",
+        "preset": {
+          "x": 1
+        }
+      },
+      {
+        "title": "更远处",
+        "instruction": "输入设为 3。",
+        "observation": "原式与分解结果均为 $\\frac1{12}$。",
+        "preset": {
+          "x": 3
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-trig-substitution"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-techniques",
+  "number": "1.4",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-partial-fractions",
+    "caption": "比较原有理函数与拆开的两个分式，避开极点。",
+    "prediction": "把两条分式的值相加，能否恢复原函数？"
+  },
+  "misconceptionTags": [
+    "c2-partial-fractions-m1",
+    "c2-partial-fractions-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "先长除法再分解真分式",
+    "列全重根与二次因子的项",
+    "通分和求导双重检查"
+  ]
+}

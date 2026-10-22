@@ -1,0 +1,202 @@
+{
+  "id": "c2-parametric-calculus",
+  "title": "参数曲线的切线与弧长",
+  "subtitle": "先对参数求变化，再比较坐标变化",
+  "concept": "参数曲线的斜率是纵坐标变化率除以横坐标变化率；弧长是速率的累积。",
+  "intuition": "点在短时间内横移 $dx$、纵移 $dy$；切线看两者的比例，距离看勾股长度。",
+  "body": [
+    {
+      "title": "横坐标导数为零怎么办？",
+      "text": "若纵坐标导数非零，可能是竖直切线；若两者都为零，需要单独分析，不能直接用商公式。"
+    },
+    {
+      "title": "二阶导数如何算？",
+      "text": "先对斜率关于参数求导，再除以 $x\\prime(t)$；不能只求一次参数导数就结束。"
+    },
+    {
+      "title": "弧长会重复计数吗？",
+      "text": "参数路径若绕同一段多次，积分计算走过的总路程；几何曲线的长度应选不重复描绘的区间。"
+    },
+    {
+      "title": "参数曲线的面积怎么求？",
+      "text": "把 $dx$ 换成 $x\\prime(t)dt$：$\\int y\\,dx=\\int y(t)x\\prime(t)dt$。若横坐标递增且高度非负，就是曲线下的面积；横坐标递减时要反向，发生折返或换符号时先分段，不把带符号累积直接当几何面积。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "先对参数求变化，再比较坐标变化",
+    "latex": "\\frac{dy}{dx}=\\frac{y\\prime(t)}{x\\prime(t)},\\quad\\frac{d^2y}{dx^2}=\\frac1{x\\prime(t)}\\frac d{dt}\\left(\\frac{y\\prime(t)}{x\\prime(t)}\\right),\\quad L=\\int_\\alpha^\\beta\\sqrt{x\\prime(t)^2+y\\prime(t)^2}\\,dt",
+    "conditions": [
+      "斜率和二阶导数公式要求 $x\\prime(t)\\neq0$ 及相应光滑性；弧长要求分段连续可导，并留意重复路径。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "链式法则连接参数与横坐标。",
+      "latex": "\\frac{dy}{dt}=\\frac{dy}{dx}\\frac{dx}{dt}"
+    },
+    {
+      "text": "小路程由两方向位移组成。",
+      "latex": "ds=\\sqrt{dx^2+dy^2}=\\sqrt{x\\prime(t)^2+y\\prime(t)^2}\\,dt"
+    },
+    {
+      "text": "沿整个参数区间累积。",
+      "latex": "L=\\int_\\alpha^\\beta v(t)dt"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "参数斜率",
+      "problem": "$x=t^2,y=t^3$，求 $t=1$ 的切线斜率与二阶导数。",
+      "steps": [
+        "$\\frac{dy}{dx}=\\frac{3t^2}{2t}=\\frac32t$，这里 $t\\neq0$。",
+        "二阶导数为 $\\frac{3/2}{2t}=\\frac3{4t}$。"
+      ],
+      "answer": "斜率 $\\frac32$，二阶导数 $\\frac34$。"
+    },
+    {
+      "title": "同一条半圆，分别算长度与面积",
+      "problem": "$x=\\cos t,y=\\sin t$，$0\\leq t\\leq\\pi$ 的路径长度与上半圆面积分别是多少？",
+      "steps": [
+        "速率 $\\sqrt{\\sin^2t+\\cos^2t}=1$。",
+        "$L=\\int_0^\\pi1dt=\\pi$。",
+        "横坐标从 1 减到 $-1$，所以 $\\int_0^\\pi y(t)x\\prime(t)dt=-\\int_0^\\pi\\sin^2t dt=-\\frac\\pi2$ 是负的有向积分。",
+        "上半圆高度非负，几何面积要把横坐标方向反过来，得到 $\\frac\\pi2$，也可用半圆面积复查。"
+      ],
+      "answer": "路径长度 $\\pi$；上半圆面积 $\\frac\\pi2$。两者累积的小块不同。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-parametric-calculus-m1",
+      "claim": "二阶导数是 $\\frac{y^{(2)}(t)}{x^{(2)}(t)}$。",
+      "correction": "先对斜率求参数导数，再除以横坐标导数。"
+    },
+    {
+      "id": "c2-parametric-calculus-m2",
+      "claim": "速度为零的点一定没有切线。",
+      "correction": "商公式失效不代表没有切线，应看局部路径。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$x=2t,y=t^2$，$t=1$ 的斜率？",
+      "answer": "$1$。",
+      "hint": "纵坐标导数除横坐标导数。",
+      "solution": [
+        "$\\frac{2t}{2}=t$，代入得 1。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 1,
+      "id": "c2-parametric-calculus-p1"
+    },
+    {
+      "problem": "上一题的二阶导数？",
+      "answer": "$\\frac12$。",
+      "hint": "还要除以横坐标导数。",
+      "solution": [
+        "$\\frac d{dt}(t)=1$，再除以 2 得 $\\frac12$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.5,
+      "id": "c2-parametric-calculus-p2"
+    },
+    {
+      "problem": "$x=3t,y=4t$，$0\\leq t\\leq2$ 的长度？",
+      "answer": "$10$。",
+      "hint": "速率乘参数区间长度。",
+      "solution": [
+        "速率为 5，$L=\\int_0^2 5dt=10$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 10,
+      "id": "c2-parametric-calculus-p3"
+    },
+    {
+      "problem": "单位圆在 $t=0$ 是哪种切线？",
+      "answer": "竖直切线。",
+      "hint": "检查两个坐标的导数。",
+      "solution": [
+        "$x\\prime(0)=0$，$y\\prime(0)=1$；在 $(1,0)$ 处切线为 $x=1$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [
+        "c2-parametric-calculus-m2"
+      ],
+      "id": "c2-parametric-calculus-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "参数形式的二阶导数应怎样算？",
+    "choices": [
+      "两个二阶参数导数相除",
+      "斜率对参数求导后再除以横坐标导数",
+      "只对斜率求参数导数"
+    ],
+    "correctIndex": 1,
+    "explanation": "再除一次横坐标变化率，才能把微分变量换回横坐标。"
+  },
+  "teaching": {
+    "explain": "先算“每单位参数走多快”，再把它转换为“每单位横坐标上升多少”。",
+    "steps": [
+      {
+        "title": "最右侧",
+        "instruction": "参数取 0。",
+        "observation": "点为 $(2,0)$，速率为 1，切线竖直。",
+        "preset": {
+          "x": 0
+        }
+      },
+      {
+        "title": "最高点",
+        "instruction": "参数取 1.5707963267948966。",
+        "observation": "点为 $(0,1)$，速率为 2，切线水平。",
+        "preset": {
+          "x": 1.5707963267948966
+        }
+      },
+      {
+        "title": "左侧",
+        "instruction": "参数取 3.141592653589793。",
+        "observation": "点为 $(-2,0)$，速率回到 1，方向继续逆时针。",
+        "preset": {
+          "x": 3.141592653589793
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-parametric",
+    "arc-length"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-curves",
+  "number": "7.2",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-parametric-calculus",
+    "caption": "点沿椭圆 $(2\\cos t,\\sin t)$ 移动，显示速度向量与参数位置。",
+    "prediction": "同一圈上，速率是否处处相同？"
+  },
+  "misconceptionTags": [
+    "c2-parametric-calculus-m1",
+    "c2-parametric-calculus-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "计算参数斜率与二阶导数",
+    "识别竖直切线与退化点",
+    "用速率求弧长，用带方向的换元求面积"
+  ]
+}

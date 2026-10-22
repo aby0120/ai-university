@@ -1,0 +1,192 @@
+{
+  "id": "c3-regions-order",
+  "chapterId": "c3-double",
+  "number": "5.2",
+  "title": "一般区域与交换积分次序",
+  "subtitle": "先画区域，再决定谁在里面积分",
+  "concept": "积分上下限描述的是同一块区域；交换次序必须重新解读它的边界。",
+  "intuition": "竖着扫和横着扫都能覆盖同一块地，但每条切片的起点终点可能不同。",
+  "objectives": [
+    "由不等式写切片积分限",
+    "通过换序简化计算"
+  ],
+  "body": [
+    {
+      "title": "内层上下限能依赖谁？",
+      "text": "只能依赖仍固定的外层变量；内层变量不能出现在自己的积分限里。"
+    },
+    {
+      "title": "什么时候要分块？",
+      "text": "一条切片的上边界或下边界换了公式，就分段；区域有洞或一条线切出多个区间也要拆开。"
+    },
+    {
+      "title": "次序选择有什么用？",
+      "text": "换次序可能让难算的内积分变简单。目标是描述同一区域和同一密度，不是机械交换两个微分。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "先画区域，再决定谁在里面积分",
+    "latex": "D=\\{a\\le x\\le b,\\ g_1(x)\\le y\\le g_2(x)\\},\\quad\\iint_D f\\,dA=\\int_a^b\\int_{g_1(x)}^{g_2(x)}f\\,dy\\,dx",
+    "conditions": [
+      "区域边界分段光滑，函数在有界闭区域连续是本节的充分条件；换序必须保持区域相同，必要时分块。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先将积分限写成不等式。",
+      "latex": "0\\le x\\le1,\\quad x\\le y\\le1"
+    },
+    {
+      "text": "按横切片重新求界。",
+      "latex": "0\\le y\\le1,\\quad0\\le x\\le y"
+    },
+    {
+      "text": "新限描述相同三角形。",
+      "latex": "\\int_0^1\\int_x^1 f\\,dy\\,dx=\\int_0^1\\int_0^y f\\,dx\\,dy"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "换序简化非初等积分",
+      "problem": "求 $\\int_0^1\\int_x^1 e^{y^2}dy\\,dx$。",
+      "steps": [
+        "区域换序为 $0\\le y\\le1,0\\le x\\le y$。",
+        "先积横坐标得 $\\int_0^1ye^{y^2}dy=(e-1)/2$。"
+      ],
+      "answer": "$\\frac{e-1}2$。"
+    },
+    {
+      "title": "曲边区域",
+      "problem": "$0\\le x\\le1,x^2\\le y\\le x$ 的面积？",
+      "steps": [
+        "竖切片高度 $x-x^2$。",
+        "积分为 $1/2-1/3=1/6$；横切片为 $y\\le x\\le\\sqrt y$ 复算相同。"
+      ],
+      "answer": "$\\frac16$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-regions-order-m1",
+      "claim": "换序只需交换微分符号。",
+      "correction": "积分限也必须重建。"
+    },
+    {
+      "id": "c3-regions-order-m2",
+      "claim": "外层积分限也依赖内层变量。",
+      "correction": "外层先选择独立范围，内层再给该位置下的切片。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-regions-order-q1",
+      "problem": "将 $\\int_0^2\\int_0^{2-x}f\\,dy\\,dx$ 换序。",
+      "hint": "画两坐标轴与斜线。",
+      "solution": [
+        "区域为第一象限三角形。",
+        "横切片满足 $0\\le y\\le2,0\\le x\\le2-y$。"
+      ],
+      "answer": "$\\int_0^2\\int_0^{2-y}f\\,dx\\,dy$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-regions-order-q2",
+      "problem": "该三角形面积是多少？",
+      "hint": "底乘高再除以二。",
+      "solution": [
+        "底和高均为 2，面积为 2。"
+      ],
+      "answer": "2",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 2
+    },
+    {
+      "id": "c3-regions-order-q3",
+      "problem": "$0\\le x\\le1,0\\le y\\le x^2$ 换序后的横坐标范围？",
+      "hint": "由 $y\\le x^2$ 且横坐标非负解不等式。",
+      "solution": [
+        "固定 $0\\le y\\le1$，得 $\\sqrt y\\le x\\le1$。"
+      ],
+      "answer": "$\\sqrt y\\le x\\le1$。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-regions-order-q4",
+      "problem": "一条水平线切到两段不相连区间，能写成从最左到最右一个内积分吗？",
+      "hint": "会不会把中间空白加进去？",
+      "solution": [
+        "这样会额外包含空白区域。",
+        "要分成两段积分或进一步划分区域。"
+      ],
+      "answer": "一般不能。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "交换次序最先做什么？",
+    "choices": [
+      "交换两个微分",
+      "把区域写成不等式或画出来",
+      "删除上下限"
+    ],
+    "correctIndex": 1,
+    "explanation": "先保证扫过的是同一区域。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-regions-order",
+    "caption": "区域 $0\\le x\\le1,x\\le y\\le1$；移动竖切片，俯视图可直接读出换序后的边界。",
+    "prediction": "换个扫描方向，区域面积会变吗？"
+  },
+  "teaching": {
+    "explain": "换积分次序是在换扫描方向，区域本身必须一块不多、一块不少。",
+    "steps": [
+      {
+        "title": "左端切片",
+        "instruction": "将竖切片横坐标 $x$ 设为 $0$。",
+        "preset": {
+          "x": 0
+        },
+        "observation": "三角形切片高度为 1。"
+      },
+      {
+        "title": "中间切片",
+        "instruction": "将竖切片横坐标 $x$ 设为 $0.5$。",
+        "preset": {
+          "x": 0.5
+        },
+        "observation": "切片从纵坐标一半扫到 1，高度为一半。"
+      },
+      {
+        "title": "右端切片",
+        "instruction": "将竖切片横坐标 $x$ 设为 $1$。",
+        "preset": {
+          "x": 1
+        },
+        "observation": "切片退化成点，高度为零。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-double-integrals"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-regions-order-m1",
+    "c3-regions-order-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

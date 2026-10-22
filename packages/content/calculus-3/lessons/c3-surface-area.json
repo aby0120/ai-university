@@ -1,0 +1,190 @@
+{
+  "id": "c3-surface-area",
+  "chapterId": "c3-surface-integrals",
+  "number": "8.2",
+  "title": "曲面面积与标量曲面积分",
+  "subtitle": "小平行四边形的真实面积",
+  "concept": "曲面面积元等于两条参数切向量叉积的长度乘参数面积；标量曲面积分在它上面再加权。",
+  "intuition": "倾斜的屋顶比它投在地上的影子更大。叉积长度计算了每一小片的实际放大量。",
+  "objectives": [
+    "计算曲面面积与膜质量",
+    "区分投影面积和真实面积"
+  ],
+  "body": [
+    {
+      "title": "高度图怎样简化？",
+      "text": "参数取两个水平坐标，面积倍率变成一加两个偏导平方之和的根号。"
+    },
+    {
+      "title": "方向会改变面积吗？",
+      "text": "面积元使用叉积长度，交换法向不变；标量积分也不因曲面定向反号。"
+    },
+    {
+      "title": "密度该用哪一种？",
+      "text": "薄膜用单位真实曲面面积的面密度，不可直接乘水平投影面积。平均值也应除以真实曲面面积。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "小平行四边形的真实面积",
+    "latex": "\\iint_S f\\,dS=\\iint_U f(\\mathbf r(u,v))\\|\\mathbf r_u\\times\\mathbf r_v\\|dudv,\\quad dS=\\sqrt{1+g_x^2+g_y^2}\\,dxdy",
+    "conditions": [
+      "曲面分片规则、参数不重复覆盖正面积部分，函数沿曲面连续；图面形式要求高度函数连续可微。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "参数小边映为两条切向量。",
+      "latex": "d\\mathbf r_1=\\mathbf r_u du,\\quad d\\mathbf r_2=\\mathbf r_v dv"
+    },
+    {
+      "text": "它们张成的小平行四边形面积。",
+      "latex": "dS=\\|\\mathbf r_u\\times\\mathbf r_v\\|dudv"
+    },
+    {
+      "text": "图面叉积的长度给根号因子。",
+      "latex": "\\|(-g_x,-g_y,1)\\|=\\sqrt{1+g_x^2+g_y^2}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "倾斜屋顶",
+      "problem": "$z=2x+y$ 在单位正方形上方的面积？",
+      "steps": [
+        "偏导为 2 和 1。",
+        "面积倍率为 $\\sqrt{1+4+1}=\\sqrt6$，乘底面积一。"
+      ],
+      "answer": "$\\sqrt6$。"
+    },
+    {
+      "title": "抛物面面积",
+      "problem": "$z=\\frac12(x^2+y^2)$ 在单位圆盘上方的面积？",
+      "steps": [
+        "倍率为 $\\sqrt{1+r^2}$。",
+        "$A=2\\pi\\int_0^1r\\sqrt{1+r^2}dr=\\frac{2\\pi}3(2\\sqrt2-1)$。"
+      ],
+      "answer": "$\\frac{2\\pi}3(2\\sqrt2-1)$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-surface-area-m1",
+      "claim": "曲面面积等于投影面积。",
+      "correction": "还要乘局部倾斜放大量。"
+    },
+    {
+      "id": "c3-surface-area-m2",
+      "claim": "向下定向会使标量曲面积分为负。",
+      "correction": "标量积分用无向面积元，不由定向变号。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-surface-area-q1",
+      "problem": "$z=x$ 在单位正方形上方的面积？",
+      "hint": "斜率平方加一开根号。",
+      "solution": [
+        "倍率为 $\\sqrt2$，底面积为一。"
+      ],
+      "answer": "$\\sqrt2$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-surface-area-q2",
+      "problem": "面积为 5 的膜，均匀面密度 3，质量？",
+      "hint": "真实面积乘面密度。",
+      "solution": [
+        "$5\\cdot3=15$。"
+      ],
+      "answer": "15",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 15
+    },
+    {
+      "id": "c3-surface-area-q3",
+      "problem": "反转曲面定向，$\\iint_S1\\,dS$ 变化吗？",
+      "hint": "长度会不会反号？",
+      "solution": [
+        "叉积长度不变，所以面积不变。"
+      ],
+      "answer": "不变。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-surface-area-q4",
+      "problem": "水平投影面积很小，就说明真实面积也很小吗？",
+      "hint": "考虑陡坡或竖直面。",
+      "solution": [
+        "倾斜倍率可以很大；竖直面甚至不能用该水平图面表示。"
+      ],
+      "answer": "不能直接判断。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "曲面面积元使用叉积的什么？",
+    "choices": [
+      "长度",
+      "任意一个分量",
+      "负号"
+    ],
+    "correctIndex": 0,
+    "explanation": "它是两条局部小边张成的实际面积。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-surface-area",
+    "caption": "平面 $z=cx$ 的单位参数方格，比较底面投影与真实面积。",
+    "prediction": "把屋顶变陡而底面不动，真实面积如何变化？"
+  },
+  "teaching": {
+    "explain": "真实小片面积等于参数小格面积乘叉积长度，倾斜的放大量已经算在里面。",
+    "steps": [
+      {
+        "title": "水平",
+        "instruction": "将斜面坡度 $c$ 设为 $0$。",
+        "preset": {
+          "c": 0
+        },
+        "observation": "真实面积等于参数正方形面积。"
+      },
+      {
+        "title": "倾斜",
+        "instruction": "将斜面坡度 $c$ 设为 $1$。",
+        "preset": {
+          "c": 1
+        },
+        "observation": "面积倍率为 $\\sqrt2$。"
+      },
+      {
+        "title": "更陡",
+        "instruction": "将斜面坡度 $c$ 设为 $2$。",
+        "preset": {
+          "c": 2
+        },
+        "observation": "投影不变，真实面积倍率为 $\\sqrt5$。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-parametric-surfaces"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-surface-area-m1",
+    "c3-surface-area-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

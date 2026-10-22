@@ -1,0 +1,192 @@
+{
+  "id": "ode-substitutions",
+  "chapterId": "ode-first-order",
+  "number": "2.5",
+  "title": "齐次代换与积分因子的识别",
+  "subtitle": "代换要真正减少变量",
+  "body": [
+    {
+      "title": "比值代换",
+      "text": "对 $y'=F(y/t)$，在 $t\\ne0$ 的区间令 $y=tv$，得到 $t v'=F(v)-v$。"
+    },
+    {
+      "title": "别混淆两种齐次",
+      "text": "这里的比值齐次不等于齐次线性。$y'=1+y/t$ 有比值结构，但标准线性形式右端非零。"
+    },
+    {
+      "title": "积分因子的另一种用途",
+      "text": "对不恰当方程，若 $(M_y-N_t)/N$ 只依赖时间，可取其积分的指数为时间积分因子；若 $(N_t-M_y)/M$ 只依赖状态，可取状态积分因子。分母非零的区域内使用。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "对 $y'=1+y/t$ 作代换。",
+      "latex": "v+tv'=1+v"
+    },
+    {
+      "text": "分离新变量。",
+      "latex": "v'=\\frac1t\\Rightarrow v=\\ln\\lvert t\\rvert+C"
+    },
+    {
+      "text": "换回原函数。",
+      "latex": "y=t(\\ln\\lvert t\\rvert+C)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "比值方程",
+      "problem": "解 $y'=1+y/t,y(1)=0$。",
+      "steps": [
+        "令 $y=tv$，有 $v'=1/t$。",
+        "在正时间区间积分，初值给 $C=0$。"
+      ],
+      "answer": "$y=t\\ln t$，$t>0$。"
+    },
+    {
+      "title": "寻找积分因子",
+      "problem": "$2y\\,dt+t\\,dy=0$ 在 $t>0$ 上如何变恰当？",
+      "steps": [
+        "$(M_y-N_t)/N=(2-1)/t=1/t$。",
+        "积分因子为 $t$，新势函数为 $t^2y$。"
+      ],
+      "answer": "$t^2y=C$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-substitutions-q1",
+      "problem": "$y=tv$ 的导数是否等于 $tv'$？",
+      "hint": "使用乘积法则。",
+      "solution": [
+        "还须加上 $v$。"
+      ],
+      "answer": "$y'=v+tv'$。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-substitutions-q2",
+      "problem": "解 $y'=2y/t$，取正时间区间。",
+      "hint": "分离变量或比值代换。",
+      "solution": [
+        "$dy/y=2dt/t$，并保留零解。"
+      ],
+      "answer": "$y=Ct^2$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-substitutions-q3",
+      "problem": "方程 $y'=F(y/t)$ 的比值代换能否直接覆盖零时刻？",
+      "hint": "检查比值定义。",
+      "solution": [
+        "$y/t$ 在零时刻未定义。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-substitutions-q4",
+      "problem": "若 $(M_y-N_t)/N=2t$，时间积分因子可取什么？",
+      "hint": "积分后取指数。",
+      "solution": [
+        "$\\mu=e^{\\int2t dt}$。"
+      ],
+      "answer": "$e^{t^2}$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-substitutions-m1",
+      "claim": "比值齐次与齐次线性是同一个分类。",
+      "correction": "两者针对不同结构。"
+    },
+    {
+      "id": "ode-substitutions-m2",
+      "claim": "代入新变量后可忽略乘积法则。",
+      "correction": "漏掉一个新变量项会改变方程。"
+    }
+  ],
+  "prerequisites": [
+    "ode-exact"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-substitutions-m1",
+    "ode-substitutions-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "当右端只依赖比值时，代入比值变量可把一阶方程化成可分离形式。",
+  "intuition": "如果斜率只看高度与时间的比例，就把这个比例本身作为未知量。",
+  "objectives": [
+    "使用比值代换",
+    "识别只依赖一个变量的积分因子"
+  ],
+  "formalDefinition": {
+    "text": "齐次代换与积分因子的识别",
+    "latex": "y=tv\\Rightarrow y'=v+tv',\\qquad tv'=F(v)-v",
+    "conditions": [
+      "$t\\ne0$；除以 $F(v)-v$ 前另查其零点；代换后的解须回原方程检验。"
+    ]
+  },
+  "learningCheck": {
+    "question": "令 $y=tv$ 后，一阶导数是？",
+    "choices": [
+      "$v'$",
+      "$tv'$",
+      "$v+tv'$"
+    ],
+    "correctIndex": 2,
+    "explanation": "自变量和新函数都随时间变化。"
+  },
+  "teaching": {
+    "explain": "有效代换应当让方程更简单。写清导数，再决定是否能分离。",
+    "steps": [
+      {
+        "title": "规范解",
+        "preset": {
+          "a": 0,
+          "b": 1
+        },
+        "observation": "此时解经过时间一、函数值零。",
+        "instruction": "将积分常数 $C$设为 $0$；将正时间 $t$设为 $1$。"
+      },
+      {
+        "title": "更大比值",
+        "preset": {
+          "a": 1,
+          "b": 1
+        },
+        "observation": "积分常数增加使初始比值增大。",
+        "instruction": "将积分常数 $C$设为 $1$；将正时间 $t$设为 $1$。"
+      },
+      {
+        "title": "靠近零时间",
+        "preset": {
+          "a": 0,
+          "b": 0.25
+        },
+        "observation": "正区间内可逼近边界，但不把奇点纳入标准形式。",
+        "instruction": "将积分常数 $C$设为 $0$；将正时间 $t$设为 $0.25$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-substitutions",
+    "caption": "只在正时间区间画解；改动积分常数比较同一比值方程的解族。",
+    "prediction": "改变积分常数后，时间一处的函数值怎样变？"
+  }
+}

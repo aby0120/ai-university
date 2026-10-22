@@ -4,8 +4,8 @@
   "number": "2.5",
   "title": "无穷极限与渐近线",
   "subtitle": "无限是趋势，不是一个实数",
-  "concept": "x→a、输出无界，是无穷极限；x→∞、输出趋近固定数，是无穷远处的极限。先分清哪里趋于无穷。",
-  "intuition": "1/x 在零点两侧分别走向 −∞ 和 +∞；在 x→∞ 时却趋近 0。同一函数，可以有两种不同的“无限”。",
+  "concept": "$x \\to a$、输出无界，是无穷极限；$x \\to \\infty$、输出趋近固定数，是无穷远处的极限。先分清哪里趋于无穷。",
+  "intuition": "$\\frac{1}{x}$ 在零点两侧分别走向 $- \\infty$ 和 $+ \\infty$；在 $x \\to \\infty$ 时却趋近 0。同一函数，可以有两种不同的“无限”。",
   "objectives": [
     "竖直与水平渐近线",
     "有理函数看最高次",
@@ -14,35 +14,35 @@
   "body": [
     {
       "title": "渐近线怎样确定？",
-      "text": "某一侧 x→a 时输出趋于 ±∞，x=a 是竖直渐近线。x→±∞ 时输出趋于 L，y=L 是对应方向的水平渐近线；曲线可以穿过它。"
+      "text": "某一侧 $x \\to a$ 时输出趋于 $\\pm \\infty$，$x = a$ 是竖直渐近线。$x \\to \\pm \\infty$ 时输出趋于 $L$，$y = L$ 是对应方向的水平渐近线；曲线可以穿过它。"
     },
     {
       "title": "分式在无穷远怎样算？",
-      "text": "比较最高次项：分子次数低，极限为 0；同次，取最高次系数比；分子次数高，再分析增长与符号。x→−∞ 要留意奇次幂。"
+      "text": "比较最高次项：分子次数低，极限为 0；同次，取最高次系数比；分子次数高，再分析增长与符号。$x \\to - \\infty$ 要留意奇次幂。"
     },
     {
-      "title": "无界就一定趋于 ∞ 吗？",
-      "text": "不一定。趋于 +∞ 要最终超过任意给定门槛，并一直保持；一边振荡一边变大，不一定有这个趋势。"
+      "title": "无界就一定趋于 $\\infty$ 吗？",
+      "text": "不一定。趋于 $+ \\infty$ 要最终超过任意给定门槛，并一直保持；一边振荡一边变大，不一定有这个趋势。"
     }
   ],
   "formalDefinition": {
     "text": "右侧趋向正无穷的定义，及无穷远的有限极限示例。",
     "latex": "\\forall M>0\\ \\exists\\delta>0:\\ 0<x-a<\\delta\\Rightarrow f(x)>M",
     "conditions": [
-      "±∞ 不是有限实数；双侧无穷趋势需按左右符号分别说明。"
+      "$\\pm \\infty$ 不是有限实数；双侧无穷趋势需按左右符号分别说明。"
     ]
   },
   "derivation": [
     {
       "text": "无穷远时把高次项提出。",
-      "latex": "\\frac{3x^2+1}{2x^2-5}=\\frac{3+1/x^2}{2-5/x^2}"
+      "latex": "\\frac{3x^2+1}{2x^2-5}=\\frac{3+\\frac{1}{x^2}}{2-\\frac{5}{x^2}}"
     },
     {
       "text": "小项趋近零，分母趋近非零。",
       "latex": "\\lim_{x\\to\\pm\\infty}\\frac{3x^2+1}{2x^2-5}=\\frac32"
     },
     {
-      "text": "水平线 y=3/2 是两端的渐近线。",
+      "text": "水平线 $y = \\frac{3}{2}$ 是两端的渐近线。",
       "latex": null
     }
   ],
@@ -50,34 +50,34 @@
     "kind": "limit",
     "function": "reciprocal",
     "a": 0,
-    "caption": "1/x 在零点两侧分别趋向负无穷、正无穷。图窗外的部分被裁切，并不意味着曲线停止。",
-    "prediction": "1/x 从左、右靠近 0，输出能趋近同一个方向吗？图窗边界是不是曲线终点？"
+    "caption": "$\\frac{1}{x}$ 在零点两侧分别趋向负无穷、正无穷。图窗外的部分被裁切，并不意味着曲线停止。",
+    "prediction": "$\\frac{1}{x}$ 从左、右靠近 0，输出能趋近同一个方向吗？图窗边界是不是曲线终点？"
   },
   "workedExamples": [
     {
       "title": "左右符号不同",
-      "problem": "求 $\\lim_{x\\to0^-}1/x$ 与 $\\lim_{x\\to0^+}1/x$。",
+      "problem": "求 $\\lim_{x\\to0^-}\\frac{1}{x}$ 与 $\\lim_{x\\to0^+}\\frac{1}{x}$。",
       "steps": [
         "负小数的倒数是绝对值很大的负数。",
         "正小数的倒数是很大的正数。"
       ],
-      "answer": "分别为 −∞ 与 +∞，没有共同的双侧趋势。"
+      "answer": "分别为 $- \\infty$ 与 $+ \\infty$，没有共同的双侧趋势。"
     },
     {
       "title": "斜渐近线",
-      "problem": "求 $f(x)=(x^2+1)/x$ 的斜渐近线。",
+      "problem": "求 $f(x)=\\frac{x^2+1}{x}$ 的斜渐近线。",
       "steps": [
-        "拆成 x+1/x。",
-        "与 y=x 的竖直距离为 1/x，远处趋近 0。"
+        "拆成 $x + \\frac{1}{x}$。",
+        "与 $y = x$ 的竖直距离为 $\\frac{1}{x}$，远处趋近 0。"
       ],
-      "answer": "斜渐近线 y=x。"
+      "answer": "斜渐近线 $y = x$。"
     }
   ],
   "commonMistakes": [
     {
       "id": "infinite-limits-m1",
-      "claim": "把 ∞ 当数代入四则运算。",
-      "correction": "∞−∞ 等形式不提供结论，必须比较具体增长。"
+      "claim": "把 $\\infty$ 当数代入四则运算。",
+      "correction": "$\\infty  - \\infty$ 等形式不提供结论，必须比较具体增长。"
     },
     {
       "id": "infinite-limits-m2",
@@ -89,13 +89,11 @@
     {
       "id": "infinite-limits-p1",
       "difficulty": 1,
-      "misconceptionTags": [
-        "infinite-limits-m1"
-      ],
-      "problem": "求 $\\lim_{x\\to\\infty}(2x+1)/(x+4)$。",
+      "misconceptionTags": [],
+      "problem": "求 $\\lim_{x\\to\\infty}\\frac{2x+1}{x+4}$。",
       "answer": "$2$。",
       "solution": [
-        "同除以 x，得到 (2+1/x)/(1+4/x)。"
+        "同除以 $x$，得到 $\\frac{2 + \\frac{1}{x}}{1 + \\frac{4}{x}}$。"
       ],
       "hint": "比较最高次系数。",
       "numericAnswer": 2
@@ -104,10 +102,10 @@
       "id": "infinite-limits-p2",
       "difficulty": 2,
       "misconceptionTags": [
-        "infinite-limits-m2"
+        "infinite-limits-m1"
       ],
-      "problem": "求 $\\lim_{x\\to0}1/x^2$。",
-      "answer": "+∞。",
+      "problem": "求 $\\lim_{x\\to0}\\frac{1}{x^2}$。",
+      "answer": "$+ \\infty$。",
       "solution": [
         "两侧都是正数且无界增大。"
       ],
@@ -115,12 +113,10 @@
     },
     {
       "id": "infinite-limits-p3",
-      "difficulty": 3,
-      "misconceptionTags": [
-        "infinite-limits-m2"
-      ],
+      "difficulty": 1,
+      "misconceptionTags": [],
       "problem": "求 $\\lim_{x\\to-\\infty}x^3$。",
-      "answer": "−∞。",
+      "answer": "$- \\infty$。",
       "solution": [
         "负输入的奇次幂为负，绝对值无界。"
       ],
@@ -128,14 +124,14 @@
     },
     {
       "id": "infinite-limits-p4",
-      "difficulty": 4,
+      "difficulty": 2,
       "misconceptionTags": [
         "infinite-limits-m2"
       ],
-      "problem": "$f(x)=(x^2-1)/(x-1)$ 在 1 有竖直渐近线吗？",
+      "problem": "$f(x)=\\frac{x^2-1}{x-1}$ 在 1 有竖直渐近线吗？",
       "answer": "没有，是可去孔洞。",
       "solution": [
-        "x≠1 时等于 x+1，附近极限有限。"
+        "$x \\ne 1$ 时等于 $x + 1$，附近极限有限。"
       ],
       "hint": "先约分再判断。"
     }
@@ -151,7 +147,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -163,13 +159,45 @@
     "3b1b-calculus"
   ],
   "learningCheck": {
-    "question": "1/x 在 x→0 时有双侧极限 +∞ 吗？",
+    "question": "$\\frac{1}{x}$ 在 $x \\to 0$ 时有双侧极限 $+ \\infty$ 吗？",
     "choices": [
       "有",
-      "没有，左侧趋于 −∞，右侧趋于 +∞",
-      "有，∞ 和 −∞ 是同一个数"
+      "没有，左侧趋于 $- \\infty$，右侧趋于 $+ \\infty$",
+      "有，$\\infty$ 和 $- \\infty$ 是同一个数"
     ],
     "correctIndex": 1,
-    "explanation": "左右方向不同，不能写双侧趋于 +∞。无穷趋势也不是一个有限实数值。"
+    "explanation": "左右方向不同，不能写双侧趋于 $+ \\infty$。无穷趋势也不是一个有限实数值。"
+  },
+  "teaching": {
+    "explain": "趋向无穷不是到达某个叫“无穷”的数，而是最终越过任何给定门槛。还要检查是哪一侧、向哪个方向。",
+    "steps": [
+      {
+        "title": "右侧接近零",
+        "instruction": "右侧距离设为 0.1。",
+        "preset": {
+          "h": 0.1,
+          "side": 1
+        },
+        "observation": "输出为 10，已经越过部分图窗；曲线没有停止。"
+      },
+      {
+        "title": "继续从右侧缩小",
+        "instruction": "距离缩到 0.01。",
+        "preset": {
+          "h": 0.01,
+          "side": 1
+        },
+        "observation": "输出变为 100；越靠近零，正向增长越大。"
+      },
+      {
+        "title": "换到左侧",
+        "instruction": "保持距离 0.01，换左侧。",
+        "preset": {
+          "h": 0.01,
+          "side": -1
+        },
+        "observation": "输出为 −100。两侧方向不同，不能写成同一个双侧无穷趋势。"
+      }
+    ]
   }
 }

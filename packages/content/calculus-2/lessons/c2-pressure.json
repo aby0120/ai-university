@@ -1,0 +1,196 @@
+{
+  "id": "c2-pressure",
+  "title": "压力与做功的分层模型",
+  "subtitle": "深度与提升距离，要随位置一起变化",
+  "concept": "总力和总功都靠分层累积；每层的受力或移动距离可能不同。",
+  "intuition": "越深的水压力越大。把整个闸门都乘同一个深度，只有选择了正确平均值才可能碰巧对。",
+  "body": [
+    {
+      "title": "闸门总力怎么算？",
+      "text": "静水表压为 $\\rho g h$，薄条面积为宽度乘厚度，因此 $dF=\\rho g h\\,dA$。"
+    },
+    {
+      "title": "抽水功又多了什么？",
+      "text": "一层水的重量为 $\\rho g\\,dV$，还要乘它到出口的提升距离：$dW=\\rho g\\ell\\,dV$。 水箱形状由水平截面积 $A(y)$ 决定，底面积本身不够。以下水的算例均取 $\\rho=1000\\,\\mathrm{kg/m^3}$、$g=9.8\\,\\mathrm{m/s^2}$。"
+    },
+    {
+      "title": "先画坐标有什么用？",
+      "text": "在图上标出水面、底部、出口与坐标正方向。深度和提升距离随后都写成坐标函数，避免混淆。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "深度与提升距离，要随位置一起变化",
+    "latex": "F=\\int\\rho gh\\,dA,\\qquad W=\\int\\rho g\\ell\\,dV",
+    "conditions": [
+      "静水、密度与重力加速度在所用模型中已知；忽略流动损失，采用表压。单位必须一致。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "水平薄条的深度近似不变。",
+      "latex": "\\Delta F\\approx\\rho gh(y)w(y)\\Delta y"
+    },
+    {
+      "text": "细分得到总静水力。",
+      "latex": "F=\\rho g\\int h(y)w(y)dy"
+    },
+    {
+      "text": "把重量的每层贡献乘提升距离得到功。",
+      "latex": "W=\\rho g\\int\\ell(y)A(y)dy"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "矩形闸门",
+      "problem": "宽 $2\\,\\mathrm m$、自水面向下深 $3\\,\\mathrm m$ 的竖直闸门，水密度 $1000\\,\\mathrm{kg/m^3}$，取 $g=9.8\\,\\mathrm{m/s^2}$，求水压力合力。",
+      "steps": [
+        "取深度 $y$ 向下，$dA=2dy$。",
+        "$F=9800\\int_0^3 2y dy=88200$。"
+      ],
+      "answer": "$88200\\,\\mathrm N$。"
+    },
+    {
+      "title": "圆柱水槽抽水",
+      "problem": "竖直圆柱水槽的水平截面积恒为 $1\\,\\mathrm{m^2}$，水深 $2\\,\\mathrm m$。将水抽空至距槽底 $2\\,\\mathrm m$ 的固定出口，忽略损耗，求功。",
+      "steps": [
+        "以槽底为 $y=0$。薄层体积为 $1\\,dy$，重量为 $9800\\,dy$；每层提升至固定出口，距离是 $2-y$。",
+        "$W=9800\\int_0^2(2-y)\\,dy=19600\\,\\mathrm J$。水面下降，出口高度保持不变。"
+      ],
+      "answer": "$19600\\,\\mathrm J$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-pressure-m1",
+      "claim": "总功就是总重量。",
+      "correction": "还必须乘移动距离；各层距离通常不同。"
+    },
+    {
+      "id": "c2-pressure-m2",
+      "claim": "压力和合力是同一种量。",
+      "correction": "压力是单位面积的力，合力须对面积积分。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "宽 $1\\,\\mathrm m$、从水面向下深 $2\\,\\mathrm m$ 的矩形闸门，合力？",
+      "answer": "$19600\\,\\mathrm N$。",
+      "hint": "按深度分条。",
+      "solution": [
+        "$F=9800\\int_0^2y dy=19600$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 19600,
+      "id": "c2-pressure-p1"
+    },
+    {
+      "problem": "例题圆柱水槽出口再升高 $1\\,\\mathrm m$，总功？",
+      "answer": "$39200\\,\\mathrm J$。",
+      "hint": "每层多提升一米。",
+      "solution": [
+        "$W=9800\\int_0^2(3-y)dy=39200$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 39200,
+      "id": "c2-pressure-p2"
+    },
+    {
+      "problem": "弹簧 $k=20\\,\\mathrm{N/m}$，从伸长 0 拉到 $0.5\\,\\mathrm m$，功？",
+      "answer": "$2.5\\,\\mathrm J$。",
+      "hint": "力随伸长变化。",
+      "solution": [
+        "$W=\\int_0^{0.5}20x dx=2.5$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 2.5,
+      "id": "c2-pressure-p3"
+    },
+    {
+      "problem": "闸门底部压力乘整个面积，一般会高估还是低估合力？",
+      "answer": "高估（非退化竖直闸门）。",
+      "hint": "底部深度最大。",
+      "solution": [
+        "其余位置的压力低于底部压力；用最大压力替代各点压力会高估积分。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [
+        "c2-pressure-m2"
+      ],
+      "id": "c2-pressure-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "抽水功中，一层水的贡献是？",
+    "choices": [
+      "质量乘高度",
+      "重量乘提升距离",
+      "压力乘体积"
+    ],
+    "correctIndex": 1,
+    "explanation": "重量给出提升所需的理想力，再乘位移得到功。"
+  },
+  "teaching": {
+    "explain": "先确定“一小层贡献多少”，再求和。积分符号不是建模的起点，小块的物理意义才是。",
+    "steps": [
+      {
+        "title": "一米深",
+        "instruction": "水深取 1。",
+        "observation": "每米宽合力为 $4900\\,\\mathrm N$。",
+        "preset": {
+          "b": 1
+        }
+      },
+      {
+        "title": "两米深",
+        "instruction": "水深取 2。",
+        "observation": "每米宽合力为 $19600\\,\\mathrm N$，是前者四倍。",
+        "preset": {
+          "b": 2
+        }
+      },
+      {
+        "title": "三米深",
+        "instruction": "水深取 3。",
+        "observation": "每米宽合力为 $44100\\,\\mathrm N$；最深处压力不能代表整面。",
+        "preset": {
+          "b": 3
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-moments",
+    "physical-integrals"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-extended-integrals",
+  "number": "2.6",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-pressure",
+    "caption": "矩形闸门以深度分条，压力随深度线性增加。",
+    "prediction": "深度翻倍，单位宽度闸门的合力也只翻倍吗？"
+  },
+  "misconceptionTags": [
+    "c2-pressure-m1",
+    "c2-pressure-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "从薄层建立静水合力",
+    "建立提升距离变化的做功积分",
+    "检查方向、单位与物理假设"
+  ]
+}

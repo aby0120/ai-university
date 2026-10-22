@@ -1,0 +1,194 @@
+{
+  "id": "ode-rk4",
+  "chapterId": "ode-numerical",
+  "number": "11.3",
+  "title": "经典四阶 Runge–Kutta",
+  "subtitle": "四次斜率评估组合成一步",
+  "body": [
+    {
+      "title": "四次评估在哪里？",
+      "text": "起点、第一次预测中点、第二次预测中点、预测终点。每一阶段使用前一阶段的斜率。"
+    },
+    {
+      "title": "怎样加权？",
+      "text": "权重为一、二、二、一，再除以六；不是把四个斜率简单平均。"
+    },
+    {
+      "title": "高阶仍有限制",
+      "text": "光滑解的固定有限区间上，全局四阶；刚性、跳跃输入或奇点可能使常规优势失效。应在已知跳跃处拆步。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "对测试方程 $y'=y$，计算四阶段。",
+      "latex": "k_1=y,\\ k_2=y(1+h/2),\\ k_3=y(1+h/2+h^2/4),\\ k_4=y(1+h+h^2/2+h^3/4)"
+    },
+    {
+      "text": "加权更新得到指数前四次展开。",
+      "latex": "y_+=y\\left(1+h+\\frac{h^2}{2}+\\frac{h^3}{6}+\\frac{h^4}{24}\\right)"
+    },
+    {
+      "text": "与指数相差从五次开始。",
+      "latex": "e^h-R(h)=O(h^5)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "单位步长",
+      "problem": "对 $y'=y,y_0=1,h=1$ 算 RK4。",
+      "steps": [
+        "四阶段为 $1,3/2,7/4,11/4$。",
+        "加权增量为 $41/24$。"
+      ],
+      "answer": "$y_1=65/24\\approx2.708333$。"
+    },
+    {
+      "title": "恒定斜率",
+      "problem": "$y'=3,y_0=2,h=1/2$ 的 RK4 一步。",
+      "steps": [
+        "四次斜率都为三。",
+        "权重和为六，增量为 $3/2$。"
+      ],
+      "answer": "$y_1=7/2$，本例精确。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-rk4-q1",
+      "problem": "RK4 每个完整步通常计算几次右端？",
+      "hint": "数阶段。",
+      "solution": [
+        "四个阶段各一次。"
+      ],
+      "answer": "$4$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 4.0
+    },
+    {
+      "id": "ode-rk4-q2",
+      "problem": "渐近区间内步长减半，四阶全局误差约缩小多少？",
+      "hint": "误差与四次方成比例。",
+      "solution": [
+        "缩小为十六分之一。"
+      ],
+      "answer": "约 $1/16$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.0625
+    },
+    {
+      "id": "ode-rk4-q3",
+      "problem": "RK4 可以用任意大步长稳定算衰减模型吗？",
+      "hint": "精度阶不等于无条件稳定。",
+      "solution": [
+        "放大因子在大负参数处仍可超出单位圆。"
+      ],
+      "answer": "不能。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-rk4-q4",
+      "problem": "遇到已知阶跃时刻，为什么宜把节点放到该时刻？",
+      "hint": "跨越不光滑会破坏阶数前提。",
+      "solution": [
+        "拆成两段分别应用光滑误差分析。"
+      ],
+      "answer": "避免单步跨越跳跃。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-rk4-m1",
+      "claim": "四阶意味着每次只错第四位小数。",
+      "correction": "阶数描述步长趋零时的误差尺度。"
+    },
+    {
+      "id": "ode-rk4-m2",
+      "claim": "四阶段只是四个相同位置的重复采样。",
+      "correction": "各阶段位置不同且相互依赖。"
+    }
+  ],
+  "prerequisites": [
+    "ode-second-order-numerics"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-rk4-m1",
+    "ode-rk4-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "经典 RK4 通过四次精心安排的斜率评估，在光滑条件下得到四阶全局精度。",
+  "intuition": "两次看中点，一次看终点，再按合适权重合成这一步。",
+  "objectives": [
+    "计算四个阶段",
+    "区分高阶精度与稳定性保证"
+  ],
+  "formalDefinition": {
+    "text": "经典四阶 Runge–Kutta",
+    "latex": "k_1=f(t,y),\\ k_2=f(t+h/2,y+hk_1/2),\\ k_3=f(t+h/2,y+hk_2/2),\\ k_4=f(t+h,y+hk_3),\\quad y_+=y+\\frac h6(k_1+2k_2+2k_3+k_4)",
+    "conditions": [
+      "本式使用斜率而非已乘步长的阶段量；四阶结论要求足够光滑、解存在及误差稳定传播。"
+    ]
+  },
+  "learningCheck": {
+    "question": "四阶的含义是什么？",
+    "choices": [
+      "永远保留四位有效数字",
+      "合适条件下全局主误差随步长四次方缩小",
+      "只适用于四阶方程"
+    ],
+    "correctIndex": 1,
+    "explanation": "阶数与微分方程的阶数是不同概念。"
+  },
+  "teaching": {
+    "explain": "RK4 的高精度来自阶段位置与权重的配合，不是单纯多算几次再平均。",
+    "steps": [
+      {
+        "title": "粗网格",
+        "preset": {
+          "n": 2,
+          "b": 2
+        },
+        "observation": "各方法在同一终点有不同误差。",
+        "instruction": "将等分步数 $N$设为 $2$；将目标时间 $T$设为 $2$。"
+      },
+      {
+        "title": "加密",
+        "preset": {
+          "n": 8,
+          "b": 2
+        },
+        "observation": "步长变为原来的四分之一。",
+        "instruction": "将等分步数 $N$设为 $8$；将目标时间 $T$设为 $2$。"
+      },
+      {
+        "title": "更细",
+        "preset": {
+          "n": 32,
+          "b": 2
+        },
+        "observation": "观察误差随阶数缩小，有限精度仍有下限。",
+        "instruction": "将等分步数 $N$设为 $32$；将目标时间 $T$设为 $2$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-rk4",
+    "caption": "比较显式 Euler、Heun、RK4 与解析指数；直线段仅连接数值节点。误差在同一终点计算。",
+    "prediction": "网格加密后，RK4 与低阶方法的误差如何比较？"
+  }
+}

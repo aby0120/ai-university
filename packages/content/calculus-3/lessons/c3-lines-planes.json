@@ -1,0 +1,192 @@
+{
+  "id": "c3-lines-planes",
+  "chapterId": "c3-space",
+  "number": "1.4",
+  "title": "空间直线与平面",
+  "subtitle": "用方向描述直线，用法向量约束平面",
+  "concept": "直线从一点沿固定方向走；平面上的位移都与同一个法向量垂直。",
+  "intuition": "一条直线只需要一个移动方向；一个平面用一条垂直方向就能约束住所有平面内的移动。",
+  "objectives": [
+    "建立直线与平面方程",
+    "检查相交、平行与距离"
+  ],
+  "body": [
+    {
+      "title": "直线为什么适合用参数？",
+      "text": "一个参数同时控制三个坐标。方向分量为零也没问题，不必强行写会除以零的对称式。"
+    },
+    {
+      "title": "平面方程从哪来？",
+      "text": "从已知点到任意平面点的位移与法向量点积为零。两个不平行的平面方向可以叉乘得到法向量。"
+    },
+    {
+      "title": "距离怎样算？",
+      "text": "把点到平面上已知点的位移投影到单位法向，取绝对值。平行或相交要先检查方向与法向的点积。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "用方向描述直线，用法向量约束平面",
+    "latex": "\\mathbf r(t)=\\mathbf p+t\\mathbf d,\\quad\\mathbf n\\cdot(\\mathbf r-\\mathbf p)=0,\\quad d(Q,\\Pi)=\\frac{|\\mathbf n\\cdot(Q-\\mathbf p)|}{\\|\\mathbf n\\|}",
+    "conditions": [
+      "直线方向 $\\mathbf d\\ne0$，平面法向 $\\mathbf n\\ne0$；点积距离使用欧氏坐标。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "平面内位移没有法向分量。",
+      "latex": "\\mathbf n\\cdot(\\mathbf r-\\mathbf p)=0"
+    },
+    {
+      "text": "把直线代入平面。",
+      "latex": "\\mathbf n\\cdot(\\mathbf p_0+t\\mathbf d-\\mathbf p)=0"
+    },
+    {
+      "text": "把垂直分量变成距离。",
+      "latex": "d=|\\widehat{\\mathbf n}\\cdot(Q-\\mathbf p)|"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "相交参数",
+      "problem": "直线 $(x,y,z)=(t,1-t,2t)$ 与平面 $x+y+z=3$ 在哪里相交？",
+      "steps": [
+        "代入得到 $1+2t=3$，所以 $t=1$。",
+        "带回直线得到 $(1,0,2)$。"
+      ],
+      "answer": "交点 $(1,0,2)$。"
+    },
+    {
+      "title": "点到平面",
+      "problem": "点 $(0,0,0)$ 到 $x+2y+2z=6$ 的距离？",
+      "steps": [
+        "法向长度为 $\\sqrt{1+4+4}=3$。",
+        "平面方程在原点的残差绝对值是 6。"
+      ],
+      "answer": "距离 2。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-lines-planes-m1",
+      "claim": "两个空间直线不平行就相交。",
+      "correction": "还可能异面；要检查是否有共同参数点。"
+    },
+    {
+      "id": "c3-lines-planes-m2",
+      "claim": "平面方程常数的绝对值就是距离。",
+      "correction": "还必须除以法向量长度，并考虑所测的点。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-lines-planes-q1",
+      "problem": "过原点、方向 $\\langle1,0,2\\rangle$ 的直线怎么写？",
+      "hint": "让一个参数控制位移。",
+      "solution": [
+        "$\\mathbf r(t)=t\\langle1,0,2\\rangle$，其中纵坐标恒为零。"
+      ],
+      "answer": "$(x,y,z)=(t,0,2t)$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-lines-planes-q2",
+      "problem": "过 $(1,1,1)$、法向 $\\langle1,-1,2\\rangle$ 的平面？",
+      "hint": "用法向点积位移。",
+      "solution": [
+        "$(x-1)-(y-1)+2(z-1)=0$。",
+        "化简得 $x-y+2z=2$。"
+      ],
+      "answer": "$x-y+2z=2$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-lines-planes-q3",
+      "problem": "$z=0$ 内的横轴与直线 $(0,1,t)$ 是否相交？",
+      "hint": "比较每个坐标。",
+      "solution": [
+        "横轴纵坐标总为零，后一条总为 1，所以无交点。",
+        "方向不平行，故为异面直线。"
+      ],
+      "answer": "不相交且不平行。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-lines-planes-q4",
+      "problem": "$\\mathbf n\\cdot\\mathbf d=0$ 是否保证直线不在平面内？",
+      "hint": "再检查直线上一点。",
+      "solution": [
+        "它只说明方向平行于平面。",
+        "若起点在平面上，整条直线都在平面内。"
+      ],
+      "answer": "不能保证。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "直线方向与平面法向点积非零，交点有几个？",
+    "choices": [
+      "零个",
+      "一个",
+      "无限个"
+    ],
+    "correctIndex": 1,
+    "explanation": "代入后参数的一次方程系数非零，有唯一解。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-lines-planes",
+    "caption": "平面 $x+y+z=1$ 与直线 $\\mathbf r(t)=(0,0,1)+t(1,1,1)$。",
+    "prediction": "直线怎样从平面的一侧走到另一侧？"
+  },
+  "teaching": {
+    "explain": "将直线的参数代进平面方程，就把空间相交问题变成一个一元方程。",
+    "steps": [
+      {
+        "title": "直线下端",
+        "instruction": "将直线参数 $t$ 设为 $-1$。",
+        "preset": {
+          "x": -1
+        },
+        "observation": "运动点在平面下方，法向读数为负。"
+      },
+      {
+        "title": "经过平面",
+        "instruction": "将直线参数 $t$ 设为 $0$。",
+        "preset": {
+          "x": 0
+        },
+        "observation": "直线经过平面中心；有向残差为零。"
+      },
+      {
+        "title": "直线上端",
+        "instruction": "将直线参数 $t$ 设为 $1$。",
+        "preset": {
+          "x": 1
+        },
+        "observation": "运动点在另一侧，残差变号。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-cross"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-lines-planes-m1",
+    "c3-lines-planes-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

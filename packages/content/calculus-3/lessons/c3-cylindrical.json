@@ -1,0 +1,190 @@
+{
+  "id": "c3-cylindrical",
+  "chapterId": "c3-triple",
+  "number": "6.2",
+  "title": "柱坐标三重积分",
+  "subtitle": "圆形底面加上高度",
+  "concept": "柱坐标保留高度，把水平面改成极坐标；体积元仍带水平半径因子。",
+  "intuition": "一小块体积是水平小扇形面积乘高度，不会因为多一个维度就再多乘一次半径。",
+  "objectives": [
+    "计算柱坐标积分",
+    "检查圆柱和抛物面边界"
+  ],
+  "body": [
+    {
+      "title": "适合哪些区域？",
+      "text": "圆柱、圆锥、绕竖轴的抛物面，以及投影为圆盘的区域通常很方便。"
+    },
+    {
+      "title": "高度限怎么写？",
+      "text": "先把上下表面的横纵坐标组合改成半径，再检查哪个在上。例如圆锥高度与半径成比例。"
+    },
+    {
+      "title": "圆锥顶点会坏掉吗？",
+      "text": "轴上的角坐标退化只占零体积，不影响通常的积分；但密度本身有奇点时还要检查收敛。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "圆形底面加上高度",
+    "latex": "dV=r\\,dr\\,d\\theta\\,dz,\\quad x=r\\cos\\theta,\\ y=r\\sin\\theta",
+    "conditions": [
+      "半径非负，角度选择避免重复覆盖；函数可积；坐标退化集合之外变换光滑且一一覆盖。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "水平面小块面积为极坐标面积元。",
+      "latex": "dA=r\\,dr\\,d\\theta"
+    },
+    {
+      "text": "高度方向没有额外缩放。",
+      "latex": "dz=dz"
+    },
+    {
+      "text": "三维小块是面积乘高度。",
+      "latex": "dV=r\\,dr\\,d\\theta\\,dz"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "抛物面内体积",
+      "problem": "$x^2+y^2\\le z\\le4$ 的体积？",
+      "steps": [
+        "柱坐标中 $0\\le r\\le2,r^2\\le z\\le4$。",
+        "$V=2\\pi\\int_0^2(4-r^2)r\\,dr=8\\pi$。"
+      ],
+      "answer": "$8\\pi$。"
+    },
+    {
+      "title": "圆柱内平方距离",
+      "problem": "半径 1、高 2 的圆柱内积分 $x^2+y^2$。",
+      "steps": [
+        "被积函数为 $r^2$，体积元乘 $r$。",
+        "$\\int_0^2dz\\int_0^{2\\pi}d\\theta\\int_0^1r^3dr=\\pi$。"
+      ],
+      "answer": "$\\pi$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-cylindrical-m1",
+      "claim": "柱坐标体积元是半径平方。",
+      "correction": "只有水平极坐标贡献一个半径，高度不再缩放。"
+    },
+    {
+      "id": "c3-cylindrical-m2",
+      "claim": "圆形投影只改积分限即可。",
+      "correction": "被积函数和体积元也都要转换。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-cylindrical-q1",
+      "problem": "半径 2、高 3 的圆柱体积？",
+      "hint": "用底面积乘高度复核。",
+      "solution": [
+        "$V=4\\pi\\cdot3=12\\pi$。"
+      ],
+      "answer": "$12\\pi$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-cylindrical-q2",
+      "problem": "$z=r$ 与 $z=2$ 之间的圆锥体如何取径向限？",
+      "hint": "上下高度必须有序。",
+      "solution": [
+        "要求 $r\\le2$，所以 $0\\le r\\le2$。"
+      ],
+      "answer": "$0\\le r\\le2$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-cylindrical-q3",
+      "problem": "柱坐标的轴上为什么角度不唯一？",
+      "hint": "水平半径为零。",
+      "solution": [
+        "零半径使两个水平分量都为零，任意角度表示同一点。"
+      ],
+      "answer": "坐标退化，通常不影响体积积分。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-cylindrical-q4",
+      "problem": "积分 $\\iiint r\\,dr\\,d\\theta\\,dz$ 在此坐标里对应常密度一还是密度半径？",
+      "hint": "分清体积元因子。",
+      "solution": [
+        "末尾的半径来自体积元，被积密度为一。"
+      ],
+      "answer": "常密度一。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "柱坐标为什么保留一个半径因子？",
+    "choices": [
+      "水平面极坐标面积的缩放",
+      "高度的缩放",
+      "为了抵消圆周率"
+    ],
+    "correctIndex": 0,
+    "explanation": "角向宽度对应真实弧长，需要半径。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-cylindrical",
+    "caption": "半径一、高二的圆柱与水平极坐标网格；切片面积恒为 $\\pi$。",
+    "prediction": "高度方向是否会再引入一个半径因子？"
+  },
+  "teaching": {
+    "explain": "水平小块用极坐标，竖直方向直接乘高度，所以只出现一个半径因子。",
+    "steps": [
+      {
+        "title": "底部",
+        "instruction": "将相对切片高度设为 $0$。",
+        "preset": {
+          "slice": 0
+        },
+        "observation": "展示圆柱底面的水平截面。"
+      },
+      {
+        "title": "中部",
+        "instruction": "将相对切片高度设为 $0.5$。",
+        "preset": {
+          "slice": 0.5
+        },
+        "observation": "截面形状和面积与底面相同。"
+      },
+      {
+        "title": "顶部",
+        "instruction": "将相对切片高度设为 $1$。",
+        "preset": {
+          "slice": 1
+        },
+        "observation": "高度改变而半径不变，体积由恒定截面积累积。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-triple-integrals",
+    "c3-polar-integrals"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-cylindrical-m1",
+    "c3-cylindrical-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

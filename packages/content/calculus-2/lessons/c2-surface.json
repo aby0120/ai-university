@@ -1,0 +1,196 @@
+{
+  "id": "c2-surface",
+  "title": "旋转曲面的面积",
+  "subtitle": "圆周长度乘上一小段弧长",
+  "concept": "旋转侧面积把每段小弧转成窄带：窄带面积约为圆周长乘弧长。",
+  "intuition": "体积用圆盘，表面积用圆周。两者的小块不同，不能交换公式。",
+  "body": [
+    {
+      "title": "为什么有弧长因子？",
+      "text": "曲线斜着走，小弧比水平宽度长。必须用 $ds=\\sqrt{1+(f\\prime)^2}dx$，而不是直接用 $dx$。"
+    },
+    {
+      "title": "半径取哪个量？",
+      "text": "半径是点到旋转轴的距离。绕水平轴 $y=c$ 旋转时，用 $|f(x)-c|$。"
+    },
+    {
+      "title": "是否包含端盖？",
+      "text": "本公式给侧面积，不含两端封口。若题目要封闭表面的总面积，再加相应端盖；重复描线会重复计数。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "圆周长度乘上一小段弧长",
+    "latex": "S=2\\pi\\int_a^b|f(x)-c|\\sqrt{1+f\\prime(x)^2}\\,dx",
+    "conditions": [
+      "$f$ 在 $[a,b]$ 连续可导，绕 $y=c$ 旋转，曲面不重复计算；这里只算侧面积。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "把小弧近似成线段。",
+      "latex": "\\Delta s\\approx\\sqrt{(\\Delta x)^2+(\\Delta y)^2}"
+    },
+    {
+      "text": "每个旋转窄带近似圆台侧带。",
+      "latex": "\\Delta S\\approx2\\pi|f(x)-c|\\Delta s"
+    },
+    {
+      "text": "细分并取极限。",
+      "latex": "S=2\\pi\\int_a^b|f(x)-c|\\sqrt{1+f\\prime(x)^2}dx"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "圆锥的侧面",
+      "problem": "$y=x$，$0\\leq x\\leq1$ 绕横轴旋转，侧面积？",
+      "steps": [
+        "半径为 $x$，$ds=\\sqrt2 dx$。",
+        "$S=2\\pi\\sqrt2\\int_0^1x dx=\\pi\\sqrt2$。"
+      ],
+      "answer": "$\\pi\\sqrt2$；不含底面。"
+    },
+    {
+      "title": "圆柱",
+      "problem": "$y=2$，$0\\leq x\\leq3$ 绕横轴旋转，侧面积？",
+      "steps": [
+        "半径为 2，弧长微元就是 $dx$。",
+        "$S=2\\pi\\int_0^3 2dx$，与圆周长乘高一致。"
+      ],
+      "answer": "$12\\pi$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-surface-m1",
+      "claim": "表面积仍用 $\\pi r^2$。",
+      "correction": "那是截面面积；侧带使用 $2\\pi r\\,ds$。"
+    },
+    {
+      "id": "c2-surface-m2",
+      "claim": "侧面积自动包括端盖。",
+      "correction": "端盖必须另算，且题目可能根本没有封口。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$y=3$，$0\\leq x\\leq2$ 绕横轴的侧面积？",
+      "answer": "$12\\pi$。",
+      "hint": "圆柱侧面。",
+      "solution": [
+        "$S=2\\pi\\int_0^2 3dx=12\\pi$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 37.69911184307752,
+      "id": "c2-surface-p1"
+    },
+    {
+      "problem": "$y=2x$，$0\\leq x\\leq1$ 绕横轴的侧面积？",
+      "answer": "$2\\pi\\sqrt5$。",
+      "hint": "弧长因子是常数。",
+      "solution": [
+        "$S=2\\pi\\int_0^1 2x\\sqrt5 dx=2\\pi\\sqrt5$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-surface-p2"
+    },
+    {
+      "problem": "$y=-1$，$0\\leq x\\leq2$ 绕横轴的侧面积？",
+      "answer": "$4\\pi$。",
+      "hint": "半径不能为负。",
+      "solution": [
+        "半径 $|y|=1$，$S=2\\pi\\int_0^2dx=4\\pi$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 12.566370614359172,
+      "id": "c2-surface-p3"
+    },
+    {
+      "problem": "例题圆柱若加上两个端盖，总面积是多少？",
+      "answer": "$20\\pi$。",
+      "hint": "侧面积加两个圆。",
+      "solution": [
+        "侧面 $12\\pi$，端盖各为 $\\pi\\cdot2^2=4\\pi$，总和 $20\\pi$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [
+        "c2-surface-m2"
+      ],
+      "numericAnswer": 62.83185307179586,
+      "id": "c2-surface-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "旋转侧面积的小块是？",
+    "choices": [
+      "$\\pi r^2 dx$",
+      "$2\\pi r\\,ds$",
+      "$r\\,dx$"
+    ],
+    "correctIndex": 1,
+    "explanation": "圆周长度乘沿曲线方向的小弧长。"
+  },
+  "teaching": {
+    "explain": "先问转出来的是一个面还是一块体积。求面就把曲线切成小弧，再把小弧转成窄带。",
+    "steps": [
+      {
+        "title": "低坡度",
+        "instruction": "坡度取 0.5。",
+        "observation": "顶端半径为 0.5，母线长度为 $\\sqrt{1.25}$。",
+        "preset": {
+          "c": 0.5
+        }
+      },
+      {
+        "title": "单位坡度",
+        "instruction": "坡度取 1。",
+        "observation": "侧面积为 $\\pi\\sqrt2$，不含端盖。",
+        "preset": {
+          "c": 1
+        }
+      },
+      {
+        "title": "陡坡度",
+        "instruction": "坡度取 2。",
+        "observation": "侧面积为 $2\\pi\\sqrt5$，不是体积。",
+        "preset": {
+          "c": 2
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "arc-length",
+    "c2-trig-substitution"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-extended-integrals",
+  "number": "2.4",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-surface",
+    "caption": "用直线 $y=mx$ 的圆锥侧面，对照圆周、斜长和面积。",
+    "prediction": "坡度变大时，半径与斜长会同时怎样变化？"
+  },
+  "misconceptionTags": [
+    "c2-surface-m1",
+    "c2-surface-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "从旋转窄带推导侧面积",
+    "选择正确旋转半径与弧长",
+    "区分侧面积、端盖与体积"
+  ]
+}

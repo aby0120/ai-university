@@ -1,0 +1,2174 @@
+[
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/domain",
+    "title": "函数与定义域",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/domain?view=visual",
+    "title": "函数与定义域",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/transformations",
+    "title": "图像与变换",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/transformations?view=visual",
+    "title": "图像与变换",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/composition",
+    "title": "复合函数与反函数",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/composition?view=visual",
+    "title": "复合函数与反函数",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/trigonometry",
+    "title": "三角函数与弧度",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/trigonometry?view=visual",
+    "title": "三角函数与弧度",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/exponential-log",
+    "title": "指数与对数",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/exponential-log?view=visual",
+    "title": "指数与对数",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/limit-intuition",
+    "title": "极限：靠近时会怎样",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/limit-intuition?view=visual",
+    "title": "极限：靠近时会怎样",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/limit-laws",
+    "title": "极限的计算法则",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/limit-laws?view=visual",
+    "title": "极限的计算法则",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/epsilon-delta",
+    "title": "ε\\varepsilonε–δ\\deltaδ：把靠近说精确",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/epsilon-delta?view=visual",
+    "title": "ε\\varepsilonε–δ\\deltaδ：把靠近说精确",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/continuity",
+    "title": "连续性与介值定理",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/continuity?view=visual",
+    "title": "连续性与介值定理",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/infinite-limits",
+    "title": "无穷极限与渐近线",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/infinite-limits?view=visual",
+    "title": "无穷极限与渐近线",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/derivative-definition",
+    "title": "导数：割线变成切线",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/derivative-definition?view=visual",
+    "title": "导数：割线变成切线",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/derivative-rules",
+    "title": "基本求导规则",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/derivative-rules?view=visual",
+    "title": "基本求导规则",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/chain-rule",
+    "title": "链式法则",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/chain-rule?view=visual",
+    "title": "链式法则",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/trig-derivatives",
+    "title": "三角函数的导数",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/trig-derivatives?view=visual",
+    "title": "三角函数的导数",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/implicit",
+    "title": "隐函数求导",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/implicit?view=visual",
+    "title": "隐函数求导",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/exp-log-derivatives",
+    "title": "指数与对数求导",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/exp-log-derivatives?view=visual",
+    "title": "指数与对数求导",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/inverse-trig",
+    "title": "反函数与反三角导数",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/inverse-trig?view=visual",
+    "title": "反函数与反三角导数",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/related-rates",
+    "title": "相关变化率",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/related-rates?view=visual",
+    "title": "相关变化率",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/linearization",
+    "title": "线性近似与微分",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/linearization?view=visual",
+    "title": "线性近似与微分",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/newton",
+    "title": "牛顿法：沿切线找根",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/newton?view=visual",
+    "title": "牛顿法：沿切线找根",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/extrema",
+    "title": "极值与临界点",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/extrema?view=visual",
+    "title": "极值与临界点",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/mean-value",
+    "title": "罗尔与中值定理",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/mean-value?view=visual",
+    "title": "罗尔与中值定理",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/curve-sketching",
+    "title": "单调性、凹性与曲线分析",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/curve-sketching?view=visual",
+    "title": "单调性、凹性与曲线分析",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/optimization",
+    "title": "优化：把问题变成一个函数",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/optimization?view=visual",
+    "title": "优化：把问题变成一个函数",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/lhopital",
+    "title": "洛必达法则",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/lhopital?view=visual",
+    "title": "洛必达法则",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/antiderivatives",
+    "title": "原函数与不定积分",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/antiderivatives?view=visual",
+    "title": "原函数与不定积分",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/riemann-sums",
+    "title": "黎曼和与数值积分",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/riemann-sums?view=visual",
+    "title": "黎曼和与数值积分",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/definite-integral",
+    "title": "定积分与带符号面积",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/definite-integral?view=visual",
+    "title": "定积分与带符号面积",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/fundamental-theorem",
+    "title": "微积分基本定理",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/fundamental-theorem?view=visual",
+    "title": "微积分基本定理",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/substitution",
+    "title": "换元积分",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/substitution?view=visual",
+    "title": "换元积分",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/area-between",
+    "title": "两曲线之间的面积",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/area-between?view=visual",
+    "title": "两曲线之间的面积",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 3,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/disk-washer",
+    "title": "截面体积：圆盘、圆环与其他形状",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 3,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/disk-washer?view=visual",
+    "title": "截面体积：圆盘、圆环与其他形状",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/shells",
+    "title": "旋转体：圆柱壳",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/shells?view=visual",
+    "title": "旋转体：圆柱壳",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/arc-length",
+    "title": "弧长与旋转曲面面积",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/arc-length?view=visual",
+    "title": "弧长与旋转曲面面积",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 4,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/physical-integrals",
+    "title": "位移、功、质量与平均值",
+    "view": "lesson-page view-read ",
+    "width": 1440
+  },
+  {
+    "controls": 4,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/physical-integrals?view=visual",
+    "title": "位移、功、质量与平均值",
+    "view": "lesson-page view-visual ",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/home",
+    "title": "看见数学。理解本质。",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/library",
+    "title": "教科书库",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/library?status=planned",
+    "title": "教科书库",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/library?area=linear-algebra",
+    "title": "教科书库",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/book/calculus-1",
+    "title": "微积分 ICalculus I",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/chapter/integrals",
+    "title": "积分：从累积到原函数",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lab",
+    "title": "互动实验室",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lab?page=2",
+    "title": "互动实验室",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/practice",
+    "title": "练习中心",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/practice?page=2",
+    "title": "练习中心",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/practice/exam",
+    "title": "整本书 · 综合测试",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/practice/review/derivatives",
+    "title": "导数的建立与计算 · 章末回顾",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/reference",
+    "title": "知识索引",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/reference?tab=glossary",
+    "title": "知识索引",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/reference?tab=appendix",
+    "title": "知识索引",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/learning",
+    "title": "我的学习",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/search?q=%E6%9E%81%E9%99%90",
+    "title": "搜索教材",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/downloads",
+    "title": "下载与离线阅读",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/guide",
+    "title": "怎样读这本教科书",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/about",
+    "title": "关于 AI University",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/about/contribute",
+    "title": "参与贡献",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/about/versions",
+    "title": "版本与勘误",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/about/privacy",
+    "title": "隐私与本地数据",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/about/research",
+    "title": "学习方法与参考资料",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/derivative-definition?view=practice",
+    "title": "导数：割线变成切线",
+    "view": "lesson-page view-practice ",
+    "width": 1440
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/derivative-definition?view=connections",
+    "title": "导数：割线变成切线",
+    "view": "lesson-page view-connections ",
+    "width": 1440
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/domain",
+    "title": "函数与定义域",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/domain?view=visual",
+    "title": "函数与定义域",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/transformations",
+    "title": "图像与变换",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/transformations?view=visual",
+    "title": "图像与变换",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/composition",
+    "title": "复合函数与反函数",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/composition?view=visual",
+    "title": "复合函数与反函数",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/trigonometry",
+    "title": "三角函数与弧度",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/trigonometry?view=visual",
+    "title": "三角函数与弧度",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/exponential-log",
+    "title": "指数与对数",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/exponential-log?view=visual",
+    "title": "指数与对数",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/limit-intuition",
+    "title": "极限：靠近时会怎样",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/limit-intuition?view=visual",
+    "title": "极限：靠近时会怎样",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/limit-laws",
+    "title": "极限的计算法则",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/limit-laws?view=visual",
+    "title": "极限的计算法则",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/epsilon-delta",
+    "title": "ε\\varepsilonε–δ\\deltaδ：把靠近说精确",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/epsilon-delta?view=visual",
+    "title": "ε\\varepsilonε–δ\\deltaδ：把靠近说精确",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/continuity",
+    "title": "连续性与介值定理",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/continuity?view=visual",
+    "title": "连续性与介值定理",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/infinite-limits",
+    "title": "无穷极限与渐近线",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/infinite-limits?view=visual",
+    "title": "无穷极限与渐近线",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/derivative-definition",
+    "title": "导数：割线变成切线",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/derivative-definition?view=visual",
+    "title": "导数：割线变成切线",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/derivative-rules",
+    "title": "基本求导规则",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/derivative-rules?view=visual",
+    "title": "基本求导规则",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/chain-rule",
+    "title": "链式法则",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/chain-rule?view=visual",
+    "title": "链式法则",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/trig-derivatives",
+    "title": "三角函数的导数",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/trig-derivatives?view=visual",
+    "title": "三角函数的导数",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/implicit",
+    "title": "隐函数求导",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/implicit?view=visual",
+    "title": "隐函数求导",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/exp-log-derivatives",
+    "title": "指数与对数求导",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/exp-log-derivatives?view=visual",
+    "title": "指数与对数求导",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/inverse-trig",
+    "title": "反函数与反三角导数",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/inverse-trig?view=visual",
+    "title": "反函数与反三角导数",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/related-rates",
+    "title": "相关变化率",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/related-rates?view=visual",
+    "title": "相关变化率",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/linearization",
+    "title": "线性近似与微分",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/linearization?view=visual",
+    "title": "线性近似与微分",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/newton",
+    "title": "牛顿法：沿切线找根",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/newton?view=visual",
+    "title": "牛顿法：沿切线找根",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/extrema",
+    "title": "极值与临界点",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/extrema?view=visual",
+    "title": "极值与临界点",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/mean-value",
+    "title": "罗尔与中值定理",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/mean-value?view=visual",
+    "title": "罗尔与中值定理",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/curve-sketching",
+    "title": "单调性、凹性与曲线分析",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/curve-sketching?view=visual",
+    "title": "单调性、凹性与曲线分析",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/optimization",
+    "title": "优化：把问题变成一个函数",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/optimization?view=visual",
+    "title": "优化：把问题变成一个函数",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/lhopital",
+    "title": "洛必达法则",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/lhopital?view=visual",
+    "title": "洛必达法则",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/antiderivatives",
+    "title": "原函数与不定积分",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/antiderivatives?view=visual",
+    "title": "原函数与不定积分",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/riemann-sums",
+    "title": "黎曼和与数值积分",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/riemann-sums?view=visual",
+    "title": "黎曼和与数值积分",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/definite-integral",
+    "title": "定积分与带符号面积",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/definite-integral?view=visual",
+    "title": "定积分与带符号面积",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/fundamental-theorem",
+    "title": "微积分基本定理",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/fundamental-theorem?view=visual",
+    "title": "微积分基本定理",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/substitution",
+    "title": "换元积分",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/substitution?view=visual",
+    "title": "换元积分",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/area-between",
+    "title": "两曲线之间的面积",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/area-between?view=visual",
+    "title": "两曲线之间的面积",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 3,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/disk-washer",
+    "title": "截面体积：圆盘、圆环与其他形状",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 3,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/disk-washer?view=visual",
+    "title": "截面体积：圆盘、圆环与其他形状",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/shells",
+    "title": "旋转体：圆柱壳",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/shells?view=visual",
+    "title": "旋转体：圆柱壳",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/arc-length",
+    "title": "弧长与旋转曲面面积",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/arc-length?view=visual",
+    "title": "弧长与旋转曲面面积",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 4,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/physical-integrals",
+    "title": "位移、功、质量与平均值",
+    "view": "lesson-page view-read ",
+    "width": 390
+  },
+  {
+    "controls": 4,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/physical-integrals?view=visual",
+    "title": "位移、功、质量与平均值",
+    "view": "lesson-page view-visual ",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/home",
+    "title": "看见数学。理解本质。",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/library",
+    "title": "教科书库",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/library?status=planned",
+    "title": "教科书库",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/library?area=linear-algebra",
+    "title": "教科书库",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/book/calculus-1",
+    "title": "微积分 ICalculus I",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/chapter/integrals",
+    "title": "积分：从累积到原函数",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lab",
+    "title": "互动实验室",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lab?page=2",
+    "title": "互动实验室",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/practice",
+    "title": "练习中心",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/practice?page=2",
+    "title": "练习中心",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/practice/exam",
+    "title": "整本书 · 综合测试",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/practice/review/derivatives",
+    "title": "导数的建立与计算 · 章末回顾",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/reference",
+    "title": "知识索引",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/reference?tab=glossary",
+    "title": "知识索引",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/reference?tab=appendix",
+    "title": "知识索引",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/learning",
+    "title": "我的学习",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/search?q=%E6%9E%81%E9%99%90",
+    "title": "搜索教材",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/downloads",
+    "title": "下载与离线阅读",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/guide",
+    "title": "怎样读这本教科书",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/about",
+    "title": "关于 AI University",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/about/contribute",
+    "title": "参与贡献",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/about/versions",
+    "title": "版本与勘误",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/about/privacy",
+    "title": "隐私与本地数据",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/about/research",
+    "title": "学习方法与参考资料",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/derivative-definition?view=practice",
+    "title": "导数：割线变成切线",
+    "view": "lesson-page view-practice ",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/derivative-definition?view=connections",
+    "title": "导数：割线变成切线",
+    "view": "lesson-page view-connections ",
+    "width": 390
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/home",
+    "title": "看见数学。理解本质。",
+    "width": 320
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/library",
+    "title": "教科书库",
+    "width": 320
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/library?status=planned",
+    "title": "教科书库",
+    "width": 320
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/book/calculus-1",
+    "title": "微积分 ICalculus I",
+    "width": 320
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lab",
+    "title": "互动实验室",
+    "width": 320
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/practice",
+    "title": "练习中心",
+    "width": 320
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/reference",
+    "title": "知识索引",
+    "width": 320
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/downloads",
+    "title": "下载与离线阅读",
+    "width": 320
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/guide",
+    "title": "怎样读这本教科书",
+    "width": 320
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/about/versions",
+    "title": "版本与勘误",
+    "width": 320
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/derivative-definition",
+    "title": "导数：割线变成切线",
+    "view": "lesson-page view-read ",
+    "width": 320
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/derivative-definition?view=visual",
+    "title": "导数：割线变成切线",
+    "view": "lesson-page view-visual ",
+    "width": 320
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/derivative-definition?view=practice",
+    "title": "导数：割线变成切线",
+    "view": "lesson-page view-practice ",
+    "width": 320
+  },
+  {
+    "controls": 3,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/disk-washer?view=visual",
+    "title": "截面体积：圆盘、圆环与其他形状",
+    "view": "lesson-page view-visual ",
+    "width": 320
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/chain-rule?view=visual",
+    "title": "链式法则",
+    "view": "lesson-page view-visual ",
+    "width": 320
+  },
+  {
+    "controls": 4,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/physical-integrals?view=visual",
+    "title": "位移、功、质量与平均值",
+    "view": "lesson-page view-visual ",
+    "width": 320
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/home",
+    "title": "看见数学。理解本质。",
+    "width": 820
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/library",
+    "title": "教科书库",
+    "width": 820
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/library?status=planned",
+    "title": "教科书库",
+    "width": 820
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/book/calculus-1",
+    "title": "微积分 ICalculus I",
+    "width": 820
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lab",
+    "title": "互动实验室",
+    "width": 820
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/practice",
+    "title": "练习中心",
+    "width": 820
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/reference",
+    "title": "知识索引",
+    "width": 820
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/downloads",
+    "title": "下载与离线阅读",
+    "width": 820
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/guide",
+    "title": "怎样读这本教科书",
+    "width": 820
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/about/versions",
+    "title": "版本与勘误",
+    "width": 820
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/derivative-definition",
+    "title": "导数：割线变成切线",
+    "view": "lesson-page view-read ",
+    "width": 820
+  },
+  {
+    "controls": 2,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/derivative-definition?view=visual",
+    "title": "导数：割线变成切线",
+    "view": "lesson-page view-visual ",
+    "width": 820
+  },
+  {
+    "controls": 0,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/derivative-definition?view=practice",
+    "title": "导数：割线变成切线",
+    "view": "lesson-page view-practice ",
+    "width": 820
+  },
+  {
+    "controls": 3,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/disk-washer?view=visual",
+    "title": "截面体积：圆盘、圆环与其他形状",
+    "view": "lesson-page view-visual ",
+    "width": 820
+  },
+  {
+    "controls": 1,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/chain-rule?view=visual",
+    "title": "链式法则",
+    "view": "lesson-page view-visual ",
+    "width": 820
+  },
+  {
+    "controls": 4,
+    "invalidSvg": 0,
+    "mathErrors": 0,
+    "overflow": 0,
+    "route": "#/lesson/physical-integrals?view=visual",
+    "title": "位移、功、质量与平均值",
+    "view": "lesson-page view-visual ",
+    "width": 820
+  }
+]

@@ -1,0 +1,912 @@
+{
+  "models": {
+    "la-vectors": {
+      "family": "combination",
+      "dimension": 2
+    },
+    "la-equations": {
+      "family": "systems",
+      "dimension": 2
+    },
+    "la-elimination": {
+      "family": "elimination",
+      "dimension": 2
+    },
+    "la-pivots": {
+      "family": "systems",
+      "dimension": 2
+    },
+    "la-parametric": {
+      "family": "affine",
+      "dimension": 3
+    },
+    "la-matrix-product": {
+      "family": "transform",
+      "dimension": 2
+    },
+    "la-linear-maps": {
+      "family": "transform",
+      "dimension": 2
+    },
+    "la-composition": {
+      "family": "composition",
+      "dimension": 2
+    },
+    "la-inverse": {
+      "family": "inverse",
+      "dimension": 2
+    },
+    "la-lu": {
+      "family": "elimination",
+      "dimension": 2
+    },
+    "la-subspaces": {
+      "family": "span",
+      "dimension": 3
+    },
+    "la-span": {
+      "family": "span",
+      "dimension": 3
+    },
+    "la-independence": {
+      "family": "span",
+      "dimension": 3
+    },
+    "la-basis": {
+      "family": "span",
+      "dimension": 3
+    },
+    "la-dimension": {
+      "family": "rank",
+      "dimension": 3
+    },
+    "la-coordinates": {
+      "family": "coordinates",
+      "dimension": 2
+    },
+    "la-nullspace": {
+      "family": "kernel",
+      "dimension": 2
+    },
+    "la-column-row": {
+      "family": "fundamental",
+      "dimension": 3
+    },
+    "la-rank-nullity": {
+      "family": "rank",
+      "dimension": 3
+    },
+    "la-four-spaces": {
+      "family": "fundamental",
+      "dimension": 3
+    },
+    "la-det-geometry": {
+      "family": "det-volume",
+      "dimension": 3
+    },
+    "la-det-properties": {
+      "family": "det-shear",
+      "dimension": 2
+    },
+    "la-cofactors": {
+      "family": "cofactor",
+      "dimension": 3
+    },
+    "la-cramer": {
+      "family": "systems",
+      "dimension": 2
+    },
+    "la-eigenvectors": {
+      "family": "eigen",
+      "dimension": 2
+    },
+    "la-characteristic": {
+      "family": "eigen",
+      "dimension": 2
+    },
+    "la-multiplicity": {
+      "family": "jordan",
+      "dimension": 2
+    },
+    "la-diagonalization": {
+      "family": "diagonalization",
+      "dimension": 2
+    },
+    "la-complex-eigen": {
+      "family": "complex",
+      "dimension": 2
+    },
+    "la-inner-products": {
+      "family": "dot",
+      "dimension": 2
+    },
+    "la-projection": {
+      "family": "projection",
+      "dimension": 2
+    },
+    "la-orthogonal-complements": {
+      "family": "orthogonal",
+      "dimension": 2
+    },
+    "la-gram-schmidt": {
+      "family": "gram",
+      "dimension": 2
+    },
+    "la-qr": {
+      "family": "gram",
+      "dimension": 2
+    },
+    "la-least-squares": {
+      "family": "least-squares",
+      "dimension": 2
+    },
+    "la-spectral": {
+      "family": "eigen",
+      "dimension": 2
+    },
+    "la-quadratic-forms": {
+      "family": "quadratic",
+      "dimension": 3
+    },
+    "la-positive-definite": {
+      "family": "quadratic",
+      "dimension": 3
+    },
+    "la-cholesky": {
+      "family": "cholesky",
+      "dimension": 2
+    },
+    "la-rayleigh": {
+      "family": "quadratic",
+      "dimension": 3
+    },
+    "la-singular-values": {
+      "family": "svd",
+      "dimension": 2
+    },
+    "la-svd": {
+      "family": "svd",
+      "dimension": 2
+    },
+    "la-pseudoinverse": {
+      "family": "pseudoinverse",
+      "dimension": 2
+    },
+    "la-low-rank": {
+      "family": "low-rank",
+      "dimension": 2
+    },
+    "la-conditioning": {
+      "family": "conditioning",
+      "dimension": 2
+    },
+    "la-markov": {
+      "family": "markov",
+      "dimension": 2
+    },
+    "la-recurrences": {
+      "family": "recurrence",
+      "dimension": 2
+    },
+    "la-networks": {
+      "family": "network",
+      "dimension": 2
+    },
+    "la-pca": {
+      "family": "pca",
+      "dimension": 2
+    },
+    "la-choosing-tools": {
+      "family": "transform",
+      "dimension": 2
+    }
+  },
+  "families": {
+    "combination": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "系数 $a$",
+          "min": -2,
+          "max": 2,
+          "step": 0.01,
+          "value": 1
+        },
+        {
+          "key": "b",
+          "label": "系数 $b$",
+          "min": -2,
+          "max": 2,
+          "step": 0.01,
+          "value": 1
+        }
+      ],
+      "dimension": 2
+    },
+    "systems": {
+      "controls": [
+        {
+          "key": "c",
+          "label": "第二式的系数 $c$",
+          "min": -1,
+          "max": 2,
+          "step": 0.01,
+          "value": 2
+        },
+        {
+          "key": "b",
+          "label": "第二式的右端 $b$",
+          "min": -1,
+          "max": 3,
+          "step": 0.01,
+          "value": 3
+        }
+      ],
+      "dimension": 2
+    },
+    "elimination": {
+      "controls": [
+        {
+          "key": "n",
+          "label": "消元步骤",
+          "min": 0,
+          "max": 2,
+          "step": 1,
+          "value": 0,
+          "options": [
+            {
+              "value": 0,
+              "label": "原系统"
+            },
+            {
+              "value": 1,
+              "label": "第二行减第一行两倍"
+            },
+            {
+              "value": 2,
+              "label": "第一行减第二行"
+            }
+          ]
+        }
+      ],
+      "dimension": 2
+    },
+    "affine": {
+      "controls": [
+        {
+          "key": "x",
+          "label": "自由参数 $t$",
+          "min": -2,
+          "max": 2,
+          "step": 0.01,
+          "value": 0
+        }
+      ],
+      "dimension": 3
+    },
+    "transform": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "$a_{11}$",
+          "min": -2,
+          "max": 2,
+          "step": 0.01,
+          "value": 1
+        },
+        {
+          "key": "b",
+          "label": "$a_{12}$",
+          "min": -2,
+          "max": 2,
+          "step": 0.01,
+          "value": 1
+        },
+        {
+          "key": "c",
+          "label": "$a_{21}$",
+          "min": -2,
+          "max": 2,
+          "step": 0.01,
+          "value": 0
+        },
+        {
+          "key": "h",
+          "label": "$a_{22}$",
+          "min": -2,
+          "max": 2,
+          "step": 0.01,
+          "value": 1
+        }
+      ],
+      "dimension": 2
+    },
+    "composition": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "输入方向角 $\\theta$",
+          "min": 0,
+          "max": 6.283185307179586,
+          "step": 0.01,
+          "value": 1.5707963267948966
+        },
+        {
+          "key": "n",
+          "label": "作用顺序",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "value": 0,
+          "options": [
+            {
+              "value": 0,
+              "label": "先剪切，再拉伸"
+            },
+            {
+              "value": 1,
+              "label": "先拉伸，再剪切"
+            }
+          ]
+        }
+      ],
+      "dimension": 2
+    },
+    "inverse": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "纵向缩放 $a$",
+          "min": -1,
+          "max": 1,
+          "step": 0.01,
+          "value": 1
+        },
+        {
+          "key": "c",
+          "label": "剪切系数 $c$",
+          "min": -1,
+          "max": 1,
+          "step": 0.01,
+          "value": 0.5
+        }
+      ],
+      "dimension": 2
+    },
+    "span": {
+      "controls": [
+        {
+          "key": "c",
+          "label": "第二方向的纵分量 $c$",
+          "min": -1,
+          "max": 1,
+          "step": 0.01,
+          "value": 1
+        }
+      ],
+      "dimension": 3
+    },
+    "coordinates": {
+      "controls": [
+        {
+          "key": "c",
+          "label": "基的剪切系数 $c$",
+          "min": -1,
+          "max": 1,
+          "step": 0.01,
+          "value": 0.5
+        }
+      ],
+      "dimension": 2
+    },
+    "rank": {
+      "controls": [
+        {
+          "key": "c",
+          "label": "第二方向缩放 $c$",
+          "min": -1,
+          "max": 1,
+          "step": 0.01,
+          "value": 1
+        }
+      ],
+      "dimension": 3
+    },
+    "kernel": {
+      "controls": [
+        {
+          "key": "c",
+          "label": "行系数 $c$",
+          "min": -1,
+          "max": 1,
+          "step": 0.01,
+          "value": 1
+        },
+        {
+          "key": "x",
+          "label": "核方向系数 $t$",
+          "min": -2,
+          "max": 2,
+          "step": 0.01,
+          "value": 1
+        }
+      ],
+      "dimension": 2
+    },
+    "fundamental": {
+      "controls": [
+        {
+          "key": "n",
+          "label": "查看子空间",
+          "min": 0,
+          "max": 3,
+          "step": 1,
+          "value": 0,
+          "options": [
+            {
+              "value": 0,
+              "label": "零空间 · 三维输入"
+            },
+            {
+              "value": 1,
+              "label": "行空间 · 三维输入"
+            },
+            {
+              "value": 2,
+              "label": "列空间 · 二维输出"
+            },
+            {
+              "value": 3,
+              "label": "左零空间 · 二维输出"
+            }
+          ]
+        }
+      ],
+      "dimension": 3
+    },
+    "det-volume": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "竖向缩放 $a$",
+          "min": -2,
+          "max": 2,
+          "step": 0.01,
+          "value": 1
+        },
+        {
+          "key": "c",
+          "label": "剪切系数 $c$",
+          "min": -1,
+          "max": 1,
+          "step": 0.01,
+          "value": 0.5
+        }
+      ],
+      "dimension": 3
+    },
+    "det-shear": {
+      "controls": [
+        {
+          "key": "c",
+          "label": "剪切系数 $c$",
+          "min": -2,
+          "max": 2,
+          "step": 0.01,
+          "value": 0
+        }
+      ],
+      "dimension": 2
+    },
+    "cofactor": {
+      "controls": [
+        {
+          "key": "n",
+          "label": "展开项",
+          "min": 0,
+          "max": 2,
+          "step": 1,
+          "value": 0,
+          "options": [
+            {
+              "value": 0,
+              "label": "第一列的项"
+            },
+            {
+              "value": 1,
+              "label": "第二列的项"
+            },
+            {
+              "value": 2,
+              "label": "第三列的项"
+            }
+          ]
+        }
+      ],
+      "dimension": 3
+    },
+    "eigen": {
+      "controls": [
+        {
+          "key": "c",
+          "label": "对称交叉系数 $c$",
+          "min": -1,
+          "max": 1,
+          "step": 0.01,
+          "value": 1
+        },
+        {
+          "key": "a",
+          "label": "输入方向角 $\\theta$",
+          "min": 0,
+          "max": 6.283185307179586,
+          "step": 0.01,
+          "value": 0.3
+        }
+      ],
+      "dimension": 2
+    },
+    "jordan": {
+      "controls": [
+        {
+          "key": "c",
+          "label": "剪切系数 $c$",
+          "min": -1,
+          "max": 1,
+          "step": 0.01,
+          "value": 1
+        }
+      ],
+      "dimension": 2
+    },
+    "diagonalization": {
+      "controls": [
+        {
+          "key": "c",
+          "label": "特征基的倾斜 $c$",
+          "min": -1,
+          "max": 1,
+          "step": 0.01,
+          "value": 0.5
+        }
+      ],
+      "dimension": 2
+    },
+    "complex": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "旋转角 $\\theta$",
+          "min": 0,
+          "max": 3.141592653589793,
+          "step": 0.01,
+          "value": 1.5707963267948966
+        }
+      ],
+      "dimension": 2
+    },
+    "dot": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "方向角 $\\theta$",
+          "min": 0,
+          "max": 3.141592653589793,
+          "step": 0.01,
+          "value": 0.7853981633974483
+        },
+        {
+          "key": "b",
+          "label": "向量长度 $b$",
+          "min": 0,
+          "max": 2,
+          "step": 0.01,
+          "value": 1
+        }
+      ],
+      "dimension": 2
+    },
+    "projection": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "目标纵坐标 $a$",
+          "min": -2,
+          "max": 2,
+          "step": 0.01,
+          "value": 0.5
+        }
+      ],
+      "dimension": 2
+    },
+    "orthogonal": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "沿原直线的系数 $a$",
+          "min": -2,
+          "max": 2,
+          "step": 0.01,
+          "value": 1
+        },
+        {
+          "key": "b",
+          "label": "沿正交补的系数 $b$",
+          "min": -2,
+          "max": 2,
+          "step": 0.01,
+          "value": 0.5
+        }
+      ],
+      "dimension": 2
+    },
+    "gram": {
+      "controls": [
+        {
+          "key": "c",
+          "label": "第二列纵分量 $c$",
+          "min": -1,
+          "max": 1,
+          "step": 0.01,
+          "value": 1
+        },
+        {
+          "key": "n",
+          "label": "正交化步骤",
+          "min": 0,
+          "max": 2,
+          "step": 1,
+          "value": 0,
+          "options": [
+            {
+              "value": 0,
+              "label": "原列"
+            },
+            {
+              "value": 1,
+              "label": "减去投影"
+            },
+            {
+              "value": 2,
+              "label": "归一化"
+            }
+          ]
+        }
+      ],
+      "dimension": 2
+    },
+    "least-squares": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "斜率 $a$",
+          "min": 0,
+          "max": 2,
+          "step": 0.01,
+          "value": 0.5
+        },
+        {
+          "key": "b",
+          "label": "截距 $b$",
+          "min": 0,
+          "max": 2,
+          "step": 0.01,
+          "value": 1.1666666666666667
+        }
+      ],
+      "dimension": 2
+    },
+    "quadratic": {
+      "controls": [
+        {
+          "key": "c",
+          "label": "纵向平方系数 $c$",
+          "min": -1,
+          "max": 2,
+          "step": 0.01,
+          "value": 1
+        },
+        {
+          "key": "a",
+          "label": "单位输入方向角 $\\theta$",
+          "min": 0,
+          "max": 6.283185307179586,
+          "step": 0.01,
+          "value": 1.5707963267948966
+        }
+      ],
+      "dimension": 3
+    },
+    "cholesky": {
+      "controls": [
+        {
+          "key": "c",
+          "label": "下三角系数 $c$",
+          "min": -2,
+          "max": 2,
+          "step": 0.01,
+          "value": 0
+        }
+      ],
+      "dimension": 2
+    },
+    "svd": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "输出旋转角 $\\theta$",
+          "min": 0,
+          "max": 1.5707963267948966,
+          "step": 0.01,
+          "value": 0.5
+        },
+        {
+          "key": "b",
+          "label": "第二奇异值 $s$",
+          "min": 0,
+          "max": 2,
+          "step": 0.01,
+          "value": 1
+        }
+      ],
+      "dimension": 2
+    },
+    "pseudoinverse": {
+      "controls": [
+        {
+          "key": "n",
+          "label": "矩阵类型",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "value": 1,
+          "options": [
+            {
+              "value": 0,
+              "label": "可逆 · 两个方向"
+            },
+            {
+              "value": 1,
+              "label": "奇异 · 压掉纵向"
+            }
+          ]
+        },
+        {
+          "key": "b",
+          "label": "右端纵分量 $b$",
+          "min": -2,
+          "max": 2,
+          "step": 0.01,
+          "value": 1
+        }
+      ],
+      "dimension": 2
+    },
+    "low-rank": {
+      "controls": [
+        {
+          "key": "b",
+          "label": "第二奇异值 $s$",
+          "min": 0,
+          "max": 2,
+          "step": 0.01,
+          "value": 1
+        },
+        {
+          "key": "n",
+          "label": "保留方向数",
+          "min": 1,
+          "max": 2,
+          "step": 1,
+          "value": 1
+        }
+      ],
+      "dimension": 2
+    },
+    "conditioning": {
+      "controls": [
+        {
+          "key": "c",
+          "label": "最小奇异值 $c$",
+          "min": 0.01,
+          "max": 1,
+          "step": 0.01,
+          "value": 0.1
+        },
+        {
+          "key": "eps",
+          "label": "右端纵向扰动 $\\delta$",
+          "min": -0.1,
+          "max": 0.1,
+          "step": 0.01,
+          "value": 0.01
+        }
+      ],
+      "dimension": 2
+    },
+    "markov": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "初始第一状态概率 $a$",
+          "min": 0,
+          "max": 1,
+          "step": 0.01,
+          "value": 1
+        },
+        {
+          "key": "n",
+          "label": "更新次数",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "value": 0
+        }
+      ],
+      "dimension": 2
+    },
+    "recurrence": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "第一方向倍率 $a$",
+          "min": -1.2,
+          "max": 1.5,
+          "step": 0.01,
+          "value": 0.8
+        },
+        {
+          "key": "n",
+          "label": "迭代次数",
+          "min": 0,
+          "max": 12,
+          "step": 1,
+          "value": 6
+        }
+      ],
+      "dimension": 2
+    },
+    "network": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "边 $1\\to2$ 的流量",
+          "min": -2,
+          "max": 2,
+          "step": 0.01,
+          "value": 1
+        },
+        {
+          "key": "b",
+          "label": "边 $2\\to3$ 的流量",
+          "min": -2,
+          "max": 2,
+          "step": 0.01,
+          "value": 1
+        },
+        {
+          "key": "c",
+          "label": "边 $3\\to1$ 的流量",
+          "min": -2,
+          "max": 2,
+          "step": 0.01,
+          "value": 1
+        }
+      ],
+      "dimension": 2
+    },
+    "pca": {
+      "controls": [
+        {
+          "key": "a",
+          "label": "投影方向角 $\\theta$",
+          "min": 0,
+          "max": 1.5707963267948966,
+          "step": 0.01,
+          "value": 0
+        }
+      ],
+      "dimension": 2
+    }
+  }
+}

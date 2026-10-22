@@ -4,8 +4,8 @@
   "number": "6.1",
   "title": "原函数与不定积分",
   "subtitle": "把求导倒着做",
-  "concept": "原函数就是求导后能得到 f 的函数。一个区间内，所有原函数只差一个常数。",
-  "intuition": "x²/2、x²/2+3 的导数都是 x。求导会丢掉常数，所以反过来积分时要写 +C。",
+  "concept": "原函数就是求导后能得到 $f$ 的函数。一个区间内，所有原函数只差一个常数。",
+  "intuition": "$\\frac{x^{2}}{2}$、$\\frac{x^{2}}{2} + 3$ 的导数都是 $x$。求导会丢掉常数，所以反过来积分时要写 $+ C$。",
   "objectives": [
     "常数为什么必要",
     "基本公式表",
@@ -13,23 +13,31 @@
   ],
   "body": [
     {
-      "title": "为什么不能漏掉 C？",
+      "title": "为什么不能漏掉 $C$？",
       "text": "两个原函数之差的导数为 0，故在区间内是常数。不连通的定义域上，各段可以有不同的常数。"
     },
     {
       "title": "怎样选基本公式？",
-      "text": "把被积式对照已知导数。幂法则在 n=−1 时失效，∫1/x dx 要用 ln|x|+C；每式都要在合法区间使用。"
+      "text": "把被积式对照已知导数。幂法则在 $n = - 1$ 时失效，$\\int\\frac{1}{x}\\,\\mathrm{d}x$ 要用 $\\ln |x| + C$；每式都要在合法区间使用。"
     },
     {
       "title": "怎样确定并检查答案？",
-      "text": "已知某点的函数值时，代入 F(x)+C 求出 C。最后求导核对；乘积的积分不能拆成两个积分相乘。"
+      "text": "已知某点的函数值时，代入 $F (x) + C$ 求出 $C$。最后求导核对；乘积的积分不能拆成两个积分相乘。"
+    },
+    {
+      "title": "常见原函数有哪些？",
+      "text": "幂与对数之外，先记这一组：$\\int e^x\\,\\mathrm{d}x=e^x+C$；$\\int\\sin x\\,\\mathrm{d}x=-\\cos x+C$；$\\int\\cos x\\,\\mathrm{d}x=\\sin x+C$。每式都能用求导核对，复合输入则要检查内部导数。"
+    },
+    {
+      "title": "三角与反三角结构怎样识别？",
+      "text": "$\\int\\sec^2x\\,\\mathrm{d}x=\\tan x+C$，$\\int\\csc^2x\\,\\mathrm{d}x=-\\cot x+C$；$\\int\\sec x\\tan x\\,\\mathrm{d}x=\\sec x+C$，$\\int\\csc x\\cot x\\,\\mathrm{d}x=-\\csc x+C$。再由反三角导数读出 $\\int\\frac{1}{1+x^2}\\,\\mathrm{d}x=\\arctan x+C$ 与 $\\int\\frac{1}{\\sqrt{1-x^2}}\\,\\mathrm{d}x=\\arcsin x+C$。前四式避开函数无定义点，最后一式限于 $|x|<1$ 的区间。"
     }
   ],
   "formalDefinition": {
     "text": "不定积分表示所有原函数。",
     "latex": "\\int f(x)\\,dx=F(x)+C\\quad\\text{if }F\\prime(x)=f(x)",
     "conditions": [
-      "公式在一个区间上讨论；幂公式的 n=−1 例外转为对数。"
+      "公式在一个区间上讨论；幂公式的 $n = - 1$ 例外转为对数。"
     ]
   },
   "derivation": [
@@ -38,38 +46,47 @@
       "latex": "\\frac d{dx}x^{n+1}=(n+1)x^n"
     },
     {
-      "text": "除以 n+1，得到原函数。",
+      "text": "除以 $n + 1$，得到原函数。",
       "latex": "\\int x^n\\,dx=\\frac{x^{n+1}}{n+1}+C\\quad(n\\ne-1)"
     },
     {
-      "text": "当 n=−1 时分母为零，但 ln|x| 的导数正好是 1/x。",
+      "text": "当 $n = - 1$ 时分母为零，但 $\\ln |x|$ 的导数正好是 $\\frac{1}{x}$。",
       "latex": "\\int\\frac1x\\,dx=\\ln|x|+C"
     }
   ],
   "interactiveVisual": {
     "kind": "antiderivative",
     "function": "square",
-    "caption": "改变积分常数 C：原函数 x³/3+C 上下移动，但其导数始终为 x²。",
-    "prediction": "只改变积分常数 C，会改变曲线斜率吗？观察上下平移与导数读数。"
+    "caption": "改变积分常数 $C$：原函数 $\\frac{x^{3}}{3} + C$ 上下移动，但其导数始终为 $x^{2}$。",
+    "prediction": "只改变积分常数 $C$，会改变曲线斜率吗？观察上下平移与导数读数。"
   },
   "workedExamples": [
     {
       "title": "逐项逆向求导",
       "problem": "求 $\\int(3x^2-4x+2)\\,dx$。",
       "steps": [
-        "三项分别积分为 x³、−2x²、2x。",
-        "末尾加同一个常数 C，并求导核对。"
+        "三项分别积分为 $x^{3}$、$- 2 x^{2}$、$2 x$。",
+        "末尾加同一个常数 $C$，并求导核对。"
       ],
       "answer": "$x^3-2x^2+2x+C$。"
     },
     {
       "title": "由速度恢复位置",
-      "problem": "v(t)=2t+1，s(0)=3，求 s(t)。",
+      "problem": "$v (t) = 2 t + 1$，$s (0) = 3$，求 $s (t)$。",
       "steps": [
-        "积分得到 s=t²+t+C。",
-        "代入 t=0 得 C=3。"
+        "积分得到 $s = t^{2} + t + C$。",
+        "代入 $t = 0$ 得 $C = 3$。"
       ],
-      "answer": "s(t)=t²+t+3。"
+      "answer": "$s (t) = t^{2} + t + 3$。"
+    },
+    {
+      "title": "按结构逐项识别",
+      "problem": "求 $\\int\\left(e^x+\\frac{2}{1+x^2}-3\\sin x\\right)\\,\\mathrm{d}x$。",
+      "steps": [
+        "三项分别是 $e^x$、$2\\arctan x$、$3\\cos x$ 的导数。",
+        "求导复算：$(3\\cos x)\\prime=-3\\sin x$，负号与原题一致。"
+      ],
+      "answer": "$e^x+2\\arctan x+3\\cos x+C$。"
     }
   ],
   "commonMistakes": [
@@ -80,8 +97,8 @@
     },
     {
       "id": "antiderivatives-m2",
-      "claim": "对 1/x 使用普通幂公式。",
-      "correction": "n=−1 是例外，结果为 ln|x|+C。"
+      "claim": "对 $\\frac{1}{x}$ 使用普通幂公式。",
+      "correction": "$n = - 1$ 是例外，结果为 $\\ln |x| + C$。"
     }
   ],
   "practice": [
@@ -92,7 +109,7 @@
         "antiderivatives-m1"
       ],
       "problem": "求 $\\int x^4\\,dx$。",
-      "answer": "$x^5/5+C$。",
+      "answer": "$\\frac{x^5}{5}+C$。",
       "solution": [
         "指数加 1，再除以新指数。"
       ],
@@ -102,46 +119,74 @@
       "id": "antiderivatives-p2",
       "difficulty": 2,
       "misconceptionTags": [
+        "antiderivatives-m1",
         "antiderivatives-m2"
       ],
-      "problem": "求 $\\int(2/x)\\,dx$。",
-      "answer": "$2\\ln|x|+C$（x≠0）。",
+      "problem": "求 $\\int(\\frac{2}{x})\\,dx$。",
+      "answer": "$2\\ln|x|+C$（$x \\ne 0$）。",
       "solution": [
         "提出常数 2，使用对数原函数。"
       ],
-      "hint": "不是 x 的零次幂除以零。"
+      "hint": "不是 $x$ 的零次幂除以零。"
     },
     {
       "id": "antiderivatives-p3",
-      "difficulty": 3,
+      "difficulty": 1,
       "misconceptionTags": [
-        "antiderivatives-m2"
+        "antiderivatives-m1"
       ],
       "problem": "求 $\\int\\cos x\\,dx$。",
       "answer": "$\\sin x+C$。",
       "solution": [
-        "sin 的导数是 cos。"
+        "$\\sin$ 的导数是 $\\cos$。"
       ],
       "hint": "把导数公式反向使用。"
     },
     {
       "id": "antiderivatives-p4",
-      "difficulty": 4,
+      "difficulty": 2,
       "misconceptionTags": [
-        "antiderivatives-m2"
+        "antiderivatives-m1"
       ],
-      "problem": "F′(x)=3x²，F(1)=5，求 F(x)。",
+      "problem": "$F' (x) = 3 x^{2}$，$F (1) = 5$，求 $F (x)$。",
       "answer": "$x^3+4$。",
       "solution": [
-        "F=x³+C；1+C=5 得 C=4。"
+        "$F = x^{3} + C$；$1 + C = 5$ 得 $C = 4$。"
       ],
       "hint": "初始值决定平移量。"
+    },
+    {
+      "id": "antiderivatives-p5",
+      "problem": "求 $\\int(2\\sec^2x-\\cos x)\\,\\mathrm{d}x$，注明适用区间。",
+      "answer": "$2\\tan x-\\sin x+C$，在避开 $\\cos x=0$ 的任一区间使用。",
+      "solution": [
+        "由 $(\\tan x)\\prime=\\sec^2x$ 与 $(\\sin x)\\prime=\\cos x$ 逐项积分。",
+        "求导得到原式；不能跨越正切函数的无定义点使用同一原函数。"
+      ],
+      "hint": "对照三角导数，保留常数与定义域。",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "antiderivatives-m1"
+      ]
+    },
+    {
+      "id": "antiderivatives-p6",
+      "problem": "求 $\\int\\frac{1}{\\sqrt{1-x^2}}\\,\\mathrm{d}x$，能在 $x=1$ 使用原式吗？",
+      "answer": "$\\arcsin x+C$（$|x|<1$）；原被积式在 $x=1$ 无定义。",
+      "solution": [
+        "反正弦的导数是 $\\frac{1}{\\sqrt{1-x^2}}$。",
+        "端点处根号为零，原式不能代入；反常积分需另用极限，本卷不把它当普通定积分。"
+      ],
+      "hint": "区分原函数的值与被积函数的定义域。",
+      "difficulty": 2,
+      "misconceptionTags": []
     }
   ],
   "prerequisites": [
     "mean-value",
     "exp-log-derivatives",
-    "inverse-trig"
+    "inverse-trig",
+    "trig-derivatives"
   ],
   "difficulty": 2,
   "misconceptionTags": [
@@ -150,7 +195,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -162,13 +207,42 @@
     "3b1b-calculus"
   ],
   "learningCheck": {
-    "question": "求 ∫2x dx，为什么答案要加 C？",
+    "question": "求 $\\int  2 x \\mathrm{d}x$，为什么答案要加 $C$？",
     "choices": [
       "因为常数的导数为零",
       "因为积分都是近似",
-      "因为 C 必须等于 1"
+      "因为 $C$ 必须等于 1"
     ],
     "correctIndex": 0,
-    "explanation": "x²、x²+3 等都求导得到 2x。C 记录这一族原函数；在同一个区间讨论。"
+    "explanation": "$x^{2}$、$x^{2} + 3$ 等都求导得到 $2 x$。$C$ 记录这一族原函数；在同一个区间讨论。"
+  },
+  "teaching": {
+    "explain": "把求导倒着读，可以找到一种原函数。所有竖直平移都有相同导数；积分常数记录这份尚未确定的信息。",
+    "steps": [
+      {
+        "title": "先固定常数",
+        "instruction": "积分常数取 0。",
+        "preset": {
+          "c": 0
+        },
+        "observation": "原函数是 $\\frac{x^3}{3}$，导数是 $x^2$。"
+      },
+      {
+        "title": "向上平移",
+        "instruction": "常数改为 1。",
+        "preset": {
+          "c": 1
+        },
+        "observation": "原函数整条上移，导函数不变。"
+      },
+      {
+        "title": "再向下平移",
+        "instruction": "常数改为 −1。",
+        "preset": {
+          "c": -1
+        },
+        "observation": "原函数位置改变，但各点斜率仍由同一导函数给出。"
+      }
+    ]
   }
 }

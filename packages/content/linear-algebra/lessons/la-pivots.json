@@ -1,0 +1,195 @@
+{
+  "id": "la-pivots",
+  "chapterId": "la-systems",
+  "number": "1.4",
+  "title": "主元、相容性与自由变量",
+  "subtitle": "先查矛盾，再数自由变量",
+  "concept": "主元说明哪些变量受独立条件约束；矛盾行判断无解。",
+  "intuition": "有些方程只是在重复旧条件。消元后留下的非零行，才说明真正增加了多少约束。",
+  "objectives": [
+    "识别主元和矛盾行",
+    "按相容性与自由变量分类"
+  ],
+  "body": [
+    {
+      "title": "主元在哪里？",
+      "text": "阶梯形中每个非零行的首个非零位置是主元位置。下一行主元严格位于右边，零行放在底部。"
+    },
+    {
+      "title": "无解怎样识别？",
+      "text": "增广矩阵出现 $[0\\ \\cdots\\ 0\\mid d]$ 且 $d\\ne0$，表示 $0=d$，方程组无解。"
+    },
+    {
+      "title": "相容后怎样分类？",
+      "text": "没有矛盾行时，非主元列对应自由变量。没有自由变量则唯一；至少一个自由变量则在实数域上有无穷多解。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "主元、相容性与自由变量",
+    "latex": "A\\mathbf x=b\\text{ 相容}\\iff\\operatorname{rank}A=\\operatorname{rank}[A\\mid b]",
+    "conditions": [
+      "秩是阶梯形的主元数；判断自由变量时只数系数矩阵的列。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "系数主元数记为秩。",
+      "latex": "r=\\#\\{\\text{系数主元}\\}"
+    },
+    {
+      "text": "每个非主元未知量可自由选择。",
+      "latex": "\\#\\{\\text{自由变量}\\}=n-r"
+    },
+    {
+      "text": "先检查增广列是否产生新主元。",
+      "latex": "\\operatorname{rank}[A\\mid b]>r\\Rightarrow\\text{无解}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "有自由变量",
+      "problem": "阶梯形为 $\\left[\\begin{array}{ccc|c}1&2&0&3\\\\0&0&1&1\\end{array}\\right]$，怎样分类？",
+      "steps": [
+        "系数主元位于第一、第三列，第二个未知量自由。",
+        "没有矛盾行，有一个自由变量。"
+      ],
+      "answer": "无穷多解。"
+    },
+    {
+      "title": "多方程仍可相容",
+      "problem": "$x=1,y=2,x+y=3$ 是否条件太多而无解？",
+      "steps": [
+        "第三式由前两式相加得到。",
+        "消元只产生一条零行，不产生矛盾行。"
+      ],
+      "answer": "唯一解 $(1,2)$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-pivots-m1",
+      "claim": "零行意味着无解。",
+      "correction": "$0=0$ 只是冗余；$0=d\\ne0$ 才矛盾。"
+    },
+    {
+      "id": "la-pivots-m2",
+      "claim": "增广列也算一个未知量。",
+      "correction": "它记录右端，不是变量系数。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$3$ 个未知量、系数秩 $2$，且相容，有几个自由变量？",
+      "hint": "用未知量个数减主元数。",
+      "solution": [
+        "$3-2=1$。"
+      ],
+      "answer": "1",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 1,
+      "id": "la-pivots-q1"
+    },
+    {
+      "problem": "$[0\\ 0\\mid 5]$ 表示什么？",
+      "hint": "把行读成方程。",
+      "solution": [
+        "$0=5$ 不成立。"
+      ],
+      "answer": "无解。",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "la-pivots-m1"
+      ],
+      "id": "la-pivots-q2"
+    },
+    {
+      "problem": "$4$ 个方程、$2$ 个未知量能有唯一解吗？",
+      "hint": "额外方程可能冗余。",
+      "solution": [
+        "例如 $x=1,y=2,2x=2,2y=4$。"
+      ],
+      "answer": "能。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-pivots-q3"
+    },
+    {
+      "problem": "齐次方程组 $A\\mathbf x=0$ 会有矛盾行吗？",
+      "hint": "零向量始终是解。",
+      "solution": [
+        "右端全零，行变换后仍全零。"
+      ],
+      "answer": "不会。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-pivots-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-elimination"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "la-pivots-m1",
+    "la-pivots-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-pivots",
+    "caption": "两条约束为 $x+y=2$ 和 $x+cy=b$。矩阵奇异时，区分重合与平行异线。",
+    "prediction": "改变右端后，系数的主元数与解的存在性一定一起变化吗？"
+  },
+  "learningCheck": {
+    "question": "相容方程组有自由变量时，有多少个实数解？",
+    "choices": [
+      "唯一解",
+      "无解",
+      "无穷多解"
+    ],
+    "correctIndex": 2,
+    "explanation": "自由变量可以连续取不同实数值。"
+  },
+  "teaching": {
+    "explain": "先问有没有矛盾，再问还剩几个可自由选的量。方程数量本身不能回答这两个问题。",
+    "steps": [
+      {
+        "title": "唯一交点",
+        "instruction": "取 $c=2,b=3$。",
+        "preset": {
+          "c": 2,
+          "b": 3
+        },
+        "observation": "解为 $(1,1)$，行列式为一。"
+      },
+      {
+        "title": "约束重复",
+        "instruction": "取 $c=1,b=2$。",
+        "preset": {
+          "c": 1,
+          "b": 2
+        },
+        "observation": "两条线重合，系数秩一，有无穷多解。"
+      },
+      {
+        "title": "约束冲突",
+        "instruction": "保持 $c=1$，把 $b$ 改为 $3$。",
+        "preset": {
+          "c": 1,
+          "b": 3
+        },
+        "observation": "两条平行异线无交点，增广矩阵秩大于系数秩。"
+      }
+    ]
+  }
+}

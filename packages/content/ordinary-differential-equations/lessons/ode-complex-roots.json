@@ -1,0 +1,193 @@
+{
+  "id": "ode-complex-roots",
+  "chapterId": "ode-second-order",
+  "number": "4.4",
+  "title": "复根与真实振荡",
+  "subtitle": "复指数如何变成正弦与余弦",
+  "body": [
+    {
+      "title": "为何出现三角函数？",
+      "text": "Euler 公式把 $e^{i\\beta t}$ 拆成余弦与正弦；实系数方程的实部、虚部仍为解。"
+    },
+    {
+      "title": "怎样读根？",
+      "text": "根为 $\\alpha\\pm i\\beta$ 时，实解为 $e^{\\alpha t}(C\\cos\\beta t+D\\sin\\beta t)$，取 $\\beta>0$。"
+    },
+    {
+      "title": "周期要小心",
+      "text": "纯振荡的周期为 $2\\pi/\\beta$；若实部非零，整体函数通常不再周期，只是振荡间隔不变。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "展开复指数。",
+      "latex": "e^{(\\alpha+i\\beta)t}=e^{\\alpha t}(\\cos\\beta t+i\\sin\\beta t)"
+    },
+    {
+      "text": "取实部和虚部作为两个实解。",
+      "latex": "y_1=e^{\\alpha t}\\cos\\beta t,\\quad y_2=e^{\\alpha t}\\sin\\beta t"
+    },
+    {
+      "text": "它们提供两个独立初值方向。",
+      "latex": "W=\\beta e^{2\\alpha t}\\ne0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "无阻尼",
+      "problem": "解 $y''+4y=0,y(0)=1,y'(0)=2$。",
+      "steps": [
+        "根为 $\\pm2i$。",
+        "通解 $C\\cos2t+D\\sin2t$，初值给 $C=1,D=1$。"
+      ],
+      "answer": "$y=\\cos2t+\\sin2t$。"
+    },
+    {
+      "title": "衰减振荡",
+      "problem": "求 $y''+2y'+5y=0$ 通解。",
+      "steps": [
+        "特征根为 $-1\\pm2i$。",
+        "实部给 $e^{-t}$，虚部给角频率二。"
+      ],
+      "answer": "$y=e^{-t}(C\\cos2t+D\\sin2t)$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-complex-roots-q1",
+      "problem": "$y''+9y=0$ 的角频率？",
+      "hint": "取正虚部。",
+      "solution": [
+        "根为 $\\pm3i$。"
+      ],
+      "answer": "$3$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 3.0
+    },
+    {
+      "id": "ode-complex-roots-q2",
+      "problem": "其基本周期是多少？",
+      "hint": "角频率对应整圈。",
+      "solution": [
+        "$T=2\\pi/3$。"
+      ],
+      "answer": "$2\\pi/3$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-complex-roots-q3",
+      "problem": "根为 $-2\\pm i$ 的包络怎样变？",
+      "hint": "看实部。",
+      "solution": [
+        "包络与 $e^{-2t}$ 成比例。"
+      ],
+      "answer": "指数衰减。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-complex-roots-q4",
+      "problem": "$e^{-t}\\cos t$ 是否周期函数？",
+      "hint": "比较每隔整圈的幅度。",
+      "solution": [
+        "幅度每圈继续减小，不会重复原函数。"
+      ],
+      "answer": "不是。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-complex-roots-m1",
+      "claim": "有复根说明只能得到复数物理解。",
+      "correction": "共轭组合给出真实正弦余弦解。"
+    },
+    {
+      "id": "ode-complex-roots-m2",
+      "claim": "虚部就是普通频率每秒圈数。",
+      "correction": "虚部是角频率，普通频率还需除以 $2\\pi$。"
+    }
+  ],
+  "prerequisites": [
+    "ode-real-roots"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-complex-roots-m1",
+    "ode-complex-roots-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "一对共轭复根给出实数解中的衰减或增长振荡。",
+  "intuition": "根的实部控制包络，虚部控制转动速度。",
+  "objectives": [
+    "把复根改写成实基解",
+    "区分频率与周期"
+  ],
+  "formalDefinition": {
+    "text": "复根与真实振荡",
+    "latex": "r=\\alpha\\pm i\\beta\\Rightarrow y=e^{\\alpha t}(C\\cos\\beta t+D\\sin\\beta t)",
+    "conditions": [
+      "常系数、实系数二阶齐次方程，$\\beta>0$；角频率单位为弧度每单位时间。"
+    ]
+  },
+  "learningCheck": {
+    "question": "共轭根的实部控制什么？",
+    "choices": [
+      "初始时间",
+      "振荡角频率",
+      "振幅包络"
+    ],
+    "correctIndex": 2,
+    "explanation": "虚部才控制振荡快慢。"
+  },
+  "teaching": {
+    "explain": "复数在这里整理了两种实运动：一个余弦、一个正弦，它们共同承载位置与速度。",
+    "steps": [
+      {
+        "title": "单位频率",
+        "preset": {
+          "a": 1,
+          "b": 1.5707963267948966
+        },
+        "observation": "位移为零，速度为负一。",
+        "instruction": "将角频率 $\\omega$设为 $1$；将观察时间 $t$设为 $1.57079633$。"
+      },
+      {
+        "title": "更高频率",
+        "preset": {
+          "a": 2,
+          "b": 1.5707963267948966
+        },
+        "observation": "同一时间位移到负一，速度为零。",
+        "instruction": "将角频率 $\\omega$设为 $2$；将观察时间 $t$设为 $1.57079633$。"
+      },
+      {
+        "title": "接近一圈",
+        "preset": {
+          "a": 1,
+          "b": 6
+        },
+        "observation": "六时间单位内接近完成一圈，但精确周期是两倍圆周率。",
+        "instruction": "将角频率 $\\omega$设为 $1$；将观察时间 $t$设为 $6$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-complex-roots",
+    "caption": "画出位移与速度的时间曲线；改变频率会同时改变周期与速度幅值。",
+    "prediction": "角频率加倍后，周期和速度幅值各怎样变？"
+  }
+}

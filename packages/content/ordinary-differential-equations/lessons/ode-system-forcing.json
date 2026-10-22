@@ -1,0 +1,197 @@
+{
+  "id": "ode-system-forcing",
+  "chapterId": "ode-systems",
+  "number": "8.6",
+  "title": "非齐次系统与变常数公式",
+  "subtitle": "把过去的输入推进到现在",
+  "body": [
+    {
+      "title": "从基本矩阵出发",
+      "text": "设 $\\mathbf x=\\Phi\\mathbf c(t)$，乘积求导并消去齐次项，得到 $\\mathbf c'=\\Phi^{-1}\\mathbf b$。"
+    },
+    {
+      "title": "常系数形式",
+      "text": "传播矩阵为 $e^{A(t-\\tau)}$，将每个过去时刻的外力贡献推进到现在。"
+    },
+    {
+      "title": "应用时检查维数",
+      "text": "传播矩阵乘列向量输入，积分后仍是状态列向量。非零初值项不能省略。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "对乘积求导并消项。",
+      "latex": "\\Phi'\\mathbf c+\\Phi\\mathbf c'=A\\Phi\\mathbf c+\\mathbf b"
+    },
+    {
+      "text": "求权重的变化率。",
+      "latex": "\\mathbf c'=\\Phi^{-1}\\mathbf b"
+    },
+    {
+      "text": "积分并代回。",
+      "latex": "\\mathbf x=\\Phi(t)\\left[\\Phi(t_0)^{-1}\\mathbf x_0+\\int_{t_0}^t\\Phi(\\tau)^{-1}\\mathbf b(\\tau)d\\tau\\right]"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "两个独立输入",
+      "problem": "解 $x'=-x+1,y'=-2y+2$，零初值。",
+      "steps": [
+        "分别用一阶恒定输入公式。",
+        "平衡值都是一，衰减率分别一与二。"
+      ],
+      "answer": "$(x,y)=(1-e^{-t},1-e^{-2t})$。"
+    },
+    {
+      "title": "纯积分系统",
+      "problem": "$A=0,\\mathbf b=(t,1)^T,\\mathbf x(0)=0$。",
+      "steps": [
+        "传播矩阵为单位矩阵。",
+        "逐分量积分输入。"
+      ],
+      "answer": "$\\mathbf x=(t^2/2,t)^T$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-system-forcing-q1",
+      "problem": "零外力时公式剩下什么？",
+      "hint": "积分项消失。",
+      "solution": [
+        "只保留初值传播。"
+      ],
+      "answer": "$e^{A(t-t_0)}\\mathbf x_0$。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-system-forcing-q2",
+      "problem": "常外力下，平衡点满足什么？",
+      "hint": "令状态导数为零。",
+      "solution": [
+        "$A\\mathbf x_*+\\mathbf b=0$。"
+      ],
+      "answer": "解该代数系统。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-system-forcing-q3",
+      "problem": "$x'=-2x+6$ 的平衡值？",
+      "hint": "置导数为零。",
+      "solution": [
+        "$-2x+6=0$。"
+      ],
+      "answer": "$3$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 3.0
+    },
+    {
+      "id": "ode-system-forcing-q4",
+      "problem": "为什么核里用 $t-\\tau$ 而不是单独的 $t$？",
+      "hint": "输入发生在不同的时刻。",
+      "solution": [
+        "每项只经历从其发生到当前的传播时间。"
+      ],
+      "answer": "各输入的传播时长不同。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-system-forcing-m1",
+      "claim": "每个输入贡献都应传播完整的当前时间。",
+      "correction": "晚发生的输入经历的传播时间更短。"
+    },
+    {
+      "id": "ode-system-forcing-m2",
+      "claim": "只需把标量公式的分母换成矩阵即可。",
+      "correction": "矩阵运算有顺序与可逆条件，不能随意作除法。"
+    }
+  ],
+  "prerequisites": [
+    "ode-spirals",
+    "ode-convolution"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ode-system-forcing-m1",
+    "ode-system-forcing-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "非齐次线性系统的解由初值传播与外力传播两部分组成。",
+  "intuition": "每一刻输入先进入状态，再由系统矩阵继续推进到当前时刻。",
+  "objectives": [
+    "使用矩阵变常数公式",
+    "解释向量形式的卷积"
+  ],
+  "formalDefinition": {
+    "text": "非齐次系统与变常数公式",
+    "latex": "\\mathbf x(t)=e^{A(t-t_0)}\\mathbf x_0+\\int_{t_0}^t e^{A(t-\\tau)}\\mathbf b(\\tau)d\\tau",
+    "conditions": [
+      "$A$ 为常数矩阵，外力连续或按分段连续处理；更一般的变系数形式使用基本矩阵。"
+    ]
+  },
+  "learningCheck": {
+    "question": "变常数公式中的外力积分代表什么？",
+    "choices": [
+      "未来输入的总和",
+      "过去输入传播到当前的累积",
+      "仅初值修正"
+    ],
+    "correctIndex": 1,
+    "explanation": "传播核对不同输入时刻使用不同剩余时间。"
+  },
+  "teaching": {
+    "explain": "这是卷积的状态向量版本：先接收输入，再按系统自身的规律继续演化。",
+    "steps": [
+      {
+        "title": "零初值",
+        "preset": {
+          "a": 0,
+          "c": 0,
+          "b": 3
+        },
+        "observation": "两个状态上升趋近稳态。",
+        "instruction": "将初始第一分量 $x_0$设为 $0$；将初始第二分量 $y_0$设为 $0$；将观察时间 $t$设为 $3$。"
+      },
+      {
+        "title": "稳态初值",
+        "preset": {
+          "a": 1,
+          "c": 1,
+          "b": 3
+        },
+        "observation": "状态保持不动。",
+        "instruction": "将初始第一分量 $x_0$设为 $1$；将初始第二分量 $y_0$设为 $1$；将观察时间 $t$设为 $3$。"
+      },
+      {
+        "title": "另一侧起步",
+        "preset": {
+          "a": 2,
+          "c": -1,
+          "b": 3
+        },
+        "observation": "一个下降、一个上升，仍趋向同一稳态。",
+        "instruction": "将初始第一分量 $x_0$设为 $2$；将初始第二分量 $y_0$设为 $-1$；将观察时间 $t$设为 $3$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-system-forcing",
+    "caption": "相轨迹趋向稳态 $(1,1)$；两个方向衰减速度不同，初值可自由改变。",
+    "prediction": "改变初值后，长期稳态会改变吗？"
+  }
+}

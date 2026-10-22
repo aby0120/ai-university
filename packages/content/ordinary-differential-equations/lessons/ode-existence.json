@@ -1,0 +1,196 @@
+{
+  "id": "ode-existence",
+  "chapterId": "ode-existence",
+  "number": "3.1",
+  "title": "局部存在唯一性",
+  "subtitle": "连续不自动保证唯一",
+  "body": [
+    {
+      "title": "存在条件",
+      "text": "在初值点周围的矩形上，连续右端保证至少一个局部解。它不提供全局时间长度。"
+    },
+    {
+      "title": "唯一条件",
+      "text": "若右端还对状态变量局部 Lipschitz，则有唯一局部解；连续状态偏导是常用充分条件。"
+    },
+    {
+      "title": "条件失败意味着什么？",
+      "text": "不能使用定理，不等于一定无解或多解。必须继续具体分析。$y'=3\\lvert y\\rvert^{2/3}$ 在零点就是多解反例。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "两解的差满足积分关系。",
+      "latex": "y_1(t)-y_2(t)=\\int_{t_0}^t[f(s,y_1(s))-f(s,y_2(s))]ds"
+    },
+    {
+      "text": "用 Lipschitz 常数控制差异。",
+      "latex": "\\lvert y_1(t)-y_2(t)\\rvert\\le L\\int_{t_0}^t\\lvert y_1(s)-y_2(s)\\rvert ds"
+    },
+    {
+      "text": "积分不等式迫使同初值差异为零。",
+      "latex": "y_1(t_0)=y_2(t_0)\\Rightarrow y_1=y_2"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "光滑右端",
+      "problem": "$y'=t+y^2,y(0)=1$ 是否局部唯一？",
+      "steps": [
+        "右端是多项式，连续。",
+        "状态偏导为 $2y$，在初值附近连续。"
+      ],
+      "answer": "存在唯一局部解；未据此断言全局。"
+    },
+    {
+      "title": "等待后出发",
+      "problem": "$y'=3\\lvert y\\rvert^{2/3},y(0)=0$ 是否唯一？",
+      "steps": [
+        "零函数是解。",
+        "对任意 $c\\ge0$，取 $t\\le c$ 时为零、$t>c$ 时为 $(t-c)^3$，拼接点导数为零。"
+      ],
+      "answer": "不唯一。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-existence-q1",
+      "problem": "$y'=\\sin y,y(0)=2$ 是否局部唯一？",
+      "hint": "看状态偏导。",
+      "solution": [
+        "偏导 $\\cos y$ 连续且有界。"
+      ],
+      "answer": "是。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-existence-q2",
+      "problem": "右端连续就能保证唯一吗？",
+      "hint": "回看等待解。",
+      "solution": [
+        "连续幂次右端仍可产生多条同初值解。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "ode-existence-m1"
+      ]
+    },
+    {
+      "id": "ode-existence-q3",
+      "problem": "$y'=y^2$ 的局部唯一性是否推出全局存在？",
+      "hint": "考虑正初值。",
+      "solution": [
+        "正初值解会在有限时间爆破。"
+      ],
+      "answer": "不推出。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-existence-q4",
+      "problem": "Lipschitz 条件失败后能立刻断言不唯一吗？",
+      "hint": "充分条件不是必要条件。",
+      "solution": [
+        "定理不可用仍需另作分析。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "ode-existence-m2"
+      ]
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-existence-m1",
+      "claim": "连续性已经保证唯一。",
+      "correction": "它只提供常用的存在保证。"
+    },
+    {
+      "id": "ode-existence-m2",
+      "claim": "充分条件不成立就说明结论必错。",
+      "correction": "定理没有给出结论，仍需具体判断。"
+    }
+  ],
+  "prerequisites": [
+    "ode-bernoulli"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-existence-m1",
+    "ode-existence-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "右端连续通常保证局部存在；对状态变量的局部 Lipschitz 条件进一步保证唯一。",
+  "intuition": "斜率太不规则时，从同一个点出发也可能有多条合法曲线。",
+  "objectives": [
+    "区分存在与唯一条件",
+    "用反例解释条件边界"
+  ],
+  "formalDefinition": {
+    "text": "局部存在唯一性",
+    "latex": "\\lvert f(t,u)-f(t,v)\\rvert\\le L\\lvert u-v\\rvert",
+    "conditions": [
+      "在初值附近的矩形内，$f$ 连续且上述状态 Lipschitz 条件成立，则初值问题有唯一局部解。"
+    ]
+  },
+  "learningCheck": {
+    "question": "连续状态偏导通常用于保证什么？",
+    "choices": [
+      "局部唯一性",
+      "解一定有初等公式",
+      "无限时间都有界"
+    ],
+    "correctIndex": 0,
+    "explanation": "该条件提供局部 Lipschitz 性。"
+  },
+  "teaching": {
+    "explain": "存在是在问能不能走；唯一是在问从这个起点是否只有一条路。",
+    "steps": [
+      {
+        "title": "立即离开",
+        "preset": {
+          "a": 0,
+          "b": 1
+        },
+        "observation": "从起点就按三次曲线离开。",
+        "instruction": "将等待时间 $c$设为 $0$；将观察时间 $t$设为 $1$。"
+      },
+      {
+        "title": "等待一单位",
+        "preset": {
+          "a": 1,
+          "b": 2
+        },
+        "observation": "先保持为零，再平滑离开。",
+        "instruction": "将等待时间 $c$设为 $1$；将观察时间 $t$设为 $2$。"
+      },
+      {
+        "title": "继续等待",
+        "preset": {
+          "a": 2,
+          "b": 1
+        },
+        "observation": "在当前时间内与零解完全重合。",
+        "instruction": "将等待时间 $c$设为 $2$；将观察时间 $t$设为 $1$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-existence",
+    "caption": "金色曲线是等待后离开的解，蓝色为零解。两者均从零初值出发，拼接点导数连续。",
+    "prediction": "同一个零初值，能否先等待再离开？"
+  }
+}

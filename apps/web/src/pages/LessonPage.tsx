@@ -1,3 +1,4 @@
+import {useCurriculum} from "../lib/curriculum";
 import {
   ArrowLeft,
   ArrowRight,
@@ -8,15 +9,18 @@ import {
   Check,
   CircleCheck,
   Lightbulb,
+  Network,
+  PencilLine,
   Maximize2,
   Minimize2,
   X,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { book, lessonById, lessons } from "../../../../packages/content";
+import {lessonById, allLessons, collections} from "../../../../packages/content";
 import type { Lesson } from "../../../../packages/content/types";
 import { Formula, MathText } from "../components/MathText";
 import { Practice } from "../components/Practice";
+import { TeachingExplanation } from "../components/Teaching";
 import { LearningCheck } from "../components/LearningCheck";
 import { Visual } from "../components/Visual";
 
@@ -33,7 +37,7 @@ import { useApp } from "../lib/state";
 const sections = [
   ["idea", "先看结论"],
   ["intuition", "怎么理解"],
-  ["visual", "亲手探索"],
+  ["visual", "交互演示"],
   ["explain", "关键问题"],
   ["definition", "定义与条件"],
   ["derivation", "一步步推导"],
@@ -42,6 +46,7 @@ const sections = [
 ];
 
 export function LessonPage({ lesson: l }: { lesson: Lesson }) {
+  const {book,lessons,bookStats,supplements,BOOK,filename,printFile}=useCurriculum();
   const { route, reading, update, progress, mark } = useApp();
   const view = route.params.get("view") || "read";
   const index = lessons.indexOf(l);
@@ -89,7 +94,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
   return (
     <div
       className={
-        "lesson-page " +
+        "lesson-page view-" + view + " " +
         (reading.large ? "large-text " : "") +
         (focused ? "read-focus" : "")
       }
@@ -100,7 +105,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
       />
       <Breadcrumb
         items={[
-          { label: "微积分 I", to: BOOK },
+          { label: book.titleZh, to: BOOK },
           { label: ch.title, to: chapterPath(ch.id) },
           { label: l.number },
         ]}
@@ -112,13 +117,13 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
         <Eyebrow>
           SECTION {l.number} / {ch.subtitle}
         </Eyebrow>
-        <h1>{l.title}</h1>
-        <p>{l.subtitle}</p>
+        <h1><MathText text={l.title} /></h1>
+        <p><MathText text={l.subtitle} /></p>
         <div className="lesson-tools">
           <span>
             <BookOpen size={15} /> {l.body.length} 个关键问题
           </span>
-          <span>2 例题 · 4 练习</span>
+          <span>{l.workedExamples.length} 例题 · {l.practice.length} 练习</span>
           <div>
             <button
               className="icon-btn"
@@ -168,8 +173,9 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
             className={view === id ? "active" : ""}
             aria-current={view === id ? "page" : undefined}
           >
+            {id === "read" ? <BookOpen size={15} /> : id === "visual" ? <Beaker size={15} /> : id === "practice" ? <PencilLine size={15} /> : <Network size={15} />}
             {name}
-            {id === "practice" && <span>4</span>}
+            {id === "practice" && <span>{l.practice.length}</span>}
           </Link>
         ))}
       </nav>
@@ -189,12 +195,13 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
                   <MathText text={l.intuition} />
                 </p>
               </section>
+              <TeachingExplanation key={l.id} lesson={l}/>
               <LearningCheck key={l.id} check={l.learningCheck} />
               <section id="section-visual" className="embedded-visual">
                 <div className="visual-section-heading">
                   <span>
                     <Beaker size={18} />
-                    亲手探索
+                    交互演示
                   </span>
                   <Link to={lessonPath(l.id)} params={{ view: "visual" }}>
                     专注演示
@@ -204,10 +211,10 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
                 <Visual lesson={l} compact />
               </section>
               <section id="section-explain">
-                <SectionTitle num="02" title="三个关键问题" />
+                <SectionTitle num="02" title="你可能会问" />
                 {l.body.map((b) => (
                   <div className="body-part" key={b.title}>
-                    <h3>{b.title}</h3>
+                    <h3><MathText text={b.title} /></h3>
                     <p>
                       <MathText text={b.text} />
                     </p>
@@ -251,12 +258,12 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
                 </ol>
               </section>
               <section id="section-examples">
-                <SectionTitle num="05" title="两道例题" />
+                <SectionTitle num="05" title="试着解一个问题" />
                 {l.workedExamples.map((ex, i) => (
                   <div className="worked-example" key={i}>
                     <header>
                       <span>例题 {i + 1}</span>
-                      <h3>{ex.title}</h3>
+                      <h3><MathText text={ex.title} /></h3>
                     </header>
                     <p className="example-problem">
                       <MathText text={ex.problem} />
@@ -300,8 +307,8 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
               <div className="lesson-finish">
                 <div>
                   <Eyebrow>NOW, TRY IT YOURSELF</Eyebrow>
-                  <h2>用四道题检验理解。</h2>
-                  <p>四道练习，检查概念、计算与适用条件。</p>
+                  <h2>本节练习</h2>
+                  <p>{l.practice.length} 道练习，检查概念、计算与适用条件。</p>
                 </div>
                 <Link
                   to={lessonPath(l.id)}
@@ -330,26 +337,12 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
           ) : view === "visual" ? (
             <div className="focus-visual">
               <div className="focus-visual-intro">
-                <Eyebrow>EXPLORE THE IDEA</Eyebrow>
-                <h2>{l.title} · 交互演示</h2>
-                <p>
-                  <MathText text={l.concept} />
-                </p>
+                <h2>交互演示</h2>
               </div>
               <Visual lesson={l} />
-              <div className="observation">
-                <Lightbulb size={20} />
-                <div>
-                  <h3>观察任务</h3>
-                  <p>
-                    先说出你的预测，再改变一个参数。数值与图像是否支持它？回到推导解释原因。
-                  </p>
-                  <Link to={lessonPath(l.id)}>
-                    回到定义与推导
-                    <ArrowRight size={15} />
-                  </Link>
-                </div>
-              </div>
+              <Link to={lessonPath(l.id)} className="text-btn">
+                查看定义与推导 <ArrowRight size={15} />
+              </Link>
             </div>
           ) : view === "practice" ? (
             <Practice lesson={l} progress={progress} onMark={mark} />
@@ -378,7 +371,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
           ) : (
             <>
               <Eyebrow>THIS SECTION</Eyebrow>
-              <p>{l.concept}</p>
+              <p><MathText text={l.concept} /></p>
             </>
           )}
           <div className="toc-objectives">
@@ -386,7 +379,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
             {l.objectives.map((o) => (
               <p key={o}>
                 <Check size={13} />
-                {o}
+                <MathText text={o} />
               </p>
             ))}
           </div>
@@ -406,7 +399,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
             <ArrowLeft size={18} />
             <div>
               <small>上一节 · {lessons[index - 1].number}</small>
-              <strong>{lessons[index - 1].title}</strong>
+              <strong><MathText text={lessons[index - 1].title} /></strong>
             </div>
           </Link>
         ) : (
@@ -419,7 +412,7 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
           <Link to={lessonPath(lessons[index + 1].id)}>
             <div>
               <small>下一节 · {lessons[index + 1].number}</small>
-              <strong>{lessons[index + 1].title}</strong>
+              <strong><MathText text={lessons[index + 1].title} /></strong>
             </div>
             <ArrowRight size={18} />
           </Link>
@@ -451,7 +444,8 @@ export function SectionTitle({ num, title }: { num: string; title: string }) {
 }
 
 export function Connections({ lesson }: { lesson: Lesson }) {
-  const next = lessons.filter((l) => l.prerequisites.includes(lesson.id));
+  const {book,lessons,bookStats,supplements,BOOK,filename,printFile}=useCurriculum();
+  const next = allLessons.filter((l) => l.prerequisites.includes(lesson.id));
   return (
     <section className="connections">
       <Eyebrow>KNOWLEDGE CONNECTIONS</Eyebrow>
@@ -467,13 +461,13 @@ export function Connections({ lesson }: { lesson: Lesson }) {
               <LessonRow key={id} lesson={lessonById[id]} />
             ))
           ) : (
-            <p>具备初等代数即可开始。</p>
+            <p>{book.audience}。</p>
           )}
         </div>
         <div className="current-concept">
           <BookOpen size={23} />
           <span>{lesson.number}</span>
-          <strong>{lesson.title}</strong>
+          <strong><MathText text={lesson.title} /></strong>
           <small>你在这里</small>
         </div>
         <div>

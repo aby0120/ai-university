@@ -1,0 +1,196 @@
+{
+  "id": "c2-power-series",
+  "title": "幂级数与收敛区间",
+  "subtitle": "把输入当作参数，逐个判断级数",
+  "concept": "幂级数在中心附近收敛，在半径外发散；边界两个点必须分别代回检查。",
+  "intuition": "$\\sum x^n$ 在 $|x|<1$ 是函数 $\\frac1{1-x}$，离开这个范围就不能再使用这份级数表示。",
+  "body": [
+    {
+      "title": "中心和半径分别是什么？",
+      "text": "$\\sum c_n(x-a)^n$ 的中心是 $a$。半径控制离中心多远，可能为零、有限正数或无穷。"
+    },
+    {
+      "title": "端点为什么特殊？",
+      "text": "比值法通常只给出严格不等式。到端点可能变成调和、交错调和或其他级数，左右结论可不同。"
+    },
+    {
+      "title": "函数有值就有级数和吗？",
+      "text": "不一定。$\\frac1{1-x}$ 在 $x=2$ 有值，但它在零点展开的几何级数在那里发散。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "把输入当作参数，逐个判断级数",
+    "latex": "\\sum_{n=0}^\\infty c_n(x-a)^n:\\quad |x-a|<R\\text{ 绝对收敛},\\quad |x-a|>R\\text{ 发散}",
+    "conditions": [
+      "端点 $x=a\\pm R$ 单独检查；$R=0$ 时只在中心收敛，$R=\\infty$ 时处处收敛。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "用一个典型幂级数看比值。",
+      "latex": "\\sum_{n=1}^\\infty\\frac{x^n}{n},\\quad\\left|\\frac{a_{n+1}}{a_n}\\right|=|x|\\frac n{n+1}\\to|x|"
+    },
+    {
+      "text": "得到开区间，再代入两端。",
+      "latex": "|x|<1;\\quad x=1:\\sum\\frac1n;\\quad x=-1:\\sum\\frac{(-1)^n}{n}"
+    },
+    {
+      "text": "合并端点结果。",
+      "latex": "\\text{收敛区间为 }[-1,1)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "偏移的中心",
+      "problem": "求 $\\sum_{n=0}^\\infty\\frac{(x-2)^n}{3^n}$ 的收敛区间。",
+      "steps": [
+        "公比为 $\\frac{x-2}{3}$，绝对值小于一。",
+        "得到 $-1<x<5$；两端公比为正负一，项不趋零。"
+      ],
+      "answer": "$(-1,5)$，中心 2，半径 3。"
+    },
+    {
+      "title": "两端都包含",
+      "problem": "$\\sum_{n=1}^\\infty\\frac{x^n}{n^2}$ 的收敛区间？",
+      "steps": [
+        "比值极限为 $|x|$，半径为 1。",
+        "在两端，绝对值级数均为平方倒数级数，所以都收敛。"
+      ],
+      "answer": "$[-1,1]$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-power-series-m1",
+      "claim": "半径等于区间长度。",
+      "correction": "半径是到中心的距离；开区间长度为两倍半径。"
+    },
+    {
+      "id": "c2-power-series-m2",
+      "claim": "比值法得到半径后就结束。",
+      "correction": "有限半径的两端必须单独检查。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$\\sum(2x)^n$ 的半径？",
+      "answer": "$\\frac12$。",
+      "hint": "公比绝对值小于一。",
+      "solution": [
+        "$|2x|<1$，所以半径为 $\\frac12$，两端均发散。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.5,
+      "id": "c2-power-series-p1"
+    },
+    {
+      "problem": "$\\sum\\frac{x^n}{n!}$ 的半径？",
+      "answer": "$\\infty$。",
+      "hint": "固定输入，再看比值。",
+      "solution": [
+        "比值为 $\\frac{|x|}{n+1}\\to0$，对每个有限输入均收敛。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-power-series-p2"
+    },
+    {
+      "problem": "$\\sum n!x^n$ 的半径？",
+      "answer": "$0$。",
+      "hint": "检查非零输入。",
+      "solution": [
+        "非零输入时比值 $(n+1)|x|\\to\\infty$；仅中心零点收敛。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0,
+      "id": "c2-power-series-p3"
+    },
+    {
+      "problem": "$\\sum\\frac{(x-1)^n}{n}$ 的收敛区间？",
+      "answer": "$[0,2)$。",
+      "hint": "先开区间，再代左右端点。",
+      "solution": [
+        "$|x-1|<1$；左端为交错调和，右端为调和。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-power-series-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "求出半径后还需要？",
+    "choices": [
+      "默认两端都包含",
+      "分别检查左右端点",
+      "把半径当作函数值"
+    ],
+    "correctIndex": 1,
+    "explanation": "端点的级数可能有不同收敛性。"
+  },
+  "teaching": {
+    "explain": "每个输入都给你一串要相加的数；收敛区间就是哪些输入能让这串数有有限总和。",
+    "steps": [
+      {
+        "title": "中心附近",
+        "instruction": "输入取 0.5，项数取 10。",
+        "observation": "处于收敛半径内，部分和靠近 2。",
+        "preset": {
+          "x": 0.5,
+          "n": 10
+        }
+      },
+      {
+        "title": "靠近边界",
+        "instruction": "输入取 0.95，项数取 10。",
+        "observation": "仍收敛，但需要更多项才能取得类似精度。",
+        "preset": {
+          "x": 0.95,
+          "n": 10
+        }
+      },
+      {
+        "title": "半径之外",
+        "instruction": "输入取 -1.2，项数取 20。",
+        "observation": "部分和振荡增大，不等于有理函数值。",
+        "preset": {
+          "x": -1.2,
+          "n": 20
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-absolute",
+    "c2-ratio-root"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-power",
+  "number": "5.2",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-power-series",
+    "caption": "对照 $\\sum_{n=0}^{N-1}x^n$ 与 $\\frac1{1-x}$，显示收敛半径。",
+    "prediction": "把输入移到半径外，多项式曲线还会趋向同一个函数吗？"
+  },
+  "misconceptionTags": [
+    "c2-power-series-m1",
+    "c2-power-series-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "识别中心、半径与收敛区间",
+    "逐个检查左右端点",
+    "区分函数有值与展开有效"
+  ]
+}

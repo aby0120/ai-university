@@ -1,0 +1,192 @@
+{
+  "id": "la-pca",
+  "chapterId": "la-applications",
+  "number": "10.4",
+  "title": "主成分分析与中心化",
+  "subtitle": "保留方差最多的投影方向",
+  "concept": "PCA 在中心化数据中寻找保留方差最多的正交方向。",
+  "intuition": "把数据投到一条线，选择能保留最多变化、同时让重建平方误差最小的方向。",
+  "objectives": [
+    "中心化数据并构造协方差",
+    "用 SVD 完成投影和重建"
+  ],
+  "body": [
+    {
+      "title": "为什么先减均值？",
+      "text": "未中心化时，离原点的整体偏移会被当成主要变化。PCA 的主轴通常穿过样本均值，降维后要加回均值才能重建。"
+    },
+    {
+      "title": "矩阵怎样放？",
+      "text": "本节样本按行排成 $X\\in\\mathbb R^{N\\times d}$，列均值为零，取总体型协方差 $C=X^TX/N$。"
+    },
+    {
+      "title": "与 SVD 怎样对应？",
+      "text": "$X=U\\Sigma V^T$ 时，主方向为 $V$ 的列，方差为 $\\sigma_i^2/N$。投影得分为 $XV_k$，重建为 $XV_kV_k^T$。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "主成分分析与中心化",
+    "latex": "\\max_{\\|v\\|=1}\\frac1N\\|Xv\\|^2=\\lambda_{\\max}(C),\\quad C=\\frac1N X^TX",
+    "conditions": [
+      "数据须先按列中心化；本节使用除以 $N$ 的协方差约定。改用 $N-1$ 会统一缩放方差，不改变主方向；尺度差异大的特征是否标准化取决于建模目标。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "投影得分的平均平方是方向方差。",
+      "latex": "\\operatorname{var}(Xv)=v^TCv"
+    },
+    {
+      "text": "用 Rayleigh 商选最大方向。",
+      "latex": "Cv_1=\\lambda_1v_1"
+    },
+    {
+      "text": "总平方变化减去保留部分，得到重建误差。",
+      "latex": "\\|X-XV_kV_k^T\\|_F^2=\\sum_{i>k}\\sigma_i^2"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "主轴不等于平均位置",
+      "problem": "四个中心化点 $(2,0),(-2,0),(0,1),(0,-1)$，一维主方向？",
+      "steps": [
+        "$C=\\operatorname{diag}(2,1/2)$。",
+        "最大方向为横轴，保留方差二；舍弃纵坐标的总重建平方误差为二。"
+      ],
+      "answer": "横轴；解释方差比例为 $2/(2+1/2)=0.8$。"
+    },
+    {
+      "title": "倾斜主方向",
+      "problem": "四点 $(2,2),(-2,-2),(1,-1),(-1,1)$ 的主方向？",
+      "steps": [
+        "均值零，$C=\\begin{pmatrix}2.5&1.5\\\\1.5&2.5\\end{pmatrix}$。",
+        "最大特征值四，对应 $(1,1)/\\sqrt2$。"
+      ],
+      "answer": "沿对角线，保留方差四。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-pca-m1",
+      "claim": "主成分就是均值最大的变量。",
+      "correction": "它是中心化后的方向组合，不是挑选最大均值。"
+    },
+    {
+      "id": "la-pca-m2",
+      "claim": "PCA 保留方差就必然保留任务中最有用的信息。",
+      "correction": "它优化无监督平方重建，可能不保留分类或因果相关信息。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "中心化后，每列均值应是多少？",
+      "hint": "减去原列均值。",
+      "solution": [
+        "各列总和为零。"
+      ],
+      "answer": "0",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0,
+      "id": "la-pca-q1"
+    },
+    {
+      "problem": "特征值 $9,1$，首主成分解释方差比例？",
+      "hint": "最大值除总和。",
+      "solution": [
+        "$9/10=0.9$。"
+      ],
+      "answer": "0.9",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.9,
+      "id": "la-pca-q2"
+    },
+    {
+      "problem": "把全部坐标旋转到主成分后但不删任何维度，会丢信息吗？",
+      "hint": "保留全部坐标时，正交坐标变换可逆。",
+      "solution": [
+        "可以用转置恢复中心化数据，再加回均值。"
+      ],
+      "answer": "不会。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-pca-q3"
+    },
+    {
+      "problem": "协方差除 $N$ 改为除 $N$-1，会改变主方向吗？",
+      "hint": "所有元素乘相同正数。",
+      "solution": [
+        "特征向量不变，特征值统一缩放。"
+      ],
+      "answer": "不会。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-pca-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-low-rank",
+    "la-rayleigh"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "la-pca-m1",
+    "la-pca-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-pca",
+    "caption": "四个点为 $(\\pm2,0),(0,\\pm1)$，均值为零。投影到可转动直线，比较保留方差与总重建平方误差。",
+    "prediction": "投影方向转动时，保留方差与重建误差怎样互相变化？"
+  },
+  "learningCheck": {
+    "question": "PCA 前减去均值，是为了分开什么？",
+    "choices": [
+      "位置偏移与数据变化",
+      "正数与负数",
+      "行数与列数"
+    ],
+    "correctIndex": 0,
+    "explanation": "主方向应描述围绕均值的变化，而非整体离原点多远。"
+  },
+  "teaching": {
+    "explain": "PCA 把谱定理、投影和低秩近似用在同一个数据问题上。它有明确的优化目标，也有这个目标之外的局限。",
+    "steps": [
+      {
+        "title": "主方向",
+        "instruction": "取 $\\theta=0$。",
+        "preset": {
+          "a": 0
+        },
+        "observation": "保留方差二，重建平方误差二。"
+      },
+      {
+        "title": "倾斜方向",
+        "instruction": "取 $\\theta=\\pi/4$。",
+        "preset": {
+          "a": 0.7853981633974483
+        },
+        "observation": "保留方差 $1.25$，重建平方误差五。"
+      },
+      {
+        "title": "次方向",
+        "instruction": "取 $\\theta=\\pi/2$。",
+        "preset": {
+          "a": 1.5707963267948966
+        },
+        "observation": "保留方差 $0.5$，重建平方误差八。"
+      }
+    ]
+  }
+}

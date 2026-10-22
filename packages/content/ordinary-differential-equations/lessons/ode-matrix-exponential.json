@@ -1,0 +1,195 @@
+{
+  "id": "ode-matrix-exponential",
+  "chapterId": "ode-systems",
+  "number": "8.3",
+  "title": "矩阵指数与连续时间演化",
+  "subtitle": "不用对角化也能定义解",
+  "body": [
+    {
+      "title": "怎样定义？",
+      "text": "用幂级数 $e^{At}=I+At+(At)^2/2!+\\cdots$。有限矩阵对所有有限时间收敛。"
+    },
+    {
+      "title": "怎样求初值解？",
+      "text": "逐项求导得到导数为 $Ae^{At}$，起点是单位矩阵，因此解为 $e^{A(t-t_0)}\\mathbf x_0$。"
+    },
+    {
+      "title": "乘法规则有条件",
+      "text": "同一矩阵的时间推进可相乘；不同矩阵只有在可交换等条件下，才能合并成和的指数。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "逐项求导。",
+      "latex": "\\frac d{dt}e^{At}=A\\sum_{n=0}^\\infty\\frac{A^nt^n}{n!}=Ae^{At}"
+    },
+    {
+      "text": "检查初始值。",
+      "latex": "e^{A\\cdot0}=I"
+    },
+    {
+      "text": "对角化时可逐方向计算。",
+      "latex": "A=SDS^{-1}\\Rightarrow e^{At}=Se^{Dt}S^{-1}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "零平方矩阵",
+      "problem": "求 $A=\\begin{pmatrix}0&1\\\\0&0\\end{pmatrix}$ 的指数。",
+      "steps": [
+        "$A^2=0$，级数从二阶起消失。",
+        "保留单位阵和一次项。"
+      ],
+      "answer": "$e^{At}=\\begin{pmatrix}1&t\\\\0&1\\end{pmatrix}$。"
+    },
+    {
+      "title": "标量矩阵",
+      "problem": "$A=-2I$ 的指数？",
+      "steps": [
+        "所有幂都是标量幂乘单位阵。",
+        "级数变为标量指数。"
+      ],
+      "answer": "$e^{At}=e^{-2t}I$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-matrix-exponential-q1",
+      "problem": "任意矩阵指数在零时刻等于什么？",
+      "hint": "看级数常数项。",
+      "solution": [
+        "所有正次时间项消失。"
+      ],
+      "answer": "单位矩阵。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-matrix-exponential-q2",
+      "problem": "矩阵指数可逆吗？",
+      "hint": "使用负时间推进。",
+      "solution": [
+        "$e^{At}e^{-At}=I$。"
+      ],
+      "answer": "可逆，逆为 $e^{-At}$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-matrix-exponential-q3",
+      "problem": "对角矩阵 $\\operatorname{diag}(1,2)$ 的指数？",
+      "hint": "各对角方向独立。",
+      "solution": [
+        "保留零非对角项。"
+      ],
+      "answer": "$\\operatorname{diag}(e^t,e^{2t})$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-matrix-exponential-q4",
+      "problem": "是否总有 $e^{A+B}=e^Ae^B$？",
+      "hint": "矩阵未必交换。",
+      "solution": [
+        "非交换时通常不成立。"
+      ],
+      "answer": "不是，需额外条件。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-matrix-exponential-m1",
+      "claim": "矩阵指数就是每个元素分别取指数。",
+      "correction": "定义涉及矩阵幂和单位矩阵。"
+    },
+    {
+      "id": "ode-matrix-exponential-m2",
+      "claim": "不能对角化就没有指数解。",
+      "correction": "级数定义对所有方阵成立。"
+    }
+  ],
+  "prerequisites": [
+    "ode-eigen-systems"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ode-matrix-exponential-m1",
+    "ode-matrix-exponential-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "矩阵指数把标量指数推广成线性系统的演化算子，对不可对角化矩阵同样存在。",
+  "intuition": "从单位状态映射开始，逐次累积矩阵作用，就得到时间推进。",
+  "objectives": [
+    "定义并使用矩阵指数",
+    "区分矩阵乘法与逐元素指数"
+  ],
+  "formalDefinition": {
+    "text": "矩阵指数与连续时间演化",
+    "latex": "e^{At}=\\sum_{n=0}^\\infty\\frac{A^nt^n}{n!},\\quad\\mathbf x(t)=e^{A(t-t_0)}\\mathbf x_0",
+    "conditions": [
+      "$A$ 为有限维常数方阵；指数不是逐元素运算。若 $AB=BA$，则 $e^{A+B}=e^Ae^B$。"
+    ]
+  },
+  "learningCheck": {
+    "question": "矩阵指数级数从哪个矩阵开始？",
+    "choices": [
+      "零矩阵",
+      "单位矩阵",
+      "原矩阵的逐项指数"
+    ],
+    "correctIndex": 1,
+    "explanation": "它要在起点保留原初始状态。"
+  },
+  "teaching": {
+    "explain": "对角化是计算矩阵指数的一种工具，不是定义矩阵指数的前提。",
+    "steps": [
+      {
+        "title": "单位第二方向",
+        "preset": {
+          "a": 0,
+          "c": 1,
+          "b": 2
+        },
+        "observation": "第二分量不变，第一分量线性增长。",
+        "instruction": "将初始第一分量 $x_0$设为 $0$；将初始第二分量 $y_0$设为 $1$；将观察时间 $t$设为 $2$。"
+      },
+      {
+        "title": "第一方向",
+        "preset": {
+          "a": 1,
+          "c": 0,
+          "b": 2
+        },
+        "observation": "第一轴上都是平衡点。",
+        "instruction": "将初始第一分量 $x_0$设为 $1$；将初始第二分量 $y_0$设为 $0$；将观察时间 $t$设为 $2$。"
+      },
+      {
+        "title": "反向",
+        "preset": {
+          "a": 0,
+          "c": -1,
+          "b": 2
+        },
+        "observation": "第二分量为负时向左走。",
+        "instruction": "将初始第一分量 $x_0$设为 $0$；将初始第二分量 $y_0$设为 $-1$；将观察时间 $t$设为 $2$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-matrix-exponential",
+    "caption": "平方为零的矩阵指数精确截断；相平面显示水平剪切，矩阵读数随观察时间变化。",
+    "prediction": "第二初始分量为零时，剪切还会产生运动吗？"
+  }
+}

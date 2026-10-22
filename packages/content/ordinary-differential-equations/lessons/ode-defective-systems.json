@@ -1,0 +1,193 @@
+{
+  "id": "ode-defective-systems",
+  "chapterId": "ode-systems",
+  "number": "8.4",
+  "title": "重根系统与广义特征方向",
+  "subtitle": "剪切会带来时间因子",
+  "body": [
+    {
+      "title": "最小模型",
+      "text": "$A=\\lambda I+N$，其中 $N=\\begin{pmatrix}0&1\\\\0&0\\end{pmatrix}$，满足 $N^2=0$。"
+    },
+    {
+      "title": "指数怎样算？",
+      "text": "标量矩阵与幂零部分交换，因此 $e^{At}=e^{\\lambda t}(I+tN)$。"
+    },
+    {
+      "title": "增长与衰减",
+      "text": "若 $\\lambda<0$，时间乘指数仍趋零；若 $\\lambda=0$，剪切可使解线性增长，不能仅凭零特征值断言稳定。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "分离可交换的两部分。",
+      "latex": "e^{(\\lambda I+N)t}=e^{\\lambda t}e^{Nt}"
+    },
+    {
+      "text": "利用幂零截断。",
+      "latex": "e^{Nt}=I+tN"
+    },
+    {
+      "text": "第二个初始方向产生剪切项。",
+      "latex": "e^{At}\\begin{pmatrix}0\\\\1\\end{pmatrix}=e^{\\lambda t}\\begin{pmatrix}t\\\\1\\end{pmatrix}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "负重根",
+      "problem": "解 $x'=-x+y,y'=-y$，初值 $(0,1)$。",
+      "steps": [
+        "第二分量为 $e^{-t}$。",
+        "第一分量由积分因子得 $te^{-t}$。"
+      ],
+      "answer": "$(x,y)=(te^{-t},e^{-t})$。"
+    },
+    {
+      "title": "零重根",
+      "problem": "解 $x'=y,y'=0$，初值 $(1,2)$。",
+      "steps": [
+        "第二分量恒为二。",
+        "第一分量以恒定速度二增长。"
+      ],
+      "answer": "$(x,y)=(1+2t,2)$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-defective-systems-q1",
+      "problem": "$N^2=0$ 时 $e^{Nt}$ 是什么？",
+      "hint": "高次项消失。",
+      "solution": [
+        "只保留零次和一次。"
+      ],
+      "answer": "$I+tN$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-defective-systems-q2",
+      "problem": "$te^{-t}$ 在正无穷趋向多少？",
+      "hint": "指数衰减压过多项式。",
+      "solution": [
+        "可由一次洛必达或已知指数极限得零。"
+      ],
+      "answer": "$0$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.0
+    },
+    {
+      "id": "ode-defective-systems-q3",
+      "problem": "两个零特征值是否足以判断稳定？",
+      "hint": "比较零矩阵与非零幂零矩阵。",
+      "solution": [
+        "前者保持不动，后者可剪切增长。"
+      ],
+      "answer": "不足。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-defective-systems-q4",
+      "problem": "线性系统有重根就一定不可对角化吗？",
+      "hint": "考虑标量矩阵。",
+      "solution": [
+        "标量矩阵有完整特征基。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-defective-systems-m1",
+      "claim": "重特征值一定缺少特征向量。",
+      "correction": "要检查特征空间维数。"
+    },
+    {
+      "id": "ode-defective-systems-m2",
+      "claim": "所有特征值非正就能保证稳定。",
+      "correction": "零实部还须检查非平凡 Jordan 块。"
+    }
+  ],
+  "prerequisites": [
+    "ode-matrix-exponential"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ode-defective-systems-m1",
+    "ode-defective-systems-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "特征向量不足时，幂零部分在矩阵指数中产生时间多项式，补出独立解。",
+  "intuition": "重复特征值可能伴随剪切；只有指数缩放不能描述全部运动。",
+  "objectives": [
+    "计算二阶 Jordan 块的指数",
+    "理解零实部的非平凡重根风险"
+  ],
+  "formalDefinition": {
+    "text": "重根系统与广义特征方向",
+    "latex": "\\mathbf x(t)=e^{\\lambda t}\\begin{pmatrix}1&t\\\\0&1\\end{pmatrix}\\mathbf x_0",
+    "conditions": [
+      "本节针对二阶 Jordan 块；一般坐标下须先通过可逆换基变回原坐标。"
+    ]
+  },
+  "learningCheck": {
+    "question": "二阶非平凡 Jordan 块为什么出现时间因子？",
+    "choices": [
+      "幂零部分的指数含一次项",
+      "初值被强制改变",
+      "外力必定随时间增长"
+    ],
+    "correctIndex": 0,
+    "explanation": "时间因子来自齐次矩阵自身的剪切。"
+  },
+  "teaching": {
+    "explain": "重根时要看矩阵还有没有剪切结构，不能只读根的数值。",
+    "steps": [
+      {
+        "title": "负根",
+        "preset": {
+          "a": -1,
+          "b": 3
+        },
+        "observation": "时间因子最终仍被指数衰减压下。",
+        "instruction": "将重复特征值 $\\lambda$设为 $-1$；将观察时间 $t$设为 $3$。"
+      },
+      {
+        "title": "弱衰减",
+        "preset": {
+          "a": -0.2,
+          "b": 3
+        },
+        "observation": "同一窗口内有更明显的剪切伸展。",
+        "instruction": "将重复特征值 $\\lambda$设为 $-0.2$；将观察时间 $t$设为 $3$。"
+      },
+      {
+        "title": "零根",
+        "preset": {
+          "a": 0,
+          "b": 3
+        },
+        "observation": "没有衰减，第一分量线性增长。",
+        "instruction": "将重复特征值 $\\lambda$设为 $0$；将观察时间 $t$设为 $3$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-defective-systems",
+    "caption": "从第二基方向出发，对照负重根与零重根的相轨迹，保留剪切产生的时间因子。",
+    "prediction": "重复特征值变为零时，剪切项还会衰减吗？"
+  }
+}

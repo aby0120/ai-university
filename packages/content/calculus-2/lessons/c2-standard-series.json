@@ -1,0 +1,194 @@
+{
+  "id": "c2-standard-series",
+  "title": "常用 Taylor 级数",
+  "subtitle": "从少量基本展开建立工具箱",
+  "concept": "指数、正弦、余弦、几何和对数展开能通过代入与微积分产生很多新展开；每个都要带收敛范围。",
+  "intuition": "不是每题重新求十次导数。把熟悉的展开换一个输入，往往就够了。",
+  "body": [
+    {
+      "title": "哪些处处有效？",
+      "text": "指数、正弦和余弦的 Maclaurin 级数在每个有限实数处都收敛并等于原函数，可由余项趋零证明。"
+    },
+    {
+      "title": "哪些有边界？",
+      "text": "几何级数在 $|x|<1$；对数 $\\ln(1+x)$ 在 $-1<x\\leq1$；反正切在 $[-1,1]$。对数与反正切的端点结论需用余项或 Abel 连续性定理，不能只凭内部逐项积分。"
+    },
+    {
+      "title": "怎样换输入？",
+      "text": "把整个输入替换进去，再把有效范围同步换算。例如 $\\ln(1+x^2)$ 的零点展开在 $|x|\\leq1$ 有效。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "从少量基本展开建立工具箱",
+    "latex": "e^x=\\sum_{n=0}^\\infty\\frac{x^n}{n!},\\quad\\sin x=\\sum_{n=0}^\\infty\\frac{(-1)^nx^{2n+1}}{(2n+1)!},\\quad\\ln(1+x)=\\sum_{n=1}^\\infty\\frac{(-1)^{n-1}x^n}{n}",
+    "conditions": [
+      "前两式对所有实数有效；对数式要求 $-1<x\\leq1$。余弦为 $\\sum_{n=0}^\\infty\\frac{(-1)^nx^{2n}}{(2n)!}$，对所有实数有效。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "指数的导数在零点全为一。",
+      "latex": "T_m(x)=\\sum_{n=0}^m\\frac{x^n}{n!}"
+    },
+    {
+      "text": "固定有限输入，余项被阶乘压到零。",
+      "latex": "|R_m(x)|\\leq e^{|x|}\\frac{|x|^{m+1}}{(m+1)!}\\to0"
+    },
+    {
+      "text": "对数从几何级数积分而来，先保证内部。",
+      "latex": "\\ln(1+x)=\\int_0^x\\frac{dt}{1+t}=\\sum_{n=1}^\\infty\\frac{(-1)^{n-1}x^n}{n}\\quad(|x|<1)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "代入平方",
+      "problem": "写出 $e^{-x^2}$ 的前四个非零项。",
+      "steps": [
+        "将指数级数输入换为 $-x^2$。",
+        "各项为 $1,-x^2,\\frac{x^4}{2},-\\frac{x^6}{6}$。"
+      ],
+      "answer": "$1-x^2+\\frac{x^4}{2}-\\frac{x^6}{6}+\\cdots$，对所有实数成立。"
+    },
+    {
+      "title": "对数展开的端点",
+      "problem": "$\\ln(1+2x)$ 的零点幂级数收敛范围？",
+      "steps": [
+        "输入 $u=2x$ 需满足 $-1<u\\leq1$。",
+        "级数为 $\\sum_{n=1}^\\infty\\frac{(-1)^{n-1}(2x)^n}{n}$。"
+      ],
+      "answer": "$-\\frac12<x\\leq\\frac12$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-standard-series-m1",
+      "claim": "写了正确系数就能在任意输入使用。",
+      "correction": "要同时变换并检查收敛范围。"
+    },
+    {
+      "id": "c2-standard-series-m2",
+      "claim": "平方输入后幂次还是原来的。",
+      "correction": "每个幂都要代入整个表达式，包括符号。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "写出 $\\cos(2x)$ 的前三个非零项。",
+      "answer": "$1-2x^2+\\frac23x^4$。",
+      "hint": "把整个输入换成两倍。",
+      "solution": [
+        "$1-\\frac{(2x)^2}{2!}+\\frac{(2x)^4}{4!}$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-standard-series-p1"
+    },
+    {
+      "problem": "$\\frac1{1+x^2}$ 的零点展开？",
+      "answer": "$\\sum_{n=0}^\\infty(-1)^nx^{2n}$，$|x|<1$。",
+      "hint": "公比为负平方。",
+      "solution": [
+        "几何公比 $-x^2$ 的绝对值须小于一。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-standard-series-p2"
+    },
+    {
+      "problem": "$\\arctan x$ 的前三个非零项？",
+      "answer": "$x-\\frac{x^3}{3}+\\frac{x^5}{5}$。",
+      "hint": "积分上一题。",
+      "solution": [
+        "从 0 逐项积分；在 $|x|<1$ 保证成立，两个端点另由收敛及边界定理处理。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-standard-series-p3"
+    },
+    {
+      "problem": "$e^x$ 在 $x=0$ 的常数项与一次项分别是什么？",
+      "answer": "均为 1。",
+      "hint": "分别检查函数值与导数值。",
+      "solution": [
+        "$e^0=1$，$f\\prime(0)=1$；不是从一次幂开始。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-standard-series-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "$e^{-x^2}$ 的四次项是？",
+    "choices": [
+      "$-x^4$",
+      "$\\frac{x^4}{2}$",
+      "$\\frac{x^2}{2}$"
+    ],
+    "correctIndex": 1,
+    "explanation": "指数级数的平方项为输入的平方再除以二。"
+  },
+  "teaching": {
+    "explain": "记住少数来源清楚的展开，再做可靠变换；比背一长列互不相连的公式更省力。",
+    "steps": [
+      {
+        "title": "低阶",
+        "instruction": "阶数取 2，输入取 0.5。",
+        "observation": "有限多项式匹配低阶导数；读数保留实际误差。",
+        "preset": {
+          "n": 2,
+          "x": 0.5
+        }
+      },
+      {
+        "title": "增加阶数",
+        "instruction": "阶数取 6，输入仍取 0.5。",
+        "observation": "在这个输入处，观察实际误差的变化。",
+        "preset": {
+          "n": 6,
+          "x": 0.5
+        }
+      },
+      {
+        "title": "靠近边界或远处",
+        "instruction": "阶数取 10，输入取 0.9。",
+        "observation": "近似质量随输入与函数变化；仍需正文中的范围与余项条件。",
+        "preset": {
+          "n": 10,
+          "x": 0.9
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-taylor-error",
+    "c2-power-operations"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-taylor-use",
+  "number": "6.2",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-standard-series",
+    "caption": "比较 $\\sin x$ 与零点展开的有限近似，读取误差。",
+    "prediction": "增加阶数后，远处是否与中心附近一样准确？"
+  },
+  "misconceptionTags": [
+    "c2-standard-series-m1",
+    "c2-standard-series-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "使用指数三角与对数的基本展开",
+    "替换输入并同步变换范围",
+    "说明端点与原函数值的连接"
+  ]
+}

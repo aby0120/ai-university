@@ -1,0 +1,197 @@
+{
+  "id": "ode-system-reduction",
+  "chapterId": "ode-higher-order",
+  "number": "6.3",
+  "title": "降成一阶系统与状态变量",
+  "subtitle": "把高阶导数放进状态",
+  "body": [
+    {
+      "title": "二阶怎样改？",
+      "text": "令 $x_1=y,x_2=y'$，则 $x_1'=x_2$，另一个导数由原方程给出。"
+    },
+    {
+      "title": "高阶怎样改？",
+      "text": "依次取 $y,y',\\ldots,y^{(n-1)}$。前面的导数是状态的下一分量，最后一项使用原方程。"
+    },
+    {
+      "title": "状态不是多了物理条件",
+      "text": "改写保留同一问题，初始导数成为对应状态分量。它为矩阵和相平面分析提供统一形式。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "定义状态。",
+      "latex": "x_1=y,\\quad x_2=y'"
+    },
+    {
+      "text": "第一条关系来自定义。",
+      "latex": "x_1'=x_2"
+    },
+    {
+      "text": "第二条来自运动方程。",
+      "latex": "\\mathbf x'=\\begin{pmatrix}0&1\\\\-k&-c\\end{pmatrix}\\mathbf x+\\begin{pmatrix}0\\\\g(t)\\end{pmatrix}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "振子系统",
+      "problem": "把 $y''+4y=0$ 写成一阶系统。",
+      "steps": [
+        "取位置与速度为两状态。",
+        "加速度为负四倍位置。"
+      ],
+      "answer": "$\\mathbf x'=\\begin{pmatrix}0&1\\\\-4&0\\end{pmatrix}\\mathbf x$。"
+    },
+    {
+      "title": "三阶系统",
+      "problem": "把 $y'''+2y'=t$ 写成一阶系统。",
+      "steps": [
+        "取 $x_1=y,x_2=y',x_3=y''$。",
+        "最后一条为 $x_3'=t-2x_2$。"
+      ],
+      "answer": "$x_1'=x_2,x_2'=x_3,x_3'=t-2x_2$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-system-reduction-q1",
+      "problem": "二阶方程的状态通常需要几个分量？",
+      "hint": "记录函数与一阶导数。",
+      "solution": [
+        "共两个。"
+      ],
+      "answer": "$2$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 2.0
+    },
+    {
+      "id": "ode-system-reduction-q2",
+      "problem": "$y''=-y$ 中状态点 $(1,0)$ 的速度向量？",
+      "hint": "代入两个系统分量。",
+      "solution": [
+        "$x_1'=0,x_2'=-1$。"
+      ],
+      "answer": "$(0,-1)$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-system-reduction-q3",
+      "problem": "状态平面的第二坐标是否就是时间？",
+      "hint": "查看状态定义。",
+      "solution": [
+        "第二坐标为原函数的导数。"
+      ],
+      "answer": "不是，是速度。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-system-reduction-q4",
+      "problem": "初值 $y(0)=2,y'(0)=-3$ 对应哪个状态？",
+      "hint": "按分量顺序写。",
+      "solution": [
+        "位置在前，速度在后。"
+      ],
+      "answer": "$\\mathbf x(0)=(2,-3)^T$。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-system-reduction-m1",
+      "claim": "改写成系统改变了原问题的解。",
+      "correction": "两种写法通过状态定义一一对应。"
+    },
+    {
+      "id": "ode-system-reduction-m2",
+      "claim": "相平面曲线就是原函数时间图。",
+      "correction": "相平面的轴是状态分量，时间是轨迹参数。"
+    }
+  ],
+  "prerequisites": [
+    "ode-higher-linear",
+    "la-matrix-product"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-system-reduction-m1",
+    "ode-system-reduction-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "一个高阶方程可以用函数及其低阶导数组成的状态，改写成一阶方程组。",
+  "intuition": "把位置和速度同时记录，就无需用二阶符号才能描述下一刻。",
+  "objectives": [
+    "构造状态变量",
+    "在高阶方程和系统之间转换"
+  ],
+  "formalDefinition": {
+    "text": "降成一阶系统与状态变量",
+    "latex": "y''+cy'+ky=g(t)\\Longleftrightarrow\\begin{cases}x_1'=x_2,\\\\x_2'=-kx_1-cx_2+g(t).\\end{cases}",
+    "conditions": [
+      "最高项已经解出；初值对应 $x_1(t_0)=y_0,x_2(t_0)=v_0$。"
+    ]
+  },
+  "learningCheck": {
+    "question": "二阶运动的状态通常包含什么？",
+    "choices": [
+      "两份位置",
+      "时间和位置",
+      "位置和速度"
+    ],
+    "correctIndex": 2,
+    "explanation": "速度补足了预测未来所需的数据。"
+  },
+  "teaching": {
+    "explain": "状态是对系统此刻信息的完整记录。知道状态，方程就能给出状态的变化率。",
+    "steps": [
+      {
+        "title": "从静止释放",
+        "preset": {
+          "a": 1,
+          "c": 0,
+          "b": 1
+        },
+        "observation": "初始加速度指向负位置方向。",
+        "instruction": "将初始位置 $x_0$设为 $1$；将初始速度 $v_0$设为 $0$；将观察时间 $t$设为 $1$。"
+      },
+      {
+        "title": "从原点推出",
+        "preset": {
+          "a": 0,
+          "c": 1,
+          "b": 1
+        },
+        "observation": "起点相同位置，但初速度不同，轨迹不同。",
+        "instruction": "将初始位置 $x_0$设为 $0$；将初始速度 $v_0$设为 $1$；将观察时间 $t$设为 $1$。"
+      },
+      {
+        "title": "零状态",
+        "preset": {
+          "a": 0,
+          "c": 0,
+          "b": 3
+        },
+        "observation": "原点保持平衡。",
+        "instruction": "将初始位置 $x_0$设为 $0$；将初始速度 $v_0$设为 $0$；将观察时间 $t$设为 $3$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-system-reduction",
+    "caption": "相平面的横轴是位置，纵轴是速度；亮点随时间沿轨迹走。与时间曲线使用相同振子。",
+    "prediction": "同一位置、不同速度的初态会走同一条轨迹吗？"
+  }
+}

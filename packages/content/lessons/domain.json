@@ -5,7 +5,7 @@
   "title": "函数与定义域",
   "subtitle": "先问：这个输入允许吗？",
   "concept": "函数是一条输入到输出的规则：每个允许的输入，只能对应一个输出。",
-  "intuition": "先问“这个数能不能代入”，再算结果。例如 √x 只接受 x≥0；负数不在它的实数定义域里。",
+  "intuition": "先问“这个数能不能代入”，再算结果。例如 $\\sqrt{x}$ 只接受 $x \\ge 0$；负数不在它的实数定义域里。",
   "objectives": [
     "确定定义域",
     "读懂函数记号",
@@ -17,12 +17,12 @@
       "text": "分母不能为 0，偶次根号内不能为负，对数的真数必须为正。把限制取交集。实际问题还要加上时间、长度等限制。"
     },
     {
-      "title": "f(x+h) 怎么代？",
-      "text": "把原式中每个 x 换成 x+h。f 是规则，f(x) 是这次输入得到的输出。图像由所有合法的 (x,f(x)) 组成。"
+      "title": "$f (x + h)$ 怎么代？",
+      "text": "把原式中每个 $x$ 换成 $x + h$。$f$ 是规则，$f (x)$ 是这次输入得到的输出。图像由所有合法的 $(x , f (x))$ 组成。"
     },
     {
       "title": "圆为什么不是函数？",
-      "text": "同一个 x 可能对应两个 y。取上半圆 y=√(1−x²) 后，每个 x 才只有一个输出。竖直线检验就是检查这一点。"
+      "text": "同一个 $x$ 可能对应两个 $y$。取上半圆 $y = \\sqrt{1 - x^{2}}$ 后，每个 $x$ 才只有一个输出。竖直线检验就是检查这一点。"
     }
   ],
   "formalDefinition": {
@@ -38,7 +38,7 @@
       "latex": "f(x)=\\frac{\\sqrt{x-1}}{x-3}"
     },
     {
-      "text": "根号要求 x≥1；分母又排除 3。",
+      "text": "根号要求 $x \\ge 1$；分母又排除 3。",
       "latex": "D=[1,3)\\cup(3,\\infty)"
     },
     {
@@ -49,8 +49,8 @@
   "interactiveVisual": {
     "kind": "graph",
     "function": "sqrt",
-    "caption": "拖动输入 x，观察平方根只在 x≥0 时有实数输出。",
-    "prediction": "把 x 从正数拖到负数。平方根图像会延伸到哪里？为什么？"
+    "caption": "拖动输入 $x$，观察平方根只在 $x \\ge 0$ 时有实数输出。",
+    "prediction": "把 $x$ 从正数拖到负数。平方根图像会延伸到哪里？为什么？"
   },
   "workedExamples": [
     {
@@ -64,9 +64,9 @@
     },
     {
       "title": "两项限制",
-      "problem": "求 $g(x)=\\ln(x-2)/(x-5)$ 的定义域。",
+      "problem": "求 $g(x)=\\frac{\\ln(x-2)}{x-5}$ 的定义域。",
       "steps": [
-        "对数要求 x>2，分母要求 x≠5。",
+        "对数要求 $x > 2$，分母要求 $x \\ne 5$。",
         "这两个要求同时满足。"
       ],
       "answer": "$(2,5)\\cup(5,\\infty)$。"
@@ -88,53 +88,51 @@
     {
       "id": "domain-p1",
       "difficulty": 1,
-      "misconceptionTags": [
-        "domain-m1"
-      ],
+      "misconceptionTags": [],
       "problem": "$f(x)=3x-1$，求 $f(4)$。",
       "answer": "$11$。",
       "solution": [
-        "代入得到 3×4−1=11。"
+        "代入得到 $3 \\times 4 - 1 = 11$。"
       ],
-      "hint": "把 4 替换到 x 的位置。",
+      "hint": "把 4 替换到 $x$ 的位置。",
       "numericAnswer": 11
     },
     {
       "id": "domain-p2",
       "difficulty": 2,
       "misconceptionTags": [
-        "domain-m2"
+        "domain-m1"
       ],
       "problem": "求 $\\sqrt{4-x^2}$ 的定义域。",
       "answer": "$[-2,2]$。",
       "solution": [
-        "要求 4−x²≥0，等价于 |x|≤2。"
+        "要求 $4 - x^{2} \\ge 0$，等价于 $|x| \\le 2$。"
       ],
       "hint": "先让根号里面非负。"
     },
     {
       "id": "domain-p3",
-      "difficulty": 3,
+      "difficulty": 2,
       "misconceptionTags": [
-        "domain-m2"
+        "domain-m1"
       ],
-      "problem": "求 $1/(x^2-1)$ 的定义域。",
+      "problem": "求 $\\frac{1}{x^2-1}$ 的定义域。",
       "answer": "$\\mathbb R\\setminus\\{-1,1\\}$。",
       "solution": [
-        "分解分母 (x−1)(x+1)，排除两个零点。"
+        "分解分母 $(x - 1) (x + 1)$，排除两个零点。"
       ],
       "hint": "哪些输入使分母为零？"
     },
     {
       "id": "domain-p4",
-      "difficulty": 4,
+      "difficulty": 2,
       "misconceptionTags": [
         "domain-m2"
       ],
       "problem": "$f(x)=x^2$，$f(x+1)-f(x)$ 等于什么？",
       "answer": "$2x+1$。",
       "solution": [
-        "展开 (x+1)²，再减去 x²。"
+        "展开 $(x + 1)^{2}$，再减去 $x^{2}$。"
       ],
       "hint": "不要直接写成 1。"
     }
@@ -147,7 +145,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -158,13 +156,42 @@
     "phet-design"
   ],
   "learningCheck": {
-    "question": "f(x)=1/√(x−2)，哪些 x 可以代入？",
+    "question": "$f (x) = \\frac{1}{\\sqrt{x - 2}}$，哪些 $x$ 可以代入？",
     "choices": [
-      "x ≥ 2",
-      "x > 2",
-      "x ≠ 2"
+      "$x \\ge 2$",
+      "$x > 2$",
+      "$x \\ne 2$"
     ],
     "correctIndex": 1,
-    "explanation": "根号要求 x−2≥0，分母又不能是零。两个条件合起来是 x>2。"
+    "explanation": "根号要求 $x - 2 \\ge 0$，分母又不能是零。两个条件合起来是 $x > 2$。"
+  },
+  "teaching": {
+    "explain": "把函数想成一条有入口限制的规则。先检查输入能不能进去，再问输出是多少。平方根这条规则在实数里只接受非负输入。",
+    "steps": [
+      {
+        "title": "合法输入",
+        "instruction": "先把输入设为 4。",
+        "preset": {
+          "x": 4
+        },
+        "observation": "$\\sqrt4=2$：图上有对应的点。"
+      },
+      {
+        "title": "边界输入",
+        "instruction": "再把输入设为 0。",
+        "preset": {
+          "x": 0
+        },
+        "observation": "$\\sqrt0=0$，边界仍属于定义域。"
+      },
+      {
+        "title": "越过边界",
+        "instruction": "把输入设为 −1。",
+        "preset": {
+          "x": -1
+        },
+        "observation": "实数范围没有输出；图上不应补出一个点。"
+      }
+    ]
   }
 }

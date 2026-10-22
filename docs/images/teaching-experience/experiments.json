@@ -1,0 +1,4906 @@
+[
+  {
+    "id": "domain",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "输入 xxx4f(x)f (x)f(x)2",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 4
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "domain",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "输入 xxx0f(x)f (x)f(x)0",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 0
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "domain",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "输入 xxx-1f(x)f (x)f(x)无有限值",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": -1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "transformations",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "顶点(0, 0)",
+    "values": [
+      {
+        "label": "水平平移 h：输入数值",
+        "value": 0
+      },
+      {
+        "label": "竖直平移 k：输入数值",
+        "value": 0
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "transformations",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "顶点(2, 0)",
+    "values": [
+      {
+        "label": "水平平移 h：输入数值",
+        "value": 2
+      },
+      {
+        "label": "竖直平移 k：输入数值",
+        "value": 0
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "transformations",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "顶点(2, 1)",
+    "values": [
+      {
+        "label": "水平平移 h：输入数值",
+        "value": 2
+      },
+      {
+        "label": "竖直平移 k：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "composition",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "输入 xxx1f(x)f (x)f(x)1",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "composition",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "输入 xxx-1f(x)f (x)f(x)1",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": -1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "composition",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "输入 xxx-2f(x)f (x)f(x)4",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": -2
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "trigonometry",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "输入 xxx0f(x)f (x)f(x)0",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 0
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "trigonometry",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "输入 xxx1.57f(x)f (x)f(x)1",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 1.57
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "trigonometry",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "输入 xxx6.28f(x)f (x)f(x)-0.00319",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 6.28
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "exponential-log",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "输入 xxx0f(x)f (x)f(x)1",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 0
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "exponential-log",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "输入 xxx1f(x)f (x)f(x)2.71828",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "exponential-log",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "输入 xxx2f(x)f (x)f(x)7.38906",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 2
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "limit-intuition",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "xxx1.5f(x)f (x)f(x)2.5距离 ∣x−a∣|x - a|∣x−a∣0.5左侧采样值1.5右侧采样值2.5",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.5
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "limit-intuition",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "xxx0.99f(x)f (x)f(x)1.99距离 ∣x−a∣|x - a|∣x−a∣0.01左侧采样值1.99右侧采样值2.01",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "limit-intuition",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "xxx1.01f(x)f (x)f(x)3距离 ∣x−a∣|x - a|∣x−a∣0.01左侧采样值1右侧采样值3",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "limit-laws",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "xxx0.5f(x)f (x)f(x)0.95885距离 ∣x−a∣|x - a|∣x−a∣0.5",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.5
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "limit-laws",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "xxx0.01f(x)f (x)f(x)0.99998距离 ∣x−a∣|x - a|∣x−a∣0.01",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "limit-laws",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "xxx-0.01f(x)f (x)f(x)0.99998距离 ∣x−a∣|x - a|∣x−a∣0.01",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "epsilon-delta",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "允许误差 ε\\varepsilonε1保证距离 δ\\deltaδ0.2",
+    "values": [
+      {
+        "label": "输出误差 ε：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "epsilon-delta",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "允许误差 ε\\varepsilonε0.1保证距离 δ\\deltaδ0.02",
+    "values": [
+      {
+        "label": "输出误差 ε：输入数值",
+        "value": 0.1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "epsilon-delta",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "允许误差 ε\\varepsilonε0.05保证距离 δ\\deltaδ0.01",
+    "values": [
+      {
+        "label": "输出误差 ε：输入数值",
+        "value": 0.05
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "infinite-limits",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "xxx0.1f(x)f (x)f(x)10距离 ∣x−a∣|x - a|∣x−a∣0.1",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "infinite-limits",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "xxx0.01f(x)f (x)f(x)100距离 ∣x−a∣|x - a|∣x−a∣0.01",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "infinite-limits",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "xxx-0.01f(x)f (x)f(x)-100距离 ∣x−a∣|x - a|∣x−a∣0.01",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "derivative-definition",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)2割线斜率3差商 − 导数1",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 1
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "derivative-definition",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)2割线斜率2.01差商 − 导数0.01",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 1
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "derivative-definition",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)不存在割线斜率1差商 − 导数不适用",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 0
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "derivative-rules",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)0割线斜率0.01差商 − 导数0.01",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 0
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "derivative-rules",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)3割线斜率3.0301差商 − 导数0.0301",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 1
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "derivative-rules",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)3割线斜率2.9701差商 − 导数-0.0299",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": -1
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "chain-rule",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "内层 u=x2+1u = x^{2} + 1u=x2+11dudx\\frac{\\mathrm{d}u}{\\mathrm{d}x}dxdu​0外层 dydu=3u2\\frac{\\mathrm{d}y}{\\mathrm{d}u} = 3 u^{2}dudy​=3u23总导数 dydx\\frac{\\mathrm{d}y}{\\mathrm{d}x}dxdy​0",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 0
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "chain-rule",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "内层 u=x2+1u = x^{2} + 1u=x2+12dudx\\frac{\\mathrm{d}u}{\\mathrm{d}x}dxdu​2外层 dydu=3u2\\frac{\\mathrm{d}y}{\\mathrm{d}u} = 3 u^{2}dudy​=3u212总导数 dydx\\frac{\\mathrm{d}y}{\\mathrm{d}x}dxdy​24",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "chain-rule",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "内层 u=x2+1u = x^{2} + 1u=x2+12dudx\\frac{\\mathrm{d}u}{\\mathrm{d}x}dxdu​-2外层 dydu=3u2\\frac{\\mathrm{d}y}{\\mathrm{d}u} = 3 u^{2}dudy​=3u212总导数 dydx\\frac{\\mathrm{d}y}{\\mathrm{d}x}dxdy​-24",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": -1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "trig-derivatives",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)1割线斜率0.99998差商 − 导数-0.00002",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 0
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "trig-derivatives",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)0.0008割线斜率-0.0042差商 − 导数-0.005",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 1.57
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "trig-derivatives",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)-1割线斜率-0.99999差商 − 导数0.00001",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 3.14
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "implicit",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)0割线斜率-0.0025差商 − 导数-0.0025",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 0
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "implicit",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)-0.57735割线斜率-0.58121差商 − 导数-0.00386",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 1
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "implicit",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)-3.04243割线斜率-3.12882差商 − 导数-0.08639",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 1.9
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "exp-log-derivatives",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)1割线斜率1.00502差商 − 导数0.00502",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 0
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "exp-log-derivatives",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)2.71828割线斜率2.73192差商 − 导数0.01364",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 1
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "exp-log-derivatives",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)0.36788割线斜率0.36972差商 − 导数0.00185",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": -1
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "inverse-trig",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)1割线斜率0.99997差商 − 导数-0.00003",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 0
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "inverse-trig",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)0.5割线斜率0.49751差商 − 导数-0.00249",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 1
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "inverse-trig",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)0.1割线斜率0.0997差商 − 导数-0.0003",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 3
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "related-rates",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "高度 yyy4若 dxdt=1\\frac{\\mathrm{d}x}{\\mathrm{d}t} = 1dtdx​=1，dydt\\frac{\\mathrm{d}y}{\\mathrm{d}t}dtdy​-0.75",
+    "values": [
+      {
+        "label": "底端距离 x：输入数值",
+        "value": 3
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "related-rates",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "高度 yyy3若 dxdt=1\\frac{\\mathrm{d}x}{\\mathrm{d}t} = 1dtdx​=1，dydt\\frac{\\mathrm{d}y}{\\mathrm{d}t}dtdy​-1.33333",
+    "values": [
+      {
+        "label": "底端距离 x：输入数值",
+        "value": 4
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "related-rates",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "高度 yyy1.4若 dxdt=1\\frac{\\mathrm{d}x}{\\mathrm{d}t} = 1dtdx​=1，dydt\\frac{\\mathrm{d}y}{\\mathrm{d}t}dtdy​-3.42857",
+    "values": [
+      {
+        "label": "底端距离 x：输入数值",
+        "value": 4.8
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "linearization",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)0.25真实值2切线估计2真实误差0",
+    "values": [
+      {
+        "label": "中心 a：输入数值",
+        "value": 4
+      },
+      {
+        "label": "估计位置 x：输入数值",
+        "value": 4
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "linearization",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)0.25真实值2.02485切线估计2.025真实误差0.00015",
+    "values": [
+      {
+        "label": "中心 a：输入数值",
+        "value": 4
+      },
+      {
+        "label": "估计位置 x：输入数值",
+        "value": 4.1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "linearization",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)0.25真实值2.44949切线估计2.5真实误差0.05051",
+    "values": [
+      {
+        "label": "中心 a：输入数值",
+        "value": 4
+      },
+      {
+        "label": "估计位置 x：输入数值",
+        "value": 6
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "newton",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "初值1最近近似1.5残差0.25",
+    "values": [
+      {
+        "label": "初值 x_0：输入数值",
+        "value": 1
+      },
+      {
+        "label": "迭代步数：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "newton",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "初值1最近近似1.41421残差0",
+    "values": [
+      {
+        "label": "初值 x_0：输入数值",
+        "value": 1
+      },
+      {
+        "label": "迭代步数：输入数值",
+        "value": 4
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "newton",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "初值0最近近似无法计算残差—",
+    "values": [
+      {
+        "label": "初值 x_0：输入数值",
+        "value": 0
+      },
+      {
+        "label": "迭代步数：输入数值",
+        "value": 4
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "extrema",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)1.32割线斜率1.2841差商 − 导数-0.0359",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": -1.2
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "extrema",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)-1.08割线斜率-1.1039差商 − 导数-0.0239",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": -0.8
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "extrema",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)0割线斜率0.0301差商 − 导数0.0301",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 1
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "mean-value",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "区间 [0,b][0 , b][0,b][0,1][0,1][0,1]保证点 ccc0.5共同斜率1",
+    "values": [
+      {
+        "label": "终点 b：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "mean-value",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "区间 [0,b][0 , b][0,b][0,2][0,2][0,2]保证点 ccc1共同斜率2",
+    "values": [
+      {
+        "label": "终点 b：输入数值",
+        "value": 2
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "mean-value",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "区间 [0,b][0 , b][0,b][0,3][0,3][0,3]保证点 ccc1.5共同斜率3",
+    "values": [
+      {
+        "label": "终点 b：输入数值",
+        "value": 3
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "curve-sketching",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)9割线斜率8.9401差商 − 导数-0.0599",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": -2
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "curve-sketching",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)-3割线斜率-2.9999差商 − 导数0.0001",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 0
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "curve-sketching",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)9割线斜率9.0601差商 − 导数0.0601",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 2
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "optimization",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "两条边长(2,10)(2,10)(2,10)周长24面积20",
+    "values": [
+      {
+        "label": "矩形边长 x：输入数值",
+        "value": 2
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "optimization",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "两条边长(6,6)(6,6)(6,6)周长24面积36",
+    "values": [
+      {
+        "label": "矩形边长 x：输入数值",
+        "value": 6
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "optimization",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "两条边长(10,2)(10,2)(10,2)周长24面积20",
+    "values": [
+      {
+        "label": "矩形边长 x：输入数值",
+        "value": 10
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "lhopital",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "xxx0.1f(x)f (x)f(x)1.05171距离 ∣x−a∣|x - a|∣x−a∣0.1",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "lhopital",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "xxx0.001f(x)f (x)f(x)1.0005距离 ∣x−a∣|x - a|∣x−a∣0.001",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.001
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "lhopital",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "xxx-0.001f(x)f (x)f(x)0.9995距离 ∣x−a∣|x - a|∣x−a∣0.001",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.001
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "antiderivatives",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "积分常数 CCC0F′(1)=12F' (1) = 1^{2}F′(1)=121",
+    "values": [
+      {
+        "label": "积分常数 C：输入数值",
+        "value": 0
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "antiderivatives",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "积分常数 CCC1F′(1)=12F' (1) = 1^{2}F′(1)=121",
+    "values": [
+      {
+        "label": "积分常数 C：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "antiderivatives",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "积分常数 CCC-1F′(1)=12F' (1) = 1^{2}F′(1)=121",
+    "values": [
+      {
+        "label": "积分常数 C：输入数值",
+        "value": -1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "riemann-sums",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "近似和0.625精确积分13≈0.33333\\frac{1}{3}\\approx0.3333331​≈0.33333近似误差0.29167",
+    "values": [
+      {
+        "label": "分割数 n：输入数值",
+        "value": 2
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "riemann-sums",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "近似和0.125精确积分13≈0.33333\\frac{1}{3}\\approx0.3333331​≈0.33333近似误差-0.20833",
+    "values": [
+      {
+        "label": "分割数 n：输入数值",
+        "value": 2
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "riemann-sums",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "近似和0.34171精确积分13≈0.33333\\frac{1}{3}\\approx0.3333331​≈0.33333近似误差0.00838",
+    "values": [
+      {
+        "label": "分割数 n：输入数值",
+        "value": 60
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "definite-integral",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "定积分-0.375几何面积0.375",
+    "values": [
+      {
+        "label": "积分上限 b：输入数值",
+        "value": -0.5
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "definite-integral",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "定积分0几何面积1",
+    "values": [
+      {
+        "label": "积分上限 b：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "definite-integral",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "定积分1.5几何面积2.5",
+    "values": [
+      {
+        "label": "积分上限 b：输入数值",
+        "value": 2
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "substitution",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "内层 u=x2+1u = x^{2} + 1u=x2+11dudx\\frac{\\mathrm{d}u}{\\mathrm{d}x}dxdu​0x=0→ux = 0 \\to ux=0→u1x=1→ux = 1 \\to ux=1→u2",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 0
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "substitution",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "内层 u=x2+1u = x^{2} + 1u=x2+11.25dudx\\frac{\\mathrm{d}u}{\\mathrm{d}x}dxdu​1x=0→ux = 0 \\to ux=0→u1x=1→ux = 1 \\to ux=1→u2",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 0.5
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "substitution",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "内层 u=x2+1u = x^{2} + 1u=x2+12dudx\\frac{\\mathrm{d}u}{\\mathrm{d}x}dxdu​2x=0→ux = 0 \\to ux=0→u1x=1→ux = 1 \\to ux=1→u2",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "area-between",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "条带高度 x−x2x - x^{2}x−x20总面积16≈0.16667\\frac{1}{6}\\approx0.1666761​≈0.16667",
+    "values": [
+      {
+        "label": "条带位置 x：输入数值",
+        "value": 0
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "area-between",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "条带高度 x−x2x - x^{2}x−x20.25总面积16≈0.16667\\frac{1}{6}\\approx0.1666761​≈0.16667",
+    "values": [
+      {
+        "label": "条带位置 x：输入数值",
+        "value": 0.5
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "area-between",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "条带高度 x−x2x - x^{2}x−x20总面积16≈0.16667\\frac{1}{6}\\approx0.1666761​≈0.16667",
+    "values": [
+      {
+        "label": "条带位置 x：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "disk-washer",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "dimension": "3D 旋转体",
+    "errors": 0,
+    "invalid": 0,
+    "model": "圆盘 · x\\sqrt{x}x​",
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "截面位置 xxx0.25完整截面面积 A(x)A(x)A(x)0.7854当前转角的体积1.5708",
+    "values": [
+      {
+        "label": "旋转角度 θ：输入数值",
+        "value": 360
+      },
+      {
+        "label": "截面位置 x：输入数值",
+        "value": 0.25
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "disk-washer",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "dimension": "3D 旋转体",
+    "errors": 0,
+    "invalid": 0,
+    "model": "圆盘 · x\\sqrt{x}x​",
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "截面位置 xxx1完整截面面积 A(x)A(x)A(x)3.1416当前转角的体积1.5708",
+    "values": [
+      {
+        "label": "旋转角度 θ：输入数值",
+        "value": 360
+      },
+      {
+        "label": "截面位置 x：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "disk-washer",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "dimension": "3D 旋转体",
+    "errors": 0,
+    "invalid": 0,
+    "model": "圆环 · R=2R=2R=2，r=1r=1r=1",
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "截面位置 xxx0.5完整截面面积 A(x)A(x)A(x)9.4248当前转角的体积9.4248",
+    "values": [
+      {
+        "label": "旋转角度 θ：输入数值",
+        "value": 360
+      },
+      {
+        "label": "截面位置 x：输入数值",
+        "value": 0.5
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "shells",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "dimension": "3D 旋转体",
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "半径 xxx0.25完整薄壳的 dVdx\\frac{\\mathrm{d}V}{\\mathrm{d}x}dxdV​0.0982当前转角的体积1.5708",
+    "values": [
+      {
+        "label": "旋转角度 θ：输入数值",
+        "value": 360
+      },
+      {
+        "label": "薄壳半径 x：输入数值",
+        "value": 0.25
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "shells",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "dimension": "3D 旋转体",
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "半径 xxx0.5完整薄壳的 dVdx\\frac{\\mathrm{d}V}{\\mathrm{d}x}dxdV​0.7854当前转角的体积1.5708",
+    "values": [
+      {
+        "label": "旋转角度 θ：输入数值",
+        "value": 360
+      },
+      {
+        "label": "薄壳半径 x：输入数值",
+        "value": 0.5
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "shells",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "dimension": "2D 截面",
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "壳半径0.5单位厚度体积 2πrh2\\pi rh2πrh0.7854总体积π2\\frac{\\pi}{2}2π​",
+    "values": [
+      {
+        "label": "切片位置 x：输入数值",
+        "value": 0.5
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "arc-length",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "dimension": "2D 弧长",
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "折线长度1.21697精确弧长1.21895误差-0.00198",
+    "values": [
+      {
+        "label": "折线段数 n：输入数值",
+        "value": 4
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "arc-length",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "dimension": "2D 弧长",
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "折线长度1.21893精确弧长1.21895误差-0.00002",
+    "values": [
+      {
+        "label": "折线段数 n：输入数值",
+        "value": 60
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "arc-length",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "dimension": "3D 曲面",
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "截面位置 xxx0.7完整曲面的 dSdx\\frac{\\mathrm{d}S}{\\mathrm{d}x}dxdS​3.1986曲面范围仅侧面，无端盖",
+    "values": [
+      {
+        "label": "旋转角度 θ：输入数值",
+        "value": 360
+      },
+      {
+        "label": "截面位置 x：输入数值",
+        "value": 0.7
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "physical-integrals",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "位移-0.5总路程0.5",
+    "values": [
+      {
+        "label": "积分上限 b：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "physical-integrals",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "位移0总路程1",
+    "values": [
+      {
+        "label": "积分上限 b：输入数值",
+        "value": 2
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "physical-integrals",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "位移1.5总路程2.5",
+    "values": [
+      {
+        "label": "积分上限 b：输入数值",
+        "value": 3
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "domain",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "输入 xxx4f(x)f (x)f(x)2",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 4
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "domain",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "输入 xxx0f(x)f (x)f(x)0",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 0
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "domain",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "输入 xxx-1f(x)f (x)f(x)无有限值",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": -1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "transformations",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "顶点(0, 0)",
+    "values": [
+      {
+        "label": "水平平移 h：输入数值",
+        "value": 0
+      },
+      {
+        "label": "竖直平移 k：输入数值",
+        "value": 0
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "transformations",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "顶点(2, 0)",
+    "values": [
+      {
+        "label": "水平平移 h：输入数值",
+        "value": 2
+      },
+      {
+        "label": "竖直平移 k：输入数值",
+        "value": 0
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "transformations",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "顶点(2, 1)",
+    "values": [
+      {
+        "label": "水平平移 h：输入数值",
+        "value": 2
+      },
+      {
+        "label": "竖直平移 k：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "composition",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "输入 xxx1f(x)f (x)f(x)1",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "composition",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "输入 xxx-1f(x)f (x)f(x)1",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": -1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "composition",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "输入 xxx-2f(x)f (x)f(x)4",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": -2
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "trigonometry",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "输入 xxx0f(x)f (x)f(x)0",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 0
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "trigonometry",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "输入 xxx1.57f(x)f (x)f(x)1",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 1.57
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "trigonometry",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "输入 xxx6.28f(x)f (x)f(x)-0.00319",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 6.28
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "exponential-log",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "输入 xxx0f(x)f (x)f(x)1",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 0
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "exponential-log",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "输入 xxx1f(x)f (x)f(x)2.71828",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "exponential-log",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "输入 xxx2f(x)f (x)f(x)7.38906",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 2
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "limit-intuition",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "xxx1.5f(x)f (x)f(x)2.5距离 ∣x−a∣|x - a|∣x−a∣0.5左侧采样值1.5右侧采样值2.5",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.5
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "limit-intuition",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "xxx0.99f(x)f (x)f(x)1.99距离 ∣x−a∣|x - a|∣x−a∣0.01左侧采样值1.99右侧采样值2.01",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "limit-intuition",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "xxx1.01f(x)f (x)f(x)3距离 ∣x−a∣|x - a|∣x−a∣0.01左侧采样值1右侧采样值3",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "limit-laws",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "xxx0.5f(x)f (x)f(x)0.95885距离 ∣x−a∣|x - a|∣x−a∣0.5",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.5
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "limit-laws",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "xxx0.01f(x)f (x)f(x)0.99998距离 ∣x−a∣|x - a|∣x−a∣0.01",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "limit-laws",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "xxx-0.01f(x)f (x)f(x)0.99998距离 ∣x−a∣|x - a|∣x−a∣0.01",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "epsilon-delta",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "允许误差 ε\\varepsilonε1保证距离 δ\\deltaδ0.2",
+    "values": [
+      {
+        "label": "输出误差 ε：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "epsilon-delta",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "允许误差 ε\\varepsilonε0.1保证距离 δ\\deltaδ0.02",
+    "values": [
+      {
+        "label": "输出误差 ε：输入数值",
+        "value": 0.1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "epsilon-delta",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "允许误差 ε\\varepsilonε0.05保证距离 δ\\deltaδ0.01",
+    "values": [
+      {
+        "label": "输出误差 ε：输入数值",
+        "value": 0.05
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "infinite-limits",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "xxx0.1f(x)f (x)f(x)10距离 ∣x−a∣|x - a|∣x−a∣0.1",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "infinite-limits",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "xxx0.01f(x)f (x)f(x)100距离 ∣x−a∣|x - a|∣x−a∣0.01",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "infinite-limits",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "xxx-0.01f(x)f (x)f(x)-100距离 ∣x−a∣|x - a|∣x−a∣0.01",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "derivative-definition",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)2割线斜率3差商 − 导数1",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 1
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "derivative-definition",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)2割线斜率2.01差商 − 导数0.01",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 1
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "derivative-definition",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)不存在割线斜率1差商 − 导数不适用",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 0
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "derivative-rules",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)0割线斜率0.01差商 − 导数0.01",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 0
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "derivative-rules",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)3割线斜率3.0301差商 − 导数0.0301",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 1
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "derivative-rules",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)3割线斜率2.9701差商 − 导数-0.0299",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": -1
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "chain-rule",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "内层 u=x2+1u = x^{2} + 1u=x2+11dudx\\frac{\\mathrm{d}u}{\\mathrm{d}x}dxdu​0外层 dydu=3u2\\frac{\\mathrm{d}y}{\\mathrm{d}u} = 3 u^{2}dudy​=3u23总导数 dydx\\frac{\\mathrm{d}y}{\\mathrm{d}x}dxdy​0",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 0
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "chain-rule",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "内层 u=x2+1u = x^{2} + 1u=x2+12dudx\\frac{\\mathrm{d}u}{\\mathrm{d}x}dxdu​2外层 dydu=3u2\\frac{\\mathrm{d}y}{\\mathrm{d}u} = 3 u^{2}dudy​=3u212总导数 dydx\\frac{\\mathrm{d}y}{\\mathrm{d}x}dxdy​24",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "chain-rule",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "内层 u=x2+1u = x^{2} + 1u=x2+12dudx\\frac{\\mathrm{d}u}{\\mathrm{d}x}dxdu​-2外层 dydu=3u2\\frac{\\mathrm{d}y}{\\mathrm{d}u} = 3 u^{2}dudy​=3u212总导数 dydx\\frac{\\mathrm{d}y}{\\mathrm{d}x}dxdy​-24",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": -1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "trig-derivatives",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)1割线斜率0.99998差商 − 导数-0.00002",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 0
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "trig-derivatives",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)0.0008割线斜率-0.0042差商 − 导数-0.005",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 1.57
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "trig-derivatives",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)-1割线斜率-0.99999差商 − 导数0.00001",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 3.14
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "implicit",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)0割线斜率-0.0025差商 − 导数-0.0025",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 0
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "implicit",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)-0.57735割线斜率-0.58121差商 − 导数-0.00386",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 1
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "implicit",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)-3.04243割线斜率-3.12882差商 − 导数-0.08639",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 1.9
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "exp-log-derivatives",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)1割线斜率1.00502差商 − 导数0.00502",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 0
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "exp-log-derivatives",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)2.71828割线斜率2.73192差商 − 导数0.01364",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 1
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "exp-log-derivatives",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)0.36788割线斜率0.36972差商 − 导数0.00185",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": -1
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "inverse-trig",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)1割线斜率0.99997差商 − 导数-0.00003",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 0
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "inverse-trig",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)0.5割线斜率0.49751差商 − 导数-0.00249",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 1
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "inverse-trig",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)0.1割线斜率0.0997差商 − 导数-0.0003",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 3
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "related-rates",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "高度 yyy4若 dxdt=1\\frac{\\mathrm{d}x}{\\mathrm{d}t} = 1dtdx​=1，dydt\\frac{\\mathrm{d}y}{\\mathrm{d}t}dtdy​-0.75",
+    "values": [
+      {
+        "label": "底端距离 x：输入数值",
+        "value": 3
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "related-rates",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "高度 yyy3若 dxdt=1\\frac{\\mathrm{d}x}{\\mathrm{d}t} = 1dtdx​=1，dydt\\frac{\\mathrm{d}y}{\\mathrm{d}t}dtdy​-1.33333",
+    "values": [
+      {
+        "label": "底端距离 x：输入数值",
+        "value": 4
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "related-rates",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "高度 yyy1.4若 dxdt=1\\frac{\\mathrm{d}x}{\\mathrm{d}t} = 1dtdx​=1，dydt\\frac{\\mathrm{d}y}{\\mathrm{d}t}dtdy​-3.42857",
+    "values": [
+      {
+        "label": "底端距离 x：输入数值",
+        "value": 4.8
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "linearization",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)0.25真实值2切线估计2真实误差0",
+    "values": [
+      {
+        "label": "中心 a：输入数值",
+        "value": 4
+      },
+      {
+        "label": "估计位置 x：输入数值",
+        "value": 4
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "linearization",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)0.25真实值2.02485切线估计2.025真实误差0.00015",
+    "values": [
+      {
+        "label": "中心 a：输入数值",
+        "value": 4
+      },
+      {
+        "label": "估计位置 x：输入数值",
+        "value": 4.1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "linearization",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)0.25真实值2.44949切线估计2.5真实误差0.05051",
+    "values": [
+      {
+        "label": "中心 a：输入数值",
+        "value": 4
+      },
+      {
+        "label": "估计位置 x：输入数值",
+        "value": 6
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "newton",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "初值1最近近似1.5残差0.25",
+    "values": [
+      {
+        "label": "初值 x_0：输入数值",
+        "value": 1
+      },
+      {
+        "label": "迭代步数：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "newton",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "初值1最近近似1.41421残差0",
+    "values": [
+      {
+        "label": "初值 x_0：输入数值",
+        "value": 1
+      },
+      {
+        "label": "迭代步数：输入数值",
+        "value": 4
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "newton",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "初值0最近近似无法计算残差—",
+    "values": [
+      {
+        "label": "初值 x_0：输入数值",
+        "value": 0
+      },
+      {
+        "label": "迭代步数：输入数值",
+        "value": 4
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "extrema",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)1.32割线斜率1.2841差商 − 导数-0.0359",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": -1.2
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "extrema",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)-1.08割线斜率-1.1039差商 − 导数-0.0239",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": -0.8
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "extrema",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)0割线斜率0.0301差商 − 导数0.0301",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 1
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "mean-value",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "区间 [0,b][0 , b][0,b][0,1][0,1][0,1]保证点 ccc0.5共同斜率1",
+    "values": [
+      {
+        "label": "终点 b：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "mean-value",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "区间 [0,b][0 , b][0,b][0,2][0,2][0,2]保证点 ccc1共同斜率2",
+    "values": [
+      {
+        "label": "终点 b：输入数值",
+        "value": 2
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "mean-value",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "区间 [0,b][0 , b][0,b][0,3][0,3][0,3]保证点 ccc1.5共同斜率3",
+    "values": [
+      {
+        "label": "终点 b：输入数值",
+        "value": 3
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "curve-sketching",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)9割线斜率8.9401差商 − 导数-0.0599",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": -2
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "curve-sketching",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)-3割线斜率-2.9999差商 − 导数0.0001",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 0
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "curve-sketching",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "精确导数 f′(a)f' (a)f′(a)9割线斜率9.0601差商 − 导数0.0601",
+    "values": [
+      {
+        "label": "切点 a：输入数值",
+        "value": 2
+      },
+      {
+        "label": "两点距离 h：输入数值",
+        "value": 0.01
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "optimization",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "两条边长(2,10)(2,10)(2,10)周长24面积20",
+    "values": [
+      {
+        "label": "矩形边长 x：输入数值",
+        "value": 2
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "optimization",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "两条边长(6,6)(6,6)(6,6)周长24面积36",
+    "values": [
+      {
+        "label": "矩形边长 x：输入数值",
+        "value": 6
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "optimization",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "两条边长(10,2)(10,2)(10,2)周长24面积20",
+    "values": [
+      {
+        "label": "矩形边长 x：输入数值",
+        "value": 10
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "lhopital",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "xxx0.1f(x)f (x)f(x)1.05171距离 ∣x−a∣|x - a|∣x−a∣0.1",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "lhopital",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "xxx0.001f(x)f (x)f(x)1.0005距离 ∣x−a∣|x - a|∣x−a∣0.001",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.001
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "lhopital",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "xxx-0.001f(x)f (x)f(x)0.9995距离 ∣x−a∣|x - a|∣x−a∣0.001",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.001
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "antiderivatives",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "积分常数 CCC0F′(1)=12F' (1) = 1^{2}F′(1)=121",
+    "values": [
+      {
+        "label": "积分常数 C：输入数值",
+        "value": 0
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "antiderivatives",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "积分常数 CCC1F′(1)=12F' (1) = 1^{2}F′(1)=121",
+    "values": [
+      {
+        "label": "积分常数 C：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "antiderivatives",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "积分常数 CCC-1F′(1)=12F' (1) = 1^{2}F′(1)=121",
+    "values": [
+      {
+        "label": "积分常数 C：输入数值",
+        "value": -1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "riemann-sums",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "近似和0.625精确积分13≈0.33333\\frac{1}{3}\\approx0.3333331​≈0.33333近似误差0.29167",
+    "values": [
+      {
+        "label": "分割数 n：输入数值",
+        "value": 2
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "riemann-sums",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "近似和0.125精确积分13≈0.33333\\frac{1}{3}\\approx0.3333331​≈0.33333近似误差-0.20833",
+    "values": [
+      {
+        "label": "分割数 n：输入数值",
+        "value": 2
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "riemann-sums",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "近似和0.34171精确积分13≈0.33333\\frac{1}{3}\\approx0.3333331​≈0.33333近似误差0.00838",
+    "values": [
+      {
+        "label": "分割数 n：输入数值",
+        "value": 60
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "definite-integral",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "定积分-0.375几何面积0.375",
+    "values": [
+      {
+        "label": "积分上限 b：输入数值",
+        "value": -0.5
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "definite-integral",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "定积分0几何面积1",
+    "values": [
+      {
+        "label": "积分上限 b：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "definite-integral",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "定积分1.5几何面积2.5",
+    "values": [
+      {
+        "label": "积分上限 b：输入数值",
+        "value": 2
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "substitution",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "内层 u=x2+1u = x^{2} + 1u=x2+11dudx\\frac{\\mathrm{d}u}{\\mathrm{d}x}dxdu​0x=0→ux = 0 \\to ux=0→u1x=1→ux = 1 \\to ux=1→u2",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 0
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "substitution",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "内层 u=x2+1u = x^{2} + 1u=x2+11.25dudx\\frac{\\mathrm{d}u}{\\mathrm{d}x}dxdu​1x=0→ux = 0 \\to ux=0→u1x=1→ux = 1 \\to ux=1→u2",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 0.5
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "substitution",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "内层 u=x2+1u = x^{2} + 1u=x2+12dudx\\frac{\\mathrm{d}u}{\\mathrm{d}x}dxdu​2x=0→ux = 0 \\to ux=0→u1x=1→ux = 1 \\to ux=1→u2",
+    "values": [
+      {
+        "label": "输入 x：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "area-between",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "条带高度 x−x2x - x^{2}x−x20总面积16≈0.16667\\frac{1}{6}\\approx0.1666761​≈0.16667",
+    "values": [
+      {
+        "label": "条带位置 x：输入数值",
+        "value": 0
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "area-between",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "条带高度 x−x2x - x^{2}x−x20.25总面积16≈0.16667\\frac{1}{6}\\approx0.1666761​≈0.16667",
+    "values": [
+      {
+        "label": "条带位置 x：输入数值",
+        "value": 0.5
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "area-between",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "条带高度 x−x2x - x^{2}x−x20总面积16≈0.16667\\frac{1}{6}\\approx0.1666761​≈0.16667",
+    "values": [
+      {
+        "label": "条带位置 x：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "disk-washer",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "dimension": "3D 旋转体",
+    "errors": 0,
+    "invalid": 0,
+    "model": "圆盘 · x\\sqrt{x}x​",
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "截面位置 xxx0.25完整截面面积 A(x)A(x)A(x)0.7854当前转角的体积1.5708",
+    "values": [
+      {
+        "label": "旋转角度 θ：输入数值",
+        "value": 360
+      },
+      {
+        "label": "截面位置 x：输入数值",
+        "value": 0.25
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "disk-washer",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "dimension": "3D 旋转体",
+    "errors": 0,
+    "invalid": 0,
+    "model": "圆盘 · x\\sqrt{x}x​",
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "截面位置 xxx1完整截面面积 A(x)A(x)A(x)3.1416当前转角的体积1.5708",
+    "values": [
+      {
+        "label": "旋转角度 θ：输入数值",
+        "value": 360
+      },
+      {
+        "label": "截面位置 x：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "disk-washer",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "dimension": "3D 旋转体",
+    "errors": 0,
+    "invalid": 0,
+    "model": "圆环 · R=2R=2R=2，r=1r=1r=1",
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "截面位置 xxx0.5完整截面面积 A(x)A(x)A(x)9.4248当前转角的体积9.4248",
+    "values": [
+      {
+        "label": "旋转角度 θ：输入数值",
+        "value": 360
+      },
+      {
+        "label": "截面位置 x：输入数值",
+        "value": 0.5
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "shells",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "dimension": "3D 旋转体",
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "半径 xxx0.25完整薄壳的 dVdx\\frac{\\mathrm{d}V}{\\mathrm{d}x}dxdV​0.0982当前转角的体积1.5708",
+    "values": [
+      {
+        "label": "旋转角度 θ：输入数值",
+        "value": 360
+      },
+      {
+        "label": "薄壳半径 x：输入数值",
+        "value": 0.25
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "shells",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "dimension": "3D 旋转体",
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "半径 xxx0.5完整薄壳的 dVdx\\frac{\\mathrm{d}V}{\\mathrm{d}x}dxdV​0.7854当前转角的体积1.5708",
+    "values": [
+      {
+        "label": "旋转角度 θ：输入数值",
+        "value": 360
+      },
+      {
+        "label": "薄壳半径 x：输入数值",
+        "value": 0.5
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "shells",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "dimension": "2D 截面",
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "壳半径0.5单位厚度体积 2πrh2\\pi rh2πrh0.7854总体积π2\\frac{\\pi}{2}2π​",
+    "values": [
+      {
+        "label": "切片位置 x：输入数值",
+        "value": 0.5
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "arc-length",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "dimension": "2D 弧长",
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "折线长度1.21697精确弧长1.21895误差-0.00198",
+    "values": [
+      {
+        "label": "折线段数 n：输入数值",
+        "value": 4
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "arc-length",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "dimension": "2D 弧长",
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "折线长度1.21893精确弧长1.21895误差-0.00002",
+    "values": [
+      {
+        "label": "折线段数 n：输入数值",
+        "value": 60
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "arc-length",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "dimension": "3D 曲面",
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "截面位置 xxx0.7完整曲面的 dSdx\\frac{\\mathrm{d}S}{\\mathrm{d}x}dxdS​3.1986曲面范围仅侧面，无端盖",
+    "values": [
+      {
+        "label": "旋转角度 θ：输入数值",
+        "value": 360
+      },
+      {
+        "label": "截面位置 x：输入数值",
+        "value": 0.7
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "physical-integrals",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "true",
+      "false",
+      "false"
+    ],
+    "stats": "位移-0.5总路程0.5",
+    "values": [
+      {
+        "label": "积分上限 b：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "physical-integrals",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "true",
+      "false"
+    ],
+    "stats": "位移0总路程1",
+    "values": [
+      {
+        "label": "积分上限 b：输入数值",
+        "value": 2
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "physical-integrals",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "selected": [
+      "false",
+      "false",
+      "true"
+    ],
+    "stats": "位移1.5总路程2.5",
+    "values": [
+      {
+        "label": "积分上限 b：输入数值",
+        "value": 3
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "continuity",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "stats": "xxx1.1f(x)f (x)f(x)2.1距离 ∣x−a∣|x - a|∣x−a∣0.1目标点的函数值没有定义",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "continuity",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "stats": "xxx0.9f(x)f (x)f(x)1.9距离 ∣x−a∣|x - a|∣x−a∣0.1目标点的函数值没有定义",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "continuity",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "stats": "xxx0.999f(x)f (x)f(x)1.999距离 ∣x−a∣|x - a|∣x−a∣0.001目标点的函数值2",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.001
+      },
+      {
+        "label": "补点值 f(1)：输入数值",
+        "value": 2
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "fundamental-theorem",
+    "step": 0,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "stats": "累积 A(x)=x33A (x) = \\frac{x^{3}}{3}A(x)=3x3​0A′(x)=f(x)A' (x) = f (x)A′(x)=f(x)0",
+    "values": [
+      {
+        "label": "累积上限 x：输入数值",
+        "value": 0
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "fundamental-theorem",
+    "step": 1,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "stats": "累积 A(x)=x33A (x) = \\frac{x^{3}}{3}A(x)=3x3​0.04167A′(x)=f(x)A' (x) = f (x)A′(x)=f(x)0.25",
+    "values": [
+      {
+        "label": "累积上限 x：输入数值",
+        "value": 0.5
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "fundamental-theorem",
+    "step": 2,
+    "expectedWidth": 1440,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 1440,
+    "stats": "累积 A(x)=x33A (x) = \\frac{x^{3}}{3}A(x)=3x3​0.33333A′(x)=f(x)A' (x) = f (x)A′(x)=f(x)1",
+    "values": [
+      {
+        "label": "累积上限 x：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "id": "continuity",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "stats": "xxx1.1f(x)f (x)f(x)2.1距离 ∣x−a∣|x - a|∣x−a∣0.1目标点的函数值没有定义",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "continuity",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "stats": "xxx0.9f(x)f (x)f(x)1.9距离 ∣x−a∣|x - a|∣x−a∣0.1目标点的函数值没有定义",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.1
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "continuity",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "stats": "xxx0.999f(x)f (x)f(x)1.999距离 ∣x−a∣|x - a|∣x−a∣0.001目标点的函数值2",
+    "values": [
+      {
+        "label": "距离 |x - a|：输入数值",
+        "value": 0.001
+      },
+      {
+        "label": "补点值 f(1)：输入数值",
+        "value": 2
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "fundamental-theorem",
+    "step": 0,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "stats": "累积 A(x)=x33A (x) = \\frac{x^{3}}{3}A(x)=3x3​0A′(x)=f(x)A' (x) = f (x)A′(x)=f(x)0",
+    "values": [
+      {
+        "label": "累积上限 x：输入数值",
+        "value": 0
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "fundamental-theorem",
+    "step": 1,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "stats": "累积 A(x)=x33A (x) = \\frac{x^{3}}{3}A(x)=3x3​0.04167A′(x)=f(x)A' (x) = f (x)A′(x)=f(x)0.25",
+    "values": [
+      {
+        "label": "累积上限 x：输入数值",
+        "value": 0.5
+      }
+    ],
+    "width": 390
+  },
+  {
+    "id": "fundamental-theorem",
+    "step": 2,
+    "expectedWidth": 390,
+    "missing": [],
+    "errors": 0,
+    "invalid": 0,
+    "scroll": 390,
+    "stats": "累积 A(x)=x33A (x) = \\frac{x^{3}}{3}A(x)=3x3​0.33333A′(x)=f(x)A' (x) = f (x)A′(x)=f(x)1",
+    "values": [
+      {
+        "label": "累积上限 x：输入数值",
+        "value": 1
+      }
+    ],
+    "width": 390
+  }
+]

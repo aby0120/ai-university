@@ -1,0 +1,191 @@
+{
+  "id": "la-lu",
+  "chapterId": "la-matrices",
+  "number": "2.5",
+  "title": "LU 分解与重复求解",
+  "subtitle": "把消元保存为分解",
+  "concept": "LU 把消元步骤保存下来，同一系数矩阵换右端时可以重复使用。",
+  "intuition": "先用下三角系统执行消元，再用上三角系统回代；不用对每个右端重新做所有矩阵操作。",
+  "objectives": [
+    "构造带置换的 LU 分解",
+    "复用分解处理不同右端"
+  ],
+  "body": [
+    {
+      "title": "分解中各部分是什么？",
+      "text": "$L$ 是对角为一的下三角矩阵，保存消元倍数；$U$ 是上三角矩阵。"
+    },
+    {
+      "title": "什么时候需要换行？",
+      "text": "无换行的 $A=LU$ 需要可用主元；可逆矩阵一般写成 $PA=LU$，$P$ 记录行交换。不是每个可逆矩阵都有无换行的 LU。"
+    },
+    {
+      "title": "怎样解方程？",
+      "text": "先解 $Ly=Pb$，再解 $Ux=y$。实际计算还要考虑主元大小与浮点误差。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "LU 分解与重复求解",
+    "latex": "PA=LU,\\qquad Ly=Pb,\\qquad Ux=y",
+    "conditions": [
+      "本节求解情形使用可逆方阵；含换行时必须同步置换右端。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "消元矩阵把原矩阵化为上三角。",
+      "latex": "EA=U"
+    },
+    {
+      "text": "反向保存消元。",
+      "latex": "A=E^{-1}U=LU"
+    },
+    {
+      "text": "把一个系统拆成两个三角系统。",
+      "latex": "Ax=b\\iff L(Ux)=b"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "保存消元倍数",
+      "problem": "$A=\\begin{pmatrix}1&1\\\\2&3\\end{pmatrix}$，求 LU。",
+      "steps": [
+        "第二行减第一行两倍，得 $U=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$。",
+        "$L=\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}$，相乘复查得到 $A$。"
+      ],
+      "answer": "$A=LU$。"
+    },
+    {
+      "title": "新右端",
+      "problem": "用上述分解解 $Ax=(4,11)^T$。",
+      "steps": [
+        "$Ly=b$ 给 $y_1=4,y_2=11-8=3$。",
+        "$Ux=y$ 给 $x_2=3,x_1=1$。"
+      ],
+      "answer": "$x=(1,3)^T$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-lu-m1",
+      "claim": "$L$ 保存消元时带负号的倍数。",
+      "correction": "常用约定中保存的是被减去的正向倍数；相乘确认符号。"
+    },
+    {
+      "id": "la-lu-m2",
+      "claim": "分解后换右端就必须重做 LU。",
+      "correction": "系数矩阵不变时可复用分解。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$\\begin{pmatrix}1&0\\\\3&1\\end{pmatrix}\\begin{pmatrix}2&1\\\\0&4\\end{pmatrix}$ 是什么？",
+      "hint": "按行列相乘。",
+      "solution": [
+        "第二行为 $(6,7)$。"
+      ],
+      "answer": "$\\begin{pmatrix}2&1\\\\6&7\\end{pmatrix}$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-lu-q1"
+    },
+    {
+      "problem": "$Ly=(2,5)^T$，$L=\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}$，求 $y_2$。",
+      "hint": "前代第一行，再用第二行。",
+      "solution": [
+        "$y_1=2,y_2=5-4=1$。"
+      ],
+      "answer": "1",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 1,
+      "id": "la-lu-q2"
+    },
+    {
+      "problem": "$A=\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}$ 用常规无换行首主元消元可行吗？",
+      "hint": "首主元为零。",
+      "solution": [
+        "需交换两行；矩阵本身仍可逆。"
+      ],
+      "answer": "需要换行。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-lu-q3"
+    },
+    {
+      "problem": "$PA=LU$ 时为什么先解 $Ly=Pb$？",
+      "hint": "原方程两边都乘置换矩阵。",
+      "solution": [
+        "$PAx=Pb$，而非 $PAx=b$。"
+      ],
+      "answer": "右端也必须随行交换。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-lu-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-elimination",
+    "la-matrix-product"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "la-lu-m1",
+    "la-lu-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-lu",
+    "caption": "固定方程组 $x+y=3,2x+3y=8$；逐步查看原系统、消去第二行首项、继续消去第一行第二项。",
+    "prediction": "同一个矩阵换一个右端，哪些消元步骤可以复用？"
+  },
+  "learningCheck": {
+    "question": "$PA=LU$，解 $Ax=b$ 时右端先变成什么？",
+    "choices": [
+      "$b$",
+      "$Pb$",
+      "$P^{-1}Ab$"
+    ],
+    "correctIndex": 1,
+    "explanation": "行交换必须作用于整个增广系统。"
+  },
+  "teaching": {
+    "explain": "LU 把“怎么消元”与“这次右端是多少”分开保存。分解一次，之后只需前代和回代。",
+    "steps": [
+      {
+        "title": "原系统",
+        "instruction": "选择原系统。",
+        "preset": {
+          "n": 0
+        },
+        "observation": "两条线交于 $(1,2)$。"
+      },
+      {
+        "title": "消去下方",
+        "instruction": "选择第二步。",
+        "preset": {
+          "n": 1
+        },
+        "observation": "第二条约束变成 $y=2$，交点不变。"
+      },
+      {
+        "title": "完成消元",
+        "instruction": "选择第三步。",
+        "preset": {
+          "n": 2
+        },
+        "observation": "两条约束为 $x=1,y=2$；解集仍相同。"
+      }
+    ]
+  }
+}

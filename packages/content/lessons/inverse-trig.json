@@ -5,7 +5,7 @@
   "title": "反函数与反三角导数",
   "subtitle": "把斜率倒过来，也要看分支",
   "concept": "反函数的斜率是原函数对应点斜率的倒数，前提是原斜率不为 0。",
-  "intuition": "原函数把 x 变成 y，反函数把 y 变回 x。横纵角色交换，变化率也从 dy/dx 变成 dx/dy。",
+  "intuition": "原函数把 $x$ 变成 $y$，反函数把 $y$ 变回 $x$。横纵角色交换，变化率也从 $\\frac{\\mathrm{d}y}{\\mathrm{d}x}$ 变成 $\\frac{\\mathrm{d}x}{\\mathrm{d}y}$。",
   "objectives": [
     "反函数导数",
     "主值分支",
@@ -14,31 +14,32 @@
   "body": [
     {
       "title": "反函数导数怎样求？",
-      "text": "对 f(f⁻¹(x))=x 用链式法则，解得 (f⁻¹)′(x)=1/f′(f⁻¹(x))。需要所选分支可逆，且分母不为 0。"
+      "text": "对 $f (f^{-1} (x)) = x$ 用链式法则，解得 $(f^{-1})' (x) = \\frac{1}{f' (f^{-1} (x))}$。需要所选分支可逆，且分母不为 0。"
     },
     {
       "title": "为什么反三角函数要选分支？",
-      "text": "三角函数会重复输出。arcsin 取 [−π/2,π/2]，arccos 取 [0,π]，arctan 取 (−π/2,π/2)，反函数才唯一。"
+      "text": "三角函数会重复输出。$\\arcsin$ 取 $[\\frac{- \\pi }{2} , \\frac{\\pi }{2}]$，$\\arccos$ 取 $[0 , \\pi ]$，$\\arctan$ 取 $(\\frac{- \\pi }{2} , \\frac{\\pi }{2})$，反函数才唯一。"
     },
     {
       "title": "公式在哪些点能用？",
-      "text": "arcsin、arccos 的导数只在 |x|<1 使用；arctan 在全实数上可导。代入边界前先检查分母。"
+      "text": "$\\arcsin$、$\\arccos$ 的导数只在 $|x| < 1$ 使用；$\\arctan$ 在全实数上可导。代入边界前先检查分母。"
     }
   ],
   "formalDefinition": {
     "text": "反三角导数使用主值分支。",
     "latex": "(\\arcsin x)\\prime=\\frac1{\\sqrt{1-x^2}},\\quad(\\arccos x)\\prime=-\\frac1{\\sqrt{1-x^2}},\\quad(\\arctan x)\\prime=\\frac1{1+x^2}",
     "conditions": [
-      "前两式 |x|<1；arctan 在全实数上可导。"
+      "前两式 $|x| < 1$；$\\arctan$ 在全实数上可导。",
+      "一般反函数导数公式要求选定区间内有可导反函数，且原导数在对应点不为零。"
     ]
   },
   "derivation": [
     {
-      "text": "令 y=arcsin x，主值分支上 cos y≥0。",
+      "text": "令 $y = \\arcsin x$，主值分支上 $\\cos y \\ge 0$。",
       "latex": "\\sin y=x\\quad\\Rightarrow\\quad\\cos y\\,y\\prime=1"
     },
     {
-      "text": "在 |x|<1 时 cos y 严格为正。",
+      "text": "在 $|x| < 1$ 时 $\\cos y$ 严格为正。",
       "latex": "\\cos y=\\sqrt{1-\\sin^2y}=\\sqrt{1-x^2}"
     },
     {
@@ -50,93 +51,87 @@
     "kind": "derivative",
     "function": "arctan",
     "a": 0,
-    "caption": "arctan 的切线斜率为 1/(1+a²)，始终为正，远处逐渐变小。",
-    "prediction": "arctan 的切点远离 0 时，斜率增大还是减小？用公式核对。"
+    "caption": "$\\arctan$ 的切线斜率为 $\\frac{1}{1 + a^{2}}$，始终为正，远处逐渐变小。",
+    "prediction": "$\\arctan$ 的切点远离 0 时，斜率增大还是减小？用公式核对。"
   },
   "workedExamples": [
     {
       "title": "内部还有函数",
       "problem": "求 $\\arctan(2x)$ 的导数。",
       "steps": [
-        "外层导数 1/(1+(2x)²)。",
+        "外层导数 $\\frac{1}{1 + (2 x)^{2}}$。",
         "内部导数为 2。"
       ],
-      "answer": "$2/(1+4x^2)$。"
+      "answer": "$\\frac{2}{1+4x^2}$。"
     },
     {
       "title": "反函数的指定点",
-      "problem": "f(2)=5，f′(2)=3，求 (f^−1)′(5)。",
+      "problem": "已知 $f$ 在 2 附近连续可导且一一对应，$f(2)=5$、$f\\prime(2)=3$。求所选反函数的 $(f^{-1})\\prime(5)$。",
       "steps": [
         "反函数在输入 5 时输出 2。",
         "取原函数在 2 的导数的倒数。"
       ],
-      "answer": "1/3。"
+      "answer": "$\\frac{1}{3}$。"
     }
   ],
   "commonMistakes": [
     {
       "id": "inverse-trig-m1",
-      "claim": "把 arcsin x 与 1/sin x 混淆。",
-      "correction": "前者是反函数，后者是 csc x。"
+      "claim": "把 $\\arcsin x$ 与 $\\frac{1}{\\sin x}$ 混淆。",
+      "correction": "前者是反函数，后者是 $\\csc x$。"
     },
     {
       "id": "inverse-trig-m2",
       "claim": "求反函数导数时在错误点取原导数。",
-      "correction": "先找到反函数输出 y，再计算 f′(y)。"
+      "correction": "先找到反函数输出 $y$，再计算 $f' (y)$。"
     }
   ],
   "practice": [
     {
       "id": "inverse-trig-p1",
-      "difficulty": 1,
-      "misconceptionTags": [
-        "inverse-trig-m1"
-      ],
-      "problem": "求 $\\arcsin(x/2)$ 的导数。",
-      "answer": "$1/\\sqrt{4-x^2}$，|x|<2。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "problem": "求 $\\arcsin(\\frac{x}{2})$ 的导数。",
+      "answer": "$\\frac{1}{\\sqrt{4-x^2}}$，$|x| < 2$。",
       "solution": [
-        "先得 (1/2)/√(1−x²/4)，再化简。"
+        "先得 $\\frac{\\frac{1}{2}}{\\sqrt{1 - \\frac{x^{2}}{4}}}$，再化简。"
       ],
       "hint": "链式法则与定义域一起检查。"
     },
     {
       "id": "inverse-trig-p2",
-      "difficulty": 2,
-      "misconceptionTags": [
-        "inverse-trig-m2"
-      ],
-      "problem": "求 arctan x 在 1 的导数值。",
-      "answer": "$1/2$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "problem": "求 $\\arctan x$ 在 1 的导数值。",
+      "answer": "$\\frac{1}{2}$。",
       "solution": [
-        "1/(1+1²)=1/2。"
+        "$\\frac{1}{1 + 1^{2}} = \\frac{1}{2}$。"
       ],
       "hint": "使用主值函数的公式。",
       "numericAnswer": 0.5
     },
     {
       "id": "inverse-trig-p3",
-      "difficulty": 3,
-      "misconceptionTags": [
-        "inverse-trig-m2"
-      ],
+      "difficulty": 1,
+      "misconceptionTags": [],
       "problem": "求 $\\arccos x$ 在 0 的导数值。",
       "answer": "$-1$。",
       "solution": [
-        "−1/√(1−0)=−1。"
+        "$\\frac{- 1}{\\sqrt{1 - 0}} = - 1$。"
       ],
       "hint": "余弦反函数递减。",
       "numericAnswer": -1
     },
     {
       "id": "inverse-trig-p4",
-      "difficulty": 4,
+      "difficulty": 2,
       "misconceptionTags": [
         "inverse-trig-m2"
       ],
-      "problem": "f(1)=4，f′(1)=2，求 (f^−1)′(4)。",
-      "answer": "$1/2$。",
+      "problem": "已知 $f$ 在 1 附近连续可导且一一对应，$f(1)=4$、$f\\prime(1)=2$。求所选反函数的 $(f^{-1})\\prime(4)$。",
+      "answer": "$\\frac{1}{2}$。",
       "solution": [
-        "原输入为 1，导数倒数为 1/2。"
+        "原输入为 1，导数倒数为 $\\frac{1}{2}$。"
       ],
       "hint": "把 4 先反向映回 1。",
       "numericAnswer": 0.5
@@ -153,7 +148,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -164,13 +159,48 @@
     "phet-design"
   ],
   "learningCheck": {
-    "question": "arcsin(sin x)=x 对所有实数 x 都成立吗？",
+    "question": "$\\arcsin (\\sin x) = x$ 对所有实数 $x$ 都成立吗？",
     "choices": [
       "成立",
-      "只在主值区间 [−π/2,π/2] 成立",
+      "只在主值区间 $[\\frac{- \\pi }{2} , \\frac{\\pi }{2}]$ 成立",
       "从不成立"
     ],
     "correctIndex": 1,
-    "explanation": "arcsin 的输出限制在 [−π/2,π/2]。超出这个区间，原角通常不能被恢复。"
+    "explanation": "$\\arcsin$ 的输出限制在 $[\\frac{- \\pi }{2} , \\frac{\\pi }{2}]$。超出这个区间，原角通常不能被恢复。"
+  },
+  "teaching": {
+    "explain": "反函数把输入输出交换，局部伸缩倍率也取倒数。先找到对应点，再取原导数的倒数，别在错误的输入上计算。",
+    "steps": [
+      {
+        "title": "中央的斜率",
+        "instruction": "反正切的切点取 0。",
+        "preset": {
+          "a": 0,
+          "h": 0.01,
+          "side": 1
+        },
+        "observation": "精确斜率为 1。"
+      },
+      {
+        "title": "移动一个单位",
+        "instruction": "切点取 1。",
+        "preset": {
+          "a": 1,
+          "h": 0.01,
+          "side": 1
+        },
+        "observation": "斜率为 $\\frac12$，曲线继续上升但变缓。"
+      },
+      {
+        "title": "再向远处移动",
+        "instruction": "切点取 3。",
+        "preset": {
+          "a": 3,
+          "h": 0.01,
+          "side": 1
+        },
+        "observation": "斜率为 $\\frac1{10}$，仍为正；公式不表示曲线在这里停止上升。"
+      }
+    ]
   }
 }

@@ -1,0 +1,198 @@
+{
+  "id": "ode-energy",
+  "chapterId": "ode-nonlinear",
+  "number": "9.4",
+  "title": "能量、摆与 Lyapunov 思路",
+  "subtitle": "找一个只会下降的量",
+  "body": [
+    {
+      "title": "摆的状态方程",
+      "text": "以无量纲时间写 $\\theta'=v,v'=-\\sin\\theta-cv$。小角度线性化不能代替大角度运动。"
+    },
+    {
+      "title": "能量如何变化？",
+      "text": "取 $E=v^2/2+1-\\cos\\theta$，得到 $E'=-cv^2$。无阻尼守恒，有阻尼非增。"
+    },
+    {
+      "title": "从非增到趋近还差一步",
+      "text": "导数为零可能是一整组点。要证明渐近收敛，还须分析其中可保持运动的不变集合；不能只看到非正导数就宣布渐近稳定。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "沿解求导。",
+      "latex": "E'=vv'+\\sin\\theta\\,\\theta'"
+    },
+    {
+      "text": "代入两条状态方程。",
+      "latex": "E'=v(-\\sin\\theta-cv)+\\sin\\theta\\,v"
+    },
+    {
+      "text": "回复力项相消。",
+      "latex": "E'=-cv^2"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "无阻尼摆",
+      "problem": "$c=0$，从 $(\\theta,v)=(0,1)$ 出发，能量多少？",
+      "steps": [
+        "势能为零。",
+        "动能为速度平方的一半。"
+      ],
+      "answer": "$E=1/2$，沿轨迹守恒。"
+    },
+    {
+      "title": "耗散率",
+      "problem": "$c=2,v=3$ 时能量变化率？",
+      "steps": [
+        "代入耗散式。",
+        "$-2\\times9=-18$。"
+      ],
+      "answer": "$E'=-18$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-energy-q1",
+      "problem": "底部静止点的能量是多少？",
+      "hint": "角度与速度都为零。",
+      "solution": [
+        "两项均为零。"
+      ],
+      "answer": "$0$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.0
+    },
+    {
+      "id": "ode-energy-q2",
+      "problem": "无阻尼时，非零小振动会渐近停下吗？",
+      "hint": "能量保持正数。",
+      "solution": [
+        "无法趋向能量为零的底部静止状态。"
+      ],
+      "answer": "不会。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-energy-q3",
+      "problem": "摆在顶点静止时能量是多少？",
+      "hint": "角度为圆周率。",
+      "solution": [
+        "$1-\\cos\\pi=2$。"
+      ],
+      "answer": "$2$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 2.0
+    },
+    {
+      "id": "ode-energy-q4",
+      "problem": "只知道 Lyapunov 导数非正，能否自动得到渐近稳定？",
+      "hint": "可能存在持续运动的零导数集合。",
+      "solution": [
+        "无阻尼振子就是反例。"
+      ],
+      "answer": "不能。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-energy-m1",
+      "claim": "能量不增加就意味着立刻严格下降。",
+      "correction": "速度为零的瞬间导数可等于零。"
+    },
+    {
+      "id": "ode-energy-m2",
+      "claim": "小角度近似能精确描述完整旋转。",
+      "correction": "正弦近似只适用于角度足够小。"
+    }
+  ],
+  "prerequisites": [
+    "ode-nullclines",
+    "ode-damping"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ode-energy-m1",
+    "ode-energy-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "能量或 Lyapunov 函数用一个标量控制整个状态的运动，不必求出每条轨迹。",
+  "intuition": "若一个正的“离平衡程度”只能下降，轨迹就不能任意远离平衡。",
+  "objectives": [
+    "计算能量沿轨迹的导数",
+    "区分非增与严格吸引"
+  ],
+  "formalDefinition": {
+    "text": "能量、摆与 Lyapunov 思路",
+    "latex": "E(\\theta,v)=\\frac{v^2}{2}+1-\\cos\\theta,\\quad E'=-cv^2",
+    "conditions": [
+      "$c\\ge0$；底部平衡附近能量正定。角度按模 $2\\pi$ 解释物理位置；顶点与大能量旋转须另分析。"
+    ]
+  },
+  "learningCheck": {
+    "question": "无阻尼摆的能量怎样变化？",
+    "choices": [
+      "保持不变",
+      "每圈增加",
+      "指数下降"
+    ],
+    "correctIndex": 0,
+    "explanation": "动能与势能互换，总能量守恒。"
+  },
+  "teaching": {
+    "explain": "能量把两维运动压成一个可比较的量，但“不会远离”与“最终停下”仍需分开证明。",
+    "steps": [
+      {
+        "title": "无阻尼",
+        "preset": {
+          "a": 1.5,
+          "c": 0,
+          "b": 6
+        },
+        "observation": "数值能量近似守恒；理论能量严格守恒。",
+        "instruction": "将初始角度 $\\theta_0$设为 $1.5$；将阻尼系数 $c$设为 $0$；将观察时间 $t$设为 $6$。"
+      },
+      {
+        "title": "有阻尼",
+        "preset": {
+          "a": 1.5,
+          "c": 0.5,
+          "b": 6
+        },
+        "observation": "轨迹收缩，能量非增。",
+        "instruction": "将初始角度 $\\theta_0$设为 $1.5$；将阻尼系数 $c$设为 $0.5$；将观察时间 $t$设为 $6$。"
+      },
+      {
+        "title": "小角度",
+        "preset": {
+          "a": 0.2,
+          "c": 0.2,
+          "b": 6
+        },
+        "observation": "局部运动接近线性振子。",
+        "instruction": "将初始角度 $\\theta_0$设为 $0.2$；将阻尼系数 $c$设为 $0.2$；将观察时间 $t$设为 $6$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-energy",
+    "caption": "相平面的角度不折回，速度初值为零。读数给出 RK4 状态与能量；能量下降来自解析耗散式。",
+    "prediction": "移除阻尼后，能量和相轨迹怎样变化？"
+  }
+}

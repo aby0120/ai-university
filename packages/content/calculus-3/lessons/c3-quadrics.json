@@ -1,0 +1,192 @@
+{
+  "id": "c3-quadrics",
+  "chapterId": "c3-space",
+  "number": "1.5",
+  "title": "二次曲面与截面",
+  "subtitle": "先切几刀，再理解整个曲面",
+  "concept": "固定一个坐标得到截面；几个关键截面通常比死记空间图形更可靠。",
+  "intuition": "把三维物体切成薄片：圆、椭圆、抛物线和双曲线会暴露它的形状。",
+  "objectives": [
+    "用截面识别标准二次曲面",
+    "区分碗形、鞍形和柱面"
+  ],
+  "body": [
+    {
+      "title": "怎么认椭球？",
+      "text": "三个平方项同号且等于正数。沿坐标轴取截距，固定一个坐标时通常得到椭圆，也可能为空或退化成点。"
+    },
+    {
+      "title": "抛物面与双曲抛物面差在哪？",
+      "text": "$z=x^2+y^2$ 的两个坐标截面都向上；$z=x^2-y^2$ 一个向上一个向下，形成鞍形。"
+    },
+    {
+      "title": "柱面一定是圆的吗？",
+      "text": "不出现某个坐标，表示沿那个方向平移不变。例如 $z=x^2$ 沿纵轴延伸，也是柱面。带交叉项时可能需旋转坐标，不能只看平方项符号猜图。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "先切几刀，再理解整个曲面",
+    "latex": "\\frac{x^2}{a^2}+\\frac{y^2}{b^2}+\\frac{z^2}{c^2}=1,\\quad z=x^2\\pm y^2,\\quad x^2+y^2-z^2=1",
+    "conditions": [
+      "椭球半轴 $a,b,c>0$；本节分类示例使用已对齐主轴的标准式。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "固定高度得到平面曲线。",
+      "latex": "z=k\\ \\Longrightarrow\\ x^2+y^2=k\\quad(z=x^2+y^2)"
+    },
+    {
+      "text": "两条垂直截面检查弯曲方向。",
+      "latex": "z(x,0)=x^2,\\quad z(0,y)=\\pm y^2"
+    },
+    {
+      "text": "缺少一个变量意味着平移不变。",
+      "latex": "z=x^2\\quad\\text{与 }y\\text{ 无关}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "椭球截面",
+      "problem": "$\\frac{x^2}4+y^2+\\frac{z^2}9=1$ 在 $z=\\frac32$ 的截面？",
+      "steps": [
+        "代入后右端剩 $1-\\frac14=\\frac34$。",
+        "得到 $\\frac{x^2}3+\\frac{y^2}{3/4}=1$。"
+      ],
+      "answer": "半轴 $\\sqrt3$ 与 $\\frac{\\sqrt3}2$ 的椭圆。"
+    },
+    {
+      "title": "识别鞍面",
+      "problem": "$z=2x^2-y^2$ 的原点是最低点吗？",
+      "steps": [
+        "沿横轴是 $z=2x^2\\ge0$。",
+        "沿纵轴是 $z=-y^2\\le0$，两侧都有高低。"
+      ],
+      "answer": "不是，是鞍点。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-quadrics-m1",
+      "claim": "所有等高线都是圆。",
+      "correction": "曲面不同，截面可为双曲线、直线、空集或其他形状。"
+    },
+    {
+      "id": "c3-quadrics-m2",
+      "claim": "沿一条方向看起来最低就是极小值。",
+      "correction": "多变量极小要求附近所有方向都不更低。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-quadrics-q1",
+      "problem": "$z=x^2+y^2$ 在 $z=4$ 的截面半径？",
+      "hint": "代入固定高度。",
+      "solution": [
+        "$x^2+y^2=4$，半径为 2。"
+      ],
+      "answer": "2",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 2
+    },
+    {
+      "id": "c3-quadrics-q2",
+      "problem": "$x^2+y^2-z^2=1$ 在 $z=0$ 的截面？",
+      "hint": "令高度为零。",
+      "solution": [
+        "$x^2+y^2=1$，是单位圆。"
+      ],
+      "answer": "单位圆。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-quadrics-q3",
+      "problem": "$y^2+z^2=9$ 是球面吗？",
+      "hint": "有没有限制横坐标？",
+      "solution": [
+        "横坐标可以任意改变。",
+        "它是沿横轴延伸的半径 3 圆柱面。"
+      ],
+      "answer": "不是，是圆柱面。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-quadrics-q4",
+      "problem": "$z=x^2-y^2$ 在 $z=0$ 的截面是什么？",
+      "hint": "分解两个平方之差。",
+      "solution": [
+        "$(x-y)(x+y)=0$。",
+        "得到两条直线 $y=x$ 和 $y=-x$。"
+      ],
+      "answer": "两条相交直线。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "方程完全不含横坐标说明什么？",
+    "choices": [
+      "一定是球面",
+      "沿横轴平移不变",
+      "没有三维图形"
+    ],
+    "correctIndex": 1,
+    "explanation": "剩余两个坐标满足同一方程，而横坐标自由。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-quadrics",
+    "caption": "曲面 $z=x^2+c y^2$ 随参数从碗形变成柱面再到鞍面。",
+    "prediction": "改变一个平方项的符号，曲面会怎样变化？"
+  },
+  "teaching": {
+    "explain": "先固定一个坐标看截面，再把这些截面拼回空间形状。",
+    "steps": [
+      {
+        "title": "向上弯曲",
+        "instruction": "将平方项系数 $c$ 设为 $1$。",
+        "preset": {
+          "c": 1
+        },
+        "observation": "两个坐标方向都向上，得到椭圆抛物面。"
+      },
+      {
+        "title": "柱面",
+        "instruction": "将平方项系数 $c$ 设为 $0$。",
+        "preset": {
+          "c": 0
+        },
+        "observation": "纵坐标不影响高度，曲面沿纵轴延伸。"
+      },
+      {
+        "title": "鞍面",
+        "instruction": "将平方项系数 $c$ 设为 $-1$。",
+        "preset": {
+          "c": -1
+        },
+        "observation": "两个坐标截面的弯曲方向相反。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-lines-planes"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-quadrics-m1",
+    "c3-quadrics-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

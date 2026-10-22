@@ -1,0 +1,193 @@
+{
+  "id": "la-pseudoinverse",
+  "chapterId": "la-svd",
+  "number": "9.3",
+  "title": "伪逆与最小范数解",
+  "subtitle": "不添加无法确定的核分量",
+  "concept": "伪逆在最小二乘解中，选出长度最小的那个输入。",
+  "intuition": "被消掉的方向无法恢复。伪逆只还原可见部分，并把无法确定的核分量设为零。",
+  "objectives": [
+    "通过 SVD 构造伪逆",
+    "求最小范数最小二乘解"
+  ],
+  "body": [
+    {
+      "title": "怎样由 SVD 得到？",
+      "text": "将正奇异值取倒数，零保持零，再交换左右因子：$A^+=V_r\\Sigma_r^{-1}U_r^T$。"
+    },
+    {
+      "title": "它解什么问题？",
+      "text": "$A^+b$ 是所有最小二乘解中唯一的最小欧氏范数输入。即使右端不可达，也先最小化残差，再在最优集合中最小化长度。"
+    },
+    {
+      "title": "会恢复原输入吗？",
+      "text": "$AA^+$ 是输出列空间的投影，$A^+A$ 是输入行空间的投影。原输入的核分量无法由输出恢复。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "伪逆与最小范数解",
+    "latex": "A^+=V_r\\Sigma_r^{-1}U_r^T,\\quad x_{\\min}=A^+b",
+    "conditions": [
+      "使用标准欧氏范数；零奇异值不取倒数。数值伪逆通常还需设置小奇异值阈值，本节精确公式只把真正的零视为零。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "在正交输入输出坐标中分解误差。",
+      "latex": "\\|Ax-b\\|^2=\\|\\Sigma V^Tx-U^Tb\\|^2"
+    },
+    {
+      "text": "可见方向分别解缩放方程。",
+      "latex": "(V^Tx)_i=(u_i^Tb)/\\sigma_i\\quad(\\sigma_i>0)"
+    },
+    {
+      "text": "自由核坐标取零使输入长度最小。",
+      "latex": "(V^Tx)_i=0\\quad(i>r)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "奇异对角矩阵",
+      "problem": "$A=\\operatorname{diag}(2,0),b=(1,3)^T$。",
+      "steps": [
+        "$A^+=\\operatorname{diag}(1/2,0)$。",
+        "最优输入为 $(1/2,0)$；输出 $(1,0)$，无法拟合纵分量三。"
+      ],
+      "answer": "残差长度为 3，最小范数输入 $(1/2,0)$。"
+    },
+    {
+      "title": "可解但不唯一",
+      "problem": "$A=(1\\ 1),b=2$，求最小范数解。",
+      "steps": [
+        "所有解写成 $(1+t,1-t)$。",
+        "长度平方 $2+2t^2$ 在 $t=0$ 最小。"
+      ],
+      "answer": "$(1,1)^T$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-pseudoinverse-m1",
+      "claim": "伪逆能恢复所有丢失信息。",
+      "correction": "核分量没有进入输出，无法恢复。"
+    },
+    {
+      "id": "la-pseudoinverse-m2",
+      "claim": "伪逆就是对所有元素取倒数。",
+      "correction": "它对奇异值操作，并保留左右方向。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$\\operatorname{diag}(4,0)$ 的伪逆？",
+      "hint": "非零奇异方向取倒数。",
+      "solution": [
+        "$\\operatorname{diag}(1/4,0)$。"
+      ],
+      "answer": "$\\operatorname{diag}(1/4,0)$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-pseudoinverse-q1"
+    },
+    {
+      "problem": "可逆方阵的伪逆与逆有什么关系？",
+      "hint": "没有零奇异值。",
+      "solution": [
+        "SVD 公式退化为通常逆。"
+      ],
+      "answer": "相同。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-pseudoinverse-q2"
+    },
+    {
+      "problem": "$A=0$ 的伪逆是什么？",
+      "hint": "没有可见方向。",
+      "solution": [
+        "全部奇异值为零，取零矩阵的转置尺寸。"
+      ],
+      "answer": "相应尺寸的零矩阵。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-pseudoinverse-q3"
+    },
+    {
+      "problem": "所有最小二乘解长度都相同吗？",
+      "hint": "考虑加核向量。",
+      "solution": [
+        "沿核加入非零分量可增加长度，而不改变输出。"
+      ],
+      "answer": "不相同；伪逆选择最短者。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-pseudoinverse-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-svd",
+    "la-least-squares"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "la-pseudoinverse-m1",
+    "la-pseudoinverse-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-pseudoinverse",
+    "caption": "比较 $A=\\operatorname{diag}(2,1)$ 与 $A=\\operatorname{diag}(2,0)$，对右端 $(1,b)$ 计算最小范数最小二乘解。",
+    "prediction": "一个方向被完全压掉后，伪逆会怎样处理无法确定的输入？"
+  },
+  "learningCheck": {
+    "question": "伪逆遇到零奇异值时怎样处理？",
+    "choices": [
+      "取无穷大",
+      "保留为零",
+      "任意设成一"
+    ],
+    "correctIndex": 1,
+    "explanation": "零表示该方向无法反演，而非应除以零。"
+  },
+  "teaching": {
+    "explain": "伪逆给出一个明确约定：在同样好的拟合中，不额外加入输出看不到的分量。",
+    "steps": [
+      {
+        "title": "可逆还原",
+        "instruction": "选可逆矩阵，取 $b=1$。",
+        "preset": {
+          "n": 0,
+          "b": 1
+        },
+        "observation": "输入为 $(1/2,1)$，残差零。"
+      },
+      {
+        "title": "奇异右端不可达",
+        "instruction": "选奇异矩阵，保持 $b=1$。",
+        "preset": {
+          "n": 1,
+          "b": 1
+        },
+        "observation": "最小范数输入为 $(1/2,0)$，残差长度一。"
+      },
+      {
+        "title": "改变不可见输出",
+        "instruction": "保持奇异矩阵，取 $b=2$。",
+        "preset": {
+          "n": 1,
+          "b": 2
+        },
+        "observation": "最短输入不变，残差长度变为二。"
+      }
+    ]
+  }
+}

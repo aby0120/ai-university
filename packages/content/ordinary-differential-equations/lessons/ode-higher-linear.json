@@ -1,0 +1,190 @@
+{
+  "id": "ode-higher-linear",
+  "chapterId": "ode-higher-order",
+  "number": "6.1",
+  "title": "高阶常系数线性方程",
+  "subtitle": "每个阶数都需要相应的自由度",
+  "body": [
+    {
+      "title": "需要多少常数？",
+      "text": "标准 $n$ 阶线性方程在连续系数区间上，需要初始函数值直到 $n-1$ 阶导数共 $n$ 个数据。"
+    },
+    {
+      "title": "重根怎样组织？",
+      "text": "实根 $r$ 重数为 $m$ 时，包含 $e^{rt},te^{rt},\\ldots,t^{m-1}e^{rt}$。"
+    },
+    {
+      "title": "非齐次呢？",
+      "text": "仍然是全部齐次解加一个特解；待定系数和共振修正可推广到高阶常系数。 记 $D=d/dt$，多项式 $P(D)$ 表示相应的常系数微分算子。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "把微分算子写成多项式。",
+      "latex": "P(D)y=0"
+    },
+    {
+      "text": "使用指数对导数的特征性质。",
+      "latex": "P(D)e^{rt}=P(r)e^{rt}"
+    },
+    {
+      "text": "重根对应更多广义方向。",
+      "latex": "(D-r)^m[t^j e^{rt}]=0\\quad(j<m)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "三个不同根",
+      "problem": "解 $y'''-y'=0$。",
+      "steps": [
+        "特征式为 $r(r-1)(r+1)$。",
+        "三个根都不同。"
+      ],
+      "answer": "$y=C_0+C_1e^t+C_2e^{-t}$。"
+    },
+    {
+      "title": "三重根",
+      "problem": "解 $y'''=0$。",
+      "steps": [
+        "特征根零的重数三。",
+        "连续积分也得到二次多项式。"
+      ],
+      "answer": "$y=C_0+C_1t+C_2t^2$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-higher-linear-q1",
+      "problem": "$(D-2)^3y=0$ 的通解？",
+      "hint": "列出三个时间幂。",
+      "solution": [
+        "根二重数三。"
+      ],
+      "answer": "$e^{2t}(C_0+C_1t+C_2t^2)$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-higher-linear-q2",
+      "problem": "四阶标准线性初值问题通常需几个初始数据？",
+      "hint": "数到三阶导数。",
+      "solution": [
+        "函数值及一至三阶导数共四个。"
+      ],
+      "answer": "$4$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 4.0
+    },
+    {
+      "id": "ode-higher-linear-q3",
+      "problem": "$y''''+y''=0$ 的实通解？",
+      "hint": "分解 $r^2(r^2+1)$。",
+      "solution": [
+        "零是二重根，另有正负虚单位。"
+      ],
+      "answer": "$C_0+C_1t+C_2\\cos t+C_3\\sin t$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-higher-linear-q4",
+      "problem": "三阶通解只含两个任意常数，通常说明什么？",
+      "hint": "比较解空间维数。",
+      "solution": [
+        "标准三阶齐次解空间需三个独立方向。"
+      ],
+      "answer": "通常漏掉了一个独立解。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-higher-linear-m1",
+      "claim": "重根出现几次就写几个相同指数。",
+      "correction": "须乘不同时间幂以保证独立。"
+    },
+    {
+      "id": "ode-higher-linear-m2",
+      "claim": "任意高阶方程都能用特征多项式求解。",
+      "correction": "此方法依赖常系数线性结构。"
+    }
+  ],
+  "prerequisites": [
+    "ode-repeated-roots"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-higher-linear-m1",
+    "ode-higher-linear-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "高阶常系数齐次解由特征根及其重数组成，全部独立解的数量等于阶数。",
+  "intuition": "重复根用时间幂补方向，复根成对改写为实振荡。",
+  "objectives": [
+    "由根和重数构造通解",
+    "匹配高阶初始数据"
+  ],
+  "formalDefinition": {
+    "text": "高阶常系数线性方程",
+    "latex": "P(r)=0,\\quad r\\text{ 重数 }m\\Rightarrow t^j e^{rt},\\quad j=0,\\ldots,m-1",
+    "conditions": [
+      "常系数线性方程最高项系数非零；实系数的非实根按共轭对组合。"
+    ]
+  },
+  "learningCheck": {
+    "question": "实根重数三时，需要哪些时间幂？",
+    "choices": [
+      "只需常数",
+      "零、一、二次幂",
+      "一、二、三次幂"
+    ],
+    "correctIndex": 1,
+    "explanation": "从零次开始，共三个独立方向。"
+  },
+  "teaching": {
+    "explain": "高阶没有改变基本思路，只是初始数据更多，解空间也更大。",
+    "steps": [
+      {
+        "title": "起点",
+        "preset": {
+          "b": 0
+        },
+        "observation": "三个函数值都为一，但导数数据不同。",
+        "instruction": "将观察时间 $t$设为 $0$。"
+      },
+      {
+        "title": "前进一单位",
+        "preset": {
+          "b": 1
+        },
+        "observation": "常数方向不动，另两方向分离。",
+        "instruction": "将观察时间 $t$设为 $1$。"
+      },
+      {
+        "title": "更长时间",
+        "preset": {
+          "b": 3
+        },
+        "observation": "增长方向明显扩大。",
+        "instruction": "将观察时间 $t$设为 $3$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-higher-linear",
+    "caption": "画出三个独立基解。亮点显示当前时间三个基值，而不是把它们误当三个不同方程。",
+    "prediction": "三个基解在起点同值，是否就线性相关？"
+  }
+}

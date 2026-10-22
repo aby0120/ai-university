@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { HeroNotebook } from "../components/HeroNotebook";
-import { Formula } from "../components/MathText";
+import { Formula, MathText, plainMathText } from "../components/MathText";
 import { PublishedBook } from "../components/Series";
 import { Eyebrow, Link } from "../components/UI";
 import type { SculptureMode } from "../components/MathSculpture";
@@ -20,7 +20,7 @@ const forms = [
     title: "曲面",
     subtitle: "波的形状",
     latex: String.raw`z=A\sin x\cos y`,
-    label: "振幅 A",
+    label: "振幅 $A$",
     min: 0.1,
     max: 1.8,
     step: 0.05,
@@ -33,7 +33,7 @@ const forms = [
     title: "环面",
     subtitle: "旋转的形状",
     latex: String.raw`(\sqrt{x^2+y^2}-2)^2+z^2=r^2`,
-    label: "管半径 r",
+    label: "管半径 $r$",
     min: 0.25,
     max: 1.2,
     step: 0.05,
@@ -46,12 +46,12 @@ const forms = [
     title: "螺旋",
     subtitle: "旋转与上升",
     latex: String.raw`(x,y,z)=(1.65\cos t,1.65\sin t,p(t-3\pi))`,
-    label: "上升系数 p",
+    label: "上升系数 $p$",
     min: 0.1,
     max: 0.3,
     step: 0.01,
     initial: 0.2,
-    caption: "三圈螺旋，管厚仅便于显示；每圈上升 2πp。",
+    caption: "三圈螺旋，管厚仅便于显示；每圈上升 $2\\pi p$。",
     to: "lesson/trigonometry",
   },
 ];
@@ -133,14 +133,14 @@ export function Home() {
           <p>
             AI 编写的开放数学教科书。
             <br />
-            读讲解，操作图形，自己解一道题。
+            完整讲解、交互图示和逐步解答。
           </p>
           <div className="stage-actions">
             <Link to="library" className="stage-primary">
               进入教科书库 <ArrowUpRight size={21} />
             </Link>
             <Link to="lab" className="stage-secondary">
-              探索互动图示 <ArrowRight size={18} />
+              查看交互图示 <ArrowRight size={18} />
             </Link>
           </div>
         </div>
@@ -185,15 +185,15 @@ export function Home() {
           </div>
           <div className="sculpture-equation">
             <Formula latex={form.latex} />
-            <span>{form.caption}</span>
+            <span><MathText text={form.caption} /></span>
           </div>
           <label className="sculpture-parameter">
             <span>
-              {form.label}
+              <span><MathText text={form.label} /></span>
               <output>{value.toFixed(2)}</output>
             </span>
             <input
-              aria-label={form.label}
+              aria-label={plainMathText(form.label)}
               type="range"
               min={form.min}
               max={form.max}
@@ -241,7 +241,7 @@ export function Home() {
                 })
             }
           >
-            向下探索 <ArrowDown size={16} />
+            浏览教材 <ArrowDown size={16} />
           </button>
         </div>
       </section>
@@ -272,7 +272,7 @@ export function Home() {
             <span>从这里，继续向前。</span>
           </h2>
           <p>
-            目前从微积分 I 开始。
+            微积分三卷、线性代数与常微分方程已开放阅读。
             <br />
             每本完成后，开放整本阅读。
           </p>
@@ -314,9 +314,9 @@ export function Home() {
             <span>动起来。</span>
           </h2>
           <p>
-            移动一个点。改变一个参数。
+            拖动曲线上的点，调整参数，
             <br />
-            对照图像、数值和公式，再解释为什么。
+            看切线、面积和曲面怎样变化。
           </p>
           <div className="hands-on-steps">
             <span>
@@ -337,7 +337,7 @@ export function Home() {
       </section>
       <nav className="home-next" aria-label="学习入口">
         <Link to="guide"><small>01 / READ</small><h3>读懂一个概念</h3><span>从讲解到定义 <ArrowUpRight size={19} /></span></Link>
-        <Link to="lab"><small>02 / EXPLORE</small><h3>亲手验证直觉</h3><span>改变参数，观察结果 <ArrowUpRight size={19} /></span></Link>
+        <Link to="lab"><small>02 / EXPLORE</small><h3>观察图形变化</h3><span>改变参数，观察结果 <ArrowUpRight size={19} /></span></Link>
         <Link to="practice"><small>03 / PRACTICE</small><h3>独立解一道题</h3><span>先尝试，再看解答 <ArrowUpRight size={19} /></span></Link>
       </nav>
     </div>

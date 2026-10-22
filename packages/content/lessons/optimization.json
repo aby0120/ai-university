@@ -17,7 +17,7 @@
       "text": "给变量标清含义，写目标量，用约束消去其他变量，注明可行区间。单位应与目标一致。"
     },
     {
-      "title": "求出 f′=0 就结束了吗？",
+      "title": "求出 $f' = 0$ 就结束了吗？",
       "text": "没有。还要检查端点或边界趋势，并用导数符号、二阶导数或函数值比较验证。开区间可能取不到最优值。"
     },
     {
@@ -26,7 +26,7 @@
     }
   ],
   "formalDefinition": {
-    "text": "在可行域 D 上比较目标函数，而非只解导数方程。",
+    "text": "在可行域 $D$ 上比较目标函数，而非只解导数方程。",
     "latex": "\\max_{x\\in D}F(x)\\quad\\text{or}\\quad\\min_{x\\in D}F(x)",
     "conditions": [
       "约束、单位和定义域是模型的一部分；内部零导数只是候选。"
@@ -34,7 +34,7 @@
   },
   "derivation": [
     {
-      "text": "周长为 24，矩形两边 x、y 满足约束。",
+      "text": "周长为 24，矩形两边 $x$、$y$ 满足约束。",
       "latex": "2x+2y=24\\Rightarrow y=12-x"
     },
     {
@@ -49,27 +49,27 @@
   "interactiveVisual": {
     "kind": "optimization",
     "function": "area-parabola",
-    "caption": "拖动矩形边长 x：周长固定，另一边为 12−x，面积在正方形处最大。",
+    "caption": "拖动矩形边长 $x$：周长固定，另一边为 $12 - x$，面积在正方形处最大。",
     "prediction": "固定周长时，一条边不断增大，面积会一直增加吗？找出转折位置。"
   },
   "workedExamples": [
     {
       "title": "靠墙的围栏",
-      "problem": "用 40 m 围栏围靠墙矩形，只围三边，最大面积？",
+      "problem": "用 $40\\,\\mathrm{m}$ 围栏围靠墙矩形，只围三边，最大面积？",
       "steps": [
-        "设垂直墙的边为 x，平行墙的边为 y；2x+y=40。",
-        "A=x(40−2x)，导数 40−4x 在 x=10 变号。"
+        "设垂直墙的边为 $x$，平行墙的边为 $y$；$2 x + y = 40$。",
+        "$A = x (40 - 2 x)$，导数 $40 - 4 x$ 在 $x = 10$ 变号。"
       ],
-      "answer": "x=10 m，y=20 m，最大 200 m²。"
+      "answer": "$x=10\\,\\mathrm{m}$，$y=20\\,\\mathrm{m}$，最大 $200\\,\\mathrm{m}^{2}$。"
     },
     {
       "title": "最小距离",
-      "problem": "直线 y=x 上哪一点离 (2,0) 最近？",
+      "problem": "直线 $y = x$ 上哪一点离 $(2,0)$ 最近？",
       "steps": [
-        "平方距离 D²=(x−2)²+x²，最小平方与最小距离位置相同。",
-        "导数为 4x−4，唯一零点 x=1，二阶为 4>0。"
+        "平方距离 $D^{2} = (x - 2)^{2} + x^{2}$，最小平方与最小距离位置相同。",
+        "导数为 $4 x - 4$，唯一零点 $x = 1$，二阶为 $4 > 0$。"
       ],
-      "answer": "点 (1,1)，距离 √2。"
+      "answer": "点 $(1,1)$，距离 $\\sqrt{2}$。"
     }
   ],
   "commonMistakes": [
@@ -87,14 +87,15 @@
   "practice": [
     {
       "id": "optimization-p1",
-      "difficulty": 1,
+      "difficulty": 2,
       "misconceptionTags": [
-        "optimization-m1"
+        "optimization-m1",
+        "optimization-m2"
       ],
       "problem": "周长 20 的矩形最大面积？",
       "answer": "$25$。",
       "solution": [
-        "边长之和 10，A=x(10−x)，顶点 x=5。"
+        "边长之和 10，$A = x (10 - x)$，顶点 $x = 5$。"
       ],
       "hint": "最大时两边相等。",
       "numericAnswer": 25
@@ -103,12 +104,13 @@
       "id": "optimization-p2",
       "difficulty": 2,
       "misconceptionTags": [
+        "optimization-m1",
         "optimization-m2"
       ],
       "problem": "两正数和为 10，最大乘积？",
       "answer": "$25$。",
       "solution": [
-        "乘积 x(10−x)，在 x=5 最大。"
+        "乘积 $x (10 - x)$，在 $x = 5$ 最大。"
       ],
       "hint": "把约束变成第二个数。",
       "numericAnswer": 25
@@ -117,26 +119,25 @@
       "id": "optimization-p3",
       "difficulty": 3,
       "misconceptionTags": [
+        "optimization-m1",
         "optimization-m2"
       ],
       "problem": "两正数积为 16，最小和？",
       "answer": "$8$。",
       "solution": [
-        "S=x+16/x，x>0；S′=1−16/x²，在 4 前负后正。"
+        "$S = x + \\frac{16}{x}$，$x > 0$；$S' = 1 - \\frac{16}{x^{2}}$，在 4 前负后正。"
       ],
       "hint": "用正数约束选根。",
       "numericAnswer": 8
     },
     {
       "id": "optimization-p4",
-      "difficulty": 4,
-      "misconceptionTags": [
-        "optimization-m2"
-      ],
+      "difficulty": 2,
+      "misconceptionTags": [],
       "problem": "为什么最小化距离常改为最小化距离平方？",
       "answer": "平方在非负数上严格递增，最优位置相同且去掉根号。",
       "solution": [
-        "比较 d₁≤d₂ 与 d₁²≤d₂² 等价。"
+        "比较 $d_{1} \\le d_{2}$ 与 $d_{1}^{2} \\le d_{2}^{2}$ 等价。"
       ],
       "hint": "距离本来非负。"
     }
@@ -152,7 +153,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.3.2",
     "status": "revised",
     "humanReviewed": false
   },
@@ -171,5 +172,34 @@
     ],
     "correctIndex": 2,
     "explanation": "最大值可能落在端点；内部还要考虑导数为零或不存在的临界点。最后比较函数值。"
+  },
+  "teaching": {
+    "explain": "先把限制写进模型，再比较合法方案。这里周长固定，一边加长就会挤短另一边，所以面积并非一直增加。",
+    "steps": [
+      {
+        "title": "先看细长矩形",
+        "instruction": "一边取 2。",
+        "preset": {
+          "x": 2
+        },
+        "observation": "另一边为 10，面积为 20，周长仍为 24。"
+      },
+      {
+        "title": "取平衡尺寸",
+        "instruction": "一边取 6。",
+        "preset": {
+          "x": 6
+        },
+        "observation": "另一边也是 6，面积达到 36。"
+      },
+      {
+        "title": "继续加长",
+        "instruction": "一边取 10。",
+        "preset": {
+          "x": 10
+        },
+        "observation": "另一边变为 2，面积回到 20；检查可行区间与转折点。"
+      }
+    ]
   }
 }

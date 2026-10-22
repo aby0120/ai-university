@@ -1,0 +1,193 @@
+{
+  "id": "c2-trig-integrals",
+  "title": "三角函数的积分",
+  "subtitle": "先用恒等式，把幂次变成可换元的形状",
+  "concept": "奇次幂留出一个因子做微分；偶次幂用降幂公式。",
+  "intuition": "积分 $\\sin^3x$ 时，留出 $\\sin x$，剩下的 $\\sin^2x$ 换成 $1-\\cos^2x$。",
+  "body": [
+    {
+      "title": "正弦与余弦的乘积？",
+      "text": "正弦幂为奇数，留一个正弦并令 $u=\\cos x$；余弦幂为奇数则反过来。两者都是偶数时，用半角公式。"
+    },
+    {
+      "title": "正切与正割呢？",
+      "text": "对 $\\tan^m x\\sec^n x$（非负整数幂），若 $n\\ge2$ 为偶数，留 $\\sec^2x\\,dx$，令 $u=\\tan x$。若 $m\\ge1$ 为奇数且 $n\\ge1$，留 $\\sec x\\tan x\\,dx$，令 $u=\\sec x$。其余情况需另作恒等变形或分部积分。"
+    },
+    {
+      "title": "还有哪些边界？",
+      "text": "含 $\\tan x$ 或 $\\sec x$ 的公式，只在不跨越 $\\cos x=0$ 的区间有效；反求导可以检查符号。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "先用恒等式，把幂次变成可换元的形状",
+    "latex": "\\sin^2x=\\frac{1-\\cos 2x}{2},\\qquad \\cos^2x=\\frac{1+\\cos 2x}{2}",
+    "conditions": [
+      "角度用弧度；换元必须连同微分因子一起变换。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "把奇次幂拆开。",
+      "latex": "\\sin^3x=\\sin x(1-\\cos^2x)"
+    },
+    {
+      "text": "换元时出现负号。",
+      "latex": "u=\\cos x,\\quad du=-\\sin x\\,dx"
+    },
+    {
+      "text": "只剩多项式积分。",
+      "latex": "\\int\\sin^3x\\,dx=-\\cos x+\\frac{\\cos^3x}{3}+C"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "偶次幂",
+      "problem": "求 $\\int_0^\\pi\\sin^2x\\,dx$。",
+      "steps": [
+        "降幂后为 $\\frac12\\int_0^\\pi(1-\\cos2x)dx$。",
+        "原函数为 $\\frac{x}{2}-\\frac{\\sin2x}{4}$，端点正弦均为零。"
+      ],
+      "answer": "$\\frac\\pi2$。"
+    },
+    {
+      "title": "留出导数",
+      "problem": "求 $\\int\\tan^3x\\sec^2x\\,dx$。",
+      "steps": [
+        "令 $u=\\tan x$，则 $du=\\sec^2x dx$。",
+        "得到 $\\int u^3du=\\frac{u^4}{4}+C$。"
+      ],
+      "answer": "$\\frac{\\tan^4x}{4}+C$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-trig-integrals-m1",
+      "claim": "$\\sin^2x$ 的积分是 $\\frac{\\sin^3x}{3}$。",
+      "correction": "这样求导会多出 $\\cos x$；先降幂。"
+    },
+    {
+      "id": "c2-trig-integrals-m2",
+      "claim": "$d(\\cos x)=\\sin x dx$。",
+      "correction": "缺少负号，会把整个积分的符号反过来。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "求 $\\int\\cos^3x dx$。",
+      "answer": "$\\sin x-\\frac{\\sin^3x}{3}+C$。",
+      "hint": "留出一个余弦。",
+      "solution": [
+        "令 $u=\\sin x$，积分为 $\\int(1-u^2)du$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-trig-integrals-p1"
+    },
+    {
+      "problem": "求 $\\int_0^{\\pi/2}\\sin x\\cos x dx$。",
+      "answer": "$\\frac12$。",
+      "hint": "令新变量为正弦。",
+      "solution": [
+        "$[\\frac12\\sin^2x]_0^{\\pi/2}=\\frac12$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.5,
+      "id": "c2-trig-integrals-p2"
+    },
+    {
+      "problem": "求 $\\int\\tan^2x dx$。",
+      "answer": "$\\tan x-x+C$。",
+      "hint": "改写为正割。",
+      "solution": [
+        "$\\tan^2x=\\sec^2x-1$，逐项积分；区间不跨正切的极点。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-trig-integrals-p3"
+    },
+    {
+      "problem": "求 $\\int\\sec^3x dx$。",
+      "answer": "$\\frac12(\\sec x\\tan x+\\ln|\\sec x+\\tan x|)+C$。",
+      "hint": "令正割求导，另一份正割平方积分。",
+      "solution": [
+        "$I=\\sec x\\tan x-\\int\\sec x\\tan^2x dx$。",
+        "用 $\\tan^2x=\\sec^2x-1$ 得 $2I=\\sec x\\tan x+\\int\\sec x dx$；最后一个积分是 $\\ln|\\sec x+\\tan x|$。"
+      ],
+      "difficulty": 5,
+      "misconceptionTags": [],
+      "id": "c2-trig-integrals-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "积分 $\\sin^4x$ 最直接的入口是？",
+    "choices": [
+      "直接套幂函数公式",
+      "降幂公式",
+      "令 $u=\\sin x$ 并忽略微分"
+    ],
+    "correctIndex": 1,
+    "explanation": "没有余弦因子可供直接换元；降幂能减少幂次。"
+  },
+  "teaching": {
+    "explain": "不要把三角函数当作普通变量硬套幂公式。恒等式是在把题目改写成已有工具能处理的形式。",
+    "steps": [
+      {
+        "title": "少量分段",
+        "instruction": "分段数设为 4。",
+        "observation": "图中条块只代表有限近似；精确积分为 $\\frac23$。",
+        "preset": {
+          "n": 4
+        }
+      },
+      {
+        "title": "细分",
+        "instruction": "分段数设为 20。",
+        "observation": "观察条块更细，近似和与精确值分列。",
+        "preset": {
+          "n": 20
+        }
+      },
+      {
+        "title": "继续细分",
+        "instruction": "分段数设为 80。",
+        "observation": "有限近似仍不是收敛证明。",
+        "preset": {
+          "n": 80
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-parts",
+    "trigonometry"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-techniques",
+  "number": "1.2",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-trig-integrals",
+    "caption": "对照 $\\int_0^{\\pi/2}\\sin^3x\\,dx$ 的有限分段近似与精确值。",
+    "prediction": "增加分段后，数值是否更接近精确积分？"
+  },
+  "misconceptionTags": [
+    "c2-trig-integrals-m1",
+    "c2-trig-integrals-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "按幂次选择恒等式与换元",
+    "积分正弦余弦和正切正割乘积",
+    "检查弧度、符号与有效区间"
+  ]
+}

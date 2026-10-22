@@ -1,0 +1,195 @@
+{
+  "id": "c2-taylor-error",
+  "title": "Taylor 余项与误差保证",
+  "subtitle": "近似要配上一条适用的误差界",
+  "concept": "Taylor 多项式只给近似；高一阶导数的上界给出离真值最多多远。",
+  "intuition": "离中心越近，$(x-a)^{m+1}$ 越小。但导数可能很大，所以不能只看距离。",
+  "body": [
+    {
+      "title": "上界在哪个区间取？",
+      "text": "要覆盖中心和目标输入之间的整段，不是只代中心的导数值。"
+    },
+    {
+      "title": "如何选阶数？",
+      "text": "先确定区间上的导数上界，再要求余项界低于容差。阶数增加时，上界也可能随之变化。"
+    },
+    {
+      "title": "无限光滑就等于级数吗？",
+      "text": "不一定。$f(x)=e^{-1/x^2}$（非零处），并令 $f(0)=0$，在零点各阶导数都为零，但非零处函数为正；它的 Taylor 级数不能代表它。非零处每阶导数都是 $x^{-1}$ 的某个多项式乘 $e^{-1/x^2}$；该指数比任意负幂都更快趋零，使各阶导数可在零点连续延伸为零。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "近似要配上一条适用的误差界",
+    "latex": "f(x)=T_m(x)+R_m(x),\\quad R_m(x)=\\frac{f^{(m+1)}(\\xi)}{(m+1)!}(x-a)^{m+1},\\quad |R_m(x)|\\leq\\frac{M|x-a|^{m+1}}{(m+1)!}",
+    "conditions": [
+      "$f$ 在包含 $a,x$ 的区间上具有连续的 $m+1$ 阶导数；$\\xi$ 位于二者之间，$M$ 控制整段上的该阶导数。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "余项是函数与匹配多项式之差。",
+      "latex": "R_m(x)=f(x)-T_m(x)"
+    },
+    {
+      "text": "Taylor 定理将其表示为中间点的高阶导数乘幂次。",
+      "latex": "R_m(x)=\\frac{f^{(m+1)}(\\xi)}{(m+1)!}(x-a)^{m+1}"
+    },
+    {
+      "text": "取绝对值，用统一导数上界替代未知中间点。",
+      "latex": "|f(x)-T_m(x)|\\leq\\frac{M|x-a|^{m+1}}{(m+1)!}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "指数近似的保证",
+      "problem": "用二次 Maclaurin 多项式估计 $e^{0.1}$，给误差界。",
+      "steps": [
+        "在 $[0,0.1]$ 上，三阶导数 $e^t\\leq e^{0.1}<1.106$。",
+        "误差小于 $\\frac{1.106(0.1)^3}{6}<0.000185$。"
+      ],
+      "answer": "近似值 $1.105$，误差小于 $0.000185$。"
+    },
+    {
+      "title": "三次正弦近似",
+      "problem": "用 $x-\\frac{x^3}{6}$ 估计 $\\sin0.2$，给一个保证。",
+      "steps": [
+        "把它视为四次 Taylor 多项式，因为四次系数为零。",
+        "五阶导数绝对值不超过 1，故误差不超过 $\\frac{0.2^5}{120}$。"
+      ],
+      "answer": "误差不超过 $0.000002667$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-taylor-error-m1",
+      "claim": "上界只看中心导数。",
+      "correction": "中间点未知，必须控制整段上的导数。"
+    },
+    {
+      "id": "c2-taylor-error-m2",
+      "claim": "各阶导数存在，就自动等于 Taylor 级数。",
+      "correction": "还必须证明余项趋于零。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "用 $1-\\frac{x^2}{2}$ 估计 $\\cos0.1$，利用三次项为零给误差界。",
+      "answer": "不超过 $\\frac{0.1^4}{24}$。",
+      "hint": "把它视为三次多项式。",
+      "solution": [
+        "四阶导数为余弦，绝对值不超过 1，代入余项界。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 4.166666666666668e-06,
+      "id": "c2-taylor-error-p1"
+    },
+    {
+      "problem": "用 $1+x$ 估计 $e^x$，在 $|x|\\leq0.1$ 上误差界？",
+      "answer": "不超过 $\\frac{e^{0.1}}2x^2$，统一界为 $\\frac{e^{0.1}}{200}$。",
+      "hint": "二阶导数在整个区间有界。",
+      "solution": [
+        "$|f^{(2)}(t)|=e^t\\leq e^{0.1}$，代一次余项界。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-taylor-error-p2"
+    },
+    {
+      "problem": "在 $[0,1]$ 用 $e^x$ 的四次 Maclaurin 多项式，余项统一上界？",
+      "answer": "$\\frac e{120}$。",
+      "hint": "五阶导数仍为指数。",
+      "solution": [
+        "$e^t\\leq e$ 且 $|x|^5\\leq1$，故 $|R_4|\\leq\\frac e{5!}$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-taylor-error-p3"
+    },
+    {
+      "problem": "一张图里两个曲线重合，能代替余项证明吗？",
+      "answer": "不能。",
+      "hint": "图只有有限窗口和采样。",
+      "solution": [
+        "视觉吻合说明当前分辨率下差别小；误差保证还需定理条件和上界。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-taylor-error-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "Taylor 级数要等于原函数，还需？",
+    "choices": [
+      "项数写成无穷就够了",
+      "相应余项趋于零",
+      "只需函数连续"
+    ],
+    "correctIndex": 1,
+    "explanation": "有限阶匹配并不能自动保证无限展开代表原函数。"
+  },
+  "teaching": {
+    "explain": "多项式负责算，余项负责兜底；把二者放在一起，近似才有明确含义。",
+    "steps": [
+      {
+        "title": "低阶",
+        "instruction": "阶数取 2，输入取 0.5。",
+        "observation": "有限多项式匹配低阶导数；读数保留实际误差。",
+        "preset": {
+          "n": 2,
+          "x": 0.5
+        }
+      },
+      {
+        "title": "增加阶数",
+        "instruction": "阶数取 6，输入仍取 0.5。",
+        "observation": "在这个输入处，观察实际误差的变化。",
+        "preset": {
+          "n": 6,
+          "x": 0.5
+        }
+      },
+      {
+        "title": "靠近边界或远处",
+        "instruction": "阶数取 10，输入取 0.9。",
+        "observation": "近似质量随输入与函数变化；仍需正文中的范围与余项条件。",
+        "preset": {
+          "n": 10,
+          "x": 0.9
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-taylor",
+    "mean-value"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-taylor-use",
+  "number": "6.1",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-taylor-error",
+    "caption": "比较 $e^x$ 与零点展开的有限近似，读取误差。",
+    "prediction": "增加阶数后，远处是否与中心附近一样准确？"
+  },
+  "misconceptionTags": [
+    "c2-taylor-error-m1",
+    "c2-taylor-error-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "在整段控制高阶导数",
+    "按目标容差选择阶数",
+    "区分无限光滑与级数表示"
+  ]
+}

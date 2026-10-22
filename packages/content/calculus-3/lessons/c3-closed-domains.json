@@ -1,0 +1,193 @@
+{
+  "id": "c3-closed-domains",
+  "chapterId": "c3-optimization",
+  "number": "4.3",
+  "title": "闭区域上的全局最值",
+  "subtitle": "内部、边界、角点都要检查",
+  "concept": "连续函数在闭且有界的非空区域上取得最大最小值；求值时把所有候选放在一起比较。",
+  "intuition": "房间里最高的位置可能在中间，也可能靠墙或在角上。只找内部的平地会漏掉边缘。",
+  "objectives": [
+    "检查全局最值存在性",
+    "比较内部与边界候选"
+  ],
+  "body": [
+    {
+      "title": "存在性由什么保证？",
+      "text": "闭、有界且非空的区域称紧致集；其上连续函数有最大最小值。缺条件时要单独判断，不能默认存在。"
+    },
+    {
+      "title": "边界怎么处理？",
+      "text": "把每段边界参数化，转为一元问题；端点、角点与不可导点都列入候选，再与内部候选比较。"
+    },
+    {
+      "title": "无界区域怎么办？",
+      "text": "有时可用远处增长条件缩到有限区域，有时只有上确界或下确界而不取得。应说明最大值与上界的区别。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "内部、边界、角点都要检查",
+    "latex": "\\min_D f,\\max_D f\\in f(D)\\quad\\text{若 }D\\ne\\varnothing\\text{ 紧致且 }f\\text{ 连续}",
+    "conditions": [
+      "本节存在性要求非空闭有界域和其上连续函数；求解时还要处理边界分段与函数不可微点。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "内部光滑候选满足梯度为零。",
+      "latex": "\\nabla f=0"
+    },
+    {
+      "text": "边界代入一元函数。",
+      "latex": "g(t)=f(\\mathbf r(t))"
+    },
+    {
+      "text": "将所有合法候选的函数值比较。",
+      "latex": "\\min\\{f(p_i)\\},\\quad\\max\\{f(p_i)\\}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "圆盘上的距离平方",
+      "problem": "$f=(x-1)^2+y^2$ 在 $x^2+y^2\\le4$ 的最值？",
+      "steps": [
+        "内部点 $(1,0)$ 给零。",
+        "边界令 $(x,y)=(2\\cos t,2\\sin t)$，函数为 $5-4\\cos t$，最大为 9。"
+      ],
+      "answer": "最小 0，最大 9。"
+    },
+    {
+      "title": "开区间的警示",
+      "problem": "$f=x+y$ 在 $0<x<1,0<y<1$ 有最大最小吗？",
+      "steps": [
+        "函数值始终介于零与 2 之间。",
+        "可任意接近端部值，却不能达到。"
+      ],
+      "answer": "无最大最小；下确界 0，上确界 2。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-closed-domains-m1",
+      "claim": "连续函数任何区域上都有最值。",
+      "correction": "还需区域条件，或用其他论证补足。"
+    },
+    {
+      "id": "c3-closed-domains-m2",
+      "claim": "找完内部驻点就结束。",
+      "correction": "边界和角点可能才是全局最值位置。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-closed-domains-q1",
+      "problem": "$f=x+y$ 在单位闭正方形上的最大值？",
+      "hint": "看各变量的合法端点。",
+      "solution": [
+        "两个变量均取 1，值为 2。"
+      ],
+      "answer": "2",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 2
+    },
+    {
+      "id": "c3-closed-domains-q2",
+      "problem": "$f=x^2+y^2$ 在半径 3 的闭圆盘上的最小值？",
+      "hint": "原点是否允许？",
+      "solution": [
+        "原点在区域内且函数非负。"
+      ],
+      "answer": "0",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0
+    },
+    {
+      "id": "c3-closed-domains-q3",
+      "problem": "$f=x$ 在整个平面有最大值吗？",
+      "hint": "向正横轴走远。",
+      "solution": [
+        "横坐标无上界，所以函数值无上界。"
+      ],
+      "answer": "没有。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-closed-domains-q4",
+      "problem": "在带尖角的闭区域上，尖角必须满足梯度为零吗？",
+      "hint": "一元端点条件类比。",
+      "solution": [
+        "尖角的允许方向受限，内部 Fermat 条件不直接适用。",
+        "角点须独立列入比较。"
+      ],
+      "answer": "不必。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "全局最值候选里需要包括边界吗？",
+    "choices": [
+      "只在梯度为零时包括",
+      "需要，包括角点和端点",
+      "不需要"
+    ],
+    "correctIndex": 1,
+    "explanation": "内部必要条件不能替代边界检查。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-closed-domains",
+    "caption": "圆盘内目标点 $(1,0)$ 与移动的边界点；用边界值和内部值分别比较。",
+    "prediction": "边界最小值会是整个圆盘的最小值吗？"
+  },
+  "teaching": {
+    "explain": "先保证最值能取得，再把内部、边界和角点的候选值放在一起比。",
+    "steps": [
+      {
+        "title": "最近边界",
+        "instruction": "将方向角 $\\theta$ 设为 $0$。",
+        "preset": {
+          "a": 0
+        },
+        "observation": "半径 2 的边界点距 $(1,0)$ 的平方为 1。"
+      },
+      {
+        "title": "侧面边界",
+        "instruction": "将方向角 $\\theta$ 设为 $\\frac\\pi2$。",
+        "preset": {
+          "a": 1.5707963267948966
+        },
+        "observation": "边界函数值为 5。"
+      },
+      {
+        "title": "最远边界",
+        "instruction": "将方向角 $\\theta$ 设为 $\\pi$。",
+        "preset": {
+          "a": 3.141592653589793
+        },
+        "observation": "边界函数值达到 9，但全局最小仍在内部。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-critical-points",
+    "c2-parametric"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-closed-domains-m1",
+    "c3-closed-domains-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

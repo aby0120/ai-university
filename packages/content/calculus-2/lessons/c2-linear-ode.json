@@ -1,0 +1,193 @@
+{
+  "id": "c2-linear-ode",
+  "title": "一阶线性方程",
+  "subtitle": "用积分因子把左边变成乘积导数",
+  "concept": "对 $y\\prime+p(x)y=q(x)$，乘一个合适函数，就能把左边合成一次乘积求导。",
+  "intuition": "目标不是猜解，而是反向设计一个因子，让乘积法则中缺少的那一项正好补上。",
+  "body": [
+    {
+      "title": "积分因子怎么来？",
+      "text": "希望 $\\mu y\\prime+\\mu p y=(\\mu y)\\prime$，所以需要 $\\mu\\prime=\\mu p$，可取 $\\mu=e^{\\int p dx}$。"
+    },
+    {
+      "title": "为什么不需要积分因子的常数？",
+      "text": "乘任何非零常数只会整体缩放同一个等式，最终被解中的常数吸收。"
+    },
+    {
+      "title": "所有方程都算线性吗？",
+      "text": "未知函数与其导数只能一次出现，系数只依赖自变量。$y^2$ 或 $yy\\prime$ 不属于这类。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "用积分因子把左边变成乘积导数",
+    "latex": "\\mu=e^{\\int p(x)dx},\\quad(\\mu y)\\prime=\\mu q,\\quad y=\\frac{\\int\\mu q\\,dx+C}{\\mu}",
+    "conditions": [
+      "$p,q$ 在所讨论区间连续；先把最高阶导数系数化为一，积分因子在该区间非零。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "用乘积法则检查所需条件。",
+      "latex": "(\\mu y)\\prime=\\mu y\\prime+\\mu\\prime y"
+    },
+    {
+      "text": "选择满足匹配条件的因子。",
+      "latex": "\\mu\\prime=p\\mu\\Longrightarrow\\mu=e^{\\int p dx}"
+    },
+    {
+      "text": "两边积分并除以非零因子。",
+      "latex": "\\mu y=\\int\\mu q\\,dx+C"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "常数外源",
+      "problem": "解 $y\\prime+2y=4$、$y(0)=1$。",
+      "steps": [
+        "积分因子 $e^{2x}$，左边变为 $(e^{2x}y)\\prime$。",
+        "$e^{2x}y=2e^{2x}+C$，初值得 $C=-1$。"
+      ],
+      "answer": "$y=2-e^{-2x}$。"
+    },
+    {
+      "title": "变系数",
+      "problem": "在 $x>0$ 上解 $y\\prime+\\frac1xy=x$。",
+      "steps": [
+        "积分因子可取 $x$，因为 $e^{\\ln x}=x$。",
+        "$(xy)\\prime=x^2$，所以 $xy=\\frac{x^3}{3}+C$。"
+      ],
+      "answer": "$y=\\frac{x^2}{3}+\\frac Cx$，$x>0$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-linear-ode-m1",
+      "claim": "把积分因子直接加到解上。",
+      "correction": "它要乘整个方程，使左侧成为乘积导数。"
+    },
+    {
+      "id": "c2-linear-ode-m2",
+      "claim": "忘记先把导数系数化为一。",
+      "correction": "积分因子使用标准形式中的系数。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$y\\prime+y=0,y(0)=2$ 的解？",
+      "answer": "$2e^{-x}$。",
+      "hint": "积分因子是指数。",
+      "solution": [
+        "$(e^xy)\\prime=0$，故 $e^xy=2$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-linear-ode-p1"
+    },
+    {
+      "problem": "$y\\prime+y=1,y(0)=0$ 的解？",
+      "answer": "$1-e^{-x}$。",
+      "hint": "稳态为一。",
+      "solution": [
+        "$(e^xy)\\prime=e^x$，积分得 $y=1+Ce^{-x}$，初值给 $C=-1$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-linear-ode-p2"
+    },
+    {
+      "problem": "$2y\\prime+4y=6$ 的积分因子可取什么？",
+      "answer": "$e^{2x}$。",
+      "hint": "先除以二。",
+      "solution": [
+        "标准形式为 $y\\prime+2y=3$，积分系数 2。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-linear-ode-p3"
+    },
+    {
+      "problem": "$y\\prime+y^2=x$ 属于本节线性方程吗？",
+      "answer": "不属于。",
+      "hint": "检查未知函数的幂次。",
+      "solution": [
+        "含 $y^2$，不能按一阶线性积分因子公式直接处理。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [
+        "c2-linear-ode-m2"
+      ],
+      "id": "c2-linear-ode-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "积分因子要让左边成为？",
+    "choices": [
+      "两个积分的乘积",
+      "一个乘积的导数",
+      "一个常数"
+    ],
+    "correctIndex": 1,
+    "explanation": "这样才能直接积分恢复未知函数。"
+  },
+  "teaching": {
+    "explain": "先决定希望出现的乘积导数，再反过来求它所需要的因子。这和分部积分使用的是同一条乘积法则。",
+    "steps": [
+      {
+        "title": "较大步长",
+        "instruction": "分段数取 4。",
+        "observation": "在固定区间 $[0,4]$ 上用四步，近似在 1 与 3 之间振荡，连续解却趋于 2。",
+        "preset": {
+          "n": 4
+        }
+      },
+      {
+        "title": "减小步长",
+        "instruction": "分段数取 16。",
+        "observation": "步长降为 0.25，近似与精确解更接近。",
+        "preset": {
+          "n": 16
+        }
+      },
+      {
+        "title": "继续细分",
+        "instruction": "分段数取 64。",
+        "observation": "继续减小步长，查看末点误差；离散算法与连续模型仍需区分。",
+        "preset": {
+          "n": 64
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-separable",
+    "c2-parts"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-ode",
+  "number": "8.3",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-linear-ode",
+    "caption": "对照 $y\\prime=4-2y$、$y(0)=1$ 的精确解与 Euler 近似。",
+    "prediction": "步长减小时，折线与精确曲线之间的差别怎样变化？"
+  },
+  "misconceptionTags": [
+    "c2-linear-ode-m1",
+    "c2-linear-ode-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "化为一阶线性标准形式",
+    "推导并使用积分因子",
+    "代回检查初值与定义域"
+  ]
+}

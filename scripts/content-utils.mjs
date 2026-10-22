@@ -12,6 +12,65 @@ export const allLessons = book.lessonIds.map((id) =>
     ),
   ),
 );
+export const contentBooks = [
+  {
+    book,
+    allLessons,
+    extra: JSON.parse(
+      fs.readFileSync(`${root}/packages/content/supplements.json`),
+    ),
+    directory: "packages/content/lessons",
+    filename: "Calculus-I.md",
+    printFile: "book.html",
+  },
+];
+const book2 = JSON.parse(
+  fs.readFileSync(`${root}/packages/content/calculus-2/book.json`),
+);
+contentBooks.push({
+  book: book2,
+  allLessons: book2.lessonIds.map((id) =>
+    JSON.parse(
+      fs.readFileSync(`${root}/packages/content/calculus-2/lessons/${id}.json`),
+    ),
+  ),
+  extra: JSON.parse(
+    fs.readFileSync(`${root}/packages/content/calculus-2/supplements.json`),
+  ),
+  directory: "packages/content/calculus-2/lessons",
+  filename: "Calculus-II.md",
+  printFile: "calculus-2.html",
+});
+const book3 = JSON.parse(
+  fs.readFileSync(root + "/packages/content/calculus-3/book.json"),
+);
+contentBooks.push({
+  book: book3,
+  allLessons: book3.lessonIds.map((id) =>
+    JSON.parse(
+      fs.readFileSync(
+        root + "/packages/content/calculus-3/lessons/" + id + ".json",
+      ),
+    ),
+  ),
+  extra: JSON.parse(
+    fs.readFileSync(root + "/packages/content/calculus-3/supplements.json"),
+  ),
+  directory: "packages/content/calculus-3/lessons",
+  filename: "Calculus-III.md",
+  printFile: "calculus-3.html",
+});
+const book4 = JSON.parse(fs.readFileSync(root + '/packages/content/linear-algebra/book.json'));
+contentBooks.push({book:book4,
+  allLessons:book4.lessonIds.map(id=>JSON.parse(fs.readFileSync(root+'/packages/content/linear-algebra/lessons/'+id+'.json'))),
+  extra:JSON.parse(fs.readFileSync(root+'/packages/content/linear-algebra/supplements.json')),
+  directory:'packages/content/linear-algebra/lessons',filename:'Linear-Algebra.md',printFile:'linear-algebra.html'});
+const book5 = JSON.parse(fs.readFileSync(root + '/packages/content/ordinary-differential-equations/book.json'));
+contentBooks.push({book:book5,
+  allLessons:book5.lessonIds.map(id=>JSON.parse(fs.readFileSync(root+'/packages/content/ordinary-differential-equations/lessons/'+id+'.json'))),
+  extra:JSON.parse(fs.readFileSync(root+'/packages/content/ordinary-differential-equations/supplements.json')),
+  directory:'packages/content/ordinary-differential-equations/lessons',filename:'Ordinary-Differential-Equations.md',printFile:'ordinary-differential-equations.html'});
+export const libraryLessons = contentBooks.flatMap((c) => c.allLessons);
 export function walkStrings(value, fn, key = "") {
   if (typeof value === "string") fn(value, key);
   else if (value && typeof value === "object")

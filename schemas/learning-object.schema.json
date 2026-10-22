@@ -25,7 +25,8 @@
     "misconceptionTags",
     "provenance",
     "sources",
-    "learningCheck"
+    "learningCheck",
+    "teaching"
   ],
   "properties": {
     "id": {
@@ -156,7 +157,11 @@
             "area-between",
             "disk",
             "shell",
-            "arc"
+            "arc",
+            "calculus2",
+            "calculus3",
+            "linear-algebra",
+            "ode"
           ]
         },
         "function": {
@@ -363,6 +368,113 @@
         },
         "explanation": {
           "$ref": "#/definitions/text"
+        }
+      }
+    },
+    "teaching": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "explain",
+        "steps"
+      ],
+      "properties": {
+        "explain": {
+          "$ref": "#/definitions/text"
+        },
+        "steps": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "title",
+              "instruction",
+              "observation",
+              "preset"
+            ],
+            "properties": {
+              "title": {
+                "$ref": "#/definitions/text"
+              },
+              "instruction": {
+                "$ref": "#/definitions/text"
+              },
+              "observation": {
+                "$ref": "#/definitions/text"
+              },
+              "preset": {
+                "type": "object",
+                "additionalProperties": false,
+                "minProperties": 1,
+                "properties": {
+                  "a": {
+                    "type": "number"
+                  },
+                  "x": {
+                    "type": "number"
+                  },
+                  "h": {
+                    "type": "number"
+                  },
+                  "b": {
+                    "type": "number"
+                  },
+                  "c": {
+                    "type": "number"
+                  },
+                  "eps": {
+                    "type": "number"
+                  },
+                  "slice": {
+                    "type": "number"
+                  },
+                  "degrees": {
+                    "type": "number"
+                  },
+                  "n": {
+                    "type": "integer"
+                  },
+                  "side": {
+                    "enum": [
+                      -1,
+                      1
+                    ]
+                  },
+                  "method": {
+                    "enum": [
+                      "left",
+                      "right",
+                      "midpoint",
+                      "trapezoid"
+                    ]
+                  },
+                  "comparison": {
+                    "enum": [
+                      "original",
+                      "corner",
+                      "jump",
+                      "filled"
+                    ]
+                  },
+                  "dimension": {
+                    "enum": [
+                      "2d",
+                      "3d"
+                    ]
+                  },
+                  "model": {
+                    "enum": [
+                      "disk",
+                      "washer"
+                    ]
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

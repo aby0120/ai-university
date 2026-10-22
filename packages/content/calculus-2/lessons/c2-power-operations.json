@@ -1,0 +1,196 @@
+{
+  "id": "c2-power-operations",
+  "title": "幂级数的求导与积分",
+  "subtitle": "在收敛圆内部，可以逐项操作",
+  "concept": "幂级数在收敛区间内部可逐项求导、积分，半径不变；端点结论可能变化。",
+  "intuition": "从几何级数出发，积分一次就能得到对数，求导一次就能得到新的有理函数展开。",
+  "body": [
+    {
+      "title": "为什么强调内部？",
+      "text": "任意函数级数不能随便逐项求导。幂级数及其逐项导数级数在严格位于收敛半径内的每个闭区间都一致收敛，这才保证逐项求导；原级数的一致收敛保证逐项积分。“一致”指同一个项数能同时控制该闭区间内所有输入的尾部。"
+    },
+    {
+      "title": "积分常数怎么定？",
+      "text": "最好从中心开始做定积分，或代入已知函数值确定常数，避免丢失常数项。"
+    },
+    {
+      "title": "端点如何变化？",
+      "text": "积分可能增加端点收敛性，求导可能减少。必须重新代入，不能把原区间照搬。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "在收敛圆内部，可以逐项操作",
+    "latex": "\\frac d{dx}\\sum_{n=0}^\\infty c_n(x-a)^n=\\sum_{n=1}^\\infty nc_n(x-a)^{n-1}\\quad(|x-a|<R)",
+    "conditions": [
+      "原幂级数半径为 $R>0$；逐项积分也只先保证在开区间内，边界另查。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "从收敛几何级数开始。",
+      "latex": "\\frac1{1-t}=\\sum_{n=0}^\\infty t^n\\quad(|t|<1)"
+    },
+    {
+      "text": "在中心到输入之间逐项积分。",
+      "latex": "-\\ln(1-x)=\\sum_{n=0}^\\infty\\frac{x^{n+1}}{n+1}\\quad(|x|<1)"
+    },
+    {
+      "text": "或逐项求导，得到另一个展开。",
+      "latex": "\\frac1{(1-x)^2}=\\sum_{n=1}^\\infty nx^{n-1}\\quad(|x|<1)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "反正切级数",
+      "problem": "由几何级数推导 $\\arctan x$ 在 $|x|<1$ 的展开。",
+      "steps": [
+        "$\\frac1{1+t^2}=\\sum_{n=0}^\\infty(-1)^nt^{2n}$。",
+        "从 0 积分到 $x$，常数由 $\\arctan0=0$ 确定。"
+      ],
+      "answer": "$\\arctan x=\\sum_{n=0}^\\infty\\frac{(-1)^nx^{2n+1}}{2n+1}$。"
+    },
+    {
+      "title": "计算一个带系数的和",
+      "problem": "求 $\\sum_{n=1}^\\infty\\frac n{2^n}$。",
+      "steps": [
+        "逐项求导给出 $\\sum n x^{n-1}=\\frac1{(1-x)^2}$。",
+        "乘 $x$ 再代 $x=\\frac12$。"
+      ],
+      "answer": "$2$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-power-operations-m1",
+      "claim": "任何无穷和都能逐项求导。",
+      "correction": "需要相应收敛条件；本节保证针对半径内的幂级数。"
+    },
+    {
+      "id": "c2-power-operations-m2",
+      "claim": "求导后的端点也原样保留。",
+      "correction": "半径相同，但端点可能改变。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "求 $\\sum_{n=1}^\\infty n(\\frac13)^n$。",
+      "answer": "$\\frac34$。",
+      "hint": "使用几何级数的导数。",
+      "solution": [
+        "$\\sum nx^n=\\frac{x}{(1-x)^2}$，代入 $\\frac13$ 得 $\\frac34$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.75,
+      "id": "c2-power-operations-p1"
+    },
+    {
+      "problem": "$\\ln(1+x)$ 在零点展开的前四个非零项？",
+      "answer": "$x-\\frac{x^2}{2}+\\frac{x^3}{3}-\\frac{x^4}{4}$。",
+      "hint": "积分负公比几何级数。",
+      "solution": [
+        "$\\frac1{1+t}=1-t+t^2-t^3+\\cdots$，从零逐项积分。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-power-operations-p2"
+    },
+    {
+      "problem": "$\\sum\\frac{x^n}{n^2}$ 在 $x=1$ 收敛，求导后在该点呢？",
+      "answer": "发散。",
+      "hint": "看导数项。",
+      "solution": [
+        "导数级数在 1 变为 $\\sum\\frac1n$，是调和级数。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-power-operations-p3"
+    },
+    {
+      "problem": "由 $\\frac1{1-x}$ 写出 $\\frac1{1-x^2}$ 的展开及范围。",
+      "answer": "$\\sum_{n=0}^\\infty x^{2n}$，$|x|<1$。",
+      "hint": "将输入换成平方。",
+      "solution": [
+        "公比为 $x^2$，要求 $|x^2|<1$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [
+        "c2-power-operations-m2"
+      ],
+      "id": "c2-power-operations-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "逐项求导后，收敛半径和端点？",
+    "choices": [
+      "半径不变，端点另查",
+      "半径和端点都不变",
+      "半径必缩小"
+    ],
+    "correctIndex": 0,
+    "explanation": "开区间内有保证，边界需要新的判别。"
+  },
+  "teaching": {
+    "explain": "一条已经可靠的展开可以变成工具箱：代入、求导、积分，造出新的展开；每次都带上有效范围。",
+    "steps": [
+      {
+        "title": "中心附近",
+        "instruction": "输入取 0.5，项数取 10。",
+        "observation": "处于收敛半径内，部分和靠近 2。",
+        "preset": {
+          "x": 0.5,
+          "n": 10
+        }
+      },
+      {
+        "title": "靠近边界",
+        "instruction": "输入取 0.95，项数取 10。",
+        "observation": "仍收敛，但需要更多项才能取得类似精度。",
+        "preset": {
+          "x": 0.95,
+          "n": 10
+        }
+      },
+      {
+        "title": "半径之外",
+        "instruction": "输入取 -1.2，项数取 20。",
+        "observation": "部分和振荡增大，不等于有理函数值。",
+        "preset": {
+          "x": -1.2,
+          "n": 20
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-power-series"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-power",
+  "number": "5.3",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-power-operations",
+    "caption": "对照 $\\sum_{n=0}^{N-1}x^n$ 与 $\\frac1{1-x}$，显示收敛半径。",
+    "prediction": "把输入移到半径外，多项式曲线还会趋向同一个函数吗？"
+  },
+  "misconceptionTags": [
+    "c2-power-operations-m1",
+    "c2-power-operations-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "在收敛内部逐项求导积分",
+    "用中心值确定积分常数",
+    "重新检查操作后的端点"
+  ]
+}

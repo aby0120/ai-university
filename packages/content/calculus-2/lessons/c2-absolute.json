@@ -1,0 +1,191 @@
+{
+  "id": "c2-absolute",
+  "title": "绝对收敛与条件收敛",
+  "subtitle": "先去掉符号，检查是否仍能加出有限总量",
+  "concept": "绝对值级数收敛叫绝对收敛；原级数收敛而绝对值级数发散，叫条件收敛。",
+  "intuition": "条件收敛依赖正负抵消，重新排列可能改变和；绝对收敛则对排列稳定。",
+  "body": [
+    {
+      "title": "为什么绝对收敛更强？",
+      "text": "原尾和的绝对值不超过绝对值尾和。后者足够小，就控制住原尾和。"
+    },
+    {
+      "title": "怎样分类？",
+      "text": "先检查绝对值级数；若收敛即完成。若发散，再检查带符号的原级数，而不是直接判它发散。"
+    },
+    {
+      "title": "可以随意重排吗？",
+      "text": "有限和随意重排；无穷和要额外条件。绝对收敛可重排；条件收敛必须保留指定次序。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "先去掉符号，检查是否仍能加出有限总量",
+    "latex": "\\sum|a_n|<\\infty\\Rightarrow\\sum a_n\\text{ 收敛};\\qquad \\sum a_n\\text{ 收敛且}\\sum|a_n|=\\infty\\Rightarrow\\text{条件收敛}",
+    "conditions": [
+      "这里讨论实数级数；重排结论不意味着任意截断都相等。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先对有限尾和使用三角不等式。",
+      "latex": "\\left|\\sum_{n=N+1}^M a_n\\right|\\leq\\sum_{n=N+1}^M|a_n|"
+    },
+    {
+      "text": "绝对收敛让右侧尾部任意小。",
+      "latex": "\\forall\\varepsilon>0\\ \\exists N:\\sum_{n>N}|a_n|<\\varepsilon"
+    },
+    {
+      "text": "原级数满足柯西条件，所以收敛。",
+      "latex": "\\left|\\sum_{n=N+1}^M a_n\\right|<\\varepsilon"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "条件收敛",
+      "problem": "分类 $\\sum\\frac{(-1)^{n-1}}n$。",
+      "steps": [
+        "交错判别给出收敛。",
+        "绝对值后是调和级数，发散。"
+      ],
+      "answer": "条件收敛。"
+    },
+    {
+      "title": "绝对收敛",
+      "problem": "分类 $\\sum\\frac{(-1)^n}{n^2}$。",
+      "steps": [
+        "绝对值级数为平方倒数级数。",
+        "因幂指数为 2，大于 1，绝对值和有限。"
+      ],
+      "answer": "绝对收敛。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-absolute-m1",
+      "claim": "绝对值和发散，原级数必发散。",
+      "correction": "还可能条件收敛，应继续检查原级数。"
+    },
+    {
+      "id": "c2-absolute-m2",
+      "claim": "重排不会影响任何无穷和。",
+      "correction": "条件收敛的和可能随排列改变。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$\\sum\\frac{(-1)^n}{n^3}$ 如何分类？",
+      "answer": "绝对收敛。",
+      "hint": "先去掉符号。",
+      "solution": [
+        "绝对值级数是指数为 3 的正项幂尾部，收敛。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-absolute-p1"
+    },
+    {
+      "problem": "$\\sum\\frac{(-1)^n}{\\sqrt n}$ 如何分类？",
+      "answer": "条件收敛。",
+      "hint": "分别检查原级数和绝对值级数。",
+      "solution": [
+        "幅度递减到零，原级数收敛；绝对值的幂指数为 $\\frac12\\leq1$，发散。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-absolute-p2"
+    },
+    {
+      "problem": "$\\sum\\frac{(-2)^n}{n}$ 如何分类？",
+      "answer": "发散。",
+      "hint": "单项是否趋零？",
+      "solution": [
+        "幅度 $\\frac{2^n}{n}$ 不趋零，必要条件失败。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-absolute-p3"
+    },
+    {
+      "problem": "$\\sum\\frac{\\sin n}{n^2}$ 如何分类？",
+      "answer": "绝对收敛。",
+      "hint": "用绝对值比较。",
+      "solution": [
+        "$|\\frac{\\sin n}{n^2}|\\leq\\frac1{n^2}$，由比较判别得绝对收敛。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-absolute-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "绝对值级数发散时，原级数？",
+    "choices": [
+      "必发散",
+      "必条件收敛",
+      "还需继续判断"
+    ],
+    "correctIndex": 2,
+    "explanation": "条件收敛与发散都有可能。"
+  },
+  "teaching": {
+    "explain": "先问“不靠抵消，大小本身能不能收住？”能收住是绝对收敛，靠抵消才收住是条件收敛。",
+    "steps": [
+      {
+        "title": "奇数项",
+        "instruction": "项数取 5。",
+        "observation": "下一项为负，当前部分和在真值上方。",
+        "preset": {
+          "n": 5
+        }
+      },
+      {
+        "title": "偶数项",
+        "instruction": "项数取 6。",
+        "observation": "下一项为正，当前部分和在真值下方。",
+        "preset": {
+          "n": 6
+        }
+      },
+      {
+        "title": "减小误差",
+        "instruction": "项数取 60。",
+        "observation": "误差不超过 $\\frac1{61}$，真值仍位于相邻部分和间。",
+        "preset": {
+          "n": 60
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-alternating",
+    "c2-comparison"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-power",
+  "number": "5.1",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-absolute",
+    "caption": "显示交错调和的部分和、真实值 $\\ln2$ 与下一项误差界。",
+    "prediction": "奇数与偶数部分和分别落在真值哪一侧？"
+  },
+  "misconceptionTags": [
+    "c2-absolute-m1",
+    "c2-absolute-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "分别判断原级数与绝对值级数",
+    "分类绝对与条件收敛",
+    "解释重排为什么需要条件"
+  ]
+}

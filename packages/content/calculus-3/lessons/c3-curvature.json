@@ -1,0 +1,194 @@
+{
+  "id": "c3-curvature",
+  "chapterId": "c3-curves",
+  "number": "2.3",
+  "title": "弧长参数与曲率",
+  "subtitle": "把转弯程度与行走快慢分开",
+  "concept": "曲率测量每走单位弧长，切线方向转了多少；它是曲线形状的量。",
+  "intuition": "同一弯道快走慢走都一样弯。用弧长而不是时间衡量切向量的转动，就去掉了速度影响。",
+  "objectives": [
+    "计算曲率与弧长参数",
+    "分解切向和法向加速度"
+  ],
+  "body": [
+    {
+      "title": "单位切向量是什么？",
+      "text": "将非零速度归一化得到 $\\mathbf T$。沿路程对它求导，其长度就是曲率。"
+    },
+    {
+      "title": "加速度怎样分解？",
+      "text": "切向分量改变速率，法向分量大小为曲率乘速率平方。曲率非零时定义主法向量和副法向量。"
+    },
+    {
+      "title": "扭率需要在这里掌握吗？",
+      "text": "本卷核心是长度与曲率；曲线离开密切平面的扭转可用扭率描述，作为后续微分几何范围，不影响积分定理学习。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "把转弯程度与行走快慢分开",
+    "latex": "\\mathbf T=\\frac{\\mathbf r\\prime}{\\|\\mathbf r\\prime\\|},\\quad\\kappa=\\left\\|\\frac{d\\mathbf T}{ds}\\right\\|=\\frac{\\|\\mathbf r\\prime\\times\\mathbf r^{\\prime\\prime}\\|}{\\|\\mathbf r\\prime\\|^3},\\quad\\mathbf a=v\\prime\\mathbf T+v^2\\kappa\\mathbf N",
+    "conditions": [
+      "曲线二阶连续可导且速度非零；$\\mathbf N$ 还要求曲率非零；弧长参数在规则区间内单调。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "弧长变化率是速率。",
+      "latex": "\\frac{ds}{dt}=v"
+    },
+    {
+      "text": "单位切向的变化与切向垂直。",
+      "latex": "\\mathbf T\\cdot\\mathbf T=1\\ \\Longrightarrow\\ \\mathbf T\\cdot\\mathbf T\\prime=0"
+    },
+    {
+      "text": "对速度的大小与方向分别求导。",
+      "latex": "\\frac d{dt}(v\\mathbf T)=v\\prime\\mathbf T+v\\mathbf T\\prime"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "圆的曲率",
+      "problem": "半径 4 的圆曲率是多少？",
+      "steps": [
+        "单位弧长对应角度变化 $1/4$。",
+        "也可代入速度与加速度的叉积公式。"
+      ],
+      "answer": "$\\kappa=\\frac14$。"
+    },
+    {
+      "title": "螺旋曲率",
+      "problem": "$\\mathbf r(t)=(2\\cos t,2\\sin t,t)$ 的曲率？",
+      "steps": [
+        "速度长 $\\sqrt5$，加速度长 2，二者垂直。",
+        "叉积长 $2\\sqrt5$，除以 $5\\sqrt5$。"
+      ],
+      "answer": "$\\kappa=\\frac25$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-curvature-m1",
+      "claim": "走得越快曲率越大。",
+      "correction": "曲率对规则重新参数化不变，法向加速度才随速率平方增加。"
+    },
+    {
+      "id": "c3-curvature-m2",
+      "claim": "直线的主法向量由公式唯一确定。",
+      "correction": "直线曲率为零，主法向量不能按这个归一化公式确定。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-curvature-q1",
+      "problem": "半径 2 的圆曲率？",
+      "hint": "使用半径倒数。",
+      "solution": [
+        "圆每走弧长 $ds$ 转角 $ds/2$。"
+      ],
+      "answer": "$\\frac12$",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.5
+    },
+    {
+      "id": "c3-curvature-q2",
+      "problem": "$\\mathbf r(t)=(t,0,0)$ 曲率是多少？",
+      "hint": "加速度为零。",
+      "solution": [
+        "叉积为零且速度长为 1，曲率为零。"
+      ],
+      "answer": "0",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0
+    },
+    {
+      "id": "c3-curvature-q3",
+      "problem": "同一圆周轨迹速度翻倍，法向加速度变几倍？",
+      "hint": "保持曲率不变。",
+      "solution": [
+        "由 $a_N=\\kappa v^2$，变为四倍。"
+      ],
+      "answer": "4 倍",
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "numericAnswer": 4
+    },
+    {
+      "id": "c3-curvature-q4",
+      "problem": "$\\mathbf r\\prime(t_0)=0$ 时能直接代叉积公式吗？",
+      "hint": "检查分母。",
+      "solution": [
+        "分母速度的三次方为零。",
+        "需要更换规则参数或另行分析，不可直接相除。"
+      ],
+      "answer": "不能。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "相同轨迹用两倍速率走，曲率如何变化？",
+    "choices": [
+      "变为两倍",
+      "变为四倍",
+      "不变"
+    ],
+    "correctIndex": 2,
+    "explanation": "曲率取决于形状，单位是长度的倒数。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-curvature",
+    "caption": "改变圆半径，比较单位切线、主法向与曲率；坐标比例保持一致。",
+    "prediction": "半径越大，单位路程的转向越多还是越少？"
+  },
+  "teaching": {
+    "explain": "把切向量的转动除以走过的长度，才是与快慢无关的弯曲程度。",
+    "steps": [
+      {
+        "title": "小半径",
+        "instruction": "将圆半径 $R$ 设为 $0.5$。",
+        "preset": {
+          "b": 0.5
+        },
+        "observation": "圆更紧，曲率为 2。"
+      },
+      {
+        "title": "单位半径",
+        "instruction": "将圆半径 $R$ 设为 $1$。",
+        "preset": {
+          "b": 1
+        },
+        "observation": "曲率为 1。"
+      },
+      {
+        "title": "大半径",
+        "instruction": "将圆半径 $R$ 设为 $2$。",
+        "preset": {
+          "b": 2
+        },
+        "observation": "圆更平缓，曲率为一半。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-cross",
+    "c3-motion"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-curvature-m1",
+    "c3-curvature-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

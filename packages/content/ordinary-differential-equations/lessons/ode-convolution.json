@@ -1,0 +1,189 @@
+{
+  "id": "ode-convolution",
+  "chapterId": "ode-laplace",
+  "number": "7.6",
+  "title": "卷积与一般外力响应",
+  "subtitle": "把每一小段输入的响应加起来",
+  "body": [
+    {
+      "title": "卷积是什么？",
+      "text": "$(f*g)(t)=\\int_0^tf(\\tau)g(t-\\tau)d\\tau$。第二因子记录从输入时刻到现在过去多久。"
+    },
+    {
+      "title": "变换为什么有用？",
+      "text": "在可交换积分的收敛条件下，时间卷积变成变换的乘积。"
+    },
+    {
+      "title": "初值放哪里？",
+      "text": "非零初值额外贡献齐次响应。只写卷积通常只给零初值部分。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "零初值振子频域关系。",
+      "latex": "(s^2+\\omega_0^2)Y=G"
+    },
+    {
+      "text": "逆变换传递因子。",
+      "latex": "h(t)=\\frac{\\sin\\omega_0t}{\\omega_0}\\quad(t\\ge0)"
+    },
+    {
+      "text": "把频域乘积变回积分。",
+      "latex": "y(t)=\\int_0^t\\frac{\\sin(\\omega_0(t-\\tau))}{\\omega_0}g(\\tau)d\\tau"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "恒定驱动振子",
+      "problem": "求 $y''+y=1$ 的零初值响应。",
+      "steps": [
+        "卷积为 $\\int_0^t\\sin(t-\\tau)d\\tau$。",
+        "令剩余时间为积分变量。"
+      ],
+      "answer": "$y=1-\\cos t$。"
+    },
+    {
+      "title": "一阶指数核",
+      "problem": "求 $y'+y=1$ 的零初值响应。",
+      "steps": [
+        "冲激响应在正时间为 $e^{-t}$。",
+        "积分 $\\int_0^te^{-(t-\\tau)}d\\tau$。"
+      ],
+      "answer": "$y=1-e^{-t}$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-convolution-q1",
+      "problem": "常数一与自身的卷积？",
+      "hint": "积分区间长度。",
+      "solution": [
+        "$\\int_0^t1d\\tau=t$。"
+      ],
+      "answer": "$t$。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-convolution-q2",
+      "problem": "卷积里的 $t-\\tau$ 表示什么？",
+      "hint": "比较当前与输入时刻。",
+      "solution": [
+        "是输入发生后已经经过的时间。"
+      ],
+      "answer": "响应的年龄。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-convolution-q3",
+      "problem": "$e^{-t}*e^{-t}$ 是什么？",
+      "hint": "把指数合并。",
+      "solution": [
+        "被积式为常数 $e^{-t}$，再乘区间长度。"
+      ],
+      "answer": "$te^{-t}$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-convolution-q4",
+      "problem": "非零初值能否只用零初值卷积作为完整解？",
+      "hint": "卷积在起点通常为零。",
+      "solution": [
+        "还须补齐初值响应。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-convolution-m1",
+      "claim": "卷积把未来输入也加进当前输出。",
+      "correction": "因果积分只包含过去到现在。"
+    },
+    {
+      "id": "ode-convolution-m2",
+      "claim": "卷积与普通逐点乘法一样。",
+      "correction": "一个是积分累积，一个是同一时刻相乘。"
+    }
+  ],
+  "prerequisites": [
+    "ode-impulse"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ode-convolution-m1",
+    "ode-convolution-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "线性时不变系统的零初值响应，是外力与因果冲激响应的卷积。",
+  "intuition": "每一刻输入都启动一段自己的响应；当前输出是所有过去输入的累积贡献。",
+  "objectives": [
+    "解释卷积中的时间差",
+    "使用积分表示解"
+  ],
+  "formalDefinition": {
+    "text": "卷积与一般外力响应",
+    "latex": "y(t)=\\int_0^t h(t-\\tau)g(\\tau)d\\tau,\\qquad\\mathcal L\\{f*g\\}=FG",
+    "conditions": [
+      "因果常系数线性系统，零初值；本卷假设输入分段连续且指数阶，使相应交换与变换合法。"
+    ]
+  },
+  "learningCheck": {
+    "question": "卷积的上限为什么是当前时间？",
+    "choices": [
+      "为了省计算",
+      "因果系统只受过去输入影响",
+      "函数以后没有定义"
+    ],
+    "correctIndex": 1,
+    "explanation": "未来输入不影响现在的因果响应。"
+  },
+  "teaching": {
+    "explain": "卷积是把“每次小推动会怎样”累积成“所有推动共同造成什么”。",
+    "steps": [
+      {
+        "title": "较早",
+        "preset": {
+          "a": 0.5
+        },
+        "observation": "只有短暂输入历史。",
+        "instruction": "将当前时刻 $t$设为 $0.5$。"
+      },
+      {
+        "title": "较晚",
+        "preset": {
+          "a": 2
+        },
+        "observation": "更早输入经过更长时间衰减。",
+        "instruction": "将当前时刻 $t$设为 $2$。"
+      },
+      {
+        "title": "接近稳态",
+        "preset": {
+          "a": 5
+        },
+        "observation": "累积面积接近一，但仍小于一。",
+        "instruction": "将当前时刻 $t$设为 $5$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-convolution",
+    "caption": "横轴是过去输入时刻，金线为当前时刻的卷积被积函数，阴影面积等于零初值响应。",
+    "prediction": "当前时刻变晚后，过去输入的贡献怎样重新分配？"
+  }
+}

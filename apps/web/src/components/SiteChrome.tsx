@@ -1,3 +1,5 @@
+import {collectionForLesson} from "../../../../packages/content";
+import { MathText } from "./MathText";
 import { ArrowRight, ArrowUpRight, Search, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { routeHref } from "../lib/navigation";
@@ -127,8 +129,8 @@ export function SearchDialog({
               <Link key={l.id} to={lessonPath(l.id)}>
                 <span>{l.number}</span>
                 <div>
-                  <strong>{l.title}</strong>
-                  <p>{l.subtitle}</p>
+                  <strong><MathText text={l.title} /></strong>
+                  <p>{collectionForLesson(l.id)?.book.titleZh} · <MathText text={l.subtitle} /></p>
                 </div>
                 <ArrowUpRight size={18} />
               </Link>
@@ -147,8 +149,8 @@ export function SearchDialog({
           </>
         ) : (
           <>
-            <span className="search-caption">从这里探索</span>
-            {["极限", "导数", "积分", "定义域"].map((q) => (
+            <span className="search-caption">常用入口</span>
+            {["极限", "导数", "Taylor", "级数"].map((q) => (
               <button
                 className="search-suggestion"
                 key={q}

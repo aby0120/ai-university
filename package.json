@@ -1,6 +1,6 @@
 {
   "name": "ai-university",
-  "version": "0.5.0",
+  "version": "0.13.0",
   "private": true,
   "type": "module",
   "description": "AI-authored open textbooks with static interactive mathematics.",
@@ -18,6 +18,8 @@
     "preview": "vite preview --host 127.0.0.1",
     "check": "npm run build && npm test",
     "content:scaffold": "node scripts/scaffold-lesson.mjs",
+    "build:python": "node drafts/python/tools/validate.mjs && python3 drafts/python/tools/traces.py && node drafts/python/tools/build.mjs",
+    "check:python": "node drafts/python/tools/validate.mjs && python3 drafts/python/tools/verify.py && python3 drafts/python/tools/test_traces.py && python3 drafts/python/tools/traces.py --check && node drafts/python/tools/build.mjs --check",
     "build:ai-development": "node drafts/ai-development/tools/validate.mjs && node drafts/ai-development/tools/build.mjs",
     "check:ai-development": "node drafts/ai-development/tools/validate.mjs && node --test drafts/ai-development/tools/git-lab.test.mjs && npm test --prefix drafts/ai-development/project && node drafts/ai-development/tools/build.mjs --check"
   },

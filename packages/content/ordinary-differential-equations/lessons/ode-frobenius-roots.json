@@ -1,0 +1,194 @@
+{
+  "id": "ode-frobenius-roots",
+  "chapterId": "ode-series",
+  "number": "10.3",
+  "title": "重指标根与对数解",
+  "subtitle": "第一条级数不等于全部解",
+  "body": [
+    {
+      "title": "根差非整数",
+      "text": "在正则奇点的通常实根情形，两根之差非整数时可分别构造两条独立 Frobenius 解。"
+    },
+    {
+      "title": "重根怎么办？",
+      "text": "通常先求一条，再用降阶得到第二条；对数项可能出现。"
+    },
+    {
+      "title": "整数差不等于一定有对数",
+      "text": "有些方程两条纯幂解已足够，有些才必须加对数。要查递推或降阶，不能仅凭根差宣布具体形式。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "已知解取常数一。",
+      "latex": "y_1=1,\\quad P(t)=1/t"
+    },
+    {
+      "text": "降阶中的指数因子为倒数时间。",
+      "latex": "e^{-\\int Pdt}=t^{-1}"
+    },
+    {
+      "text": "积分得到独立对数解。",
+      "latex": "y_2=\\int t^{-1}dt=\\ln t"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "对数独立性",
+      "problem": "验证 $1,\\ln t$ 在正区间独立。",
+      "steps": [
+        "Wronskian 为 $1/t$。",
+        "在正区间处处非零。"
+      ],
+      "answer": "二者构成完整基解。"
+    },
+    {
+      "title": "整数差但无对数",
+      "problem": "$t^2y''-2y=0$ 的根差为三，是否必须有对数？",
+      "steps": [
+        "指标根为二与负一。",
+        "两个幂解 $t^2,t^{-1}$ 已独立。"
+      ],
+      "answer": "不需要对数。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-frobenius-roots-q1",
+      "problem": "重根时把同一条 Frobenius 解写两遍有效吗？",
+      "hint": "检查独立性。",
+      "solution": [
+        "重复函数只给一个方向。"
+      ],
+      "answer": "无效。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-frobenius-roots-q2",
+      "problem": "整数根差是否总产生非零对数项？",
+      "hint": "考虑 Euler–Cauchy 反例。",
+      "solution": [
+        "不同幂解可能已经完整。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "ode-frobenius-roots-m2"
+      ]
+    },
+    {
+      "id": "ode-frobenius-roots-q3",
+      "problem": "$\\ln t$ 的导数是什么？",
+      "hint": "限制正区间。",
+      "solution": [
+        "直接求导。"
+      ],
+      "answer": "$1/t$。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-frobenius-roots-q4",
+      "problem": "对数解在零点发散，是否与正则奇点定义矛盾？",
+      "hint": "正则约束系数而非所有解有限。",
+      "solution": [
+        "定义允许这种弱奇性。"
+      ],
+      "answer": "不矛盾。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-frobenius-roots-m1",
+      "claim": "重指标根只对应一个解。",
+      "correction": "二阶方程仍需第二个独立解。"
+    },
+    {
+      "id": "ode-frobenius-roots-m2",
+      "claim": "整数根差自动确定一个固定对数公式。",
+      "correction": "实际递推与降阶决定对数项。"
+    }
+  ],
+  "prerequisites": [
+    "ode-frobenius"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ode-frobenius-roots-m1",
+    "ode-frobenius-roots-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "指标根重合或相差整数时，第二条独立解可能出现对数，不能机械写出两条幂级数。",
+  "intuition": "两个候选起始方向挤到一起时，需要另一种形式补足自由度。",
+  "objectives": [
+    "识别整数根差的例外",
+    "用降阶构造对数解"
+  ],
+  "formalDefinition": {
+    "text": "重指标根与对数解",
+    "latex": "t^2y''+ty'=0\\Rightarrow y=C+D\\ln t\\quad(t>0)",
+    "conditions": [
+      "该例指标根零重复；一般整数差情形的对数系数可能为零。"
+    ]
+  },
+  "learningCheck": {
+    "question": "指标根相差整数时应该怎样做？",
+    "choices": [
+      "一定写两个相同解",
+      "直接删掉小根",
+      "继续检查递推或用降阶"
+    ],
+    "correctIndex": 2,
+    "explanation": "整数差是需额外分析的信号。"
+  },
+  "teaching": {
+    "explain": "指标方程决定起点，后面的递推才决定整条解；不能在起点就提前结束计算。",
+    "steps": [
+      {
+        "title": "常数方向",
+        "preset": {
+          "a": 0,
+          "b": 2
+        },
+        "observation": "只有第一条解。",
+        "instruction": "将对数系数 $D$设为 $0$；将正时间 $t$设为 $2$。"
+      },
+      {
+        "title": "对数方向",
+        "preset": {
+          "a": 1,
+          "b": 2
+        },
+        "observation": "第二方向提供独立变化。",
+        "instruction": "将对数系数 $D$设为 $1$；将正时间 $t$设为 $2$。"
+      },
+      {
+        "title": "靠近奇点",
+        "preset": {
+          "a": 1,
+          "b": 0.25
+        },
+        "observation": "对数项显示奇点附近的变化。",
+        "instruction": "将对数系数 $D$设为 $1$；将正时间 $t$设为 $0.25$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-frobenius-roots",
+    "caption": "以重指标根的 Euler–Cauchy 方程为例，对照常数与对数方向。",
+    "prediction": "去掉对数项后，会失去哪一个独立方向？"
+  }
+}

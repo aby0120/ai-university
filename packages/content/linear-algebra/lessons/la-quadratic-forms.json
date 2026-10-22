@@ -1,0 +1,195 @@
+{
+  "id": "la-quadratic-forms",
+  "chapterId": "la-symmetric",
+  "number": "8.2",
+  "title": "二次型与主轴",
+  "subtitle": "转到主轴，消去交叉项",
+  "concept": "对称矩阵的二次型可以换到一组标准正交基，写成带符号的平方和。",
+  "intuition": "交叉项表示坐标没有沿着自然主轴；转到特征方向后，每个方向的弯曲独立出现。",
+  "objectives": [
+    "把二次表达写成对称矩阵",
+    "用特征值解释正负与平坦方向"
+  ],
+  "body": [
+    {
+      "title": "交叉项怎样写进矩阵？",
+      "text": "$ax^2+2bxy+cy^2$ 对应 $\\begin{pmatrix}a&b\\\\b&c\\end{pmatrix}$。非对称部分不影响 $x^TAx$，因此可先取对称部分。"
+    },
+    {
+      "title": "主轴怎样得到？",
+      "text": "对对称矩阵用谱分解，令原坐标等于正交矩阵乘新坐标。二次型变为各特征值乘对应坐标平方。"
+    },
+    {
+      "title": "几何形状怎样读？",
+      "text": "所有系数正是碗形，正负混合是鞍形，零系数给平坦方向。等值集合还要结合右端符号，不能只看名称猜图。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "二次型与主轴",
+    "latex": "q(x)=x^TAx=y^T\\Lambda y=\\sum_i\\lambda_i y_i^2,\\qquad x=Qy",
+    "conditions": [
+      "主轴结论使用实对称矩阵与正交坐标变换；一般相似变换不能直接替代二次型的合同变换。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "将谱分解代入。",
+      "latex": "x^TAx=x^TQ\\Lambda Q^Tx"
+    },
+    {
+      "text": "设置正交新坐标。",
+      "latex": "y=Q^Tx"
+    },
+    {
+      "text": "对角矩阵不产生交叉项。",
+      "latex": "y^T\\Lambda y=\\sum_i\\lambda_i y_i^2"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "含交叉项的碗面",
+      "problem": "$q=2x^2+2xy+2y^2$ 怎样化为主轴形式？",
+      "steps": [
+        "矩阵为 $\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix}$。",
+        "令 $u=(x+y)/\\sqrt2,v=(x-y)/\\sqrt2$。"
+      ],
+      "answer": "$q=3u^2+v^2$。"
+    },
+    {
+      "title": "鞍形",
+      "problem": "$q=x^2-y^2$ 在原点附近正负如何？",
+      "steps": [
+        "沿横轴 $q=x^2>0$。",
+        "沿纵轴 $q=-y^2<0$。"
+      ],
+      "answer": "同时有正负，是不定二次型。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-quadratic-forms-m1",
+      "claim": "$2bxy$ 的矩阵两个非对角项都写 $2b$。",
+      "correction": "两个对称位置各贡献一次，应分别写 $b$。"
+    },
+    {
+      "id": "la-quadratic-forms-m2",
+      "claim": "所有换基在二次型里都用相似变换。",
+      "correction": "二次型一般用 $S^TAS$；正交时它才与相似形式一致。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$3x^2+4xy+5y^2$ 的对称矩阵？",
+      "hint": "交叉项系数平分。",
+      "solution": [
+        "非对角项各为 $2$。"
+      ],
+      "answer": "$\\begin{pmatrix}3&2\\\\2&5\\end{pmatrix}$。",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "la-quadratic-forms-m1"
+      ],
+      "id": "la-quadratic-forms-q1"
+    },
+    {
+      "problem": "$x^2+0y^2$ 哪个方向平坦？",
+      "hint": "看缺少的平方项。",
+      "solution": [
+        "沿纵轴函数恒零。"
+      ],
+      "answer": "纵轴。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-quadratic-forms-q2"
+    },
+    {
+      "problem": "$x^TAx$ 与 $x^T(A+A^T)x/2$ 相同吗？",
+      "hint": "标量转置不变。",
+      "solution": [
+        "$x^TA^Tx=(x^TAx)^T=x^TAx$。"
+      ],
+      "answer": "相同。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-quadratic-forms-q3"
+    },
+    {
+      "problem": "$q=4u^2+v^2$ 在单位圆上的最小值？",
+      "hint": "两个平方之和为一。",
+      "solution": [
+        "$q=1+3u^2\\ge1$，在 $u=0$ 取到。"
+      ],
+      "answer": "1",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 1,
+      "id": "la-quadratic-forms-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-spectral"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "la-quadratic-forms-m1",
+    "la-quadratic-forms-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-quadratic-forms",
+    "caption": "二次型 $q=x^2+cy^2$；金色点在单位圆上，竖线和高度对应该方向的二次型值。",
+    "prediction": "一个平方项的系数从正变负，曲面怎样由碗形变成鞍形？"
+  },
+  "learningCheck": {
+    "question": "交叉项为 $6xy$，对称矩阵的两个非对角元素分别是？",
+    "choices": [
+      "6",
+      "3",
+      "12"
+    ],
+    "correctIndex": 1,
+    "explanation": "二次型中两个对称位置各产生一次交叉乘积。"
+  },
+  "teaching": {
+    "explain": "二次型看的是沿各方向的平方变化。特征值的正负，比矩阵元素逐个正负更能说明形状。",
+    "steps": [
+      {
+        "title": "正定",
+        "instruction": "取 $c=1,\\theta=\\pi/2$。",
+        "preset": {
+          "c": 1,
+          "a": 1.5707963267948966
+        },
+        "observation": "单位圆上取值恒为一。"
+      },
+      {
+        "title": "半正定",
+        "instruction": "取 $c=0,\\theta=\\pi/2$。",
+        "preset": {
+          "c": 0,
+          "a": 1.5707963267948966
+        },
+        "observation": "纵向非零输入给零，严格正定失效。"
+      },
+      {
+        "title": "出现负方向",
+        "instruction": "取 $c=-1,\\theta=\\pi/2$。",
+        "preset": {
+          "c": -1,
+          "a": 1.5707963267948966
+        },
+        "observation": "纵向取负一，横向取正一，成为不定二次型。"
+      }
+    ]
+  }
+}

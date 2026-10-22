@@ -1,0 +1,193 @@
+{
+  "id": "ode-phase-line",
+  "chapterId": "ode-nonlinear",
+  "number": "9.1",
+  "title": "自治方程与相线",
+  "subtitle": "只看状态，就能判断下一步",
+  "body": [
+    {
+      "title": "平衡在哪里？",
+      "text": "对 $y'=f(y)$，解 $f(y_*)=0$。平衡解是常数函数。"
+    },
+    {
+      "title": "怎样判断箭头？",
+      "text": "在每两个相邻零点间测试符号。正号向状态增大方向，负号向减小方向。"
+    },
+    {
+      "title": "局部导数判别",
+      "text": "若 $f'(y_*)<0$，平衡局部渐近稳定；若大于零则不稳定；等于零须继续看高阶或符号。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "在平衡附近写偏移。",
+      "latex": "u=y-y_*,\\quad u'=f(y_*+u)"
+    },
+    {
+      "text": "展开一阶项。",
+      "latex": "u'=f'(y_*)u+o(u)"
+    },
+    {
+      "text": "非零一阶项决定近处箭头。",
+      "latex": "f'(y_*)<0\\Rightarrow u\\,u'<0\\quad(0<\\lvert u\\rvert\\ll1)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Logistic 平衡",
+      "problem": "对 $y'=y(1-y)$ 分类平衡。",
+      "steps": [
+        "零点为零和一。",
+        "导数为 $1-2y$，在零处正、一处负。"
+      ],
+      "answer": "零不稳定，一局部渐近稳定。"
+    },
+    {
+      "title": "单侧吸引",
+      "problem": "$y'=y^2$ 的零平衡怎样？",
+      "steps": [
+        "两侧导数都非负。",
+        "负侧向零靠近，正侧向右离开。"
+      ],
+      "answer": "一侧吸引、整体不稳定，常称半稳定。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-phase-line-q1",
+      "problem": "$y'=-y^3$ 的零平衡稳定吗？",
+      "hint": "导数为零时看两侧符号。",
+      "solution": [
+        "正侧下降、负侧上升，均趋零。"
+      ],
+      "answer": "渐近稳定。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-phase-line-q2",
+      "problem": "$y'=y^3$ 的零平衡？",
+      "hint": "两侧向外。",
+      "solution": [
+        "正侧上升、负侧下降。"
+      ],
+      "answer": "不稳定。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-phase-line-q3",
+      "problem": "自治一维解可否在局部唯一性成立时穿过平衡点再离开？",
+      "hint": "与平衡解比较。",
+      "solution": [
+        "穿过同一初值会违反唯一性。"
+      ],
+      "answer": "不能。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-phase-line-q4",
+      "problem": "$f'(y_*)=0$ 是否表示平衡一定稳定？",
+      "hint": "比较正负三次方。",
+      "solution": [
+        "相同零导数可以有相反稳定性。"
+      ],
+      "answer": "不能判断。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-phase-line-m1",
+      "claim": "平衡点导数为零就表示无法研究。",
+      "correction": "可改看符号或更高阶项。"
+    },
+    {
+      "id": "ode-phase-line-m2",
+      "claim": "一侧趋近就说明整体稳定。",
+      "correction": "稳定性要控制两侧所有充分近初值。"
+    }
+  ],
+  "prerequisites": [
+    "ode-existence",
+    "ode-sensitivity"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-phase-line-m1",
+    "ode-phase-line-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "一维自治方程的符号给出状态增加或减少的方向，平衡点把状态轴分成不同区间。",
+  "intuition": "每个区间上的箭头说明解往哪里走，不需要先求公式。",
+  "objectives": [
+    "画相线并分类平衡",
+    "区分局部稳定与单侧吸引"
+  ],
+  "formalDefinition": {
+    "text": "自治方程与相线",
+    "latex": "f'(y_*)<0\\Rightarrow y_*\\text{ 局部渐近稳定}",
+    "conditions": [
+      "$f$ 在平衡附近一阶连续可微；零导数情形不能仅靠线性项分类。"
+    ]
+  },
+  "learningCheck": {
+    "question": "相线箭头直接表示什么？",
+    "choices": [
+      "状态增加或减少的方向",
+      "所有解都匀速",
+      "解的具体时间值"
+    ],
+    "correctIndex": 0,
+    "explanation": "箭头来自右端函数的符号。"
+  },
+  "teaching": {
+    "explain": "先找静止点，再看静止点之间朝哪里走，一维长期趋势往往就清楚了。",
+    "steps": [
+      {
+        "title": "低于承载量",
+        "preset": {
+          "a": 0.3,
+          "b": 5
+        },
+        "observation": "数量上升且始终不越过平衡一。",
+        "instruction": "将初始值 $y_0$设为 $0.3$；将观察时间 $t$设为 $5$。"
+      },
+      {
+        "title": "高于承载量",
+        "preset": {
+          "a": 1.8,
+          "b": 5
+        },
+        "observation": "数量下降趋向一。",
+        "instruction": "将初始值 $y_0$设为 $1.8$；将观察时间 $t$设为 $5$。"
+      },
+      {
+        "title": "恰在平衡",
+        "preset": {
+          "a": 1,
+          "b": 5
+        },
+        "observation": "平衡解保持不动。",
+        "instruction": "将初始值 $y_0$设为 $1$；将观察时间 $t$设为 $5$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-phase-line",
+    "caption": "承载量取一。正初值下方上升、上方下降；虚线为平衡值，零平衡在正文单独讨论。",
+    "prediction": "初值高于承载量时，数量会继续增长吗？"
+  }
+}

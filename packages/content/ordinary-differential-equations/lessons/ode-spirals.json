@@ -1,0 +1,195 @@
+{
+  "id": "ode-spirals",
+  "chapterId": "ode-systems",
+  "number": "8.5",
+  "title": "复特征值、旋转与稳定性",
+  "subtitle": "轨迹绕转时也可能收缩",
+  "body": [
+    {
+      "title": "标准旋转块",
+      "text": "$A=\\begin{pmatrix}\\alpha&-\\beta\\\\\\beta&\\alpha\\end{pmatrix}$ 产生 $e^{\\alpha t}$ 的缩放与角速度 $\\beta$ 的旋转。"
+    },
+    {
+      "title": "三种长期行为",
+      "text": "实部负是吸引螺旋，实部正是排斥螺旋，实部零且虚部非零是中心，轨迹绕行而不趋零。"
+    },
+    {
+      "title": "一般线性结论",
+      "text": "所有特征值实部严格负则渐近稳定；有正实部则不稳定。零实部的稳定性还需检查 Jordan 结构。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "把矩阵拆成缩放与旋转生成元。",
+      "latex": "A=\\alpha I+\\beta J,\\quad J^2=-I"
+    },
+    {
+      "text": "偶次与奇次幂分别合并。",
+      "latex": "e^{\\beta Jt}=I\\cos\\beta t+J\\sin\\beta t"
+    },
+    {
+      "text": "半径和角度分别演化。",
+      "latex": "r(t)=r_0e^{\\alpha t},\\quad\\theta(t)=\\theta_0+\\beta t"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "吸引螺旋",
+      "problem": "$A=\\begin{pmatrix}-1&-2\\\\2&-1\\end{pmatrix}$ 的初值 $(1,0)$ 解？",
+      "steps": [
+        "实部负一、角速度二。",
+        "按标准块旋转与缩放。"
+      ],
+      "answer": "$e^{-t}(\\cos2t,\\sin2t)^T$。"
+    },
+    {
+      "title": "中心",
+      "problem": "$x'=-y,y'=x$ 的解是否趋零？",
+      "steps": [
+        "半径平方导数为 $2x(-y)+2yx=0$。",
+        "非零初值保持非零半径。"
+      ],
+      "answer": "稳定但不渐近稳定。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-spirals-q1",
+      "problem": "实部为 $-2$ 的共轭特征值对应什么趋势？",
+      "hint": "看半径因子。",
+      "solution": [
+        "半径按 $e^{-2t}$ 衰减。"
+      ],
+      "answer": "吸引螺旋。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-spirals-q2",
+      "problem": "标准块中 $\\beta<0$ 的旋转方向？",
+      "hint": "从正横轴点看初速度。",
+      "solution": [
+        "竖向速度为负，向下转。"
+      ],
+      "answer": "顺时针。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-spirals-q3",
+      "problem": "中心的所有非零轨迹都会趋近原点吗？",
+      "hint": "半径保持。",
+      "solution": [
+        "非零初始半径不消失。"
+      ],
+      "answer": "不会。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-spirals-q4",
+      "problem": "一般相似换基后，中心轨迹必须仍是圆吗？",
+      "hint": "换基未必正交。",
+      "solution": [
+        "圆可被拉成椭圆。"
+      ],
+      "answer": "不必。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-spirals-m1",
+      "claim": "所有稳定平衡点都吸引附近轨迹。",
+      "correction": "中心稳定但不吸引。"
+    },
+    {
+      "id": "ode-spirals-m2",
+      "claim": "复特征值本身就意味着不稳定。",
+      "correction": "实部的符号决定缩放趋势。"
+    }
+  ],
+  "prerequisites": [
+    "ode-defective-systems"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-spirals-m1",
+    "ode-spirals-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "复特征值的实部控制半径趋势，虚部控制绕转；线性系统的中心不等于渐近稳定。",
+  "intuition": "旋转与放缩可以同时发生，螺旋就是二者叠加。",
+  "objectives": [
+    "区分中心与螺旋",
+    "判断前向线性稳定性"
+  ],
+  "formalDefinition": {
+    "text": "复特征值、旋转与稳定性",
+    "latex": "\\mathbf x(t)=e^{\\alpha t}\\begin{pmatrix}\\cos\\beta t&-\\sin\\beta t\\\\\\sin\\beta t&\\cos\\beta t\\end{pmatrix}\\mathbf x_0",
+    "conditions": [
+      "本式用于该标准块；一般相似变换会把圆变成椭圆，频率与指数趋势保留。"
+    ]
+  },
+  "learningCheck": {
+    "question": "吸引螺旋的复特征值实部是什么符号？",
+    "choices": [
+      "必须等于零",
+      "正",
+      "负"
+    ],
+    "correctIndex": 2,
+    "explanation": "负实部给出指数衰减。"
+  },
+  "teaching": {
+    "explain": "绕着原点转与离原点越来越远是两回事，要分别读角度和半径。",
+    "steps": [
+      {
+        "title": "吸引螺旋",
+        "preset": {
+          "a": -0.5,
+          "c": 1,
+          "b": 4
+        },
+        "observation": "半径缩小同时逆时针旋转。",
+        "instruction": "将径向指数率 $\\alpha$设为 $-0.5$；将旋转角速度 $\\beta$设为 $1$；将观察时间 $t$设为 $4$。"
+      },
+      {
+        "title": "中心",
+        "preset": {
+          "a": 0,
+          "c": 1,
+          "b": 4
+        },
+        "observation": "半径保持一，不趋零。",
+        "instruction": "将径向指数率 $\\alpha$设为 $0$；将旋转角速度 $\\beta$设为 $1$；将观察时间 $t$设为 $4$。"
+      },
+      {
+        "title": "反向排斥",
+        "preset": {
+          "a": 0.3,
+          "c": -1,
+          "b": 3
+        },
+        "observation": "顺时针旋转且半径增长。",
+        "instruction": "将径向指数率 $\\alpha$设为 $0.3$；将旋转角速度 $\\beta$设为 $-1$；将观察时间 $t$设为 $3$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-spirals",
+    "caption": "从 $(1,0)$ 出发画解析轨迹；实部控制半径，旋转方向由角速度符号决定。",
+    "prediction": "实部过零时，轨迹从收缩到扩张经历什么？"
+  }
+}

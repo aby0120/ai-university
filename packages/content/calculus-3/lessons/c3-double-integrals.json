@@ -1,0 +1,194 @@
+{
+  "id": "c3-double-integrals",
+  "chapterId": "c3-double",
+  "number": "5.1",
+  "title": "二重积分与 Fubini 定理",
+  "subtitle": "高度乘小面积，再累加",
+  "concept": "二重积分将整个平面区域上的密度或带符号高度累积为一个数。",
+  "intuition": "一元积分把细条相加，二重积分把小地块相加。每块的贡献是高度乘面积。",
+  "objectives": [
+    "建立二重积分与平均值",
+    "在充分条件下交换次序"
+  ],
+  "body": [
+    {
+      "title": "是体积还是有向累积？",
+      "text": "非负高度的积分等于曲面下体积；有负值时正负抵消。几何体积要明确上下表面或积分绝对值。"
+    },
+    {
+      "title": "为什么可以分两次算？",
+      "text": "矩形上连续函数可以先沿一个坐标积分，再沿另一个积分，两个次序给相同结果。更一般情形需可积性条件。"
+    },
+    {
+      "title": "平均值怎么求？",
+      "text": "总积分除以区域面积，表示均匀按面积抽取位置时的平均输出；不是只取中心高度。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "高度乘小面积，再累加",
+    "latex": "\\iint_R f\\,dA=\\lim\\sum f(x_i^*,y_i^*)\\Delta A_i=\\int_a^b\\int_c^d f(x,y)\\,dy\\,dx,\\quad f_{\\rm avg}=\\frac{\\iint_R f\\,dA}{\\operatorname{area}(R)}",
+    "conditions": [
+      "此处 Fubini 使用闭矩形上连续函数；Riemann 和网格最大直径趋零；平均值要求面积有限且非零。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先固定横坐标累积一条细带。",
+      "latex": "A(x)=\\int_c^d f(x,y)\\,dy"
+    },
+    {
+      "text": "再将细带沿横向相加。",
+      "latex": "\\iint_Rf\\,dA=\\int_a^b A(x)\\,dx"
+    },
+    {
+      "text": "常密度函数可以作为单位检查。",
+      "latex": "\\iint_R1\\,dA=(b-a)(d-c)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "矩形上的积分",
+      "problem": "在 $0\\le x\\le2,0\\le y\\le1$ 积分 $x+y$。",
+      "steps": [
+        "内积分为 $x+\\frac12$。",
+        "外积分 $\\int_0^2(x+\\frac12)dx=3$。"
+      ],
+      "answer": "3。"
+    },
+    {
+      "title": "平均高度",
+      "problem": "上述矩形上的 $f=x+y$ 平均值？",
+      "steps": [
+        "面积为 2，总积分为 3。",
+        "总量除以面积得 $3/2$，也可按两个坐标的平均分别相加。"
+      ],
+      "answer": "$\\frac32$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-double-integrals-m1",
+      "claim": "二重积分就是积分号写两遍。",
+      "correction": "必须同时指定区域、面积元和积分次序。"
+    },
+    {
+      "id": "c3-double-integrals-m2",
+      "claim": "任何函数都可以随意交换次序。",
+      "correction": "连续或其他足够可积条件不可省；带奇点时尤其要另查。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-double-integrals-q1",
+      "problem": "单位正方形上 $\\iint 2\\,dA$ 是多少？",
+      "hint": "常数乘面积。",
+      "solution": [
+        "面积为 1，积分为 2。"
+      ],
+      "answer": "2",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 2
+    },
+    {
+      "id": "c3-double-integrals-q2",
+      "problem": "单位正方形上 $\\iint xy\\,dA$？",
+      "hint": "分离两个独立变量。",
+      "solution": [
+        "$\\int_0^1x\\,dx\\int_0^1y\\,dy=\\frac14$。"
+      ],
+      "answer": "$\\frac14$",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.25
+    },
+    {
+      "id": "c3-double-integrals-q3",
+      "problem": "$[-1,1]^2$ 上 $\\iint x\\,dA$ 是几何体积吗？",
+      "hint": "负高度会怎样累积？",
+      "solution": [
+        "奇函数对称抵消得到零。",
+        "几何体积若指到平面的绝对高度，应积分 $|x|$，得到 2。"
+      ],
+      "answer": "带符号积分是零，不等于绝对高度体积。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-double-integrals-q4",
+      "problem": "对一个矩形上连续的函数，可以交换先后积分吗？",
+      "hint": "明确使用哪个充分条件。",
+      "solution": [
+        "闭矩形上连续保证可积，Fubini 给出两个次序相等。"
+      ],
+      "answer": "可以。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "平面上积分常数一得到什么？",
+    "choices": [
+      "区域面积",
+      "边界周长",
+      "曲面面积"
+    ],
+    "correctIndex": 0,
+    "explanation": "每块贡献就是小块面积。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-double-integrals",
+    "caption": "单位正方形上 $f=1+x+y$ 的中点柱体；对照有限和与精确积分。",
+    "prediction": "把网格加密，为什么不改变积分的区域？"
+  },
+  "teaching": {
+    "explain": "每格乘的是实际面积；先累积一条带，再把所有带相加。",
+    "steps": [
+      {
+        "title": "粗网格",
+        "instruction": "将每方向分块数 $n$ 设为 $2$。",
+        "preset": {
+          "n": 2
+        },
+        "observation": "每块用中点高度组成柱体；这是有限和。"
+      },
+      {
+        "title": "较细网格",
+        "instruction": "将每方向分块数 $n$ 设为 $6$。",
+        "preset": {
+          "n": 6
+        },
+        "observation": "柱体更细，仍是相同区域。"
+      },
+      {
+        "title": "细网格",
+        "instruction": "将每方向分块数 $n$ 设为 $16$。",
+        "preset": {
+          "n": 16
+        },
+        "observation": "本例线性函数的中点和恰好精确；不能据此断言所有函数都精确。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-surfaces",
+    "riemann-sums",
+    "fundamental-theorem"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-double-integrals-m1",
+    "c3-double-integrals-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

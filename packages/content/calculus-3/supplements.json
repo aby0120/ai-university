@@ -1,0 +1,832 @@
+{
+  "reviews": [
+    {
+      "chapterId": "c3-space",
+      "title": "向量与空间 · 章末回顾",
+      "questions": [
+        {
+          "id": "c3-review-1-1",
+          "problem": "$A=(1,0,0),B=(0,2,0),C=(0,0,3)$ 所在平面方程？",
+          "hint": "叉乘两条边得法向。",
+          "solution": [
+            "两边为 $(-1,2,0),(-1,0,3)$，叉积为 $(6,3,2)$。",
+            "代入点得 $6x+3y+2z=6$。"
+          ],
+          "answer": "$6x+3y+2z=6$。",
+          "difficulty": 3,
+          "misconceptionTags": []
+        },
+        {
+          "id": "c3-review-1-2",
+          "problem": "$\\mathbf u=(1,2,2)$，求向量 $(3,0,0)$ 在该方向上的标量投影。",
+          "hint": "先求方向的单位向量。",
+          "solution": [
+            "方向长度为 3，点积为 3。",
+            "标量投影是点积除以方向长度，等于 1。"
+          ],
+          "answer": "1",
+          "difficulty": 4,
+          "misconceptionTags": [],
+          "numericAnswer": 1.0
+        },
+        {
+          "id": "c3-review-1-3",
+          "problem": "球面 $x^2+y^2+z^2=4$ 与平面 $z=1$ 的交线怎样参数化？",
+          "hint": "先找水平截面半径。",
+          "solution": [
+            "截面为 $x^2+y^2=3$。",
+            "取 $(\\sqrt3\\cos t,\\sqrt3\\sin t,1)$，零到一周。"
+          ],
+          "answer": "$\\mathbf r(t)=(\\sqrt3\\cos t,\\sqrt3\\sin t,1)$。",
+          "difficulty": 5,
+          "misconceptionTags": []
+        }
+      ]
+    },
+    {
+      "chapterId": "c3-curves",
+      "title": "空间曲线与运动 · 章末回顾",
+      "questions": [
+        {
+          "id": "c3-review-2-1",
+          "problem": "$\\mathbf r(t)=(3t,4t,0)$ 在零到 2 的弧长？",
+          "hint": "速率是常数。",
+          "solution": [
+            "速率 5，乘时间 2 得 10。"
+          ],
+          "answer": "10",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "numericAnswer": 10.0
+        },
+        {
+          "id": "c3-review-2-2",
+          "problem": "半径 2 的圆以速率 3 运动，法向加速度大小？",
+          "hint": "先算曲率。",
+          "solution": [
+            "曲率 $1/2$，乘速率平方 9。"
+          ],
+          "answer": "$\\frac92$",
+          "difficulty": 4,
+          "misconceptionTags": [],
+          "numericAnswer": 4.5
+        },
+        {
+          "id": "c3-review-2-3",
+          "problem": "轨迹 $(\\cos(2t),\\sin(2t),t)$ 的曲率？",
+          "hint": "分别求速度和加速度，再用垂直关系。",
+          "solution": [
+            "速度长 $\\sqrt5$，加速度长 4，两者点积零。",
+            "叉积长 $4\\sqrt5$，除以 $5\\sqrt5$。"
+          ],
+          "answer": "$\\frac45$",
+          "difficulty": 5,
+          "misconceptionTags": [],
+          "numericAnswer": 0.8
+        }
+      ]
+    },
+    {
+      "chapterId": "c3-differentiation",
+      "title": "多元变化与微分 · 章末回顾",
+      "questions": [
+        {
+          "id": "c3-review-3-1",
+          "problem": "$f=x^2+xy+3y^2$ 在 $(1,-1)$ 沿 $(1,1)$ 方向的导数？",
+          "hint": "先单位化方向。",
+          "solution": [
+            "梯度为 $(1,-5)$，点乘 $(1,1)/\\sqrt2$。",
+            "得到 $-4/\\sqrt2=-2\\sqrt2$。"
+          ],
+          "answer": "$-2\\sqrt2$。",
+          "difficulty": 3,
+          "misconceptionTags": []
+        },
+        {
+          "id": "c3-review-3-2",
+          "problem": "$z=e^{xy}$ 在 $(0,1)$ 的切平面？",
+          "hint": "函数值和两个偏导都在中心取值。",
+          "solution": [
+            "函数值一，横偏导一，纵偏导零。",
+            "切平面 $z=1+x$。"
+          ],
+          "answer": "$z=1+x$。",
+          "difficulty": 4,
+          "misconceptionTags": []
+        },
+        {
+          "id": "c3-review-3-3",
+          "problem": "$f=\\frac{x^2y^2}{x^2+y^2}$ 在原点补零，可微吗？",
+          "hint": "用距离统一估计余项。",
+          "solution": [
+            "两个轴向偏导为零，且 $x^2y^2\\le(x^2+y^2)^2/4$。",
+            "函数绝对值不超过距离平方的四分之一，除以距离后趋零。"
+          ],
+          "answer": "可微，梯度为零。",
+          "difficulty": 5,
+          "misconceptionTags": []
+        }
+      ]
+    },
+    {
+      "chapterId": "c3-optimization",
+      "title": "局部近似与优化 · 章末回顾",
+      "questions": [
+        {
+          "id": "c3-review-4-1",
+          "problem": "$f=x^2+4y^2-2x+8y$ 的全局最小值？",
+          "hint": "配方比只求驻点更直接。",
+          "solution": [
+            "$f=(x-1)^2+4(y+1)^2-5$。",
+            "平方项非负，在 $(1,-1)$ 取等号。"
+          ],
+          "answer": "$-5$",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "numericAnswer": -5.0
+        },
+        {
+          "id": "c3-review-4-2",
+          "problem": "$f=xy$ 在 $x^2+y^2\\le2$ 上的最大最小值？",
+          "hint": "先给乘积上下界，再找取等号位置。",
+          "solution": [
+            "由 $(x-y)^2\\ge0$ 得 $xy\\le1$，由 $(x+y)^2\\ge0$ 得 $xy\\ge-1$。",
+            "在 $(1,1)$ 和 $(1,-1)$ 分别取得。"
+          ],
+          "answer": "最大 1，最小 $-1$。",
+          "difficulty": 4,
+          "misconceptionTags": []
+        },
+        {
+          "id": "c3-review-4-3",
+          "problem": "$f=e^{x-y}$ 在原点的二阶模型是什么？",
+          "hint": "把一元指数展开作用于差值。",
+          "solution": [
+            "$1+(x-y)+(x-y)^2/2$。",
+            "展开后混合项系数为负一。"
+          ],
+          "answer": "$1+x-y+\\frac{x^2}2-xy+\\frac{y^2}2$。",
+          "difficulty": 5,
+          "misconceptionTags": []
+        }
+      ]
+    },
+    {
+      "chapterId": "c3-double",
+      "title": "二重积分 · 章末回顾",
+      "questions": [
+        {
+          "id": "c3-review-5-1",
+          "problem": "区域 $0\\le y\\le x\\le2$ 上积分 $y$。",
+          "hint": "先沿纵坐标，再沿横坐标。",
+          "solution": [
+            "$\\int_0^2\\int_0^x y\\,dy\\,dx=\\int_0^2x^2/2\\,dx$。"
+          ],
+          "answer": "$\\frac43$。",
+          "difficulty": 3,
+          "misconceptionTags": []
+        },
+        {
+          "id": "c3-review-5-2",
+          "problem": "单位圆盘面密度 $\\sigma=1+x$，质心在哪里？",
+          "hint": "奇函数矩抵消，再求平方积分。",
+          "solution": [
+            "质量为 $\\pi$，纵向矩为零。",
+            "横向矩等于圆盘上 $x^2$ 积分，为 $\\pi/4$。"
+          ],
+          "answer": "$(\\frac14,0)$。",
+          "difficulty": 4,
+          "misconceptionTags": []
+        },
+        {
+          "id": "c3-review-5-3",
+          "problem": "把 $\\int_0^1\\int_y^1 \\cos(x^2)\\,dxdy$ 换序并计算。",
+          "hint": "区域由纵坐标小于横坐标描述。",
+          "solution": [
+            "换成 $\\int_0^1\\int_0^x\\cos(x^2)\\,dydx$。",
+            "得到 $\\int_0^1x\\cos(x^2)dx=\\sin1/2$。"
+          ],
+          "answer": "$\\frac{\\sin1}2$。",
+          "difficulty": 5,
+          "misconceptionTags": []
+        }
+      ]
+    },
+    {
+      "chapterId": "c3-triple",
+      "title": "三重积分与换元 · 章末回顾",
+      "questions": [
+        {
+          "id": "c3-review-6-1",
+          "problem": "半径 2 球内的平均平方距离？",
+          "hint": "平方距离积分除以球体积。",
+          "solution": [
+            "积分为 $4\\pi\\cdot2^5/5=128\\pi/5$。",
+            "除以体积 $32\\pi/3$ 得 $12/5$。"
+          ],
+          "answer": "$\\frac{12}5$",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "numericAnswer": 2.4
+        },
+        {
+          "id": "c3-review-6-2",
+          "problem": "第一卦限单位球体怎样写球坐标积分限？",
+          "hint": "分别限制方位角、倾角、距离。",
+          "solution": [
+            "三个坐标非负，方位角与倾角都从零到 $\\pi/2$，距离零到一。"
+          ],
+          "answer": "$0\\le\\rho\\le1,0\\le\\phi\\le\\pi/2,0\\le\\theta\\le\\pi/2$。",
+          "difficulty": 4,
+          "misconceptionTags": []
+        },
+        {
+          "id": "c3-review-6-3",
+          "problem": "映射 $x=2u+v,y=u+2v$ 把单位正方形变成什么面积？",
+          "hint": "求行列式。",
+          "solution": [
+            "Jacobian 为 $4-1=3$，映射可逆，面积乘三。"
+          ],
+          "answer": "3",
+          "difficulty": 5,
+          "misconceptionTags": [],
+          "numericAnswer": 3.0
+        }
+      ]
+    },
+    {
+      "chapterId": "c3-line-integrals",
+      "title": "向量场与曲线积分 · 章末回顾",
+      "questions": [
+        {
+          "id": "c3-review-7-1",
+          "problem": "场 $(y,x,0)$ 沿任意路径从 $(1,0,0)$ 到 $(2,3,0)$ 的功？",
+          "hint": "找乘积势。",
+          "solution": [
+            "势为 $xy$，两端势差为 $6-0$。"
+          ],
+          "answer": "6",
+          "difficulty": 3,
+          "misconceptionTags": [],
+          "numericAnswer": 6.0
+        },
+        {
+          "id": "c3-review-7-2",
+          "problem": "半径 2 的逆时针圆上 $\\oint -2y\\,dx+2x\\,dy$？",
+          "hint": "用 Green 求旋转率。",
+          "solution": [
+            "旋转率为 4，面积为 $4\\pi$。"
+          ],
+          "answer": "$16\\pi$。",
+          "difficulty": 4,
+          "misconceptionTags": []
+        },
+        {
+          "id": "c3-review-7-3",
+          "problem": "场 $(-y/(x^2+y^2),x/(x^2+y^2))$ 沿半径 2 逆时针圆的功？",
+          "hint": "参数化圆，半径因子会抵消。",
+          "solution": [
+            "场为 $(-\\sin t/2,\\cos t/2)$，速度为 $(-2\\sin t,2\\cos t)$。",
+            "点积为一，积分零到一周。"
+          ],
+          "answer": "$2\\pi$，半径改变没有消除绕洞效应。",
+          "difficulty": 5,
+          "misconceptionTags": []
+        }
+      ]
+    },
+    {
+      "chapterId": "c3-surface-integrals",
+      "title": "曲面与通量 · 章末回顾",
+      "questions": [
+        {
+          "id": "c3-review-8-1",
+          "problem": "$z=3x$ 在长宽均为 2 的正方形上方面积？",
+          "hint": "面积倍率为常数。",
+          "solution": [
+            "倍率 $\\sqrt{10}$，底面积 4。"
+          ],
+          "answer": "$4\\sqrt{10}$。",
+          "difficulty": 3,
+          "misconceptionTags": []
+        },
+        {
+          "id": "c3-review-8-2",
+          "problem": "场 $(0,0,4)$ 穿过 $z=x+y$ 在单位正方形上方的向上通量？",
+          "hint": "直接用有向面积元。",
+          "solution": [
+            "叉积为 $(-1,-1,1)$，与场点积为 4。",
+            "底面积为一。"
+          ],
+          "answer": "4",
+          "difficulty": 4,
+          "misconceptionTags": [],
+          "numericAnswer": 4.0
+        },
+        {
+          "id": "c3-review-8-3",
+          "problem": "场 $(z,x,y)$ 的散度与旋度？",
+          "hint": "按各自定义计算。",
+          "solution": [
+            "三个纯偏导都零，散度零。",
+            "旋度三个分量都是一。"
+          ],
+          "answer": "散度 0，旋度 $(1,1,1)$。",
+          "difficulty": 5,
+          "misconceptionTags": []
+        }
+      ]
+    },
+    {
+      "chapterId": "c3-theorems",
+      "title": "从局部到边界 · 章末回顾",
+      "questions": [
+        {
+          "id": "c3-review-9-1",
+          "problem": "场 $(-y/2,x/2,z)$ 沿半径 2 水平圆的正向环流？",
+          "hint": "旋度竖分量为一。",
+          "solution": [
+            "圆盘面积为 $4\\pi$，Stokes 给环流 $4\\pi$。"
+          ],
+          "answer": "$4\\pi$。",
+          "difficulty": 3,
+          "misconceptionTags": []
+        },
+        {
+          "id": "c3-review-9-2",
+          "problem": "场 $(x,2y,3z)$ 穿过单位球的向内通量？",
+          "hint": "先求外向再变号。",
+          "solution": [
+            "散度为 6，外向通量 $8\\pi$。",
+            "向内通量取负。"
+          ],
+          "answer": "$-8\\pi$。",
+          "difficulty": 4,
+          "misconceptionTags": []
+        },
+        {
+          "id": "c3-review-9-3",
+          "problem": "固定容器每单位时间流入质量 7、流出 4、内部产生 1，质量导数是多少？",
+          "hint": "净流入加源项。",
+          "solution": [
+            "$7-4+1=4$。"
+          ],
+          "answer": "4",
+          "difficulty": 5,
+          "misconceptionTags": [],
+          "numericAnswer": 4.0
+        }
+      ]
+    }
+  ],
+  "exam": [
+    {
+      "id": "c3-exam-1",
+      "problem": "点 $(1,2,2)$ 到平面 $2x-y+2z=1$ 的距离？",
+      "hint": "残差除以法向长度。",
+      "solution": [
+        "残差为 $2-2+4-1=3$。",
+        "法向长为 3，距离为一。"
+      ],
+      "answer": "1",
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "numericAnswer": 1.0
+    },
+    {
+      "id": "c3-exam-2",
+      "problem": "三角形顶点为原点、$(1,1,0)$、$(0,1,1)$，面积？",
+      "hint": "两边叉积取长度的一半。",
+      "solution": [
+        "叉积 $(1,-1,1)$ 长为 $\\sqrt3$。"
+      ],
+      "answer": "$\\frac{\\sqrt3}2$。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-exam-3",
+      "problem": "轨迹 $(\\cos t,\\sin t,2t)$ 零到 $\\pi$ 的路程？",
+      "hint": "速率不变。",
+      "solution": [
+        "速度长 $\\sqrt5$，乘时间 $\\pi$。"
+      ],
+      "answer": "$\\pi\\sqrt5$。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-exam-4",
+      "problem": "$f=x^2y+y^2$ 在 $(2,1)$ 的梯度与最陡变化率？",
+      "hint": "两个偏导及梯度长度。",
+      "solution": [
+        "梯度为 $(4,6)$。",
+        "最大方向导数为 $\\sqrt{16+36}=2\\sqrt{13}$。"
+      ],
+      "answer": "梯度 $(4,6)$，最大变化率 $2\\sqrt{13}$。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-exam-5",
+      "problem": "$f=\\frac{xy^2}{x^2+y^2}$ 在原点补零，连续吗？可微吗？",
+      "hint": "先夹逼，再查斜向线性误差。",
+      "solution": [
+        "绝对值不超过 $|x|$，所以连续；两个偏导为零。",
+        "沿 $x=y=t$，函数为 $t/2$，除以距离后绝对比值为 $1/(2\\sqrt2)$，不趋零。"
+      ],
+      "answer": "连续但不可微。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-exam-6",
+      "problem": "$3x^2+2xy+3y^2$ 的原点是哪类点？",
+      "hint": "二阶判别或配方。",
+      "solution": [
+        "$D=6\\cdot6-2^2=32>0$，横向二阶偏导为正。"
+      ],
+      "answer": "严格全局极小。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-exam-7",
+      "problem": "$x+2y+2z$ 在单位球面上的最大值？",
+      "hint": "线性目标点积单位位置。",
+      "solution": [
+        "梯度长为 3，单位球上上界 3。",
+        "在 $(1/3,2/3,2/3)$ 取等号。"
+      ],
+      "answer": "3",
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "numericAnswer": 3.0
+    },
+    {
+      "id": "c3-exam-8",
+      "problem": "在 $0\\le x\\le1,0\\le y\\le1-x$ 上积分 $x+y$。",
+      "hint": "先做内积分或用三角形质心。",
+      "solution": [
+        "内积分为 $x(1-x)+(1-x)^2/2$。",
+        "对横坐标零到一积分得 $1/3$。"
+      ],
+      "answer": "$\\frac13$。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-exam-9",
+      "problem": "圆环 $1\\le r\\le3$ 上积分 $1/r$。",
+      "hint": "面积元的半径会抵消密度分母。",
+      "solution": [
+        "$\\int_0^{2\\pi}\\int_1^3 1\\,drd\\theta=4\\pi$。"
+      ],
+      "answer": "$4\\pi$。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-exam-10",
+      "problem": "单位球内体密度 $\\rho=x^2+y^2+z^2$ 的质量？",
+      "hint": "改用球坐标。",
+      "solution": [
+        "径向密度平方再乘体积元平方，径向积分为 $1/5$。",
+        "角向因子 $4\\pi$。"
+      ],
+      "answer": "$\\frac{4\\pi}5$。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-exam-11",
+      "problem": "场 $(2xy,x^2,1)$ 从 $(0,0,0)$ 到 $(2,1,3)$ 的功？",
+      "hint": "势函数同时包含三个分量。",
+      "solution": [
+        "势为 $x^2y+z$。",
+        "端点差 $4+3=7$。"
+      ],
+      "answer": "7",
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "numericAnswer": 7.0
+    },
+    {
+      "id": "c3-exam-12",
+      "problem": "场 $(-y,x,0)$ 沿单位圆顺时针两周做功？",
+      "hint": "先取单圈，再计方向和遍数。",
+      "solution": [
+        "逆时针一周 $2\\pi$，反向两周为 $-4\\pi$。"
+      ],
+      "answer": "$-4\\pi$。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-exam-13",
+      "problem": "$z=2x-y$ 在单位正方形上方的向上单位法向？",
+      "hint": "叉积再除以长度。",
+      "solution": [
+        "未归一化法向为 $(-2,1,1)$，长度 $\\sqrt6$。"
+      ],
+      "answer": "$\\frac{(-2,1,1)}{\\sqrt6}$。",
+      "difficulty": 5,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-exam-14",
+      "problem": "场 $(x,y,z)$ 穿过球壳 $1\\le r\\le2$ 全边界的向外通量？",
+      "hint": "散度乘壳体积，或内外球分别计方向。",
+      "solution": [
+        "体积为 $28\\pi/3$，散度为 3。",
+        "内边界方向向球心，故总通量 $32\\pi-4\\pi=28\\pi$。"
+      ],
+      "answer": "$28\\pi$。",
+      "difficulty": 5,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-exam-15",
+      "problem": "场 $(0,0,x)$ 沿平面 $z=0$ 的单位圆正向边界做功？",
+      "hint": "沿圆位移没有竖直分量。",
+      "solution": [
+        "直接点积恒为零。",
+        "旋度为 $(0,-1,0)$，与向上圆盘法向点积也为零。"
+      ],
+      "answer": "0",
+      "difficulty": 5,
+      "misconceptionTags": [],
+      "numericAnswer": 0.0
+    },
+    {
+      "id": "c3-exam-16",
+      "problem": "固定区域内密度 $\\rho=e^{-2t}$，速度 $(x,y,0)$，有无源质量守恒吗？",
+      "hint": "计算时间导数和质量通量散度。",
+      "solution": [
+        "时间导数 $-2e^{-2t}$，散度 $2e^{-2t}$。",
+        "相加为零，满足连续性方程。"
+      ],
+      "answer": "满足无源连续性方程。",
+      "difficulty": 5,
+      "misconceptionTags": []
+    }
+  ],
+  "glossary": [
+    {
+      "term": "空间坐标与向量",
+      "meaning": "向量记录移动的方向和距离；同一位移可以从不同位置出发。",
+      "lessonId": "c3-vectors"
+    },
+    {
+      "term": "点积与投影",
+      "meaning": "点积测量两个向量的对齐程度；投影给出其中沿指定方向的部分。",
+      "lessonId": "c3-dot"
+    },
+    {
+      "term": "叉积、面积与法向量",
+      "meaning": "叉积是垂直于两个向量的向量；它的长度等于两向量张成的平行四边形面积。",
+      "lessonId": "c3-cross"
+    },
+    {
+      "term": "空间直线与平面",
+      "meaning": "直线从一点沿固定方向走；平面上的位移都与同一个法向量垂直。",
+      "lessonId": "c3-lines-planes"
+    },
+    {
+      "term": "二次曲面与截面",
+      "meaning": "固定一个坐标得到截面；几个关键截面通常比死记空间图形更可靠。",
+      "lessonId": "c3-quadrics"
+    },
+    {
+      "term": "柱坐标与球坐标",
+      "meaning": "柱坐标适合绕轴的形状，球坐标适合到原点距离自然固定的形状。",
+      "lessonId": "c3-coordinates"
+    },
+    {
+      "term": "向量值函数与切线",
+      "meaning": "向量值函数给出移动点的位置；导数是沿轨迹的瞬时速度方向。",
+      "lessonId": "c3-vector-curves"
+    },
+    {
+      "term": "速度、加速度与路程",
+      "meaning": "速度描述位移怎样变；速率是速度的长度；路程累积速率，位移累积速度。",
+      "lessonId": "c3-motion"
+    },
+    {
+      "term": "弧长参数与曲率",
+      "meaning": "曲率测量每走单位弧长，切线方向转了多少；它是曲线形状的量。",
+      "lessonId": "c3-curvature"
+    },
+    {
+      "term": "多元函数与等高线",
+      "meaning": "二元函数给平面上每个允许位置一个高度；等高线把相同高度的位置连起来。",
+      "lessonId": "c3-surfaces"
+    },
+    {
+      "term": "多元极限与连续",
+      "meaning": "多元极限约束从定义域内任意方向靠近的函数值；两条路径冲突就能否定，几条一致不能证明。",
+      "lessonId": "c3-multivariable-limits"
+    },
+    {
+      "term": "偏导数与高阶偏导",
+      "meaning": "偏导数衡量一个变量变化、其他变量固定时的瞬时变化率。",
+      "lessonId": "c3-partials"
+    },
+    {
+      "term": "可微性、切平面与误差",
+      "meaning": "可微意味着函数增量能被同一个线性表达式解释，剩余误差相对位移长度趋零。",
+      "lessonId": "c3-differentiability"
+    },
+    {
+      "term": "多元链式法则与隐函数",
+      "meaning": "一个量通过多个中间变量变化时，总变化率等于每条路径的局部变化率乘积之和。",
+      "lessonId": "c3-chain"
+    },
+    {
+      "term": "方向导数与梯度",
+      "meaning": "可微函数的梯度把所有方向的一阶变化率编码在一个向量中。",
+      "lessonId": "c3-gradient"
+    },
+    {
+      "term": "二阶 Taylor 模型",
+      "meaning": "二阶 Taylor 多项式在切平面之上再记录各方向的曲率及相互作用。",
+      "lessonId": "c3-taylor"
+    },
+    {
+      "term": "临界点与二阶判别",
+      "meaning": "内部可微极值点必须梯度为零；二阶形状决定它是碗底、碗顶还是鞍点。",
+      "lessonId": "c3-critical-points"
+    },
+    {
+      "term": "闭区域上的全局最值",
+      "meaning": "连续函数在闭且有界的非空区域上取得最大最小值；求值时把所有候选放在一起比较。",
+      "lessonId": "c3-closed-domains"
+    },
+    {
+      "term": "Lagrange 乘子与约束优化",
+      "meaning": "光滑等式约束上的极值，目标梯度通常平行于约束梯度；乘子把这种平行关系写成方程。",
+      "lessonId": "c3-lagrange"
+    },
+    {
+      "term": "二重积分与 Fubini 定理",
+      "meaning": "二重积分将整个平面区域上的密度或带符号高度累积为一个数。",
+      "lessonId": "c3-double-integrals"
+    },
+    {
+      "term": "一般区域与交换积分次序",
+      "meaning": "积分上下限描述的是同一块区域；交换次序必须重新解读它的边界。",
+      "lessonId": "c3-regions-order"
+    },
+    {
+      "term": "极坐标二重积分",
+      "meaning": "极坐标把圆形区域的边界简化，但每块实际面积是半径乘径向宽度再乘角宽。",
+      "lessonId": "c3-polar-integrals"
+    },
+    {
+      "term": "密度、质心与转动惯量",
+      "meaning": "密度乘面积得到质量；再乘位置得到一阶矩，再乘轴距平方得到转动惯量。",
+      "lessonId": "c3-double-applications"
+    },
+    {
+      "term": "三重积分与空间区域",
+      "meaning": "三重积分累积空间密度；积分常数一得到体积。",
+      "lessonId": "c3-triple-integrals"
+    },
+    {
+      "term": "柱坐标三重积分",
+      "meaning": "柱坐标保留高度，把水平面改成极坐标；体积元仍带水平半径因子。",
+      "lessonId": "c3-cylindrical"
+    },
+    {
+      "term": "球坐标三重积分",
+      "meaning": "球坐标体积元包含距离的平方与倾角正弦，来自两条不同方向的小圆弧。",
+      "lessonId": "c3-spherical"
+    },
+    {
+      "term": "一般换元与 Jacobian",
+      "meaning": "Jacobian 行列式给出光滑坐标变换在局部对面积或体积的缩放；积分使用其绝对值。",
+      "lessonId": "c3-change-variables"
+    },
+    {
+      "term": "向量场与流线",
+      "meaning": "向量场给空间每个点一个向量；流线的切向在每个点与场一致。",
+      "lessonId": "c3-fields"
+    },
+    {
+      "term": "标量曲线积分",
+      "meaning": "标量曲线积分把一条细线上的密度按实际弧长累积；改变走向不改变结果。",
+      "lessonId": "c3-line-scalar"
+    },
+    {
+      "term": "功与向量曲线积分",
+      "meaning": "功积分把每一步的力与有向位移做点积；反向走时符号反转。",
+      "lessonId": "c3-line-work"
+    },
+    {
+      "term": "势函数、路径无关与洞",
+      "meaning": "场是某个单值函数的梯度时，功积分等于势函数的终值减初值。",
+      "lessonId": "c3-potential"
+    },
+    {
+      "term": "Green 定理与平面通量",
+      "meaning": "Green 定理把平面正向边界的环流，换成区域内局部旋转率的积分；另一个形式计算向外通量。",
+      "lessonId": "c3-green"
+    },
+    {
+      "term": "参数曲面与定向",
+      "meaning": "两个参数在空间生成一张曲面；两条独立切向量的叉积给出局部法向。",
+      "lessonId": "c3-parametric-surfaces"
+    },
+    {
+      "term": "曲面面积与标量曲面积分",
+      "meaning": "曲面面积元等于两条参数切向量叉积的长度乘参数面积；标量曲面积分在它上面再加权。",
+      "lessonId": "c3-surface-area"
+    },
+    {
+      "term": "通量与有向面积元",
+      "meaning": "通量把场在选定法向上的分量按面积累积；沿表面流动的部分不穿过它。",
+      "lessonId": "c3-flux"
+    },
+    {
+      "term": "散度与旋度",
+      "meaning": "散度测单位体积的净流出率；旋度沿法向的分量测单位面积的局部环流。",
+      "lessonId": "c3-div-curl"
+    },
+    {
+      "term": "Stokes 定理",
+      "meaning": "Stokes 定理把边界环流与曲面上的旋度通量连接起来。",
+      "lessonId": "c3-stokes"
+    },
+    {
+      "term": "散度定理与闭曲面",
+      "meaning": "散度定理把闭曲面的向外通量与其包围体积内的散度积分相连。",
+      "lessonId": "c3-divergence"
+    },
+    {
+      "term": "怎样选择积分定理",
+      "meaning": "沿路功、旋度通量与闭面通量是不同对象；选定理前先写清积分的维度、方向和场。",
+      "lessonId": "c3-choosing-theorem"
+    },
+    {
+      "term": "守恒、局部变化与整卷连接",
+      "meaning": "连续性方程把密度的局部时间变化与通量散度连接起来；积分后就是整个固定区域的质量守恒。",
+      "lessonId": "c3-conservation"
+    },
+    {
+      "term": "小 $o$ 记号",
+      "meaning": "$R(\\mathbf h)=o(\\|\\mathbf h\\|^p)$ 表示余项除以距离的 $p$ 次方趋零。",
+      "lessonId": "c3-differentiability"
+    },
+    {
+      "term": "Hessian",
+      "meaning": "将函数所有二阶偏导排列而成的矩阵；二阶连续偏导时对称。",
+      "lessonId": "c3-taylor"
+    },
+    {
+      "term": "正则点",
+      "meaning": "曲线速度非零、参数曲面叉积非零，或等值约束梯度非零的相应非退化点。",
+      "lessonId": "c3-parametric-surfaces"
+    },
+    {
+      "term": "单连通",
+      "meaning": "连通域中每条闭路都能在域内连续收缩到一点；二维有洞的区域通常不满足。",
+      "lessonId": "c3-potential"
+    },
+    {
+      "term": "紧致集",
+      "meaning": "在有限维欧氏空间中，闭且有界的集合；连续函数在非空紧致集上取得最大最小。",
+      "lessonId": "c3-closed-domains"
+    },
+    {
+      "term": "通量",
+      "meaning": "场沿指定单位法向的分量，按真实面积累积；反转法向会反号。",
+      "lessonId": "c3-flux"
+    }
+  ],
+  "appendices": [
+    {
+      "title": "行列式、Jacobian 与导数矩阵",
+      "text": "二维矩阵 $\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}$ 的行列式是 $ad-bc$。三维行列式可按第一行展开为 $a(ei-fh)-b(di-fg)+c(dh-eg)$。矩阵乘法的每个元素是对应行与列的点积；链式法则的导数矩阵相乘正是沿中间变量求和。本卷只使用这些局部变化工具，不以此替代完整线性代数。"
+    },
+    {
+      "title": "混合偏导、隐函数与 Taylor 的引用范围",
+      "text": "本卷引用连续混合二阶偏导可交换、正则点局部隐函数存在与多元 Taylor 定理。Taylor 可沿线段 $g(t)=f(\\mathbf a+t\\mathbf h)$ 化为一元定理；二阶式中的混合项由链式求导产生。若三阶方向导数在连线上绝对值不超过 $M$，则对该参数函数余项不超过 $M/6$。这里的 $M$ 已包含位移向量，不应再机械重复乘距离三次方。"
+    },
+    {
+      "title": "Green 在矩形上的证明与推广边界",
+      "text": "对矩形 $[a,b]\\times[c,d]$，水平两边贡献是 $\\int_a^b[P(x,c)-P(x,d)]dx=-\\iint P_y\\,dA$；竖直两边贡献是 $\\int_c^d[Q(b,y)-Q(a,y)]dy=\\iint Q_x\\,dA$。相加得到 Green。对可分片区域，相邻边反向抵消；一般分段光滑边界的极限论证还依赖适当逼近与可积性，本卷不把示意网格当完整一般证明。"
+    },
+    {
+      "title": "Stokes 的图面情形为何回到 Green",
+      "text": "对图面 $\\mathbf r(u,v)=(u,v,g(u,v))$，拉回的线积分系数为 $A=P+Rg_u,B=Q+Rg_v$，各场分量在曲面上取值。若图面二阶连续可导，展开 $B_u-A_v$，链式项整理为 $(\\nabla\\times\\mathbf F)\\cdot(\\mathbf r_u\\times\\mathbf r_v)$，其中两个混合二阶项相消。再对参数域使用 Green。分片规则曲面的全局定理还需参数覆盖和定向相容，本卷引用其一般形式。"
+    },
+    {
+      "title": "散度定理、奇点与点源",
+      "text": "长方体情形可分别用一元基本定理配对六个面的通量；规则体积分块后公共面反向抵消。一般边界的推广需要逼近论证。场 $\\mathbf F=\\mathbf r/\\|\\mathbf r\\|^3$ 在原点之外散度为零，但半径 $R$ 的球面法向分量为 $1/R^2$，通量为 $4\\pi$；它在原点未定义，因此不能把含原点球体直接放进经典散度定理。奇点占零体积不等于定理假设可以删除。"
+    },
+    {
+      "title": "数值图示与数学证明的分工",
+      "text": "图示由有限网格与浮点数生成。线性函数的中点和可能恰好精确，球面多边网格面积通常只是近似；图面读数中的“精确”来自给定模型的解析公式。动画达到的是控件的明确端值，趋零参数保留正数下界，不把一次有限操作称为完成无穷极限。三维投影保持三轴同一尺度，俯视图会丢失高度信息，可旋转恢复。"
+    }
+  ]
+}

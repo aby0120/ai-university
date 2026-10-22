@@ -1,0 +1,192 @@
+{
+  "id": "la-independence",
+  "chapterId": "la-spaces",
+  "number": "3.3",
+  "title": "线性无关与冗余方向",
+  "subtitle": "有没有可以省掉的方向",
+  "concept": "线性无关意味着零向量只有全零系数这一种组合表示。",
+  "intuition": "如果某个方向能被其余方向拼出来，它就不是必须的。等价地，可以用不全为零的系数组合出零。",
+  "objectives": [
+    "用齐次系统检验无关性",
+    "构造非平凡依赖关系"
+  ],
+  "body": [
+    {
+      "title": "怎样计算判断？",
+      "text": "解齐次系统 $Ac=0$。只有零解则列线性无关；存在非零解则相关。"
+    },
+    {
+      "title": "为什么与冗余等价？",
+      "text": "若 $\\sum c_jv_j=0$ 且某个 $c_i\\ne0$，就能把 $v_i$ 移到等号另一侧并除以该系数。"
+    },
+    {
+      "title": "数量能先排除吗？",
+      "text": "$\\mathbb R^n$ 中超过 $n$ 个向量必相关，因为齐次系统未知量多于可能的主元数。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "线性无关与冗余方向",
+    "latex": "\\sum_{j=1}^k c_jv_j=0\\Rightarrow c_1=\\cdots=c_k=0",
+    "conditions": [
+      "结论对整个向量列表使用；空列表无关，包含零向量的非空列表一定相关。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "非零系数关系给出冗余向量。",
+      "latex": "c_iv_i=-\\sum_{j\\ne i}c_jv_j"
+    },
+    {
+      "text": "除以非零系数。",
+      "latex": "v_i=-\\sum_{j\\ne i}\\frac{c_j}{c_i}v_j"
+    },
+    {
+      "text": "反向移项即可构造非零齐次解。",
+      "latex": "v_i=\\sum_{j\\ne i}a_jv_j\\Rightarrow v_i-\\sum_{j\\ne i}a_jv_j=0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "平面内的两个方向",
+      "problem": "$(1,1),(1,-1)$ 是否无关？",
+      "steps": [
+        "$a+b=0,a-b=0$。",
+        "相加相减只得 $a=b=0$。"
+      ],
+      "answer": "无关。"
+    },
+    {
+      "title": "找一条依赖关系",
+      "problem": "$u=(1,0),v=(0,1),w=(2,3)$。",
+      "steps": [
+        "$w=2u+3v$。",
+        "$2u+3v-w=0$ 的系数不全为零。"
+      ],
+      "answer": "相关。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-independence-m1",
+      "claim": "没有两个向量平行就无关。",
+      "correction": "三个平面向量可以两两不平行，却整体相关。"
+    },
+    {
+      "id": "la-independence-m2",
+      "claim": "线性无关只需所有向量非零。",
+      "correction": "非零向量之间仍可能存在依赖关系。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$(1,2),(2,4)$ 是否无关？",
+      "hint": "比较倍数。",
+      "solution": [
+        "第二个是第一个的两倍。"
+      ],
+      "answer": "相关。",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "la-independence-m2"
+      ],
+      "id": "la-independence-q1"
+    },
+    {
+      "problem": "列表中含零向量，为什么相关？",
+      "hint": "给零向量一个非零系数。",
+      "solution": [
+        "$1\\cdot0+0\\cdot v_2+\\cdots=0$。"
+      ],
+      "answer": "存在非平凡零组合。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-independence-q2"
+    },
+    {
+      "problem": "$\\mathbb R^3$ 中四个向量能无关吗？",
+      "hint": "主元最多几个？",
+      "solution": [
+        "齐次系统四个未知量但至多三个主元。"
+      ],
+      "answer": "不能。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-independence-q3"
+    },
+    {
+      "problem": "$(1,0,0),(0,1,0)$ 在 $\\mathbb R^3$ 中是否无关？",
+      "hint": "只需齐次组合唯一。",
+      "solution": [
+        "两个非零坐标分别强制两个系数为零。"
+      ],
+      "answer": "无关，但不张成整个空间。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-independence-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-span",
+    "la-pivots"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "la-independence-m1",
+    "la-independence-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-independence",
+    "caption": "生成向量为 $u=(1,0,0),v=(1,c,0)$。淡色平面表示全部张成；边框只表示有限系数画出的部分。",
+    "prediction": "当第二个方向逐渐压向第一个方向，什么时候真正失去无关性？"
+  },
+  "learningCheck": {
+    "question": "线性相关意味着什么？",
+    "choices": [
+      "至少一个向量可由其余表示",
+      "每两个向量都平行",
+      "所有向量必须为零"
+    ],
+    "correctIndex": 0,
+    "explanation": "不全为零的齐次关系能解出至少一个向量。"
+  },
+  "teaching": {
+    "explain": "无关性只检查有没有冗余，不检查是否已经覆盖整个目标空间。两个概念要分开。",
+    "steps": [
+      {
+        "title": "两个独立方向",
+        "instruction": "取 $c=1$。",
+        "preset": {
+          "c": 1
+        },
+        "observation": "两个向量张成整个水平面，维数二。"
+      },
+      {
+        "title": "很接近平行",
+        "instruction": "取 $c=0.1$。",
+        "preset": {
+          "c": 0.1
+        },
+        "observation": "有限系数区域很窄，但仍张成整个平面。"
+      },
+      {
+        "title": "恰好相关",
+        "instruction": "取 $c=0$。",
+        "preset": {
+          "c": 0
+        },
+        "observation": "两个向量重合，张成只剩一条直线。"
+      }
+    ]
+  }
+}

@@ -4,8 +4,8 @@
   "number": "5.3",
   "title": "单调性、凹性与曲线分析",
   "subtitle": "两阶导数，两种形状",
-  "concept": "f′ 的正负告诉你曲线升降；f″ 的正负告诉你斜率是在增加还是减小。",
-  "intuition": "f′>0 像向上走；f″>0 表示坡度越来越大。函数递增和凹向上是两件不同的事。",
+  "concept": "$f'$ 的正负告诉你曲线升降；$f''$ 的正负告诉你斜率是在增加还是减小。",
+  "intuition": "$f' > 0$ 像向上走；$f'' > 0$ 表示坡度越来越大。函数递增和凹向上是两件不同的事。",
   "objectives": [
     "一阶导数符号表",
     "凹性与拐点",
@@ -14,11 +14,11 @@
   "body": [
     {
       "title": "增减区间怎样找？",
-      "text": "用 f′=0 或不存在的点分段，检查各段导数符号。正为递增、负为递减，不能跨过函数无定义的断口。"
+      "text": "用 $f' = 0$ 或不存在的点分段，检查各段导数符号。正为递增、负为递减，不能跨过函数无定义的断口。"
     },
     {
-      "title": "f″=0 就是拐点吗？",
-      "text": "不是。拐点要求曲线连续且凹性改变。x⁴ 在 0 的二阶导数为 0，左右仍凹向上，没有拐点。"
+      "title": "$f'' = 0$ 就是拐点吗？",
+      "text": "不是。拐点要求曲线连续且凹性改变。$x^{4}$ 在 0 的二阶导数为 0，左右仍凹向上，没有拐点。"
     },
     {
       "title": "怎样把信息拼成图？",
@@ -34,7 +34,7 @@
   },
   "derivation": [
     {
-      "text": "以 x³−3x 为例。",
+      "text": "以 $x^{3} - 3 x$ 为例。",
       "latex": "f\\prime=3(x^2-1),\\qquad f\\prime\\prime=6x"
     },
     {
@@ -42,7 +42,7 @@
       "latex": "(-\\infty,-1):\\uparrow,\\quad(-1,1):\\downarrow,\\quad(1,\\infty):\\uparrow"
     },
     {
-      "text": "极大点 (−1,2)，极小点 (1,−2)，拐点 (0,0)。",
+      "text": "极大点 $(-1,2)$，极小点 $(1,-2)$，拐点 $(0,0)$。",
       "latex": null
     }
   ],
@@ -50,16 +50,16 @@
     "kind": "derivative",
     "function": "cubic-extrema",
     "a": 0,
-    "caption": "移动切点，比较函数值与斜率。对 y=x³−3x，a=0 处斜率由减转增，凹性改变。",
+    "caption": "移动切点，比较函数值与斜率。对 $y = x^{3} - 3 x$，$a = 0$ 处斜率由减转增，凹性改变。",
     "prediction": "函数还在上升时，斜率能减小吗？移动切点，同时观察函数值和斜率。"
   },
   "workedExamples": [
     {
       "title": "两种增加",
-      "problem": "$f(x)=\\ln x$ 在 x>0 上如何升降与弯曲？",
+      "problem": "$f(x)=\\ln x$ 在 $x > 0$ 上如何升降与弯曲？",
       "steps": [
-        "f′=1/x>0，递增。",
-        "f″=−1/x²<0，凹向下。"
+        "$f' = \\frac{1}{x} > 0$，递增。",
+        "$f'' = \\frac{- 1}{x^{2}} < 0$，凹向下。"
       ],
       "answer": "递增但增速越来越小。"
     },
@@ -67,7 +67,7 @@
       "title": "候选不是结论",
       "problem": "判断 $x^4$ 在 0 是否有拐点。",
       "steps": [
-        "f″=12x²，在两侧都为正。",
+        "$f'' = 12 x^{2}$，在两侧都为正。",
         "凹性未改变。"
       ],
       "answer": "没有拐点。"
@@ -77,11 +77,11 @@
     {
       "id": "curve-sketching-m1",
       "claim": "把递增与凹向上视为同义。",
-      "correction": "一个描述输出，一个描述斜率；ln x 就是递增且凹向下。"
+      "correction": "一个描述输出，一个描述斜率；$\\ln x$ 就是递增且凹向下。"
     },
     {
       "id": "curve-sketching-m2",
-      "claim": "看到 f″=0 就定为拐点。",
+      "claim": "看到 $f'' = 0$ 就定为拐点。",
       "correction": "必须检查凹性跨点改变。"
     }
   ],
@@ -89,13 +89,11 @@
     {
       "id": "curve-sketching-p1",
       "difficulty": 1,
-      "misconceptionTags": [
-        "curve-sketching-m1"
-      ],
+      "misconceptionTags": [],
       "problem": "$x^2$ 在哪里递减？",
       "answer": "$(-\\infty,0)$。",
       "solution": [
-        "f′=2x，x<0 时为负。"
+        "$f' = 2 x$，$x < 0$ 时为负。"
       ],
       "hint": "做导数符号表。"
     },
@@ -106,37 +104,35 @@
         "curve-sketching-m2"
       ],
       "problem": "$x^3$ 的拐点在哪里？",
-      "answer": "(0,0)。",
+      "answer": "$(0,0)$。",
       "solution": [
-        "f″=6x 在 0 两侧变号，函数连续。"
+        "$f'' = 6 x$ 在 0 两侧变号，函数连续。"
       ],
       "hint": "检查二阶导数符号。"
     },
     {
       "id": "curve-sketching-p3",
-      "difficulty": 3,
+      "difficulty": 1,
       "misconceptionTags": [
-        "curve-sketching-m2"
+        "curve-sketching-m1"
       ],
-      "problem": "e^x 是凹向上还是向下？",
+      "problem": "$e^{x}$ 是凹向上还是向下？",
       "answer": "凹向上。",
       "solution": [
-        "二阶导数仍为 e^x，始终正。"
+        "二阶导数仍为 $e^{x}$，始终正。"
       ],
       "hint": "导数再求一次。"
     },
     {
       "id": "curve-sketching-p4",
-      "difficulty": 4,
-      "misconceptionTags": [
-        "curve-sketching-m2"
-      ],
+      "difficulty": 2,
+      "misconceptionTags": [],
       "problem": "求 $x^3-3x$ 的局部最大值。",
       "answer": "$2$。",
       "solution": [
-        "导数在 x=−1 从正变负，函数值为 2。"
+        "导数在 $x = - 1$ 从正变负，函数值为 2。"
       ],
-      "hint": "要回答函数值，而非仅坐标 x。",
+      "hint": "要回答函数值，而非仅坐标 $x$。",
       "numericAnswer": 2
     }
   ],
@@ -152,7 +148,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.3.2",
     "status": "revised",
     "humanReviewed": false
   },
@@ -163,13 +159,48 @@
     "phet-design"
   ],
   "learningCheck": {
-    "question": "f′>0 且 f″<0 时，图像怎样变化？",
+    "question": "$f' > 0$ 且 $f'' < 0$ 时，图像怎样变化？",
     "choices": [
       "下降且凹向下",
       "上升，但斜率在减小",
       "上升且斜率在增大"
     ],
     "correctIndex": 1,
-    "explanation": "f′>0 说明函数上升，f″<0 说明斜率递减。函数增加不等于增加得越来越快。"
+    "explanation": "$f' > 0$ 说明函数上升，$f'' < 0$ 说明斜率递减。函数增加不等于增加得越来越快。"
+  },
+  "teaching": {
+    "explain": "先看函数往上还是往下，再看斜率变大还是变小。前者是增减，后者是凹性，不能把两件事混成一件。",
+    "steps": [
+      {
+        "title": "上升而斜率减小",
+        "instruction": "切点取 −2，间隔取 0.01。",
+        "preset": {
+          "a": -2,
+          "h": 0.01,
+          "side": 1
+        },
+        "observation": "精确斜率为 9，二阶导数为 −12：上升，但凹向下。"
+      },
+      {
+        "title": "看中心",
+        "instruction": "切点取 0。",
+        "preset": {
+          "a": 0,
+          "h": 0.01,
+          "side": 1
+        },
+        "observation": "斜率为 −3。二阶导数跨过零变号，凹性在这里改变。"
+      },
+      {
+        "title": "另一侧上升",
+        "instruction": "切点取 2。",
+        "preset": {
+          "a": 2,
+          "h": 0.01,
+          "side": 1
+        },
+        "observation": "斜率也为 9，但二阶导数为 12：上升且凹向上。"
+      }
+    ]
   }
 }

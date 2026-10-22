@@ -1,0 +1,192 @@
+{
+  "id": "c3-stokes",
+  "chapterId": "c3-theorems",
+  "number": "9.1",
+  "title": "Stokes 定理",
+  "subtitle": "相同边界，可以换一张更好算的面",
+  "concept": "Stokes 定理把边界环流与曲面上的旋度通量连接起来。",
+  "intuition": "把一张有边的网分成小片，内部公共边反向抵消；只剩整张网的边界绕行。",
+  "objectives": [
+    "将边界环流换成旋度通量",
+    "匹配右手定向与换面条件"
+  ],
+  "body": [
+    {
+      "title": "边界方向怎样配？",
+      "text": "右手拇指指向正法向，四指弯曲方向为边界正向。等价地，沿边界走且头朝正法向时曲面在左侧。"
+    },
+    {
+      "title": "换面有什么条件？",
+      "text": "新面要有同一带定向边界，场在新旧面需要的邻域内均光滑。遇到奇点或不合适的域，不能随意跨越。"
+    },
+    {
+      "title": "闭曲面有边界吗？",
+      "text": "通常闭曲面的曲线边界为空，因此平滑场的旋度穿过闭曲面的总通量为零。不要把几何外轮廓当曲线边界。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "相同边界，可以换一张更好算的面",
+    "latex": "\\oint_{\\partial S}\\mathbf F\\cdot d\\mathbf r=\\iint_S(\\nabla\\times\\mathbf F)\\cdot\\mathbf n\\,dS",
+    "conditions": [
+      "曲面分片光滑且可定向、边界分段光滑并与法向兼容；场在包含曲面的开邻域一阶连续可导；各边界分量均须计入。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "在参数小片上把线积分拉回参数平面。",
+      "latex": "P\\,dx+Q\\,dy+R\\,dz=A\\,du+B\\,dv"
+    },
+    {
+      "text": "对参数平面使用 Green，链式法则化简。",
+      "latex": "B_u-A_v=(\\nabla\\times\\mathbf F)\\cdot(\\mathbf r_u\\times\\mathbf r_v)"
+    },
+    {
+      "text": "公共边相消后得到整面公式。",
+      "latex": "\\oint_{\\partial S}\\mathbf F\\cdot d\\mathbf r=\\iint_S(\\nabla\\times\\mathbf F)\\cdot\\mathbf n\\,dS"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "把半球换圆盘",
+      "problem": "$\\mathbf F=(-y,x,0)$ 沿单位球上半球边界，从上方看逆时针，环流？",
+      "steps": [
+        "边界是水平单位圆，选向上圆盘替代曲面。",
+        "旋度 $(0,0,2)$，通量为 $2\\pi$。"
+      ],
+      "answer": "$2\\pi$。"
+    },
+    {
+      "title": "斜平面三角形",
+      "problem": "$\\mathbf F=(0,x,0)$，边界是第一卦限平面 $x+y+z=1$ 的三角形，法向竖分量为正。",
+      "steps": [
+        "旋度为 $(0,0,1)$。",
+        "通量等于水平投影三角形面积 $1/2$。"
+      ],
+      "answer": "$\\frac12$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-stokes-m1",
+      "claim": "只要边界形状相同，方向可忽略。",
+      "correction": "方向反转使环流和旋度通量同时反号。"
+    },
+    {
+      "id": "c3-stokes-m2",
+      "claim": "任何曲面通量都能用 Stokes。",
+      "correction": "定理连接的是旋度的通量，不是任意场的通量。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-stokes-q1",
+      "problem": "常场的闭路环流是多少？",
+      "hint": "旋度为零且场全域光滑。",
+      "solution": [
+        "可用 Stokes 或常力点乘闭合总位移，结果零。"
+      ],
+      "answer": "0",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0
+    },
+    {
+      "id": "c3-stokes-q2",
+      "problem": "场 $(-y,x,0)$ 沿半径 3 的逆时针水平圆环流？",
+      "hint": "旋度二乘圆盘面积。",
+      "solution": [
+        "$2\\cdot9\\pi=18\\pi$。"
+      ],
+      "answer": "$18\\pi$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-stokes-q3",
+      "problem": "将曲面法向反转而边界不反转，还能直接套兼容方向公式吗？",
+      "hint": "两种定向是否匹配？",
+      "solution": [
+        "右手规则被破坏，需反转边界或在公式一侧加负号。"
+      ],
+      "answer": "不能原样套用。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-stokes-q4",
+      "problem": "光滑场的旋度穿过闭球面的净通量是多少？",
+      "hint": "球面没有曲线边界。",
+      "solution": [
+        "Stokes 右侧等于空边界上的环流，为零。"
+      ],
+      "answer": "0",
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "numericAnswer": 0
+    }
+  ],
+  "learningCheck": {
+    "question": "Stokes 可以用什么替换难算的曲面？",
+    "choices": [
+      "任意同面积曲面",
+      "同一带定向边界且场光滑的曲面",
+      "任意球面"
+    ],
+    "correctIndex": 1,
+    "explanation": "真正保持的是边界，不能跨过不满足光滑条件的区域。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-stokes",
+    "caption": "场 $(-y,x,0)$ 与曲面 $z=c(1-x^2-y^2)$，底为单位圆盘；边界和向上定向保持不变。",
+    "prediction": "内部鼓起后，真实面积变了，环流为什么不变？"
+  },
+  "teaching": {
+    "explain": "保持同一条带方向的边界，就能换一张更好计算旋度通量的面，前提是场仍光滑。",
+    "steps": [
+      {
+        "title": "平面圆盘",
+        "instruction": "将曲面鼓起高度 $c$ 设为 $0$。",
+        "preset": {
+          "c": 0
+        },
+        "observation": "曲面为圆盘，旋度通量为 $2\\pi$。"
+      },
+      {
+        "title": "抬起内部",
+        "instruction": "将曲面鼓起高度 $c$ 设为 $0.5$。",
+        "preset": {
+          "c": 0.5
+        },
+        "observation": "内部鼓起，边界保持不变，旋度通量不变。"
+      },
+      {
+        "title": "更高曲面",
+        "instruction": "将曲面鼓起高度 $c$ 设为 $1$。",
+        "preset": {
+          "c": 1
+        },
+        "observation": "真实面积增加，但旋度通量仍为 $2\\pi$。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-div-curl",
+    "c3-parametric-surfaces"
+  ],
+  "difficulty": 5,
+  "misconceptionTags": [
+    "c3-stokes-m1",
+    "c3-stokes-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

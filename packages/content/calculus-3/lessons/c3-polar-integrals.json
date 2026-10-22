@@ -1,0 +1,190 @@
+{
+  "id": "c3-polar-integrals",
+  "chapterId": "c3-double",
+  "number": "5.3",
+  "title": "极坐标二重积分",
+  "subtitle": "小扇形面积多一个半径",
+  "concept": "极坐标把圆形区域的边界简化，但每块实际面积是半径乘径向宽度再乘角宽。",
+  "intuition": "同样转一小角，离圆心越远，扫过的弧越长。因此外圈的小格面积更大。",
+  "objectives": [
+    "用极坐标计算圆形区域积分",
+    "避免漏掉面积倍率和重复覆盖"
+  ],
+  "body": [
+    {
+      "title": "为什么多一个半径？",
+      "text": "小扇形的一条边约为径向宽度，另一条约为半径乘角宽；相乘得到面积缩放。"
+    },
+    {
+      "title": "什么时候更合适？",
+      "text": "圆盘、圆环、扇形和只依赖到原点距离的函数通常更简单。圆心不在原点时可先平移。"
+    },
+    {
+      "title": "会不会重复？",
+      "text": "方位角整周重复，径向坐标通常取非负。必须选不重复覆盖区域的参数范围，边界重合的零面积集合不影响积分。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "小扇形面积多一个半径",
+    "latex": "\\iint_D f(x,y)dA=\\iint_{D^*}f(r\\cos\\theta,r\\sin\\theta)\\,r\\,dr\\,d\\theta",
+    "conditions": [
+      "半径非负；变换在区域内部除退化集合外一一覆盖且光滑；函数可积；不可重复扫过正面积部分。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "半径方向的小边长。",
+      "latex": "ds_r=dr"
+    },
+    {
+      "text": "角方向的小边长。",
+      "latex": "ds_\\theta\\approx r\\,d\\theta"
+    },
+    {
+      "text": "两方向互相垂直，面积元为。",
+      "latex": "dA=r\\,dr\\,d\\theta"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "圆盘积分",
+      "problem": "半径 2 圆盘上积分 $x^2+y^2$。",
+      "steps": [
+        "代入得被积函数 $r^2$，面积元再乘 $r$。",
+        "$\\int_0^{2\\pi}\\int_0^2r^3drd\\theta=8\\pi$。"
+      ],
+      "answer": "$8\\pi$。"
+    },
+    {
+      "title": "圆环面积",
+      "problem": "$1\\le x^2+y^2\\le4$ 的面积？",
+      "steps": [
+        "径向界为 $1\\le r\\le2$。",
+        "积分 $\\int_0^{2\\pi}\\int_1^2r\\,drd\\theta=3\\pi$。"
+      ],
+      "answer": "$3\\pi$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-polar-integrals-m1",
+      "claim": "把横纵坐标换掉就完成了。",
+      "correction": "面积元还要乘半径。"
+    },
+    {
+      "id": "c3-polar-integrals-m2",
+      "claim": "角度扫两周只是另一种写法。",
+      "correction": "会把正面积区域重复计数，积分加倍。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-polar-integrals-q1",
+      "problem": "半径 3 圆盘的面积？",
+      "hint": "积分常数一并保留半径因子。",
+      "solution": [
+        "$\\int_0^{2\\pi}\\int_0^3r\\,drd\\theta=9\\pi$。"
+      ],
+      "answer": "$9\\pi$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-polar-integrals-q2",
+      "problem": "单位圆盘上 $\\iint(x^2+y^2)dA$？",
+      "hint": "径向幂次再增加一。",
+      "solution": [
+        "$\\int_0^{2\\pi}\\int_0^1r^3drd\\theta=\\pi/2$。"
+      ],
+      "answer": "$\\frac\\pi2$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-polar-integrals-q3",
+      "problem": "扇形半径 2、角宽 $\\pi/3$ 的面积？",
+      "hint": "先径向积分，再乘角宽。",
+      "solution": [
+        "$\\frac{2^2}2\\cdot\\frac\\pi3=\\frac{2\\pi}3$。"
+      ],
+      "answer": "$\\frac{2\\pi}3$。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-polar-integrals-q4",
+      "problem": "把单位圆盘用角度零到 $4\\pi$ 积分会怎样？",
+      "hint": "数一数覆盖次数。",
+      "solution": [
+        "除原点外所有内部点被覆盖两次，积分得到实际值两倍。"
+      ],
+      "answer": "重复计数两次。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "极坐标的面积元是什么？",
+    "choices": [
+      "$dr\\,d\\theta$",
+      "$r\\,dr\\,d\\theta$",
+      "$r^2\\,dr\\,d\\theta$"
+    ],
+    "correctIndex": 1,
+    "explanation": "角向小边长是半径乘角宽。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-polar-integrals",
+    "caption": "比较极坐标网格：固定径向宽度与角宽，移动小扇形到不同半径。",
+    "prediction": "同样的参数格子，为什么外圈面积更大？"
+  },
+  "teaching": {
+    "explain": "同样角宽在外圈扫出更长的边，这正是面积元里多一个半径的原因。",
+    "steps": [
+      {
+        "title": "较小半径",
+        "instruction": "将小扇形起始半径 $r$ 设为 $0.5$。",
+        "preset": {
+          "b": 0.5
+        },
+        "observation": "相同角宽下，小块角向边较短。"
+      },
+      {
+        "title": "单位半径",
+        "instruction": "将小扇形起始半径 $r$ 设为 $1$。",
+        "preset": {
+          "b": 1
+        },
+        "observation": "角向边长等于角宽的数值乘单位长度。"
+      },
+      {
+        "title": "较大半径",
+        "instruction": "将小扇形起始半径 $r$ 设为 $2$。",
+        "preset": {
+          "b": 2
+        },
+        "observation": "相同角宽的小块面积近似翻倍。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-double-integrals",
+    "c3-coordinates"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-polar-integrals-m1",
+    "c3-polar-integrals-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

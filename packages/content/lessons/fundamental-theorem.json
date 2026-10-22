@@ -5,7 +5,7 @@
   "title": "微积分基本定理",
   "subtitle": "变化与累积为何互相撤销",
   "concept": "积分累积，导数测变化。连续函数的累积函数求导回到原函数；定积分可用原函数的端点差计算。",
-  "intuition": "A(x)=∫ₐˣf(t)dt。x 多走 h，就多累积一小条；这条的平均高度趋近 f(x)，所以 A′(x)=f(x)。",
+  "intuition": "$A (x) = \\int _{a}^{x} f (t) \\mathrm{d}t$。$x$ 多走 $h$，就多累积一小条；这条的平均高度趋近 $f (x)$，所以 $A' (x) = f (x)$。",
   "objectives": [
     "第一部分：累积的导数",
     "第二部分：原函数端点差",
@@ -13,23 +13,23 @@
   ],
   "body": [
     {
-      "title": "为什么累积的导数是 f(x)？",
-      "text": "差商就是新增窄条的平均高度。f 在 x 连续时，窄条高度都靠近 f(x)，平均值也靠近它。"
+      "title": "为什么累积的导数是 $f (x)$？",
+      "text": "差商就是新增窄条的平均高度。$f$ 在 $x$ 连续时，窄条高度都靠近 $f (x)$，平均值也靠近它。"
     },
     {
-      "title": "为什么能用 F(b)−F(a)？",
-      "text": "若 F′=f，F 与累积函数 A 的导数相同，在区间上只差常数。端点相减，常数抵消。"
+      "title": "为什么能用 $F (b) - F (a)$？",
+      "text": "若 $F' = f$，$F$ 与累积函数 $A$ 的导数相同，在区间上只差常数。端点相减，常数抵消。"
     },
     {
-      "title": "上限是 g(x) 怎么办？",
-      "text": "再用链式法则：导数为 f(g(x))g′(x)。两端都变化时，上端贡献减下端贡献；积分内的 t 只是积分变量。"
+      "title": "上限是 $g (x)$ 怎么办？",
+      "text": "再用链式法则：导数为 $f (g (x)) g' (x)$。两端都变化时，上端贡献减下端贡献；积分内的 $t$ 只是积分变量。"
     }
   ],
   "formalDefinition": {
     "text": "基本定理把连续累积与求导连接起来。",
     "latex": "\\frac d{dx}\\int_a^x f(t)\\,dt=f(x),\\qquad\\int_a^b f(x)\\,dx=F(b)-F(a)",
     "conditions": [
-      "f 在相应闭区间连续，F 是该区间上的原函数；端点用单侧理解。"
+      "$f$ 在相应闭区间连续，$F$ 是该区间上的原函数；端点用单侧理解。"
     ]
   },
   "derivation": [
@@ -38,27 +38,27 @@
       "latex": "\\frac{A(x+h)-A(x)}h=\\frac1h\\int_x^{x+h}f(t)\\,dt"
     },
     {
-      "text": "该平均高度与 f(x) 的差受局部最大偏差控制，连续性让它趋零。",
+      "text": "该平均高度与 $f (x)$ 的差受局部最大偏差控制，连续性让它趋零。",
       "latex": "\\left|\\frac1h\\int_x^{x+h}(f(t)-f(x))dt\\right|\\le\\sup_{t\\text{ between }x,x+h}|f(t)-f(x)|"
     },
     {
-      "text": "所以 A′=f；再比较 A 与 F 得端点公式。",
+      "text": "所以 $A' = f$；再比较 $A$ 与 $F$ 得端点公式。",
       "latex": "\\int_a^b f=F(b)-F(a)"
     }
   ],
   "interactiveVisual": {
     "kind": "accumulation",
     "function": "square",
-    "caption": "移动上限 x：累积 A(x)=x³/3 的斜率等于新增条带的高度 f(x)=x²。",
-    "prediction": "累积曲线 A(x) 的斜率与原曲线 f(x) 的高度怎样对应？移动上限检查。"
+    "caption": "移动上限 $x$：累积 $A (x) = \\frac{x^{3}}{3}$ 的斜率等于新增条带的高度 $f (x) = x^{2}$。",
+    "prediction": "累积曲线 $A (x)$ 的斜率与原曲线 $f (x)$ 的高度怎样对应？移动上限检查。"
   },
   "workedExamples": [
     {
       "title": "从无穷细分到两端",
       "problem": "计算 $\\int_0^2 3x^2\\,dx$。",
       "steps": [
-        "原函数是 x³。",
-        "端点差 2³−0³=8。"
+        "原函数是 $x^{3}$。",
+        "端点差 $2^{3} - 0^{3} = 8$。"
       ],
       "answer": "结果为 8。"
     },
@@ -66,8 +66,8 @@
       "title": "变上限也要链式",
       "problem": "求 $G(x)=\\int_0^{x^2}\\cos t\\,dt$ 的导数。",
       "steps": [
-        "累积函数对上限的导数是 cos(上限)。",
-        "上限 x² 的导数为 2x。"
+        "累积函数对上限的导数是 $\\cos(\\text{上限})$。",
+        "上限 $x^{2}$ 的导数为 $2 x$。"
       ],
       "answer": "$G\\prime(x)=2x\\cos(x^2)$。"
     }
@@ -75,13 +75,13 @@
   "commonMistakes": [
     {
       "id": "fundamental-theorem-m1",
-      "claim": "积分的导数总是原函数，不看上限。",
-      "correction": "上限为 g(x) 时必须代入并乘 g′。"
+      "claim": "不看积分上限，直接把导数写成 $f(x)$。",
+      "correction": "上限为 $g (x)$ 时必须代入并乘 $g'$。"
     },
     {
       "id": "fundamental-theorem-m2",
       "claim": "端点计算顺序颠倒。",
-      "correction": "固定为上端 F(b) 减下端 F(a)。"
+      "correction": "固定为上端 $F (b)$ 减下端 $F (a)$。"
     }
   ],
   "practice": [
@@ -89,21 +89,21 @@
       "id": "fundamental-theorem-p1",
       "difficulty": 1,
       "misconceptionTags": [
-        "fundamental-theorem-m1"
+        "fundamental-theorem-m2"
       ],
       "problem": "计算 $\\int_1^3 2x\\,dx$。",
       "answer": "$8$。",
       "solution": [
-        "原函数 x²，9−1=8。"
+        "原函数 $x^{2}$，$9 - 1 = 8$。"
       ],
       "hint": "用两端差。",
       "numericAnswer": 8
     },
     {
       "id": "fundamental-theorem-p2",
-      "difficulty": 2,
+      "difficulty": 1,
       "misconceptionTags": [
-        "fundamental-theorem-m2"
+        "fundamental-theorem-m1"
       ],
       "problem": "求 $\\frac d{dx}\\int_1^x e^t dt$。",
       "answer": "$e^x$。",
@@ -116,25 +116,25 @@
       "id": "fundamental-theorem-p3",
       "difficulty": 3,
       "misconceptionTags": [
-        "fundamental-theorem-m2"
+        "fundamental-theorem-m1"
       ],
       "problem": "求 $\\frac d{dx}\\int_x^{2x}t^2dt$。",
       "answer": "$7x^2$。",
       "solution": [
-        "上端：(2x)²×2；下端：x²×1，相减为 7x²。"
+        "上端：$(2 x)^{2} \\times 2$；下端：$x^{2} \\times 1$，相减为 $7 x^{2}$。"
       ],
       "hint": "两端都变化，分别求贡献。"
     },
     {
       "id": "fundamental-theorem-p4",
-      "difficulty": 4,
+      "difficulty": 1,
       "misconceptionTags": [
         "fundamental-theorem-m2"
       ],
       "problem": "计算 $\\int_0^{\\pi}\\sin x\\,dx$。",
       "answer": "$2$。",
       "solution": [
-        "原函数 −cos x，−cosπ+cos0=2。"
+        "原函数 $- \\cos x$，$- \\cos \\pi  + \\cos 0 = 2$。"
       ],
       "hint": "注意原函数的负号。",
       "numericAnswer": 2
@@ -152,7 +152,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -164,13 +164,42 @@
     "3b1b-calculus"
   ],
   "learningCheck": {
-    "question": "f 连续，A(x)=∫₀ˣf(t)dt。A′(x) 等于什么？",
+    "question": "$f$ 连续，$A (x) = \\int _{0}^{x} f (t) \\mathrm{d}t$。$A' (x)$ 等于什么？",
     "choices": [
-      "f(x)",
-      "∫₀ˣf′(t)dt",
-      "f(0)"
+      "$f (x)$",
+      "$\\int _{0}^{x} f' (t) \\mathrm{d}t$",
+      "$f (0)$"
     ],
     "correctIndex": 0,
-    "explanation": "上限增加 h 时，新增积分约为 f(x)h。除以 h 再取极限，得到当前的 f(x)。"
+    "explanation": "上限增加 $h$ 时，新增积分约为 $f (x) h$。除以 $h$ 再取极限，得到当前的 $f (x)$。"
+  },
+  "teaching": {
+    "explain": "累积上限多走一点，就多添一条很窄的贡献。除以走过的宽度，这条的平均高度趋近当前高度，所以累积的导数恢复原函数。",
+    "steps": [
+      {
+        "title": "从起点开始",
+        "instruction": "累积上限取 0。",
+        "preset": {
+          "x": 0
+        },
+        "observation": "累积与当前新增高度都为零。"
+      },
+      {
+        "title": "累积到中间",
+        "instruction": "上限取 0.5。",
+        "preset": {
+          "x": 0.5
+        },
+        "observation": "累积为 $\\frac1{24}$，当前高度与累积导数都为 $\\frac14$。"
+      },
+      {
+        "title": "累积到终点",
+        "instruction": "上限取 1。",
+        "preset": {
+          "x": 1
+        },
+        "observation": "累积为 $\\frac13$，当前高度为 1；累积值和累积速度不是同一个量。"
+      }
+    ]
   }
 }

@@ -1,0 +1,189 @@
+{
+  "id": "la-subspaces",
+  "chapterId": "la-spaces",
+  "number": "3.1",
+  "title": "向量空间与子空间",
+  "subtitle": "加减与缩放后仍在其中",
+  "concept": "子空间是在原空间中，对加法和数乘仍封闭的一部分。",
+  "intuition": "经过原点的直线或平面可以独立做向量运算；平移后通常不能，因为相加会离开原来的集合。",
+  "objectives": [
+    "检验子空间的封闭性",
+    "识别不经过原点的反例"
+  ],
+  "body": [
+    {
+      "title": "向量一定是箭头吗？",
+      "text": "矩阵和多项式也能相加、数乘。满足向量空间运算公理时，它们同样是向量；本书主要使用有限维实向量空间。"
+    },
+    {
+      "title": "如何检验子空间？",
+      "text": "先确认包含零向量，再确认任意两个成员的线性组合仍在集合内。这比逐条重查所有公理更方便。"
+    },
+    {
+      "title": "零集合算空间吗？",
+      "text": "只含零向量的集合也是子空间。空集不是，因为缺少零向量。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "向量空间与子空间",
+    "latex": "W\\le V\\iff 0\\in W\\text{ 且 }au+bv\\in W\\quad(u,v\\in W;\\ a,b\\in\\mathbb R)",
+    "conditions": [
+      "子空间使用原空间的加法与数乘；不能在检验时临时换一套运算。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "检验是否包含零。",
+      "latex": "0\\in W"
+    },
+    {
+      "text": "检验任意线性组合。",
+      "latex": "u,v\\in W\\Rightarrow au+bv\\in W"
+    },
+    {
+      "text": "其余公理由原空间继承。",
+      "latex": "W\\text{ 使用 }V\\text{ 的同一运算}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "齐次条件定义子空间",
+      "problem": "$W=\\{(x,y,z):x+y-z=0\\}$ 是子空间吗？",
+      "steps": [
+        "零向量满足条件。",
+        "若 $u,v$ 满足该齐次等式，则 $au+bv$ 也满足。"
+      ],
+      "answer": "是一个过原点的平面。"
+    },
+    {
+      "title": "平移破坏封闭性",
+      "problem": "$x+y=1$ 的点集是子空间吗？",
+      "steps": [
+        "零向量不满足等式。",
+        "两个成员相加时坐标和变成 $2$。"
+      ],
+      "answer": "不是。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-subspaces-m1",
+      "claim": "任何直线都是子空间。",
+      "correction": "必须经过原点并使用原空间运算。"
+    },
+    {
+      "id": "la-subspaces-m2",
+      "claim": "只检查几个成员相加就足够。",
+      "correction": "封闭性必须对任意成员和标量成立。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$\\{(x,0):x\\in\\mathbb R\\}$ 是子空间吗？",
+      "hint": "检查零和线性组合。",
+      "solution": [
+        "纵坐标在任意线性组合后仍为零。"
+      ],
+      "answer": "是。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "la-subspaces-q1"
+    },
+    {
+      "problem": "第一象限连同边界是子空间吗？",
+      "hint": "检查负数乘法。",
+      "solution": [
+        "$(1,0)$ 在内，$-(1,0)$ 不在内。"
+      ],
+      "answer": "不是。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-subspaces-q2"
+    },
+    {
+      "problem": "次数不超过 $2$ 的实多项式（含零多项式）组成空间吗？",
+      "hint": "加法不会产生更高次项。",
+      "solution": [
+        "相加、数乘后仍不超过该次数，并包含零。"
+      ],
+      "answer": "组成空间。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-subspaces-q3"
+    },
+    {
+      "problem": "两个子空间的交集是子空间吗？",
+      "hint": "同时属于两者的线性组合会去哪里？",
+      "solution": [
+        "零在交集中；线性组合同时留在两个空间中。"
+      ],
+      "answer": "是。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-subspaces-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-linear-maps"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "la-subspaces-m1",
+    "la-subspaces-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-subspaces",
+    "caption": "生成向量为 $u=(1,0,0),v=(1,c,0)$。淡色平面表示全部张成；边框只表示有限系数画出的部分。",
+    "prediction": "当两个生成方向变成平行时，它们张成的空间怎样改变？"
+  },
+  "learningCheck": {
+    "question": "哪个集合一定不是子空间？",
+    "choices": [
+      "只含零向量的集合",
+      "不包含零向量的非空集合",
+      "齐次线性方程组的解集"
+    ],
+    "correctIndex": 1,
+    "explanation": "每个向量空间必须包含零向量。"
+  },
+  "teaching": {
+    "explain": "子空间不是随便圈出的一片区域。它必须允许你随意加减和缩放其中的向量，结果仍在里面。",
+    "steps": [
+      {
+        "title": "两个独立方向",
+        "instruction": "取 $c=1$。",
+        "preset": {
+          "c": 1
+        },
+        "observation": "两个向量张成整个水平面，维数二。"
+      },
+      {
+        "title": "很接近平行",
+        "instruction": "取 $c=0.1$。",
+        "preset": {
+          "c": 0.1
+        },
+        "observation": "有限系数区域很窄，但仍张成整个平面。"
+      },
+      {
+        "title": "恰好相关",
+        "instruction": "取 $c=0$。",
+        "preset": {
+          "c": 0
+        },
+        "observation": "两个向量重合，张成只剩一条直线。"
+      }
+    ]
+  }
+}

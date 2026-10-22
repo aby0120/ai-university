@@ -1,0 +1,192 @@
+{
+  "id": "ode-error-control",
+  "chapterId": "ode-numerical",
+  "number": "11.4",
+  "title": "局部误差与全局误差",
+  "subtitle": "每步的偏差还会传播",
+  "body": [
+    {
+      "title": "本卷的局部误差约定",
+      "text": "单步局部误差直接比较精确起点的一次更新与精确终点，不再除以步长；避免不同教材约定造成一阶差异。"
+    },
+    {
+      "title": "阶数关系",
+      "text": "稳定且光滑的有限区间内，阶数为 $p$ 的方法通常单步误差为 $O(h^{p+1})$，全局为 $O(h^p)$。"
+    },
+    {
+      "title": "怎样自查？",
+      "text": "在同一终点比较不同步长。若误差约按理论比例下降，说明进入渐近区间；只比较两次接近不能保证精确，也可能共同有偏。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "把终点误差分成新产生与传播两部分。",
+      "latex": "e_{n+1}=\\text{局部新误差}+\\text{原误差传播}"
+    },
+    {
+      "text": "有限区间上步数与步长成反比。",
+      "latex": "N\\approx T/h"
+    },
+    {
+      "text": "稳定累积下得到少一阶的全局量级。",
+      "latex": "N\\,O(h^{p+1})=O(h^p)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "从误差比估阶",
+      "problem": "误差从 $0.04$ 降至 $0.01$，步长减半，估计阶数。",
+      "steps": [
+        "误差比为四。",
+        "$2^p=4$。"
+      ],
+      "answer": "估计二阶，前提是主误差区间。"
+    },
+    {
+      "title": "Euler 局部误差",
+      "problem": "$y'=y$ 从精确值一走步长 $h$。",
+      "steps": [
+        "Euler 值为 $1+h$，精确为 $e^h$。",
+        "差从二次项开始。"
+      ],
+      "answer": "单步误差 $h^2/2+O(h^3)$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-error-control-q1",
+      "problem": "RK4 的通常单步局部误差阶？",
+      "hint": "比全局阶高一。",
+      "solution": [
+        "在本卷未除步长约定下为五阶。"
+      ],
+      "answer": "$O(h^5)$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-error-control-q2",
+      "problem": "误差减半时，是否能立刻证明算法是一阶？",
+      "hint": "还需排除偶然抵消等。",
+      "solution": [
+        "需一系列加密及条件支持。"
+      ],
+      "answer": "不能只凭一次比较证明。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-error-control-q3",
+      "problem": "测全局误差应固定终点还是固定步数？",
+      "hint": "比较同一个问题的同一时刻。",
+      "solution": [
+        "固定终点，步数随步长改变。"
+      ],
+      "answer": "固定终点。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-error-control-q4",
+      "problem": "两次近似很接近是否必然接近真解？",
+      "hint": "可能共享系统偏差。",
+      "solution": [
+        "还需可靠误差估计或独立参考。"
+      ],
+      "answer": "不必然。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-error-control-m1",
+      "claim": "每步局部误差就是最终误差。",
+      "correction": "此前偏差也会传播。"
+    },
+    {
+      "id": "ode-error-control-m2",
+      "claim": "只要减步长，任何情形都会按理论阶下降。",
+      "correction": "舍入误差、奇点和不光滑会影响趋势。"
+    }
+  ],
+  "prerequisites": [
+    "ode-rk4"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-error-control-m1",
+    "ode-error-control-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "单步误差描述从正确起点迈一步的偏差；全局误差还包含此前误差的传播与累积。",
+  "intuition": "每次迈步都可能走偏，而且下一步会从已经偏了的位置继续走。",
+  "objectives": [
+    "区分两种误差及阶数",
+    "用网格加密估计收敛趋势"
+  ],
+  "formalDefinition": {
+    "text": "局部误差与全局误差",
+    "latex": "e_n=y(t_n)-y_n,\\quad\\text{单步 }O(h^{p+1}),\\quad\\text{全局 }O(h^p)",
+    "conditions": [
+      "需固定有限时间区间、足够正则性和误差传播稳定；本卷单步误差不按步长归一化。"
+    ]
+  },
+  "learningCheck": {
+    "question": "为什么全局误差通常比单步误差少一阶？",
+    "choices": [
+      "同一时间区间内要累积约倒步长次更新",
+      "全局总是更准确",
+      "公式写错了"
+    ],
+    "correctIndex": 0,
+    "explanation": "步数增长与误差传播共同影响结果。"
+  },
+  "teaching": {
+    "explain": "检查误差时始终对齐同一个终点，才是在比较同一件事。",
+    "steps": [
+      {
+        "title": "粗网格",
+        "preset": {
+          "n": 2,
+          "b": 2
+        },
+        "observation": "各方法在同一终点有不同误差。",
+        "instruction": "将等分步数 $N$设为 $2$；将目标时间 $T$设为 $2$。"
+      },
+      {
+        "title": "加密",
+        "preset": {
+          "n": 8,
+          "b": 2
+        },
+        "observation": "步长变为原来的四分之一。",
+        "instruction": "将等分步数 $N$设为 $8$；将目标时间 $T$设为 $2$。"
+      },
+      {
+        "title": "更细",
+        "preset": {
+          "n": 32,
+          "b": 2
+        },
+        "observation": "观察误差随阶数缩小，有限精度仍有下限。",
+        "instruction": "将等分步数 $N$设为 $32$；将目标时间 $T$设为 $2$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-error-control",
+    "caption": "比较显式 Euler、Heun、RK4 与解析指数；直线段仅连接数值节点。误差在同一终点计算。",
+    "prediction": "同一终点的误差为什么不能只看最后一步？"
+  }
+}
