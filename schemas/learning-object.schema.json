@@ -162,7 +162,8 @@
             "calculus3",
             "linear-algebra",
             "ode",
-            "probability"
+            "probability",
+            "discrete"
           ]
         },
         "function": {

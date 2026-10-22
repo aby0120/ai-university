@@ -1,0 +1,194 @@
+{
+  "id": "dm-divisibility",
+  "chapterId": "dm-integers",
+  "number": "3.1",
+  "title": "整除、最大公因数与最小公倍数",
+  "subtitle": "整除要求商是整数；最大公因数描述共同因子的上限。",
+  "concept": "整除要求商是整数；最大公因数描述共同因子的上限。",
+  "intuition": "最大公因数找共享部分，最小公倍数找共同容纳两数的最小正整数。",
+  "objectives": [
+    "使用整除定义",
+    "组合整除关系"
+  ],
+  "body": [
+    {
+      "title": "使用整除定义",
+      "text": "说一个整数整除另一个整数，是说后者等于前者乘某个整数。非零整除数避免把零作除数。"
+    },
+    {
+      "title": "组合整除关系",
+      "text": "若一个数同时整除两个数，它也整除这两个数的任意整数线性组合。这个简单事实是欧几里得算法的根基。"
+    },
+    {
+      "title": "联系两种极值",
+      "text": "对正整数，最大公因数与最小公倍数的乘积等于两数乘积。用质因子指数的最小值和最大值可看出原因。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "本节最大公因数取正值，最小公倍数用于正整数。",
+    "latex": "d\\mid a\\iff\\exists k\\in\\mathbb Z:a=dk,\\quad \\gcd(a,b)\\operatorname{lcm}(a,b)=ab",
+    "conditions": [
+      "乘积公式中两数为正整数。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "共同因子整除各项。",
+      "latex": "a=du,\\quad b=dv"
+    },
+    {
+      "text": "对任意整数系数组合。",
+      "latex": "ra+sb=d(ru+sv)"
+    },
+    {
+      "text": "右边括号仍为整数。",
+      "latex": "d\\mid(ra+sb)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "求两个极值",
+      "problem": "十二与十八的最大公因数及最小公倍数？",
+      "steps": [
+        "$12=2^2\\cdot3,18=2\\cdot3^2$。",
+        "共享最低指数得到六，最高指数得到三十六。"
+      ],
+      "answer": "六与三十六。"
+    },
+    {
+      "title": "线性组合",
+      "problem": "五整除整数的和及其中一项，能推出整除另一项吗？",
+      "steps": [
+        "另一项等于和减去已知项。",
+        "共同整除数整除差。"
+      ],
+      "answer": "能。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "十五与二十的最大公因数？",
+      "hint": "枚举共同正因子。",
+      "solution": [
+        "共同正因子为一、五。"
+      ],
+      "answer": "五。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 5,
+      "id": "dm-divisibility-q1"
+    },
+    {
+      "problem": "互质是否要求两个数都是质数？",
+      "hint": "找互质合数。",
+      "solution": [
+        "八与九互质但都为合数。"
+      ],
+      "answer": "不要求。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-divisibility-q2"
+    },
+    {
+      "problem": "六整除三吗？",
+      "hint": "商是否为整数？",
+      "solution": [
+        "三除以六为一半。"
+      ],
+      "answer": "不整除。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-divisibility-q3"
+    },
+    {
+      "problem": "八与十二的最小公倍数？",
+      "hint": "先求最大公因数。",
+      "solution": [
+        "$8\\cdot12/4=24$。"
+      ],
+      "answer": "二十四。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 24,
+      "id": "dm-divisibility-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "互质是什么意思？",
+    "choices": [
+      "没有共同因子",
+      "最大公因数为一",
+      "都为质数"
+    ],
+    "correctIndex": 1,
+    "explanation": "一始终是正整数的共同因子。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-divisibility-m1",
+      "claim": "较小的数一定整除较大的数",
+      "correction": "大小不保证整数倍关系。"
+    },
+    {
+      "id": "dm-divisibility-m2",
+      "claim": "互质必须都是质数",
+      "correction": "互质描述一对数的共同因子。"
+    }
+  ],
+  "prerequisites": [
+    "dm-direct-proof"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-divisibility-m1",
+    "dm-divisibility-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-divisibility",
+    "prediction": "改变两个整数，共同因子与最小公倍数怎样变化？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "大小不保证整数倍关系。",
+    "steps": [
+      {
+        "title": "第一个整数：1",
+        "instruction": "设为 $1$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，最大公因数：$1$；最小公倍数：$18$。",
+        "preset": {
+          "a": 1,
+          "b": 18
+        }
+      },
+      {
+        "title": "第一个整数：30",
+        "instruction": "设为 $30$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，最大公因数：$6$；最小公倍数：$90$。",
+        "preset": {
+          "a": 30,
+          "b": 18
+        }
+      },
+      {
+        "title": "第一个整数：60",
+        "instruction": "设为 $60$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，最大公因数：$6$；最小公倍数：$180$。",
+        "preset": {
+          "a": 60,
+          "b": 18
+        }
+      }
+    ]
+  }
+}

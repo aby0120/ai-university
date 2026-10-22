@@ -1,0 +1,196 @@
+{
+  "id": "dm-matching",
+  "chapterId": "dm-trees",
+  "number": "8.5",
+  "title": "二部匹配、增广路与流",
+  "subtitle": "一对一分配的关键，不只是空位，还要能否重新安排已有分配。",
+  "concept": "一对一分配的关键，不只是空位，还要能否重新安排已有分配。",
+  "intuition": "增广路交替经过未匹配边和已匹配边，翻转后正好多配一对。",
+  "objectives": [
+    "定义匹配",
+    "沿增广路翻转"
+  ],
+  "body": [
+    {
+      "title": "定义匹配",
+      "text": "一组互不共享端点的边称匹配。极大匹配不能再直接加边，最大匹配则要求数量达到全局最多，两者不同。"
+    },
+    {
+      "title": "沿增广路翻转",
+      "text": "从左侧未匹配点到右侧未匹配点，沿未匹配与已匹配边交替行走。翻转状态后，中间点仍各配一个，两端新增一对。"
+    },
+    {
+      "title": "联系 Hall 与网络流",
+      "text": "左侧可全部匹配，当且仅当每个左侧子集的邻居至少一样多。加源汇及单位容量边后，整数流与匹配一一对应；不能只检查全部左侧的总邻居数。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "Hall 条件检查所有左侧子集。",
+    "latex": "\\forall S\\subseteq L:\\ |N(S)|\\ge|S|\\iff\\text{存在覆盖 }L\\text{ 的匹配}",
+    "conditions": [
+      "有限二部图。",
+      "边表示允许配对，每个端点容量一。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "任意已匹配左侧子集需不同邻居。",
+      "latex": "|N(S)|\\ge|S|"
+    },
+    {
+      "text": "增广路比已匹配边多一条未匹配边。",
+      "latex": "\\#\\text{未匹配边}=\\#\\text{已匹配边}+1"
+    },
+    {
+      "text": "翻转后匹配大小增加一。",
+      "latex": "|M'|=|M|+1"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "需要重排",
+      "problem": "左侧甲连一、二，乙只连一。若甲已配一，乙还能配上吗？",
+      "steps": [
+        "走乙到一，再沿原匹配回甲，再走甲到二。",
+        "翻转后乙配一，甲配二。"
+      ],
+      "answer": "能，增广后两对。"
+    },
+    {
+      "title": "总邻居不够判断",
+      "problem": "三个左点中甲乙都只连一，丙连二和三，能全部匹配吗？",
+      "steps": [
+        "全部左点共有三个邻居，看似够。",
+        "但子集甲乙只有一个邻居，违反 Hall。"
+      ],
+      "answer": "不能，最大只有两对。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "完全三对四二部图最大匹配大小？",
+      "hint": "受较小侧限制且可达到。",
+      "solution": [
+        "三个左点可配不同右点。"
+      ],
+      "answer": "三。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 3,
+      "id": "dm-matching-q1"
+    },
+    {
+      "problem": "极大匹配一定最大吗？",
+      "hint": "直接不能加边不代表不能重排。",
+      "solution": [
+        "长度三增广路可增大极大匹配。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-matching-q2"
+    },
+    {
+      "problem": "增广一次匹配数增加多少？",
+      "hint": "路径两端新增，中间重排。",
+      "solution": [
+        "增加一对。"
+      ],
+      "answer": "一。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 1,
+      "id": "dm-matching-q3"
+    },
+    {
+      "problem": "Hall 只检查整个左侧够吗？",
+      "hint": "局部子集可能竞争同一个邻居。",
+      "solution": [
+        "必须检查全部子集。"
+      ],
+      "answer": "不够。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-matching-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "增广路翻转后匹配大小怎样变？",
+    "choices": [
+      "增加一",
+      "不变",
+      "增加路径边数"
+    ],
+    "correctIndex": 0,
+    "explanation": "交替路径未匹配边恰多一条。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-matching-m1",
+      "claim": "极大就是最大",
+      "correction": "极大只排除直接加边。"
+    },
+    {
+      "id": "dm-matching-m2",
+      "claim": "总岗位数够就能全部分配",
+      "correction": "局部邻居不足同样会阻塞。"
+    }
+  ],
+  "prerequisites": [
+    "dm-connectivity",
+    "dm-functions"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "dm-matching-m1",
+    "dm-matching-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-matching",
+    "prediction": "先看局部贪心，再沿增广路重排，匹配数为什么增加？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "极大只排除直接加边。",
+    "steps": [
+      {
+        "title": "执行步数：0",
+        "instruction": "设为 $0$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，当前匹配数：$0$；完整最大匹配：$3$。",
+        "preset": {
+          "a": 0,
+          "n": 0
+        }
+      },
+      {
+        "title": "执行步数：1",
+        "instruction": "设为 $1$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，当前匹配数：$1$；完整最大匹配：$3$。",
+        "preset": {
+          "a": 0,
+          "n": 1
+        }
+      },
+      {
+        "title": "执行步数：3",
+        "instruction": "设为 $3$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，当前匹配数：$3$；完整最大匹配：$3$。",
+        "preset": {
+          "a": 0,
+          "n": 3
+        }
+      }
+    ]
+  }
+}

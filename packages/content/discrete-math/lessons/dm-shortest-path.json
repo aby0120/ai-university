@@ -1,0 +1,192 @@
+{
+  "id": "dm-shortest-path",
+  "chapterId": "dm-trees",
+  "number": "8.4",
+  "title": "Dijkstra 最短路径",
+  "subtitle": "非负边权下，当前暂定距离最小的未定点可以放心确定。",
+  "concept": "非负边权下，当前暂定距离最小的未定点可以放心确定。",
+  "intuition": "每次固定一个不会再被绕路缩短的距离，再用它更新邻居。",
+  "objectives": [
+    "保存距离与父节点",
+    "选择可确定顶点"
+  ],
+  "body": [
+    {
+      "title": "保存距离与父节点",
+      "text": "起点距离为零，其余暂不可达。松弛一条边时，比较原距离与经当前点绕行的新距离。"
+    },
+    {
+      "title": "选择可确定顶点",
+      "text": "只有边权非负，所有未来绕行都不能从更大暂定距离再降到更小。负权时此理由失效。"
+    },
+    {
+      "title": "区分实现成本",
+      "text": "朴素实现每次线性寻找最小值，常用平方时间。邻接表加优先队列可改善稀疏图成本，但需处理重复或更新队列项。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "最短路径允许空路径，起点距离零。",
+    "latex": "d(v)\\leftarrow\\min\\{d(v),d(u)+w(u,v)\\}",
+    "conditions": [
+      "Dijkstra 要求边权非负。",
+      "不可达顶点显示“不可达”，不伪装为有限距离。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "设最先被错误确定的点为当前点。",
+      "latex": "d(u)>\\operatorname{dist}(s,u)"
+    },
+    {
+      "text": "更短路径上首次跨入未定集合的点，已有不大于路径长度的暂定值。",
+      "latex": "d(v)\\le\\operatorname{dist}(s,v)"
+    },
+    {
+      "text": "非负后缀与最小选择导致矛盾。",
+      "latex": "d(v)\\le\\operatorname{dist}(s,u)<d(u)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "经中点更短",
+      "problem": "甲到丙直边七，甲到乙二，乙到丙三，最短距离？",
+      "steps": [
+        "先确定乙距离二。",
+        "松弛丙为二加三，优于七。"
+      ],
+      "answer": "五。"
+    },
+    {
+      "title": "负权反例",
+      "problem": "有向边起点到甲一、到乙二，乙到甲负三，能直接用 Dijkstra 吗？",
+      "steps": [
+        "算法可能先固定甲为一。",
+        "实际经乙距离为负一。"
+      ],
+      "answer": "不能，非负条件失败。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "边权全为一时可用哪个简单算法？",
+      "hint": "按边数分层。",
+      "solution": [
+        "广度优先搜索。"
+      ],
+      "answer": "BFS。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-shortest-path-q1"
+    },
+    {
+      "problem": "起点到自身的最短距离按本节约定？",
+      "hint": "允许空路径且无负权。",
+      "solution": [
+        "空路径成本零。"
+      ],
+      "answer": "零。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0,
+      "id": "dm-shortest-path-q2"
+    },
+    {
+      "problem": "暂定距离和最终距离总一样吗？",
+      "hint": "未定点仍可被松弛。",
+      "solution": [
+        "暂定值只是当前已知上界。"
+      ],
+      "answer": "不总一样。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-shortest-path-q3"
+    },
+    {
+      "problem": "最小生成树算法可直接代替最短路径吗？",
+      "hint": "比较目标。",
+      "solution": [
+        "生成树成本最小不保证每对路径最短。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-shortest-path-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "Dijkstra 核心正确性要求什么？",
+    "choices": [
+      "边权非负",
+      "所有点度数相同",
+      "图是完全图"
+    ],
+    "correctIndex": 0,
+    "explanation": "负边会使后来绕行降低已固定距离。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-shortest-path-m1",
+      "claim": "带权图仍按 BFS 层数",
+      "correction": "不同边权需要按成本比较。"
+    },
+    {
+      "id": "dm-shortest-path-m2",
+      "claim": "选中一个点后可以任意改其距离",
+      "correction": "非负条件保证已定距离正确。"
+    }
+  ],
+  "prerequisites": [
+    "dm-connectivity",
+    "dm-invariants"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "dm-shortest-path-m1",
+    "dm-shortest-path-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-shortest-path",
+    "prediction": "逐步确定顶点，哪些松弛真正改进了距离？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "不同边权需要按成本比较。",
+    "steps": [
+      {
+        "title": "执行步数：0",
+        "instruction": "设为 $0$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，已确定点数：$0$。",
+        "preset": {
+          "n": 0
+        }
+      },
+      {
+        "title": "执行步数：3",
+        "instruction": "设为 $3$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，已确定点数：$3$。",
+        "preset": {
+          "n": 3
+        }
+      },
+      {
+        "title": "执行步数：6",
+        "instruction": "设为 $6$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，已确定点数：$6$。",
+        "preset": {
+          "n": 6
+        }
+      }
+    ]
+  }
+}

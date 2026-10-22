@@ -1,0 +1,195 @@
+{
+  "id": "dm-permutations",
+  "chapterId": "dm-counting",
+  "number": "5.3",
+  "title": "排列与组合",
+  "subtitle": "顺序有区别用排列，只关心选了谁用组合。",
+  "concept": "顺序有区别用排列，只关心选了谁用组合。",
+  "intuition": "组合把同一批人内部的全部排列视作同一个选择。",
+  "objectives": [
+    "排列的递减选择",
+    "除掉重复表示"
+  ],
+  "body": [
+    {
+      "title": "排列的递减选择",
+      "text": "无放回选取有序对象，剩余数量逐步减一。全排列是把全部对象依次排列。"
+    },
+    {
+      "title": "除掉重复表示",
+      "text": "每个固定子集恰好有其大小阶乘种排列；排列数除以这个统一重数，才得到组合数。"
+    },
+    {
+      "title": "处理边界",
+      "text": "选零个有一种空选择。选取数超过总数时本卷约定组合数为零；普通阶乘公式仅在合法范围使用。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "对象可区分，选取不放回。",
+    "latex": "P(n,k)=\\frac{n!}{(n-k)!},\\quad\\binom nk=\\frac{n!}{k!(n-k)!}",
+    "conditions": [
+      "整数满足零不大于选取数且选取数不大于总数。",
+      "组合不区分内部顺序。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "顺次选择得到有序列表。",
+      "latex": "P(n,k)=n(n-1)\\cdots(n-k+1)"
+    },
+    {
+      "text": "每个子集对应相同数量的排列。",
+      "latex": "\\text{每组重数}=k!"
+    },
+    {
+      "text": "除去表示的重复。",
+      "latex": "\\binom nk=P(n,k)/k!"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "代表与职务",
+      "problem": "五人选两名代表，与五人选会长、副会长，各多少？",
+      "steps": [
+        "代表无顺序，$\\binom52=10$。",
+        "不同职务有顺序，$5\\cdot4=20$。"
+      ],
+      "answer": "十与二十。"
+    },
+    {
+      "title": "空选择",
+      "problem": "从五人选零人有多少种？",
+      "steps": [
+        "不选择任何人得到空集。",
+        "只有这一个结果。"
+      ],
+      "answer": "一种。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "六人选三代表多少种？",
+      "hint": "用组合公式。",
+      "solution": [
+        "$6\\cdot5\\cdot4/(3\\cdot2)=20$。"
+      ],
+      "answer": "二十。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 20,
+      "id": "dm-permutations-q1"
+    },
+    {
+      "problem": "四本不同书排一行多少种？",
+      "hint": "全排列。",
+      "solution": [
+        "$4!=24$。"
+      ],
+      "answer": "二十四。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 24,
+      "id": "dm-permutations-q2"
+    },
+    {
+      "problem": "可重复选字符还能用递减乘积吗？",
+      "hint": "后续选项是否减少？",
+      "solution": [
+        "放回后每次仍有原来数量。"
+      ],
+      "answer": "不能直接用。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-permutations-q3"
+    },
+    {
+      "problem": "$\\binom n1$ 是多少？",
+      "hint": "只选一个。",
+      "solution": [
+        "每个元素对应唯一单元素子集。"
+      ],
+      "answer": "$n$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-permutations-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "选两名无差别代表需要区分先后吗？",
+    "choices": [
+      "需要",
+      "不需要",
+      "取决于名字顺序"
+    ],
+    "correctIndex": 1,
+    "explanation": "同一对子集只算一次。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-permutations-m1",
+      "claim": "组合也区分顺序",
+      "correction": "角色有区别才需排列。"
+    },
+    {
+      "id": "dm-permutations-m2",
+      "claim": "任意除阶乘都能去重",
+      "correction": "必须证明每个对象重数相同。"
+    }
+  ],
+  "prerequisites": [
+    "dm-counting-rules"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-permutations-m1",
+    "dm-permutations-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-permutations",
+    "prediction": "改变人数和选取数，逐项列出的子集与排列数如何对应？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "角色有区别才需排列。",
+    "steps": [
+      {
+        "title": "总对象数：1",
+        "instruction": "设为 $1$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，实际选取数：$1$；组合数：$1$；排列数：$1$。",
+        "preset": {
+          "a": 1,
+          "b": 2
+        }
+      },
+      {
+        "title": "总对象数：4",
+        "instruction": "设为 $4$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，实际选取数：$2$；组合数：$6$；排列数：$12$。",
+        "preset": {
+          "a": 4,
+          "b": 2
+        }
+      },
+      {
+        "title": "总对象数：8",
+        "instruction": "设为 $8$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，实际选取数：$2$；组合数：$28$；排列数：$56$。",
+        "preset": {
+          "a": 8,
+          "b": 2
+        }
+      }
+    ]
+  }
+}

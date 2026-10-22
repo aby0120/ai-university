@@ -1,0 +1,192 @@
+{
+  "id": "dm-euler-hamilton",
+  "chapterId": "dm-graphs",
+  "number": "7.4",
+  "title": "Euler 路与 Hamilton 圈",
+  "subtitle": "Euler 问每条边走一次，Hamilton 问每个顶点访问一次。",
+  "concept": "Euler 问每条边走一次，Hamilton 问每个顶点访问一次。",
+  "intuition": "这两个问题名字相似，约束却落在不同对象上。",
+  "objectives": [
+    "判断 Euler 条件",
+    "解释出入配对"
+  ],
+  "body": [
+    {
+      "title": "判断 Euler 条件",
+      "text": "忽略孤立点后非零度部分连通，且奇度顶点恰零或两个，才存在使用全部边的 Euler 路。闭路需要全部度数为偶。"
+    },
+    {
+      "title": "解释出入配对",
+      "text": "走过中间顶点时，每次进入都需另一条边离开，所以中间度数偶。开放路的两个端点可各剩一条。"
+    },
+    {
+      "title": "避免套到 Hamilton",
+      "text": "Hamilton 圈经过所有顶点一次再回起点。度数奇偶无法直接判定它；找一个例子也不能推广到任意图。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "这里路径与闭路的 Euler 条件仅要求有边的部分连通。",
+    "latex": "\\text{Euler 闭路}\\iff\\text{非零度部分连通且全部度数偶}",
+    "conditions": [
+      "有限无向图；无边图的空行走单独视作平凡情形。",
+      "Hamilton 圈本卷要求至少三个顶点。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "闭路在每个顶点配对进入离开。",
+      "latex": "\\deg(v)=2k_v"
+    },
+    {
+      "text": "充分性先沿未用边走成一个圈。",
+      "latex": "\\text{偶度阻止在其他点提前卡住}"
+    },
+    {
+      "text": "有剩余边时从圈上接入新圈并拼接。",
+      "latex": "\\text{每轮消耗至少一条边，有限次结束}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "星形图",
+      "problem": "中心连四个叶子的星图有 Euler 路吗？",
+      "steps": [
+        "四个叶子度一。",
+        "奇度顶点四个，不符合零或二。"
+      ],
+      "answer": "没有。"
+    },
+    {
+      "title": "两个三角形共一点",
+      "problem": "它有 Euler 闭路或 Hamilton 圈吗？",
+      "steps": [
+        "中心度四，其余度二，连通，所以有 Euler 闭路。",
+        "中心是割点，Hamilton 圈无法只访问中心一次而串联两侧。"
+      ],
+      "answer": "有 Euler 闭路，无 Hamilton 圈。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "四环有 Euler 闭路吗？",
+      "hint": "连通且每点度二。",
+      "solution": [
+        "满足闭路判据。"
+      ],
+      "answer": "有。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-euler-hamilton-q1"
+    },
+    {
+      "problem": "一条三边链有几个奇度顶点？",
+      "hint": "两端度一，中间度二。",
+      "solution": [
+        "只有两个端点奇度。"
+      ],
+      "answer": "二。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 2,
+      "id": "dm-euler-hamilton-q2"
+    },
+    {
+      "problem": "Euler 路能重复顶点吗？",
+      "hint": "只禁止重复边。",
+      "solution": [
+        "顶点可反复经过。"
+      ],
+      "answer": "能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-euler-hamilton-q3"
+    },
+    {
+      "problem": "Hamilton 圈需要走完所有边吗？",
+      "hint": "它的约束对象是顶点。",
+      "solution": [
+        "不要求未使用边也经过。"
+      ],
+      "answer": "不需要。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-euler-hamilton-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "每条边恰走一次是哪类问题？",
+    "choices": [
+      "Hamilton",
+      "Euler",
+      "顶点着色"
+    ],
+    "correctIndex": 1,
+    "explanation": "Euler 约束边，Hamilton 约束顶点。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-euler-hamilton-m1",
+      "claim": "两种路径概念可以互换",
+      "correction": "它们约束不同对象。"
+    },
+    {
+      "id": "dm-euler-hamilton-m2",
+      "claim": "度数条件无需连通",
+      "correction": "分离的有边分量无法串成一条路。"
+    }
+  ],
+  "prerequisites": [
+    "dm-degrees",
+    "dm-connectivity"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "dm-euler-hamilton-m1",
+    "dm-euler-hamilton-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-euler-hamilton",
+    "prediction": "比较环、链、星形和共点双三角形，Euler 与 Hamilton 的结论是否相同？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "它们约束不同对象。",
+    "steps": [
+      {
+        "title": "图结构模式：0",
+        "instruction": "设为 $0$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，顶点：$6$；边：$6$；奇度点：$0$；Euler 路：有；Euler 闭路：有；Hamilton 圈：有。",
+        "preset": {
+          "a": 0
+        }
+      },
+      {
+        "title": "图结构模式：2",
+        "instruction": "设为 $2$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，顶点：$6$；边：$5$；奇度点：$6$；Euler 路：无；Euler 闭路：无；Hamilton 圈：无。",
+        "preset": {
+          "a": 2
+        }
+      },
+      {
+        "title": "图结构模式：5",
+        "instruction": "设为 $5$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，顶点：$5$；边：$6$；奇度点：$0$；Euler 路：有；Euler 闭路：有；Hamilton 圈：无。",
+        "preset": {
+          "a": 5
+        }
+      }
+    ]
+  }
+}

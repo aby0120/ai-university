@@ -1,0 +1,194 @@
+{
+  "id": "dm-binomial",
+  "chapterId": "dm-counting",
+  "number": "5.4",
+  "title": "二项式定理与 Pascal 恒等式",
+  "subtitle": "展开的系数，数的是哪些因子贡献同一种项。",
+  "concept": "展开的系数，数的是哪些因子贡献同一种项。",
+  "intuition": "每个括号选左项或右项；同类项的数量由选中的位置集合决定。",
+  "objectives": [
+    "解释二项式系数",
+    "拆分子集"
+  ],
+  "body": [
+    {
+      "title": "解释二项式系数",
+      "text": "从若干相同二项式相乘中选出指定个数的右项，其位置有组合数种，每种产生相同单项式。"
+    },
+    {
+      "title": "拆分子集",
+      "text": "按某个指定元素在不在子集中分类，分别留下较小集合上的两种选择，得到 Pascal 递推。"
+    },
+    {
+      "title": "从特殊取值得到恒等式",
+      "text": "把两个变量都取一得到全部子集数；取一与负一得到偶大小和奇大小子集数之差。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "二项式定理中指数为非负整数。",
+    "latex": "(x+y)^n=\\sum_{k=0}^n\\binom nk x^{n-k}y^k",
+    "conditions": [
+      "本节只讨论整数非负指数。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "指定元素不在子集。",
+      "latex": "\\binom{n-1}{k}"
+    },
+    {
+      "text": "指定元素在子集。",
+      "latex": "\\binom{n-1}{k-1}"
+    },
+    {
+      "text": "两类互斥且完备。",
+      "latex": "\\binom nk=\\binom{n-1}k+\\binom{n-1}{k-1}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "取系数",
+      "problem": "求 $(1+x)^5$ 中 $x^2$ 的系数。",
+      "steps": [
+        "五个括号选两个贡献变量。",
+        "$\\binom52=10$。"
+      ],
+      "answer": "十。"
+    },
+    {
+      "title": "一行的和",
+      "problem": "Pascal 三角第四行按零开始编号，元素和多少？",
+      "steps": [
+        "取二项式中的两项都为一。",
+        "$2^4=16$。"
+      ],
+      "answer": "十六。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$\\binom63$ 用前一行计算。",
+      "hint": "两项相加。",
+      "solution": [
+        "$\\binom53+\\binom52=10+10=20$。"
+      ],
+      "answer": "二十。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 20,
+      "id": "dm-binomial-q1"
+    },
+    {
+      "problem": "$(a+b)^3$ 中 $ab^2$ 系数？",
+      "hint": "选择两个右项位置。",
+      "solution": [
+        "$\\binom32=3$。"
+      ],
+      "answer": "三。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 3,
+      "id": "dm-binomial-q2"
+    },
+    {
+      "problem": "正元素数集合的偶大小与奇大小子集一样多吗？",
+      "hint": "固定一个元素开关切换。",
+      "solution": [
+        "切换该元素建立奇偶子集双射。"
+      ],
+      "answer": "一样多。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-binomial-q3"
+    },
+    {
+      "problem": "零元素集合的奇偶子集一样多吗？",
+      "hint": "单独检查起点。",
+      "solution": [
+        "只有空集是偶大小，没有奇大小子集。"
+      ],
+      "answer": "不一样。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-binomial-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "Pascal 递推的两类为什么可相加？",
+    "choices": [
+      "值接近",
+      "互斥且覆盖全部",
+      "两类一样大"
+    ],
+    "correctIndex": 1,
+    "explanation": "按指定元素是否被选分类。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-binomial-m1",
+      "claim": "三角每行从一编号",
+      "correction": "本卷指数从零对应第零行。"
+    },
+    {
+      "id": "dm-binomial-m2",
+      "claim": "奇偶子集等量包含空底集",
+      "correction": "该双射需要至少一个可切换元素。"
+    }
+  ],
+  "prerequisites": [
+    "dm-permutations"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-binomial-m1",
+    "dm-binomial-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-binomial",
+    "prediction": "选中一项，它由上一行哪两项相加而来？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "本卷指数从零对应第零行。",
+    "steps": [
+      {
+        "title": "行号：1",
+        "instruction": "设为 $1$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，实际列号：$1$；当前系数：$1$；左上贡献：$1$；右上贡献：$0$。",
+        "preset": {
+          "a": 1,
+          "b": 2
+        }
+      },
+      {
+        "title": "行号：5",
+        "instruction": "设为 $5$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，实际列号：$2$；当前系数：$10$；左上贡献：$4$；右上贡献：$6$。",
+        "preset": {
+          "a": 5,
+          "b": 2
+        }
+      },
+      {
+        "title": "行号：10",
+        "instruction": "设为 $10$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，实际列号：$2$；当前系数：$45$；左上贡献：$9$；右上贡献：$36$。",
+        "preset": {
+          "a": 10,
+          "b": 2
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "id": "dm-strong-induction",
+  "chapterId": "dm-induction",
+  "number": "4.2",
+  "title": "强归纳与良序原理",
+  "subtitle": "下一步需要多个较小情形时，把所有较小情形一起作为归纳假设。",
+  "concept": "下一步需要多个较小情形时，把所有较小情形一起作为归纳假设。",
+  "intuition": "递归可能拆成两个不相邻的小问题，强归纳正好提供这两个已知结论。",
+  "objectives": [
+    "加强假设",
+    "检查分解变小"
+  ],
+  "body": [
+    {
+      "title": "加强假设",
+      "text": "强归纳允许假设从起点到当前的全部命题成立。它与普通归纳等价，不是更强的公理。"
+    },
+    {
+      "title": "检查分解变小",
+      "text": "证明每个大于一的整数可分成质数时，合数拆成两个严格更小且大于一的因子，正适合强归纳。"
+    },
+    {
+      "title": "使用最小反例",
+      "text": "若失败的正整数存在，良序性保证其中有最小者；再从更小情形推出它也成功，就得到矛盾。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "非空非负整数集合有最小元素；不能把此性质直接套在全体整数上。",
+    "latex": "\\bigl[\\forall j,\\ n_0\\le j\\le k:\\ P(j)\\bigr]\\implies P(k+1)",
+    "conditions": [
+      "必须明确覆盖的起点和分解后的最小指标。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "设存在反例并取最小者。",
+      "latex": "m=\\min\\{n\\ge n_0:\\neg P(n)\\}"
+    },
+    {
+      "text": "最小性保证所有较小情形成立。",
+      "latex": "n_0\\le j<m\\implies P(j)"
+    },
+    {
+      "text": "若传递步骤推出当前成立，就矛盾。",
+      "latex": "P(m)\\land\\neg P(m)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "邮资组合",
+      "problem": "证明每个不小于六的整数可写为三和四的非负整数倍和。",
+      "steps": [
+        "六、七、八分别为三加三、三加四、四加四。",
+        "对任意不小于九的数，减三后仍至少六。",
+        "用强归纳再加一枚三。"
+      ],
+      "answer": "全部成立。"
+    },
+    {
+      "title": "质因子存在",
+      "problem": "证明每个大于一的整数有质因子。",
+      "steps": [
+        "二本身是质数。",
+        "更大整数若是质数就结束；若为合数，有严格更小的大于一因子。",
+        "对该因子使用强归纳。"
+      ],
+      "answer": "必有质因子。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "三、四面额不能组成的最大非负整数？",
+      "hint": "检查零至八及加三规则。",
+      "solution": [
+        "五不能；六、七、八可以，此后可加三。"
+      ],
+      "answer": "五。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 5,
+      "id": "dm-strong-induction-q1"
+    },
+    {
+      "problem": "负整数集合有最小值吗？",
+      "hint": "任何一个再减一。",
+      "solution": [
+        "总有更小负整数。"
+      ],
+      "answer": "没有。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-strong-induction-q2"
+    },
+    {
+      "problem": "强归纳为何要检查多个起点？",
+      "hint": "递推可能跨步。",
+      "solution": [
+        "确保每条跨步链都能进入有效范围。"
+      ],
+      "answer": "覆盖所有起始缺口。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-strong-induction-q3"
+    },
+    {
+      "problem": "最小反例法可以不证明反例集合有最小元吗？",
+      "hint": "依赖论域的良序性。",
+      "solution": [
+        "整数下界条件不能遗漏。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-strong-induction-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "强归纳与普通归纳关系如何？",
+    "choices": [
+      "不相干",
+      "强归纳需要更强公理",
+      "在非负整数上等价"
+    ],
+    "correctIndex": 2,
+    "explanation": "把前面全部命题合成一个新命题即可转换。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-strong-induction-m1",
+      "claim": "更强的假设等于循环证明",
+      "correction": "使用的仍是严格更小指标。"
+    },
+    {
+      "id": "dm-strong-induction-m2",
+      "claim": "全体整数都良序",
+      "correction": "无下界的整数子集可没有最小元。"
+    }
+  ],
+  "prerequisites": [
+    "dm-induction"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-strong-induction-m1",
+    "dm-strong-induction-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-strong-induction",
+    "prediction": "逐个增加目标数，哪些能由三和四组成？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "使用的仍是严格更小指标。",
+    "steps": [
+      {
+        "title": "目标整数：0",
+        "instruction": "设为 $0$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，目标可达：是。",
+        "preset": {
+          "n": 0
+        }
+      },
+      {
+        "title": "目标整数：15",
+        "instruction": "设为 $15$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，目标可达：是。",
+        "preset": {
+          "n": 15
+        }
+      },
+      {
+        "title": "目标整数：30",
+        "instruction": "设为 $30$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，目标可达：是。",
+        "preset": {
+          "n": 30
+        }
+      }
+    ]
+  }
+}

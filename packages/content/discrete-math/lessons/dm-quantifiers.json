@@ -1,0 +1,190 @@
+{
+  "id": "dm-quantifiers",
+  "chapterId": "dm-logic",
+  "number": "1.3",
+  "title": "量词、论域与否定",
+  "subtitle": "量词说的是“所有”还是“至少一个”，论域决定它在谈谁。",
+  "concept": "量词说的是“所有”还是“至少一个”，论域决定它在谈谁。",
+  "intuition": "反驳“每个都行”只需一个不行；反驳“有一个行”要说明没有任何一个行。",
+  "objectives": [
+    "写出论域",
+    "交换量词"
+  ],
+  "body": [
+    {
+      "title": "写出论域",
+      "text": "同一句“每个数都有后继”在有限集合与整数中含义不同。量词前先确定对象集合。"
+    },
+    {
+      "title": "交换量词",
+      "text": "每人有某个喜欢的菜，不等于有一道菜被所有人喜欢。见证可以随前面的变量改变。"
+    },
+    {
+      "title": "否定量词",
+      "text": "否定全称要改为存在反例，否定存在要改为全称否定。多个量词从外向内逐个交换。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "量词绑定变量；存在见证的依赖关系由量词顺序决定。",
+    "latex": "\\neg\\forall x\\,P(x)\\equiv\\exists x\\,\\neg P(x)",
+    "conditions": [
+      "使用指定论域。",
+      "本节二维表的行、列均非空。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "全称为真要求每个对象都满足。",
+      "latex": "\\forall x\\,P(x)"
+    },
+    {
+      "text": "它为假正好是至少一个不满足。",
+      "latex": "\\exists x\\,\\neg P(x)"
+    },
+    {
+      "text": "对嵌套量词逐个应用。",
+      "latex": "\\neg\\forall x\\exists y\\,R(x,y)\\equiv\\exists x\\forall y\\,\\neg R(x,y)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "不同见证",
+      "problem": "两人分别只喜欢不同的菜。每人有喜欢的菜，能推出有一道菜两人都喜欢吗？",
+      "steps": [
+        "每一行都有一个真格。",
+        "却没有一列全真。"
+      ],
+      "answer": "不能。"
+    },
+    {
+      "title": "空论域",
+      "problem": "空集合上“每个元素都为正”真假？",
+      "steps": [
+        "全称为假需要一个集合内反例。",
+        "空集合没有反例。"
+      ],
+      "answer": "真；空集合上存在正元素则为假。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "否定 $\\exists x\\,P(x)$。",
+      "hint": "没有一个满足。",
+      "solution": [
+        "对每个对象都不满足。"
+      ],
+      "answer": "$\\forall x\\,\\neg P(x)$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-quantifiers-q1"
+    },
+    {
+      "problem": "整数中 $\\forall x\\exists y:y>x$ 真吗？",
+      "hint": "构造依赖于前者的见证。",
+      "solution": [
+        "取 $y=x+1$。"
+      ],
+      "answer": "真。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-quantifiers-q2"
+    },
+    {
+      "problem": "整数中 $\\exists y\\forall x:y>x$ 真吗？",
+      "hint": "选一个超过固定见证的整数。",
+      "solution": [
+        "给定 $y$ 后取 $x=y+1$。"
+      ],
+      "answer": "假。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-quantifiers-q3"
+    },
+    {
+      "problem": "全称命题能用一个反例否定吗？",
+      "hint": "全称不能容许例外。",
+      "solution": [
+        "一个不满足者已足够。"
+      ],
+      "answer": "能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-quantifiers-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "每行有真格，能推出某一列全真吗？",
+    "choices": [
+      "总能",
+      "只在方阵能",
+      "不能"
+    ],
+    "correctIndex": 2,
+    "explanation": "不同的行可以使用不同列作见证。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-quantifiers-m1",
+      "claim": "量词可任意交换",
+      "correction": "混合量词改变见证的依赖关系。"
+    },
+    {
+      "id": "dm-quantifiers-m2",
+      "claim": "论域无关紧要",
+      "correction": "真假依赖讨论的对象。"
+    }
+  ],
+  "prerequisites": [
+    "dm-propositions"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-quantifiers-m1",
+    "dm-quantifiers-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-quantifiers",
+    "prediction": "切换关系表，逐行有见证与同列有共同见证有何区别？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "混合量词改变见证的依赖关系。",
+    "steps": [
+      {
+        "title": "关系表模式：0",
+        "instruction": "设为 $0$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，每行至少一个：真；存在全真列：假。",
+        "preset": {
+          "a": 0
+        }
+      },
+      {
+        "title": "关系表模式：1",
+        "instruction": "设为 $1$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，每行至少一个：真；存在全真列：真。",
+        "preset": {
+          "a": 1
+        }
+      },
+      {
+        "title": "关系表模式：2",
+        "instruction": "设为 $2$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，每行至少一个：假；存在全真列：假。",
+        "preset": {
+          "a": 2
+        }
+      }
+    ]
+  }
+}

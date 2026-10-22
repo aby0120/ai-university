@@ -1,0 +1,189 @@
+{
+  "id": "dm-propositions",
+  "chapterId": "dm-logic",
+  "number": "1.1",
+  "title": "命题与逻辑连接词",
+  "subtitle": "先确定一句话是否有明确真假，再讨论它与别的判断怎样组合。",
+  "concept": "先确定一句话是否有明确真假，再讨论它与别的判断怎样组合。",
+  "intuition": "“并且”要两件事都成立；数学中的“或者”允许两件事同时成立。",
+  "objectives": [
+    "识别命题",
+    "组合判断"
+  ],
+  "body": [
+    {
+      "title": "识别命题",
+      "text": "“七是质数”有明确真假。“请关门”是请求；“它很大”若没有对象和标准，也还不是明确命题。"
+    },
+    {
+      "title": "组合判断",
+      "text": "合取要求两项都真，析取要求至少一项真，否定交换真假。异或才要求恰有一项真。"
+    },
+    {
+      "title": "理解蕴含",
+      "text": "蕴含排除的只有前件真而后件假的情形。它描述逻辑条件，不自动表示时间先后或因果。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "经典二值逻辑中，每个命题恰有真、假之一。",
+    "latex": "p\\to q\\equiv\\neg p\\lor q",
+    "conditions": [
+      "本节使用经典二值逻辑。",
+      "连接词按真值定义，而非口语的全部含义。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先列前件和后件的四种赋值。",
+      "latex": "(p,q)\\in\\{0,1\\}^{2}"
+    },
+    {
+      "text": "找出唯一违反承诺的赋值。",
+      "latex": "p=1,\\ q=0"
+    },
+    {
+      "text": "其余三行与否定前件或后件相同。",
+      "latex": "p\\to q\\equiv\\neg p\\lor q"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "排除一个情形",
+      "problem": "已知“若下雨就带伞”，下雨却没带伞，蕴含真假？",
+      "steps": [
+        "前件真，后件假。",
+        "这正是蕴含唯一的假情形。"
+      ],
+      "answer": "假。"
+    },
+    {
+      "title": "数学中的或",
+      "problem": "两个命题都真时，析取和异或各如何？",
+      "steps": [
+        "析取只要求至少一个真。",
+        "异或排除两个同时真。"
+      ],
+      "answer": "析取真，异或假。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "前件假、后件真时，蕴含真假？",
+      "hint": "检查唯一假行。",
+      "solution": [
+        "不是前真后假。"
+      ],
+      "answer": "真。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-propositions-q1"
+    },
+    {
+      "problem": "三个命题有多少种二值赋值？",
+      "hint": "每项有两个选择。",
+      "solution": [
+        "$2^{3}=8$。"
+      ],
+      "answer": "八种。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 8,
+      "id": "dm-propositions-q2"
+    },
+    {
+      "problem": "“请证明这个结论”是不是命题？",
+      "hint": "区分请求与判断。",
+      "solution": [
+        "它要求行动，没有陈述真或假。"
+      ],
+      "answer": "不是。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-propositions-q3"
+    },
+    {
+      "problem": "两个命题都假，析取真假？",
+      "hint": "是否至少一项真？",
+      "solution": [
+        "两项都不真。"
+      ],
+      "answer": "假。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-propositions-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "哪种赋值使蕴含为假？",
+    "choices": [
+      "前真后假",
+      "前假后真",
+      "两项都假"
+    ],
+    "correctIndex": 0,
+    "explanation": "只有前真后假违背蕴含。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-propositions-m1",
+      "claim": "或者只能二选一",
+      "correction": "通常的析取允许同时成立。"
+    },
+    {
+      "id": "dm-propositions-m2",
+      "claim": "蕴含就说明因果",
+      "correction": "真值约束本身不提供因果机制。"
+    }
+  ],
+  "prerequisites": [],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-propositions-m1",
+    "dm-propositions-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-propositions",
+    "prediction": "逐行切换赋值，哪一行使蕴含变假？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "通常的析取允许同时成立。",
+    "steps": [
+      {
+        "title": "赋值行号：0",
+        "instruction": "设为 $0$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，当前前件：$0$；当前后件：$0$；当前蕴含：$1$。",
+        "preset": {
+          "a": 0
+        }
+      },
+      {
+        "title": "赋值行号：1",
+        "instruction": "设为 $1$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，当前前件：$0$；当前后件：$1$；当前蕴含：$1$。",
+        "preset": {
+          "a": 1
+        }
+      },
+      {
+        "title": "赋值行号：3",
+        "instruction": "设为 $3$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，当前前件：$1$；当前后件：$1$；当前蕴含：$1$。",
+        "preset": {
+          "a": 3
+        }
+      }
+    ]
+  }
+}

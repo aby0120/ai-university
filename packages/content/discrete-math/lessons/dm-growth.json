@@ -1,0 +1,191 @@
+{
+  "id": "dm-growth",
+  "chapterId": "dm-induction",
+  "number": "4.5",
+  "title": "算法增长与渐近记号",
+  "subtitle": "渐近记号描述规模增大后的增长上界、下界或同阶。",
+  "concept": "渐近记号描述规模增大后的增长上界、下界或同阶。",
+  "intuition": "它忽略固定倍数和足够小的输入，不是一次运行的秒数预测。",
+  "objectives": [
+    "定义上界",
+    "区分上界与同阶"
+  ],
+  "body": [
+    {
+      "title": "定义上界",
+      "text": "大写上界允许从某个阈值以后用固定常数倍控制函数。常数不能随着输入规模改变。"
+    },
+    {
+      "title": "区分上界与同阶",
+      "text": "线性函数也具有平方级上界，但不是平方同阶。紧确增长用双边界记号。"
+    },
+    {
+      "title": "分析二分",
+      "text": "每步排除约一半候选，直到只剩一个。迭代次数随输入大小的对数增长；排序条件和访问成本需另外说明。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "本节渐近函数最终非负，比较时变量趋向正无穷。",
+    "latex": "f\\in O(g)\\iff\\exists C>0,N:\\forall n\\ge N,\\ f(n)\\le Cg(n)",
+    "conditions": [
+      "常数与阈值不依赖后续输入规模。",
+      "二分查找要求有序数据及可用的索引访问。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "每步将候选数缩半。",
+      "latex": "\\text{剩余规模}\\le\\left\\lceil n/2^k\\right\\rceil"
+    },
+    {
+      "text": "缩到一需要二的幂覆盖规模。",
+      "latex": "2^k\\ge n"
+    },
+    {
+      "text": "取对数得到迭代级别。",
+      "latex": "k\\ge\\lceil\\log_2n\\rceil"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "一个上界",
+      "problem": "证明 $3n+2\\in O(n)$。",
+      "steps": [
+        "对 $n\\ge1$，有 $2\\le2n$。",
+        "故 $3n+2\\le5n$。"
+      ],
+      "answer": "可取常数五、阈值一。"
+    },
+    {
+      "title": "不是同阶",
+      "problem": "$n$ 与 $n^2$ 同阶吗？",
+      "steps": [
+        "$n/n^2=1/n$ 趋于零。",
+        "不存在最终正的统一下界倍数。"
+      ],
+      "answer": "不同阶，但前者具有平方级上界。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "规模一千零二十四连续缩半到一需几步？",
+      "hint": "二的幂。",
+      "solution": [
+        "$1024=2^{10}$。"
+      ],
+      "answer": "十。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 10,
+      "id": "dm-growth-q1"
+    },
+    {
+      "problem": "大写上界一定是最紧上界吗？",
+      "hint": "一个函数可有很多增长上界。",
+      "solution": [
+        "线性函数也有平方上界。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-growth-q2"
+    },
+    {
+      "problem": "固定倍数再大也能在渐近中忽略吗？",
+      "hint": "定义允许固定常数。",
+      "solution": [
+        "可以，但实际输入下仍影响运行。"
+      ],
+      "answer": "渐近可吸收，实际成本不能忽略。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-growth-q3"
+    },
+    {
+      "problem": "双重循环一定平方复杂度吗？",
+      "hint": "查看每层实际范围。",
+      "solution": [
+        "内层也可能只有常数次，不能仅数层数。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-growth-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "描述同阶需要什么？",
+    "choices": [
+      "只有上界",
+      "只有下界",
+      "上下界都成立"
+    ],
+    "correctIndex": 2,
+    "explanation": "双边控制才给出同阶。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-growth-m1",
+      "claim": "大写上界等于精确耗时",
+      "correction": "它是规模增长约束。"
+    },
+    {
+      "id": "dm-growth-m2",
+      "claim": "比较常数可随输入变化",
+      "correction": "必须存在统一固定常数。"
+    }
+  ],
+  "prerequisites": [
+    "dm-functions"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-growth-m1",
+    "dm-growth-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-growth",
+    "prediction": "扩大规模，线性扫描与反复减半的步骤数增长有何不同？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "它是规模增长约束。",
+    "steps": [
+      {
+        "title": "输入规模：1",
+        "instruction": "设为 $1$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，线性扫描：$1$；缩半到一：$0$。",
+        "preset": {
+          "a": 1
+        }
+      },
+      {
+        "title": "输入规模：32",
+        "instruction": "设为 $32$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，线性扫描：$32$；缩半到一：$5$。",
+        "preset": {
+          "a": 32
+        }
+      },
+      {
+        "title": "输入规模：64",
+        "instruction": "设为 $64$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，线性扫描：$64$；缩半到一：$6$。",
+        "preset": {
+          "a": 64
+        }
+      }
+    ]
+  }
+}

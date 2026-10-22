@@ -1,0 +1,225 @@
+{
+  "id": "discrete-math",
+  "title": "Discrete Mathematics",
+  "titleZh": "离散数学",
+  "subtitle": "从清楚的定义到可靠的推理",
+  "version": "0.1.0",
+  "language": "zh-CN",
+  "author": "AI University · AI-generated",
+  "description": "逻辑与证明、集合与关系、整数、归纳与算法、计数、递推、图与树、网络算法。每节包含条件、推导、例题、练习解答与本地交互演示。",
+  "audience": "有初等代数基础的中文读者；无需先学微积分或编程",
+  "scope": "八章四十节完整离散数学入门。覆盖基本证明、离散结构、计数与递推、初等图论及常用网络算法。可计算性、复杂性理论、进阶组合数学与抽象代数另作后续课程。",
+  "chapters": [
+    {
+      "id": "dm-logic",
+      "title": "逻辑与证明",
+      "subtitle": "把一句判断写清楚",
+      "intro": "把一句判断写清楚。",
+      "goals": [
+        "识别命题",
+        "写出论域",
+        "使用逆否"
+      ],
+      "lessonIds": [
+        "dm-propositions",
+        "dm-logical-equivalence",
+        "dm-quantifiers",
+        "dm-direct-proof",
+        "dm-contradiction"
+      ]
+    },
+    {
+      "id": "dm-sets",
+      "title": "集合、函数与关系",
+      "subtitle": "说明对象和对应规则",
+      "intro": "说明对象和对应规则。",
+      "goals": [
+        "进行集合运算",
+        "表示关系",
+        "识别偏序"
+      ],
+      "lessonIds": [
+        "dm-sets",
+        "dm-functions",
+        "dm-relations",
+        "dm-equivalence-classes",
+        "dm-partial-orders"
+      ]
+    },
+    {
+      "id": "dm-integers",
+      "title": "整数与同余",
+      "subtitle": "从整除走向模运算",
+      "intro": "从整除走向模运算。",
+      "goals": [
+        "使用整除定义",
+        "定义质数",
+        "判断逆元"
+      ],
+      "lessonIds": [
+        "dm-divisibility",
+        "dm-euclid",
+        "dm-primes",
+        "dm-congruence",
+        "dm-crt"
+      ]
+    },
+    {
+      "id": "dm-induction",
+      "title": "归纳、递归与算法",
+      "subtitle": "让有限步骤覆盖无限情形",
+      "intro": "让有限步骤覆盖无限情形。",
+      "goals": [
+        "选对起点",
+        "区分对象与表示",
+        "定义上界"
+      ],
+      "lessonIds": [
+        "dm-induction",
+        "dm-strong-induction",
+        "dm-recursive-structures",
+        "dm-invariants",
+        "dm-growth"
+      ]
+    },
+    {
+      "id": "dm-counting",
+      "title": "基本计数",
+      "subtitle": "把选择拆开，再合起来",
+      "intro": "把选择拆开，再合起来。",
+      "goals": [
+        "拆成互斥类",
+        "排列的递减选择",
+        "先确认可区分性"
+      ],
+      "lessonIds": [
+        "dm-counting-rules",
+        "dm-pigeonhole",
+        "dm-permutations",
+        "dm-binomial",
+        "dm-stars-bars"
+      ]
+    },
+    {
+      "id": "dm-recurrences",
+      "title": "递推与组合方法",
+      "subtitle": "用较小问题求出较大问题",
+      "intro": "用较小问题求出较大问题。",
+      "goals": [
+        "两集合去重",
+        "建立特征方程",
+        "选择基本结果"
+      ],
+      "lessonIds": [
+        "dm-inclusion-exclusion",
+        "dm-first-recurrence",
+        "dm-second-recurrence",
+        "dm-generating-functions",
+        "dm-discrete-probability"
+      ]
+    },
+    {
+      "id": "dm-graphs",
+      "title": "图与连接",
+      "subtitle": "把关系画成点和边",
+      "intro": "把关系画成点和边。",
+      "goals": [
+        "声明图的种类",
+        "计算连通分量",
+        "使用 Euler 公式"
+      ],
+      "lessonIds": [
+        "dm-graph-representation",
+        "dm-degrees",
+        "dm-connectivity",
+        "dm-euler-hamilton",
+        "dm-planarity-coloring"
+      ]
+    },
+    {
+      "id": "dm-trees",
+      "title": "树与网络算法",
+      "subtitle": "在约束下找到路径和连接",
+      "intro": "在约束下找到路径和连接。",
+      "goals": [
+        "连通与无圈",
+        "设定优化目标",
+        "定义匹配"
+      ],
+      "lessonIds": [
+        "dm-trees",
+        "dm-rooted-trees",
+        "dm-minimum-spanning",
+        "dm-shortest-path",
+        "dm-matching"
+      ]
+    }
+  ],
+  "lessonIds": [
+    "dm-propositions",
+    "dm-logical-equivalence",
+    "dm-quantifiers",
+    "dm-direct-proof",
+    "dm-contradiction",
+    "dm-sets",
+    "dm-functions",
+    "dm-relations",
+    "dm-equivalence-classes",
+    "dm-partial-orders",
+    "dm-divisibility",
+    "dm-euclid",
+    "dm-primes",
+    "dm-congruence",
+    "dm-crt",
+    "dm-induction",
+    "dm-strong-induction",
+    "dm-recursive-structures",
+    "dm-invariants",
+    "dm-growth",
+    "dm-counting-rules",
+    "dm-pigeonhole",
+    "dm-permutations",
+    "dm-binomial",
+    "dm-stars-bars",
+    "dm-inclusion-exclusion",
+    "dm-first-recurrence",
+    "dm-second-recurrence",
+    "dm-generating-functions",
+    "dm-discrete-probability",
+    "dm-graph-representation",
+    "dm-degrees",
+    "dm-connectivity",
+    "dm-euler-hamilton",
+    "dm-planarity-coloring",
+    "dm-trees",
+    "dm-rooted-trees",
+    "dm-minimum-spanning",
+    "dm-shortest-path",
+    "dm-matching"
+  ],
+  "sources": [
+    {
+      "id": "mit-6042",
+      "title": "MIT 6.042J · Mathematics for Computer Science",
+      "url": "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/pages/syllabus/",
+      "usage": "核对入门课程边界与证明、整数、计数、图和过程不变量的学习目标；正文和题目独立编写。"
+    },
+    {
+      "id": "levin-scope",
+      "title": "Oscar Levin · Discrete Mathematics: An Open Introduction",
+      "url": "https://discrete.openmathbooks.org/dmoi4.html",
+      "usage": "对照作者公布的逻辑证明、图论、计数和数列课程组织；不复制正文、图示或练习。"
+    },
+    {
+      "id": "stanford-cs103",
+      "title": "Stanford CS103 · Mathematical Foundations of Computing",
+      "url": "https://web.stanford.edu/class/cs103/",
+      "usage": "对照数学基础与可计算性后续课程的边界。"
+    }
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "humanReviewed": false,
+    "checks": "结构、公式、先修、选定独立计数与图算法复算；不声称逐式形式化证明。"
+  }
+}

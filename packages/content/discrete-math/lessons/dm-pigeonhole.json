@@ -1,0 +1,193 @@
+{
+  "id": "dm-pigeonhole",
+  "chapterId": "dm-counting",
+  "number": "5.2",
+  "title": "抽屉原理与双重计数",
+  "subtitle": "对象多于容器时，至少一个容器装了不止一个。",
+  "concept": "对象多于容器时，至少一个容器装了不止一个。",
+  "intuition": "抽屉原理保证碰撞存在，不一定告诉你碰撞发生在哪里。",
+  "objectives": [
+    "使用平均下界",
+    "恰当设计抽屉"
+  ],
+  "body": [
+    {
+      "title": "使用平均下界",
+      "text": "把对象分到固定数量的抽屉，若每个最多装某个数，总容量便有上限。超过上限就迫使某个抽屉更多。"
+    },
+    {
+      "title": "恰当设计抽屉",
+      "text": "抽屉可以是余数、生日月份或区间。证明的关键通常是找到有限且覆盖全部对象的分类。"
+    },
+    {
+      "title": "数同一个关系两遍",
+      "text": "双重计数分别按不同对象分组，得到同一总量的两个表达。例如边的两端贡献顶点度数和。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "抽屉数为正整数，对象数为非负整数。",
+    "latex": "\\max_i n_i\\ge\\left\\lceil\\frac Nk\\right\\rceil,\\quad\\sum_i n_i=N",
+    "conditions": [
+      "每个对象恰放入一个抽屉。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "假设每个抽屉都比目标少。",
+      "latex": "n_i\\le\\lceil N/k\\rceil-1"
+    },
+    {
+      "text": "总数随之有上界。",
+      "latex": "\\sum_i n_i\\le k(\\lceil N/k\\rceil-1)<N"
+    },
+    {
+      "text": "与真实总数冲突。",
+      "latex": "\\sum_i n_i=N"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "生日月份",
+      "problem": "十三人中必有至少几人同月生日？",
+      "steps": [
+        "月份只有十二类。",
+        "十三除以十二向上取整为二。"
+      ],
+      "answer": "至少二人。"
+    },
+    {
+      "title": "标记子集",
+      "problem": "从 $n$ 元素集合选一个子集并标记其中一个元素，计数。",
+      "steps": [
+        "先选大小 $k$ 再标记，得 $\\sum_k k\\binom nk$。",
+        "先选标记元素，再选其余子集，得 $n2^{n-1}$。"
+      ],
+      "answer": "$\\sum_k k\\binom nk=n2^{n-1}$，正整数 $n$。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "十个对象进三抽屉，至少一个装多少？",
+      "hint": "向上取整。",
+      "solution": [
+        "$\\lceil10/3\\rceil=4$。"
+      ],
+      "answer": "四。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 4,
+      "id": "dm-pigeonhole-q1"
+    },
+    {
+      "problem": "抽屉原理能确定具体哪一个抽屉吗？",
+      "hint": "存在结论与定位不同。",
+      "solution": [
+        "只保证至少一个达到下界。"
+      ],
+      "answer": "一般不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-pigeonhole-q2"
+    },
+    {
+      "problem": "任取六个整数，必有两个模五同余吗？",
+      "hint": "按五种余数分类。",
+      "solution": [
+        "六个对象进五类。"
+      ],
+      "answer": "必有。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-pigeonhole-q3"
+    },
+    {
+      "problem": "双重计数的两边可以数不同对象吗？",
+      "hint": "必须先固定待数关系。",
+      "solution": [
+        "两边须描述同一集合或一一对应对象。"
+      ],
+      "answer": "不可以。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-pigeonhole-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "十个对象放三处，能保证至少一处有四个吗？",
+    "choices": [
+      "能",
+      "只能保证三个",
+      "必须等量才行"
+    ],
+    "correctIndex": 0,
+    "explanation": "每处至多三只能容纳九个。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-pigeonhole-m1",
+      "claim": "平均下界要求均匀分配",
+      "correction": "恰恰无需均匀。"
+    },
+    {
+      "id": "dm-pigeonhole-m2",
+      "claim": "两个计数式看起来像就相等",
+      "correction": "需要说明数的是同一对象。"
+    }
+  ],
+  "prerequisites": [
+    "dm-counting-rules"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-pigeonhole-m1",
+    "dm-pigeonhole-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-pigeonhole",
+    "prediction": "增加对象或抽屉数量，必然碰撞的下界怎样变化？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "恰恰无需均匀。",
+    "steps": [
+      {
+        "title": "对象数：0",
+        "instruction": "设为 $0$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，必有下界：$0$；此分配最大值：$0$。",
+        "preset": {
+          "a": 0,
+          "b": 3
+        }
+      },
+      {
+        "title": "对象数：10",
+        "instruction": "设为 $10$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，必有下界：$4$；此分配最大值：$4$。",
+        "preset": {
+          "a": 10,
+          "b": 3
+        }
+      },
+      {
+        "title": "对象数：20",
+        "instruction": "设为 $20$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，必有下界：$7$；此分配最大值：$7$。",
+        "preset": {
+          "a": 20,
+          "b": 3
+        }
+      }
+    ]
+  }
+}

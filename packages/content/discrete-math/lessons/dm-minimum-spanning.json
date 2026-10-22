@@ -1,0 +1,192 @@
+{
+  "id": "dm-minimum-spanning",
+  "chapterId": "dm-trees",
+  "number": "8.3",
+  "title": "最小生成树与 Kruskal 算法",
+  "subtitle": "连接全部顶点的总成本最小，才是最小生成树的目标。",
+  "concept": "连接全部顶点的总成本最小，才是最小生成树的目标。",
+  "intuition": "从便宜边开始，只要不把已有连接绕成圈就保留。",
+  "objectives": [
+    "设定优化目标",
+    "按权重合并"
+  ],
+  "body": [
+    {
+      "title": "设定优化目标",
+      "text": "给连通无向图的边赋权，比较全部生成树的权重和。它不同于让某个起点到所有点的路最短。"
+    },
+    {
+      "title": "按权重合并",
+      "text": "Kruskal 按非降权序扫描边，连接不同分量就接纳，同一分量内的边会成圈而舍弃。"
+    },
+    {
+      "title": "说明贪心正确",
+      "text": "用交换论证：新选边跨越当前某个分量的割，可替换最优树中跨同一割的不更轻边，仍保留一棵同样好或更好的树。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "Kruskal 允许负权；不连通时得到最小生成森林。",
+    "latex": "T^*=\\arg\\min_{T\\text{ 生成树}}\\sum_{e\\in T}w(e)",
+    "conditions": [
+      "输入有限无向图，边权可比较。",
+      "连通图才有覆盖全部点的一棵生成树。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "选当前割上的最轻边。",
+      "latex": "w(e)\\le w(f)\\quad\\text{对所有跨割边 }f"
+    },
+    {
+      "text": "将其加入一棵兼容的最优树，形成圈。",
+      "latex": "T+e\\text{ 含圈}"
+    },
+    {
+      "text": "删去圈上另一条跨割边。",
+      "latex": "w(T+e-f)\\le w(T)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "三角形",
+      "problem": "三角形边权一、二、四，最小生成树成本？",
+      "steps": [
+        "先取一，再取二，尚未成圈。",
+        "第三边四会成圈舍弃。"
+      ],
+      "answer": "三。"
+    },
+    {
+      "title": "最优不唯一",
+      "problem": "三角形三边都为一，最小生成树唯一吗？",
+      "steps": [
+        "任何删去一条边都是生成树。",
+        "三种选择成本都为二。"
+      ],
+      "answer": "不唯一。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "五顶点最小生成树有几条边？",
+      "hint": "先是生成树。",
+      "solution": [
+        "边数为五减一。"
+      ],
+      "answer": "四。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 4,
+      "id": "dm-minimum-spanning-q1"
+    },
+    {
+      "problem": "负权会使 Kruskal 失效吗？",
+      "hint": "交换证明只使用权重比较。",
+      "solution": [
+        "不要求权重非负。"
+      ],
+      "answer": "不会。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-minimum-spanning-q2"
+    },
+    {
+      "problem": "选边形成圈为何舍弃？",
+      "hint": "生成树不能含圈。",
+      "solution": [
+        "当前较早边不更重，无需加入该圈边。"
+      ],
+      "answer": "避免圈并保持贪心最优性质。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-minimum-spanning-q3"
+    },
+    {
+      "problem": "最小生成树一定给根到点的最短路吗？",
+      "hint": "目标是总边权而非单条路径。",
+      "solution": [
+        "两种优化目标不同。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-minimum-spanning-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "Kruskal 选边的直接条件是什么？",
+    "choices": [
+      "连接不同当前分量",
+      "离根最近",
+      "颜色不同"
+    ],
+    "correctIndex": 0,
+    "explanation": "同一分量内部加边必成圈。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-minimum-spanning-m1",
+      "claim": "最小生成树等于最短路树",
+      "correction": "两者目标函数不同。"
+    },
+    {
+      "id": "dm-minimum-spanning-m2",
+      "claim": "权重有并列就无解",
+      "correction": "仍有最优解，但可能不唯一。"
+    }
+  ],
+  "prerequisites": [
+    "dm-trees",
+    "dm-direct-proof"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "dm-minimum-spanning-m1",
+    "dm-minimum-spanning-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-minimum-spanning",
+    "prediction": "逐边扫描，哪些边被接纳，哪些因成圈被跳过？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "两者目标函数不同。",
+    "steps": [
+      {
+        "title": "执行步数：0",
+        "instruction": "设为 $0$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，当前接纳边：$0$；当前成本：$0$。",
+        "preset": {
+          "n": 0
+        }
+      },
+      {
+        "title": "执行步数：4",
+        "instruction": "设为 $4$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，当前接纳边：$4$；当前成本：$8$。",
+        "preset": {
+          "n": 4
+        }
+      },
+      {
+        "title": "执行步数：9",
+        "instruction": "设为 $9$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，当前接纳边：$5$；当前成本：$13$。",
+        "preset": {
+          "n": 9
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,815 @@
+{
+  "dm-equivalence-classes": {
+    "family": "partition",
+    "title": "等价关系与划分",
+    "controls": [
+      {
+        "key": "a",
+        "label": "模数",
+        "min": 2,
+        "max": 6,
+        "value": 3,
+        "step": 1
+      }
+    ]
+  },
+  "dm-contradiction": {
+    "family": "equivalence",
+    "title": "逆否证明与反证法",
+    "controls": [
+      {
+        "key": "a",
+        "label": "比较模式",
+        "min": 0,
+        "max": 2,
+        "value": 1,
+        "step": 1,
+        "options": [
+          "德摩根律",
+          "原命题与逆命题",
+          "原命题与逆否命题"
+        ]
+      }
+    ]
+  },
+  "dm-congruence": {
+    "family": "clock",
+    "title": "同余与模运算",
+    "controls": [
+      {
+        "key": "a",
+        "label": "当前整数",
+        "min": -20,
+        "max": 30,
+        "value": 17,
+        "step": 1
+      },
+      {
+        "key": "b",
+        "label": "模数",
+        "min": 2,
+        "max": 12,
+        "value": 5,
+        "step": 1
+      }
+    ]
+  },
+  "dm-inclusion-exclusion": {
+    "family": "inclusion",
+    "title": "容斥原理",
+    "controls": [
+      {
+        "key": "a",
+        "label": "整数范围上界",
+        "min": 1,
+        "max": 60,
+        "value": 20,
+        "step": 1
+      }
+    ]
+  },
+  "dm-discrete-probability": {
+    "family": "probability",
+    "title": "计数与离散概率",
+    "controls": [
+      {
+        "key": "a",
+        "label": "独立掷币次数",
+        "min": 1,
+        "max": 8,
+        "value": 4,
+        "step": 1
+      },
+      {
+        "key": "b",
+        "label": "请求正面数",
+        "min": 0,
+        "max": 8,
+        "value": 2,
+        "step": 1
+      }
+    ]
+  },
+  "dm-trees": {
+    "family": "tree",
+    "title": "树与生成树",
+    "controls": [
+      {
+        "key": "a",
+        "label": "图结构模式",
+        "min": 0,
+        "max": 3,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "链",
+          "星形",
+          "二叉树",
+          "有圈且断开"
+        ]
+      }
+    ]
+  },
+  "dm-induction": {
+    "family": "induction",
+    "title": "数学归纳法",
+    "controls": [
+      {
+        "key": "n",
+        "label": "当前层数",
+        "min": 1,
+        "max": 10,
+        "value": 5,
+        "step": 1
+      }
+    ]
+  },
+  "dm-first-recurrence": {
+    "family": "recurrence",
+    "title": "递推式与一阶递推",
+    "controls": [
+      {
+        "key": "a",
+        "label": "乘数",
+        "min": 1,
+        "max": 3,
+        "value": 2,
+        "step": 1
+      },
+      {
+        "key": "b",
+        "label": "加数",
+        "min": 0,
+        "max": 3,
+        "value": 1,
+        "step": 1
+      },
+      {
+        "key": "n",
+        "label": "执行步数",
+        "min": 0,
+        "max": 10,
+        "value": 6,
+        "step": 1
+      }
+    ]
+  },
+  "dm-direct-proof": {
+    "family": "proof",
+    "title": "直接证明、分类与反例",
+    "controls": [
+      {
+        "key": "a",
+        "label": "当前整数",
+        "min": 1,
+        "max": 12,
+        "value": 1,
+        "step": 1
+      }
+    ]
+  },
+  "dm-shortest-path": {
+    "family": "dijkstra",
+    "title": "Dijkstra 最短路径",
+    "controls": [
+      {
+        "key": "n",
+        "label": "执行步数",
+        "min": 0,
+        "max": 6,
+        "value": 0,
+        "step": 1
+      }
+    ]
+  },
+  "dm-invariants": {
+    "family": "trace",
+    "title": "循环不变量与终止",
+    "controls": [
+      {
+        "key": "a",
+        "label": "累加目标数量",
+        "min": 0,
+        "max": 12,
+        "value": 6,
+        "step": 1
+      },
+      {
+        "key": "n",
+        "label": "执行步数",
+        "min": 0,
+        "max": 12,
+        "value": 0,
+        "step": 1
+      }
+    ]
+  },
+  "dm-propositions": {
+    "family": "truth",
+    "title": "命题与逻辑连接词",
+    "controls": [
+      {
+        "key": "a",
+        "label": "赋值行号",
+        "min": 0,
+        "max": 3,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "前件假 · 后件假",
+          "前件假 · 后件真",
+          "前件真 · 后件假",
+          "前件真 · 后件真"
+        ]
+      }
+    ]
+  },
+  "dm-euler-hamilton": {
+    "family": "euler",
+    "title": "Euler 路与 Hamilton 圈",
+    "controls": [
+      {
+        "key": "a",
+        "label": "图结构模式",
+        "min": 0,
+        "max": 5,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "六环",
+          "六点链",
+          "五叶星形",
+          "完全六图",
+          "完全三对三",
+          "共点双三角形"
+        ]
+      }
+    ]
+  },
+  "dm-relations": {
+    "family": "relation",
+    "title": "二元关系与关系矩阵",
+    "controls": [
+      {
+        "key": "a",
+        "label": "关系模式",
+        "min": 0,
+        "max": 2,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "不大于",
+          "距离至多一",
+          "自环与相邻前向"
+        ]
+      }
+    ]
+  },
+  "dm-counting-rules": {
+    "family": "product",
+    "title": "加法原理与乘法原理",
+    "controls": [
+      {
+        "key": "a",
+        "label": "第一步选项数",
+        "min": 1,
+        "max": 6,
+        "value": 3,
+        "step": 1
+      },
+      {
+        "key": "b",
+        "label": "第二步选项数",
+        "min": 1,
+        "max": 6,
+        "value": 4,
+        "step": 1
+      }
+    ]
+  },
+  "dm-matching": {
+    "family": "matching",
+    "title": "二部匹配、增广路与流",
+    "controls": [
+      {
+        "key": "a",
+        "label": "允许配对模式",
+        "min": 0,
+        "max": 2,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "需要重排",
+          "局部竞争障碍",
+          "完全二部"
+        ]
+      },
+      {
+        "key": "n",
+        "label": "执行步数",
+        "min": 0,
+        "max": 3,
+        "value": 0,
+        "step": 1
+      }
+    ]
+  },
+  "dm-euclid": {
+    "family": "euclid",
+    "title": "欧几里得算法与 Bézout 恒等式",
+    "controls": [
+      {
+        "key": "a",
+        "label": "被除数",
+        "min": 2,
+        "max": 120,
+        "value": 48,
+        "step": 1
+      },
+      {
+        "key": "b",
+        "label": "除数",
+        "min": 1,
+        "max": 60,
+        "value": 18,
+        "step": 1
+      },
+      {
+        "key": "n",
+        "label": "执行步数",
+        "min": 0,
+        "max": 10,
+        "value": 0,
+        "step": 1
+      }
+    ]
+  },
+  "dm-degrees": {
+    "family": "degrees",
+    "title": "度数与握手引理",
+    "controls": [
+      {
+        "key": "a",
+        "label": "图结构模式",
+        "min": 0,
+        "max": 5,
+        "value": 1,
+        "step": 1,
+        "options": [
+          "六环",
+          "六点链",
+          "五叶星形",
+          "完全六图",
+          "完全三对三",
+          "两个三角形"
+        ]
+      }
+    ]
+  },
+  "dm-rooted-trees": {
+    "family": "traversal",
+    "title": "根树、遍历与前缀编码",
+    "controls": [
+      {
+        "key": "a",
+        "label": "遍历模式",
+        "min": 0,
+        "max": 2,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "先序",
+          "中序",
+          "后序"
+        ]
+      },
+      {
+        "key": "n",
+        "label": "执行步数",
+        "min": 0,
+        "max": 7,
+        "value": 0,
+        "step": 1
+      }
+    ]
+  },
+  "dm-pigeonhole": {
+    "family": "pigeonhole",
+    "title": "抽屉原理与双重计数",
+    "controls": [
+      {
+        "key": "a",
+        "label": "对象数",
+        "min": 0,
+        "max": 20,
+        "value": 10,
+        "step": 1
+      },
+      {
+        "key": "b",
+        "label": "抽屉数",
+        "min": 1,
+        "max": 8,
+        "value": 3,
+        "step": 1
+      }
+    ]
+  },
+  "dm-graph-representation": {
+    "family": "graph",
+    "title": "图、邻接表与邻接矩阵",
+    "controls": [
+      {
+        "key": "a",
+        "label": "图结构模式",
+        "min": 0,
+        "max": 5,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "六环",
+          "六点链",
+          "五叶星形",
+          "完全六图",
+          "完全三对三",
+          "两个三角形"
+        ]
+      }
+    ]
+  },
+  "dm-minimum-spanning": {
+    "family": "mst",
+    "title": "最小生成树与 Kruskal 算法",
+    "controls": [
+      {
+        "key": "n",
+        "label": "执行步数",
+        "min": 0,
+        "max": 9,
+        "value": 0,
+        "step": 1
+      }
+    ]
+  },
+  "dm-second-recurrence": {
+    "family": "fibonacci",
+    "title": "二阶线性递推",
+    "controls": [
+      {
+        "key": "n",
+        "label": "最后指标",
+        "min": 0,
+        "max": 16,
+        "value": 7,
+        "step": 1
+      }
+    ]
+  },
+  "dm-partial-orders": {
+    "family": "poset",
+    "title": "偏序、Hasse 图与格",
+    "controls": [
+      {
+        "key": "a",
+        "label": "底集元素数",
+        "min": 1,
+        "max": 3,
+        "value": 3,
+        "step": 1
+      }
+    ]
+  },
+  "dm-permutations": {
+    "family": "combinations",
+    "title": "排列与组合",
+    "controls": [
+      {
+        "key": "a",
+        "label": "总对象数",
+        "min": 1,
+        "max": 8,
+        "value": 5,
+        "step": 1
+      },
+      {
+        "key": "b",
+        "label": "请求选择数",
+        "min": 0,
+        "max": 8,
+        "value": 2,
+        "step": 1
+      }
+    ]
+  },
+  "dm-recursive-structures": {
+    "family": "binary-tree",
+    "title": "递归定义与结构归纳",
+    "controls": [
+      {
+        "key": "a",
+        "label": "树的深度",
+        "min": 0,
+        "max": 4,
+        "value": 3,
+        "step": 1
+      }
+    ]
+  },
+  "dm-stars-bars": {
+    "family": "stars",
+    "title": "可重复选择与隔板法",
+    "controls": [
+      {
+        "key": "a",
+        "label": "相同物品总数",
+        "min": 0,
+        "max": 8,
+        "value": 5,
+        "step": 1
+      },
+      {
+        "key": "b",
+        "label": "接收者人数",
+        "min": 1,
+        "max": 5,
+        "value": 3,
+        "step": 1
+      }
+    ]
+  },
+  "dm-functions": {
+    "family": "mapping",
+    "title": "函数、单射与满射",
+    "controls": [
+      {
+        "key": "a",
+        "label": "映射模式",
+        "min": 0,
+        "max": 2,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "双射",
+          "碰撞且遗漏",
+          "单射但未满射"
+        ]
+      }
+    ]
+  },
+  "dm-crt": {
+    "family": "crt",
+    "title": "模逆元与中国剩余定理",
+    "controls": [
+      {
+        "key": "a",
+        "label": "模三余数",
+        "min": 0,
+        "max": 2,
+        "value": 2,
+        "step": 1
+      },
+      {
+        "key": "b",
+        "label": "模五余数",
+        "min": 0,
+        "max": 4,
+        "value": 3,
+        "step": 1
+      }
+    ]
+  },
+  "dm-logical-equivalence": {
+    "family": "equivalence",
+    "title": "真值表与逻辑等价",
+    "controls": [
+      {
+        "key": "a",
+        "label": "比较模式",
+        "min": 0,
+        "max": 2,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "德摩根律",
+          "原命题与逆命题",
+          "原命题与逆否命题"
+        ]
+      }
+    ]
+  },
+  "dm-connectivity": {
+    "family": "bfs",
+    "title": "连通、广度优先搜索与二部图",
+    "controls": [
+      {
+        "key": "a",
+        "label": "图结构模式",
+        "min": 0,
+        "max": 5,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "六环",
+          "六点链",
+          "五叶星形",
+          "完全六图",
+          "完全三对三",
+          "两个三角形"
+        ]
+      },
+      {
+        "key": "b",
+        "label": "起点编号",
+        "min": 1,
+        "max": 6,
+        "value": 1,
+        "step": 1
+      },
+      {
+        "key": "n",
+        "label": "执行步数",
+        "min": 0,
+        "max": 6,
+        "value": 0,
+        "step": 1
+      }
+    ]
+  },
+  "dm-quantifiers": {
+    "family": "quantifiers",
+    "title": "量词、论域与否定",
+    "controls": [
+      {
+        "key": "a",
+        "label": "关系表模式",
+        "min": 0,
+        "max": 2,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "各有不同见证",
+          "存在共同见证",
+          "有一行无见证"
+        ]
+      }
+    ]
+  },
+  "dm-strong-induction": {
+    "family": "coins",
+    "title": "强归纳与良序原理",
+    "controls": [
+      {
+        "key": "n",
+        "label": "目标整数",
+        "min": 0,
+        "max": 30,
+        "value": 12,
+        "step": 1
+      }
+    ]
+  },
+  "dm-sets": {
+    "family": "sets",
+    "title": "集合运算与幂集",
+    "controls": [
+      {
+        "key": "a",
+        "label": "集合运算模式",
+        "min": 0,
+        "max": 3,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "交集",
+          "并集",
+          "甲减乙",
+          "甲的补集"
+        ]
+      }
+    ]
+  },
+  "dm-growth": {
+    "family": "growth",
+    "title": "算法增长与渐近记号",
+    "controls": [
+      {
+        "key": "a",
+        "label": "输入规模",
+        "min": 1,
+        "max": 64,
+        "value": 32,
+        "step": 1
+      }
+    ]
+  },
+  "dm-divisibility": {
+    "family": "divisors",
+    "title": "整除、最大公因数与最小公倍数",
+    "controls": [
+      {
+        "key": "a",
+        "label": "第一个整数",
+        "min": 1,
+        "max": 60,
+        "value": 12,
+        "step": 1
+      },
+      {
+        "key": "b",
+        "label": "第二个整数",
+        "min": 1,
+        "max": 60,
+        "value": 18,
+        "step": 1
+      }
+    ]
+  },
+  "dm-generating-functions": {
+    "family": "generating",
+    "title": "生成函数与受限计数",
+    "controls": [
+      {
+        "key": "a",
+        "label": "接收者人数",
+        "min": 1,
+        "max": 5,
+        "value": 3,
+        "step": 1
+      },
+      {
+        "key": "b",
+        "label": "每人份数上限",
+        "min": 0,
+        "max": 4,
+        "value": 2,
+        "step": 1
+      },
+      {
+        "key": "n",
+        "label": "目标总份数",
+        "min": 0,
+        "max": 20,
+        "value": 3,
+        "step": 1
+      }
+    ]
+  },
+  "dm-primes": {
+    "family": "sieve",
+    "title": "质数与唯一分解",
+    "controls": [
+      {
+        "key": "a",
+        "label": "筛选上界",
+        "min": 2,
+        "max": 100,
+        "value": 30,
+        "step": 1
+      }
+    ]
+  },
+  "dm-binomial": {
+    "family": "pascal",
+    "title": "二项式定理与 Pascal 恒等式",
+    "controls": [
+      {
+        "key": "a",
+        "label": "行号",
+        "min": 1,
+        "max": 10,
+        "value": 5,
+        "step": 1
+      },
+      {
+        "key": "b",
+        "label": "请求列号",
+        "min": 0,
+        "max": 10,
+        "value": 2,
+        "step": 1
+      }
+    ]
+  },
+  "dm-planarity-coloring": {
+    "family": "coloring",
+    "title": "平面图与顶点着色",
+    "controls": [
+      {
+        "key": "a",
+        "label": "图结构模式",
+        "min": 0,
+        "max": 5,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "六环",
+          "六点链",
+          "五叶星形",
+          "完全六图",
+          "完全三对三",
+          "两个三角形"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "id": "dm-degrees",
+  "chapterId": "dm-graphs",
+  "number": "7.2",
+  "title": "度数与握手引理",
+  "subtitle": "每条无向边贡献两个端点，所以度数和等于边数的两倍。",
+  "concept": "每条无向边贡献两个端点，所以度数和等于边数的两倍。",
+  "intuition": "数边端点有两种方法：按顶点分组，或按边分组。",
+  "objectives": [
+    "定义顶点度数",
+    "推导握手引理"
+  ],
+  "body": [
+    {
+      "title": "定义顶点度数",
+      "text": "简单无向图的度数是邻居数。若允许自环，则自环对度数贡献二，本卷交互不含自环。"
+    },
+    {
+      "title": "推导握手引理",
+      "text": "每条边有两个端点，所有度数加起来正好数每个端点一次。这是双重计数的直接应用。"
+    },
+    {
+      "title": "检查度数可行性",
+      "text": "度数和必须是偶数，奇度顶点个数也必须偶数。但这些只是必要条件，不保证任意度数序列都能实现为简单图。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "有限无向图的奇度顶点数为偶数。",
+    "latex": "\\sum_{v\\in V}\\deg(v)=2|E|",
+    "conditions": [
+      "计数对象为无向边端点。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "按顶点统计端点。",
+      "latex": "\\#\\text{端点}=\\sum_v\\deg(v)"
+    },
+    {
+      "text": "按边统计端点。",
+      "latex": "\\#\\text{端点}=2|E|"
+    },
+    {
+      "text": "模二看奇数项个数。",
+      "latex": "\\sum_v\\deg(v)\\equiv\\#\\{v:\\deg(v)\\text{ 奇}\\}\\equiv0\\pmod2"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "数边",
+      "problem": "四个顶点度数都为三，有几条边？",
+      "steps": [
+        "度数和十二。",
+        "除以二得到边数。"
+      ],
+      "answer": "六。"
+    },
+    {
+      "title": "不可能序列",
+      "problem": "三顶点的度数能为三、一、零吗？",
+      "steps": [
+        "和虽为偶数。",
+        "但简单图中度数最多二，故不可能。"
+      ],
+      "answer": "不可能，偶数和不充分。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "六个点每点度二，边数？",
+      "hint": "度数和除二。",
+      "solution": [
+        "$6\\cdot2/2=6$。"
+      ],
+      "answer": "六。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 6,
+      "id": "dm-degrees-q1"
+    },
+    {
+      "problem": "恰好一个奇度顶点可能吗？",
+      "hint": "奇度顶点数必须偶数。",
+      "solution": [
+        "一个是奇数个。"
+      ],
+      "answer": "不可能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-degrees-q2"
+    },
+    {
+      "problem": "所有度数为偶数就一定连通吗？",
+      "hint": "考虑两个分离环。",
+      "solution": [
+        "每点度二但有两个分量。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-degrees-q3"
+    },
+    {
+      "problem": "五顶点简单图最大度数？",
+      "hint": "最多连接其余点。",
+      "solution": [
+        "最多四个邻居。"
+      ],
+      "answer": "四。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 4,
+      "id": "dm-degrees-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "度数和为偶数是否足以实现任何简单图度数序列？",
+    "choices": [
+      "足以",
+      "不够",
+      "只要无零项就够"
+    ],
+    "correctIndex": 1,
+    "explanation": "还要满足单点上界等结构条件。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-degrees-m1",
+      "claim": "边只给度数和贡献一",
+      "correction": "两端各贡献一。"
+    },
+    {
+      "id": "dm-degrees-m2",
+      "claim": "握手引理保证连通",
+      "correction": "它只约束端点计数。"
+    }
+  ],
+  "prerequisites": [
+    "dm-graph-representation",
+    "dm-pigeonhole"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "dm-degrees-m1",
+    "dm-degrees-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-degrees",
+    "prediction": "切换图结构，逐点度数与两倍边数是否一致？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "两端各贡献一。",
+    "steps": [
+      {
+        "title": "图结构模式：0",
+        "instruction": "设为 $0$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，顶点：$6$；边：$6$；度数和：$12$。",
+        "preset": {
+          "a": 0
+        }
+      },
+      {
+        "title": "图结构模式：2",
+        "instruction": "设为 $2$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，顶点：$6$；边：$5$；度数和：$10$。",
+        "preset": {
+          "a": 2
+        }
+      },
+      {
+        "title": "图结构模式：5",
+        "instruction": "设为 $5$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，顶点：$6$；边：$6$；度数和：$12$。",
+        "preset": {
+          "a": 5
+        }
+      }
+    ]
+  }
+}

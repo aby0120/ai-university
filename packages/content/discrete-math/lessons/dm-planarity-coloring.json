@@ -1,0 +1,194 @@
+{
+  "id": "dm-planarity-coloring",
+  "chapterId": "dm-graphs",
+  "number": "7.5",
+  "title": "平面图与顶点着色",
+  "subtitle": "平面性要求能画成边不交叉；着色要求相邻点颜色不同。",
+  "concept": "平面性要求能画成边不交叉；着色要求相邻点颜色不同。",
+  "intuition": "一张图画得有交叉，不能据此认定它不可平面，可能只是画法没选好。",
+  "objectives": [
+    "使用 Euler 公式",
+    "得到必要边界"
+  ],
+  "body": [
+    {
+      "title": "使用 Euler 公式",
+      "text": "连通平面图连同无界面，顶点数减边数加面数等于二。若有多个连通分量，右边改为一加分量数。"
+    },
+    {
+      "title": "得到必要边界",
+      "text": "至少三个顶点的简单平面图满足边数不超过三倍顶点数减六。若还是二部图，则边数不超过两倍顶点数减四。"
+    },
+    {
+      "title": "构造着色",
+      "text": "贪心按固定顺序给每点选未被已染邻居使用的颜色，最多需要最大度加一色，但结果未必是最少色数。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "边数界是平面性的必要条件，不能直接作为充分判定。",
+    "latex": "v-e+f=2,\\quad e\\le3v-6,\\quad e\\le2v-4\\ \\text{若还二部}",
+    "conditions": [
+      "Euler 公式此处要求连通平面嵌入。",
+      "两条边数界要求简单图且至少三个顶点。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "每条边接触两个面边界，桥会计两遍。",
+      "latex": "\\sum_F\\ell(F)=2e"
+    },
+    {
+      "text": "简单平面嵌入在相应非退化情形每面至少三边。",
+      "latex": "3f\\le2e"
+    },
+    {
+      "text": "结合 Euler 公式；树的边界情形直接满足。",
+      "latex": "e\\le3v-6"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "完全五图",
+      "problem": "完全五图能平面画出吗？",
+      "steps": [
+        "有五点十边。",
+        "平面界要求最多九边。"
+      ],
+      "answer": "不能。"
+    },
+    {
+      "title": "完全三对三二部图",
+      "problem": "完全三对三二部图能平面画出吗？",
+      "steps": [
+        "六点九边，是二部图。",
+        "二部平面界只允许最多八边。"
+      ],
+      "answer": "不能；普通三倍界在此不够。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "连通平面嵌入五点六边，有几个面？",
+      "hint": "含无界面用 Euler。",
+      "solution": [
+        "$f=2-5+6=3$。"
+      ],
+      "answer": "三个。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 3,
+      "id": "dm-planarity-coloring-q1"
+    },
+    {
+      "problem": "满足边数界就一定平面吗？",
+      "hint": "必要不代表充分。",
+      "solution": [
+        "完全三对三满足普通边数界却不平面。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-planarity-coloring-q2"
+    },
+    {
+      "problem": "偶环最少几色？",
+      "hint": "沿圈交替。",
+      "solution": [
+        "二色可行；有边所以一色不够。"
+      ],
+      "answer": "二。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 2,
+      "id": "dm-planarity-coloring-q3"
+    },
+    {
+      "problem": "完全四图最少几色？",
+      "hint": "任意两点相邻。",
+      "solution": [
+        "每个点需独有颜色。"
+      ],
+      "answer": "四。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 4,
+      "id": "dm-planarity-coloring-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "绘图有边相交，能直接判不可平面吗？",
+    "choices": [
+      "能",
+      "不能",
+      "只要交两次就能"
+    ],
+    "correctIndex": 1,
+    "explanation": "平面性问是否存在另一种无交叉画法。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-planarity-coloring-m1",
+      "claim": "边数界是充分判据",
+      "correction": "只可用于排除，不可据此确认。"
+    },
+    {
+      "id": "dm-planarity-coloring-m2",
+      "claim": "贪心必用最少颜色",
+      "correction": "顶点顺序会影响结果。"
+    }
+  ],
+  "prerequisites": [
+    "dm-degrees",
+    "dm-connectivity"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "dm-planarity-coloring-m1",
+    "dm-planarity-coloring-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-planarity-coloring",
+    "prediction": "比较图的染色与边数界，哪些结论只是必要条件？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "只可用于排除，不可据此确认。",
+    "steps": [
+      {
+        "title": "图结构模式：0",
+        "instruction": "设为 $0$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，顶点：$6$；边：$6$；此顺序贪心色数：$2$；普通平面边数界：$12$；二部：是。",
+        "preset": {
+          "a": 0
+        }
+      },
+      {
+        "title": "图结构模式：2",
+        "instruction": "设为 $2$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，顶点：$6$；边：$5$；此顺序贪心色数：$2$；普通平面边数界：$12$；二部：是。",
+        "preset": {
+          "a": 2
+        }
+      },
+      {
+        "title": "图结构模式：5",
+        "instruction": "设为 $5$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，顶点：$6$；边：$6$；此顺序贪心色数：$3$；普通平面边数界：$12$；二部：否。",
+        "preset": {
+          "a": 5
+        }
+      }
+    ]
+  }
+}

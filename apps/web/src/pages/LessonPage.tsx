@@ -195,8 +195,8 @@ export function LessonPage({ lesson: l }: { lesson: Lesson }) {
                   <MathText text={l.intuition} />
                 </p>
               </section>
-              <TeachingExplanation key={l.id} lesson={l}/>
-              <LearningCheck key={l.id} check={l.learningCheck} />
+              <TeachingExplanation key={`explain-${l.id}`} lesson={l}/>
+              <LearningCheck key={`check-${l.id}`} check={l.learningCheck} />
               <section id="section-visual" className="embedded-visual">
                 <div className="visual-section-heading">
                   <span>

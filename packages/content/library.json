@@ -220,12 +220,20 @@
         "Discrete",
         "Mathematics"
       ],
-      "tagline": "组织有限的世界",
-      "description": "从逻辑与证明到组合计数、图论与递归。",
+      "tagline": "从清楚的定义到可靠的推理",
+      "description": "逻辑与证明、集合与关系、整数、归纳、计数、递推、图与树、最短路径和匹配。",
       "audience": "有初等代数基础的学习者",
-      "scope": "逻辑 · 计数 · 图论 · 递归",
-      "status": "planned",
-      "categoryId": "mathematics"
+      "scope": "逻辑 · 证明 · 整数 · 计数 · 图与网络",
+      "status": "published",
+      "categoryId": "mathematics",
+      "route": "book/discrete-math",
+      "coverFormula": "\\sum_{v\\in V}\\deg(v)=2|E|",
+      "stats": {
+        "chapters": 8,
+        "lessons": 40,
+        "examples": 80,
+        "exercises": 184
+      }
     },
     {
       "id": "real-analysis",

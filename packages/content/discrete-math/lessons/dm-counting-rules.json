@@ -1,0 +1,196 @@
+{
+  "id": "dm-counting-rules",
+  "chapterId": "dm-counting",
+  "number": "5.1",
+  "title": "加法原理与乘法原理",
+  "subtitle": "互斥情况相加，连续选择相乘；先检查有没有重计。",
+  "concept": "互斥情况相加，连续选择相乘；先检查有没有重计。",
+  "intuition": "数菜单时，选一道主菜和一杯饮料用乘法；主菜中选鱼或肉用加法，前提是两类不重叠。",
+  "objectives": [
+    "拆成互斥类",
+    "分成选择步骤"
+  ],
+  "body": [
+    {
+      "title": "拆成互斥类",
+      "text": "把对象分成互不相交的几类，每类内部计数后相加。重叠情况必须先去重或用容斥。"
+    },
+    {
+      "title": "分成选择步骤",
+      "text": "每一步选择数固定时直接相乘；可以依赖前一步，但每个前缀的可选数量必须相同，否则需分支求和。"
+    },
+    {
+      "title": "用树检查",
+      "text": "每条根到叶路径代表一个完整对象。确认路径与对象一一对应，才能把叶数当作答案。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "有限集合的笛卡尔积大小等于各集合大小之积。",
+    "latex": "|A\\times B|=|A||B|,\\quad A\\cap B=\\varnothing\\implies|A\\cup B|=|A|+|B|",
+    "conditions": [
+      "加法中的分类互斥。",
+      "乘法中的每步选项数须按条件正确计入。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先固定第一项。",
+      "latex": "a\\in A"
+    },
+    {
+      "text": "每个第一项配同样多第二项。",
+      "latex": "|\\{(a,b):b\\in B\\}|=|B|"
+    },
+    {
+      "text": "按第一项分成互斥组。",
+      "latex": "|A\\times B|=\\sum_{a\\in A}|B|=|A||B|"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "套餐",
+      "problem": "四种主食与三种饮料各选一，有多少套餐？",
+      "steps": [
+        "先选主食四种。",
+        "每种主食可配三种饮料。"
+      ],
+      "answer": "十二种。"
+    },
+    {
+      "title": "不重复密码",
+      "problem": "从五个字符选两个组成有序串且不能重复。",
+      "steps": [
+        "第一个五种。",
+        "第二个只余四种。"
+      ],
+      "answer": "二十种。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "三个开关各有两态，多少状态？",
+      "hint": "逐项相乘。",
+      "solution": [
+        "$2^3=8$。"
+      ],
+      "answer": "八。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 8,
+      "id": "dm-counting-rules-q1"
+    },
+    {
+      "problem": "两类各三人但有一人重叠，直接相加正确吗？",
+      "hint": "共同的人被数几遍？",
+      "solution": [
+        "重复一次，应减去一。"
+      ],
+      "answer": "不正确，共五人。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 5,
+      "id": "dm-counting-rules-q2"
+    },
+    {
+      "problem": "两步选项数依次为二和四，完整对象数？",
+      "hint": "检查每个第一步都有四种后续。",
+      "solution": [
+        "$2\\cdot4=8$。"
+      ],
+      "answer": "八。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 8,
+      "id": "dm-counting-rules-q3"
+    },
+    {
+      "problem": "同一个对象对应两条路径，还能直接数叶吗？",
+      "hint": "路径与对象需一一对应。",
+      "solution": [
+        "此时叶数把对象重复计算。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-counting-rules-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "互斥分类应使用哪种运算？",
+    "choices": [
+      "相加",
+      "相乘",
+      "取最大值"
+    ],
+    "correctIndex": 0,
+    "explanation": "不同类的对象没有重复。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-counting-rules-m1",
+      "claim": "连续选两次总把数量相加",
+      "correction": "连续步骤通常组合成有序对象。"
+    },
+    {
+      "id": "dm-counting-rules-m2",
+      "claim": "重叠分类可直接相加",
+      "correction": "共同部分会重计。"
+    }
+  ],
+  "prerequisites": [
+    "dm-sets"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-counting-rules-m1",
+    "dm-counting-rules-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-counting-rules",
+    "prediction": "改变两步选择数量，网格中的完整对象数怎样变化？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "连续步骤通常组合成有序对象。",
+    "steps": [
+      {
+        "title": "第一步选项数：1",
+        "instruction": "设为 $1$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，完整对象数：$4$。",
+        "preset": {
+          "a": 1,
+          "b": 4
+        }
+      },
+      {
+        "title": "第一步选项数：3",
+        "instruction": "设为 $3$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，完整对象数：$12$。",
+        "preset": {
+          "a": 3,
+          "b": 4
+        }
+      },
+      {
+        "title": "第一步选项数：6",
+        "instruction": "设为 $6$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，完整对象数：$24$。",
+        "preset": {
+          "a": 6,
+          "b": 4
+        }
+      }
+    ]
+  }
+}

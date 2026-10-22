@@ -1,0 +1,193 @@
+{
+  "id": "dm-contradiction",
+  "chapterId": "dm-logic",
+  "number": "1.5",
+  "title": "逆否证明与反证法",
+  "subtitle": "正面难推时，可以排除“条件真但结论假”的可能。",
+  "concept": "正面难推时，可以排除“条件真但结论假”的可能。",
+  "intuition": "逆否是证明同一个蕴含；反证是暂时加入结论的否定，再推出矛盾。",
+  "objectives": [
+    "使用逆否",
+    "写清反证假设"
+  ],
+  "body": [
+    {
+      "title": "使用逆否",
+      "text": "“若平方为偶数，则原数为偶数”可改证“原数为奇数，则平方为奇数”。逆否不是交换前后件。"
+    },
+    {
+      "title": "写清反证假设",
+      "text": "证明某数无理，要暂设它可写成最简整数分数，再由此推出分子分母有公因子。"
+    },
+    {
+      "title": "检查矛盾来源",
+      "text": "矛盾必须依赖加入的否定假设，且其余步骤合法。不能先把目标结论当成已知。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "经典逻辑中，蕴含与逆否命题等价。",
+    "latex": "(p\\to q)\\equiv(\\neg q\\to\\neg p)",
+    "conditions": [
+      "本节使用经典逻辑。",
+      "有理数表示选取互质整数分子分母。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "蕴含唯一的失败情形是前真后假。",
+      "latex": "p\\land\\neg q"
+    },
+    {
+      "text": "逆否命题的失败情形相同。",
+      "latex": "\\neg q\\land p"
+    },
+    {
+      "text": "于是两者真值相同。",
+      "latex": "p\\to q\\equiv\\neg q\\to\\neg p"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "平方为偶数",
+      "problem": "证明整数平方偶数时原数偶数。",
+      "steps": [
+        "设原数奇数，写为 $2k+1$。",
+        "平方为 $2(2k^2+2k)+1$，仍是奇数。",
+        "因此平方偶数不可能来自奇数。"
+      ],
+      "answer": "原数为偶数。"
+    },
+    {
+      "title": "根号二无理",
+      "problem": "证明 $\\sqrt2$ 不是有理数。",
+      "steps": [
+        "反设 $\\sqrt2=a/b$，其中 $\\gcd(a,b)=1,b\\ne0$。",
+        "$a^2=2b^2$，故 $a=2c$。",
+        "代回得 $b^2=2c^2$，故 $b$ 也偶，与互质矛盾。"
+      ],
+      "answer": "$\\sqrt2$ 无理。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$p\\to q$ 的逆命题是什么？",
+      "hint": "交换前后件。",
+      "solution": [
+        "变为 $q\\to p$。"
+      ],
+      "answer": "$q\\to p$；不一定等价。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-contradiction-q1"
+    },
+    {
+      "problem": "逆否证明能把假设和结论直接交换吗？",
+      "hint": "还必须同时否定。",
+      "solution": [
+        "只交换得到逆命题。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-contradiction-q2"
+    },
+    {
+      "problem": "证明不存在最大整数。",
+      "hint": "假设有最大整数，再加一。",
+      "solution": [
+        "若最大为 $M$，则 $M+1$ 更大。"
+      ],
+      "answer": "不存在。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-contradiction-q3"
+    },
+    {
+      "problem": "根号二反证为何选最简分数？",
+      "hint": "最后矛盾针对哪个条件？",
+      "solution": [
+        "共同偶因子与互质条件冲突。"
+      ],
+      "answer": "确保推出公因子时构成矛盾。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-contradiction-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "与原蕴含等价的是哪一个？",
+    "choices": [
+      "逆命题",
+      "逆否命题",
+      "否命题"
+    ],
+    "correctIndex": 1,
+    "explanation": "它们排除的是同一个赋值。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-contradiction-m1",
+      "claim": "逆命题总等价",
+      "correction": "逆否等价，逆命题未必。"
+    },
+    {
+      "id": "dm-contradiction-m2",
+      "claim": "反证可以循环使用结论",
+      "correction": "只能暂设否定并合法推出矛盾。"
+    }
+  ],
+  "prerequisites": [
+    "dm-direct-proof",
+    "dm-logical-equivalence"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-contradiction-m1",
+    "dm-contradiction-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-contradiction",
+    "prediction": "比较原命题、逆命题与逆否命题，哪些行完全一致？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "逆否等价，逆命题未必。",
+    "steps": [
+      {
+        "title": "比较模式：0",
+        "instruction": "设为 $0$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，反例行数：$0$。",
+        "preset": {
+          "a": 0
+        }
+      },
+      {
+        "title": "比较模式：1",
+        "instruction": "设为 $1$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，反例行数：$2$。",
+        "preset": {
+          "a": 1
+        }
+      },
+      {
+        "title": "比较模式：2",
+        "instruction": "设为 $2$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，反例行数：$0$。",
+        "preset": {
+          "a": 2
+        }
+      }
+    ]
+  }
+}

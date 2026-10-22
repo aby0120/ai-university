@@ -1,0 +1,192 @@
+{
+  "id": "dm-inclusion-exclusion",
+  "chapterId": "dm-recurrences",
+  "number": "6.1",
+  "title": "容斥原理",
+  "subtitle": "把重叠对象相加后，按它被重复计算的次数补减。",
+  "concept": "把重叠对象相加后，按它被重复计算的次数补减。",
+  "intuition": "交集先被多算，三重交集又会在减去两两交集时被减过头。",
+  "objectives": [
+    "两集合去重",
+    "推广到三集合"
+  ],
+  "body": [
+    {
+      "title": "两集合去重",
+      "text": "两个集合的并集大小，等于各自大小之和减交集。因为共同成员此前出现两遍。"
+    },
+    {
+      "title": "推广到三集合",
+      "text": "三重成员先被加三次，再从三个两两交集中减三次，所以最后必须加回一次。"
+    },
+    {
+      "title": "用指示变量证明",
+      "text": "对每个元素单独检查总权重。属于若干集合的元素，按二项式恒等式得到权重一；全不属于者权重零。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "容斥适用于有限集合，不要求各交集大小相同。",
+    "latex": "|A\\cup B\\cup C|=|A|+|B|+|C|-|A\\cap B|-|A\\cap C|-|B\\cap C|+|A\\cap B\\cap C|",
+    "conditions": [
+      "集合有限，大小与交集来自同一个全集。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "固定一个属于两集合的元素。",
+      "latex": "1+1-1=1"
+    },
+    {
+      "text": "固定一个属于三集合的元素。",
+      "latex": "3-3+1=1"
+    },
+    {
+      "text": "逐元素相加得到并集大小。",
+      "latex": "\\mathbf1_{A\\cup B}=\\mathbf1_A+\\mathbf1_B-\\mathbf1_{A\\cap B}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "两门课",
+      "problem": "十人学甲课，八人学乙课，三人都学。至少学一门的有多少？",
+      "steps": [
+        "直接相加十八，其中三人重复。",
+        "减去三。"
+      ],
+      "answer": "十五人。"
+    },
+    {
+      "title": "整数筛选",
+      "problem": "一至三十中，能被二或三整除的整数个数？",
+      "steps": [
+        "二的倍数十五个，三的倍数十个。",
+        "六的倍数五个，需减一次。"
+      ],
+      "answer": "二十个。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "两集大小七、六，交集二，并集大小？",
+      "hint": "去掉一次重计。",
+      "solution": [
+        "$7+6-2=11$。"
+      ],
+      "answer": "十一。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 11,
+      "id": "dm-inclusion-exclusion-q1"
+    },
+    {
+      "problem": "三集容斥最后为何加三重交集？",
+      "hint": "看三重成员的系数。",
+      "solution": [
+        "它此前系数为三减三等于零。"
+      ],
+      "answer": "补回到一次。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-inclusion-exclusion-q2"
+    },
+    {
+      "problem": "两集合互斥时容斥退化成什么？",
+      "hint": "交集为空。",
+      "solution": [
+        "只剩两个大小相加。"
+      ],
+      "answer": "加法原理。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-inclusion-exclusion-q3"
+    },
+    {
+      "problem": "一至二十能被二或五整除的个数？",
+      "hint": "交集为十的倍数。",
+      "solution": [
+        "$10+4-2=12$。"
+      ],
+      "answer": "十二。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 12,
+      "id": "dm-inclusion-exclusion-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "三重交集在三集合公式中的符号？",
+    "choices": [
+      "加",
+      "减",
+      "不出现"
+    ],
+    "correctIndex": 0,
+    "explanation": "补偿两两交集造成的过度扣除。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-inclusion-exclusion-m1",
+      "claim": "两两不相交与三重不相交一样",
+      "correction": "三重为空仍可能有非空两两交集。"
+    },
+    {
+      "id": "dm-inclusion-exclusion-m2",
+      "claim": "交集随便减一次即可",
+      "correction": "必须按成员最终权重核对。"
+    }
+  ],
+  "prerequisites": [
+    "dm-sets",
+    "dm-counting-rules"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "dm-inclusion-exclusion-m1",
+    "dm-inclusion-exclusion-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-inclusion-exclusion",
+    "prediction": "扩大整数范围，倍数集合的交集如何消除重计？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "三重为空仍可能有非空两两交集。",
+    "steps": [
+      {
+        "title": "整数范围上界：1",
+        "instruction": "设为 $1$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，二倍数：$0$；三倍数：$0$；交集：$0$；并集：$0$。",
+        "preset": {
+          "a": 1
+        }
+      },
+      {
+        "title": "整数范围上界：30",
+        "instruction": "设为 $30$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，二倍数：$15$；三倍数：$10$；交集：$5$；并集：$20$。",
+        "preset": {
+          "a": 30
+        }
+      },
+      {
+        "title": "整数范围上界：60",
+        "instruction": "设为 $60$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，二倍数：$30$；三倍数：$20$；交集：$10$；并集：$40$。",
+        "preset": {
+          "a": 60
+        }
+      }
+    ]
+  }
+}

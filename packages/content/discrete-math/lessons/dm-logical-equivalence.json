@@ -1,0 +1,190 @@
+{
+  "id": "dm-logical-equivalence",
+  "chapterId": "dm-logic",
+  "number": "1.2",
+  "title": "真值表与逻辑等价",
+  "subtitle": "两个式子在所有赋值下相同，才叫逻辑等价。",
+  "concept": "两个式子在所有赋值下相同，才叫逻辑等价。",
+  "intuition": "相同的某一行只能说明这一行相同；等价要逐行都对上。",
+  "objectives": [
+    "检验等价",
+    "使用德摩根律"
+  ],
+  "body": [
+    {
+      "title": "检验等价",
+      "text": "有限个命题变量可列出所有赋值。逐行结果一致，给出该真值函数层面的完整验证。"
+    },
+    {
+      "title": "使用德摩根律",
+      "text": "否定“都成立”是“至少一项不成立”；否定“至少一项成立”才是“两项都不成立”。"
+    },
+    {
+      "title": "辨认重言式",
+      "text": "所有行都真的式子是重言式；存在一行真叫可满足，所有行都假叫矛盾式。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "逻辑等价要求全部赋值的真值相同。",
+    "latex": "\\neg(p\\land q)\\equiv\\neg p\\lor\\neg q",
+    "conditions": [
+      "只比较相同变量上的经典真值函数。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "合取只有两项都真时为真。",
+      "latex": "p\\land q=1\\iff p=q=1"
+    },
+    {
+      "text": "取否定，排除两项都真。",
+      "latex": "\\neg(p\\land q)=0\\iff p=q=1"
+    },
+    {
+      "text": "右式也只有这时为假。",
+      "latex": "\\neg p\\lor\\neg q=0\\iff p=q=1"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "排中律",
+      "problem": "$p\\lor\\neg p$ 属于哪类式子？",
+      "steps": [
+        "当前命题真时左项真。",
+        "当前命题假时右项真。"
+      ],
+      "answer": "重言式。"
+    },
+    {
+      "title": "找出不等价",
+      "problem": "$p\\to q$ 和 $q\\to p$ 等价吗？",
+      "steps": [
+        "取 $p=0,q=1$。",
+        "前式真，后式假。"
+      ],
+      "answer": "不等价。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "四个变量真值表有多少行？",
+      "hint": "每变量独立二选一。",
+      "solution": [
+        "$2^{4}=16$。"
+      ],
+      "answer": "十六行。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 16,
+      "id": "dm-logical-equivalence-q1"
+    },
+    {
+      "problem": "否定 $p\\lor q$ 得到什么？",
+      "hint": "用德摩根律。",
+      "solution": [
+        "两项都必须假。"
+      ],
+      "answer": "$\\neg p\\land\\neg q$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-logical-equivalence-q2"
+    },
+    {
+      "problem": "只比较一行相同能证明等价吗？",
+      "hint": "等价的量词是什么？",
+      "solution": [
+        "需要所有赋值都相同。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-logical-equivalence-q3"
+    },
+    {
+      "problem": "$p\\land\\neg p$ 可满足吗？",
+      "hint": "分别看两个真值。",
+      "solution": [
+        "无论如何都至少一项假。"
+      ],
+      "answer": "不可满足。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-logical-equivalence-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "反驳两个式子等价需要几行反例？",
+    "choices": [
+      "所有行",
+      "一行即可",
+      "不能用真值表"
+    ],
+    "correctIndex": 1,
+    "explanation": "存在一个不同的赋值就否定全部相同。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-logical-equivalence-m1",
+      "claim": "有一行相同就是等价",
+      "correction": "要在全部赋值下相同。"
+    },
+    {
+      "id": "dm-logical-equivalence-m2",
+      "claim": "可满足就是重言式",
+      "correction": "可满足只要求至少一行真。"
+    }
+  ],
+  "prerequisites": [
+    "dm-propositions"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-logical-equivalence-m1",
+    "dm-logical-equivalence-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-logical-equivalence",
+    "prediction": "切换比较式，反例行出现在哪里？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "要在全部赋值下相同。",
+    "steps": [
+      {
+        "title": "比较模式：0",
+        "instruction": "设为 $0$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，反例行数：$0$。",
+        "preset": {
+          "a": 0
+        }
+      },
+      {
+        "title": "比较模式：1",
+        "instruction": "设为 $1$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，反例行数：$2$。",
+        "preset": {
+          "a": 1
+        }
+      },
+      {
+        "title": "比较模式：2",
+        "instruction": "设为 $2$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，反例行数：$0$。",
+        "preset": {
+          "a": 2
+        }
+      }
+    ]
+  }
+}

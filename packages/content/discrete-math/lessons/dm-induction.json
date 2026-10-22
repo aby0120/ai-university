@@ -1,0 +1,192 @@
+{
+  "id": "dm-induction",
+  "chapterId": "dm-induction",
+  "number": "4.1",
+  "title": "数学归纳法",
+  "subtitle": "验证起点，再证明每一步能把结论传给下一步。",
+  "concept": "验证起点，再证明每一步能把结论传给下一步。",
+  "intuition": "归纳不是看几个例子猜下一个；它证明任意一步都能接上。",
+  "objectives": [
+    "选对起点",
+    "使用归纳假设"
+  ],
+  "body": [
+    {
+      "title": "选对起点",
+      "text": "若命题从某个整数开始，只需验证那个起点；但归纳步骤必须从该起点以后的所有指标都有效。"
+    },
+    {
+      "title": "使用归纳假设",
+      "text": "暂设任意但固定的当前指标成立，只用它证明下一个指标。不能把下一项也作为假设。"
+    },
+    {
+      "title": "整理目标差值",
+      "text": "求和恒等式通常把最后一项拆出；不等式要检查新增项能否被归纳假设吸收。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "命题定义在所有不小于起点的整数上。",
+    "latex": "P(n_0),\\quad \\forall k\\ge n_0\\,[P(k)\\to P(k+1)]\\implies\\forall n\\ge n_0\\,P(n)",
+    "conditions": [
+      "起点与归纳步骤的指标范围必须相接。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "验证起点。",
+      "latex": "1=1\\cdot2/2"
+    },
+    {
+      "text": "拆开下一项并代入假设。",
+      "latex": "\\sum_{i=1}^{k+1}i=\\frac{k(k+1)}2+(k+1)"
+    },
+    {
+      "text": "提取因子得到目标。",
+      "latex": "\\sum_{i=1}^{k+1}i=\\frac{(k+1)(k+2)}2"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "奇数和",
+      "problem": "证明前 $n$ 个正奇数之和为 $n^2$。",
+      "steps": [
+        "起点 $n=1$ 成立。",
+        "若前 $k$ 项和为 $k^2$，加上 $2k+1$。",
+        "$k^2+2k+1=(k+1)^2$。"
+      ],
+      "answer": "对全部正整数成立。"
+    },
+    {
+      "title": "缺起点",
+      "problem": "“若一个整数大于一，则它的后继大于一”能推出所有非负整数大于一吗？",
+      "steps": [
+        "步骤成立。",
+        "零这个起点失败。"
+      ],
+      "answer": "不能，缺少有效起点。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "从三开始的归纳应验证哪个起点？",
+      "hint": "与命题的论域一致。",
+      "solution": [
+        "验证三。"
+      ],
+      "answer": "三。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 3,
+      "id": "dm-induction-q1"
+    },
+    {
+      "problem": "求前十个正奇数和。",
+      "hint": "平方公式。",
+      "solution": [
+        "$10^2=100$。"
+      ],
+      "answer": "一百。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 100,
+      "id": "dm-induction-q2"
+    },
+    {
+      "problem": "归纳假设是未经证明就永久承认结论吗？",
+      "hint": "只在条件推理中暂设。",
+      "solution": [
+        "它用于证明任意相邻两步的蕴含，再配合起点。"
+      ],
+      "answer": "不是。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-induction-q3"
+    },
+    {
+      "problem": "证明前两项后只做跨两步传递够吗？",
+      "hint": "分奇偶两条链。",
+      "solution": [
+        "若两个起点分别覆盖奇偶，跨两步可覆盖全体。"
+      ],
+      "answer": "可以，但要有两条链的起点。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-induction-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "只有起点成立，能完成归纳吗？",
+    "choices": [
+      "能",
+      "还需一般传递步骤",
+      "多算十项即可"
+    ],
+    "correctIndex": 1,
+    "explanation": "有限的起点不能代替任意一步的传递。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-induction-m1",
+      "claim": "步骤成立就不用起点",
+      "correction": "链条需要入口。"
+    },
+    {
+      "id": "dm-induction-m2",
+      "claim": "可把下一项当假设",
+      "correction": "那会循环使用目标。"
+    }
+  ],
+  "prerequisites": [
+    "dm-direct-proof"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-induction-m1",
+    "dm-induction-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-induction",
+    "prediction": "增加项数，新增边条怎样把正方形扩大一层？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "链条需要入口。",
+    "steps": [
+      {
+        "title": "当前层数：1",
+        "instruction": "设为 $1$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，当前总格数：$1$；本层新增：$1$。",
+        "preset": {
+          "n": 1
+        }
+      },
+      {
+        "title": "当前层数：5",
+        "instruction": "设为 $5$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，当前总格数：$25$；本层新增：$9$。",
+        "preset": {
+          "n": 5
+        }
+      },
+      {
+        "title": "当前层数：10",
+        "instruction": "设为 $10$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，当前总格数：$100$；本层新增：$19$。",
+        "preset": {
+          "n": 10
+        }
+      }
+    ]
+  }
+}
