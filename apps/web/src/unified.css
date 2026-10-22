@@ -875,3 +875,6 @@ input[type=range] { accent-color: #4c855b; }
 .ode-drag-hint{font-size:12px;color:#bdcdb5;margin:10px 0 16px}.linear-planar-plot.ode-initial-plot{touch-action:none;cursor:crosshair}.book-cover.long-title h2,.book-overview .book-cover.small.long-title h2,.shelf-books .book-cover.long-title h2{font-size:clamp(22px,2vw,30px);line-height:1.14;letter-spacing:-.045em}
 
 .ode-motion{margin:8px 0 18px;border:1px solid #8dae8b35;border-radius:12px;background:#0b202480;padding:12px 16px}.ode-motion>span{font-size:11px;color:#bbceba}.ode-motion svg{display:block;max-width:500px;width:100%;height:auto;margin:auto;user-select:none}
+
+.library-edition strong{letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+@media(max-width:650px){.library-edition{flex-direction:row;min-width:0;gap:16px}.library-edition strong{font-size:42px;letter-spacing:-.035em}.library-edition>span{font-size:11px}}

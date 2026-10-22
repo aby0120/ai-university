@@ -14,10 +14,10 @@ import {
   Search,
   X,
 } from "lucide-react";
-import book from "../../../../drafts/python/book.json";
-import replayData from "../../../../drafts/python/experiments.generated.json";
-import supplements from "../../../../drafts/python/supplements.json";
-import manuscript from "../../../../drafts/python/Python-Introduction.md?raw";
+import book from "../../../../packages/content/python/book.json";
+import replayData from "../../../../packages/content/python/experiments.generated.json";
+import supplements from "../../../../packages/content/python/supplements.json";
+import manuscript from "../../../../packages/content/python/Python-Introduction.md?raw";
 import "./python-preview.css";
 
 type Snippet = { code: string; stdin: string; stdout: string };
@@ -73,17 +73,17 @@ type Lesson = {
   sources: string[];
 };
 const files = import.meta.glob<Lesson>(
-  "../../../../drafts/python/lessons/*.json",
+  "../../../../packages/content/python/lessons/*.json",
   { eager: true, import: "default" },
 );
 const lessons = book.chapters.flatMap((chapter) =>
   chapter.lessons.map((id) => {
-    const lesson = files[`../../../../drafts/python/lessons/${id}.json`];
+    const lesson = files[`../../../../packages/content/python/lessons/${id}.json`];
     if (!lesson) throw new Error(`Missing Python lesson: ${id}`);
     return lesson;
   }),
 );
-const href = (id = "") => `#/python${id ? "/" + id : ""}`;
+const href = (id = "") => `#/book/python-introduction${id ? "/" + id : ""}`;
 const READ_KEY = "ai-university-python-draft-reading-v1";
 function loadRead(): string[] {
   try {
@@ -311,7 +311,7 @@ function TraceExperiment({ lesson }: { lesson: Lesson }) {
     <section className="py-lab" aria-label={`${lesson.title}互动实验`}>
       <div className="py-section-heading">
         <span className="py-eyebrow">先预测 → 走一步 → 改一处</span>
-        <h2>动手看看，会发生什么？</h2>
+        <h2>代码怎样执行？</h2>
         <p>{visual.prediction}</p>
       </div>
       <div className="py-lab-controls">
@@ -656,9 +656,9 @@ function Home() {
             本书聚焦通用编程与标准库。面向对象、Web、数据分析库与并发留给后续学习。
           </p>
           <p className="py-draft-note">
-            v{book.version} 投稿预览
+            v{book.version} 已出版
             <br />
-            AI 编写 · 尚未人工审校
+            AI 编写 · 投稿贡献：aby0120
           </p>
         </aside>
       </div>
@@ -684,7 +684,7 @@ function LessonContent({ lesson, tab }: { lesson: Lesson; tab: string }) {
   return (
     <>
       <div className="py-idea">
-        <span className="py-eyebrow">先抓住核心意思</span>
+        <span className="py-eyebrow">核心意思</span>
         <p>{l.concept}</p>
         <div>
           <span>直觉</span>
@@ -789,7 +789,7 @@ function LessonContent({ lesson, tab }: { lesson: Lesson; tab: string }) {
         ))}
       </section>
       <section>
-        <h2>容易走错的两步</h2>
+        <h2>常见误区</h2>
         <div className="py-mistakes">
           {l.commonMistakes.map((item) => (
             <div key={item.claim}>
@@ -899,7 +899,7 @@ export default function PythonPreview({ path }: { path: string }) {
         跳到正文
       </a>
       <header className="py-header">
-        <a className="py-brand" href={href()}>
+        <a className="py-brand" href="#/home">
           <span>
             Au<span>•</span>
           </span>
@@ -908,6 +908,8 @@ export default function PythonPreview({ path }: { path: string }) {
           </div>
         </a>
         <nav aria-label="Python 教材导航">
+          <a href="#/downloads?book=python-introduction">下载与打印</a>
+          <a href="#/library?category=other">教科书库</a>
           <a href={href()} className={!page || lesson ? "active" : ""}>
             教材目录
           </a>
@@ -931,8 +933,8 @@ export default function PythonPreview({ path }: { path: string }) {
           </a>
         </nav>
         <div className="py-header-actions">
-          <span className="py-preview-badge">投稿预览</span>
-          <button type="button" className="py-download" onClick={download}>
+          <a className="py-preview-badge" href="#/library?category=other">其他 / 已出版</a>
+          <button type="button" className="py-download" aria-label="下载整本书稿" onClick={download}>
             <Download size={16} />
             <span>下载书稿</span>
           </button>
@@ -1031,6 +1033,8 @@ export default function PythonPreview({ path }: { path: string }) {
                 .includes(query.trim().toLowerCase()),
             ) && <p className="py-search-empty">没有匹配的章节</p>}
             <div className="py-sidebar-bottom">
+              <a href="#/library?category=other">返回教科书库<ArrowLeft size={14}/></a>
+              <a href="#/downloads?book=python-introduction">下载与打印<Download size={14}/></a>
               <a href={href("review")}>
                 章末回顾与综合测试
                 <ArrowRight size={14} />
@@ -1197,7 +1201,7 @@ export default function PythonPreview({ path }: { path: string }) {
                     <p>纯标准库 · UTF-8 CSV · 整数分 · 15 项测试</p>
                     <Code
                       code={
-                        "python3 drafts/python/project/expense_report.py drafts/python/project/sample.csv"
+                        "python3 packages/content/python/project/expense_report.py packages/content/python/project/sample.csv"
                       }
                       name="终端命令"
                     />
@@ -1246,7 +1250,7 @@ export default function PythonPreview({ path }: { path: string }) {
           )}
           <footer className="py-footer">
             <span>AI University · 开放的知识，清晰的理解</span>
-            <span>Python v{book.version} · AI 编写 · 尚未人工审校</span>
+            <span>Python v{book.version} · AI 编写 · 投稿贡献：aby0120</span>
           </footer>
         </main>
       </div>

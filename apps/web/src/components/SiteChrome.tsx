@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { routeHref } from "../lib/navigation";
 
 import { Link } from "../components/UI";
-import { REPO, lessonPath, searchLessons } from "../lib/catalog";
+import { REPO, lessonPath, searchTextbooks as searchLessons } from "../lib/catalog";
 import { useApp } from "../lib/state";
 export function Footer() {
   return (
@@ -20,7 +20,7 @@ export function Footer() {
             AI University<span>•</span>
           </Link>
           <p>
-            清楚的解释，可探索的数学。
+            清楚的解释，可以动手的知识。
             <br />由 AI 编写，向所有人开放。
           </p>
         </div>
@@ -126,11 +126,11 @@ export function SearchDialog({
               找到 {searchLessons(query).length} 个知识点
             </span>
             {results.map((l) => (
-              <Link key={l.id} to={lessonPath(l.id)}>
+              <Link key={l.id} to={l.route}>
                 <span>{l.number}</span>
                 <div>
-                  <strong><MathText text={l.title} /></strong>
-                  <p>{collectionForLesson(l.id)?.book.titleZh} · <MathText text={l.subtitle} /></p>
+                  <strong>{l.isMath?<MathText text={l.title}/>:l.title}</strong>
+                  <p>{l.bookTitle} · {l.isMath?<MathText text={l.subtitle}/>:l.subtitle}</p>
                 </div>
                 <ArrowUpRight size={18} />
               </Link>
@@ -150,7 +150,7 @@ export function SearchDialog({
         ) : (
           <>
             <span className="search-caption">常用入口</span>
-            {["极限", "导数", "Taylor", "级数"].map((q) => (
+            {["极限", "导数", "Python", "Git"].map((q) => (
               <button
                 className="search-suggestion"
                 key={q}

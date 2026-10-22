@@ -8,6 +8,8 @@ export function parseRoute(hash: string): Route {
   }
   const [name, query = ""] = raw.split("?");
   let path = name || "home";
+  if (path === "python" || path.startsWith("python/")) path="book/python-introduction"+path.slice(6);
+  if (path === "ai-development" || path.startsWith("ai-development/")) path="book/ai-development"+path.slice(14);
   if (path === "exam") path = "practice/exam";
   if (path.startsWith("review-")) path = "practice/review/" + path.slice(7);
   return { path, params: new URLSearchParams(query) };

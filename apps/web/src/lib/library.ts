@@ -4,6 +4,7 @@ export type MathArea = (typeof data.areas)[number];
 type VolumeInfo = {
   id: string;
   areaId: string;
+  categoryId: string;
   title: string;
   englishTitle: string;
   coverTitle: string[];
@@ -15,7 +16,8 @@ type VolumeInfo = {
 export type PublishedVolume = VolumeInfo & {
   status: "published";
   route: string;
-  coverFormula: string;
+  coverFormula?: string;
+  coverMark?: string;
   stats: {
     chapters: number;
     lessons: number;
@@ -25,10 +27,12 @@ export type PublishedVolume = VolumeInfo & {
 };
 export type PlannedVolume = VolumeInfo & { status: "planned" };
 export type Volume = PublishedVolume | PlannedVolume;
-export const mathAreas = data.areas;
+export const categories=data.categories;
+export const areas=data.areas;
+export const mathAreas = areas.filter(a=>a.categoryId==="mathematics");
 export const volumes = data.volumes as Volume[];
 export const publishedVolumes = volumes.filter(
   (v): v is PublishedVolume => v.status === "published",
 );
 export const firstVolume = publishedVolumes.find((v) => v.id === "calculus-1")!;
-export const areaFor = (id: string) => mathAreas.find((a) => a.id === id)!;
+export const areaFor = (id: string) => areas.find((a) => a.id === id)!;

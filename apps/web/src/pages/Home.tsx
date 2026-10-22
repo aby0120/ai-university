@@ -12,7 +12,7 @@ import { Formula, MathText, plainMathText } from "../components/MathText";
 import { PublishedBook } from "../components/Series";
 import { Eyebrow, Link } from "../components/UI";
 import type { SculptureMode } from "../components/MathSculpture";
-import { mathAreas, publishedVolumes, volumes } from "../lib/library";
+import { categories, mathAreas, publishedVolumes, volumes } from "../lib/library";
 const MathSculpture = lazy(() => import("../components/MathSculpture"));
 const forms = [
   {
@@ -89,6 +89,7 @@ export function Home() {
       () => !matchMedia("(prefers-reduced-motion: reduce)").matches,
     ),
     [resetKey, setResetKey] = useState(0);
+  const [shelfCategory,setShelfCategory]=useState("mathematics");
   const form = forms.find((item) => item.id === mode)!;
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -121,19 +122,19 @@ export function Home() {
           <span>
             <i /> AI-AUTHORED. OPEN TO EVERYONE.
           </span>
-          <span>MATHEMATICS / OPEN TEXTBOOKS</span>
+          <span>OPEN TEXTBOOKS / OPEN KNOWLEDGE</span>
         </div>
         <div className="stage-title">
           <Eyebrow>AI UNIVERSITY</Eyebrow>
           <h1>
-            看见数学。
+            看见知识。
             <br />
             <span>理解本质。</span>
           </h1>
           <p>
-            AI 编写的开放数学教科书。
+            AI 编写的开放教科书。
             <br />
-            完整讲解、交互图示和逐步解答。
+            从数学到编程，讲解、互动与解答一应俱全。
           </p>
           <div className="stage-actions">
             <Link to="library" className="stage-primary">
@@ -225,7 +226,7 @@ export function Home() {
         </div>
         <div className="stage-bottom">
           <span>
-            {mathAreas.length} 个数学方向 <b>/</b> {publishedVolumes.length}{" "}
+            {categories.length} 个教材分类 <b>/</b> {publishedVolumes.length}{" "}
             本已出版 <b>/</b> {volumes.length - publishedVolumes.length}{" "}
             本规划中
           </span>
@@ -256,9 +257,13 @@ export function Home() {
           <Link to="library" params={{ status: "published" }}>
             浏览已出版教材 <ArrowUpRight size={18} />
           </Link>
+        <nav className="subject-tabs home-subject-tabs" aria-label="首页教材分类">
+          {categories.map(c=><button key={c.id} className={shelfCategory===c.id?"active":""} onClick={()=>setShelfCategory(c.id)} aria-pressed={shelfCategory===c.id}>{c.title}<span>{publishedVolumes.filter(v=>v.categoryId===c.id).length}</span></button>)}
+          <Link to="library">查看全部<ArrowUpRight size={16}/></Link>
+        </nav>
         </div>
         <div className="shelf-books" data-reveal>
-          {publishedVolumes.map((volume) => (
+          {publishedVolumes.filter(v=>v.categoryId===shelfCategory).map((volume) => (
             <PublishedBook key={volume.id} volume={volume} />
           ))}
         </div>
@@ -286,7 +291,7 @@ export function Home() {
               <Link
                 key={area.id}
                 to="library"
-                params={{ area: area.id }}
+                params={{ category:"mathematics", area: area.id }}
                 className="atlas-row"
                 data-reveal
               >
