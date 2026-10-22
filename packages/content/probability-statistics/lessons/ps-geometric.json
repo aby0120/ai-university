@@ -1,0 +1,197 @@
+{
+  "id": "ps-geometric",
+  "chapterId": "ps-discrete",
+  "number": "4.2",
+  "title": "几何与负二项等待次数",
+  "subtitle": "固定成功目标，数要等多少次试验。",
+  "concept": "固定成功目标，数要等多少次试验。",
+  "intuition": "二项固定次数数成功；等待模型固定成功目标数次数。",
+  "objectives": [
+    "约定记数方式",
+    "理解无记忆性"
+  ],
+  "body": [
+    {
+      "title": "约定记数方式",
+      "text": "本卷几何变量包含第一次成功的那次试验，最小值为一。有的资料数失败次数，需先对齐约定。"
+    },
+    {
+      "title": "理解无记忆性",
+      "text": "独立重复试验中，已经失败若干次不会改变未来的单次成功率。累计等待不意味着下一次必然成功。"
+    },
+    {
+      "title": "等待多次成功",
+      "text": "负二项记录达到指定成功数时的总试验数；最后一次必须成功，之前安排余下的成功。 两次相邻成功之间的等待独立同分布，因此 $E[T_r]=r/p$、$\\operatorname{Var}(T_r)=r(1-p)/p^2$。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "相互独立 Bernoulli 试验，固定 $0<p\\le1$。",
+    "latex": "P(T=t)=(1-p)^{t-1}p,\\quad ET=1/p,\\quad P(T_r=t)={t-1\\choose r-1}p^r(1-p)^{t-r}",
+    "conditions": [
+      "相互独立 Bernoulli 试验，固定 $0<p\\le1$。",
+      "几何变量 $t\\ge1$；负二项总次数 $t\\ge r$。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "等待第一次成功，需要先连续失败。",
+      "latex": "P(T=t)=(1-p)^{t-1}p"
+    },
+    {
+      "text": "尾部从未成功的路径得到。 对尾部求和还得到 $ET=\\sum_{t=0}^{\\infty}(1-p)^t=1/p$。",
+      "latex": "P(T>t)=(1-p)^t"
+    },
+    {
+      "text": "最后成功前安排其余成功位置。",
+      "latex": "P(T_r=t)={t-1\\choose r-1}p^r(1-p)^{t-r}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "等第一次成功",
+      "problem": "成功率四分之一，第三次才首次成功的概率？",
+      "steps": [
+        "前两次失败，第三次成功。",
+        "$(3/4)^2(1/4)=9/64$。"
+      ],
+      "answer": "$9/64$。"
+    },
+    {
+      "title": "第二次成功",
+      "problem": "公平试验，第四次恰好达到第二次成功的概率？",
+      "steps": [
+        "前三次恰好一次成功有三种位置。",
+        "每条四次序列概率 $1/16$。"
+      ],
+      "answer": "$3/16$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-geometric-q1",
+      "problem": "成功率 $0.2$，首次成功的平均总次数？",
+      "hint": "本卷包含成功那次。",
+      "solution": [
+        "$1/0.2=5$。"
+      ],
+      "answer": "$5$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 5
+    },
+    {
+      "id": "ps-geometric-q2",
+      "problem": "成功率一半，等待超过三次的概率？",
+      "hint": "前三次全部失败。",
+      "solution": [
+        "$(1/2)^3=1/8$。"
+      ],
+      "answer": "$1/8$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.125
+    },
+    {
+      "id": "ps-geometric-q3",
+      "problem": "已经独立失败十次，下次成功率会自动提高吗？",
+      "hint": "模型保持固定成功率。",
+      "solution": [
+        "未来试验独立于过去。"
+      ],
+      "answer": "不会。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-geometric-q4",
+      "problem": "资料把几何变量记为成功前失败数，本卷均值公式如何调整？",
+      "hint": "两变量相差一。",
+      "solution": [
+        "失败数为总次数减一。"
+      ],
+      "answer": "均值为 $(1-p)/p$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "本卷首次成功等待次数的最小值？",
+    "choices": [
+      "零",
+      "一",
+      "成功率的倒数"
+    ],
+    "correctIndex": 1,
+    "explanation": "把成功发生的那次也计入总次数。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-geometric-m1",
+      "claim": "失败越久下一次越容易成功",
+      "correction": "固定成功率独立模型没有这种补偿。"
+    },
+    {
+      "id": "ps-geometric-m2",
+      "claim": "几何分布约定都一样",
+      "correction": "有总次数和失败次数两种常见约定。"
+    }
+  ],
+  "prerequisites": [
+    "ps-binomial"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-geometric-m1",
+    "ps-geometric-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-geometric",
+    "prediction": "降低成功率，等待时间的尾部怎样变长？",
+    "caption": "绘出前若干等待次数的质量，明确显示未绘出的尾部概率。"
+  },
+  "teaching": {
+    "explain": "固定成功率独立模型没有这种补偿。",
+    "steps": [
+      {
+        "title": "每次成功概率：0.25",
+        "instruction": "将每次成功概率设为 $0.25$，对照图形和读数。",
+        "observation": "本组参数的计算结果：平均总等待次数 $4$；等待次数方差 $12$；显示窗口内概率 $0.996829$；显示窗口外尾概率 $0.00317121$。",
+        "preset": {
+          "a": 0.25,
+          "n": 20,
+          "b": 1
+        }
+      },
+      {
+        "title": "每次成功概率：0.05",
+        "instruction": "将每次成功概率设为 $0.05$，对照图形和读数。",
+        "observation": "本组参数的计算结果：平均总等待次数 $20$；等待次数方差 $380$；显示窗口内概率 $0.641514$；显示窗口外尾概率 $0.358486$。",
+        "preset": {
+          "a": 0.05,
+          "n": 20,
+          "b": 1
+        }
+      },
+      {
+        "title": "每次成功概率：1",
+        "instruction": "将每次成功概率设为 $1$，对照图形和读数。",
+        "observation": "本组参数的计算结果：平均总等待次数 $1$；等待次数方差 $0$；显示窗口内概率 $1$；显示窗口外尾概率 $0$。",
+        "preset": {
+          "a": 1,
+          "n": 20,
+          "b": 1
+        }
+      }
+    ]
+  }
+}

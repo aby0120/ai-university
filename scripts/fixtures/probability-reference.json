@@ -1,0 +1,937 @@
+{
+  "generator": "mpmath 1.3.0",
+  "precision": 60,
+  "description": "Independent 60-digit incomplete integrals, exact combinatorics and bisection; fixtures do not use the JavaScript implementation.",
+  "cases": [
+    {
+      "function": "normalCDF",
+      "args": [
+        -8
+      ],
+      "value": 6.220960574271784e-16
+    },
+    {
+      "function": "normalSF",
+      "args": [
+        -8
+      ],
+      "value": 0.9999999999999993
+    },
+    {
+      "function": "normalCDF",
+      "args": [
+        -4
+      ],
+      "value": 3.1671241833119924e-05
+    },
+    {
+      "function": "normalSF",
+      "args": [
+        -4
+      ],
+      "value": 0.9999683287581669
+    },
+    {
+      "function": "normalCDF",
+      "args": [
+        -2
+      ],
+      "value": 0.02275013194817921
+    },
+    {
+      "function": "normalSF",
+      "args": [
+        -2
+      ],
+      "value": 0.9772498680518208
+    },
+    {
+      "function": "normalCDF",
+      "args": [
+        0
+      ],
+      "value": 0.5
+    },
+    {
+      "function": "normalSF",
+      "args": [
+        0
+      ],
+      "value": 0.5
+    },
+    {
+      "function": "normalCDF",
+      "args": [
+        1
+      ],
+      "value": 0.8413447460685429
+    },
+    {
+      "function": "normalSF",
+      "args": [
+        1
+      ],
+      "value": 0.15865525393145705
+    },
+    {
+      "function": "normalCDF",
+      "args": [
+        3
+      ],
+      "value": 0.9986501019683699
+    },
+    {
+      "function": "normalSF",
+      "args": [
+        3
+      ],
+      "value": 0.0013498980316300946
+    },
+    {
+      "function": "normalCDF",
+      "args": [
+        6
+      ],
+      "value": 0.9999999990134123
+    },
+    {
+      "function": "normalSF",
+      "args": [
+        6
+      ],
+      "value": 9.86587645037698e-10
+    },
+    {
+      "function": "normalCDF",
+      "args": [
+        8
+      ],
+      "value": 0.9999999999999993
+    },
+    {
+      "function": "normalSF",
+      "args": [
+        8
+      ],
+      "value": 6.220960574271784e-16
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        -3,
+        1
+      ],
+      "value": 0.8975836176504333
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        -1,
+        1
+      ],
+      "value": 0.75
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0.5
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        1,
+        1
+      ],
+      "value": 0.25
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        2,
+        1
+      ],
+      "value": 0.14758361765043326
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        5,
+        1
+      ],
+      "value": 0.06283295818900118
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        -3,
+        2
+      ],
+      "value": 0.9522670168666454
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        -1,
+        2
+      ],
+      "value": 0.7886751345948129
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.5
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        1,
+        2
+      ],
+      "value": 0.2113248654051871
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        2,
+        2
+      ],
+      "value": 0.09175170953613698
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        5,
+        2
+      ],
+      "value": 0.018874775675311862
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        -3,
+        5
+      ],
+      "value": 0.9849503760512687
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        -1,
+        5
+      ],
+      "value": 0.8183912661754387
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        0,
+        5
+      ],
+      "value": 0.5
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        1,
+        5
+      ],
+      "value": 0.1816087338245613
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        2,
+        5
+      ],
+      "value": 0.05096973941492918
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        5,
+        5
+      ],
+      "value": 0.0020523579900266612
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        -3,
+        30
+      ],
+      "value": 0.9973050179671741
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        -1,
+        30
+      ],
+      "value": 0.8373456922869851
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        0,
+        30
+      ],
+      "value": 0.5
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        1,
+        30
+      ],
+      "value": 0.16265430771301495
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        2,
+        30
+      ],
+      "value": 0.02731252248149155
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        5,
+        30
+      ],
+      "value": 1.1648342733503898e-05
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        -3,
+        100
+      ],
+      "value": 0.9982960423283352
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        -1,
+        100
+      ],
+      "value": 0.8401379221079384
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        0,
+        100
+      ],
+      "value": 0.5
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        1,
+        100
+      ],
+      "value": 0.1598620778920617
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        2,
+        100
+      ],
+      "value": 0.02410608936556684
+    },
+    {
+      "function": "studentSF",
+      "args": [
+        5,
+        100
+      ],
+      "value": 1.2250867067519001e-06
+    },
+    {
+      "function": "betaCDF",
+      "args": [
+        0.01,
+        0.5,
+        0.5
+      ],
+      "value": 0.06376856085851985
+    },
+    {
+      "function": "betaCDF",
+      "args": [
+        0.2,
+        0.5,
+        0.5
+      ],
+      "value": 0.2951672353008666
+    },
+    {
+      "function": "betaCDF",
+      "args": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "value": 0.5
+    },
+    {
+      "function": "betaCDF",
+      "args": [
+        0.95,
+        0.5,
+        0.5
+      ],
+      "value": 0.8564337068712936
+    },
+    {
+      "function": "betaCDF",
+      "args": [
+        0.01,
+        1,
+        1
+      ],
+      "value": 0.01
+    },
+    {
+      "function": "betaCDF",
+      "args": [
+        0.2,
+        1,
+        1
+      ],
+      "value": 0.2
+    },
+    {
+      "function": "betaCDF",
+      "args": [
+        0.5,
+        1,
+        1
+      ],
+      "value": 0.5
+    },
+    {
+      "function": "betaCDF",
+      "args": [
+        0.95,
+        1,
+        1
+      ],
+      "value": 0.95
+    },
+    {
+      "function": "betaCDF",
+      "args": [
+        0.01,
+        2,
+        3
+      ],
+      "value": 0.00059203
+    },
+    {
+      "function": "betaCDF",
+      "args": [
+        0.2,
+        2,
+        3
+      ],
+      "value": 0.18080000000000002
+    },
+    {
+      "function": "betaCDF",
+      "args": [
+        0.5,
+        2,
+        3
+      ],
+      "value": 0.6875
+    },
+    {
+      "function": "betaCDF",
+      "args": [
+        0.95,
+        2,
+        3
+      ],
+      "value": 0.99951875
+    },
+    {
+      "function": "betaCDF",
+      "args": [
+        0.01,
+        8,
+        4
+      ],
+      "value": 1.6063948000000002e-14
+    },
+    {
+      "function": "betaCDF",
+      "args": [
+        0.2,
+        8,
+        4
+      ],
+      "value": 0.0002352128000000001
+    },
+    {
+      "function": "betaCDF",
+      "args": [
+        0.5,
+        8,
+        4
+      ],
+      "value": 0.11328125
+    },
+    {
+      "function": "betaCDF",
+      "args": [
+        0.95,
+        8,
+        4
+      ],
+      "value": 0.9984477490900391
+    },
+    {
+      "function": "betaCDF",
+      "args": [
+        0.01,
+        15,
+        7
+      ],
+      "value": 5.1282572001619973e-26
+    },
+    {
+      "function": "betaCDF",
+      "args": [
+        0.2,
+        15,
+        7
+      ],
+      "value": 5.132222621286404e-07
+    },
+    {
+      "function": "betaCDF",
+      "args": [
+        0.5,
+        15,
+        7
+      ],
+      "value": 0.03917694091796875
+    },
+    {
+      "function": "betaCDF",
+      "args": [
+        0.95,
+        15,
+        7
+      ],
+      "value": 0.9999512864267373
+    },
+    {
+      "function": "betaCDF",
+      "args": [
+        0.01,
+        0.5,
+        8
+      ],
+      "value": 0.30700785029418753
+    },
+    {
+      "function": "betaCDF",
+      "args": [
+        0.2,
+        0.5,
+        8
+      ],
+      "value": 0.9372280364853967
+    },
+    {
+      "function": "betaCDF",
+      "args": [
+        0.5,
+        0.5,
+        8
+      ],
+      "value": 0.9989679751530912
+    },
+    {
+      "function": "betaCDF",
+      "args": [
+        0.95,
+        0.5,
+        8
+      ],
+      "value": 0.9999999999921524
+    },
+    {
+      "function": "chiSquareSF",
+      "args": [
+        0.1,
+        1
+      ],
+      "value": 0.7518296340458492
+    },
+    {
+      "function": "chiSquareSF",
+      "args": [
+        1,
+        1
+      ],
+      "value": 0.3173105078629141
+    },
+    {
+      "function": "chiSquareSF",
+      "args": [
+        4,
+        1
+      ],
+      "value": 0.04550026389635842
+    },
+    {
+      "function": "chiSquareSF",
+      "args": [
+        12,
+        1
+      ],
+      "value": 0.0005320055051392497
+    },
+    {
+      "function": "chiSquareSF",
+      "args": [
+        60,
+        1
+      ],
+      "value": 9.485737571073848e-15
+    },
+    {
+      "function": "chiSquareSF",
+      "args": [
+        0.1,
+        2
+      ],
+      "value": 0.951229424500714
+    },
+    {
+      "function": "chiSquareSF",
+      "args": [
+        1,
+        2
+      ],
+      "value": 0.6065306597126334
+    },
+    {
+      "function": "chiSquareSF",
+      "args": [
+        4,
+        2
+      ],
+      "value": 0.1353352832366127
+    },
+    {
+      "function": "chiSquareSF",
+      "args": [
+        12,
+        2
+      ],
+      "value": 0.0024787521766663585
+    },
+    {
+      "function": "chiSquareSF",
+      "args": [
+        60,
+        2
+      ],
+      "value": 9.357622968840175e-14
+    },
+    {
+      "function": "chiSquareSF",
+      "args": [
+        0.1,
+        6
+      ],
+      "value": 0.9999799325063756
+    },
+    {
+      "function": "chiSquareSF",
+      "args": [
+        1,
+        6
+      ],
+      "value": 0.9856123220330293
+    },
+    {
+      "function": "chiSquareSF",
+      "args": [
+        4,
+        6
+      ],
+      "value": 0.6766764161830635
+    },
+    {
+      "function": "chiSquareSF",
+      "args": [
+        12,
+        6
+      ],
+      "value": 0.06196880441665896
+    },
+    {
+      "function": "chiSquareSF",
+      "args": [
+        60,
+        6
+      ],
+      "value": 4.501016648012124e-11
+    },
+    {
+      "function": "chiSquareSF",
+      "args": [
+        0.1,
+        20
+      ],
+      "value": 1.0
+    },
+    {
+      "function": "chiSquareSF",
+      "args": [
+        1,
+        20
+      ],
+      "value": 0.999999999829033
+    },
+    {
+      "function": "chiSquareSF",
+      "args": [
+        4,
+        20
+      ],
+      "value": 0.9999535019249828
+    },
+    {
+      "function": "chiSquareSF",
+      "args": [
+        12,
+        20
+      ],
+      "value": 0.9160759830051242
+    },
+    {
+      "function": "chiSquareSF",
+      "args": [
+        60,
+        20
+      ],
+      "value": 7.121750862815577e-06
+    },
+    {
+      "function": "fSF",
+      "args": [
+        1,
+        1,
+        1
+      ],
+      "value": 0.5
+    },
+    {
+      "function": "fSF",
+      "args": [
+        12,
+        2,
+        6
+      ],
+      "value": 0.008
+    },
+    {
+      "function": "fSF",
+      "args": [
+        3,
+        3,
+        16
+      ],
+      "value": 0.0615446793551872
+    },
+    {
+      "function": "fSF",
+      "args": [
+        0.2,
+        5,
+        8
+      ],
+      "value": 0.9535470541414757
+    },
+    {
+      "function": "fSF",
+      "args": [
+        8,
+        10,
+        30
+      ],
+      "value": 4.098077111765228e-06
+    },
+    {
+      "function": "binomialPMF",
+      "args": [
+        2,
+        4,
+        0.5
+      ],
+      "value": 0.375
+    },
+    {
+      "function": "binomialPMF",
+      "args": [
+        0,
+        30,
+        0.05
+      ],
+      "value": 0.21463876394293754
+    },
+    {
+      "function": "binomialPMF",
+      "args": [
+        38,
+        40,
+        0.95
+      ],
+      "value": 0.2776716956254311
+    },
+    {
+      "function": "binomialPMF",
+      "args": [
+        8,
+        10,
+        0.3
+      ],
+      "value": 0.0014467004999999997
+    },
+    {
+      "function": "binomialPMF",
+      "args": [
+        2,
+        80,
+        0.005
+      ],
+      "value": 0.053435193876088576
+    },
+    {
+      "function": "poissonPMF",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.1353352832366127
+    },
+    {
+      "function": "poissonPMF",
+      "args": [
+        4,
+        1.5
+      ],
+      "value": 0.04706651815630942
+    },
+    {
+      "function": "poissonPMF",
+      "args": [
+        25,
+        12
+      ],
+      "value": 0.00037787807084545955
+    },
+    {
+      "function": "poissonPMF",
+      "args": [
+        30,
+        0.1
+      ],
+      "value": 3.4112258720852994e-63
+    },
+    {
+      "function": "hypergeometricPMF",
+      "args": [
+        1,
+        5,
+        2,
+        2
+      ],
+      "value": 0.6
+    },
+    {
+      "function": "hypergeometricPMF",
+      "args": [
+        0,
+        30,
+        12,
+        8
+      ],
+      "value": 0.007476261869065468
+    },
+    {
+      "function": "hypergeometricPMF",
+      "args": [
+        5,
+        30,
+        12,
+        15
+      ],
+      "value": 0.22341986901286198
+    },
+    {
+      "function": "hypergeometricPMF",
+      "args": [
+        12,
+        30,
+        12,
+        30
+      ],
+      "value": 1.0
+    },
+    {
+      "function": "studentQuantile",
+      "args": [
+        0.975,
+        1
+      ],
+      "value": 12.706204736174694
+    },
+    {
+      "function": "studentQuantile",
+      "args": [
+        0.975,
+        8
+      ],
+      "value": 2.3060041352041662
+    },
+    {
+      "function": "studentQuantile",
+      "args": [
+        0.975,
+        15
+      ],
+      "value": 2.131449545559775
+    },
+    {
+      "function": "studentQuantile",
+      "args": [
+        0.95,
+        30
+      ],
+      "value": 1.6972608865939574
+    },
+    {
+      "function": "studentQuantile",
+      "args": [
+        0.025,
+        5
+      ],
+      "value": -2.5705818356363155
+    }
+  ]
+}

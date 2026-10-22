@@ -1,0 +1,194 @@
+{
+  "id": "ps-estimation",
+  "chapterId": "ps-estimation",
+  "number": "8.2",
+  "title": "矩估计与极大似然",
+  "subtitle": "把模型参数与实际数据连接起来，必须先说明抽样模型。",
+  "concept": "把模型参数与实际数据连接起来，必须先说明抽样模型。",
+  "intuition": "矩估计匹配平均特征；极大似然寻找最支持这份数据的参数。",
+  "objectives": [
+    "匹配矩",
+    "构造似然"
+  ],
+  "body": [
+    {
+      "title": "匹配矩",
+      "text": "用样本矩替代总体矩并解参数方程。解可能需要检查支持范围与是否唯一。"
+    },
+    {
+      "title": "构造似然",
+      "text": "独立样本的联合质量或密度作为参数函数。数据固定、参数变化；它不是默认归一化的参数概率分布。"
+    },
+    {
+      "title": "检查内部和边界",
+      "text": "对数简化乘积，但求导只找内部候选。成功数为零、全部成功等边界情形要单独比较。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "需指定参数空间、样本独立性与密度或质量模型。",
+    "latex": "L(\\theta;x)=\\prod_{i=1}^nf_\\theta(x_i),\\qquad\\hat\\theta_{\\mathrm{MLE}}\\in\\arg\\max_\\theta L(\\theta;x)",
+    "conditions": [
+      "需指定参数空间、样本独立性与密度或质量模型。",
+      "最大值可能不唯一或不存在；不能只凭导数为零下结论。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "Bernoulli 样本以成功次数汇总。",
+      "latex": "L(p)\\propto p^k(1-p)^{n-k}"
+    },
+    {
+      "text": "内部点取对数并求导。",
+      "latex": "\\ell\\prime(p)=k/p-(n-k)/(1-p)"
+    },
+    {
+      "text": "解得比例，并补上零或全成功边界。",
+      "latex": "\\hat p=k/n\\in[0,1]"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "估计成功率",
+      "problem": "独立 Bernoulli 试验二十次成功六次，MLE？",
+      "steps": [
+        "似然为 $p^6(1-p)^{14}$ 的常数倍。",
+        "最大点为成功比例。"
+      ],
+      "answer": "$0.3$。"
+    },
+    {
+      "title": "指数速率",
+      "problem": "独立指数等待四次，总等待八，速率 MLE？",
+      "steps": [
+        "对数似然为 $4\\log\\lambda-8\\lambda$。",
+        "求导为零并检查二阶导数为负。"
+      ],
+      "answer": "$\\hat\\lambda=4/8=0.5$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-estimation-q1",
+      "problem": "十次 Bernoulli 都失败，参数空间 $[0,1]$ 中的 MLE？",
+      "hint": "比较边界。",
+      "solution": [
+        "似然 $(1-p)^{10}$ 随参数下降。"
+      ],
+      "answer": "$0$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0
+    },
+    {
+      "id": "ps-estimation-q2",
+      "problem": "Poisson 样本均值三，参数 MLE？",
+      "hint": "匹配 Poisson 的平均次数。",
+      "solution": [
+        "对数似然求导给样本均值。"
+      ],
+      "answer": "$3$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 3
+    },
+    {
+      "id": "ps-estimation-q3",
+      "problem": "似然曲线下面积一定为一吗？",
+      "hint": "它是参数的什么函数？",
+      "solution": [
+        "它不是自动归一化的参数密度。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-estimation-q4",
+      "problem": "正态均值未知时方差 MLE 的分母？",
+      "hint": "MLE 和无偏估计不同。",
+      "solution": [
+        "最大化似然得到平方偏差和除以样本量。"
+      ],
+      "answer": "$n$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "似然最大化时，哪部分被视为固定？",
+    "choices": [
+      "数据",
+      "参数",
+      "两者都随机抽取"
+    ],
+    "correctIndex": 0,
+    "explanation": "似然是给定数据后关于参数的函数。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-estimation-m1",
+      "claim": "似然就是参数的后验概率",
+      "correction": "后验还需要先验与归一化。"
+    },
+    {
+      "id": "ps-estimation-m2",
+      "claim": "导数零就保证全局最大",
+      "correction": "还要检查二阶性质、边界与其他候选。"
+    }
+  ],
+  "prerequisites": [
+    "ps-bias-mse"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-estimation-m1",
+    "ps-estimation-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-estimation",
+    "prediction": "改变成功次数，似然的峰怎样移动？",
+    "caption": "固定试验总数，绘制相对似然并标记 MLE；曲线不冒充参数后验密度。"
+  },
+  "teaching": {
+    "explain": "后验还需要先验与归一化。",
+    "steps": [
+      {
+        "title": "观察成功数：6",
+        "instruction": "将观察成功数设为 $6$，对照图形和读数。",
+        "observation": "本组参数的计算结果：成功数 $6$；总次数 $20$；极大似然估计 $0.3$。",
+        "preset": {
+          "a": 6,
+          "n": 20
+        }
+      },
+      {
+        "title": "观察成功数：0",
+        "instruction": "将观察成功数设为 $0$，对照图形和读数。",
+        "observation": "本组参数的计算结果：成功数 $0$；总次数 $20$；极大似然估计 $0$。",
+        "preset": {
+          "a": 0,
+          "n": 20
+        }
+      },
+      {
+        "title": "观察成功数：10",
+        "instruction": "将观察成功数设为 $10$，对照图形和读数。",
+        "observation": "本组参数的计算结果：成功数 $10$；总次数 $20$；极大似然估计 $0.5$。",
+        "preset": {
+          "a": 10,
+          "n": 20
+        }
+      }
+    ]
+  }
+}

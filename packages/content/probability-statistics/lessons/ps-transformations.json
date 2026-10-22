@@ -1,0 +1,194 @@
+{
+  "id": "ps-transformations",
+  "chapterId": "ps-continuous",
+  "number": "5.4",
+  "title": "变量变换：先算累计概率",
+  "subtitle": "换变量会同时改变取值和每段区间的密度。",
+  "concept": "换变量会同时改变取值和每段区间的密度。",
+  "intuition": "把长度压缩到一半，密度需要相应抬高，才能保留相同概率。",
+  "objectives": [
+    "优先使用分布函数",
+    "使用单调换元"
+  ],
+  "body": [
+    {
+      "title": "优先使用分布函数",
+      "text": "把 $Y\\le y$ 写回关于原变量的事件，求概率后再需要时求导。非单调变换可能对应多个原像区间。"
+    },
+    {
+      "title": "使用单调换元",
+      "text": "严格单调、可微且逆函数导数存在的分支，可用绝对 Jacobian 因子变换密度。"
+    },
+    {
+      "title": "保留支持和分支",
+      "text": "平方变换可能合并正负两个分支。遗漏绝对值或另一分支都会丢掉概率。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "上式在单调可微可逆分支成立；一般多分支需对原像求和。",
+    "latex": "f_Y(y)=f_X(g^{-1}(y))\\left|\\frac{d}{dy}g^{-1}(y)\\right|",
+    "conditions": [
+      "上式在单调可微可逆分支成立；一般多分支需对原像求和。",
+      "支持集必须随变量一起变换。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "把新变量事件改写成旧变量事件。",
+      "latex": "F_Y(y)=P(g(X)\\le y)"
+    },
+    {
+      "text": "在递增分支改写积分上限。",
+      "latex": "F_Y(y)=F_X(g^{-1}(y))"
+    },
+    {
+      "text": "链式法则给出密度缩放，递减分支取绝对值。",
+      "latex": "f_Y(y)=f_X(g^{-1}(y))|(g^{-1})\\prime(y)|"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "线性缩放",
+      "problem": "$X\\sim U(0,1),Y=2X+1$，求新密度。",
+      "steps": [
+        "支持区间变为一到三。",
+        "逆变换导数为一半。"
+      ],
+      "answer": "$Y\\sim U(1,3)$，密度 $1/2$。"
+    },
+    {
+      "title": "平方",
+      "problem": "若 $X\\sim U(-1,1),Y=X^2$，求 $F_Y(y)$。",
+      "steps": [
+        "当 $0\\le y\\le1$，原事件为 $-\\sqrt y\\le X\\le\\sqrt y$。",
+        "区间长度除以二。"
+      ],
+      "answer": "$F_Y(y)=\\sqrt y$；密度 $1/(2\\sqrt y)$ 在 $(0,1)$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-transformations-q1",
+      "problem": "$X\\sim U(0,1),Y=3X$，新密度高度？",
+      "hint": "概率面积要保留。",
+      "solution": [
+        "支持宽度为三。"
+      ],
+      "answer": "$1/3$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.3333333333333333
+    },
+    {
+      "id": "ps-transformations-q2",
+      "problem": "$X\\sim U(-1,1)$，$P(X^2\\le1/4)$？",
+      "hint": "还原平方事件。",
+      "solution": [
+        "$|X|\\le1/2$，长度一除以二。"
+      ],
+      "answer": "$1/2$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.5
+    },
+    {
+      "id": "ps-transformations-q3",
+      "problem": "递减变换中为什么要用绝对导数？",
+      "hint": "密度必须非负。",
+      "solution": [
+        "区间长度缩放取绝对大小。"
+      ],
+      "answer": "去掉方向符号，保留长度比例。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-transformations-q4",
+      "problem": "平方变换只算正根一定正确吗？",
+      "hint": "检查原支持是否包含负值。",
+      "solution": [
+        "若正负分支都可能，负根也贡献质量。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "变量变换后忘记更新支持集，可能发生什么？",
+    "choices": [
+      "不影响概率",
+      "总积分或区间概率出错",
+      "只影响字体"
+    ],
+    "correctIndex": 1,
+    "explanation": "密度公式与支持集共同定义分布。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-transformations-m1",
+      "claim": "换元只替换字母",
+      "correction": "还需要区间长度的缩放因子。"
+    },
+    {
+      "id": "ps-transformations-m2",
+      "claim": "平方只有一个原像",
+      "correction": "原支持含正负时通常有两个分支。"
+    }
+  ],
+  "prerequisites": [
+    "ps-normal"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-transformations-m1",
+    "ps-transformations-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-transformations",
+    "prediction": "改变线性缩放倍数，密度高度为何反向变化？",
+    "caption": "用均匀变量的线性变换保持面积；正文另处理平方的多分支情况。"
+  },
+  "teaching": {
+    "explain": "还需要区间长度的缩放因子。",
+    "steps": [
+      {
+        "title": "线性缩放倍数：2",
+        "instruction": "将线性缩放倍数设为 $2$，对照图形和读数。",
+        "observation": "本组参数的计算结果：期望 $2$；方差 $0.333333$；密度高度 $0.5$；阈值左侧概率 $0.5$。",
+        "preset": {
+          "a": 2,
+          "b": 2
+        }
+      },
+      {
+        "title": "线性缩放倍数：0.25",
+        "instruction": "将线性缩放倍数设为 $0.25$，对照图形和读数。",
+        "observation": "本组参数的计算结果：期望 $1.125$；方差 $0.00520833$；密度高度 $4$；阈值左侧概率 $1$。",
+        "preset": {
+          "a": 0.25,
+          "b": 2
+        }
+      },
+      {
+        "title": "线性缩放倍数：4",
+        "instruction": "将线性缩放倍数设为 $4$，对照图形和读数。",
+        "observation": "本组参数的计算结果：期望 $3$；方差 $1.33333$；密度高度 $0.25$；阈值左侧概率 $0.25$。",
+        "preset": {
+          "a": 4,
+          "b": 2
+        }
+      }
+    ]
+  }
+}

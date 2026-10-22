@@ -1,4 +1,5 @@
 export type VisualKind =
+  | "probability"
   | "ode"
   | "linear-algebra"
   | "calculus3"

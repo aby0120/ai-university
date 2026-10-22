@@ -33,7 +33,7 @@ npm run dev
 打开 `http://127.0.0.1:5173`。不需要 `.env` 或任何 API key。
 
 ```sh
-npm run check     # 全部七卷：内容、程序回放、项目测试、公式、类型、整本生成与构建
+npm run check     # 全部八卷：内容、程序回放、项目测试、公式、类型、整本生成与构建
 npm run preview   # 查看构建后的静态版本
 ```
 
@@ -41,7 +41,7 @@ npm run preview   # 查看构建后的静态版本
 
 ## 分类与书库
 
-`packages/content/library.json` 统一维护分类、学科方向、教材简介和出版状态。当前 7 本已出版、3 本规划中。数学分类包含微积分 I/II/III、线性代数、常微分方程；其他分类暂时收录 Python 编程入门与《带着 AI 做项目》。规划条目不提供空白章节或阅读链接。新增规划会自动进入首页方向与书库，整本内容接入完成后再出版。详见 [系列目录与新增教材](docs/LIBRARY.md)。
+`packages/content/library.json` 统一维护分类、学科方向、教材简介和出版状态。当前 8 本已出版、2 本规划中。数学分类包含微积分 I/II/III、线性代数、常微分方程、概率与统计；其他分类暂时收录 Python 编程入门与《带着 AI 做项目》。规划条目不提供空白章节或阅读链接。新增规划会自动进入首页方向与书库，整本内容接入完成后再出版。详见 [系列目录与新增教材](docs/LIBRARY.md)。
 
 ## 第一卷的完整范围
 
@@ -96,10 +96,10 @@ npm run preview   # 查看构建后的静态版本
 
 ## 阅读与下载
 
-- 网站 v0.14.0：数学系列首页、按方向和出版状态筛选的书库、教材主页、45 个章节主页、215 个知识点页面、实验室、分页练习中心、全文搜索、公式/术语/附录索引、阅读指南、下载、项目与贡献资料。
+- 网站 v0.15.0：数学系列首页、按方向和出版状态筛选的书库、教材主页、数学六卷共 55 个章节主页、265 个知识点页面、实验室、分页练习中心、全文搜索、公式/术语/附录索引、阅读指南、下载、项目与贡献资料。
 - 阅读页：专注模式、嵌入演示、页内定位、上下节翻页、收藏、较大字号与已读标记。练习支持逐题/连续查看、提示、完整解答与数值检查。
 - [微积分 I 书稿](book/Calculus-I.md)与[微积分 II 书稿](book/Calculus-II.md)、[微积分 III 书稿](book/Calculus-III.md)与[线性代数书稿](book/Linear-Algebra.md)、[常微分方程书稿](book/Ordinary-Differential-Equations.md)：版本化源产物，包含所有解答。
-- `dist/book.html` 与 `dist/calculus-2.html` 与 `dist/calculus-3.html` 与 `dist/linear-algebra.html`：五卷各自的完整阅读页（另含 `dist/ordinary-differential-equations.html`），公式预先排版，支持浏览器打印为 PDF。
+- `dist/book.html` 与 `dist/calculus-2.html` 与 `dist/calculus-3.html` 与 `dist/linear-algebra.html`：数学六卷各自的完整阅读页（另含 `dist/ordinary-differential-equations.html` 与 `dist/probability-statistics.html`），公式预先排版，支持浏览器打印为 PDF。
 - `dist/Calculus-I.md` 与 `dist/Calculus-II.md` 与 `dist/Calculus-III.md` 与 `dist/Linear-Algebra.md`：供网站下载的同版书稿。
 - 阅读、收藏和练习记录仅保存在浏览器，可导出与导入。已读标记与练习掌握状态分别记录；数值题可以检查数值，其余题为明确标注的自评。没有认证成绩。
 
@@ -120,7 +120,7 @@ docs/                      架构、内容规范、生成检查流程、部署�
 
 ## 质量与版本
 
-网站版本 **v0.14.0**；微积分 I 内容为 **v0.3.2**，微积分 II、III 为 **v0.1.1**，线性代数和常微分方程均为 **v0.1.0**。尚未逐节人工审校。结构校验、公式渲染、先修图与选定数值验证可以发现部分错误，但不等同于逐式形式化证明。欢迎用具体反例、章节位置和可复算步骤提交勘误。
+网站版本 **v0.15.0**；微积分 I 内容为 **v0.3.2**，微积分 II、III 为 **v0.1.1**，线性代数、常微分方程及概率与统计均为 **v0.1.0**。尚未逐节人工审校。结构校验、公式渲染、先修图与选定数值验证可以发现部分错误，但不等同于逐式形式化证明。欢迎用具体反例、章节位置和可复算步骤提交勘误。
 
 `npm run check` 检查所有章节结构、章节链接、公式语法、先修有向无环图、视觉函数配置与数学模型。浏览器验证记录见 [QA](docs/QA.md)。
 
@@ -160,3 +160,13 @@ English: AI University publishes complete AI-authored, versioned textbooks with 
 编程教材的唯一事实来源在 `packages/content/python` 与 `packages/content/ai-development`；独立 schema 保留代码语义。网站只回放固定 Python 示例，任意新代码在本机执行；任务卡也不调用 AI 服务。两书都接入全站搜索、分类目录、Markdown 下载及 HTML 打印版。数学课程保持原有链接和交互。
 
 更新 Python 后运行 `npm run build:python`，再运行 `npm run check`；更新开发教材后运行 `npm run build:ai-development`。Python 回放固定由 CPython 3.14 生成，避免不同解释器的行事件差异导致“书稿未改但回放过期”；CI 与发布使用同一版本。解释器构建要求与读者的语法兼容范围分别记录。
+
+## 概率与统计
+
+完整首版 v0.1.0，10 章 50 节、100 个例题、230 道练习及回顾。覆盖数据与研究设计、事件与计数、随机变量、离散与连续分布、联合和条件分布、抽样理论、估计区间、检验、回归、ANOVA 与 Beta–二项更新。前半需要初等代数；连续部分需要基础积分。
+
+[在线阅读](https://b1n9ui.github.io/ai-university/#/book/probability-statistics) · [整本书稿](book/Probability-Statistics.md) · [内容与交互复核](docs/PROBABILITY_STATISTICS_AUDIT.md)
+
+50 节都接入本地模型与三步实验。理论概率、数值近似和有限模拟明确区分；模拟使用可见固定种子。区间覆盖、CLT 均值重复抽样、bootstrap、精确置换、回归点拖动、置信与预测区间、后验更新均在浏览器中计算，无账户或远端执行。经典 CLT、正态样本理论等依赖条件写在正文与附录；不把有限模拟当作定理证明。
+
+数值核使用独立 60 位精度的 113 组参考值核对；保存参考数据后，网站运行与 CI 都不依赖 mpmath。自动回归还检查所有控件参数范围的端点组合、归一化、模型矩、有限总体修正、边界区间、精确置换和固定种子重复性。

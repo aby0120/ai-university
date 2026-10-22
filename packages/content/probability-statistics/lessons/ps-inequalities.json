@@ -1,0 +1,191 @@
+{
+  "id": "ps-inequalities",
+  "chapterId": "ps-random-variables",
+  "number": "3.5",
+  "title": "Markov 与 Chebyshev 概率界",
+  "subtitle": "不知道完整分布，也能用少量信息约束尾部概率。",
+  "concept": "不知道完整分布，也能用少量信息约束尾部概率。",
+  "intuition": "概率界给“至多”，不是精确概率，也不总贴近真实值。",
+  "objectives": [
+    "使用非负性",
+    "把偏差平方变成非负变量"
+  ],
+  "body": [
+    {
+      "title": "使用非负性",
+      "text": "对非负变量，若落在阈值以上，每次至少贡献阈值大小；平均贡献限制这部分概率。"
+    },
+    {
+      "title": "把偏差平方变成非负变量",
+      "text": "将 Markov 用于平方偏差，得到 Chebyshev 界，只需均值和方差存在。"
+    },
+    {
+      "title": "辨认宽松的界",
+      "text": "上界大于一时取一；对某个具体分布能算精确概率时，界通常较保守。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "Markov 要求 $a>0$、非负变量与有限期望。",
+    "latex": "P(X\\ge a)\\le\\frac{EX}{a}\\ (X\\ge0),\\qquad P(|X-\\mu|\\ge k\\sigma)\\le\\frac1{k^2}",
+    "conditions": [
+      "Markov 要求 $a>0$、非负变量与有限期望。",
+      "Chebyshev 要求有限方差；标准差形式在 $\\sigma>0$ 时使用。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "在尾部用阈值下界变量。",
+      "latex": "X\\ge a\\mathbf1\\{X\\ge a\\}"
+    },
+    {
+      "text": "取期望后移项。",
+      "latex": "P(X\\ge a)\\le EX/a"
+    },
+    {
+      "text": "对平方偏差代入阈值。",
+      "latex": "P((X-\\mu)^2\\ge k^2\\sigma^2)\\le1/k^2"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "只知均值",
+      "problem": "非负等待量均值二，至少十的概率至多多少？",
+      "steps": [
+        "满足非负条件。",
+        "Markov 给 $2/10$。"
+      ],
+      "answer": "至多 $0.2$。"
+    },
+    {
+      "title": "两倍标准差",
+      "problem": "任意有限方差分布落在至少两倍标准差之外的概率界？",
+      "steps": [
+        "使用 Chebyshev。",
+        "$1/2^2=1/4$。"
+      ],
+      "answer": "至多 $0.25$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-inequalities-q1",
+      "problem": "非负变量均值三，至少十二的概率上界？",
+      "hint": "均值除以阈值。",
+      "solution": [
+        "$3/12=0.25$。"
+      ],
+      "answer": "$0.25$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.25
+    },
+    {
+      "id": "ps-inequalities-q2",
+      "problem": "至少三倍标准差之外的 Chebyshev 界？",
+      "hint": "倍数平方取倒数。",
+      "solution": [
+        "$1/9$。"
+      ],
+      "answer": "$1/9$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.1111111111111111
+    },
+    {
+      "id": "ps-inequalities-q3",
+      "problem": "变量可取负值时能直接用上述 Markov 式吗？",
+      "hint": "关键一步需要逐点下界。",
+      "solution": [
+        "负值会破坏该非负比较。"
+      ],
+      "answer": "不能直接用。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-inequalities-q4",
+      "problem": "上界等于四，是否表示概率为四？",
+      "hint": "概率仍不超过一。",
+      "solution": [
+        "粗糙界只变得无信息。"
+      ],
+      "answer": "不是；可以改写为至多一。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "Chebyshev 的结论是精确尾概率吗？",
+    "choices": [
+      "是",
+      "是正态概率",
+      "不是，是通用上界"
+    ],
+    "correctIndex": 2,
+    "explanation": "它不依赖具体分布形状，所以通常较宽。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-inequalities-m1",
+      "claim": "上界就是等式",
+      "correction": "只有某些特殊分布和阈值会达到界。"
+    },
+    {
+      "id": "ps-inequalities-m2",
+      "claim": "方差不存在也能使用 Chebyshev",
+      "correction": "有限方差是这条界的条件。"
+    }
+  ],
+  "prerequisites": [
+    "ps-variance"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-inequalities-m1",
+    "ps-inequalities-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-inequalities",
+    "prediction": "比较已知正态尾概率与通用概率界，哪个更紧？",
+    "caption": "曲线给具体正态模型的尾部面积，同时显示仅使用方差的上界。"
+  },
+  "teaching": {
+    "explain": "只有某些特殊分布和阈值会达到界。",
+    "steps": [
+      {
+        "title": "标准差倍数：2",
+        "instruction": "将标准差倍数设为 $2$，对照图形和读数。",
+        "observation": "本组参数的计算结果：具体正态双侧尾概率 $0.0455003$；Chebyshev 通用上界 $0.25$。",
+        "preset": {
+          "a": 2
+        }
+      },
+      {
+        "title": "标准差倍数：1",
+        "instruction": "将标准差倍数设为 $1$，对照图形和读数。",
+        "observation": "本组参数的计算结果：具体正态双侧尾概率 $0.317311$；Chebyshev 通用上界 $1$。",
+        "preset": {
+          "a": 1
+        }
+      },
+      {
+        "title": "标准差倍数：4",
+        "instruction": "将标准差倍数设为 $4$，对照图形和读数。",
+        "observation": "本组参数的计算结果：具体正态双侧尾概率 $6.334\\times10^{-5}$；Chebyshev 通用上界 $0.0625$。",
+        "preset": {
+          "a": 4
+        }
+      }
+    ]
+  }
+}

@@ -1,4 +1,5 @@
 import Calculus3Visual, {Calculus3Preview} from "./Calculus3Visual";
+import ProbabilityVisual, {ProbabilityPreview} from "./ProbabilityVisual";
 import {Calculus2Visual,Calculus2Preview} from "./Calculus2Visual";
 import { MoveHorizontal, Pause, Play, RotateCcw } from "lucide-react";
 import {
@@ -226,7 +227,7 @@ export function Visual({
           </button>
         </div>
       )}
-      {['calculus3','linear-algebra','ode'].includes(lesson.interactiveVisual.kind) ? <Calculus3Visual lesson={lesson} compact={compact} scenario={scenario}/> : lesson.interactiveVisual.kind === "calculus2" ? <Calculus2Visual lesson={lesson} compact={compact} scenario={scenario}/> : dimension === "3d" ? (
+      {lesson.interactiveVisual.kind==='probability'?<ProbabilityVisual key={lesson.id} lesson={lesson} compact={compact} scenario={scenario} onInteraction={()=>setModified(true)}/>:['calculus3','linear-algebra','ode'].includes(lesson.interactiveVisual.kind) ? <Calculus3Visual lesson={lesson} compact={compact} scenario={scenario}/> : lesson.interactiveVisual.kind === "calculus2" ? <Calculus2Visual lesson={lesson} compact={compact} scenario={scenario}/> : dimension === "3d" ? (
         <Suspense
           fallback={<div className="solid-loading">准备三维数学模型…</div>}
         >
@@ -1229,6 +1230,7 @@ function PlanarVisual({
 
 /** A read-only snapshot of the same model used in the interactive lesson. */
 export function VisualPreview({ lesson }: { lesson: Lesson }) {
+  if(lesson.interactiveVisual.kind==="probability")return <ProbabilityPreview lesson={lesson}/>;
   if(['calculus3','linear-algebra','ode'].includes(lesson.interactiveVisual.kind))return <Calculus3Preview lesson={lesson}/>;
   if(lesson.interactiveVisual.kind==="calculus2")return <Calculus2Preview lesson={lesson}/>;
   const spec = lesson.interactiveVisual;

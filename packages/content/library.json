@@ -196,12 +196,20 @@
         "Probability",
         "& Statistics"
       ],
-      "tagline": "理解不确定性",
-      "description": "从概率与随机变量到数据描述、参数估计与统计推断。",
+      "tagline": "从不确定性到有依据的判断",
+      "description": "数据与抽样、概率分布、联合模型、抽样理论、区间估计、检验、回归与贝叶斯更新。",
       "audience": "有函数与基础微积分知识的学习者",
       "scope": "概率 · 分布 · 估计 · 推断",
-      "status": "planned",
-      "categoryId": "mathematics"
+      "status": "published",
+      "categoryId": "mathematics",
+      "route": "book/probability-statistics",
+      "coverFormula": "P(H\\mid D)=\\frac{P(D\\mid H)P(H)}{P(D)}",
+      "stats": {
+        "chapters": 10,
+        "lessons": 50,
+        "examples": 100,
+        "exercises": 230
+      }
     },
     {
       "id": "discrete-math",

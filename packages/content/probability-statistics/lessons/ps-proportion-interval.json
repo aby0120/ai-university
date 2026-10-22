@@ -1,0 +1,194 @@
+{
+  "id": "ps-proportion-interval",
+  "chapterId": "ps-estimation",
+  "number": "8.4",
+  "title": "比例区间：为什么不用零宽度",
+  "subtitle": "观察到零次成功，不代表成功率已经确定为零。",
+  "concept": "观察到零次成功，不代表成功率已经确定为零。",
+  "intuition": "小样本和靠近边界时，简单对称比例区间可能给出不合理答案。",
+  "objectives": [
+    "辨认 Wald 问题",
+    "反解得分检验"
+  ],
+  "body": [
+    {
+      "title": "辨认 Wald 问题",
+      "text": "直接用样本比例计算标准误的对称区间，在边界会宽度为零，也可能越出合法概率范围。"
+    },
+    {
+      "title": "反解得分检验",
+      "text": "Wilson 区间把未知比例留在标准误中，反解二次不等式，得到更合理的端点。"
+    },
+    {
+      "title": "区分近似和精确",
+      "text": "Wilson 通常改善覆盖，但仍为近似。精确二项区间可反演尾概率，离散性常使覆盖保守。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "独立同概率 Bernoulli 试验，$n>0$。",
+    "latex": "\\frac{\\hat p+z^2/(2n)\\pm z\\sqrt{\\hat p(1-\\hat p)/n+z^2/(4n^2)}}{1+z^2/n}",
+    "conditions": [
+      "独立同概率 Bernoulli 试验，$n>0$。",
+      "Wilson 是得分法近似区间，本卷默认双侧中央置信水平。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "用未知概率下的二项方差限制标准化差。",
+      "latex": "(\\hat p-p)^2\\le z^2p(1-p)/n"
+    },
+    {
+      "text": "把未知比例的项收集成二次不等式。",
+      "latex": "(n+z^2)p^2-(2n\\hat p+z^2)p+n\\hat p^2\\le0"
+    },
+    {
+      "text": "求两个根并取根间区域。",
+      "latex": "p\\in[p_L,p_U]"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "零成功",
+      "problem": "十次中零成功，给定 $z=1.96$，Wilson 上界约多少？",
+      "steps": [
+        "下界为零，上界简化为 $z^2/(n+z^2)$。",
+        "$3.8416/13.8416\\approx0.2775$。"
+      ],
+      "answer": "约 $[0,0.2775]$。"
+    },
+    {
+      "title": "中间比例",
+      "problem": "一百次中五十成功，给定 $z=1.96$，区间中心与半宽？",
+      "steps": [
+        "中心仍为一半。",
+        "半宽约 $0.0962$。"
+      ],
+      "answer": "约 $[0.4038,0.5962]$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-proportion-interval-q1",
+      "problem": "零成功时，Wald 插入标准误是多少？",
+      "hint": "样本比例为零。",
+      "solution": [
+        "$\\sqrt{0(1-0)/n}=0$。"
+      ],
+      "answer": "$0$，这正是问题。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0
+    },
+    {
+      "id": "ps-proportion-interval-q2",
+      "problem": "一百次全成功，真实成功率一定为一吗？",
+      "hint": "有限样本不确定性。",
+      "solution": [
+        "小于一的概率也可产生全成功。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-proportion-interval-q3",
+      "problem": "Wilson 分母中的 $z^2/n$ 是什么作用？",
+      "hint": "它来自反解二次不等式。",
+      "solution": [
+        "对中心和宽度同时作调整。"
+      ],
+      "answer": "避免简单插入法的部分边界问题。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-proportion-interval-q4",
+      "problem": "“精确二项区间”是否意味着所有参数点覆盖都恰等于名义水平？",
+      "hint": "二项分布离散。",
+      "solution": [
+        "覆盖通常至少达到目标但可更高。"
+      ],
+      "answer": "不是，常保守。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "零成功后报告区间 $[0,0]$，主要遗漏了什么？",
+    "choices": [
+      "有限样本的不确定性",
+      "成功次数",
+      "分母样本量"
+    ],
+    "correctIndex": 0,
+    "explanation": "没看到成功，不代表排除全部正概率。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-proportion-interval-m1",
+      "claim": "概率估计为零就没有误差",
+      "correction": "边界估计仍有抽样不确定性。"
+    },
+    {
+      "id": "ps-proportion-interval-m2",
+      "claim": "近似区间就可以不说明方法",
+      "correction": "应写明 Wilson、Wald 或精确反演等具体方法。"
+    }
+  ],
+  "prerequisites": [
+    "ps-mean-interval",
+    "ps-binomial"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-proportion-interval-m1",
+    "ps-proportion-interval-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "r-proportion"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-proportion-interval",
+    "prediction": "保持零成功、增加试验数，Wilson 上界怎样收缩？",
+    "caption": "把 Wilson 与简单 Wald 区间并列，并显示零成功时的区别。"
+  },
+  "teaching": {
+    "explain": "边界估计仍有抽样不确定性。",
+    "steps": [
+      {
+        "title": "总试验数：10",
+        "instruction": "将总试验数设为 $10$，对照图形和读数。",
+        "observation": "本组参数的计算结果：实际成功数（按比例取整） $0$；Wilson 下端 $0$；Wilson 上端 $0.277533$；Wald 半宽 $0$。",
+        "preset": {
+          "n": 10,
+          "a": 0
+        }
+      },
+      {
+        "title": "总试验数：5",
+        "instruction": "将总试验数设为 $5$，对照图形和读数。",
+        "observation": "本组参数的计算结果：实际成功数（按比例取整） $0$；Wilson 下端 $0$；Wilson 上端 $0.434482$；Wald 半宽 $0$。",
+        "preset": {
+          "n": 5,
+          "a": 0
+        }
+      },
+      {
+        "title": "总试验数：100",
+        "instruction": "将总试验数设为 $100$，对照图形和读数。",
+        "observation": "本组参数的计算结果：实际成功数（按比例取整） $0$；Wilson 下端 $0$；Wilson 上端 $0.0369935$；Wald 半宽 $0$。",
+        "preset": {
+          "n": 100,
+          "a": 0
+        }
+      }
+    ]
+  }
+}

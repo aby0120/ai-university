@@ -1,0 +1,198 @@
+{
+  "id": "ps-proportion-test",
+  "chapterId": "ps-testing",
+  "number": "9.3",
+  "title": "比例检验与精确二项尾部",
+  "subtitle": "检验比例时，用原假设比例构造参考分布。",
+  "concept": "检验比例时，用原假设比例构造参考分布。",
+  "intuition": "观察到的成功比例是数据；用来判断它是否极端的概率，要按原假设计算。",
+  "objectives": [
+    "使用精确二项模型",
+    "使用大样本得分近似"
+  ],
+  "body": [
+    {
+      "title": "使用精确二项模型",
+      "text": "在独立同概率试验下，给定原假设比例，成功数具有完整二项分布；可直接求预定方向的尾和。"
+    },
+    {
+      "title": "使用大样本得分近似",
+      "text": "近似标准误用原假设比例，不是观测比例。原假设预期两侧次数太小时优先精确方法。"
+    },
+    {
+      "title": "说明双侧约定",
+      "text": "离散双侧 $p$ 值没有唯一的“翻倍”约定。可采用概率排序：把原假设下质量不大于观察质量的结果相加，并说明方法。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "精确模型要求固定次数、独立同概率 Bernoulli 试验。",
+    "latex": "Z=\\frac{\\hat p-p_0}{\\sqrt{p_0(1-p_0)/n}},\\qquad p_{\\mathrm{right}}=\\sum_{j=k}^{n}{n\\choose j}p_0^j(1-p_0)^{n-j}",
+    "conditions": [
+      "精确模型要求固定次数、独立同概率 Bernoulli 试验。",
+      "近似式要求 $0<p_0<1$ 且尾部近似合理；本节精确演示使用右侧备择。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "原假设规定计数分布。",
+      "latex": "X\\mid H_0\\sim\\operatorname{Bin}(n,p_0)"
+    },
+    {
+      "text": "右侧极端事件包含观察计数及更大计数。",
+      "latex": "\\{X\\ge k\\}"
+    },
+    {
+      "text": "把各个精确质量相加。",
+      "latex": "p=\\sum_{j=k}^{n}P_0(X=j)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "精确右尾",
+      "problem": "公平硬币四次全正，检验成功率大于一半，$p$ 值？",
+      "steps": [
+        "原假设下至少四次就是四次。",
+        "概率 $1/16$。"
+      ],
+      "answer": "$0.0625$。"
+    },
+    {
+      "title": "近似尺度",
+      "problem": "一百次成功六十，假设成功率一半，$z$ 值？",
+      "steps": [
+        "原假设标准误 $\\sqrt{0.25/100}=0.05$。",
+        "比例差 $0.1$ 除以它。"
+      ],
+      "answer": "$z=2$；连续性修正与精确尾会给不同近似。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-proportion-test-q1",
+      "problem": "公平硬币四次，至少三正的精确右尾？",
+      "hint": "包括三次和四次。",
+      "solution": [
+        "$(4+1)/16=5/16$。"
+      ],
+      "answer": "$0.3125$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.3125
+    },
+    {
+      "id": "ps-proportion-test-q2",
+      "problem": "比例得分检验分母用哪个比例？",
+      "hint": "按原假设分布校准。",
+      "solution": [
+        "使用 $p_0$。"
+      ],
+      "answer": "原假设比例。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-proportion-test-q3",
+      "problem": "零成功使得分检验标准误也为零吗？",
+      "hint": "若原假设在内部。",
+      "solution": [
+        "原假设比例不由零成功改变。"
+      ],
+      "answer": "在 $0<p_0<1$ 时不会。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-proportion-test-q4",
+      "problem": "所有离散双侧 $p$ 值都等于较小单侧尾的两倍吗？",
+      "hint": "存在不同双侧排序定义。",
+      "solution": [
+        "概率排序法不总等于简单翻倍。"
+      ],
+      "answer": "不是，应说明约定。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "四次全正，在公平模型下右侧 $p$ 值为 $0.0625$，按 $0.05$ 拒绝吗？",
+    "choices": [
+      "拒绝",
+      "不拒绝",
+      "原假设已被证明"
+    ],
+    "correctIndex": 1,
+    "explanation": "这个离散样本在该水平下还不足以拒绝。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-proportion-test-m1",
+      "claim": "观察比例就是校准标准误中的比例",
+      "correction": "得分检验按原假设比例校准。"
+    },
+    {
+      "id": "ps-proportion-test-m2",
+      "claim": "离散双侧算法没有区别",
+      "correction": "概率排序和双尾翻倍等约定可能不同。"
+    }
+  ],
+  "prerequisites": [
+    "ps-mean-test",
+    "ps-binomial"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-proportion-test-m1",
+    "ps-proportion-test-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "r-binomial",
+    "r-proportion"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-proportion-test",
+    "prediction": "逐格增加观察成功数，精确右尾 $p$ 值连续变化吗？",
+    "caption": "精确二项尾部呈离散阶梯，单侧方向固定为成功率增大。"
+  },
+  "teaching": {
+    "explain": "得分检验按原假设比例校准。",
+    "steps": [
+      {
+        "title": "观察成功比例：0.8",
+        "instruction": "将观察成功比例设为 $0.8$，对照图形和读数。",
+        "observation": "本组参数的计算结果：二项均值 $5$；二项方差 $2.5$；观察成功数（按比例取整） $8$；精确右侧 $p$ 值 $0.0546875$。",
+        "preset": {
+          "n": 10,
+          "a": 0.8,
+          "b": 0.5
+        }
+      },
+      {
+        "title": "观察成功比例：0",
+        "instruction": "将观察成功比例设为 $0$，对照图形和读数。",
+        "observation": "本组参数的计算结果：二项均值 $5$；二项方差 $2.5$；观察成功数（按比例取整） $0$；精确右侧 $p$ 值 $1$。",
+        "preset": {
+          "n": 10,
+          "a": 0,
+          "b": 0.5
+        }
+      },
+      {
+        "title": "观察成功比例：1",
+        "instruction": "将观察成功比例设为 $1$，对照图形和读数。",
+        "observation": "本组参数的计算结果：二项均值 $5$；二项方差 $2.5$；观察成功数（按比例取整） $10$；精确右侧 $p$ 值 $0.000976563$。",
+        "preset": {
+          "n": 10,
+          "a": 1,
+          "b": 0.5
+        }
+      }
+    ]
+  }
+}

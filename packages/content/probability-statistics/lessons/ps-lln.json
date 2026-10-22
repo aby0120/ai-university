@@ -1,0 +1,198 @@
+{
+  "id": "ps-lln",
+  "chapterId": "ps-sampling",
+  "number": "7.1",
+  "title": "大数定律与相对频率",
+  "subtitle": "独立重复平均，能让随机波动相对稳定下来。",
+  "concept": "独立重复平均，能让随机波动相对稳定下来。",
+  "intuition": "频率接近概率，不意味着下一次结果会补偿前面的偏差。",
+  "objectives": [
+    "说明收敛对象",
+    "看误差概率"
+  ],
+  "body": [
+    {
+      "title": "说明收敛对象",
+      "text": "弱大数定律说样本均值在概率意义下接近期望，不保证每条有限轨迹单调接近。"
+    },
+    {
+      "title": "看误差概率",
+      "text": "独立同分布、有限方差时，样本均值方差为总体方差除以样本量，可用 Chebyshev 控制偏差事件。"
+    },
+    {
+      "title": "限制推广",
+      "text": "独立同分布是本节的充分条件。选择偏差、强相关和不具有限均值的重尾变量不能直接套用。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "本节证明假设独立同分布、有限方差及固定 $\\varepsilon>0$。",
+    "latex": "P(|\\bar X_n-\\mu|\\ge\\varepsilon)\\le\\frac{\\sigma^2}{n\\varepsilon^2}\\longrightarrow0",
+    "conditions": [
+      "本节证明假设独立同分布、有限方差及固定 $\\varepsilon>0$。",
+      "更一般的大数定律条件另行研究；不承诺有限样本精确相等。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "用线性性计算均值。",
+      "latex": "E\\bar X_n=\\mu"
+    },
+    {
+      "text": "独立性使平均的方差缩小。",
+      "latex": "\\operatorname{Var}(\\bar X_n)=\\sigma^2/n"
+    },
+    {
+      "text": "对平均使用 Chebyshev。",
+      "latex": "P(|\\bar X_n-\\mu|\\ge\\varepsilon)\\le\\sigma^2/(n\\varepsilon^2)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "频率精度上界",
+      "problem": "成功率一半，独立观测四百次，频率偏离一半至少 $0.1$ 的概率上界？",
+      "steps": [
+        "Bernoulli 方差为四分之一。",
+        "代入 $0.25/(400\\times0.01)$。"
+      ],
+      "answer": "至多 $0.0625$。"
+    },
+    {
+      "title": "不单调接近",
+      "problem": "频率目前恰好等于真实概率，下一次能离开它吗？",
+      "steps": [
+        "下一次仍可能成功或失败。",
+        "有限平均可重新偏离。"
+      ],
+      "answer": "可以，收敛不要求误差每步下降。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-lln-q1",
+      "problem": "总体方差九，独立样本量一百，平均方差？",
+      "hint": "除以样本量。",
+      "solution": [
+        "$9/100=0.09$。"
+      ],
+      "answer": "$0.09$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.09
+    },
+    {
+      "id": "ps-lln-q2",
+      "problem": "样本量扩大四倍，样本均值方差变为多少倍？",
+      "hint": "反比关系。",
+      "solution": [
+        "变为四分之一。"
+      ],
+      "answer": "$1/4$ 倍。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.25
+    },
+    {
+      "id": "ps-lln-q3",
+      "problem": "已经连续十次失败，大数定律是否要求下次成功？",
+      "hint": "区分长期平均和下次条件概率。",
+      "solution": [
+        "独立试验的下次概率不变。"
+      ],
+      "answer": "不要求。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-lln-q4",
+      "problem": "将同一个随机数重复记录一千次，能用独立大数定律吗？",
+      "hint": "记录之间完全相关。",
+      "solution": [
+        "平均值仍是原来的随机数。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "大数定律要求有限平均每步更接近期望吗？",
+    "choices": [
+      "要求",
+      "不要求",
+      "只对公平硬币要求"
+    ],
+    "correctIndex": 1,
+    "explanation": "它描述误差事件随样本量的整体行为。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-lln-m1",
+      "claim": "长期规律会补偿下一次",
+      "correction": "独立模型没有下一次补偿机制。"
+    },
+    {
+      "id": "ps-lln-m2",
+      "claim": "记录多就等于独立信息多",
+      "correction": "复制相关记录不会产生独立样本。"
+    }
+  ],
+  "prerequisites": [
+    "ps-inequalities",
+    "ps-independence"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-lln-m1",
+    "ps-lln-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-lln",
+    "prediction": "同一条抽样路径延长时，误差一定每一步下降吗？",
+    "caption": "固定种子生成 Bernoulli 路径；频率波动与理论概率线分开显示。"
+  },
+  "teaching": {
+    "explain": "独立模型没有下一次补偿机制。",
+    "steps": [
+      {
+        "title": "累计试验次数：200",
+        "instruction": "将累计试验次数设为 $200$，对照图形和读数。",
+        "observation": "本组参数的计算结果：成功次数 $87$；本次累计频率 $0.435$；当前绝对误差 $0.065$；理论频率标准差 $0.0353553$。",
+        "preset": {
+          "n": 200,
+          "a": 0.5,
+          "c": 7
+        }
+      },
+      {
+        "title": "累计试验次数：10",
+        "instruction": "将累计试验次数设为 $10$，对照图形和读数。",
+        "observation": "本组参数的计算结果：成功次数 $5$；本次累计频率 $0.5$；当前绝对误差 $0$；理论频率标准差 $0.158114$。",
+        "preset": {
+          "n": 10,
+          "a": 0.5,
+          "c": 7
+        }
+      },
+      {
+        "title": "累计试验次数：1000",
+        "instruction": "将累计试验次数设为 $1000$，对照图形和读数。",
+        "observation": "本组参数的计算结果：成功次数 $460$；本次累计频率 $0.46$；当前绝对误差 $0.04$；理论频率标准差 $0.0158114$。",
+        "preset": {
+          "n": 1000,
+          "a": 0.5,
+          "c": 7
+        }
+      }
+    ]
+  }
+}

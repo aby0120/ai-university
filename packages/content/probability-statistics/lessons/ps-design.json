@@ -1,0 +1,193 @@
+{
+  "id": "ps-design",
+  "chapterId": "ps-data",
+  "number": "1.3",
+  "title": "随机抽样与随机分组",
+  "subtitle": "抽样支持推广，随机分组支持因果比较。",
+  "concept": "抽样支持推广，随机分组支持因果比较。",
+  "intuition": "一副牌先随机抽人，再随机分配处理，是两次用途不同的随机化。",
+  "objectives": [
+    "辨认混杂",
+    "使用随机分组"
+  ],
+  "body": [
+    {
+      "title": "辨认混杂",
+      "text": "处理组与对照组原本就不同，会使结果差混合处理作用和原有差异。"
+    },
+    {
+      "title": "使用随机分组",
+      "text": "随机分配处理在设计上打断处理与处理前因素的系统关联；有限样本仍可能不平衡。"
+    },
+    {
+      "title": "说明因果边界",
+      "text": "因果解释还依赖干预定义、一致测量、无干扰等条件；推广到总体另需合适抽样与情境。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "随机分组比较的是同一试验框架内的处理差。",
+    "latex": "\\hat\\tau=\\bar Y_{\\mathrm{treat}}-\\bar Y_{\\mathrm{control}}",
+    "conditions": [
+      "随机分组比较的是同一试验框架内的处理差。",
+      "需考虑失访、不遵从、组间干扰和测量方式。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "观察到组间结果差。",
+      "latex": "\\bar Y_T-\\bar Y_C"
+    },
+    {
+      "text": "非随机组的差异可能包含混杂。",
+      "latex": null
+    },
+    {
+      "text": "预先随机分组后，以设计为依据估计处理效应。",
+      "latex": "\\hat\\tau=\\bar Y_T-\\bar Y_C"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "算差值",
+      "problem": "随机试验两组均值为 $14,11$，估计处理差。",
+      "steps": [
+        "按“处理减对照”的预定方向。",
+        "$14-11=3$；还需要不确定性分析。"
+      ],
+      "answer": "点估计为 $3$。"
+    },
+    {
+      "title": "观察研究",
+      "problem": "上补习班的学生分数更高，能直接说补习班导致提高吗？",
+      "steps": [
+        "参加者可能有不同基础和家庭支持。",
+        "没有排除这些混杂。"
+      ],
+      "answer": "不能仅凭这项相关作因果结论。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-design-q1",
+      "problem": "两组均值 $8,10$，处理减对照是多少？",
+      "hint": "保持方向一致。",
+      "solution": [
+        "$8-10=-2$。"
+      ],
+      "answer": "$-2$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": -2
+    },
+    {
+      "id": "ps-design-q2",
+      "problem": "随机抽样是否自动产生随机分组？",
+      "hint": "两次随机化的对象不同。",
+      "solution": [
+        "抽样决定进研究的人；分组决定接受处理的人。"
+      ],
+      "answer": "不是。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-design-q3",
+      "problem": "随机分组后恰好性别比例不同，是否证明没有随机化？",
+      "hint": "概率机制不保证每次精确平衡。",
+      "solution": [
+        "有限随机分配允许偶然差异。"
+      ],
+      "answer": "不证明。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-design-q4",
+      "problem": "便利样本中的随机试验，能无条件推广到全国吗？",
+      "hint": "因果比较和外部代表性分开。",
+      "solution": [
+        "随机分组并未使入组者代表全国。"
+      ],
+      "answer": "不能无条件推广。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "随机分组主要解决什么？",
+    "choices": [
+      "因果比较中的混杂",
+      "全体人口的覆盖",
+      "数据缺失自动补齐"
+    ],
+    "correctIndex": 0,
+    "explanation": "随机分组服务于组间可比性。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-design-m1",
+      "claim": "随机分组保证两组完全相同",
+      "correction": "它消除系统分配机制，仍允许偶然不平衡。"
+    },
+    {
+      "id": "ps-design-m2",
+      "claim": "相关就是因果",
+      "correction": "需要设计或额外识别条件才能支持因果解释。"
+    }
+  ],
+  "prerequisites": [
+    "ps-sampling"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-design-m1",
+    "ps-design-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-design",
+    "prediction": "只改变组内构成、不加处理效应，也能出现组间均值差吗？",
+    "caption": "混杂例子用组成差异产生总体均值差，不冒充真实随机试验。"
+  },
+  "teaching": {
+    "explain": "它消除系统分配机制，仍允许偶然不平衡。",
+    "steps": [
+      {
+        "title": "处理组中低基线人群比例：0.3",
+        "instruction": "将处理组中低基线人群比例设为 $0.3$，对照图形和读数。",
+        "observation": "本组参数的计算结果：处理组均值 $17$；对照组均值 $12$；两者差值 $5$。",
+        "preset": {
+          "a": 0.3,
+          "b": 0.8
+        }
+      },
+      {
+        "title": "处理组中低基线人群比例：0",
+        "instruction": "将处理组中低基线人群比例设为 $0$，对照图形和读数。",
+        "observation": "本组参数的计算结果：处理组均值 $20$；对照组均值 $12$；两者差值 $8$。",
+        "preset": {
+          "a": 0,
+          "b": 0.8
+        }
+      },
+      {
+        "title": "处理组中低基线人群比例：1",
+        "instruction": "将处理组中低基线人群比例设为 $1$，对照图形和读数。",
+        "observation": "本组参数的计算结果：处理组均值 $10$；对照组均值 $12$；两者差值 $-2$。",
+        "preset": {
+          "a": 1,
+          "b": 0.8
+        }
+      }
+    ]
+  }
+}

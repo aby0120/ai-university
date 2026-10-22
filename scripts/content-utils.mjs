@@ -70,6 +70,8 @@ contentBooks.push({book:book5,
   allLessons:book5.lessonIds.map(id=>JSON.parse(fs.readFileSync(root+'/packages/content/ordinary-differential-equations/lessons/'+id+'.json'))),
   extra:JSON.parse(fs.readFileSync(root+'/packages/content/ordinary-differential-equations/supplements.json')),
   directory:'packages/content/ordinary-differential-equations/lessons',filename:'Ordinary-Differential-Equations.md',printFile:'ordinary-differential-equations.html'});
+const book6 = JSON.parse(fs.readFileSync(root+'/packages/content/probability-statistics/book.json'));
+contentBooks.push({book:book6,allLessons:book6.lessonIds.map(id=>JSON.parse(fs.readFileSync(root+'/packages/content/probability-statistics/lessons/'+id+'.json'))),extra:JSON.parse(fs.readFileSync(root+'/packages/content/probability-statistics/supplements.json')),directory:'packages/content/probability-statistics/lessons',filename:'Probability-Statistics.md',printFile:'probability-statistics.html'});
 export const libraryLessons = contentBooks.flatMap((c) => c.allLessons);
 export function walkStrings(value, fn, key = "") {
   if (typeof value === "string") fn(value, key);

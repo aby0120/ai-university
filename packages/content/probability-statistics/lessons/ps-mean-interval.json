@@ -1,0 +1,197 @@
+{
+  "id": "ps-mean-interval",
+  "chapterId": "ps-estimation",
+  "number": "8.3",
+  "title": "均值置信区间与覆盖率",
+  "subtitle": "置信水平说的是方法的长期覆盖率，不是某个已算区间包含真值的概率。",
+  "concept": "置信水平说的是方法的长期覆盖率，不是某个已算区间包含真值的概率。",
+  "intuition": "重复抽样会得到很多不同区间；其中一部分覆盖同一个真均值。",
+  "objectives": [
+    "从枢轴量出发",
+    "选择 $z$ 或 $t$"
+  ],
+  "body": [
+    {
+      "title": "从枢轴量出发",
+      "text": "正态样本、未知方差时，均值 $t$ 统计量的分布不含未知参数，可据其中央概率解出随机区间。"
+    },
+    {
+      "title": "选择 $z$ 或 $t$",
+      "text": "总体标准差确实已知时可用 $z$；未知时用样本标准差与 $t$。非正态情形需另外评估近似条件。"
+    },
+    {
+      "title": "正确解释覆盖",
+      "text": "数据观测前，随机区间包含固定参数有规定概率。观察后区间固定；不能把频率置信解释为参数后验概率。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "精确 $t$ 区间要求独立正态样本，$n\\ge2$。",
+    "latex": "\\bar X\\pm t_{1-\\alpha/2,n-1}\\frac{S}{\\sqrt n}",
+    "conditions": [
+      "精确 $t$ 区间要求独立正态样本，$n\\ge2$。",
+      "已知尺度正态模型中可换成 $z_{1-\\alpha/2}\\sigma/\\sqrt n$。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "标准化统计量中央区域有名义覆盖。",
+      "latex": "P(-t_*\\le(\\bar X-\\mu)/(S/\\sqrt n)\\le t_*)=1-\\alpha"
+    },
+    {
+      "text": "两侧乘以正标准误并移项。",
+      "latex": "\\bar X-t_*S/\\sqrt n\\le\\mu\\le\\bar X+t_*S/\\sqrt n"
+    },
+    {
+      "text": "得到重复抽样的覆盖陈述。",
+      "latex": "P_\\mu(\\mu\\in I(X))=1-\\alpha"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "算 $t$ 区间",
+      "problem": "正态样本 $n=16,\\bar x=10,s=4$，给定 $t_{0.975,15}\\approx2.131$，求区间。",
+      "steps": [
+        "标准误为一。",
+        "用均值左右各 $2.131$。"
+      ],
+      "answer": "约 $[7.869,12.131]$。"
+    },
+    {
+      "title": "已知尺度",
+      "problem": "正态总体已知标准差十，$n=100,\\bar x=50$，近似 $95\\%$ 区间？",
+      "steps": [
+        "标准误为一。",
+        "使用标准正态临界值约 $1.96$。"
+      ],
+      "answer": "约 $[48.04,51.96]$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-mean-interval-q1",
+      "problem": "置信水平提高，其他条件相同，区间通常怎样变？",
+      "hint": "中央概率需要更大临界值。",
+      "solution": [
+        "半宽增加。"
+      ],
+      "answer": "变宽。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-mean-interval-q2",
+      "problem": "已知尺度区间样本量扩大四倍，半宽怎样变？",
+      "hint": "标准误减半。",
+      "solution": [
+        "临界值不变时半宽减半。"
+      ],
+      "answer": "减半。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-mean-interval-q3",
+      "problem": "已得到一个 $95\\%$ 频率区间，能说参数后验概率为 $95\\%$ 吗？",
+      "hint": "参数是否在模型中随机化？",
+      "solution": [
+        "频率区间没有指定参数先验。"
+      ],
+      "answer": "不能这样解释。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-mean-interval-q4",
+      "problem": "某次区间没覆盖真值，就证明方法无效吗？",
+      "hint": "名义覆盖不是百分之百。",
+      "solution": [
+        "正确方法也允许一定比例不覆盖。"
+      ],
+      "answer": "不能仅凭一次判断。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "覆盖实验中，通常固定哪一个？",
+    "choices": [
+      "真参数",
+      "所有区间端点",
+      "每次样本均值"
+    ],
+    "correctIndex": 0,
+    "explanation": "重复的是样本和据此生成的区间。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-mean-interval-m1",
+      "claim": "置信区间给固定参数直接赋概率",
+      "correction": "频率覆盖是区间生成程序的抽样性质。"
+    },
+    {
+      "id": "ps-mean-interval-m2",
+      "claim": "样本标准差可当作已知尺度无代价代入 $z$",
+      "correction": "有限正态样本应考虑估计尺度产生的 $t$ 不确定性。"
+    }
+  ],
+  "prerequisites": [
+    "ps-estimation",
+    "ps-normal-sample"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-mean-interval-m1",
+    "ps-mean-interval-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "nist-confidence",
+    "nist-t"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-mean-interval",
+    "prediction": "固定真均值，重复造区间，是否每个都覆盖？",
+    "caption": "演示已知尺度正态区间，标注理论置信水平与本次有限模拟覆盖比例。"
+  },
+  "teaching": {
+    "explain": "频率覆盖是区间生成程序的抽样性质。",
+    "steps": [
+      {
+        "title": "每份样本量：25",
+        "instruction": "将每份样本量设为 $25$，对照图形和读数。",
+        "observation": "本组参数的计算结果：名义置信水平 $0.95$；本次模拟覆盖比例 $0.96$；每个区间的半宽 $0.391993$；重复次数 $100$。",
+        "preset": {
+          "n": 25,
+          "a": 0.95,
+          "c": 7
+        }
+      },
+      {
+        "title": "每份样本量：4",
+        "instruction": "将每份样本量设为 $4$，对照图形和读数。",
+        "observation": "本组参数的计算结果：名义置信水平 $0.95$；本次模拟覆盖比例 $0.96$；每个区间的半宽 $0.979982$；重复次数 $100$。",
+        "preset": {
+          "n": 4,
+          "a": 0.95,
+          "c": 7
+        }
+      },
+      {
+        "title": "每份样本量：100",
+        "instruction": "将每份样本量设为 $100$，对照图形和读数。",
+        "observation": "本组参数的计算结果：名义置信水平 $0.95$；本次模拟覆盖比例 $0.96$；每个区间的半宽 $0.195996$；重复次数 $100$。",
+        "preset": {
+          "n": 100,
+          "a": 0.95,
+          "c": 7
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "id": "ps-probability-rules",
+  "chapterId": "ps-probability",
+  "number": "2.2",
+  "title": "概率公理与加法公式",
+  "subtitle": "至少一个发生的概率，要减掉重复计算的部分。",
+  "concept": "至少一个发生的概率，要减掉重复计算的部分。",
+  "intuition": "把两个集合各数一次，交集会被数两次。",
+  "objectives": [
+    "使用公理",
+    "推导补集与并集"
+  ],
+  "body": [
+    {
+      "title": "使用公理",
+      "text": "概率非负，全空间概率为一，可列互斥事件的并集概率等于各概率之和。"
+    },
+    {
+      "title": "推导补集与并集",
+      "text": "把事件和补集拆成互斥部分得到补集公式；一般并集还需扣除交集。"
+    },
+    {
+      "title": "注意互斥条件",
+      "text": "互斥表示不能同时发生；独立表示知道一件事不改变另一件事的概率，两者不同。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "两个事件在同一概率模型内。",
+    "latex": "P(A\\cup B)=P(A)+P(B)-P(A\\cap B),\\qquad P(A^c)=1-P(A)",
+    "conditions": [
+      "两个事件在同一概率模型内。",
+      "互斥时交集概率为零。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "拆分事件中的交集与差集。",
+      "latex": "A=(A\\setminus B)\\cup(A\\cap B)"
+    },
+    {
+      "text": "分成三个互斥区域后相加。",
+      "latex": "P(A\\cup B)=P(A\\setminus B)+P(A\\cap B)+P(B\\setminus A)"
+    },
+    {
+      "text": "用两个事件各自的概率替换。",
+      "latex": "P(A\\cup B)=P(A)+P(B)-P(A\\cap B)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "容斥一次",
+      "problem": "已知 $P(A)=0.6,P(B)=0.5,P(A\\cap B)=0.3$，求并集。",
+      "steps": [
+        "先相加得 $1.1$。",
+        "扣除重复的 $0.3$。"
+      ],
+      "answer": "$0.8$。"
+    },
+    {
+      "title": "至少一次成功",
+      "problem": "独立两次试验均成功率 $0.2$，至少一次成功？",
+      "steps": [
+        "都失败概率 $0.8^2=0.64$。",
+        "用补集。"
+      ],
+      "answer": "$0.36$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-probability-rules-q1",
+      "problem": "$P(A)=0.7$，补集概率？",
+      "hint": "两者和为一。",
+      "solution": [
+        "$1-0.7=0.3$。"
+      ],
+      "answer": "$0.3$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.3
+    },
+    {
+      "id": "ps-probability-rules-q2",
+      "problem": "两个互斥事件概率为 $0.2,0.4$，并集？",
+      "hint": "交集为零。",
+      "solution": [
+        "$0.2+0.4=0.6$。"
+      ],
+      "answer": "$0.6$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.6
+    },
+    {
+      "id": "ps-probability-rules-q3",
+      "problem": "概率为 $0.8,0.7$ 的两个事件，交集至少多少？",
+      "hint": "并集不能超过一。",
+      "solution": [
+        "$0.8+0.7-P(A\\cap B)\\le1$。"
+      ],
+      "answer": "至少 $0.5$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.5
+    },
+    {
+      "id": "ps-probability-rules-q4",
+      "problem": "任意事件的概率能为 $1.2$ 吗？",
+      "hint": "和全空间比较。",
+      "solution": [
+        "事件包含于全空间，概率不超过一。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "直接相加两个概率，什么时候得到并集概率？",
+    "choices": [
+      "事件独立时",
+      "事件互斥时",
+      "事件相同时"
+    ],
+    "correctIndex": 1,
+    "explanation": "需要没有重复计算的交集。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-probability-rules-m1",
+      "claim": "独立就能直接相加",
+      "correction": "加法是否扣交集，取决于互斥性。"
+    },
+    {
+      "id": "ps-probability-rules-m2",
+      "claim": "至少一次要逐项穷举",
+      "correction": "常可先求一次都没发生的补集。"
+    }
+  ],
+  "prerequisites": [
+    "ps-events"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-probability-rules-m1",
+    "ps-probability-rules-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-probability-rules",
+    "prediction": "改变重叠部分，直接相加会多算多少？",
+    "caption": "集合区分重复计数与并集概率；控制量必须满足概率约束。"
+  },
+  "teaching": {
+    "explain": "加法是否扣交集，取决于互斥性。",
+    "steps": [
+      {
+        "title": "事件乙起始位置：4",
+        "instruction": "将事件乙起始位置设为 $4$，对照图形和读数。",
+        "observation": "本组参数的计算结果：甲概率 $0.6$；乙概率 $0.5$；交集概率 $0.2$；并集概率 $0.9$。",
+        "preset": {
+          "a": 6,
+          "b": 5,
+          "c": 4
+        }
+      },
+      {
+        "title": "事件乙起始位置：0",
+        "instruction": "将事件乙起始位置设为 $0$，对照图形和读数。",
+        "observation": "本组参数的计算结果：甲概率 $0.6$；乙概率 $0.5$；交集概率 $0.5$；并集概率 $0.6$。",
+        "preset": {
+          "a": 6,
+          "b": 5,
+          "c": 0
+        }
+      },
+      {
+        "title": "事件乙起始位置：9",
+        "instruction": "将事件乙起始位置设为 $9$，对照图形和读数。",
+        "observation": "本组参数的计算结果：甲概率 $0.6$；乙概率 $0.5$；交集概率 $0.4$；并集概率 $0.7$。",
+        "preset": {
+          "a": 6,
+          "b": 5,
+          "c": 9
+        }
+      }
+    ]
+  }
+}

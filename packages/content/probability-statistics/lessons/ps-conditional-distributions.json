@@ -1,0 +1,193 @@
+{
+  "id": "ps-conditional-distributions",
+  "chapterId": "ps-joint",
+  "number": "6.2",
+  "title": "条件分布与条件密度",
+  "subtitle": "固定一个变量后，沿留下的切片重新归一化。",
+  "concept": "固定一个变量后，沿留下的切片重新归一化。",
+  "intuition": "联合表的一行通常不和为一；除以行和，才得到条件分布。",
+  "objectives": [
+    "离散条件表",
+    "连续条件密度"
+  ],
+  "body": [
+    {
+      "title": "离散条件表",
+      "text": "在给定取值的行或列中除以其边缘概率，新的条件分布各项和为一。"
+    },
+    {
+      "title": "连续条件密度",
+      "text": "固定连续变量的条件不是用零概率单点直接相除，而是用联合密度与边缘密度之比定义。"
+    },
+    {
+      "title": "观察切片变化",
+      "text": "不同条件值下切片形状或中心变化，说明另一个变量的信息改变了分布。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "离散分母概率或连续分母密度需为正。",
+    "latex": "p_{Y\\mid X}(y\\mid x)=\\frac{p_{X,Y}(x,y)}{p_X(x)},\\qquad f_{Y\\mid X}(y\\mid x)=\\frac{f_{X,Y}(x,y)}{f_X(x)}",
+    "conditions": [
+      "离散分母概率或连续分母密度需为正。",
+      "连续条件密度关系在相应几乎处处意义下使用，不能把密度分母当作单点概率。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先取联合表的一行。",
+      "latex": "p(x,y)"
+    },
+    {
+      "text": "将该行的总量作为归一化因子。",
+      "latex": "p_X(x)=\\sum_yp(x,y)"
+    },
+    {
+      "text": "除以后得到和为一的条件分布。",
+      "latex": "\\sum_yp(y\\mid x)=1"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "条件行",
+      "problem": "联合表某行为 $(0.1,0.3)$，给定该行后的两个条件概率？",
+      "steps": [
+        "行和为 $0.4$。",
+        "分别除以 $0.4$。"
+      ],
+      "answer": "$0.25,0.75$。"
+    },
+    {
+      "title": "三角区域",
+      "problem": "联合密度在 $0<x<y<1$ 上为二，求给定 $X=x$ 的 $Y$ 密度。",
+      "steps": [
+        "边缘 $f_X(x)=2(1-x)$。",
+        "除以边缘并保留 $x<y<1$。"
+      ],
+      "answer": "$1/(1-x)$，即在 $(x,1)$ 上均匀。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-conditional-distributions-q1",
+      "problem": "联合行 $(0.2,0.2)$ 的条件分布？",
+      "hint": "除以行和。",
+      "solution": [
+        "每项除以 $0.4$。"
+      ],
+      "answer": "$(0.5,0.5)$。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-conditional-distributions-q2",
+      "problem": "某条件分布总和为 $0.4$，归一化对了吗？",
+      "hint": "条件分布应和为一。",
+      "solution": [
+        "仍保留了原行总概率。"
+      ],
+      "answer": "没有。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-conditional-distributions-q3",
+      "problem": "连续条件密度能用 $P(Y=y,X=x)/P(X=x)$ 直接算吗？",
+      "hint": "分母通常为零。",
+      "solution": [
+        "需要密度比或其他正则条件分布定义。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-conditional-distributions-q4",
+      "problem": "三角区域模型中 $E[Y\\mid X=1/2]$？",
+      "hint": "条件均匀区间是半到一。",
+      "solution": [
+        "中点为 $3/4$。"
+      ],
+      "answer": "$3/4$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.75
+    }
+  ],
+  "learningCheck": {
+    "question": "联合行 $(0.1,0.3)$ 归一化后的第二项？",
+    "choices": [
+      "$0.3$",
+      "$0.4$",
+      "$0.75$"
+    ],
+    "correctIndex": 2,
+    "explanation": "分母是该条件行的总量。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-conditional-distributions-m1",
+      "claim": "切片就是条件密度",
+      "correction": "通常还要除以边缘密度。"
+    },
+    {
+      "id": "ps-conditional-distributions-m2",
+      "claim": "连续条件必然无法定义",
+      "correction": "不能用零除零的事件公式，但可用条件密度等定义。"
+    }
+  ],
+  "prerequisites": [
+    "ps-joint"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-conditional-distributions-m1",
+    "ps-conditional-distributions-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-conditional-distributions",
+    "prediction": "选中不同条件行，归一化后的分布怎样变化？",
+    "caption": "展示同一联合表的原始概率与条件概率，不混淆两种分母。"
+  },
+  "teaching": {
+    "explain": "通常还要除以边缘密度。",
+    "steps": [
+      {
+        "title": "左上联合概率：0.1",
+        "instruction": "将左上联合概率设为 $0.1$，对照图形和读数。",
+        "observation": "本组参数的计算结果：第一行边缘 $0.5$；第一列边缘 $0.5$；左上联合概率 $0.1$；选定行第一列的条件概率 $0.2$。",
+        "preset": {
+          "a": 0.1,
+          "n": 1
+        }
+      },
+      {
+        "title": "左上联合概率：0",
+        "instruction": "将左上联合概率设为 $0$，对照图形和读数。",
+        "observation": "本组参数的计算结果：第一行边缘 $0.5$；第一列边缘 $0.5$；左上联合概率 $0$；选定行第一列的条件概率 $0$。",
+        "preset": {
+          "a": 0,
+          "n": 1
+        }
+      },
+      {
+        "title": "左上联合概率：0.5",
+        "instruction": "将左上联合概率设为 $0.5$，对照图形和读数。",
+        "observation": "本组参数的计算结果：第一行边缘 $0.5$；第一列边缘 $0.5$；左上联合概率 $0.5$；选定行第一列的条件概率 $1$。",
+        "preset": {
+          "a": 0.5,
+          "n": 1
+        }
+      }
+    ]
+  }
+}

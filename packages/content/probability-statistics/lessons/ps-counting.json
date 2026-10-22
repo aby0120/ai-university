@@ -1,0 +1,192 @@
+{
+  "id": "ps-counting",
+  "chapterId": "ps-probability",
+  "number": "2.3",
+  "title": "乘法原理、排列与组合",
+  "subtitle": "先决定是否在意顺序，再决定怎么数。",
+  "concept": "先决定是否在意顺序，再决定怎么数。",
+  "intuition": "排三个人上三个座位与从三个人中选两个人，问的是不同问题。",
+  "objectives": [
+    "分步选择",
+    "辨认顺序"
+  ],
+  "body": [
+    {
+      "title": "分步选择",
+      "text": "每一步的可选数相乘，前提是这些数正确反映前面选择后的限制。允许重复与不允许重复会得到不同结果。"
+    },
+    {
+      "title": "辨认顺序",
+      "text": "有顺序的不重复选取用排列；不在意顺序时，同一组被多算了组内排列次数。"
+    },
+    {
+      "title": "连接概率",
+      "text": "只在结果等可能时，计数之比才是概率。不能因公式熟悉就忽略抽取机制。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "整数满足 $0\\le k\\le n$；此处不重复选择。",
+    "latex": "{n\\choose k}=\\frac{n!}{k!(n-k)!},\\qquad P(n,k)=\\frac{n!}{(n-k)!}",
+    "conditions": [
+      "整数满足 $0\\le k\\le n$；此处不重复选择。",
+      "若允许重复，需另按任务建模。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "有序抽取有连续减少的可选数。",
+      "latex": "n(n-1)\\cdots(n-k+1)"
+    },
+    {
+      "text": "每个无序组对应组内所有顺序。",
+      "latex": "k!"
+    },
+    {
+      "text": "去掉这项重复。",
+      "latex": "{n\\choose k}=P(n,k)/k!"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "选代表",
+      "problem": "五人中选两名无职务区别的代表，有多少种？",
+      "steps": [
+        "先有序选有二十种。",
+        "每对被算两次。"
+      ],
+      "answer": "$10$ 种。"
+    },
+    {
+      "title": "数字密码",
+      "problem": "四位密码，每位可重复用十个数字，有多少种？",
+      "steps": [
+        "每位均有十种。",
+        "允许首位为零。"
+      ],
+      "answer": "$10^4=10000$ 种。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-counting-q1",
+      "problem": "四人中选两人，有多少组？",
+      "hint": "顺序不计。",
+      "solution": [
+        "$\\binom42=6$。"
+      ],
+      "answer": "$6$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 6
+    },
+    {
+      "id": "ps-counting-q2",
+      "problem": "四人中选主席和副主席，有多少种？",
+      "hint": "职位有区别。",
+      "solution": [
+        "$4\\times3=12$。"
+      ],
+      "answer": "$12$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 12
+    },
+    {
+      "id": "ps-counting-q3",
+      "problem": "六张不同牌均匀选两张，含某指定牌的概率？",
+      "hint": "固定该牌后再选一张。",
+      "solution": [
+        "$5/\\binom62=1/3$。"
+      ],
+      "answer": "$1/3$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.3333333333333333
+    },
+    {
+      "id": "ps-counting-q4",
+      "problem": "组合公式能用于独立有放回抽取的有序记录吗？",
+      "hint": "检查重复和顺序。",
+      "solution": [
+        "两项条件都和该公式不符。"
+      ],
+      "answer": "不能直接使用。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "从五人中选三人，组内调换次序算新结果吗？",
+    "choices": [
+      "组合不算",
+      "组合要算",
+      "一定要看名字长短"
+    ],
+    "correctIndex": 0,
+    "explanation": "组合记录集合，不记录排列。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-counting-m1",
+      "claim": "选几人都用排列",
+      "correction": "先判断是否记录职务或先后。"
+    },
+    {
+      "id": "ps-counting-m2",
+      "claim": "不同结果自然等可能",
+      "correction": "还需要抽取机制支持。"
+    }
+  ],
+  "prerequisites": [
+    "ps-events"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-counting-m1",
+    "ps-counting-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-counting",
+    "prediction": "固定总人数，改变选取人数，排列和组合差几倍？",
+    "caption": "比较排列与组合；比值为选取人数的阶乘，不计算溢出的巨大整数。"
+  },
+  "teaching": {
+    "explain": "先判断是否记录职务或先后。",
+    "steps": [
+      {
+        "title": "选取人数：3",
+        "instruction": "将选取人数设为 $3$，对照图形和读数。",
+        "observation": "本组参数的计算结果：八人中选取人数 $3$；组合数 $56$；排列数 $336$；组内排列倍数 $6$。",
+        "preset": {
+          "n": 3
+        }
+      },
+      {
+        "title": "选取人数：1",
+        "instruction": "将选取人数设为 $1$，对照图形和读数。",
+        "observation": "本组参数的计算结果：八人中选取人数 $1$；组合数 $8$；排列数 $8$；组内排列倍数 $1$。",
+        "preset": {
+          "n": 1
+        }
+      },
+      {
+        "title": "选取人数：8",
+        "instruction": "将选取人数设为 $8$，对照图形和读数。",
+        "observation": "本组参数的计算结果：八人中选取人数 $8$；组合数 $1$；排列数 $40320$；组内排列倍数 $40320$。",
+        "preset": {
+          "n": 8
+        }
+      }
+    ]
+  }
+}

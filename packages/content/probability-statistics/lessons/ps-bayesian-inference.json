@@ -1,0 +1,198 @@
+{
+  "id": "ps-bayesian-inference",
+  "chapterId": "ps-modeling",
+  "number": "10.5",
+  "title": "Beta–二项更新与完整分析报告",
+  "subtitle": "贝叶斯推断把先验和似然合并，得到参数的后验分布。",
+  "concept": "贝叶斯推断把先验和似然合并，得到参数的后验分布。",
+  "intuition": "它允许在明确模型下谈参数概率；结论也因此依赖先验和似然。",
+  "objectives": [
+    "指定先验",
+    "更新后验"
+  ],
+  "body": [
+    {
+      "title": "指定先验",
+      "text": "Beta 密度在零到一之间描述成功率的不确定性；两个正形状参数控制偏好与集中程度。它们不是没有条件的真实历史成功失败数。"
+    },
+    {
+      "title": "更新后验",
+      "text": "独立 Bernoulli 试验的成功与失败指数分别加到先验中。后验均值兼顾先验与样本信息，后验预测成功率等于该均值。"
+    },
+    {
+      "title": "完成报告",
+      "text": "写清问题、观察单位、采样或分配设计、模型条件、效应与区间、诊断和局限。可信区间是给定先验模型和数据的后验概率陈述，不与频率置信区间混称。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "先验形状参数 $a,b>0$，固定次数的同概率独立 Bernoulli 模型。",
+    "latex": "p\\sim\\operatorname{Beta}(a,b),\\quad p\\mid k,n\\sim\\operatorname{Beta}(a+k,b+n-k),\\quad E[p\\mid k,n]=\\frac{a+k}{a+b+n}",
+    "conditions": [
+      "先验形状参数 $a,b>0$，固定次数的同概率独立 Bernoulli 模型。",
+      "后验与预测结论依赖指定模型；不把先验敏感性隐藏在一个点估计后面。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "写出先验密度的参数部分。",
+      "latex": "\\pi(p)\\propto p^{a-1}(1-p)^{b-1}"
+    },
+    {
+      "text": "乘以二项似然。",
+      "latex": "\\pi(p\\mid x)\\propto p^{a+k-1}(1-p)^{b+n-k-1}"
+    },
+    {
+      "text": "识别归一化后的 Beta 分布并取均值。",
+      "latex": "E[p\\mid x]=(a+k)/(a+b+n)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "均匀先验更新",
+      "problem": "先验 $\\operatorname{Beta}(1,1)$，十次中七成功，后验与预测成功率？",
+      "steps": [
+        "形状参数加成功七、失败三。",
+        "后验为 $\\operatorname{Beta}(8,4)$。"
+      ],
+      "answer": "后验预测成功率 $8/12=2/3$。"
+    },
+    {
+      "title": "先验敏感性",
+      "problem": "同样数据，若先验为 $\\operatorname{Beta}(10,10)$，后验均值？",
+      "steps": [
+        "更新为 $\\operatorname{Beta}(17,13)$。",
+        "均值 $17/30$。"
+      ],
+      "answer": "约 $0.5667$；与弱先验结果不同。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-bayesian-inference-q1",
+      "problem": "先验 $\\operatorname{Beta}(2,3)$，四次中一成功，后验？",
+      "hint": "成功、失败分别加到两项。",
+      "solution": [
+        "$(2+1,3+3)=(3,6)$。"
+      ],
+      "answer": "$\\operatorname{Beta}(3,6)$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-bayesian-inference-q2",
+      "problem": "上述后验的预测成功率？",
+      "hint": "形状参数除以总和。",
+      "solution": [
+        "$3/9=1/3$。"
+      ],
+      "answer": "$1/3$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.3333333333333333
+    },
+    {
+      "id": "ps-bayesian-inference-q3",
+      "problem": "一个后验 $95\\%$ 可信区间与频率 $95\\%$ 置信区间含义相同吗？",
+      "hint": "参数概率与重复覆盖不同。",
+      "solution": [
+        "前者依赖先验后的参数分布；后者描述造区间程序。"
+      ],
+      "answer": "不相同。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-bayesian-inference-q4",
+      "problem": "一份报告只给“显著”或“不显著”够吗？",
+      "hint": "要能理解设计和实际影响。",
+      "solution": [
+        "还需效应、区间、条件、方法与局限。"
+      ],
+      "answer": "不够。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "Beta–二项更新中，先验参数如何改变？",
+    "choices": [
+      "两项都加总次数",
+      "分别加成功数与失败数",
+      "保持不变"
+    ],
+    "correctIndex": 1,
+    "explanation": "似然指数与先验指数相加。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-bayesian-inference-m1",
+      "claim": "贝叶斯结论不依赖先验",
+      "correction": "小样本时先验影响尤其可能明显，应检查敏感性。"
+    },
+    {
+      "id": "ps-bayesian-inference-m2",
+      "claim": "可信区间就是同名置信区间",
+      "correction": "后验概率与重复抽样覆盖是不同陈述。"
+    }
+  ],
+  "prerequisites": [
+    "ps-anova",
+    "ps-bayes"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-bayesian-inference-m1",
+    "ps-bayesian-inference-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "r-beta",
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-bayesian-inference",
+    "prediction": "保持数据不变，改变先验形状，后验会怎样移动和收缩？",
+    "caption": "绘出先验与后验 Beta 密度，并计算后验均值、中央可信区间及预测概率。"
+  },
+  "teaching": {
+    "explain": "小样本时先验影响尤其可能明显，应检查敏感性。",
+    "steps": [
+      {
+        "title": "先验第一形状参数：1",
+        "instruction": "将先验第一形状参数设为 $1$，对照图形和读数。",
+        "observation": "本组参数的计算结果：后验第一形状 $15$；后验第二形状 $7$；后验均值与预测成功率 $0.681818$；中央可信区间下端 $0.478249$。",
+        "preset": {
+          "a": 1,
+          "b": 1,
+          "n": 14
+        }
+      },
+      {
+        "title": "先验第一形状参数：0.5",
+        "instruction": "将先验第一形状参数设为 $0.5$，对照图形和读数。",
+        "observation": "本组参数的计算结果：后验第一形状 $14.5$；后验第二形状 $7$；后验均值与预测成功率 $0.674419$；中央可信区间下端 $0.467928$。",
+        "preset": {
+          "a": 0.5,
+          "b": 1,
+          "n": 14
+        }
+      },
+      {
+        "title": "先验第一形状参数：8",
+        "instruction": "将先验第一形状参数设为 $8$，对照图形和读数。",
+        "observation": "本组参数的计算结果：后验第一形状 $22$；后验第二形状 $7$；后验均值与预测成功率 $0.758621$；中央可信区间下端 $0.590469$。",
+        "preset": {
+          "a": 8,
+          "b": 1,
+          "n": 14
+        }
+      }
+    ]
+  }
+}

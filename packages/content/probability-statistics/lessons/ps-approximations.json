@@ -1,0 +1,195 @@
+{
+  "id": "ps-approximations",
+  "chapterId": "ps-discrete",
+  "number": "4.5",
+  "title": "离散模型选择与近似",
+  "subtitle": "先选对精确模型，再说明近似保留了什么。",
+  "concept": "先选对精确模型，再说明近似保留了什么。",
+  "intuition": "二项可以在不同条件下近似 Poisson 或正态，但两种近似服务于不同参数范围。",
+  "objectives": [
+    "选择精确基准",
+    "稀少事件近似"
+  ],
+  "body": [
+    {
+      "title": "选择精确基准",
+      "text": "固定独立次数选二项，不放回选超几何，等待首次成功选几何，区间计数可考虑 Poisson。"
+    },
+    {
+      "title": "稀少事件近似",
+      "text": "次数大且成功率小时，二项可用相同均值的 Poisson 近似。仅知道均值相等不能保证近似好。"
+    },
+    {
+      "title": "正态近似与连续性修正",
+      "text": "二项两侧计数都足够大时可近似正态，整数事件用半单位修正。经验阈值不是统一误差保证。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "二项正态近似需远离严重偏斜和极端尾部；常先检查 $np,n(1-p)$ 足够大。",
+    "latex": "X\\sim\\operatorname{Bin}(n,p):\\quad P(X\\le k)\\approx\\Phi\\!\\left(\\frac{k+1/2-np}{\\sqrt{np(1-p)}}\\right)",
+    "conditions": [
+      "二项正态近似需远离严重偏斜和极端尾部；常先检查 $np,n(1-p)$ 足够大。",
+      "Poisson 近似要求大量小概率独立机会，精确概率优先作为可计算基准。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "匹配二项均值和方差。",
+      "latex": "\\mu=np,\\quad\\sigma^2=np(1-p)"
+    },
+    {
+      "text": "把整数格点换为连续小区间。",
+      "latex": "\\{X\\le k\\}\\longmapsto(-\\infty,k+1/2]"
+    },
+    {
+      "text": "再做标准化。",
+      "latex": "z=(k+1/2-\\mu)/\\sigma"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "近似零次",
+      "problem": "$n=100,p=0.01$，比较精确零次与 Poisson 近似。",
+      "steps": [
+        "精确为 $0.99^{100}\\approx0.3660$。",
+        "近似为 $e^{-1}\\approx0.3679$。"
+      ],
+      "answer": "接近但不相等。"
+    },
+    {
+      "title": "确定修正边界",
+      "problem": "用连续正态近似 $P(X\\ge5)$，边界取多少？",
+      "steps": [
+        "整数五对应连续区间从 $4.5$ 开始。",
+        "右尾阈值应取 $4.5$。"
+      ],
+      "answer": "$4.5$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-approximations-q1",
+      "problem": "二项均值十、方差九，对应正态标准差？",
+      "hint": "标准差是方差平方根。",
+      "solution": [
+        "$\\sqrt9=3$。"
+      ],
+      "answer": "$3$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 3
+    },
+    {
+      "id": "ps-approximations-q2",
+      "problem": "近似 $P(X\\le8)$，连续边界？",
+      "hint": "包含整数八所在的半格。",
+      "solution": [
+        "上边界为 $8.5$。"
+      ],
+      "answer": "$8.5$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 8.5
+    },
+    {
+      "id": "ps-approximations-q3",
+      "problem": "$n=100,p=0.001$，正态近似一定好么？",
+      "hint": "检查较小一侧的期望次数。",
+      "solution": [
+        "成功期望只有 $0.1$，分布高度偏斜。"
+      ],
+      "answer": "通常不合适。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-approximations-q4",
+      "problem": "精确值与近似值不同，是否一定是程序错误？",
+      "hint": "先看近似是否有误差。",
+      "solution": [
+        "近似本来允许差异；应检查差异大小和使用条件。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "近似 $P(X<5)$ 时，等价的整数事件是什么？",
+    "choices": [
+      "$X\\le4$",
+      "$X\\le5$",
+      "$X\\ge5$"
+    ],
+    "correctIndex": 0,
+    "explanation": "先处理整数事件，再做连续性修正。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-approximations-m1",
+      "claim": "均值一样就能互换分布",
+      "correction": "形状、方差和尾部也会影响概率。"
+    },
+    {
+      "id": "ps-approximations-m2",
+      "claim": "经验阈值保证所有尾部准确",
+      "correction": "极端尾部仍可能有明显相对误差。"
+    }
+  ],
+  "prerequisites": [
+    "ps-poisson",
+    "ps-hypergeometric"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-approximations-m1",
+    "ps-approximations-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-approximations",
+    "prediction": "成功率逐渐增大时，Poisson 对二项的近似怎样改变？",
+    "caption": "精确二项和 Poisson 质量并列比较；不把经验近似当作恒等。"
+  },
+  "teaching": {
+    "explain": "形状、方差和尾部也会影响概率。",
+    "steps": [
+      {
+        "title": "二项成功概率：0.02",
+        "instruction": "将二项成功概率设为 $0.02$，对照图形和读数。",
+        "observation": "本组参数的计算结果：二项均值 $1$；二项方差 $0.98$；质量总变差距离 $0.00558341$。",
+        "preset": {
+          "a": 0.02,
+          "n": 50
+        }
+      },
+      {
+        "title": "二项成功概率：0.005",
+        "instruction": "将二项成功概率设为 $0.005$，对照图形和读数。",
+        "observation": "本组参数的计算结果：二项均值 $0.25$；二项方差 $0.24875$；质量总变差距离 $0.000855723$。",
+        "preset": {
+          "a": 0.005,
+          "n": 50
+        }
+      },
+      {
+        "title": "二项成功概率：0.5",
+        "instruction": "将二项成功概率设为 $0.5$，对照图形和读数。",
+        "observation": "本组参数的计算结果：二项均值 $25$；二项方差 $12.5$；质量总变差距离 $0.166965$。",
+        "preset": {
+          "a": 0.5,
+          "n": 50
+        }
+      }
+    ]
+  }
+}

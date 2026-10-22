@@ -1,0 +1,200 @@
+{
+  "id": "ps-binomial",
+  "chapterId": "ps-discrete",
+  "number": "4.1",
+  "title": "Bernoulli 与二项分布",
+  "subtitle": "固定次数的独立同概率试验，数成功总次数。",
+  "concept": "固定次数的独立同概率试验，数成功总次数。",
+  "intuition": "每一条成功失败序列的概率相同，组合数负责数有多少条这样的序列。",
+  "objectives": [
+    "检查模型条件",
+    "计算恰好成功数"
+  ],
+  "body": [
+    {
+      "title": "检查模型条件",
+      "text": "固定试验次数、两个结果、相互独立、每次成功概率相同。不同成功率或显著不放回抽样不能机械套用。"
+    },
+    {
+      "title": "计算恰好成功数",
+      "text": "先算一个有指定成功位置的序列，再乘选择成功位置的组合数。"
+    },
+    {
+      "title": "用指示变量求矩",
+      "text": "每次成功用零一记录，总次数是这些变量的和；独立性使方差也能相加。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "整数 $n\\ge0$，$0\\le p\\le1$，$k=0,\\ldots,n$。",
+    "latex": "P(X=k)={n\\choose k}p^k(1-p)^{n-k},\\quad EX=np,\\quad\\operatorname{Var}(X)=np(1-p)",
+    "conditions": [
+      "整数 $n\\ge0$，$0\\le p\\le1$，$k=0,\\ldots,n$。",
+      "各次 Bernoulli 试验相互独立且成功率相同。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "固定一条序列。",
+      "latex": "P(\\text{序列})=p^k(1-p)^{n-k}"
+    },
+    {
+      "text": "数成功位置。",
+      "latex": "\\#\\text{序列}={n\\choose k}"
+    },
+    {
+      "text": "按独立指示变量相加。",
+      "latex": "X=\\sum_iI_i,\\quad EX=np,\\quad\\operatorname{Var}(X)=np(1-p)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "四次两成",
+      "problem": "独立四次，每次成功率一半，恰好两次成功？",
+      "steps": [
+        "选择成功位置 $\\binom42=6$。",
+        "每条序列概率 $1/16$。"
+      ],
+      "answer": "$3/8$。"
+    },
+    {
+      "title": "均值和标准差",
+      "problem": "$X\\sim\\operatorname{Bin}(20,0.2)$，求均值、方差。",
+      "steps": [
+        "$np=4$。",
+        "$np(1-p)=3.2$。"
+      ],
+      "answer": "均值 $4$，方差 $3.2$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-binomial-q1",
+      "problem": "三次公平掷币，全正概率？",
+      "hint": "一条序列。",
+      "solution": [
+        "$(1/2)^3=1/8$。"
+      ],
+      "answer": "$1/8$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.125
+    },
+    {
+      "id": "ps-binomial-q2",
+      "problem": "上述三次，恰好一正概率？",
+      "hint": "三种成功位置。",
+      "solution": [
+        "$3/8$。"
+      ],
+      "answer": "$3/8$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.375
+    },
+    {
+      "id": "ps-binomial-q3",
+      "problem": "$\\operatorname{Bin}(10,0.3)$ 的期望？",
+      "hint": "次数乘成功率。",
+      "solution": [
+        "$10(0.3)=3$。"
+      ],
+      "answer": "$3$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 3
+    },
+    {
+      "id": "ps-binomial-q4",
+      "problem": "成功率随时间变化，还一定是二项吗？",
+      "hint": "检查同概率条件。",
+      "solution": [
+        "不满足相同成功率。"
+      ],
+      "answer": "一般不是。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "二项模型中，组合数的作用是什么？",
+    "choices": [
+      "改变每次成功率",
+      "统计成功位置的选择数",
+      "保证正态近似"
+    ],
+    "correctIndex": 1,
+    "explanation": "同样成功次数可能对应多个不同序列。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-binomial-m1",
+      "claim": "只算一条序列就够",
+      "correction": "恰好成功数的事件通常含多条序列。"
+    },
+    {
+      "id": "ps-binomial-m2",
+      "claim": "有成功失败就一定二项",
+      "correction": "还要固定次数、同概率且独立。"
+    }
+  ],
+  "prerequisites": [
+    "ps-counting",
+    "ps-independence",
+    "ps-variance"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-binomial-m1",
+    "ps-binomial-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "nist-binomial"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-binomial",
+    "prediction": "改变成功率或试验次数，质量图怎样移动和展开？",
+    "caption": "二项质量按精确公式计算，选中一个成功次数并显示其概率。"
+  },
+  "teaching": {
+    "explain": "恰好成功数的事件通常含多条序列。",
+    "steps": [
+      {
+        "title": "成功概率：0.4",
+        "instruction": "将成功概率设为 $0.4$，对照图形和读数。",
+        "observation": "本组参数的计算结果：二项均值 $4.8$；二项方差 $2.88$；选中成功次数 $4$；选中次数的精确概率 $0.212841$。",
+        "preset": {
+          "n": 12,
+          "a": 0.4,
+          "b": 4
+        }
+      },
+      {
+        "title": "成功概率：0",
+        "instruction": "将成功概率设为 $0$，对照图形和读数。",
+        "observation": "本组参数的计算结果：二项均值 $0$；二项方差 $0$；选中成功次数 $4$；选中次数的精确概率 $0$。",
+        "preset": {
+          "n": 12,
+          "a": 0,
+          "b": 4
+        }
+      },
+      {
+        "title": "成功概率：1",
+        "instruction": "将成功概率设为 $1$，对照图形和读数。",
+        "observation": "本组参数的计算结果：二项均值 $12$；二项方差 $0$；选中成功次数 $4$；选中次数的精确概率 $0$。",
+        "preset": {
+          "n": 12,
+          "a": 1,
+          "b": 4
+        }
+      }
+    ]
+  }
+}

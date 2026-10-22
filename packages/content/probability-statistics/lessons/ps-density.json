@@ -1,0 +1,194 @@
+{
+  "id": "ps-density",
+  "chapterId": "ps-continuous",
+  "number": "5.1",
+  "title": "密度与连续分布函数",
+  "subtitle": "连续变量的区间概率是密度曲线下的面积。",
+  "concept": "连续变量的区间概率是密度曲线下的面积。",
+  "intuition": "密度像一段区间里概率的浓度，单点本身没有宽度。",
+  "objectives": [
+    "区分高度与概率",
+    "从积分得到分布"
+  ],
+  "body": [
+    {
+      "title": "区分高度与概率",
+      "text": "概率密度可以大于一；非负且总积分为一才是归一化要求。对具有密度的变量，任意单点概率为零。"
+    },
+    {
+      "title": "从积分得到分布",
+      "text": "分布函数累积左侧面积，区间概率由两端累计值相减。密度只是存在时的一种表示。"
+    },
+    {
+      "title": "检查支持集",
+      "text": "公式只在给定支持集内有效，外部密度为零。不能把一个多项式密度公式延伸到整条实轴。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "本节变量具有非负可积密度，且全空间积分为一。",
+    "latex": "F(x)=\\int_{-\\infty}^{x}f(t)dt,\\quad P(a<X\\le b)=\\int_a^bf(x)dx",
+    "conditions": [
+      "本节变量具有非负可积密度，且全空间积分为一。",
+      "有跳跃的分布不属于这里的纯密度模型。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "把整个支持集的面积归一化。",
+      "latex": "\\int_{-\\infty}^{\\infty}f(x)dx=1"
+    },
+    {
+      "text": "累计到阈值得到分布函数。",
+      "latex": "F(x)=\\int_{-\\infty}^{x}f(t)dt"
+    },
+    {
+      "text": "相减只留下区间面积。",
+      "latex": "F(b)-F(a)=\\int_a^bf(x)dx"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "归一化常数",
+      "problem": "在 $0\\le x\\le1$ 上 $f(x)=cx$，区间外为零，求 $c$。",
+      "steps": [
+        "积分为 $c/2$。",
+        "令总面积为一。"
+      ],
+      "answer": "$c=2$。"
+    },
+    {
+      "title": "求面积",
+      "problem": "上述密度下求 $P(X\\le1/2)$。",
+      "steps": [
+        "积分 $\\int_0^{1/2}2x\\,dx$。",
+        "原函数为平方。"
+      ],
+      "answer": "$1/4$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-density-q1",
+      "problem": "上述模型中 $P(X=1/2)$？",
+      "hint": "单点没有面积。",
+      "solution": [
+        "单点积分为零。"
+      ],
+      "answer": "$0$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0
+    },
+    {
+      "id": "ps-density-q2",
+      "problem": "$f(x)=4$ 在 $[0,1/4]$、外部零，是否合法？",
+      "hint": "检查非负和总面积。",
+      "solution": [
+        "面积 $4(1/4)=1$。"
+      ],
+      "answer": "合法。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-density-q3",
+      "problem": "上述 $2x$ 密度下 $P(X>1/2)$？",
+      "hint": "使用补集。",
+      "solution": [
+        "$1-1/4=3/4$。"
+      ],
+      "answer": "$3/4$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.75
+    },
+    {
+      "id": "ps-density-q4",
+      "problem": "看到密度值 $1.5$ 就能判定模型错误吗？",
+      "hint": "密度不是单点概率。",
+      "solution": [
+        "必须检查整体积分。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "具有密度的变量，在一个固定点的概率？",
+    "choices": [
+      "密度高度",
+      "零",
+      "一"
+    ],
+    "correctIndex": 1,
+    "explanation": "单点区间长度为零。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-density-m1",
+      "claim": "密度不能大于一",
+      "correction": "限制是总面积为一，而非高度。"
+    },
+    {
+      "id": "ps-density-m2",
+      "claim": "任何分布都有普通密度",
+      "correction": "离散与某些其他分布不能用普通密度完整表示。"
+    }
+  ],
+  "prerequisites": [
+    "ps-cdf"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-density-m1",
+    "ps-density-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-density",
+    "prediction": "移动上限，曲线下面积与分布函数怎样一起变化？",
+    "caption": "使用支持集为单位区间的线性密度，明确区分密度高度和累计概率。"
+  },
+  "teaching": {
+    "explain": "限制是总面积为一，而非高度。",
+    "steps": [
+      {
+        "title": "积分上限：0.5",
+        "instruction": "将积分上限设为 $0.5$，对照图形和读数。",
+        "observation": "本组参数的计算结果：阈值处密度 $1$；左侧面积 $0.25$；单点概率 $0$。",
+        "preset": {
+          "a": 1,
+          "b": 0.5
+        }
+      },
+      {
+        "title": "积分上限：0",
+        "instruction": "将积分上限设为 $0$，对照图形和读数。",
+        "observation": "本组参数的计算结果：阈值处密度 $0$；左侧面积 $0$；单点概率 $0$。",
+        "preset": {
+          "a": 1,
+          "b": 0
+        }
+      },
+      {
+        "title": "积分上限：1",
+        "instruction": "将积分上限设为 $1$，对照图形和读数。",
+        "observation": "本组参数的计算结果：阈值处密度 $2$；左侧面积 $1$；单点概率 $0$。",
+        "preset": {
+          "a": 1,
+          "b": 1
+        }
+      }
+    ]
+  }
+}

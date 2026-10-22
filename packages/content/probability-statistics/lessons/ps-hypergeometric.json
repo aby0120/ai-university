@@ -1,0 +1,192 @@
+{
+  "id": "ps-hypergeometric",
+  "chapterId": "ps-discrete",
+  "number": "4.3",
+  "title": "不放回抽样与超几何分布",
+  "subtitle": "总体组成固定、不放回抽取时，用超几何数抽中的目标个数。",
+  "concept": "总体组成固定、不放回抽取时，用超几何数抽中的目标个数。",
+  "intuition": "抽中一个目标后，后面再抽中的机会通常下降。",
+  "objectives": [
+    "列出总体组成",
+    "数有利组合"
+  ],
+  "body": [
+    {
+      "title": "列出总体组成",
+      "text": "总数、目标数和抽样数都固定；各个给定大小的无序样本等可能。"
+    },
+    {
+      "title": "数有利组合",
+      "text": "从目标组选择所需个数，从非目标组选择剩余个数，乘起来后除以总样本数。"
+    },
+    {
+      "title": "理解有限总体修正",
+      "text": "不放回使计数方差比相同成功率的二项更小；当抽样占比很小时，二项可作为近似。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "均匀不放回抽取，整数 $0\\le K,n\\le N$。",
+    "latex": "P(X=k)=\\frac{{K\\choose k}{N-K\\choose n-k}}{{N\\choose n}},\\quad\\operatorname{Var}(X)=np(1-p)\\frac{N-n}{N-1},\\quad p=K/N",
+    "conditions": [
+      "均匀不放回抽取，整数 $0\\le K,n\\le N$。",
+      "方差公式使用 $N>1$；取值还需满足两组可供选择数量。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "所有无序样本数是组合数。",
+      "latex": "{N\\choose n}"
+    },
+    {
+      "text": "目标与非目标两组分别选。",
+      "latex": "{K\\choose k}{N-K\\choose n-k}"
+    },
+    {
+      "text": "不放回引入负相关，得到有限总体修正。",
+      "latex": "\\operatorname{Var}(X)=np(1-p)(N-n)/(N-1)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "五球抽两球",
+      "problem": "五球中两红三白，不放回抽两球，恰好一红概率？",
+      "steps": [
+        "有利组合数 $2\\times3=6$。",
+        "总组合数 $\\binom52=10$。"
+      ],
+      "answer": "$0.6$。"
+    },
+    {
+      "title": "全抽无波动",
+      "problem": "同一袋全部五球都抽出，红球计数方差？",
+      "steps": [
+        "红球数必为二。",
+        "有限总体修正分子为零。"
+      ],
+      "answer": "$0$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-hypergeometric-q1",
+      "problem": "十件中四件目标，不放回抽五件，期望目标数？",
+      "hint": "每件的入选概率相同。",
+      "solution": [
+        "$5(4/10)=2$。"
+      ],
+      "answer": "$2$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 2
+    },
+    {
+      "id": "ps-hypergeometric-q2",
+      "problem": "五球两红，抽两球全红概率？",
+      "hint": "红组取二，白组取零。",
+      "solution": [
+        "$1/\\binom52=0.1$。"
+      ],
+      "answer": "$0.1$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.1
+    },
+    {
+      "id": "ps-hypergeometric-q3",
+      "problem": "同袋连续两次不放回，是否独立？",
+      "hint": "第一抽改变组成。",
+      "solution": [
+        "后续成功率依赖前一次结果。"
+      ],
+      "answer": "一般不独立。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-hypergeometric-q4",
+      "problem": "把全部总体都观测后，抽样随机误差还有吗？",
+      "hint": "限定为该有限总体。",
+      "solution": [
+        "此时组成完全确定。"
+      ],
+      "answer": "该总体的抽样随机误差消失；测量错误仍可能存在。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "不放回模型与二项模型的主要差别？",
+    "choices": [
+      "只能抽一个",
+      "后续抽取通常依赖此前结果",
+      "没有期望"
+    ],
+    "correctIndex": 1,
+    "explanation": "组成会随着抽取变化。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-hypergeometric-m1",
+      "claim": "不放回也按独立相乘",
+      "correction": "每次条件概率通常在变化。"
+    },
+    {
+      "id": "ps-hypergeometric-m2",
+      "claim": "修正系数大于一",
+      "correction": "在合法参数内它介于零与一之间。"
+    }
+  ],
+  "prerequisites": [
+    "ps-counting",
+    "ps-binomial"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-hypergeometric-m1",
+    "ps-hypergeometric-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-hypergeometric",
+    "prediction": "提高抽样占比，超几何和二项方差的差异怎样变化？",
+    "caption": "同时显示相同均值的两个计数模型，突出有限总体修正。"
+  },
+  "teaching": {
+    "explain": "每次条件概率通常在变化。",
+    "steps": [
+      {
+        "title": "不放回抽取数：8",
+        "instruction": "将不放回抽取数设为 $8$，对照图形和读数。",
+        "observation": "本组参数的计算结果：共同均值 $3.2$；超几何方差 $1.45655$；二项方差 $1.92$。",
+        "preset": {
+          "n": 8
+        }
+      },
+      {
+        "title": "不放回抽取数：1",
+        "instruction": "将不放回抽取数设为 $1$，对照图形和读数。",
+        "observation": "本组参数的计算结果：共同均值 $0.4$；超几何方差 $0.24$；二项方差 $0.24$。",
+        "preset": {
+          "n": 1
+        }
+      },
+      {
+        "title": "不放回抽取数：30",
+        "instruction": "将不放回抽取数设为 $30$，对照图形和读数。",
+        "observation": "本组参数的计算结果：共同均值 $12$；超几何方差 $0$；二项方差 $7.2$。",
+        "preset": {
+          "n": 30
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "id": "ps-expectation",
+  "chapterId": "ps-random-variables",
+  "number": "3.3",
+  "title": "期望与期望的线性性",
+  "subtitle": "期望是按概率加权的平均，不是最常见结果。",
+  "concept": "期望是按概率加权的平均，不是最常见结果。",
+  "intuition": "不需要每次出现期望值；公平骰子的期望就不是一个骰子面。",
+  "objectives": [
+    "做概率加权",
+    "使用线性性"
+  ],
+  "body": [
+    {
+      "title": "做概率加权",
+      "text": "离散期望把每个取值乘以其概率，再求和；可先对随机变量做函数变换，再计算期望。"
+    },
+    {
+      "title": "使用线性性",
+      "text": "求和的期望等于期望之和，不要求独立。常数的期望就是常数。"
+    },
+    {
+      "title": "检查可积性",
+      "text": "正负两侧都发散时不能相消定义期望。本卷涉及线性组合时假设绝对可积。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "本节默认 $E|X|,E|Y|<\\infty$。",
+    "latex": "E[X]=\\sum_xxp(x),\\qquad E[aX+bY+c]=aE[X]+bE[Y]+c",
+    "conditions": [
+      "本节默认 $E|X|,E|Y|<\\infty$。",
+      "一般不成立 $E[g(X)]=g(E[X])$。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "将结果按随机变量取值归组。",
+      "latex": "E[X]=\\sum_xxP(X=x)"
+    },
+    {
+      "text": "有限求和逐项展开。",
+      "latex": "E[aX+bY]=\\sum_{x,y}(ax+by)p(x,y)"
+    },
+    {
+      "text": "分开两部分并求边缘。",
+      "latex": "E[aX+bY]=aE[X]+bE[Y]"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "骰子平均",
+      "problem": "公平六面骰子的期望？",
+      "steps": [
+        "各面概率均为六分之一。",
+        "总和为二十一。"
+      ],
+      "answer": "$21/6=3.5$。"
+    },
+    {
+      "title": "变换不交换",
+      "problem": "$X$ 等可能取 $-1,1$，比较 $E[X^2]$ 和 $(E[X])^2$。",
+      "steps": [
+        "期望为零，平方后为零。",
+        "每次平方都为一，所以平方的期望为一。"
+      ],
+      "answer": "两者分别为 $1,0$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-expectation-q1",
+      "problem": "$X$ 以概率 $0.3$ 取十，否则取零，期望？",
+      "hint": "按概率加权。",
+      "solution": [
+        "$10(0.3)=3$。"
+      ],
+      "answer": "$3$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 3
+    },
+    {
+      "id": "ps-expectation-q2",
+      "problem": "$E[X]=2$，求 $E[3X+1]$。",
+      "hint": "线性性。",
+      "solution": [
+        "$3(2)+1=7$。"
+      ],
+      "answer": "$7$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 7
+    },
+    {
+      "id": "ps-expectation-q3",
+      "problem": "期望可不在支持集中吗？",
+      "hint": "考虑骰子。",
+      "solution": [
+        "骰子期望为 $3.5$，不能掷出该面。"
+      ],
+      "answer": "可以。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-expectation-q4",
+      "problem": "求两个相关变量之和的期望需要协方差吗？",
+      "hint": "期望和方差区分。",
+      "solution": [
+        "线性性不要求独立。"
+      ],
+      "answer": "不需要。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "期望的线性性需要变量独立吗？",
+    "choices": [
+      "需要",
+      "不需要，但需存在相关期望",
+      "只对公平骰子成立"
+    ],
+    "correctIndex": 1,
+    "explanation": "可积性足够；独立不是这条性质的条件。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-expectation-m1",
+      "claim": "期望一定是可能取值",
+      "correction": "期望是加权平均，可能落在支持集之外。"
+    },
+    {
+      "id": "ps-expectation-m2",
+      "claim": "非线性函数可以移到期望外",
+      "correction": "只有特定情况可以，需要单独验证。"
+    }
+  ],
+  "prerequisites": [
+    "ps-cdf"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-expectation-m1",
+    "ps-expectation-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-expectation",
+    "prediction": "移动一个取值，概率加权的平衡点如何变化？",
+    "caption": "固定概率，显示概率质量、期望位置与平方期望的区别。"
+  },
+  "teaching": {
+    "explain": "期望是加权平均，可能落在支持集之外。",
+    "steps": [
+      {
+        "title": "第二个取值：4",
+        "instruction": "将第二个取值设为 $4$，对照图形和读数。",
+        "observation": "本组参数的计算结果：期望 $3$；二阶矩 $12$；方差 $3$；标准差 $1.73205$。",
+        "preset": {
+          "a": 4,
+          "b": 0.75
+        }
+      },
+      {
+        "title": "第二个取值：-3",
+        "instruction": "将第二个取值设为 $-3$，对照图形和读数。",
+        "observation": "本组参数的计算结果：期望 $-2.25$；二阶矩 $6.75$；方差 $1.6875$；标准差 $1.29904$。",
+        "preset": {
+          "a": -3,
+          "b": 0.75
+        }
+      },
+      {
+        "title": "第二个取值：8",
+        "instruction": "将第二个取值设为 $8$，对照图形和读数。",
+        "observation": "本组参数的计算结果：期望 $6$；二阶矩 $48$；方差 $12$；标准差 $3.4641$。",
+        "preset": {
+          "a": 8,
+          "b": 0.75
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "id": "ps-poisson",
+  "chapterId": "ps-discrete",
+  "number": "4.4",
+  "title": "Poisson 计数与稀少事件",
+  "subtitle": "在给定区间内数事件次数，用平均次数控制 Poisson 模型。",
+  "concept": "在给定区间内数事件次数，用平均次数控制 Poisson 模型。",
+  "intuition": "平均每小时两次，不表示每小时一定两次。",
+  "objectives": [
+    "理解建模条件",
+    "计算质量与区间尺度"
+  ],
+  "body": [
+    {
+      "title": "理解建模条件",
+      "text": "Poisson 过程模型要求不相交区间增量独立、速率稳定，极短区间多次到达概率较小。计数过度聚集时该模型可能不合适。"
+    },
+    {
+      "title": "计算质量与区间尺度",
+      "text": "区间平均数等于速率乘区间长度；更换时间单位必须同步调整平均次数。"
+    },
+    {
+      "title": "检查均值方差",
+      "text": "Poisson 均值与方差相同。样本方差明显大于均值可能提示异质性或聚集，但不能仅靠一次样本就判定模型失效。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "参数 $\\lambda\\ge0$ 是所讨论区间内的平均次数。",
+    "latex": "P(X=k)=e^{-\\lambda}\\frac{\\lambda^k}{k!},\\quad EX=\\operatorname{Var}(X)=\\lambda",
+    "conditions": [
+      "参数 $\\lambda\\ge0$ 是所讨论区间内的平均次数。",
+      "从过程推出该分布需要独立增量与稳定速率等条件。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "用二项稀少事件极限理解质量。",
+      "latex": "n\\to\\infty,\\quad p\\to0,\\quad np\\to\\lambda"
+    },
+    {
+      "text": "零次概率趋于指数。",
+      "latex": "(1-p)^n\\to e^{-\\lambda}"
+    },
+    {
+      "text": "固定次数的组合项给幂次系数。",
+      "latex": "{n\\choose k}p^k(1-p)^{n-k}\\to e^{-\\lambda}\\lambda^k/k!"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "没有到达",
+      "problem": "平均每区间两次，零次概率？",
+      "steps": [
+        "使用零次质量。",
+        "零次阶乘为一。"
+      ],
+      "answer": "$e^{-2}\\approx0.1353$。"
+    },
+    {
+      "title": "改变区间",
+      "problem": "稳定速率每小时三次，半小时的均值与方差？",
+      "steps": [
+        "平均次数按区间长度缩放为 $1.5$。",
+        "Poisson 方差等于该区间均值。"
+      ],
+      "answer": "均为 $1.5$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-poisson-q1",
+      "problem": "平均次数一，恰好一次概率？",
+      "hint": "代入质量函数。",
+      "solution": [
+        "$e^{-1}$。"
+      ],
+      "answer": "$e^{-1}\\approx0.3679$。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-poisson-q2",
+      "problem": "平均次数二，至少一次概率？",
+      "hint": "零次的补集。",
+      "solution": [
+        "$1-e^{-2}$。"
+      ],
+      "answer": "$1-e^{-2}\\approx0.8647$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-poisson-q3",
+      "problem": "两独立 Poisson 计数均值二和三，和的均值与分布？",
+      "hint": "卷积或母函数相乘。",
+      "solution": [
+        "独立 Poisson 的和仍为 Poisson，参数相加。"
+      ],
+      "answer": "$\\operatorname{Pois}(5)$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-poisson-q4",
+      "problem": "速率随时间明显改变，还能直接用恒定速率过程解释吗？",
+      "hint": "检查模型条件。",
+      "solution": [
+        "稳定速率假设不成立，需另建模型。"
+      ],
+      "answer": "不能直接使用该过程解释。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "Poisson 参数表示什么？",
+    "choices": [
+      "成功概率",
+      "该区间平均次数",
+      "最大次数"
+    ],
+    "correctIndex": 1,
+    "explanation": "它可大于一，且随区间长度变化。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-poisson-m1",
+      "claim": "平均次数是固定到达数",
+      "correction": "实际计数会波动，模型给出各次数的概率。"
+    },
+    {
+      "id": "ps-poisson-m2",
+      "claim": "参数大于一就非法",
+      "correction": "它是平均次数，不是概率。"
+    }
+  ],
+  "prerequisites": [
+    "ps-binomial"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-poisson-m1",
+    "ps-poisson-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "nist-poisson"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-poisson",
+    "prediction": "增大平均次数，零次概率与分布形状怎样变化？",
+    "caption": "显示有限次数窗口与窗口外尾概率；质量使用 Poisson 公式。"
+  },
+  "teaching": {
+    "explain": "实际计数会波动，模型给出各次数的概率。",
+    "steps": [
+      {
+        "title": "区间平均次数：2",
+        "instruction": "将区间平均次数设为 $2$，对照图形和读数。",
+        "observation": "本组参数的计算结果：期望与方差 $2$；零次概率 $0.135335$；选中次数概率 $0.270671$；窗口外尾概率 $2.220\\times10^{-16}$。",
+        "preset": {
+          "a": 2,
+          "b": 2
+        }
+      },
+      {
+        "title": "区间平均次数：0",
+        "instruction": "将区间平均次数设为 $0$，对照图形和读数。",
+        "observation": "本组参数的计算结果：期望与方差 $0$；零次概率 $1$；选中次数概率 $0$；窗口外尾概率 $0$。",
+        "preset": {
+          "a": 0,
+          "b": 2
+        }
+      },
+      {
+        "title": "区间平均次数：12",
+        "instruction": "将区间平均次数设为 $12$，对照图形和读数。",
+        "observation": "本组参数的计算结果：期望与方差 $12$；零次概率 $6.144\\times10^{-6}$；选中次数概率 $0.000442383$；窗口外尾概率 $3.372\\times10^{-6}$。",
+        "preset": {
+          "a": 12,
+          "b": 2
+        }
+      }
+    ]
+  }
+}

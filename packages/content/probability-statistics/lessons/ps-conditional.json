@@ -1,0 +1,198 @@
+{
+  "id": "ps-conditional",
+  "chapterId": "ps-probability",
+  "number": "2.4",
+  "title": "条件概率与乘法公式",
+  "subtitle": "已知一件事发生，就在它留下的结果中重新分配概率。",
+  "concept": "已知一件事发生，就在它留下的结果中重新分配概率。",
+  "intuition": "分母从整个总体换成满足条件的人群。",
+  "objectives": [
+    "确定条件事件",
+    "重新归一化"
+  ],
+  "body": [
+    {
+      "title": "确定条件事件",
+      "text": "在 $B$ 已知发生后，只保留属于 $B$ 的结果。原先的交集变成新空间里的目标事件。"
+    },
+    {
+      "title": "重新归一化",
+      "text": "将交集概率除以条件事件概率。条件是分母为正；零概率条件需要不同定义。"
+    },
+    {
+      "title": "按路径相乘",
+      "text": "先到某一分支，再在分支内部发生目标，路径概率等于两段概率的乘积。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "条件事件满足 $P(B)>0$。",
+    "latex": "P(A\\mid B)=\\frac{P(A\\cap B)}{P(B)},\\qquad P(A\\cap B)=P(B)P(A\\mid B)",
+    "conditions": [
+      "条件事件满足 $P(B)>0$。",
+      "条件方向不可任意交换。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "保留条件事件。",
+      "latex": "\\Omega_{\\mathrm{new}}=B"
+    },
+    {
+      "text": "交集仍是目标结果。",
+      "latex": "A_{\\mathrm{new}}=A\\cap B"
+    },
+    {
+      "text": "除以新空间的总概率。",
+      "latex": "P(A\\mid B)=P(A\\cap B)/P(B)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "换分母",
+      "problem": "一百人中四十人通勤，其中十人骑车。已知通勤，骑车的比例？",
+      "steps": [
+        "条件群体有四十人。",
+        "目标有十人。"
+      ],
+      "answer": "$10/40=1/4$。"
+    },
+    {
+      "title": "路径概率",
+      "problem": "$P(B)=0.3,P(A\\mid B)=0.8$，交集概率？",
+      "steps": [
+        "沿路径先发生条件事件。",
+        "相乘 $0.3\\times0.8$。"
+      ],
+      "answer": "$0.24$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-conditional-q1",
+      "problem": "$P(B)=0.4,P(A\\cap B)=0.1$，条件概率？",
+      "hint": "除以条件事件概率。",
+      "solution": [
+        "$0.1/0.4=0.25$。"
+      ],
+      "answer": "$0.25$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.25
+    },
+    {
+      "id": "ps-conditional-q2",
+      "problem": "$P(A)=0.5,P(B\\mid A)=0.2$，交集？",
+      "hint": "用条件乘法。",
+      "solution": [
+        "$0.5(0.2)=0.1$。"
+      ],
+      "answer": "$0.1$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.1
+    },
+    {
+      "id": "ps-conditional-q3",
+      "problem": "已知一次公平骰子出偶数，出六的概率？",
+      "hint": "新的等可能结果有三个。",
+      "solution": [
+        "其中六占一种。"
+      ],
+      "answer": "$1/3$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.3333333333333333
+    },
+    {
+      "id": "ps-conditional-q4",
+      "problem": "能把 $P(A\\mid B)$ 直接写成 $P(B\\mid A)$ 吗？",
+      "hint": "两边分母通常不同。",
+      "solution": [
+        "共同分子相同，分母不同。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "已知 $B$ 发生，分母是什么？",
+    "choices": [
+      "$P(A)$",
+      "$P(B)$",
+      "$P(A\\cap B)$"
+    ],
+    "correctIndex": 1,
+    "explanation": "条件事件确定了新的总量。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-conditional-m1",
+      "claim": "条件概率只是交集概率",
+      "correction": "还要除以条件事件的概率。"
+    },
+    {
+      "id": "ps-conditional-m2",
+      "claim": "条件方向可交换",
+      "correction": "交换方向会改变参照群体。"
+    }
+  ],
+  "prerequisites": [
+    "ps-probability-rules"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-conditional-m1",
+    "ps-conditional-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-conditional",
+    "prediction": "保持交集不变、改变条件群体大小，条件概率如何变化？",
+    "caption": "演示用十个等可能结果重新归一化；不处理零概率条件。"
+  },
+  "teaching": {
+    "explain": "还要除以条件事件的概率。",
+    "steps": [
+      {
+        "title": "条件事件起始位置：4",
+        "instruction": "将条件事件起始位置设为 $4$，对照图形和读数。",
+        "observation": "本组参数的计算结果：甲概率 $0.6$；乙概率 $0.5$；交集概率 $0.2$；给定乙后甲的概率 $0.4$。",
+        "preset": {
+          "a": 6,
+          "b": 5,
+          "c": 4
+        }
+      },
+      {
+        "title": "条件事件起始位置：0",
+        "instruction": "将条件事件起始位置设为 $0$，对照图形和读数。",
+        "observation": "本组参数的计算结果：甲概率 $0.6$；乙概率 $0.5$；交集概率 $0.5$；给定乙后甲的概率 $1$。",
+        "preset": {
+          "a": 6,
+          "b": 5,
+          "c": 0
+        }
+      },
+      {
+        "title": "条件事件起始位置：9",
+        "instruction": "将条件事件起始位置设为 $9$，对照图形和读数。",
+        "observation": "本组参数的计算结果：甲概率 $0.6$；乙概率 $0.5$；交集概率 $0.4$；给定乙后甲的概率 $0.8$。",
+        "preset": {
+          "a": 6,
+          "b": 5,
+          "c": 9
+        }
+      }
+    ]
+  }
+}

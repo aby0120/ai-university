@@ -1,0 +1,194 @@
+{
+  "id": "ps-independent-variables",
+  "chapterId": "ps-joint",
+  "number": "6.3",
+  "title": "随机变量独立与乘积分布",
+  "subtitle": "两个变量独立，要求所有取值区域的联合概率都能拆成乘积。",
+  "concept": "两个变量独立，要求所有取值区域的联合概率都能拆成乘积。",
+  "intuition": "只检查某一格或一对均值，不足以证明整体独立。",
+  "objectives": [
+    "使用分布定义",
+    "处理连续支持"
+  ],
+  "body": [
+    {
+      "title": "使用分布定义",
+      "text": "随机变量独立要求任意可测取值区域的事件独立；离散情况可检查所有格子的乘积关系。"
+    },
+    {
+      "title": "处理连续支持",
+      "text": "联合密度能分解为两个边缘密度的乘积时独立。只有公式看起来可拆还不够，支持也必须处理。"
+    },
+    {
+      "title": "看函数的期望",
+      "text": "独立可使可积函数的乘积期望分解，但单个乘积期望相等不足以反推独立。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "离散和密度情形可用对应的乘积分解准则。",
+    "latex": "X\\perp Y\\iff F_{X,Y}(x,y)=F_X(x)F_Y(y)\\quad\\forall x,y",
+    "conditions": [
+      "离散和密度情形可用对应的乘积分解准则。",
+      "积分和期望涉及的矩须存在。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "对所有矩形区域要求乘积。",
+      "latex": "P(X\\le x,Y\\le y)=P(X\\le x)P(Y\\le y)"
+    },
+    {
+      "text": "离散各格于是可分解。",
+      "latex": "p(x,y)=p_X(x)p_Y(y)"
+    },
+    {
+      "text": "对可积乘积求和或积分。",
+      "latex": "E[g(X)h(Y)]=E[g(X)]E[h(Y)]"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "检查四格",
+      "problem": "联合表 $(0.12,0.18)$、$(0.28,0.42)$，独立吗？",
+      "steps": [
+        "行和为 $0.3,0.7$，列和为 $0.4,0.6$。",
+        "四格都等于对应乘积。"
+      ],
+      "answer": "独立。"
+    },
+    {
+      "title": "支持不能忽略",
+      "problem": "密度在 $0<x<y<1$ 上为二，变量独立吗？",
+      "steps": [
+        "给定较大的 $X$ 会限制 $Y$ 的范围。",
+        "联合支持不是边缘支持的全矩形，乘积不符。"
+      ],
+      "answer": "不独立。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-independent-variables-q1",
+      "problem": "独立 Bernoulli 变量成功率 $0.2,0.5$，同时成功概率？",
+      "hint": "相乘。",
+      "solution": [
+        "$0.1$。"
+      ],
+      "answer": "$0.1$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.1
+    },
+    {
+      "id": "ps-independent-variables-q2",
+      "problem": "独立时 $E[X]=2,E[Y]=3$，$E[XY]$？",
+      "hint": "期望乘积分解。",
+      "solution": [
+        "$2(3)=6$。"
+      ],
+      "answer": "$6$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 6
+    },
+    {
+      "id": "ps-independent-variables-q3",
+      "problem": "只验证联合表左上格正确就能确认独立吗？",
+      "hint": "需要全部取值。",
+      "solution": [
+        "其他格可能破坏乘积关系。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-independent-variables-q4",
+      "problem": "独立变量分别做确定的函数变换后仍独立吗？",
+      "hint": "对应事件仍由各自变量决定。",
+      "solution": [
+        "两个新变量的事件分别属于原来的独立信息。"
+      ],
+      "answer": "仍独立。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "密度公式能写成乘积，但只定义在三角区域，就一定独立吗？",
+    "choices": [
+      "一定",
+      "不一定，还要检查完整支持",
+      "没有边缘分布"
+    ],
+    "correctIndex": 1,
+    "explanation": "支持条件也是联合分布的一部分。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-independent-variables-m1",
+      "claim": "乘积期望相等就独立",
+      "correction": "一个矩条件不能替代全部分布条件。"
+    },
+    {
+      "id": "ps-independent-variables-m2",
+      "claim": "只分解公式不用看支持",
+      "correction": "遗漏支持会改变积分和联合概率。"
+    }
+  ],
+  "prerequisites": [
+    "ps-conditional-distributions"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-independent-variables-m1",
+    "ps-independent-variables-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-independent-variables",
+    "prediction": "改变一个边缘，联合表怎样随乘积分解变化？",
+    "caption": "按独立模型重建全部格子，显示每格与边缘乘积一致。"
+  },
+  "teaching": {
+    "explain": "一个矩条件不能替代全部分布条件。",
+    "steps": [
+      {
+        "title": "第一行边缘概率：0.3",
+        "instruction": "将第一行边缘概率设为 $0.3$，对照图形和读数。",
+        "observation": "本组参数的计算结果：第一行边缘 $0.3$；第一列边缘 $0.4$；左上联合概率 $0.12$；给定第一行后第一列概率 $0.4$。",
+        "preset": {
+          "a": 0.3,
+          "b": 0.4
+        }
+      },
+      {
+        "title": "第一行边缘概率：0.05",
+        "instruction": "将第一行边缘概率设为 $0.05$，对照图形和读数。",
+        "observation": "本组参数的计算结果：第一行边缘 $0.05$；第一列边缘 $0.4$；左上联合概率 $0.02$；给定第一行后第一列概率 $0.4$。",
+        "preset": {
+          "a": 0.05,
+          "b": 0.4
+        }
+      },
+      {
+        "title": "第一行边缘概率：0.95",
+        "instruction": "将第一行边缘概率设为 $0.95$，对照图形和读数。",
+        "observation": "本组参数的计算结果：第一行边缘 $0.95$；第一列边缘 $0.4$；左上联合概率 $0.38$；给定第一行后第一列概率 $0.4$。",
+        "preset": {
+          "a": 0.95,
+          "b": 0.4
+        }
+      }
+    ]
+  }
+}

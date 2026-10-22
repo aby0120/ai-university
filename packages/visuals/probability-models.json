@@ -1,0 +1,1047 @@
+{
+  "units": {
+    "controls": [
+      {
+        "key": "n",
+        "label": "对象数",
+        "min": 1,
+        "max": 10,
+        "step": 1,
+        "value": 4
+      },
+      {
+        "key": "b",
+        "label": "每人记录次数",
+        "min": 1,
+        "max": 5,
+        "step": 1,
+        "value": 2
+      }
+    ],
+    "sweep": "n"
+  },
+  "sampling": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "样本中第一组比例",
+        "min": 0,
+        "max": 1,
+        "step": 0.01,
+        "value": 0.5
+      },
+      {
+        "key": "b",
+        "label": "总体中第一组比例",
+        "min": 0,
+        "max": 1,
+        "step": 0.01,
+        "value": 0.8
+      }
+    ],
+    "sweep": "a"
+  },
+  "design": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "处理组中低基线人群比例",
+        "min": 0,
+        "max": 1,
+        "step": 0.01,
+        "value": 0.3
+      },
+      {
+        "key": "b",
+        "label": "对照组中低基线人群比例",
+        "min": 0,
+        "max": 1,
+        "step": 0.01,
+        "value": 0.8
+      }
+    ],
+    "sweep": "a"
+  },
+  "histogram": {
+    "controls": [
+      {
+        "key": "n",
+        "label": "分箱数",
+        "min": 1,
+        "max": 8,
+        "step": 1,
+        "value": 5
+      },
+      {
+        "key": "b",
+        "label": "累计阈值",
+        "min": 0,
+        "max": 5,
+        "step": 0.05,
+        "value": 2
+      }
+    ],
+    "sweep": "n"
+  },
+  "summary": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "最后一个观测值",
+        "min": 4,
+        "max": 20,
+        "step": 0.1,
+        "value": 7
+      }
+    ],
+    "sweep": "a"
+  },
+  "events": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "事件甲包含的格子数",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "value": 6
+      },
+      {
+        "key": "b",
+        "label": "事件乙包含的格子数",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "value": 5
+      },
+      {
+        "key": "c",
+        "label": "事件乙起始位置",
+        "min": 0,
+        "max": 9,
+        "step": 1,
+        "value": 4
+      }
+    ],
+    "sweep": "c"
+  },
+  "counting": {
+    "controls": [
+      {
+        "key": "n",
+        "label": "选取人数",
+        "min": 1,
+        "max": 8,
+        "step": 1,
+        "value": 3
+      }
+    ],
+    "sweep": "n"
+  },
+  "conditional": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "事件甲包含的格子数",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "value": 6
+      },
+      {
+        "key": "b",
+        "label": "条件事件包含的格子数",
+        "min": 1,
+        "max": 10,
+        "step": 1,
+        "value": 5
+      },
+      {
+        "key": "c",
+        "label": "条件事件起始位置",
+        "min": 0,
+        "max": 9,
+        "step": 1,
+        "value": 4
+      }
+    ],
+    "sweep": "c"
+  },
+  "independence": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "事件甲概率",
+        "min": 0.05,
+        "max": 0.95,
+        "step": 0.01,
+        "value": 0.4
+      },
+      {
+        "key": "b",
+        "label": "事件乙概率",
+        "min": 0.05,
+        "max": 0.95,
+        "step": 0.01,
+        "value": 0.5
+      }
+    ],
+    "sweep": "a"
+  },
+  "bayes": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "目标基准率",
+        "min": 0.001,
+        "max": 0.5,
+        "step": 0.001,
+        "value": 0.01
+      },
+      {
+        "key": "b",
+        "label": "检出率",
+        "min": 0.05,
+        "max": 0.99,
+        "step": 0.01,
+        "value": 0.9
+      },
+      {
+        "key": "c",
+        "label": "误报率",
+        "min": 0.001,
+        "max": 0.3,
+        "step": 0.001,
+        "value": 0.1
+      }
+    ],
+    "sweep": "a"
+  },
+  "cdf": {
+    "controls": [
+      {
+        "key": "b",
+        "label": "取值阈值",
+        "min": -0.5,
+        "max": 2.5,
+        "step": 0.05,
+        "value": 1
+      }
+    ],
+    "sweep": "b"
+  },
+  "expectation": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "第二个取值",
+        "min": -3,
+        "max": 8,
+        "step": 0.1,
+        "value": 4
+      },
+      {
+        "key": "b",
+        "label": "第二个取值的概率",
+        "min": 0.05,
+        "max": 0.95,
+        "step": 0.01,
+        "value": 0.75
+      }
+    ],
+    "sweep": "a"
+  },
+  "variance": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "距中心的距离",
+        "min": 0.1,
+        "max": 4,
+        "step": 0.1,
+        "value": 1
+      }
+    ],
+    "sweep": "a"
+  },
+  "inequality": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "标准差倍数",
+        "min": 1,
+        "max": 4,
+        "step": 0.05,
+        "value": 2
+      }
+    ],
+    "sweep": "a"
+  },
+  "binomial": {
+    "controls": [
+      {
+        "key": "n",
+        "label": "试验次数",
+        "min": 1,
+        "max": 40,
+        "step": 1,
+        "value": 12
+      },
+      {
+        "key": "a",
+        "label": "成功概率",
+        "min": 0,
+        "max": 1,
+        "step": 0.01,
+        "value": 0.4
+      },
+      {
+        "key": "b",
+        "label": "选中成功次数",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "value": 4
+      }
+    ],
+    "sweep": "a"
+  },
+  "geometric": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "每次成功概率",
+        "min": 0.05,
+        "max": 1,
+        "step": 0.01,
+        "value": 0.25
+      },
+      {
+        "key": "n",
+        "label": "显示的等待次数",
+        "min": 5,
+        "max": 40,
+        "step": 1,
+        "value": 20
+      },
+      {
+        "key": "b",
+        "label": "目标成功次数",
+        "min": 1,
+        "max": 5,
+        "step": 1,
+        "value": 1
+      }
+    ],
+    "sweep": "a"
+  },
+  "hypergeometric": {
+    "controls": [
+      {
+        "key": "n",
+        "label": "不放回抽取数",
+        "min": 1,
+        "max": 30,
+        "step": 1,
+        "value": 8
+      }
+    ],
+    "sweep": "n"
+  },
+  "poisson": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "区间平均次数",
+        "min": 0,
+        "max": 12,
+        "step": 0.1,
+        "value": 2
+      },
+      {
+        "key": "b",
+        "label": "选中次数",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "value": 2
+      }
+    ],
+    "sweep": "a"
+  },
+  "approximation": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "二项成功概率",
+        "min": 0.005,
+        "max": 0.5,
+        "step": 0.005,
+        "value": 0.02
+      },
+      {
+        "key": "n",
+        "label": "试验次数",
+        "min": 10,
+        "max": 80,
+        "step": 1,
+        "value": 50
+      }
+    ],
+    "sweep": "a"
+  },
+  "density": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "密度幂次",
+        "min": 0,
+        "max": 4,
+        "step": 0.1,
+        "value": 1
+      },
+      {
+        "key": "b",
+        "label": "积分上限",
+        "min": 0,
+        "max": 1,
+        "step": 0.01,
+        "value": 0.5
+      }
+    ],
+    "sweep": "b"
+  },
+  "exponential": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "到达速率",
+        "min": 0.2,
+        "max": 4,
+        "step": 0.1,
+        "value": 2
+      },
+      {
+        "key": "b",
+        "label": "等待阈值",
+        "min": 0,
+        "max": 5,
+        "step": 0.05,
+        "value": 1
+      }
+    ],
+    "sweep": "a"
+  },
+  "normal": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "总体均值",
+        "min": -2,
+        "max": 2,
+        "step": 0.1,
+        "value": 0
+      },
+      {
+        "key": "b",
+        "label": "总体标准差",
+        "min": 0.3,
+        "max": 2,
+        "step": 0.1,
+        "value": 1
+      },
+      {
+        "key": "x",
+        "label": "累计阈值",
+        "min": -4,
+        "max": 4,
+        "step": 0.1,
+        "value": 1
+      }
+    ],
+    "sweep": "a"
+  },
+  "transform": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "线性缩放倍数",
+        "min": 0.25,
+        "max": 4,
+        "step": 0.05,
+        "value": 2
+      },
+      {
+        "key": "b",
+        "label": "新变量的累计阈值",
+        "min": 0,
+        "max": 5,
+        "step": 0.05,
+        "value": 2
+      }
+    ],
+    "sweep": "a"
+  },
+  "moments": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "均匀区间上限",
+        "min": 0.5,
+        "max": 8,
+        "step": 0.1,
+        "value": 2
+      }
+    ],
+    "sweep": "a"
+  },
+  "joint": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "左上联合概率",
+        "min": 0,
+        "max": 0.5,
+        "step": 0.01,
+        "value": 0.1
+      }
+    ],
+    "sweep": "a"
+  },
+  "conditional-table": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "左上联合概率",
+        "min": 0,
+        "max": 0.5,
+        "step": 0.01,
+        "value": 0.1
+      },
+      {
+        "key": "n",
+        "label": "条件行编号",
+        "min": 1,
+        "max": 2,
+        "step": 1,
+        "value": 1
+      }
+    ],
+    "sweep": "a"
+  },
+  "independent-table": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "第一行边缘概率",
+        "min": 0.05,
+        "max": 0.95,
+        "step": 0.01,
+        "value": 0.3
+      },
+      {
+        "key": "b",
+        "label": "第一列边缘概率",
+        "min": 0.05,
+        "max": 0.95,
+        "step": 0.01,
+        "value": 0.4
+      }
+    ],
+    "sweep": "a"
+  },
+  "covariance": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "指定相关系数",
+        "min": -0.95,
+        "max": 0.95,
+        "step": 0.05,
+        "value": 0.5
+      }
+    ],
+    "sweep": "a"
+  },
+  "total-variance": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "两组中心距离",
+        "min": 0,
+        "max": 8,
+        "step": 0.1,
+        "value": 4
+      },
+      {
+        "key": "b",
+        "label": "共同组内标准差",
+        "min": 0.2,
+        "max": 3,
+        "step": 0.1,
+        "value": 1
+      }
+    ],
+    "sweep": "a"
+  },
+  "lln": {
+    "controls": [
+      {
+        "key": "n",
+        "label": "累计试验次数",
+        "min": 10,
+        "max": 1000,
+        "step": 1,
+        "value": 200
+      },
+      {
+        "key": "a",
+        "label": "成功概率",
+        "min": 0.05,
+        "max": 0.95,
+        "step": 0.01,
+        "value": 0.5
+      },
+      {
+        "key": "c",
+        "label": "随机种子",
+        "min": 1,
+        "max": 30,
+        "step": 1,
+        "value": 7
+      }
+    ],
+    "sweep": "n"
+  },
+  "clt": {
+    "controls": [
+      {
+        "key": "n",
+        "label": "每份样本量",
+        "min": 1,
+        "max": 80,
+        "step": 1,
+        "value": 20
+      },
+      {
+        "key": "a",
+        "label": "成功概率",
+        "min": 0.1,
+        "max": 0.9,
+        "step": 0.05,
+        "value": 0.3
+      },
+      {
+        "key": "c",
+        "label": "随机种子",
+        "min": 1,
+        "max": 30,
+        "step": 1,
+        "value": 7
+      }
+    ],
+    "sweep": "n"
+  },
+  "sampling-mean": {
+    "controls": [
+      {
+        "key": "n",
+        "label": "样本量",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "value": 25
+      },
+      {
+        "key": "a",
+        "label": "总体均值",
+        "min": -2,
+        "max": 4,
+        "step": 0.1,
+        "value": 2
+      },
+      {
+        "key": "b",
+        "label": "个体标准差",
+        "min": 0.5,
+        "max": 4,
+        "step": 0.1,
+        "value": 2
+      }
+    ],
+    "sweep": "n"
+  },
+  "student": {
+    "controls": [
+      {
+        "key": "n",
+        "label": "$t$ 自由度",
+        "min": 1,
+        "max": 60,
+        "step": 1,
+        "value": 5
+      },
+      {
+        "key": "b",
+        "label": "双侧尾部阈值",
+        "min": 0,
+        "max": 5,
+        "step": 0.05,
+        "value": 2
+      }
+    ],
+    "sweep": "n"
+  },
+  "bootstrap": {
+    "controls": [
+      {
+        "key": "n",
+        "label": "重抽次数",
+        "min": 50,
+        "max": 400,
+        "step": 1,
+        "value": 200
+      },
+      {
+        "key": "a",
+        "label": "最后一个原始观测",
+        "min": 6,
+        "max": 20,
+        "step": 0.5,
+        "value": 6
+      },
+      {
+        "key": "c",
+        "label": "随机种子",
+        "min": 1,
+        "max": 30,
+        "step": 1,
+        "value": 7
+      }
+    ],
+    "sweep": "n"
+  },
+  "bias": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "估计量偏差",
+        "min": -3,
+        "max": 3,
+        "step": 0.1,
+        "value": 1
+      },
+      {
+        "key": "b",
+        "label": "估计量标准差",
+        "min": 0.1,
+        "max": 3,
+        "step": 0.1,
+        "value": 1
+      }
+    ],
+    "sweep": "a"
+  },
+  "likelihood": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "观察成功数",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "value": 6
+      },
+      {
+        "key": "n",
+        "label": "总试验数",
+        "min": 10,
+        "max": 50,
+        "step": 1,
+        "value": 20
+      }
+    ],
+    "sweep": "a"
+  },
+  "coverage": {
+    "controls": [
+      {
+        "key": "n",
+        "label": "每份样本量",
+        "min": 4,
+        "max": 100,
+        "step": 1,
+        "value": 25
+      },
+      {
+        "key": "a",
+        "label": "名义置信水平",
+        "min": 0.8,
+        "max": 0.99,
+        "step": 0.01,
+        "value": 0.95
+      },
+      {
+        "key": "c",
+        "label": "随机种子",
+        "min": 1,
+        "max": 30,
+        "step": 1,
+        "value": 7
+      }
+    ],
+    "sweep": "n"
+  },
+  "wilson": {
+    "controls": [
+      {
+        "key": "n",
+        "label": "总试验数",
+        "min": 5,
+        "max": 100,
+        "step": 1,
+        "value": 10
+      },
+      {
+        "key": "a",
+        "label": "观察成功比例",
+        "min": 0,
+        "max": 1,
+        "step": 0.01,
+        "value": 0
+      }
+    ],
+    "sweep": "n"
+  },
+  "difference": {
+    "controls": [
+      {
+        "key": "n",
+        "label": "每组样本量",
+        "min": 3,
+        "max": 60,
+        "step": 1,
+        "value": 25
+      },
+      {
+        "key": "a",
+        "label": "观察均值差",
+        "min": -4,
+        "max": 4,
+        "step": 0.1,
+        "value": 2
+      },
+      {
+        "key": "b",
+        "label": "第二组标准差",
+        "min": 0.5,
+        "max": 6,
+        "step": 0.1,
+        "value": 4
+      }
+    ],
+    "sweep": "n"
+  },
+  "test-z": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "观察 $z$ 值",
+        "min": -3,
+        "max": 4,
+        "step": 0.05,
+        "value": 2
+      }
+    ],
+    "sweep": "a"
+  },
+  "test-t": {
+    "controls": [
+      {
+        "key": "n",
+        "label": "样本量",
+        "min": 3,
+        "max": 80,
+        "step": 1,
+        "value": 25
+      },
+      {
+        "key": "a",
+        "label": "观察均值减假设均值",
+        "min": -3,
+        "max": 3,
+        "step": 0.1,
+        "value": 2
+      },
+      {
+        "key": "b",
+        "label": "样本标准差",
+        "min": 0.5,
+        "max": 6,
+        "step": 0.1,
+        "value": 5
+      }
+    ],
+    "sweep": "n"
+  },
+  "test-binomial": {
+    "controls": [
+      {
+        "key": "n",
+        "label": "总试验次数",
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "value": 10
+      },
+      {
+        "key": "a",
+        "label": "观察成功比例",
+        "min": 0,
+        "max": 1,
+        "step": 0.01,
+        "value": 0.8
+      },
+      {
+        "key": "b",
+        "label": "原假设成功概率",
+        "min": 0.05,
+        "max": 0.95,
+        "step": 0.05,
+        "value": 0.5
+      }
+    ],
+    "sweep": "a"
+  },
+  "permutation": {
+    "controls": [
+      {
+        "key": "n",
+        "label": "当前分配编号",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "value": 6
+      }
+    ],
+    "sweep": "n"
+  },
+  "power": {
+    "controls": [
+      {
+        "key": "n",
+        "label": "计划样本量",
+        "min": 5,
+        "max": 150,
+        "step": 1,
+        "value": 25
+      },
+      {
+        "key": "a",
+        "label": "真实均值减假设均值",
+        "min": 0,
+        "max": 2,
+        "step": 0.05,
+        "value": 0.5
+      },
+      {
+        "key": "b",
+        "label": "双侧显著性水平",
+        "min": 0.01,
+        "max": 0.1,
+        "step": 0.01,
+        "value": 0.05
+      }
+    ],
+    "sweep": "n"
+  },
+  "chi-square": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "每条对角线格子的计数",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "value": 20
+      }
+    ],
+    "sweep": "a"
+  },
+  "regression": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "第五个点的响应",
+        "min": -1,
+        "max": 8,
+        "step": 0.1,
+        "value": 3
+      }
+    ],
+    "sweep": "a"
+  },
+  "regression-interval": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "预测输入",
+        "min": -1,
+        "max": 5,
+        "step": 0.1,
+        "value": 2
+      }
+    ],
+    "sweep": "a"
+  },
+  "anova": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "相邻组中心距离",
+        "min": 0,
+        "max": 4,
+        "step": 0.1,
+        "value": 2
+      },
+      {
+        "key": "b",
+        "label": "组内偏离幅度",
+        "min": 0.2,
+        "max": 3,
+        "step": 0.1,
+        "value": 1
+      }
+    ],
+    "sweep": "a"
+  },
+  "beta": {
+    "controls": [
+      {
+        "key": "a",
+        "label": "先验第一形状参数",
+        "min": 0.5,
+        "max": 8,
+        "step": 0.5,
+        "value": 1
+      },
+      {
+        "key": "b",
+        "label": "先验第二形状参数",
+        "min": 0.5,
+        "max": 8,
+        "step": 0.5,
+        "value": 1
+      },
+      {
+        "key": "n",
+        "label": "二十次中的成功数",
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "value": 14
+      }
+    ],
+    "sweep": "a"
+  }
+}
