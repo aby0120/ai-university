@@ -1,0 +1,191 @@
+{
+  "id": "dm-second-recurrence",
+  "chapterId": "dm-recurrences",
+  "number": "6.3",
+  "title": "二阶线性递推",
+  "subtitle": "下一项依赖前两项时，需要两个初值。",
+  "concept": "下一项依赖前两项时，需要两个初值。",
+  "intuition": "特征根把复杂更新拆成简单的幂；重根时必须补上指标因子。",
+  "objectives": [
+    "建立特征方程",
+    "处理两类根"
+  ],
+  "body": [
+    {
+      "title": "建立特征方程",
+      "text": "把幂型候选代入齐次常系数递推，得到关于增长倍数的代数方程。"
+    },
+    {
+      "title": "处理两类根",
+      "text": "不同根的幂给出两个独立解；重根时第二解是指标乘根的幂。本节重根结论要求根非零。"
+    },
+    {
+      "title": "用初值定系数",
+      "text": "通解中的两个系数由两个初值求出。若非齐次，还需另找特解，不能直接套齐次通解。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "本节讨论实数二阶常系数齐次递推。",
+    "latex": "a_n=sa_{n-1}+ta_{n-2},\\quad r^2-sr-t=0",
+    "conditions": [
+      "递推从指标二开始。",
+      "幂型及重根公式中的根按相应条件处理；零重根直接检查原递推。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "代入幂型候选。",
+      "latex": "r^n=sr^{n-1}+tr^{n-2}"
+    },
+    {
+      "text": "非零根可约去共同幂。",
+      "latex": "r^2=sr+t"
+    },
+    {
+      "text": "不同根组合并满足初值。",
+      "latex": "a_n=Ar_1^n+Br_2^n\\quad(r_1\\ne r_2)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Fibonacci",
+      "problem": "$F_0=0,F_1=1,F_n=F_{n-1}+F_{n-2}$，前六项？",
+      "steps": [
+        "先写零、一。",
+        "逐次相加得到一、二、三、五。"
+      ],
+      "answer": "零、一、一、二、三、五。"
+    },
+    {
+      "title": "重根",
+      "problem": "$a_n=2a_{n-1}-a_{n-2},a_0=1,a_1=3$。",
+      "steps": [
+        "特征多项式为 $(r-1)^2$。",
+        "$a_n=A+Bn$，初值得 $A=1,B=2$。"
+      ],
+      "answer": "$a_n=1+2n$。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "上述 Fibonacci 的指标六项？",
+      "hint": "由三和五相加。",
+      "solution": [
+        "指标六为八。"
+      ],
+      "answer": "八。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 8,
+      "id": "dm-second-recurrence-q1"
+    },
+    {
+      "problem": "二阶递推只给一个初值通常够吗？",
+      "hint": "第二项仍可自由改变。",
+      "solution": [
+        "缺少第二个初始约束。"
+      ],
+      "answer": "不够。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-second-recurrence-q2"
+    },
+    {
+      "problem": "重根一时只写常数解够吗？",
+      "hint": "指标乘根幂产生第二解。",
+      "solution": [
+        "还需线性指标项。"
+      ],
+      "answer": "不够。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-second-recurrence-q3"
+    },
+    {
+      "problem": "$a_n=3a_{n-1}-2a_{n-2}$ 的根？",
+      "hint": "分解二次式。",
+      "solution": [
+        "$r^2-3r+2=(r-1)(r-2)$。"
+      ],
+      "answer": "一与二。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-second-recurrence-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "重根时为什么不能把同一幂写两次当两个独立解？",
+    "choices": [
+      "系数过大",
+      "两项会合并成同一解",
+      "初值必须相同"
+    ],
+    "correctIndex": 1,
+    "explanation": "需要第二种独立的指标依赖。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-second-recurrence-m1",
+      "claim": "两初值可在最后忽略",
+      "correction": "通式仍须满足它们。"
+    },
+    {
+      "id": "dm-second-recurrence-m2",
+      "claim": "所有递推都能用二次特征式",
+      "correction": "形式依赖阶数、齐次和常系数条件。"
+    }
+  ],
+  "prerequisites": [
+    "dm-first-recurrence"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "dm-second-recurrence-m1",
+    "dm-second-recurrence-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-second-recurrence",
+    "prediction": "逐项推进，两个前项怎样共同构成下一项？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "通式仍须满足它们。",
+    "steps": [
+      {
+        "title": "最后指标：0",
+        "instruction": "设为 $0$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，最后一项：$0$。",
+        "preset": {
+          "n": 0
+        }
+      },
+      {
+        "title": "最后指标：8",
+        "instruction": "设为 $8$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，最后一项：$21$。",
+        "preset": {
+          "n": 8
+        }
+      },
+      {
+        "title": "最后指标：16",
+        "instruction": "设为 $16$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，最后一项：$987$。",
+        "preset": {
+          "n": 16
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "id": "dm-connectivity",
+  "chapterId": "dm-graphs",
+  "number": "7.3",
+  "title": "连通、广度优先搜索与二部图",
+  "subtitle": "广度优先搜索按距离一层层探索，层数就是最少边数距离。",
+  "concept": "广度优先搜索按距离一层层探索，层数就是最少边数距离。",
+  "intuition": "先访问一步能到的点，再访问两步能到的点；边的长度暂时都按一算。",
+  "objectives": [
+    "计算连通分量",
+    "使用队列分层"
+  ],
+  "body": [
+    {
+      "title": "计算连通分量",
+      "text": "从一个未访问点出发遍历其全部可达点，得到一个分量。重复到所有点被访问，才能得到全图分量数。"
+    },
+    {
+      "title": "使用队列分层",
+      "text": "先发现先处理的队列保证短距离先扩展。顶点第一次发现时记录父节点，便能还原一条最短边数路径。"
+    },
+    {
+      "title": "检验二部性",
+      "text": "按 BFS 距离奇偶给两种颜色。若某条边连同色顶点，则产生奇圈；所有分量均无冲突才是二部图。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "有限无向图是二部图，当且仅当没有奇长度圈。",
+    "latex": "V=L\\sqcup R,\\quad\\forall\\{u,v\\}\\in E:\\ u\\in L\\iff v\\in R",
+    "conditions": [
+      "最短边数结论针对无权图或等权边。",
+      "二部性检验必须覆盖全部分量。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "二部图沿边必交替两侧。",
+      "latex": "L\\to R\\to L\\to\\cdots"
+    },
+    {
+      "text": "回到原点需偶数步。",
+      "latex": "\\text{二部}\\implies\\text{无奇圈}"
+    },
+    {
+      "text": "反向按距离奇偶染色，同色边会闭成奇圈。",
+      "latex": "\\text{无奇圈}\\implies\\text{两色可染}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "最短边数",
+      "problem": "四环从一个点到对面点，最短几条边？",
+      "steps": [
+        "相邻点距离一。",
+        "对面点下一层才发现。"
+      ],
+      "answer": "两条。"
+    },
+    {
+      "title": "三角形",
+      "problem": "三角形是二部图吗？",
+      "steps": [
+        "沿三条边交替颜色回到原点。",
+        "要求原点同时两种颜色，矛盾。"
+      ],
+      "answer": "不是。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "树一定是二部图吗？",
+      "hint": "树没有圈。",
+      "solution": [
+        "自然没有奇圈。"
+      ],
+      "answer": "是。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-connectivity-q1"
+    },
+    {
+      "problem": "BFS 能直接处理任意非负不同权重最短路吗？",
+      "hint": "层数只数边数。",
+      "solution": [
+        "权重不同需另用带权算法。"
+      ],
+      "answer": "不能直接套。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-connectivity-q2"
+    },
+    {
+      "problem": "两个分离三角形的分量数？",
+      "hint": "分别从未访问点出发。",
+      "solution": [
+        "两个各自连通的部分。"
+      ],
+      "answer": "二。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 2,
+      "id": "dm-connectivity-q3"
+    },
+    {
+      "problem": "孤立点算连通分量吗？",
+      "hint": "允许零长度到自身。",
+      "solution": [
+        "它构成一个单点分量。"
+      ],
+      "answer": "算。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-connectivity-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "BFS 第一发现距离为何最短？",
+    "choices": [
+      "先扩展距离小的层",
+      "顶点画得近",
+      "每次选编号最小"
+    ],
+    "correctIndex": 0,
+    "explanation": "所有较短层先处理完成。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-connectivity-m1",
+      "claim": "二部图必须两侧点数相同",
+      "correction": "只要求每条边跨侧。"
+    },
+    {
+      "id": "dm-connectivity-m2",
+      "claim": "只检查一个分量够判断二部性",
+      "correction": "别的分量仍可能含奇圈。"
+    }
+  ],
+  "prerequisites": [
+    "dm-graph-representation",
+    "dm-invariants"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "dm-connectivity-m1",
+    "dm-connectivity-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-connectivity",
+    "prediction": "逐步展开队列，顶点层数和两色分组怎样形成？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "只要求每条边跨侧。",
+    "steps": [
+      {
+        "title": "执行步数：0",
+        "instruction": "设为 $0$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，顶点：$6$；边：$6$；全图分量：$1$；全图二部：是。",
+        "preset": {
+          "a": 0,
+          "b": 1,
+          "n": 0
+        }
+      },
+      {
+        "title": "执行步数：3",
+        "instruction": "设为 $3$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，顶点：$6$；边：$6$；全图分量：$1$；全图二部：是。",
+        "preset": {
+          "a": 0,
+          "b": 1,
+          "n": 3
+        }
+      },
+      {
+        "title": "执行步数：6",
+        "instruction": "设为 $6$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，顶点：$6$；边：$6$；全图分量：$1$；全图二部：是。",
+        "preset": {
+          "a": 0,
+          "b": 1,
+          "n": 6
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "id": "dm-sets",
+  "chapterId": "dm-sets",
+  "number": "2.1",
+  "title": "集合运算与幂集",
+  "subtitle": "集合不计顺序，也不重复记录同一元素。",
+  "concept": "集合不计顺序，也不重复记录同一元素。",
+  "intuition": "集合看成员资格；列表还会保留位置与重复。",
+  "objectives": [
+    "进行集合运算",
+    "区分元素与子集"
+  ],
+  "body": [
+    {
+      "title": "进行集合运算",
+      "text": "交集保留共有元素，并集保留至少一边出现的元素，差集只保留左边独有元素。补集必须先指定全集。"
+    },
+    {
+      "title": "区分元素与子集",
+      "text": "一个元素属于集合，与一个集合的所有元素都属于另一个集合，是两种不同的关系。空集是每个集合的子集。"
+    },
+    {
+      "title": "计算幂集",
+      "text": "幂集收集所有子集。有限集合的每个元素都可选或不选，因此子集数是二的元素数次方。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "幂集的元素是集合本身的子集。",
+    "latex": "\\mathcal P(A)=\\{B:B\\subseteq A\\},\\quad |\\mathcal P(A)|=2^{|A|}",
+    "conditions": [
+      "幂集计数公式要求集合有限。",
+      "补集相对于指定全集。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "给每个元素一个成员开关。",
+      "latex": "\\mathbf1_B(a)\\in\\{0,1\\}"
+    },
+    {
+      "text": "每组开关唯一确定一个子集。",
+      "latex": "B\\longleftrightarrow(\\mathbf1_B(a))_{a\\in A}"
+    },
+    {
+      "text": "独立相乘。",
+      "latex": "|\\mathcal P(A)|=2^{|A|}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "差集",
+      "problem": "$A=\\{1,2,3\\},B=\\{2,4\\}$，求 $A\\setminus B$。",
+      "steps": [
+        "一和三只在左边。",
+        "二被右边排除。"
+      ],
+      "answer": "$\\{1,3\\}$。"
+    },
+    {
+      "title": "空集的幂集",
+      "problem": "空集有几个子集？",
+      "steps": [
+        "唯一可选的是不选任何元素。",
+        "空集本身是一个子集。"
+      ],
+      "answer": "$\\mathcal P(\\varnothing)=\\{\\varnothing\\}$，有一个元素。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "五元素集合有多少子集？",
+      "hint": "每个元素二选一。",
+      "solution": [
+        "$2^5=32$。"
+      ],
+      "answer": "三十二。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 32,
+      "id": "dm-sets-q1"
+    },
+    {
+      "problem": "集合中重复写三次同一个元素会变大吗？",
+      "hint": "集合是否记录次数？",
+      "solution": [
+        "成员资格没有变化。"
+      ],
+      "answer": "不会。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-sets-q2"
+    },
+    {
+      "problem": "$A\\setminus B$ 总等于 $B\\setminus A$ 吗？",
+      "hint": "用互异单元素集合。",
+      "solution": [
+        "$A=\\{1\\},B=\\{2\\}$ 时不同。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-sets-q3"
+    },
+    {
+      "problem": "补集能脱离全集定义吗？",
+      "hint": "所有“未出现者”从哪找？",
+      "solution": [
+        "需要先指定对象范围。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-sets-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "空集的幂集有几个元素？",
+    "choices": [
+      "零个",
+      "一个",
+      "两个"
+    ],
+    "correctIndex": 1,
+    "explanation": "空集有自身这一个子集。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-sets-m1",
+      "claim": "集合会保留重复",
+      "correction": "集合只记录是否属于。"
+    },
+    {
+      "id": "dm-sets-m2",
+      "claim": "空集的幂集仍为空",
+      "correction": "它包含空集这一个元素。"
+    }
+  ],
+  "prerequisites": [],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-sets-m1",
+    "dm-sets-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-sets",
+    "prediction": "切换集合运算，哪些元素被保留？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "集合只记录是否属于。",
+    "steps": [
+      {
+        "title": "集合运算模式：0",
+        "instruction": "设为 $0$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，结果元素数：$2$。",
+        "preset": {
+          "a": 0
+        }
+      },
+      {
+        "title": "集合运算模式：1",
+        "instruction": "设为 $1$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，结果元素数：$6$。",
+        "preset": {
+          "a": 1
+        }
+      },
+      {
+        "title": "集合运算模式：3",
+        "instruction": "设为 $3$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，结果元素数：$4$。",
+        "preset": {
+          "a": 3
+        }
+      }
+    ]
+  }
+}

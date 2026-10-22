@@ -1,0 +1,195 @@
+{
+  "id": "dm-rooted-trees",
+  "chapterId": "dm-trees",
+  "number": "8.2",
+  "title": "根树、遍历与前缀编码",
+  "subtitle": "指定根后，树的边有了父子方向；遍历规定访问顺序。",
+  "concept": "指定根后，树的边有了父子方向；遍历规定访问顺序。",
+  "intuition": "先序先看父节点，后序先处理孩子；次序来自任务需求。",
+  "objectives": [
+    "声明左右顺序",
+    "区分三种遍历"
+  ],
+  "body": [
+    {
+      "title": "声明左右顺序",
+      "text": "根树只有父子关系，若要唯一给出先后遍历序列，还需规定孩子的顺序。本节采用左右有序二叉树。"
+    },
+    {
+      "title": "区分三种遍历",
+      "text": "先序根左右，中序左根右，后序左右根。中序这里专指有左右位置的二叉树。"
+    },
+    {
+      "title": "理解前缀码",
+      "text": "把字符放在二叉树叶子上，左边记零、右边记一。没有叶码是另一个叶码的前缀，因此可逐位唯一解码。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "前缀码中任一码字都不是另一个码字的真前缀。",
+    "latex": "\\text{叶子路径码}\\implies\\text{前缀自由}",
+    "conditions": [
+      "有序二叉树固定左右孩子。",
+      "编码树的字符放在不同叶子。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "若一个码是另一叶码的前缀。",
+      "latex": "c(u)\\prec c(v)"
+    },
+    {
+      "text": "对应节点就在另一条根到叶路径中间。",
+      "latex": "u\\text{ 是 }v\\text{ 的祖先}"
+    },
+    {
+      "text": "叶子不能还有后代，故矛盾。",
+      "latex": "u\\text{ 叶子}\\implies\\text{无真后代}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "三节点遍历",
+      "problem": "根为甲，左孩子乙，右孩子丙，写三种遍历。",
+      "steps": [
+        "先序先甲再乙丙。",
+        "中序乙甲丙；后序乙丙甲。"
+      ],
+      "answer": "甲乙丙、乙甲丙、乙丙甲。"
+    },
+    {
+      "title": "是否前缀",
+      "problem": "码字 $0,10,11$ 能逐位唯一解码吗？",
+      "steps": [
+        "没有一个码是另一个的前缀。",
+        "读到叶子就输出并返回根。"
+      ],
+      "answer": "能。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "前序访问根在什么时候？",
+      "hint": "名称即先根。",
+      "solution": [
+        "访问左右子树前。"
+      ],
+      "answer": "最先。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-rooted-trees-q1"
+    },
+    {
+      "problem": "码字 $0,01$ 是否前缀自由？",
+      "hint": "比较第一个是否为第二个开头。",
+      "solution": [
+        "零是零一的真前缀。"
+      ],
+      "answer": "不是。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-rooted-trees-q2"
+    },
+    {
+      "problem": "普通根树不规定孩子顺序，遍历序列唯一吗？",
+      "hint": "兄弟可互换。",
+      "solution": [
+        "需要额外顺序约定。"
+      ],
+      "answer": "不唯一。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-rooted-trees-q3"
+    },
+    {
+      "problem": "满二叉树八个叶子有几个内部节点？",
+      "hint": "回到结构归纳结论。",
+      "solution": [
+        "$I=L-1=7$。"
+      ],
+      "answer": "七。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 7,
+      "id": "dm-rooted-trees-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "后序什么时候访问根？",
+    "choices": [
+      "所有孩子之后",
+      "最先",
+      "左右孩子之间"
+    ],
+    "correctIndex": 0,
+    "explanation": "先完成子问题再处理根。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-rooted-trees-m1",
+      "claim": "任何根树都有天然左右顺序",
+      "correction": "需明确约定。"
+    },
+    {
+      "id": "dm-rooted-trees-m2",
+      "claim": "唯一解码等同于前缀码",
+      "correction": "前缀自由是充分条件，不是所有唯一可解码码的必要条件。"
+    }
+  ],
+  "prerequisites": [
+    "dm-recursive-structures",
+    "dm-trees"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "dm-rooted-trees-m1",
+    "dm-rooted-trees-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-rooted-trees",
+    "prediction": "切换遍历顺序，逐步标出当前访问节点。",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "需明确约定。",
+    "steps": [
+      {
+        "title": "执行步数：0",
+        "instruction": "设为 $0$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，当前已访问：$0$。",
+        "preset": {
+          "a": 0,
+          "n": 0
+        }
+      },
+      {
+        "title": "执行步数：3",
+        "instruction": "设为 $3$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，当前已访问：$3$。",
+        "preset": {
+          "a": 0,
+          "n": 3
+        }
+      },
+      {
+        "title": "执行步数：7",
+        "instruction": "设为 $7$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，当前已访问：$7$。",
+        "preset": {
+          "a": 0,
+          "n": 7
+        }
+      }
+    ]
+  }
+}

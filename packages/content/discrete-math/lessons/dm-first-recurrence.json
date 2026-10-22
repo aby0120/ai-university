@@ -1,0 +1,197 @@
+{
+  "id": "dm-first-recurrence",
+  "chapterId": "dm-recurrences",
+  "number": "6.2",
+  "title": "递推式与一阶递推",
+  "subtitle": "递推说明下一项从哪里来，初值决定是哪一条数列。",
+  "concept": "递推说明下一项从哪里来，初值决定是哪一条数列。",
+  "intuition": "同一递推规律可以产生许多数列；起点不同，整条轨迹也不同。",
+  "objectives": [
+    "先定义指标",
+    "逐步展开"
+  ],
+  "body": [
+    {
+      "title": "先定义指标",
+      "text": "明确第一项从零还是从一开始，递推在哪些指标有效，防止公式整体错位。"
+    },
+    {
+      "title": "逐步展开",
+      "text": "一阶线性递推每一步乘固定系数，再加固定常量。展开后得到几何和，也可先减去平衡值。"
+    },
+    {
+      "title": "检查解",
+      "text": "通项要同时满足初值和递推。只满足其中一个不够，归纳可证明满足两者的数列唯一。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "固定实数系数的一阶递推可由几何和展开。",
+    "latex": "a_{n+1}=ra_n+c,\\quad a_n=r^na_0+c\\sum_{j=0}^{n-1}r^j",
+    "conditions": [
+      "指标从零开始。",
+      "几何和为空时取零。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "写出前两次展开。",
+      "latex": "a_1=ra_0+c,\\quad a_2=r^2a_0+rc+c"
+    },
+    {
+      "text": "每次把已有项乘系数，再加常量。",
+      "latex": "a_n=r^na_0+c(1+r+\\cdots+r^{n-1})"
+    },
+    {
+      "text": "系数为一时单独求和。",
+      "latex": "r=1\\implies a_n=a_0+nc"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "倍增加一",
+      "problem": "$a_0=0,a_{n+1}=2a_n+1$。",
+      "steps": [
+        "展开得 $a_n=1+2+\\cdots+2^{n-1}$。",
+        "几何和为 $2^n-1$。"
+      ],
+      "answer": "$a_n=2^n-1$。"
+    },
+    {
+      "title": "等差特例",
+      "problem": "$a_0=3,a_{n+1}=a_n+4$，求第五项（指标五）。",
+      "steps": [
+        "系数一，每次增加四。",
+        "$a_5=3+5\\cdot4$。"
+      ],
+      "answer": "二十三。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$a_0=1,a_{n+1}=2a_n$，求 $a_4$。",
+      "hint": "展开四次。",
+      "solution": [
+        "$a_4=2^4=16$。"
+      ],
+      "answer": "十六。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 16,
+      "id": "dm-first-recurrence-q1"
+    },
+    {
+      "problem": "同一递推不写初值能唯一确定吗？",
+      "hint": "比较两种起点。",
+      "solution": [
+        "通常有不同起点对应的不同解。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-first-recurrence-q2"
+    },
+    {
+      "problem": "$a_0=0,a_{n+1}=a_n+3$，求通项。",
+      "hint": "每步增加三。",
+      "solution": [
+        "$a_n=3n$。"
+      ],
+      "answer": "$3n$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-first-recurrence-q3"
+    },
+    {
+      "problem": "验证通项只验前五项够吗？",
+      "hint": "还需对任意指标代回。",
+      "solution": [
+        "有限匹配不排除后续差异。"
+      ],
+      "answer": "不够。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-first-recurrence-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "一阶递推还需要什么才确定唯一数列？",
+    "choices": [
+      "一个适用初值",
+      "足够多图像点",
+      "第二条相同递推"
+    ],
+    "correctIndex": 0,
+    "explanation": "初值与每一步唯一更新共同决定全体。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-first-recurrence-m1",
+      "claim": "初值不影响递推解",
+      "correction": "初值选定具体数列。"
+    },
+    {
+      "id": "dm-first-recurrence-m2",
+      "claim": "几何和公式可除以零",
+      "correction": "系数一时要用单独形式。"
+    }
+  ],
+  "prerequisites": [
+    "dm-induction"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "dm-first-recurrence-m1",
+    "dm-first-recurrence-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-first-recurrence",
+    "prediction": "改变乘数、加数和步数，数列如何展开？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "初值选定具体数列。",
+    "steps": [
+      {
+        "title": "执行步数：0",
+        "instruction": "设为 $0$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，最后一项：$0$。",
+        "preset": {
+          "a": 2,
+          "b": 1,
+          "n": 0
+        }
+      },
+      {
+        "title": "执行步数：5",
+        "instruction": "设为 $5$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，最后一项：$31$。",
+        "preset": {
+          "a": 2,
+          "b": 1,
+          "n": 5
+        }
+      },
+      {
+        "title": "执行步数：10",
+        "instruction": "设为 $10$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，最后一项：$1023$。",
+        "preset": {
+          "a": 2,
+          "b": 1,
+          "n": 10
+        }
+      }
+    ]
+  }
+}

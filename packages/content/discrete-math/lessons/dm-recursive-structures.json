@@ -1,0 +1,191 @@
+{
+  "id": "dm-recursive-structures",
+  "chapterId": "dm-induction",
+  "number": "4.3",
+  "title": "递归定义与结构归纳",
+  "subtitle": "先给基本对象，再说明怎样从已有对象构造新对象。",
+  "concept": "先给基本对象，再说明怎样从已有对象构造新对象。",
+  "intuition": "归纳不只按数字走，也能沿表达式或树的构造过程走。",
+  "objectives": [
+    "区分对象与表示",
+    "写明有限构造"
+  ],
+  "body": [
+    {
+      "title": "区分对象与表示",
+      "text": "同一个数可能有不同递归生成方式，证明时要说明自己研究的是构造树，还是构造结果。"
+    },
+    {
+      "title": "写明有限构造",
+      "text": "满二叉树从单叶开始，每次把两棵已有树接到一个新根。这里每个内部节点恰有两个孩子。"
+    },
+    {
+      "title": "按构造证明",
+      "text": "先验证基本对象，再假设两个子对象成立并证明组合对象成立。结构归纳依赖所有对象都由这些规则有限生成。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "有限满二叉树的叶数比内部节点数多一。",
+    "latex": "L=I+1",
+    "conditions": [
+      "树有限。",
+      "每个内部节点恰有两个孩子。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "单叶树成立。",
+      "latex": "L=1,\\ I=0"
+    },
+    {
+      "text": "合并两棵满二叉树。",
+      "latex": "L=L_1+L_2,\\quad I=I_1+I_2+1"
+    },
+    {
+      "text": "代入两个归纳假设。",
+      "latex": "L=(I_1+1)+(I_2+1)=I+1"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "数叶子",
+      "problem": "有限满二叉树有七个内部节点，叶子几个？",
+      "steps": [
+        "每个内部节点恰有两个孩子。",
+        "$L=I+1=8$。"
+      ],
+      "answer": "八。"
+    },
+    {
+      "title": "为什么要满",
+      "problem": "只含根与一个孩子的二叉树满足该公式吗？",
+      "steps": [
+        "内部节点一个，叶子一个。",
+        "一个不等于一个加一。"
+      ],
+      "answer": "不满足，普通二叉树未必是满二叉树。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "满二叉树四个叶子时总节点数？",
+      "hint": "内部节点比叶子少一。",
+      "solution": [
+        "$I=3,L+I=7$。"
+      ],
+      "answer": "七。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 7,
+      "id": "dm-recursive-structures-q1"
+    },
+    {
+      "problem": "一个节点的树算递归基本对象吗？",
+      "hint": "基本规则允许单叶。",
+      "solution": [
+        "它不需要进一步组合。"
+      ],
+      "answer": "算。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-recursive-structures-q2"
+    },
+    {
+      "problem": "结构归纳只检查根节点够吗？",
+      "hint": "需连接子结构的性质。",
+      "solution": [
+        "组合规则依赖全部直接子结构。"
+      ],
+      "answer": "不够。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-recursive-structures-q3"
+    },
+    {
+      "problem": "无限递归构造能直接沿用本节结论吗？",
+      "hint": "有限性用在哪里？",
+      "solution": [
+        "有限生成是结构归纳的前提。"
+      ],
+      "answer": "不能直接沿用。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-recursive-structures-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "“每节点最多两个孩子”能推出叶数等于内部数加一吗？",
+    "choices": [
+      "能",
+      "不能",
+      "树高大于二才行"
+    ],
+    "correctIndex": 1,
+    "explanation": "单孩子链是反例。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-recursive-structures-m1",
+      "claim": "二叉树都称满二叉树",
+      "correction": "满要求内部节点恰有两个孩子。"
+    },
+    {
+      "id": "dm-recursive-structures-m2",
+      "claim": "递归定义不用基本对象",
+      "correction": "没有基本入口可能生成不了任何有限对象。"
+    }
+  ],
+  "prerequisites": [
+    "dm-strong-induction"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-recursive-structures-m1",
+    "dm-recursive-structures-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-recursive-structures",
+    "prediction": "增加完整层数，内部节点与叶子数如何同步增长？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "满要求内部节点恰有两个孩子。",
+    "steps": [
+      {
+        "title": "树的深度：0",
+        "instruction": "设为 $0$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，叶子：$1$；内部节点：$0$。",
+        "preset": {
+          "a": 0
+        }
+      },
+      {
+        "title": "树的深度：2",
+        "instruction": "设为 $2$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，叶子：$4$；内部节点：$3$。",
+        "preset": {
+          "a": 2
+        }
+      },
+      {
+        "title": "树的深度：4",
+        "instruction": "设为 $4$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，叶子：$16$；内部节点：$15$。",
+        "preset": {
+          "a": 4
+        }
+      }
+    ]
+  }
+}

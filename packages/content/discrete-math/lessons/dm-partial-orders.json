@@ -1,0 +1,192 @@
+{
+  "id": "dm-partial-orders",
+  "chapterId": "dm-sets",
+  "number": "2.5",
+  "title": "偏序、Hasse 图与格",
+  "subtitle": "偏序允许某些对象无法比较；全序才要求任意两者可比。",
+  "concept": "偏序允许某些对象无法比较；全序才要求任意两者可比。",
+  "intuition": "按“是子集”排序时，两个不同单元素集合没有谁在前；它们仍能有共同上界。",
+  "objectives": [
+    "识别偏序",
+    "阅读 Hasse 图"
+  ],
+  "body": [
+    {
+      "title": "识别偏序",
+      "text": "偏序要求自反、反对称、传递。小于等于是数上的偏序，包含关系是集合上的偏序，整除是正整数上的偏序。"
+    },
+    {
+      "title": "阅读 Hasse 图",
+      "text": "有限偏序去掉自环与传递得到的边，只画覆盖关系，较大的元素放上方。没有连线不一定不可比，还要检查上升路径。"
+    },
+    {
+      "title": "区分极值与格",
+      "text": "极大元只要求没有严格更大者，最大元要大于等于所有元素。若任意二元都有唯一最小上界和最大下界，称为格。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "幂集的包含偏序构成格；并和交分别给出上确界与下确界。",
+    "latex": "A\\vee B=A\\cup B,\\qquad A\\wedge B=A\\cap B",
+    "conditions": [
+      "Hasse 图用于有限偏序。",
+      "最小上界要求是所有上界中最小者。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "并集包含两个集合。",
+      "latex": "A\\subseteq A\\cup B,\\quad B\\subseteq A\\cup B"
+    },
+    {
+      "text": "任何共同上界都包含并集。",
+      "latex": "A,B\\subseteq C\\implies A\\cup B\\subseteq C"
+    },
+    {
+      "text": "交集对偶地给出最大下界。",
+      "latex": "A\\cap B\\subseteq A,B"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "不可比",
+      "problem": "集合 $\\{1\\}$ 与 $\\{2\\}$ 在包含偏序下比较。",
+      "steps": [
+        "双方都含对方没有的元素。",
+        "没有任何包含方向。"
+      ],
+      "answer": "不可比。"
+    },
+    {
+      "title": "两种最大",
+      "problem": "偏序仅有两个互不可比元素，极大元与最大元各多少？",
+      "steps": [
+        "两元素都没有严格更大者。",
+        "没有一个大于等于另一个。"
+      ],
+      "answer": "两个极大元，无最大元。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "三元素集合的幂集有几个最大元？",
+      "hint": "全体元素组成的集合。",
+      "solution": [
+        "全集唯一包含全部子集。"
+      ],
+      "answer": "一个。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 1,
+      "id": "dm-partial-orders-q1"
+    },
+    {
+      "problem": "正整数整除偏序中，六与十的最大下界？",
+      "hint": "求最大公因子。",
+      "solution": [
+        "$\\gcd(6,10)=2$。"
+      ],
+      "answer": "二。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 2,
+      "id": "dm-partial-orders-q2"
+    },
+    {
+      "problem": "Hasse 图未直接连边就不可比吗？",
+      "hint": "可能经其他节点上升。",
+      "solution": [
+        "传递边被省略，可经路径可比。"
+      ],
+      "answer": "不是。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-partial-orders-q3"
+    },
+    {
+      "problem": "一个偏序能有两个不同最大元吗？",
+      "hint": "利用反对称性。",
+      "solution": [
+        "两者互相大于等于则相等。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-partial-orders-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "极大元一定是最大元吗？",
+    "choices": [
+      "是",
+      "不是",
+      "非空就一定"
+    ],
+    "correctIndex": 1,
+    "explanation": "可能同时有多个互不可比的极大元。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-partial-orders-m1",
+      "claim": "偏序要求任意可比",
+      "correction": "那是全序的额外要求。"
+    },
+    {
+      "id": "dm-partial-orders-m2",
+      "claim": "Hasse 图省略的关系不存在",
+      "correction": "自反和传递关系仍有效。"
+    }
+  ],
+  "prerequisites": [
+    "dm-relations"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-partial-orders-m1",
+    "dm-partial-orders-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-partial-orders",
+    "prediction": "改变底层元素数，幂集格的覆盖边和不可比元素怎样变化？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "那是全序的额外要求。",
+    "steps": [
+      {
+        "title": "底集元素数：1",
+        "instruction": "设为 $1$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，子集数：$2$；覆盖边数：$1$。",
+        "preset": {
+          "a": 1
+        }
+      },
+      {
+        "title": "底集元素数：2",
+        "instruction": "设为 $2$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，子集数：$4$；覆盖边数：$4$。",
+        "preset": {
+          "a": 2
+        }
+      },
+      {
+        "title": "底集元素数：3",
+        "instruction": "设为 $3$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，子集数：$8$；覆盖边数：$12$。",
+        "preset": {
+          "a": 3
+        }
+      }
+    ]
+  }
+}

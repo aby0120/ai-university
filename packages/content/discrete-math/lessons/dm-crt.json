@@ -1,0 +1,196 @@
+{
+  "id": "dm-crt",
+  "chapterId": "dm-integers",
+  "number": "3.5",
+  "title": "模逆元与中国剩余定理",
+  "subtitle": "互质保证可逆，也保证两套余数能唯一拼成一个模乘积的类。",
+  "concept": "互质保证可逆，也保证两套余数能唯一拼成一个模乘积的类。",
+  "intuition": "先走满足第一条同余的等差数列，再找其中满足第二条的点。",
+  "objectives": [
+    "判断逆元",
+    "拼接互质模数"
+  ],
+  "body": [
+    {
+      "title": "判断逆元",
+      "text": "一个数模给定模数可逆，当且仅当二者互质。Bézout 中该数的系数取余就是逆元。"
+    },
+    {
+      "title": "拼接互质模数",
+      "text": "两模数互质时，沿第一套解每次加第一模数，会在第二模数下走遍全部余数。交点因此存在且模乘积唯一。"
+    },
+    {
+      "title": "处理不互质",
+      "text": "两余数的差必须被模数最大公因数整除才有解；若有解，唯一性改成模最小公倍数。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "中国剩余定理的乘积唯一性要求模数两两互质。",
+    "latex": "\\gcd(m,n)=1\\implies x\\equiv a\\pmod m,\\ x\\equiv b\\pmod n\\text{ 在模 }mn\\text{ 下唯一}",
+    "conditions": [
+      "模数为正整数。",
+      "不互质时需检查兼容性。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "第一条同余参数化。",
+      "latex": "x=a+mt"
+    },
+    {
+      "text": "代入第二条。",
+      "latex": "mt\\equiv b-a\\pmod n"
+    },
+    {
+      "text": "使用逆元解出参数。",
+      "latex": "t\\equiv m^{-1}(b-a)\\pmod n"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "拼接余数",
+      "problem": "$x\\equiv2\\pmod3,\\ x\\equiv3\\pmod5$。",
+      "steps": [
+        "$x=2+3t$，所以 $3t\\equiv1\\pmod5$。",
+        "三的逆元为二，故 $t\\equiv2\\pmod5$。"
+      ],
+      "answer": "$x\\equiv8\\pmod{15}$。"
+    },
+    {
+      "title": "不兼容",
+      "problem": "$x\\equiv0\\pmod2,\\ x\\equiv1\\pmod4$ 能同时成立吗？",
+      "steps": [
+        "第一条要求偶数。",
+        "第二条要求奇数；余数差不被二整除。"
+      ],
+      "answer": "无解。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "三模七的逆元？",
+      "hint": "找乘积余一。",
+      "solution": [
+        "$3\\cdot5=15\\equiv1\\pmod7$。"
+      ],
+      "answer": "五。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 5,
+      "id": "dm-crt-q1"
+    },
+    {
+      "problem": "四模六有逆元吗？",
+      "hint": "先算最大公因数。",
+      "solution": [
+        "最大公因数为二。"
+      ],
+      "answer": "没有。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-crt-q2"
+    },
+    {
+      "problem": "$x\\equiv1\\pmod2,\\ x\\equiv2\\pmod3$ 的最小非负解？",
+      "hint": "列奇数。",
+      "solution": [
+        "一不行，三不行，五满足。"
+      ],
+      "answer": "五。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 5,
+      "id": "dm-crt-q3"
+    },
+    {
+      "problem": "两模数不互质就一定无解吗？",
+      "hint": "考虑相同的零余数。",
+      "solution": [
+        "零可同时满足两条零同余。"
+      ],
+      "answer": "不一定，需检查兼容性。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-crt-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "可逆的必要充分条件是什么？",
+    "choices": [
+      "数小于模数",
+      "二者互质",
+      "模数为偶数"
+    ],
+    "correctIndex": 1,
+    "explanation": "Bézout 给出充分性，逆元等式也给出必要性。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-crt-m1",
+      "claim": "不互质一定无解",
+      "correction": "余数兼容时仍可解。"
+    },
+    {
+      "id": "dm-crt-m2",
+      "claim": "有解就只有一个整数",
+      "correction": "唯一的是一个余数类，不是单个整数。"
+    }
+  ],
+  "prerequisites": [
+    "dm-euclid",
+    "dm-congruence"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-crt-m1",
+    "dm-crt-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-crt",
+    "prediction": "改变模三与模五的余数，唯一交点怎样移动？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "余数兼容时仍可解。",
+    "steps": [
+      {
+        "title": "模三余数：0",
+        "instruction": "设为 $0$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，最小非负解：$3$。",
+        "preset": {
+          "a": 0,
+          "b": 3
+        }
+      },
+      {
+        "title": "模三余数：1",
+        "instruction": "设为 $1$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，最小非负解：$13$。",
+        "preset": {
+          "a": 1,
+          "b": 3
+        }
+      },
+      {
+        "title": "模三余数：2",
+        "instruction": "设为 $2$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，最小非负解：$8$。",
+        "preset": {
+          "a": 2,
+          "b": 3
+        }
+      }
+    ]
+  }
+}

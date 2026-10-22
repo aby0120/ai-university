@@ -1,0 +1,194 @@
+{
+  "id": "dm-invariants",
+  "chapterId": "dm-induction",
+  "number": "4.4",
+  "title": "循环不变量与终止",
+  "subtitle": "正确性需要说明每一步保留什么，以及过程为何一定结束。",
+  "concept": "正确性需要说明每一步保留什么，以及过程为何一定结束。",
+  "intuition": "不变量保证走的路没偏；严格下降的量保证不会永远走下去。",
+  "objectives": [
+    "初始化",
+    "保持与退出"
+  ],
+  "body": [
+    {
+      "title": "初始化",
+      "text": "不变量应在第一次循环之前成立。求前若干整数和时，可令当前已处理数量为零、累加值为零。"
+    },
+    {
+      "title": "保持与退出",
+      "text": "若每轮开始满足不变量，执行一轮后仍满足；循环退出时，再把退出条件代入不变量得到目标。"
+    },
+    {
+      "title": "区分两种正确性",
+      "text": "只证明“若结束则结果正确”叫部分正确性。再证明必定结束，才得到完全正确性。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "不变量描述程序状态，而非程序最终目标的重复宣称。",
+    "latex": "s=\\sum_{i=1}^{k}i,\\quad 0\\le k\\le n",
+    "conditions": [
+      "输入为非负整数。",
+      "每轮令索引增加一并加入新项。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "初始化时没有已处理项。",
+      "latex": "k=0,\\ s=0"
+    },
+    {
+      "text": "一轮把新项加入。",
+      "latex": "k'=k+1,\\quad s'=s+(k+1)"
+    },
+    {
+      "text": "剩余量严格减少，退出时已处理全部。",
+      "latex": "n-k\\downarrow0,\\quad s=\\sum_{i=1}^n i"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "累加的状态",
+      "problem": "累加到五时当前处理完三项，累加值应为多少？",
+      "steps": [
+        "不变量给出 $s=1+2+3$。",
+        "当前状态不是最终答案。"
+      ],
+      "answer": "六。"
+    },
+    {
+      "title": "不变量不足",
+      "problem": "程序永远重复“零加零”，累加值恒为零，能证明终止吗？",
+      "steps": [
+        "保持不变量并不禁止无限循环。",
+        "还缺少有下界的严格下降量。"
+      ],
+      "answer": "不能。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "累加前四个正整数的结果？",
+      "hint": "逐项加入。",
+      "solution": [
+        "$1+2+3+4=10$。"
+      ],
+      "answer": "十。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 10,
+      "id": "dm-invariants-q1"
+    },
+    {
+      "problem": "下降量只是不增，能保证停止吗？",
+      "hint": "它可以永远保持不变。",
+      "solution": [
+        "需要严格下降或其他终止理由。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-invariants-q2"
+    },
+    {
+      "problem": "退出条件在证明哪一步使用？",
+      "hint": "联系最终状态与目标。",
+      "solution": [
+        "循环结束后将退出条件结合不变量。"
+      ],
+      "answer": "退出结论步骤。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-invariants-q3"
+    },
+    {
+      "problem": "部分正确性能保证总返回结果吗？",
+      "hint": "其陈述带什么条件？",
+      "solution": [
+        "只保证结束时正确。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-invariants-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "完全正确性比部分正确性多什么？",
+    "choices": [
+      "更多测试",
+      "终止证明",
+      "更长代码"
+    ],
+    "correctIndex": 1,
+    "explanation": "需保证程序确实结束。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-invariants-m1",
+      "claim": "不变量就是循环变量不变",
+      "correction": "不变的是状态间的关系。"
+    },
+    {
+      "id": "dm-invariants-m2",
+      "claim": "测试结束过就证明总终止",
+      "correction": "全部合法输入仍需一般理由。"
+    }
+  ],
+  "prerequisites": [
+    "dm-induction"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-invariants-m1",
+    "dm-invariants-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-invariants",
+    "prediction": "逐轮执行累加，当前处理数、累加值和剩余量是否符合不变量？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "不变的是状态间的关系。",
+    "steps": [
+      {
+        "title": "执行步数：0",
+        "instruction": "设为 $0$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，当前累加值：$0$；已结束：否。",
+        "preset": {
+          "a": 6,
+          "n": 0
+        }
+      },
+      {
+        "title": "执行步数：6",
+        "instruction": "设为 $6$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，当前累加值：$21$；已结束：是。",
+        "preset": {
+          "a": 6,
+          "n": 6
+        }
+      },
+      {
+        "title": "执行步数：12",
+        "instruction": "设为 $12$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，当前累加值：$21$；已结束：是。",
+        "preset": {
+          "a": 6,
+          "n": 12
+        }
+      }
+    ]
+  }
+}

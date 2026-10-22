@@ -1,0 +1,191 @@
+{
+  "id": "dm-equivalence-classes",
+  "chapterId": "dm-sets",
+  "number": "2.4",
+  "title": "等价关系与划分",
+  "subtitle": "等价关系把对象分成互不重叠的类。",
+  "concept": "等价关系把对象分成互不重叠的类。",
+  "intuition": "同类不是说对象相等，而是按当前规则不再区分。",
+  "objectives": [
+    "检查三条性质",
+    "形成等价类"
+  ],
+  "body": [
+    {
+      "title": "检查三条性质",
+      "text": "等价关系必须自反、对称、传递。仅有“很接近”通常不传递，因而不能直接用作等价关系。"
+    },
+    {
+      "title": "形成等价类",
+      "text": "一个对象的等价类包含所有与它等价的对象。两个类一旦有共同元素，就会由对称与传递推出两类完全相同。"
+    },
+    {
+      "title": "从划分反建关系",
+      "text": "给定覆盖全集且两两不交的非空块，定义“在同一块内”为等价，恰好得到原来的划分。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "同余模一个正整数给出典型等价关系。",
+    "latex": "[a]_m=\\{b\\in\\mathbb Z:m\\mid(a-b)\\}",
+    "conditions": [
+      "模数为正整数。",
+      "划分的各块非空、互不相交并覆盖全集。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "同一对象差为零。",
+      "latex": "m\\mid(a-a)"
+    },
+    {
+      "text": "整除在取负后仍成立。",
+      "latex": "m\\mid(a-b)\\implies m\\mid(b-a)"
+    },
+    {
+      "text": "两段差相加。",
+      "latex": "m\\mid(a-b),\\ m\\mid(b-c)\\implies m\\mid(a-c)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "按余数分类",
+      "problem": "零到七按模三划分。",
+      "steps": [
+        "余数零：$\\{0,3,6\\}$；余数一：$\\{1,4,7\\}$。",
+        "余数二：$\\{2,5\\}$。"
+      ],
+      "answer": "三类。"
+    },
+    {
+      "title": "接近不传递",
+      "problem": "实数上距离小于一是否等价？",
+      "steps": [
+        "零与 $0.6$ 接近，$0.6$ 与 $1.2$ 接近。",
+        "零与 $1.2$ 不接近。"
+      ],
+      "answer": "不是等价关系。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "模五的整数有几个等价类？",
+      "hint": "余数范围。",
+      "solution": [
+        "余数为零至四。"
+      ],
+      "answer": "五个。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 5,
+      "id": "dm-equivalence-classes-q1"
+    },
+    {
+      "problem": "不同等价类能有公共元素吗？",
+      "hint": "沿公共元素连接两类。",
+      "solution": [
+        "公共元素会推出两类相同。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-equivalence-classes-q2"
+    },
+    {
+      "problem": "等价类中的元素必须数值相等吗？",
+      "hint": "比较同余的不同整数。",
+      "solution": [
+        "一和四模三等价但不相等。"
+      ],
+      "answer": "不必。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-equivalence-classes-q3"
+    },
+    {
+      "problem": "划分能包含空块吗？",
+      "hint": "划分约定的非空条件。",
+      "solution": [
+        "空块不代表任何对象的等价类。"
+      ],
+      "answer": "按本卷定义不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-equivalence-classes-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "两个等价类有交集时怎样？",
+    "choices": [
+      "仅交集相同",
+      "两类完全相同",
+      "关系不再自反"
+    ],
+    "correctIndex": 1,
+    "explanation": "经共同成员用对称与传递即可连接。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-equivalence-classes-m1",
+      "claim": "同类就是相等",
+      "correction": "等价取决于指定规则。"
+    },
+    {
+      "id": "dm-equivalence-classes-m2",
+      "claim": "近似相等总是等价",
+      "correction": "传递性经常失败。"
+    }
+  ],
+  "prerequisites": [
+    "dm-relations"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-equivalence-classes-m1",
+    "dm-equivalence-classes-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-equivalence-classes",
+    "prediction": "改变模数，同一组整数如何重新分组？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "等价取决于指定规则。",
+    "steps": [
+      {
+        "title": "模数：2",
+        "instruction": "设为 $2$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，等价类数：$2$。",
+        "preset": {
+          "a": 2
+        }
+      },
+      {
+        "title": "模数：4",
+        "instruction": "设为 $4$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，等价类数：$4$。",
+        "preset": {
+          "a": 4
+        }
+      },
+      {
+        "title": "模数：6",
+        "instruction": "设为 $6$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，等价类数：$6$。",
+        "preset": {
+          "a": 6
+        }
+      }
+    ]
+  }
+}

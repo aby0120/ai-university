@@ -2,10 +2,10 @@
 
 顶层分类由 `packages/content/library.json` 的 `categories` 定义：
 
-- **数学**：微积分 I、II、III，线性代数，常微分方程，概率与统计；后续数学规划也归此类。
+- **数学**：微积分 I、II、III，线性代数，常微分方程，概率与统计，离散数学；后续数学规划也归此类。
 - **其他**：Python 编程入门、《带着 AI 做项目》，暂不另建编程分类。
 
-首页按分类切换已出版教材，书库支持分类、出版状态及数学方向筛选。分类与方向分别由 `categoryId`、`areaId` 标识，校验拒绝不一致的归属。共有 8 本已出版教材，规划不冒充已出版内容。
+首页按分类切换已出版教材，书库支持分类、出版状态及数学方向筛选。分类与方向分别由 `categoryId`、`areaId` 标识，校验拒绝不一致的归属。共有 9 本已出版教材，规划不冒充已出版内容。
 
 数学 canonical 集合由 `packages/content/index.ts` 和 `scripts/content-utils.mjs` 注册；编程教材由 `packages/content/programming.json` 和 `scripts/programming-utils.mjs` 注册。两个 schema 各自验证本学科语义，统一向书库提供真实计数、搜索索引与出版产物。
 
@@ -37,3 +37,5 @@
 常微分方程以 `ordinary-differential-equations` 为卷 ID，`ode-` 为知识点前缀；归入微分方程方向。偏微分方程仍是独立后续课程，不使用空章节占位。
 
 概率与统计放在 `probability-statistics/`，使用 `ps-` 前缀；打印文件为 `Probability-Statistics.md` 和 `probability-statistics.html`。`packages/visuals/statistics.mjs` 为数值核，`probability.mjs` 与两份 registry 保存五十节模型、控件与绘图数据。
+
+离散数学使用 `discrete-math/` 与 `dm-` 前缀，完整书稿为 `Discrete-Mathematics.md`，打印版为 `discrete-math.html`。交互 registry 为 `packages/visuals/discrete-models.json`，算法与绘图数据为 `discrete.mjs`。实分析为目前书单中唯一未出版的卷。

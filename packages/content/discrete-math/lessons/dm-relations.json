@@ -1,0 +1,191 @@
+{
+  "id": "dm-relations",
+  "chapterId": "dm-sets",
+  "number": "2.3",
+  "title": "二元关系与关系矩阵",
+  "subtitle": "关系记录哪些有序对成立；它比函数容许更多对应。",
+  "concept": "关系记录哪些有序对成立；它比函数容许更多对应。",
+  "intuition": "关系矩阵的行是起点、列是终点，真格表示这对对象有关。",
+  "objectives": [
+    "表示关系",
+    "检查性质"
+  ],
+  "body": [
+    {
+      "title": "表示关系",
+      "text": "集合上的二元关系是笛卡尔积的子集。同一对象可以关联多个对象，也可以没有任何关联。"
+    },
+    {
+      "title": "检查性质",
+      "text": "自反要求全部对角格为真；对称要求镜像格一致；反对称只禁止不同对象双向相连，不禁止自环。"
+    },
+    {
+      "title": "求传递闭包",
+      "text": "传递要求两步可达时已有直接关系。传递闭包补上所有正长度路径对应的对；自反传递闭包还补上零长度路径。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "传递性要求每条两步关系都能合并成一步。",
+    "latex": "R\\subseteq A\\times A,\\quad xRy\\land yRz\\implies xRz",
+    "conditions": [
+      "反对称允许相同对象的双向关系。",
+      "传递闭包与自反传递闭包分别约定路径长度。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "矩阵记录一步关系。",
+      "latex": "M_{ij}=\\mathbf1_{iRj}"
+    },
+    {
+      "text": "布尔乘积记录两步可达。",
+      "latex": "(M^{[2]})_{ij}=\\bigvee_k(M_{ik}\\land M_{kj})"
+    },
+    {
+      "text": "合并所有正长度路径。",
+      "latex": "R^+=\\bigcup_{k\\ge1}R^k"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "对称与反对称",
+      "problem": "只有对角关系的恒等关系，能同时对称、反对称吗？",
+      "steps": [
+        "所有双向关系都发生在同一对象上。",
+        "两种定义都满足。"
+      ],
+      "answer": "能，两者不是互为否定。"
+    },
+    {
+      "title": "漏掉一条边",
+      "problem": "$1R2,2R3$ 但 $1R3$ 不成立，是否传递？",
+      "steps": [
+        "前两条满足传递性的前提。",
+        "结论不成立。"
+      ],
+      "answer": "不传递，需补上该边。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "三元素集合上有多少种二元关系？",
+      "hint": "九个有序对分别选或不选。",
+      "solution": [
+        "$2^9=512$。"
+      ],
+      "answer": "五百一十二。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 512,
+      "id": "dm-relations-q1"
+    },
+    {
+      "problem": "空关系传递吗？",
+      "hint": "前提是否有可能同时真？",
+      "solution": [
+        "不存在两步前提，故不出现违反。"
+      ],
+      "answer": "传递。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-relations-q2"
+    },
+    {
+      "problem": "反对称关系能有自环吗？",
+      "hint": "反对称约束不同对象。",
+      "solution": [
+        "允许同一对象关联自身。"
+      ],
+      "answer": "能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-relations-q3"
+    },
+    {
+      "problem": "有向三环的传递闭包包含自环吗？",
+      "hint": "走三步能回原点。",
+      "solution": [
+        "每个点有正长度回路。"
+      ],
+      "answer": "包含。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-relations-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "对称与反对称能同时成立吗？",
+    "choices": [
+      "不能",
+      "能",
+      "只要关系不空就不能"
+    ],
+    "correctIndex": 1,
+    "explanation": "恒等关系就是例子。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-relations-m1",
+      "claim": "反对称等于不对称",
+      "correction": "反对称允许自环，也允许部分双向仅同点。"
+    },
+    {
+      "id": "dm-relations-m2",
+      "claim": "闭包只补两步边即可停",
+      "correction": "新增边还可能形成更长路径，需完整闭包。"
+    }
+  ],
+  "prerequisites": [
+    "dm-sets"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-relations-m1",
+    "dm-relations-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-relations",
+    "prediction": "开启不同关系模式，矩阵是否满足自反、对称和传递？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "反对称允许自环，也允许部分双向仅同点。",
+    "steps": [
+      {
+        "title": "关系模式：0",
+        "instruction": "设为 $0$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，自反：是；对称：否；传递：是。",
+        "preset": {
+          "a": 0
+        }
+      },
+      {
+        "title": "关系模式：1",
+        "instruction": "设为 $1$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，自反：是；对称：是；传递：否。",
+        "preset": {
+          "a": 1
+        }
+      },
+      {
+        "title": "关系模式：2",
+        "instruction": "设为 $2$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，自反：是；对称：否；传递：否。",
+        "preset": {
+          "a": 2
+        }
+      }
+    ]
+  }
+}

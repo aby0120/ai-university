@@ -1,0 +1,190 @@
+{
+  "id": "dm-graph-representation",
+  "chapterId": "dm-graphs",
+  "number": "7.1",
+  "title": "图、邻接表与邻接矩阵",
+  "subtitle": "图用顶点表示对象，用边表示一对对象之间的关系。",
+  "concept": "图用顶点表示对象，用边表示一对对象之间的关系。",
+  "intuition": "同一幅图可以换位置、换画法；真正决定结构的是谁与谁相连。",
+  "objectives": [
+    "声明图的种类",
+    "选择表示"
+  ],
+  "body": [
+    {
+      "title": "声明图的种类",
+      "text": "简单无向图不含自环和重边；有向图的边有方向。本卷除明确声明外，都使用有限简单无向图。"
+    },
+    {
+      "title": "选择表示",
+      "text": "邻接矩阵便于查询一对顶点是否相邻；邻接表便于枚举实际邻居。稀疏图通常用邻接表更节省空间。"
+    },
+    {
+      "title": "区分相同与同构",
+      "text": "图同构允许重命名顶点，但必须保持邻接关系。图画相似或度数序列相同，都不自动证明同构。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "简单无向图的边是两个不同顶点组成的无序对。",
+    "latex": "G=(V,E),\\quad E\\subseteq\\binom V2,\\quad A_{ij}=\\mathbf1_{\\{i,j\\}\\in E}",
+    "conditions": [
+      "本节默认有限简单无向图。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "无向边不区分两个端点顺序。",
+      "latex": "A_{ij}=A_{ji}"
+    },
+    {
+      "text": "简单图没有自环。",
+      "latex": "A_{ii}=0"
+    },
+    {
+      "text": "每条边在矩阵中出现两次。",
+      "latex": "\\sum_{i,j}A_{ij}=2|E|"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "读矩阵",
+      "problem": "三角形的邻接矩阵有几个一？",
+      "steps": [
+        "三条无向边各占两个镜像格。",
+        "对角均为零。"
+      ],
+      "answer": "六个。"
+    },
+    {
+      "title": "相同度数不够",
+      "problem": "六环与两个分离三角形是否同构？",
+      "steps": [
+        "两者所有顶点度数都是二。",
+        "前者连通，后者不连通，同构保留连通性。"
+      ],
+      "answer": "不同构。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "五顶点简单图最多几条边？",
+      "hint": "每对不同点一条。",
+      "solution": [
+        "$\\binom52=10$。"
+      ],
+      "answer": "十。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 10,
+      "id": "dm-graph-representation-q1"
+    },
+    {
+      "problem": "改变顶点画的位置会改变图吗？",
+      "hint": "邻接关系保持即可。",
+      "solution": [
+        "几何位置不是此处图结构的一部分。"
+      ],
+      "answer": "不会。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-graph-representation-q2"
+    },
+    {
+      "problem": "简单无向图矩阵是否对称？",
+      "hint": "两个方向表示同一边。",
+      "solution": [
+        "镜像格相同。"
+      ],
+      "answer": "是。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-graph-representation-q3"
+    },
+    {
+      "problem": "相同度数序列足以证明同构吗？",
+      "hint": "用六环与双三角形。",
+      "solution": [
+        "连通性不同但度数相同。"
+      ],
+      "answer": "不足。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-graph-representation-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "简单无向图中对角矩阵元素是什么？",
+    "choices": [
+      "一",
+      "零",
+      "任意"
+    ],
+    "correctIndex": 1,
+    "explanation": "没有自环。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-graph-representation-m1",
+      "claim": "图上交叉处都是顶点",
+      "correction": "只有指定顶点才算，交叉线本身不新增对象。"
+    },
+    {
+      "id": "dm-graph-representation-m2",
+      "claim": "度数相同即同构",
+      "correction": "还需保留全部邻接。"
+    }
+  ],
+  "prerequisites": [
+    "dm-relations"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "dm-graph-representation-m1",
+    "dm-graph-representation-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-graph-representation",
+    "prediction": "切换图结构，对照邻接矩阵与图上的边。",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "只有指定顶点才算，交叉线本身不新增对象。",
+    "steps": [
+      {
+        "title": "图结构模式：0",
+        "instruction": "设为 $0$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，顶点：$6$；边：$6$；度数和：$12$。",
+        "preset": {
+          "a": 0
+        }
+      },
+      {
+        "title": "图结构模式：2",
+        "instruction": "设为 $2$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，顶点：$6$；边：$5$；度数和：$10$。",
+        "preset": {
+          "a": 2
+        }
+      },
+      {
+        "title": "图结构模式：5",
+        "instruction": "设为 $5$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，顶点：$6$；边：$6$；度数和：$12$。",
+        "preset": {
+          "a": 5
+        }
+      }
+    ]
+  }
+}

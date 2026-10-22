@@ -1,0 +1,601 @@
+{
+  "reviews": [
+    {
+      "chapterId": "dm-logic",
+      "title": "逻辑与证明 · 章末回顾",
+      "questions": [
+        {
+          "problem": "否定“每个人都喜欢某一道菜”，并说明“某一道”能否依人而变。",
+          "hint": "保留量词顺序并逐个否定。",
+          "solution": [
+            "原式为 $\\forall x\\exists y\\,L(x,y)$。",
+            "否定为 $\\exists x\\forall y\\,\\neg L(x,y)$；原见证可随人变化。"
+          ],
+          "answer": "有一个人不喜欢任何一道菜；原句不要求共同的菜。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "dm-review-1-1"
+        },
+        {
+          "problem": "证明奇数平方仍奇数，并写出其逆否命题。",
+          "hint": "把整数写成二倍整数加一。",
+          "solution": [
+            "$(2k+1)^2=2(2k^2+2k)+1$。",
+            "逆否：平方为偶数则原数为偶数。"
+          ],
+          "answer": "两命题均成立。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "dm-review-1-2"
+        }
+      ]
+    },
+    {
+      "chapterId": "dm-sets",
+      "title": "集合、函数与关系 · 章末回顾",
+      "questions": [
+        {
+          "problem": "比较二元素集合与三元素集合间的单射、满射能否存在。",
+          "hint": "先确定方向，再数最多命中的目标。",
+          "solution": [
+            "从二到三可单射但不可满射；从三到二可满射但不可单射。",
+            "双射两个方向均不可能。"
+          ],
+          "answer": "方向决定可能性。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "dm-review-2-1"
+        },
+        {
+          "problem": "在正整数整除偏序下求十二与十八的最大下界和最小上界。",
+          "hint": "分别找公因数与公倍数。",
+          "solution": [
+            "$\\gcd(12,18)=6$。",
+            "$\\operatorname{lcm}(12,18)=36$。"
+          ],
+          "answer": "六与三十六。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "dm-review-2-2"
+        }
+      ]
+    },
+    {
+      "chapterId": "dm-integers",
+      "title": "整数与同余 · 章末回顾",
+      "questions": [
+        {
+          "problem": "用欧几里得求四十二与三十的最大公因数，并回代。",
+          "hint": "先求余数十二与六。",
+          "solution": [
+            "$42=30+12,30=2\\cdot12+6$。",
+            "$6=30-2(42-30)=3\\cdot30-2\\cdot42$。"
+          ],
+          "answer": "六。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "dm-review-3-1"
+        },
+        {
+          "problem": "解 $x\\equiv1\\pmod3,\\ x\\equiv2\\pmod5$。",
+          "hint": "先写第一条同余的通解。",
+          "solution": [
+            "$x=1+3t$，则 $3t\\equiv1\\pmod5$，所以 $t\\equiv2\\pmod5$。",
+            "$x\\equiv7\\pmod{15}$。"
+          ],
+          "answer": "$x\\equiv7\\pmod{15}$。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "dm-review-3-2"
+        }
+      ]
+    },
+    {
+      "chapterId": "dm-induction",
+      "title": "归纳、递归与算法 · 章末回顾",
+      "questions": [
+        {
+          "problem": "证明前若干奇数和公式时，归纳步骤加入的下一项是什么？",
+          "hint": "当前已证明到指标几。",
+          "solution": [
+            "前 $k$ 项和为 $k^2$，下项为 $2k+1$。",
+            "相加得到 $(k+1)^2$。"
+          ],
+          "answer": "$2k+1$，不是 $2k-1$。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "dm-review-4-1"
+        },
+        {
+          "problem": "一段循环保持正确不变量却无限循环，证明缺哪一部分？",
+          "hint": "区分返回正确和一定返回。",
+          "solution": [
+            "不变量只支持部分正确性。",
+            "还需严格下降且有下界的量等终止证据。"
+          ],
+          "answer": "缺终止性。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "dm-review-4-2"
+        }
+      ]
+    },
+    {
+      "chapterId": "dm-counting",
+      "title": "基本计数 · 章末回顾",
+      "questions": [
+        {
+          "problem": "八人选三位代表再指定一位发言人，多少种？",
+          "hint": "先选无序组，再指定角色。",
+          "solution": [
+            "$\\binom83=56$。",
+            "$56\\cdot3=168$。"
+          ],
+          "answer": "一百六十八。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "numericAnswer": 168,
+          "id": "dm-review-5-1"
+        },
+        {
+          "problem": "六颗相同糖给三人，每人至少一颗，多少种？",
+          "hint": "先扣去每人一颗。",
+          "solution": [
+            "余三颗给三人允许零。",
+            "$\\binom52=10$。"
+          ],
+          "answer": "十。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "numericAnswer": 10,
+          "id": "dm-review-5-2"
+        }
+      ]
+    },
+    {
+      "chapterId": "dm-recurrences",
+      "title": "递推与组合方法 · 章末回顾",
+      "questions": [
+        {
+          "problem": "一至六十中能被三或五整除的数有多少？",
+          "hint": "扣除十五的倍数。",
+          "solution": [
+            "$20+12-4=28$。",
+            "交集是十五的倍数。"
+          ],
+          "answer": "二十八。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "numericAnswer": 28,
+          "id": "dm-review-6-1"
+        },
+        {
+          "problem": "$a_0=1,a_{n+1}=2a_n+1$，写通项并核验。",
+          "hint": "加一后变为倍增。",
+          "solution": [
+            "$a_{n+1}+1=2(a_n+1)$。",
+            "$a_n+1=2^{n+1}$，满足初值和递推。"
+          ],
+          "answer": "$a_n=2^{n+1}-1$。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "dm-review-6-2"
+        }
+      ]
+    },
+    {
+      "chapterId": "dm-graphs",
+      "title": "图与连接 · 章末回顾",
+      "questions": [
+        {
+          "problem": "六环与两个分离三角形的度数、连通、二部性分别如何？",
+          "hint": "相同度数不能代替结构。",
+          "solution": [
+            "都为六点、六边、度数二。",
+            "六环连通且二部；双三角形两分量且非二部。"
+          ],
+          "answer": "同度数但不同构。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "dm-review-7-1"
+        },
+        {
+          "problem": "连通平面图六点八边有几个面？能仅凭点边数断定任意六点八边图平面吗？",
+          "hint": "先用有条件的等式，再区分必要充分。",
+          "solution": [
+            "若已知连通平面，$f=2-6+8=4$。",
+            "点边计数本身不是一般平面判定。"
+          ],
+          "answer": "四个面；不能仅据计数断定。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "dm-review-7-2"
+        }
+      ]
+    },
+    {
+      "chapterId": "dm-trees",
+      "title": "树与网络算法 · 章末回顾",
+      "questions": [
+        {
+          "problem": "三角形边权一、二、二，最小生成树成本与唯一性？",
+          "hint": "最轻边必选，再任选一条权二边。",
+          "solution": [
+            "成本为三。",
+            "两条权二边都可补全，所以不唯一。"
+          ],
+          "answer": "成本三，不唯一。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "dm-review-8-1"
+        },
+        {
+          "problem": "三个左点总共有三个邻居，为何仍可能不能全匹配？",
+          "hint": "构造两个左点争一个邻居。",
+          "solution": [
+            "甲乙只连一，丙连二三。",
+            "子集甲乙只有一个邻居，违反 Hall。"
+          ],
+          "answer": "必须检查每个子集的邻居数。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "dm-review-8-2"
+        }
+      ]
+    }
+  ],
+  "exam": [
+    {
+      "problem": "证明：任意六个整数中，存在两个差能被五整除。",
+      "hint": "按模五余数分类。",
+      "solution": [
+        "只有五个余数类。",
+        "六个整数必有两个同类，两者差被五整除。"
+      ],
+      "answer": "由抽屉原理成立。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-exam-1"
+    },
+    {
+      "problem": "从六人中组成三人组并指定一位负责人，给出两种计数。",
+      "hint": "先选组或先选负责人。",
+      "solution": [
+        "先组：$\\binom63\\cdot3=60$。",
+        "先负责人：$6\\binom52=60$。"
+      ],
+      "answer": "六十。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 60,
+      "id": "dm-exam-2"
+    },
+    {
+      "problem": "解 $x\\equiv2\\pmod3,\\ x\\equiv1\\pmod4$ 并说明唯一范围。",
+      "hint": "令第一式解为二加三倍参数。",
+      "solution": [
+        "$2+3t\\equiv1\\pmod4$，故 $t\\equiv1\\pmod4$。",
+        "$x\\equiv5\\pmod{12}$，模数互质保证模十二唯一。"
+      ],
+      "answer": "$x\\equiv5\\pmod{12}$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-exam-3"
+    },
+    {
+      "problem": "求满足每人最多两份、四人共分四份的方案数。",
+      "hint": "取生成函数四次项，或从无上界结果减去超量。",
+      "solution": [
+        "无上界 $\\binom73=35$。",
+        "某人至少三份时余一份，有 $\\binom43=4$ 种，四人共减十六。",
+        "两人都至少三份不可能。"
+      ],
+      "answer": "十九。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 19,
+      "id": "dm-exam-4"
+    },
+    {
+      "problem": "$a_0=0,a_1=1,a_n=2a_{n-1}$ 对 $n\\ge2$，求通项并说明零项特殊。",
+      "hint": "从第一项开始倍增。",
+      "solution": [
+        "对 $n\\ge1$，$a_n=2^{n-1}$。",
+        "零项单列为零，不能硬套负一次幂。"
+      ],
+      "answer": "零项为零，其余为二的指标减一次幂。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-exam-5"
+    },
+    {
+      "problem": "一个五顶点图度数为四、一、一、一、一。判断树、Euler 路与 Hamilton 圈。",
+      "hint": "中心连所有点，叶子度一。",
+      "solution": [
+        "它是四叶星形树。",
+        "奇度顶点四个，无 Euler 路；叶子不能处于 Hamilton 圈。"
+      ],
+      "answer": "是树；无后两者。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-exam-6"
+    },
+    {
+      "problem": "在非负无向网络中，最短路树是否一定最小生成树？",
+      "hint": "用三角形：根到甲二、到乙二，甲乙一。",
+      "solution": [
+        "最短路树取两条根边，成本四。",
+        "最小生成树取一条根边及甲乙，成本三。"
+      ],
+      "answer": "不一定，两个优化目标不同。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-exam-7"
+    },
+    {
+      "problem": "左点甲乙，右点一二。甲连一二，乙只连一。局部选甲配一后怎样达到最大匹配？",
+      "hint": "寻找交替增广路。",
+      "solution": [
+        "乙到一到甲到二，未匹配与匹配边交替。",
+        "翻转为乙配一、甲配二。"
+      ],
+      "answer": "最大两对。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 2,
+      "id": "dm-exam-8"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "命题与逻辑连接词",
+      "meaning": "先确定一句话是否有明确真假，再讨论它与别的判断怎样组合。",
+      "lessonId": "dm-propositions"
+    },
+    {
+      "term": "真值表与逻辑等价",
+      "meaning": "两个式子在所有赋值下相同，才叫逻辑等价。",
+      "lessonId": "dm-logical-equivalence"
+    },
+    {
+      "term": "量词、论域与否定",
+      "meaning": "量词说的是“所有”还是“至少一个”，论域决定它在谈谁。",
+      "lessonId": "dm-quantifiers"
+    },
+    {
+      "term": "直接证明、分类与反例",
+      "meaning": "证明要从条件走到结论；反例只负责推翻全称判断。",
+      "lessonId": "dm-direct-proof"
+    },
+    {
+      "term": "逆否证明与反证法",
+      "meaning": "正面难推时，可以排除“条件真但结论假”的可能。",
+      "lessonId": "dm-contradiction"
+    },
+    {
+      "term": "集合运算与幂集",
+      "meaning": "集合不计顺序，也不重复记录同一元素。",
+      "lessonId": "dm-sets"
+    },
+    {
+      "term": "函数、单射与满射",
+      "meaning": "函数给每个输入唯一输出；单射不撞车，满射不漏掉目标。",
+      "lessonId": "dm-functions"
+    },
+    {
+      "term": "二元关系与关系矩阵",
+      "meaning": "关系记录哪些有序对成立；它比函数容许更多对应。",
+      "lessonId": "dm-relations"
+    },
+    {
+      "term": "等价关系与划分",
+      "meaning": "等价关系把对象分成互不重叠的类。",
+      "lessonId": "dm-equivalence-classes"
+    },
+    {
+      "term": "偏序、Hasse 图与格",
+      "meaning": "偏序允许某些对象无法比较；全序才要求任意两者可比。",
+      "lessonId": "dm-partial-orders"
+    },
+    {
+      "term": "整除、最大公因数与最小公倍数",
+      "meaning": "整除要求商是整数；最大公因数描述共同因子的上限。",
+      "lessonId": "dm-divisibility"
+    },
+    {
+      "term": "欧几里得算法与 Bézout 恒等式",
+      "meaning": "反复取余不改变最大公因数，却会缩小问题。",
+      "lessonId": "dm-euclid"
+    },
+    {
+      "term": "质数与唯一分解",
+      "meaning": "每个大于一的整数都能分解成质数，且分解只差排列顺序。",
+      "lessonId": "dm-primes"
+    },
+    {
+      "term": "同余与模运算",
+      "meaning": "模运算只保留余数，但加法和乘法仍能一致地进行。",
+      "lessonId": "dm-congruence"
+    },
+    {
+      "term": "模逆元与中国剩余定理",
+      "meaning": "互质保证可逆，也保证两套余数能唯一拼成一个模乘积的类。",
+      "lessonId": "dm-crt"
+    },
+    {
+      "term": "数学归纳法",
+      "meaning": "验证起点，再证明每一步能把结论传给下一步。",
+      "lessonId": "dm-induction"
+    },
+    {
+      "term": "强归纳与良序原理",
+      "meaning": "下一步需要多个较小情形时，把所有较小情形一起作为归纳假设。",
+      "lessonId": "dm-strong-induction"
+    },
+    {
+      "term": "递归定义与结构归纳",
+      "meaning": "先给基本对象，再说明怎样从已有对象构造新对象。",
+      "lessonId": "dm-recursive-structures"
+    },
+    {
+      "term": "循环不变量与终止",
+      "meaning": "正确性需要说明每一步保留什么，以及过程为何一定结束。",
+      "lessonId": "dm-invariants"
+    },
+    {
+      "term": "算法增长与渐近记号",
+      "meaning": "渐近记号描述规模增大后的增长上界、下界或同阶。",
+      "lessonId": "dm-growth"
+    },
+    {
+      "term": "加法原理与乘法原理",
+      "meaning": "互斥情况相加，连续选择相乘；先检查有没有重计。",
+      "lessonId": "dm-counting-rules"
+    },
+    {
+      "term": "抽屉原理与双重计数",
+      "meaning": "对象多于容器时，至少一个容器装了不止一个。",
+      "lessonId": "dm-pigeonhole"
+    },
+    {
+      "term": "排列与组合",
+      "meaning": "顺序有区别用排列，只关心选了谁用组合。",
+      "lessonId": "dm-permutations"
+    },
+    {
+      "term": "二项式定理与 Pascal 恒等式",
+      "meaning": "展开的系数，数的是哪些因子贡献同一种项。",
+      "lessonId": "dm-binomial"
+    },
+    {
+      "term": "可重复选择与隔板法",
+      "meaning": "把相同物品分给不同位置，可把数量写成一串星号与隔板。",
+      "lessonId": "dm-stars-bars"
+    },
+    {
+      "term": "容斥原理",
+      "meaning": "把重叠对象相加后，按它被重复计算的次数补减。",
+      "lessonId": "dm-inclusion-exclusion"
+    },
+    {
+      "term": "递推式与一阶递推",
+      "meaning": "递推说明下一项从哪里来，初值决定是哪一条数列。",
+      "lessonId": "dm-first-recurrence"
+    },
+    {
+      "term": "二阶线性递推",
+      "meaning": "下一项依赖前两项时，需要两个初值。",
+      "lessonId": "dm-second-recurrence"
+    },
+    {
+      "term": "生成函数与受限计数",
+      "meaning": "把数量放进幂级数的系数，乘法就能组合独立选择。",
+      "lessonId": "dm-generating-functions"
+    },
+    {
+      "term": "计数与离散概率",
+      "meaning": "计数变成概率之前，先确认基本结果是否等可能。",
+      "lessonId": "dm-discrete-probability"
+    },
+    {
+      "term": "图、邻接表与邻接矩阵",
+      "meaning": "图用顶点表示对象，用边表示一对对象之间的关系。",
+      "lessonId": "dm-graph-representation"
+    },
+    {
+      "term": "度数与握手引理",
+      "meaning": "每条无向边贡献两个端点，所以度数和等于边数的两倍。",
+      "lessonId": "dm-degrees"
+    },
+    {
+      "term": "连通、广度优先搜索与二部图",
+      "meaning": "广度优先搜索按距离一层层探索，层数就是最少边数距离。",
+      "lessonId": "dm-connectivity"
+    },
+    {
+      "term": "Euler 路与 Hamilton 圈",
+      "meaning": "Euler 问每条边走一次，Hamilton 问每个顶点访问一次。",
+      "lessonId": "dm-euler-hamilton"
+    },
+    {
+      "term": "平面图与顶点着色",
+      "meaning": "平面性要求能画成边不交叉；着色要求相邻点颜色不同。",
+      "lessonId": "dm-planarity-coloring"
+    },
+    {
+      "term": "树与生成树",
+      "meaning": "树用刚好足够的边连接全部顶点，并且没有圈。",
+      "lessonId": "dm-trees"
+    },
+    {
+      "term": "根树、遍历与前缀编码",
+      "meaning": "指定根后，树的边有了父子方向；遍历规定访问顺序。",
+      "lessonId": "dm-rooted-trees"
+    },
+    {
+      "term": "最小生成树与 Kruskal 算法",
+      "meaning": "连接全部顶点的总成本最小，才是最小生成树的目标。",
+      "lessonId": "dm-minimum-spanning"
+    },
+    {
+      "term": "Dijkstra 最短路径",
+      "meaning": "非负边权下，当前暂定距离最小的未定点可以放心确定。",
+      "lessonId": "dm-shortest-path"
+    },
+    {
+      "term": "二部匹配、增广路与流",
+      "meaning": "一对一分配的关键，不只是空位，还要能否重新安排已有分配。",
+      "lessonId": "dm-matching"
+    }
+  ],
+  "appendices": [
+    {
+      "id": "dm-conventions",
+      "title": "本卷符号与边界约定",
+      "text": "集合不计重复；图默认有限简单无向；数列从指标零开始时会明确写出。空和为零、空积为一、零阶乘为一。组合数在选取数超出零到总数时取零。偏序默认自反关系，Hasse 图省略自环与传递边。",
+      "latex": "0!=1,\\quad\\binom n0=1,\\quad\\sum_{i\\in\\varnothing}a_i=0"
+    },
+    {
+      "id": "dm-boolean",
+      "title": "布尔代数与逻辑电路",
+      "text": "在真与假的二元素集合上，合取、析取、否定对应布尔运算；集合交、并、补满足相同恒等式。电路每个门逐一输出真值，因此可用真值表比较两个无反馈有限电路。真值等价不意味着门数量、延迟与能耗相同。",
+      "latex": "\\neg(p\\land q)=\\neg p\\lor\\neg q"
+    },
+    {
+      "id": "dm-bijection-infinite",
+      "title": "无限集合的大小",
+      "text": "有限集合用元素个数；无限集合用双射比较基数。正整数可与偶数通过加倍建立双射，因此真子集也可能与全集等势。实数不可数的对角线证明需要另处理无限表示的歧义，本卷不以有限列举冒充该证明。",
+      "latex": "f:\\mathbb N\\to2\\mathbb N,\\quad f(n)=2n"
+    },
+    {
+      "id": "dm-generating-proof",
+      "title": "递推怎样转为生成函数",
+      "text": "对 Fibonacci 递推逐项乘相应幂并从指标二求和，移项后，初始项提供分子。所有运算按形式幂级数系数理解，每个固定系数只涉及有限求和。",
+      "latex": "F(x)=\\sum_{n\\ge0}F_nx^n,\\quad F(x)-x=xF(x)+x^2F(x),\\quad F(x)=\\frac{x}{1-x-x^2}"
+    },
+    {
+      "id": "dm-planar-caveat",
+      "title": "平面边数界与充分性",
+      "text": "连通树的唯一面边界每条边走两遍。对至少三个顶点的简单平面图，若存在圈，可先在嵌入中处理桥或对各块应用面边界计数；树本身直接满足边数界。完全三对三二部图满足普通三倍边数界却违反二部图边数界，说明必要条件不等于完整判据。",
+      "latex": "K_{3,3}:\\quad e=9\\le3\\cdot6-6,\\quad e>2\\cdot6-4"
+    },
+    {
+      "id": "dm-hall-proof",
+      "title": "Hall 条件的充分性：交替可达集",
+      "text": "取一份最大匹配，若有未匹配左点，从它沿未匹配边向右、匹配边向左探索。若到达未匹配右点就能增广，与最大矛盾。因此所有到达右点均已匹配，其匹配左点也被到达。到达左点至少比右点多最初未匹配点一个，而且其全部邻居均在到达右集内，于是违反 Hall 条件。因此满足 Hall 时不能留下未匹配左点。",
+      "latex": "S=\\text{到达左集},\\quad N(S)=\\text{到达右集},\\quad |N(S)|<|S|"
+    },
+    {
+      "id": "dm-flow",
+      "title": "匹配到单位容量网络流",
+      "text": "源连接每个左点，左到右使用允许配对边，每个右点连接汇，所有边容量一。一个匹配给出同样大小的整数流；反向从整数流取值一的左右边得到匹配。增广路的反向残余边允许撤销旧配对。一般最大流最小割定理与容量缩放属于后续算法课程。",
+      "latex": "\\text{最大匹配大小}=\\text{该网络的最大流值}"
+    },
+    {
+      "id": "dm-state-machines",
+      "title": "有限状态与后续课程",
+      "text": "有限状态机用当前状态和输入符号确定下一状态。只记录二进制串中一的个数奇偶时，两个状态已足够：读零保持、读一翻转。对输入长度归纳可证明状态始终等于已读部分的奇偶。本卷的不变量方法可直接用于这类证明；一般自动机、形式语言、可计算性与复杂性另作后续课程。",
+      "latex": "\\delta(q,0)=q,\\quad\\delta(q,1)=1-q,\\quad q\\in\\{0,1\\}"
+    }
+  ]
+}

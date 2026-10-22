@@ -1,0 +1,195 @@
+{
+  "id": "dm-stars-bars",
+  "chapterId": "dm-counting",
+  "number": "5.5",
+  "title": "可重复选择与隔板法",
+  "subtitle": "把相同物品分给不同位置，可把数量写成一串星号与隔板。",
+  "concept": "把相同物品分给不同位置，可把数量写成一串星号与隔板。",
+  "intuition": "星号表示物品，隔板划分接收者；相邻隔板表示有人分到零。",
+  "objectives": [
+    "先确认可区分性",
+    "处理非负解"
+  ],
+  "body": [
+    {
+      "title": "先确认可区分性",
+      "text": "隔板法中物品相同、接收者不同。若物品带名字，或接收者不区分，问题就不是同一个计数模型。"
+    },
+    {
+      "title": "处理非负解",
+      "text": "总数个星号与接收者数减一个隔板排列，隔板可相邻，也可位于两端，对应零份。"
+    },
+    {
+      "title": "加入下界上界",
+      "text": "每人至少一个可先各扣去一。上界不能只做平移，应排除超量情况，通常配合容斥。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "非负整数解与星号隔板序列一一对应。",
+    "latex": "x_1+\\cdots+x_k=n,\\ x_i\\ge0\\implies\\#=\\binom{n+k-1}{k-1}",
+    "conditions": [
+      "总数为非负整数，接收者数为正整数。",
+      "物品相同而接收者有区别。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "每人份数编码为连续星号。",
+      "latex": "(2,0,1)\\longleftrightarrow **||*"
+    },
+    {
+      "text": "序列包含固定两种符号。",
+      "latex": "n\\text{ 个星号},\\ k-1\\text{ 个隔板}"
+    },
+    {
+      "text": "选择隔板的位置。",
+      "latex": "\\#=\\binom{n+k-1}{k-1}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "允许零份",
+      "problem": "五颗相同糖给三人，允许零，有多少种？",
+      "steps": [
+        "星号五个、隔板两个。",
+        "$\\binom72=21$。"
+      ],
+      "answer": "二十一。"
+    },
+    {
+      "title": "每人至少一颗",
+      "problem": "同样五颗糖给三人，每人至少一颗。",
+      "steps": [
+        "先每人发一颗，余两颗。",
+        "$\\binom42=6$。"
+      ],
+      "answer": "六。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "三颗相同糖给两人，允许零，多少种？",
+      "hint": "第一人的份数可取零至三。",
+      "solution": [
+        "共有四个不同分配。"
+      ],
+      "answer": "四。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 4,
+      "id": "dm-stars-bars-q1"
+    },
+    {
+      "problem": "零颗糖给四人允许零，多少种？",
+      "hint": "所有份数被固定。",
+      "solution": [
+        "只能全部为零。"
+      ],
+      "answer": "一种。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 1,
+      "id": "dm-stars-bars-q2"
+    },
+    {
+      "problem": "五颗带名字的糖给三人能用同一公式吗？",
+      "hint": "物品是否相同？",
+      "solution": [
+        "每颗有三种归属，应为三的五次方。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-stars-bars-q3"
+    },
+    {
+      "problem": "每人最多两颗能只减去二再套公式吗？",
+      "hint": "上界与下界不同。",
+      "solution": [
+        "减去固定值只处理下界，上界需另排除超量。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-stars-bars-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "隔板相邻表示什么？",
+    "choices": [
+      "编码无效",
+      "某人得到零个",
+      "物品相同"
+    ],
+    "correctIndex": 1,
+    "explanation": "相邻隔板间没有星号。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-stars-bars-m1",
+      "claim": "物品是否不同不影响答案",
+      "correction": "不同物品保留了额外身份信息。"
+    },
+    {
+      "id": "dm-stars-bars-m2",
+      "claim": "隔板不能放两端",
+      "correction": "两端正好编码首尾接收者的零份。"
+    }
+  ],
+  "prerequisites": [
+    "dm-permutations"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-stars-bars-m1",
+    "dm-stars-bars-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-stars-bars",
+    "prediction": "改变总数和人数，合法隔板序列与份数解怎样对应？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "不同物品保留了额外身份信息。",
+    "steps": [
+      {
+        "title": "相同物品总数：0",
+        "instruction": "设为 $0$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，分配数：$1$。",
+        "preset": {
+          "a": 0,
+          "b": 3
+        }
+      },
+      {
+        "title": "相同物品总数：4",
+        "instruction": "设为 $4$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，分配数：$15$。",
+        "preset": {
+          "a": 4,
+          "b": 3
+        }
+      },
+      {
+        "title": "相同物品总数：8",
+        "instruction": "设为 $8$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，分配数：$45$。",
+        "preset": {
+          "a": 8,
+          "b": 3
+        }
+      }
+    ]
+  }
+}

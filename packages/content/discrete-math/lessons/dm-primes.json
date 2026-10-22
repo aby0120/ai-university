@@ -1,0 +1,192 @@
+{
+  "id": "dm-primes",
+  "chapterId": "dm-integers",
+  "number": "3.3",
+  "title": "质数与唯一分解",
+  "subtitle": "每个大于一的整数都能分解成质数，且分解只差排列顺序。",
+  "concept": "每个大于一的整数都能分解成质数，且分解只差排列顺序。",
+  "intuition": "试除无需超过平方根；若因子都大于平方根，乘积就会超过原数。",
+  "objectives": [
+    "定义质数",
+    "理解欧几里得引理"
+  ],
+  "body": [
+    {
+      "title": "定义质数",
+      "text": "质数恰有两个正因子：一和自身。一不是质数；这样分解才不会任意插入一。"
+    },
+    {
+      "title": "理解欧几里得引理",
+      "text": "质数整除两个整数的乘积时，必整除至少一项。一般合数不满足这一性质。"
+    },
+    {
+      "title": "建立唯一分解",
+      "text": "存在性通过不断分解较小合数得到；唯一性用欧几里得引理从两种分解中逐个匹配质因子。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "算术基本定理适用于大于一的正整数。",
+    "latex": "n=\\prod_i p_i^{e_i},\\quad e_i\\ge1",
+    "conditions": [
+      "质因子互不相同；指数为正整数。",
+      "唯一性忽略质因子的排列。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "若质数不整除第一项，则二者互质。",
+      "latex": "p\\nmid a\\implies \\gcd(p,a)=1"
+    },
+    {
+      "text": "由 Bézout 写出一。",
+      "latex": "up+va=1"
+    },
+    {
+      "text": "乘第二项即可推出整除。",
+      "latex": "b=upb+vab\\implies p\\mid b\\ \\text{若 }p\\mid ab"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "分解六十",
+      "problem": "六十的质因子分解？",
+      "steps": [
+        "$60=2\\cdot30=2^2\\cdot15$。",
+        "$15=3\\cdot5$。"
+      ],
+      "answer": "$60=2^2\\cdot3\\cdot5$。"
+    },
+    {
+      "title": "合数为何不行",
+      "problem": "六整除二乘三，能推出六整除二或三吗？",
+      "steps": [
+        "乘积为六，满足整除。",
+        "两个因子都不被六整除。"
+      ],
+      "answer": "不能，整除乘积引理要求质数。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "一是质数吗？",
+      "hint": "正因子个数。",
+      "solution": [
+        "一只有一个正因子。"
+      ],
+      "answer": "不是。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-primes-q1"
+    },
+    {
+      "problem": "检验二十九为质数需试除哪些质数？",
+      "hint": "平方根小于六。",
+      "solution": [
+        "试二、三、五均不整除。"
+      ],
+      "answer": "二、三、五。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-primes-q2"
+    },
+    {
+      "problem": "八十四的不同质因子数？",
+      "hint": "逐次分解。",
+      "solution": [
+        "$84=2^2\\cdot3\\cdot7$。"
+      ],
+      "answer": "三个。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 3,
+      "id": "dm-primes-q3"
+    },
+    {
+      "problem": "质数有无穷多个吗？",
+      "hint": "假设有限，考虑乘积加一。",
+      "solution": [
+        "乘积加一不被列表中任何质数整除，却仍有质因子。"
+      ],
+      "answer": "有无穷多个。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-primes-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "质因子试除上界为什么可取平方根？",
+    "choices": [
+      "所有因子都很小",
+      "至少一个非平凡因子不超过平方根",
+      "所有质数都不超过平方根"
+    ],
+    "correctIndex": 1,
+    "explanation": "一对因子不可能都超过平方根。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-primes-m1",
+      "claim": "一是最小质数",
+      "correction": "一不满足恰有两个正因子。"
+    },
+    {
+      "id": "dm-primes-m2",
+      "claim": "整除乘积引理对任意数成立",
+      "correction": "合数六已给出反例。"
+    }
+  ],
+  "prerequisites": [
+    "dm-euclid",
+    "dm-contradiction"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-primes-m1",
+    "dm-primes-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-primes",
+    "prediction": "增大筛选范围，哪些数保留为质数？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "一不满足恰有两个正因子。",
+    "steps": [
+      {
+        "title": "筛选上界：2",
+        "instruction": "设为 $2$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，质数个数：$1$。",
+        "preset": {
+          "a": 2
+        }
+      },
+      {
+        "title": "筛选上界：51",
+        "instruction": "设为 $51$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，质数个数：$15$。",
+        "preset": {
+          "a": 51
+        }
+      },
+      {
+        "title": "筛选上界：100",
+        "instruction": "设为 $100$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，质数个数：$25$。",
+        "preset": {
+          "a": 100
+        }
+      }
+    ]
+  }
+}

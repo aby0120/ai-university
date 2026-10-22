@@ -1,0 +1,190 @@
+{
+  "id": "dm-direct-proof",
+  "chapterId": "dm-logic",
+  "number": "1.4",
+  "title": "直接证明、分类与反例",
+  "subtitle": "证明要从条件走到结论；反例只负责推翻全称判断。",
+  "concept": "证明要从条件走到结论；反例只负责推翻全称判断。",
+  "intuition": "可以检验一百个例子来寻找规律，但一般命题仍需要覆盖所有允许对象的理由。",
+  "objectives": [
+    "从定义出发",
+    "完整分类"
+  ],
+  "body": [
+    {
+      "title": "从定义出发",
+      "text": "证明偶数加偶数仍偶数，把两个数分别写成二乘整数，再把和提取公因子。"
+    },
+    {
+      "title": "完整分类",
+      "text": "分类必须覆盖所有情况，允许重叠但不能漏掉。按整数的奇偶分类时，只有两种且互斥。"
+    },
+    {
+      "title": "用反例定位错误",
+      "text": "一个合法反例足以否定全称命题。反例必须满足假设，不能拿定义域外的对象反驳。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "有效证明中的每一步都由假设、定义或已经成立的结论支持。",
+    "latex": "a=2r,\\ b=2s\\implies a+b=2(r+s)",
+    "conditions": [
+      "整数的奇偶讨论以整数为论域。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "把偶数的定义写成表示式。",
+      "latex": "a=2r,\\ b=2s,\\quad r,s\\in\\mathbb Z"
+    },
+    {
+      "text": "代入目标表达式。",
+      "latex": "a+b=2r+2s"
+    },
+    {
+      "text": "括号内仍是整数。",
+      "latex": "a+b=2(r+s)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "平方的奇偶性",
+      "problem": "证明整数与其平方奇偶相同。",
+      "steps": [
+        "偶数 $2k$ 的平方为 $4k^2$。",
+        "奇数 $2k+1$ 的平方为 $2(2k^2+2k)+1$。"
+      ],
+      "answer": "两种情况均成立。"
+    },
+    {
+      "title": "错误全称",
+      "problem": "“每个奇数都是质数”哪里错？",
+      "steps": [
+        "九是奇数。",
+        "九可分解为三乘三。"
+      ],
+      "answer": "九是反例。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "三个连续整数的积能被三整除吗？",
+      "hint": "按除以三的余数分类。",
+      "solution": [
+        "三个连续余数中恰有一个为零。"
+      ],
+      "answer": "能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-direct-proof-q1"
+    },
+    {
+      "problem": "举一个偶数不是合数的反例。",
+      "hint": "质数中唯一偶数。",
+      "solution": [
+        "二只有一和自身两个正因子。"
+      ],
+      "answer": "二。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 2,
+      "id": "dm-direct-proof-q2"
+    },
+    {
+      "problem": "检查前十个整数能证明全部整数的结论吗？",
+      "hint": "有限检查是否覆盖论域？",
+      "solution": [
+        "未检查的对象仍可能失败。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-direct-proof-q3"
+    },
+    {
+      "problem": "证明奇数加奇数为偶数。",
+      "hint": "写成二倍整数加一。",
+      "solution": [
+        "$(2r+1)+(2s+1)=2(r+s+1)$。"
+      ],
+      "answer": "和是偶数。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-direct-proof-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "反例需要满足原命题的假设吗？",
+    "choices": [
+      "需要",
+      "不需要",
+      "只看结论"
+    ],
+    "correctIndex": 0,
+    "explanation": "否则它不在命题的讨论范围。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-direct-proof-m1",
+      "claim": "例子多就构成证明",
+      "correction": "无限论域需要一般理由。"
+    },
+    {
+      "id": "dm-direct-proof-m2",
+      "claim": "分类可以遗漏小情况",
+      "correction": "每个允许对象都必须落入某一类。"
+    }
+  ],
+  "prerequisites": [
+    "dm-propositions"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-direct-proof-m1",
+    "dm-direct-proof-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-direct-proof",
+    "prediction": "改变整数，奇偶分类怎样保证覆盖全部情形？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "无限论域需要一般理由。",
+    "steps": [
+      {
+        "title": "当前整数：1",
+        "instruction": "设为 $1$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，当前整数：$1$；奇偶：奇；平方奇偶：奇。",
+        "preset": {
+          "a": 1
+        }
+      },
+      {
+        "title": "当前整数：6",
+        "instruction": "设为 $6$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，当前整数：$6$；奇偶：偶；平方奇偶：偶。",
+        "preset": {
+          "a": 6
+        }
+      },
+      {
+        "title": "当前整数：12",
+        "instruction": "设为 $12$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，当前整数：$12$；奇偶：偶；平方奇偶：偶。",
+        "preset": {
+          "a": 12
+        }
+      }
+    ]
+  }
+}

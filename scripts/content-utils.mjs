@@ -72,6 +72,8 @@ contentBooks.push({book:book5,
   directory:'packages/content/ordinary-differential-equations/lessons',filename:'Ordinary-Differential-Equations.md',printFile:'ordinary-differential-equations.html'});
 const book6 = JSON.parse(fs.readFileSync(root+'/packages/content/probability-statistics/book.json'));
 contentBooks.push({book:book6,allLessons:book6.lessonIds.map(id=>JSON.parse(fs.readFileSync(root+'/packages/content/probability-statistics/lessons/'+id+'.json'))),extra:JSON.parse(fs.readFileSync(root+'/packages/content/probability-statistics/supplements.json')),directory:'packages/content/probability-statistics/lessons',filename:'Probability-Statistics.md',printFile:'probability-statistics.html'});
+const book7 = JSON.parse(fs.readFileSync(root+'/packages/content/discrete-math/book.json'));
+contentBooks.push({book:book7,allLessons:book7.lessonIds.map(id=>JSON.parse(fs.readFileSync(root+'/packages/content/discrete-math/lessons/'+id+'.json'))),extra:JSON.parse(fs.readFileSync(root+'/packages/content/discrete-math/supplements.json')),directory:'packages/content/discrete-math/lessons',filename:'Discrete-Mathematics.md',printFile:'discrete-math.html'});
 export const libraryLessons = contentBooks.flatMap((c) => c.allLessons);
 export function walkStrings(value, fn, key = "") {
   if (typeof value === "string") fn(value, key);

@@ -1,0 +1,197 @@
+{
+  "id": "dm-euclid",
+  "chapterId": "dm-integers",
+  "number": "3.2",
+  "title": "欧几里得算法与 Bézout 恒等式",
+  "subtitle": "反复取余不改变最大公因数，却会缩小问题。",
+  "concept": "反复取余不改变最大公因数，却会缩小问题。",
+  "intuition": "把一堆整倍数拿走，共同因子只需继续检查剩下的余数。",
+  "objectives": [
+    "保持共同因子",
+    "保证停止"
+  ],
+  "body": [
+    {
+      "title": "保持共同因子",
+      "text": "带余除法将被除数写为除数的整数倍加余数。能整除原来两数，恰好也能整除除数和余数。"
+    },
+    {
+      "title": "保证停止",
+      "text": "非零余数始终为更小的非负整数，不能无限严格下降。最后的非零余数就是最大公因数。"
+    },
+    {
+      "title": "倒推线性组合",
+      "text": "从最后一步向前代回，每个余数都可写为原来两数的整数线性组合，得到 Bézout 系数。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "对整数且不全为零，最大公因数可表示为整数线性组合。",
+    "latex": "\\gcd(a,b)=\\gcd(b,a\\bmod b)=ax+by",
+    "conditions": [
+      "算法输入取正整数。",
+      "每步余数满足零到除数减一的范围。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先作带余除法。",
+      "latex": "a=qb+r"
+    },
+    {
+      "text": "共同整除与整除差双向成立。",
+      "latex": "d\\mid a,b\\iff d\\mid b,r"
+    },
+    {
+      "text": "不断重复到余数零。",
+      "latex": "\\gcd(a,b)=\\text{最后非零余数}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "计算与回代",
+      "problem": "求三十与十八的最大公因数及一种线性组合。",
+      "steps": [
+        "$30=18+12,18=12+6,12=2\\cdot6$。",
+        "$6=18-12=2\\cdot18-30$。"
+      ],
+      "answer": "$\\gcd=6=-30+2\\cdot18$。"
+    },
+    {
+      "title": "方程能否解",
+      "problem": "$12x+18y=5$ 有整数解吗？",
+      "steps": [
+        "左边必被六整除。",
+        "五不能被六整除。"
+      ],
+      "answer": "无整数解。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "四十八与十八的最大公因数？",
+      "hint": "连续取余。",
+      "solution": [
+        "$48\\bmod18=12,18\\bmod12=6$，下一余数零。"
+      ],
+      "answer": "六。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 6,
+      "id": "dm-euclid-q1"
+    },
+    {
+      "problem": "Bézout 系数唯一吗？",
+      "hint": "改变一对系数保持组合。",
+      "solution": [
+        "如互质时可沿另一数的倍数调整。"
+      ],
+      "answer": "不唯一。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-euclid-q2"
+    },
+    {
+      "problem": "为什么算法不会无限运行？",
+      "hint": "余数的下降发生在哪个集合？",
+      "solution": [
+        "非负整数不能无限严格下降。"
+      ],
+      "answer": "余数严格缩小。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-euclid-q3"
+    },
+    {
+      "problem": "$7x+5y=1$ 找一组整数解。",
+      "hint": "试用小系数。",
+      "solution": [
+        "$7\\cdot3+5\\cdot(-4)=1$。"
+      ],
+      "answer": "$(x,y)=(3,-4)$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-euclid-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "最大公因数取最后哪个量？",
+    "choices": [
+      "最后商",
+      "最后零余数",
+      "最后非零余数"
+    ],
+    "correctIndex": 2,
+    "explanation": "最后一次非零除数就是共同因子。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-euclid-m1",
+      "claim": "只对结果取小数近似即可",
+      "correction": "整数商余数必须精确。"
+    },
+    {
+      "id": "dm-euclid-m2",
+      "claim": "回代系数总唯一",
+      "correction": "整数线性组合通常有无穷多组系数。"
+    }
+  ],
+  "prerequisites": [
+    "dm-divisibility"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-euclid-m1",
+    "dm-euclid-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-euclid",
+    "prediction": "逐步执行取余，最大公因数为什么保持不变？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "整数商余数必须精确。",
+    "steps": [
+      {
+        "title": "执行步数：0",
+        "instruction": "设为 $0$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，已执行步数：$0$；总步数：$3$。",
+        "preset": {
+          "a": 48,
+          "b": 18,
+          "n": 0
+        }
+      },
+      {
+        "title": "执行步数：5",
+        "instruction": "设为 $5$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，已执行步数：$3$；总步数：$3$；最大公因数：$6$。",
+        "preset": {
+          "a": 48,
+          "b": 18,
+          "n": 5
+        }
+      },
+      {
+        "title": "执行步数：10",
+        "instruction": "设为 $10$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，已执行步数：$3$；总步数：$3$；最大公因数：$6$。",
+        "preset": {
+          "a": 48,
+          "b": 18,
+          "n": 10
+        }
+      }
+    ]
+  }
+}

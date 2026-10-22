@@ -1,0 +1,197 @@
+{
+  "id": "dm-congruence",
+  "chapterId": "dm-integers",
+  "number": "3.4",
+  "title": "同余与模运算",
+  "subtitle": "模运算只保留余数，但加法和乘法仍能一致地进行。",
+  "concept": "模运算只保留余数，但加法和乘法仍能一致地进行。",
+  "intuition": "时钟走过整圈后回到同一位置；同余记录的就是这种差一个整圈的关系。",
+  "objectives": [
+    "认识同余",
+    "进行运算"
+  ],
+  "body": [
+    {
+      "title": "认识同余",
+      "text": "两整数同余，是说它们的差被模数整除。用零到模数减一的余数作为每个类的代表。"
+    },
+    {
+      "title": "进行运算",
+      "text": "同余可逐项相加、相减、相乘。除法不能直接照搬，约去的因子必须对模数可逆。"
+    },
+    {
+      "title": "计算大幂",
+      "text": "反复平方并每次取余能避免数值快速膨胀。每步保留同余，而非保留原整数大小。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "模数取正整数；模一仅有一个类。",
+    "latex": "a\\equiv b\\pmod m\\iff m\\mid(a-b)",
+    "conditions": [
+      "本卷交互模数至少为二。",
+      "约分必须另查可逆条件。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "把同余写成整倍数差。",
+      "latex": "a-b=km,\\quad c-d=\\ell m"
+    },
+    {
+      "text": "乘积差可拆开。",
+      "latex": "ac-bd=a(c-d)+d(a-b)"
+    },
+    {
+      "text": "两项都被模数整除。",
+      "latex": "ac\\equiv bd\\pmod m"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "负数取余",
+      "problem": "负一模五的标准代表是什么？",
+      "steps": [
+        "$-1=5(-1)+4$。",
+        "标准代表要求非负且小于五。"
+      ],
+      "answer": "四。"
+    },
+    {
+      "title": "不能乱约",
+      "problem": "$2x\\equiv2\\pmod6$，是否只有 $x\\equiv1$？",
+      "steps": [
+        "一与四都使二倍余数为二。",
+        "二与六不互质，二不可逆。"
+      ],
+      "answer": "不是，还有四这个余数类。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "十七模五的标准余数？",
+      "hint": "减去整倍数。",
+      "solution": [
+        "$17=3\\cdot5+2$。"
+      ],
+      "answer": "二。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 2,
+      "id": "dm-congruence-q1"
+    },
+    {
+      "problem": "七模五的平方余数？",
+      "hint": "先约到二再平方。",
+      "solution": [
+        "$7^2\\equiv2^2=4$。"
+      ],
+      "answer": "四。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 4,
+      "id": "dm-congruence-q2"
+    },
+    {
+      "problem": "同余是否意味着整数相等？",
+      "hint": "两个数可差一整圈。",
+      "solution": [
+        "二与七模五同余但不等。"
+      ],
+      "answer": "不意味着。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-congruence-q3"
+    },
+    {
+      "problem": "负七模五的标准余数？",
+      "hint": "选择非负代表。",
+      "solution": [
+        "$-7=5(-2)+3$。"
+      ],
+      "answer": "三。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 3,
+      "id": "dm-congruence-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "模六中能直接约去乘数二吗？",
+    "choices": [
+      "总能",
+      "不能保证",
+      "仅余数正时能"
+    ],
+    "correctIndex": 1,
+    "explanation": "二没有模六逆元。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-congruence-m1",
+      "claim": "余数只能从正数理解",
+      "correction": "负整数同样有标准非负代表。"
+    },
+    {
+      "id": "dm-congruence-m2",
+      "claim": "模运算可任意除法",
+      "correction": "只有可逆元素能作除法。"
+    }
+  ],
+  "prerequisites": [
+    "dm-divisibility",
+    "dm-logical-equivalence"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-congruence-m1",
+    "dm-congruence-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-congruence",
+    "prediction": "改变整数与模数，负数和多圈移动会落在哪个位置？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "负整数同样有标准非负代表。",
+    "steps": [
+      {
+        "title": "当前整数：-20",
+        "instruction": "设为 $-20$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，标准余数：$0$；整数商：$-4$。",
+        "preset": {
+          "a": -20,
+          "b": 5
+        }
+      },
+      {
+        "title": "当前整数：5",
+        "instruction": "设为 $5$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，标准余数：$0$；整数商：$1$。",
+        "preset": {
+          "a": 5,
+          "b": 5
+        }
+      },
+      {
+        "title": "当前整数：30",
+        "instruction": "设为 $30$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，标准余数：$0$；整数商：$6$。",
+        "preset": {
+          "a": 30,
+          "b": 5
+        }
+      }
+    ]
+  }
+}

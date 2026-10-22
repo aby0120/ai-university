@@ -1,0 +1,190 @@
+{
+  "id": "dm-functions",
+  "chapterId": "dm-sets",
+  "number": "2.2",
+  "title": "函数、单射与满射",
+  "subtitle": "函数给每个输入唯一输出；单射不撞车，满射不漏掉目标。",
+  "concept": "函数给每个输入唯一输出；单射不撞车，满射不漏掉目标。",
+  "intuition": "定义域中的每个点都要有且仅有一根出箭头，目标点可以暂时没有入箭头。",
+  "objectives": [
+    "认出函数",
+    "区分单射满射"
+  ],
+  "body": [
+    {
+      "title": "认出函数",
+      "text": "有输入没输出，或同一输入指向两个不同输出，都不符合函数定义。陪域是事先规定的目标集合，值域是实际达到的部分。"
+    },
+    {
+      "title": "区分单射满射",
+      "text": "单射要求不同输入不共用输出。满射要求陪域中的每个点都被命中；改变陪域可能改变满射性。"
+    },
+    {
+      "title": "反函数与复合",
+      "text": "双射才有定义在整个陪域上的反函数。复合先做右边函数，必须保证其输出落入左边函数的定义域。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "双射同时满足单射与满射。",
+    "latex": "(g\\circ f)(x)=g(f(x)),\\quad f^{-1}(f(x))=x\\quad\\text{若 }f\\text{ 双射}",
+    "conditions": [
+      "复合需要输入输出集合兼容。",
+      "反函数的双向恒等要求双射。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "单射保证反向寻找至多一个。",
+      "latex": "f(x)=f(y)\\implies x=y"
+    },
+    {
+      "text": "满射保证每个目标至少一个。",
+      "latex": "\\forall b\\in B\\ \\exists a\\in A:f(a)=b"
+    },
+    {
+      "text": "两者结合恰有一个。",
+      "latex": "\\forall b\\in B\\ \\exists!a\\in A:f(a)=b"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "同式不同陪域",
+      "problem": "$f(x)=x^2$，定义域为实数，陪域取实数或非负实数，有何区别？",
+      "steps": [
+        "两种陪域下都不是单射，因为正负输入可同值。",
+        "以实数为陪域时不满射；以非负实数为陪域时满射。"
+      ],
+      "answer": "陪域影响满射性。"
+    },
+    {
+      "title": "复合的顺序",
+      "problem": "$f(x)=x+1,g(x)=2x$，求两种复合。",
+      "steps": [
+        "$g(f(x))=2x+2$。",
+        "$f(g(x))=2x+1$。"
+      ],
+      "answer": "通常不交换。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "三元素集合到二元素集合可能单射吗？",
+      "hint": "鸽巢原理。",
+      "solution": [
+        "三个输入放进两个输出，必有重复。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-functions-q1"
+    },
+    {
+      "problem": "二元素集合到三元素集合可能满射吗？",
+      "hint": "最多命中几个？",
+      "solution": [
+        "两个输入最多命中两个。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-functions-q2"
+    },
+    {
+      "problem": "实数上 $f(x)=3x-2$ 的反函数？",
+      "hint": "令输出为自变量解回去。",
+      "solution": [
+        "$y=3x-2\\implies x=(y+2)/3$。"
+      ],
+      "answer": "$f^{-1}(y)=\\frac{y+2}{3}$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-functions-q3"
+    },
+    {
+      "problem": "有限等势集合间，单射是否推出满射？",
+      "hint": "没有碰撞时命中多少点？",
+      "solution": [
+        "命中数等于定义域大小，也等于陪域大小。"
+      ],
+      "answer": "是。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-functions-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "只有单射，能保证整个陪域都有反函数吗？",
+    "choices": [
+      "能",
+      "不能",
+      "只要非空就能"
+    ],
+    "correctIndex": 1,
+    "explanation": "可能有目标点未被命中。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-functions-m1",
+      "claim": "值域总等于陪域",
+      "correction": "只有满射时两者相等。"
+    },
+    {
+      "id": "dm-functions-m2",
+      "claim": "复合可以交换顺序",
+      "correction": "计算结果和定义域都可能改变。"
+    }
+  ],
+  "prerequisites": [
+    "dm-sets"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "dm-functions-m1",
+    "dm-functions-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-functions",
+    "prediction": "改变映射规则，哪些模式碰撞或遗漏？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "只有满射时两者相等。",
+    "steps": [
+      {
+        "title": "映射模式：0",
+        "instruction": "设为 $0$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，单射：是；满射：是。",
+        "preset": {
+          "a": 0
+        }
+      },
+      {
+        "title": "映射模式：1",
+        "instruction": "设为 $1$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，单射：否；满射：否。",
+        "preset": {
+          "a": 1
+        }
+      },
+      {
+        "title": "映射模式：2",
+        "instruction": "设为 $2$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，单射：是；满射：否。",
+        "preset": {
+          "a": 2
+        }
+      }
+    ]
+  }
+}

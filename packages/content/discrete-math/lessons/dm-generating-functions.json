@@ -1,0 +1,199 @@
+{
+  "id": "dm-generating-functions",
+  "chapterId": "dm-recurrences",
+  "number": "6.4",
+  "title": "生成函数与受限计数",
+  "subtitle": "把数量放进幂级数的系数，乘法就能组合独立选择。",
+  "concept": "把数量放进幂级数的系数，乘法就能组合独立选择。",
+  "intuition": "指数记录总量，系数记录达到这个总量的方式数。",
+  "objectives": [
+    "使用形式幂级数",
+    "解释乘法"
+  ],
+  "body": [
+    {
+      "title": "使用形式幂级数",
+      "text": "这里把级数视为系数序列，不讨论实变量收敛。只求固定次数时，每个系数只依赖有限计算。"
+    },
+    {
+      "title": "解释乘法",
+      "text": "从每个因子选一项，总指数相加；落在相同指数的乘积系数相加，这就是卷积。"
+    },
+    {
+      "title": "加入上界",
+      "text": "某类可选零到上限个时，用有限多项式。多个有区别接收者的数量限制可用因子乘积表达。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "系数提取记号表示指定次数项的系数。",
+    "latex": "[x^n]\\prod_{i=1}^k(1+x+\\cdots+x^{u_i})=\\#\\{(a_i):\\sum_i a_i=n,\\ 0\\le a_i\\le u_i\\}",
+    "conditions": [
+      "各份数为整数，接收者有区别。",
+      "本节按形式幂级数运算，不作分析收敛推断。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "单个接收者每种份数对应一项。",
+      "latex": "1+x+\\cdots+x^{u_i}"
+    },
+    {
+      "text": "多接收者相乘使指数相加。",
+      "latex": "x^{a_1}\\cdots x^{a_k}=x^{a_1+\\cdots+a_k}"
+    },
+    {
+      "text": "同次项汇集所有合法份数组合。",
+      "latex": "[x^n]\\prod_i\\sum_{a_i=0}^{u_i}x^{a_i}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "有上限的份数",
+      "problem": "两人各最多两颗，合计两颗，有多少分法？",
+      "steps": [
+        "求 $(1+x+x^2)^2$ 的二次项系数。",
+        "来自 $(0,2),(1,1),(2,0)$。"
+      ],
+      "answer": "三种。"
+    },
+    {
+      "title": "面额不同",
+      "problem": "用一元与二元硬币凑四元，不同面额数量算不同。",
+      "steps": [
+        "求 $(1-x)^{-1}(1-x^2)^{-1}$ 的四次项。",
+        "二元硬币可取零、一、二枚，每次一元数量被确定。"
+      ],
+      "answer": "三种。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$(1+x)^3$ 的一次项系数？",
+      "hint": "从一个因子选变量。",
+      "solution": [
+        "有三个因子可选。"
+      ],
+      "answer": "三。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 3,
+      "id": "dm-generating-functions-q1"
+    },
+    {
+      "problem": "幂指数在组合中记录什么？",
+      "hint": "乘法时指数相加。",
+      "solution": [
+        "记录累计数量，不是方式数。"
+      ],
+      "answer": "总量。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-generating-functions-q2"
+    },
+    {
+      "problem": "三人各零或一份，合计两份，有多少种？",
+      "hint": "二次项系数。",
+      "solution": [
+        "$[x^2](1+x)^3=3$。"
+      ],
+      "answer": "三。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 3,
+      "id": "dm-generating-functions-q3"
+    },
+    {
+      "problem": "形式幂级数相等是否需要实变量收敛？",
+      "hint": "相等按系数定义。",
+      "solution": [
+        "逐项系数相同即可。"
+      ],
+      "answer": "不需要。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-generating-functions-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "生成函数的系数通常表示什么？",
+    "choices": [
+      "方式数",
+      "变量取值",
+      "收敛半径"
+    ],
+    "correctIndex": 0,
+    "explanation": "指数记总量，系数数方式。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-generating-functions-m1",
+      "claim": "指数与系数可互换理解",
+      "correction": "它们承担不同角色。"
+    },
+    {
+      "id": "dm-generating-functions-m2",
+      "claim": "形式运算自动证明分析收敛",
+      "correction": "形式恒等只说明系数关系。"
+    }
+  ],
+  "prerequisites": [
+    "dm-permutations",
+    "dm-first-recurrence"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "dm-generating-functions-m1",
+    "dm-generating-functions-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-generating-functions",
+    "prediction": "改变人数、每人上限和目标总数，卷积系数怎样变化？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "它们承担不同角色。",
+    "steps": [
+      {
+        "title": "目标总份数：0",
+        "instruction": "设为 $0$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，目标系数：$1$；全部系数和：$27$。",
+        "preset": {
+          "a": 3,
+          "b": 2,
+          "n": 0
+        }
+      },
+      {
+        "title": "目标总份数：10",
+        "instruction": "设为 $10$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，目标系数：$0$；全部系数和：$27$。",
+        "preset": {
+          "a": 3,
+          "b": 2,
+          "n": 10
+        }
+      },
+      {
+        "title": "目标总份数：20",
+        "instruction": "设为 $20$。对照当前步骤与完整参考结果。",
+        "observation": "该设置下，目标系数：$0$；全部系数和：$27$。",
+        "preset": {
+          "a": 3,
+          "b": 2,
+          "n": 20
+        }
+      }
+    ]
+  }
+}

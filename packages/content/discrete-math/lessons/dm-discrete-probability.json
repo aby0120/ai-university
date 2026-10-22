@@ -1,0 +1,195 @@
+{
+  "id": "dm-discrete-probability",
+  "chapterId": "dm-recurrences",
+  "number": "6.5",
+  "title": "计数与离散概率",
+  "subtitle": "计数变成概率之前，先确认基本结果是否等可能。",
+  "concept": "计数变成概率之前，先确认基本结果是否等可能。",
+  "intuition": "“正面个数有几种”与“每种个数概率相同”是两回事。",
+  "objectives": [
+    "选择基本结果",
+    "用指示变量求期望"
+  ],
+  "body": [
+    {
+      "title": "选择基本结果",
+      "text": "独立公平掷币的有序串等可能；把它压缩为正面数后，不同记录值会合并不同数量的串。"
+    },
+    {
+      "title": "用指示变量求期望",
+      "text": "总成功数是各次成功指示之和。期望线性性不需要独立，二项分布的具体概率公式才需要相应独立条件。"
+    },
+    {
+      "title": "条件化再计数",
+      "text": "在已知事件内重新归一化；事件有正概率时，等可能有限模型的条件概率等于交集数除以条件事件数。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "独立同成功率试验给出二项计数模型。",
+    "latex": "P(X=k)=\\binom nk p^k(1-p)^{n-k},\\qquad E(X)=np",
+    "conditions": [
+      "概率公式要求独立、固定次数、同成功率。",
+      "简单比值计数要求基本结果等可能。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "固定哪些位置成功。",
+      "latex": "P(\\text{指定成功位置})=p^k(1-p)^{n-k}"
+    },
+    {
+      "text": "选择成功位置集合。",
+      "latex": "\\#=\\binom nk"
+    },
+    {
+      "text": "相加互斥事件。",
+      "latex": "P(X=k)=\\binom nkp^k(1-p)^{n-k}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "恰好两正",
+      "problem": "公平独立掷币三次，恰两正概率？",
+      "steps": [
+        "八个有序串等可能。",
+        "选择两个正面位置共三种。"
+      ],
+      "answer": "$\\frac38$。"
+    },
+    {
+      "title": "已知至少一正",
+      "problem": "同样三次，已知至少一正，求恰两正概率。",
+      "steps": [
+        "条件事件排除全反，余七个串。",
+        "其中恰两正仍三个。"
+      ],
+      "answer": "$\\frac37$。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "公平独立掷币四次全正概率？",
+      "hint": "只有一个串。",
+      "solution": [
+        "$1/2^4=1/16$。"
+      ],
+      "answer": "$\\frac1{16}$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.0625,
+      "id": "dm-discrete-probability-q1"
+    },
+    {
+      "problem": "三个可能正面数就都概率三分之一吗？",
+      "hint": "各记录合并的有序结果数。",
+      "solution": [
+        "不同计数可合并不同数量串。"
+      ],
+      "answer": "不能这样推。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-discrete-probability-q2"
+    },
+    {
+      "problem": "六次成功率一半的试验，成功数期望？",
+      "hint": "指示变量相加。",
+      "solution": [
+        "$6/2=3$。"
+      ],
+      "answer": "三。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 3,
+      "id": "dm-discrete-probability-q3"
+    },
+    {
+      "problem": "求成功数期望一定需要独立吗？",
+      "hint": "期望线性性不要求独立。",
+      "solution": [
+        "每次边缘成功率已知即可相加。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "dm-discrete-probability-q4"
+    }
+  ],
+  "learningCheck": {
+    "question": "等可能有序串压缩成计数后是否仍等可能？",
+    "choices": [
+      "总是",
+      "通常不一定",
+      "只有概率零时不等"
+    ],
+    "correctIndex": 1,
+    "explanation": "记录值可能合并不同数量基本串。"
+  },
+  "commonMistakes": [
+    {
+      "id": "dm-discrete-probability-m1",
+      "claim": "每种记录值都一样可能",
+      "correction": "需检查合并方式。"
+    },
+    {
+      "id": "dm-discrete-probability-m2",
+      "claim": "期望线性必须独立",
+      "correction": "线性性本身不要求独立。"
+    }
+  ],
+  "prerequisites": [
+    "dm-permutations"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "dm-discrete-probability-m1",
+    "dm-discrete-probability-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-6042",
+    "levin-scope"
+  ],
+  "interactiveVisual": {
+    "kind": "discrete",
+    "function": "dm-discrete-probability",
+    "prediction": "切换试验次数与成功数，逐串计数怎样形成二项概率？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "需检查合并方式。",
+    "steps": [
+      {
+        "title": "独立掷币次数：1",
+        "instruction": "设为 $1$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，实际正面数：$1$；对应有序串：$1$；总有序串：$2$。",
+        "preset": {
+          "a": 1,
+          "b": 2
+        }
+      },
+      {
+        "title": "独立掷币次数：4",
+        "instruction": "设为 $4$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，实际正面数：$2$；对应有序串：$6$；总有序串：$16$。",
+        "preset": {
+          "a": 4,
+          "b": 2
+        }
+      },
+      {
+        "title": "独立掷币次数：8",
+        "instruction": "设为 $8$。观察哪些对象、关系或计数改变。",
+        "observation": "该设置下，实际正面数：$2$；对应有序串：$28$；总有序串：$256$。",
+        "preset": {
+          "a": 8,
+          "b": 2
+        }
+      }
+    ]
+  }
+}
