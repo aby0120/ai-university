@@ -34,6 +34,7 @@ import {
   ReferencePage,
   SearchPage,
 } from "./pages/Resources";
+const AIDevelopmentPreview = lazy(() => import("./pages/AIDevelopmentPreview"));
 const PythonPreview = lazy(() => import("./pages/PythonPreview"));
 import {collectionForRoute} from "../../../packages/content";
 import {Curriculum} from "./lib/curriculum";
@@ -90,7 +91,7 @@ export default function App() {
     document.title =
       (route.path === "python" || route.path.startsWith("python/")
         ? "Python 编程入门 · 投稿预览"
-        : labelFor(route)) + " · AI University";
+        : route.path === "ai-development" || route.path.startsWith("ai-development/") ? "带着 AI 做项目 · 投稿预览" : labelFor(route)) + " · AI University";
     window.scrollTo({ top: 0, behavior: "instant" });
     if (!firstLoad.current)
       document.getElementById("main")?.focus({ preventScroll: true });
@@ -143,6 +144,9 @@ export default function App() {
         <PythonPreview path={route.path} />
       </Suspense>
     );
+  }
+  if (route.path === "ai-development" || route.path.startsWith("ai-development/")) {
+    return <Suspense fallback={<p role="status">正在打开教材…</p>}><AIDevelopmentPreview path={route.path} /></Suspense>;
   }
   return (
     <Curriculum.Provider value={curriculum}><State.Provider value={state}>
