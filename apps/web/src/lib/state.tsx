@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
-import { lessonById, lessons } from "../../../../packages/content";
-import supplements from "../../../../packages/content/supplements.json";
+import { lessonById, allLessons as lessons, collections } from "../../../../packages/content";
+const supplements={reviews:collections.flatMap(c=>c.supplements.reviews),exam:collections.flatMap(c=>c.supplements.exam)};
 import type { Progress } from "../components/Practice";
 import type { Route } from "./navigation";
 const allQuestions = [

@@ -1,0 +1,195 @@
+{
+  "id": "la-recurrences",
+  "chapterId": "la-applications",
+  "number": "10.2",
+  "title": "矩阵幂与线性递推",
+  "subtitle": "初值决定哪些特征行为出现",
+  "concept": "线性递推重复使用同一个矩阵，特征方向决定各分量如何增长、衰减或振荡。",
+  "intuition": "初值先分到特征方向，每个系数各自乘上特征值的幂，再合回原坐标。",
+  "objectives": [
+    "将递推改写为矩阵迭代",
+    "判断增长、衰减与交替"
+  ],
+  "body": [
+    {
+      "title": "怎样把递推写成矩阵？",
+      "text": "将需要记住的状态堆成向量；二阶标量递推可改写成一阶二维系统。"
+    },
+    {
+      "title": "如何看长期行为？",
+      "text": "在可对角化情形，$|\\lambda|<1$ 的分量衰减，$|\\lambda|>1$ 的分量增长；负值会交替。初值在某方向没有分量时，该方向不贡献。"
+    },
+    {
+      "title": "模长一就一定稳定吗？",
+      "text": "不一定。含缺陷的 Jordan 块可能出现多项式增长，例如 $\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}^k$ 的非对角元素是 $k$。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "矩阵幂与线性递推",
+    "latex": "x_{k+1}=Ax_k\\Rightarrow x_k=A^kx_0,\\qquad A=SDS^{-1}\\Rightarrow x_k=SD^kS^{-1}x_0",
+    "conditions": [
+      "$k$ 为非负整数；分特征方向的公式要求可对角化。有限图示不能替代长期极限证明。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "反复代入原递推。",
+      "latex": "x_k=AA\\cdots Ax_0=A^kx_0"
+    },
+    {
+      "text": "将初值转到特征坐标。",
+      "latex": "c=S^{-1}x_0"
+    },
+    {
+      "text": "每个坐标独立乘幂。",
+      "latex": "x_k=\\sum_i c_i\\lambda_i^k v_i"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "增长方向可被初值避开",
+      "problem": "$A=\\operatorname{diag}(1/2,2)$，初值 $(1,0)$。",
+      "steps": [
+        "$x_k=(2^{-k},0)$。",
+        "初值没有第二特征方向分量，虽存在增长方向，当前轨迹仍衰减。"
+      ],
+      "answer": "趋于零。"
+    },
+    {
+      "title": "Fibonacci 的矩阵式",
+      "problem": "$F_0=0,F_1=1,F_{k+2}=F_{k+1}+F_k$。",
+      "steps": [
+        "状态 $(F_{k+1},F_k)^T$ 按 $A=\\begin{pmatrix}1&1\\\\1&0\\end{pmatrix}$ 更新。",
+        "特征值为 $\\phi=(1+\\sqrt5)/2$、$\\psi=(1-\\sqrt5)/2$。",
+        "匹配初值得 $F_k=(\\phi^k-\\psi^k)/\\sqrt5$。"
+      ],
+      "answer": "矩阵特征分解给出递推通项。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-recurrences-m1",
+      "claim": "最大特征值大于一，所以每个初值都增长。",
+      "correction": "初值可能没有相应方向分量。"
+    },
+    {
+      "id": "la-recurrences-m2",
+      "claim": "所有特征值模长一，就一定所有轨迹有界。",
+      "correction": "非对角化的重复块可能产生多项式增长。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$x_{k+1}=-x_k/2,x_0=1$，$x_3$？",
+      "hint": "乘三次相同倍率。",
+      "solution": [
+        "$(-1/2)^3=-1/8$。"
+      ],
+      "answer": "$-1/8$",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": -0.125,
+      "id": "la-recurrences-q1"
+    },
+    {
+      "problem": "$A=\\operatorname{diag}(2,3)$，$x_0=(1,1)$，$x_2$？",
+      "hint": "各分量独立平方。",
+      "solution": [
+        "$(4,9)$。"
+      ],
+      "answer": "$(4,9)$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-recurrences-q2"
+    },
+    {
+      "problem": "$J=I+N,N^2=0$，$J^k$？",
+      "hint": "二项式中高阶项为零。",
+      "solution": [
+        "$J^k=I+kN$。"
+      ],
+      "answer": "$I+kN$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-recurrences-q3"
+    },
+    {
+      "problem": "可对角化且所有特征值模长严格小于一时，所有轨迹怎样？",
+      "hint": "有限个衰减项相加。",
+      "solution": [
+        "每个 $\\lambda_i^k\\to0$，所以任意固定初值的状态趋零。"
+      ],
+      "answer": "趋于零。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-recurrences-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-diagonalization",
+    "la-multiplicity"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "la-recurrences-m1",
+    "la-recurrences-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-recurrences",
+    "caption": "固定初值 $(1,1)$，矩阵为 $\\operatorname{diag}(a,1/2)$。显示各次迭代的状态。",
+    "prediction": "倍率跨过一或变为负数时，递推轨迹怎样改变？"
+  },
+  "learningCheck": {
+    "question": "一个增长特征方向会影响所有初值吗？",
+    "choices": [
+      "一定",
+      "只有初值含该方向分量时",
+      "只看矩阵尺寸"
+    ],
+    "correctIndex": 1,
+    "explanation": "分解后的系数可能为零。"
+  },
+  "teaching": {
+    "explain": "矩阵告诉你哪些行为可能发生；初值决定这一次实际出现哪些行为。",
+    "steps": [
+      {
+        "title": "两个方向都衰减",
+        "instruction": "取 $a=0.8,n=6$。",
+        "preset": {
+          "a": 0.8,
+          "n": 6
+        },
+        "observation": "两个分量都小于初值。"
+      },
+      {
+        "title": "出现增长方向",
+        "instruction": "取 $a=1.2,n=6$。",
+        "preset": {
+          "a": 1.2,
+          "n": 6
+        },
+        "observation": "第一分量大于初值，第二分量继续衰减。"
+      },
+      {
+        "title": "交替衰减",
+        "instruction": "取 $a=-0.8,n=5$。",
+        "preset": {
+          "a": -0.8,
+          "n": 5
+        },
+        "observation": "第一分量为负，模长仍随迭代减小。"
+      }
+    ]
+  }
+}

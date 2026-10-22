@@ -1,0 +1,196 @@
+{
+  "id": "la-equations",
+  "chapterId": "la-systems",
+  "number": "1.2",
+  "title": "方程组的行图像与列图像",
+  "subtitle": "同一组条件的两种图像",
+  "concept": "同一个方程组，既是几个几何条件的交集，也是一次线性组合。",
+  "intuition": "行图像问点是否同时在所有直线上；列图像问右端向量能否用矩阵的列拼出来。",
+  "objectives": [
+    "建立行图像与列图像",
+    "区分唯一解、无解和无穷多解"
+  ],
+  "body": [
+    {
+      "title": "线性方程长什么样？",
+      "text": "未知量只以一次幂出现，系数已知。$xy=1$、$x^2+y=0$ 都不属于线性方程。"
+    },
+    {
+      "title": "行图像看哪里？",
+      "text": "二元非退化方程通常是一条直线。公共点是解；平行异线无解，重合线的每个点都是解。退化方程可能表示整个平面或空集。"
+    },
+    {
+      "title": "列图像怎样对应？",
+      "text": "把未知量看作列向量的系数。$A\\mathbf x=\\mathbf b$ 就是列的线性组合等于右端。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "方程组的行图像与列图像",
+    "latex": "\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}\\binom xy=\\binom pq\\iff x\\binom ac+y\\binom bd=\\binom pq",
+    "conditions": [
+      "矩阵每行对应一个方程；矩阵行数必须等于右端向量长度。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "按行展开。",
+      "latex": "ax+by=p,\\quad cx+dy=q"
+    },
+    {
+      "text": "收集同一个未知量。",
+      "latex": "x(a,c)+y(b,d)=(p,q)"
+    },
+    {
+      "text": "两种写法检查相同等式。",
+      "latex": "\\{\\mathbf x:A\\mathbf x=\\mathbf b\\}=\\text{各方程解集的交集}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "两条直线交于一点",
+      "problem": "解 $x+y=3,x-y=1$。",
+      "steps": [
+        "相加得 $2x=4$。",
+        "$x=2$ 后 $y=1$，两式均满足。"
+      ],
+      "answer": "$(2,1)$。"
+    },
+    {
+      "title": "条件互相冲突",
+      "problem": "$x+y=1,2x+2y=3$ 有解吗？",
+      "steps": [
+        "第一式乘二要求 $2x+2y=2$。",
+        "它不能同时等于 $3$。"
+      ],
+      "answer": "无解。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-equations-m1",
+      "claim": "有两个方程就一定有唯一解。",
+      "correction": "方程可能重复，也可能冲突。"
+    },
+    {
+      "id": "la-equations-m2",
+      "claim": "画线求交点就是近似解已足够。",
+      "correction": "图示帮助判断，精确坐标仍应代入方程验证。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$(1,2)$ 是否满足 $x+2y=5$？",
+      "hint": "代入左边。",
+      "solution": [
+        "$1+2\\cdot2=5$。"
+      ],
+      "answer": "满足。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "la-equations-q1"
+    },
+    {
+      "problem": "$x+y=2,2x+2y=4$ 有多少解？",
+      "hint": "第二式是否新增条件？",
+      "solution": [
+        "第二式只是第一式的两倍。"
+      ],
+      "answer": "无穷多，$(t,2-t)$。",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "la-equations-m1"
+      ],
+      "id": "la-equations-q2"
+    },
+    {
+      "problem": "$x+y=2,x+2y=3$ 中 $y$ 是多少？",
+      "hint": "两式相减。",
+      "solution": [
+        "$y=1$，随后 $x=1$。"
+      ],
+      "answer": "1",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 1,
+      "id": "la-equations-q3"
+    },
+    {
+      "problem": "$A$ 有 $3$ 行 $2$ 列，$A\\mathbf x=\\mathbf b$ 有几个未知量？",
+      "hint": "一列对应一个未知量。",
+      "solution": [
+        "$\\mathbf x\\in\\mathbb R^2$。"
+      ],
+      "answer": "2",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 2,
+      "id": "la-equations-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-vectors"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "la-equations-m1",
+    "la-equations-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-equations",
+    "caption": "两条约束为 $x+y=2$ 和 $x+cy=b$。矩阵奇异时，区分重合与平行异线。",
+    "prediction": "两条直线何时相交、重合或平行？"
+  },
+  "learningCheck": {
+    "question": "$A\\mathbf x=\\mathbf b$ 的列图像把 $\\mathbf x$ 看成什么？",
+    "choices": [
+      "目标位置",
+      "列向量的系数",
+      "矩阵的行数"
+    ],
+    "correctIndex": 1,
+    "explanation": "每个未知量乘上对应的一列。"
+  },
+  "teaching": {
+    "explain": "解方程组也可以理解为找配方：每一列是一种材料，未知量告诉你各取多少。",
+    "steps": [
+      {
+        "title": "唯一交点",
+        "instruction": "取 $c=2,b=3$。",
+        "preset": {
+          "c": 2,
+          "b": 3
+        },
+        "observation": "解为 $(1,1)$，行列式为一。"
+      },
+      {
+        "title": "约束重复",
+        "instruction": "取 $c=1,b=2$。",
+        "preset": {
+          "c": 1,
+          "b": 2
+        },
+        "observation": "两条线重合，系数秩一，有无穷多解。"
+      },
+      {
+        "title": "约束冲突",
+        "instruction": "保持 $c=1$，把 $b$ 改为 $3$。",
+        "preset": {
+          "c": 1,
+          "b": 3
+        },
+        "observation": "两条平行异线无交点，增广矩阵秩大于系数秩。"
+      }
+    ]
+  }
+}

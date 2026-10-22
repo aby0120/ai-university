@@ -1,0 +1,191 @@
+{
+  "id": "c3-spherical",
+  "chapterId": "c3-triple",
+  "number": "6.3",
+  "title": "球坐标三重积分",
+  "subtitle": "三条小边的缩放都要计算",
+  "concept": "球坐标体积元包含距离的平方与倾角正弦，来自两条不同方向的小圆弧。",
+  "intuition": "离原点越远，同样的两个角宽扫出更大面积；靠近极点，方位角对应的小圆又会缩短。",
+  "objectives": [
+    "建立球坐标积分限",
+    "解释体积元的缩放"
+  ],
+  "body": [
+    {
+      "title": "为什么是距离平方？",
+      "text": "径向边长是距离增量；两条角向边长各含一次距离，乘起来给平方。"
+    },
+    {
+      "title": "为什么还有正弦？",
+      "text": "方位角绕的是水平小圆，其半径是到原点距离乘倾角正弦；极点处这条边缩为零。"
+    },
+    {
+      "title": "界限怎么检查？",
+      "text": "先看球半径，再看方位角与倾角。圆锥给固定倾角，平面或偏心球可能给依赖角度的径向界。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "三条小边的缩放都要计算",
+    "latex": "dV=\\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta,\\quad0\\le\\phi\\le\\pi",
+    "conditions": [
+      "沿用本卷倾角从正竖轴量起的约定；参数范围不重复覆盖正体积区域；密度可积，角度使用弧度。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "径向小边不缩放。",
+      "latex": "ds_\\rho=d\\rho"
+    },
+    {
+      "text": "倾角小边沿经线。",
+      "latex": "ds_\\phi=\\rho\\,d\\phi"
+    },
+    {
+      "text": "方位角小边沿纬线。",
+      "latex": "ds_\\theta=\\rho\\sin\\phi\\,d\\theta"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "球体体积",
+      "problem": "半径 2 的球体体积？",
+      "steps": [
+        "积分 $\\int_0^{2\\pi}\\int_0^\\pi\\int_0^2\\rho^2\\sin\\phi\\,d\\rho d\\phi d\\theta$。",
+        "三个因子为 $2\\pi,2,8/3$。"
+      ],
+      "answer": "$\\frac{32\\pi}3$。"
+    },
+    {
+      "title": "球内平方距离",
+      "problem": "单位球内积分 $x^2+y^2+z^2$。",
+      "steps": [
+        "密度为 $\\rho^2$，加体积元变成 $\\rho^4\\sin\\phi$。",
+        "径向积分 $1/5$，角向积分 $4\\pi$。"
+      ],
+      "answer": "$\\frac{4\\pi}5$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-spherical-m1",
+      "claim": "球坐标只比柱坐标多一个半径。",
+      "correction": "还多倾角正弦，反映纬线长度。"
+    },
+    {
+      "id": "c3-spherical-m2",
+      "claim": "把倾角从零扫到整周即可。",
+      "correction": "会重复且改变方向；标准非负体积元使用零到 $\\pi$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-spherical-q1",
+      "problem": "单位上半球体积？",
+      "hint": "倾角只扫北半球。",
+      "solution": [
+        "将整球体积 $4\\pi/3$ 取一半。"
+      ],
+      "answer": "$\\frac{2\\pi}3$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-spherical-q2",
+      "problem": "球坐标中的圆锥 $z=r$ 对应什么倾角？",
+      "hint": "比较余弦与正弦。",
+      "solution": [
+        "$\\cos\\phi=\\sin\\phi$ 且在上半空间，所以 $\\phi=\\pi/4$。"
+      ],
+      "answer": "$\\frac\\pi4$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-spherical-q3",
+      "problem": "固定球面上，极点附近的小方位角弧为什么短？",
+      "hint": "看纬线半径。",
+      "solution": [
+        "纬线半径为 $\\rho\\sin\\phi$，极点正弦为零。"
+      ],
+      "answer": "因为绕轴小圆半径缩小。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-spherical-q4",
+      "problem": "若积分距离平方，球坐标的径向幂次是几次？",
+      "hint": "密度平方乘体积元平方。",
+      "solution": [
+        "$\\rho^2\\cdot\\rho^2=\\rho^4$。"
+      ],
+      "answer": "4 次",
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "numericAnswer": 4
+    }
+  ],
+  "learningCheck": {
+    "question": "球坐标方位角小边的实际长度约为？",
+    "choices": [
+      "$\\rho\\,d\\theta$",
+      "$\\rho\\sin\\phi\\,d\\theta$",
+      "$d\\theta$"
+    ],
+    "correctIndex": 1,
+    "explanation": "它沿水平纬线，半径是水平投影长度。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-spherical",
+    "caption": "半径固定的球面小网格：倾角与方位角宽度固定，移动到不同纬度。",
+    "prediction": "同样的角度网格在极点与赤道面积一样吗？"
+  },
+  "teaching": {
+    "explain": "三条小边中有两条是角向圆弧；它们给距离平方，其中纬线再带一个正弦。",
+    "steps": [
+      {
+        "title": "靠近北极",
+        "instruction": "将倾角 $\\phi$ 设为 $0.1$。",
+        "preset": {
+          "a": 0.1
+        },
+        "observation": "同样角宽扫出的纬线边很短。"
+      },
+      {
+        "title": "中纬度",
+        "instruction": "将倾角 $\\phi$ 设为 $\\frac\\pi4$。",
+        "preset": {
+          "a": 0.7853981633974483
+        },
+        "observation": "纬线半径逐渐增大。"
+      },
+      {
+        "title": "赤道",
+        "instruction": "将倾角 $\\phi$ 设为 $\\frac\\pi2$。",
+        "preset": {
+          "a": 1.5707963267948966
+        },
+        "observation": "方位角小边最长，正弦因子达到一。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-cylindrical",
+    "c3-coordinates"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "c3-spherical-m1",
+    "c3-spherical-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

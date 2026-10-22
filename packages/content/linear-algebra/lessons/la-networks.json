@@ -1,0 +1,199 @@
+{
+  "id": "la-networks",
+  "chapterId": "la-applications",
+  "number": "10.3",
+  "title": "图、关联矩阵与网络守恒",
+  "subtitle": "边流量如何形成节点净流入",
+  "concept": "关联矩阵把边上的有向流量转换为节点的净流入。",
+  "intuition": "每条边在起点扣掉流量，在终点加上同样流量；因此全网的净变化总和必为零。",
+  "objectives": [
+    "建立有向关联矩阵",
+    "用核与拉普拉斯解释守恒"
+  ],
+  "body": [
+    {
+      "title": "矩阵如何建立？",
+      "text": "为每条边任选方向，对应列在起点写 $-1$、终点写 $1$，其他为零。边流量允许负数，表示实际流向相反。"
+    },
+    {
+      "title": "核意味着什么？",
+      "text": "$Bf=0$ 是每个节点都守恒的循环流；$B^Tp=0$ 表示每条边两端势相同，所以 $p$ 在每个连通分量内为常数。"
+    },
+    {
+      "title": "拉普拉斯矩阵是什么？",
+      "text": "$L=BB^T$ 为对称半正定。其二次型是所有相邻节点差平方的和；连通图的核由全一向量生成。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "图、关联矩阵与网络守恒",
+    "latex": "b=Bf,\\quad\\mathbf1^TB=0,\\quad L=BB^T,\\quad p^TLp=\\|B^Tp\\|^2",
+    "conditions": [
+      "有限无向图先人为指定边方向；无自环的常用关联约定。多连通分量分别满足总净流入为零。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "每条边的列和为零。",
+      "latex": "\\mathbf1^TB=0"
+    },
+    {
+      "text": "因此总净流入为零。",
+      "latex": "\\mathbf1^Tb=\\mathbf1^TBf=0"
+    },
+    {
+      "text": "相邻节点相同势时平方和为零。",
+      "latex": "\\ker L=\\ker B^T=\\{\\text{各连通分量上的常量}\\}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "三角形循环",
+      "problem": "三节点边按 $1\\to2,2\\to3,3\\to1$ 定向，流量 $(1,1,1)$。",
+      "steps": [
+        "$B=\\begin{pmatrix}-1&0&1\\\\1&-1&0\\\\0&1&-1\\end{pmatrix}$。",
+        "每个节点一进一出，$Bf=0$。"
+      ],
+      "answer": "这是非零循环流。"
+    },
+    {
+      "title": "求全部满足给定净流入的流量",
+      "problem": "同一图要求 $b=(1,-1,0)$。",
+      "steps": [
+        "方程给 $f_3-f_1=1,f_1-f_2=-1,f_2-f_3=0$。",
+        "令 $f_2=f_3=t$，则 $f_1=t-1$。"
+      ],
+      "answer": "$f=(-1,0,0)+t(1,1,1)$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-networks-m1",
+      "claim": "流量为负说明解无效。",
+      "correction": "有向边是记号，负值说明实际反向。"
+    },
+    {
+      "id": "la-networks-m2",
+      "claim": "总净流入为零就足够应对任何图。",
+      "correction": "不连通图要每个分量分别守恒。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "连通四节点图的关联矩阵秩？",
+      "hint": "转置核只有常量方向。",
+      "solution": [
+        "秩为 $4-1=3$。"
+      ],
+      "answer": "3",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 3,
+      "id": "la-networks-q1"
+    },
+    {
+      "problem": "一棵三节点树有几维循环流？",
+      "hint": "树有两条边且秩二。",
+      "solution": [
+        "零度 $2-2=0$。"
+      ],
+      "answer": "0",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0,
+      "id": "la-networks-q2"
+    },
+    {
+      "problem": "改变某条边的记号方向，图的拉普拉斯会变吗？",
+      "hint": "$B$ 的对应列反号。",
+      "solution": [
+        "该列外积不变，故 $BB^T$ 不变。"
+      ],
+      "answer": "不变。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-networks-q3"
+    },
+    {
+      "problem": "三角形例中取 $t=1/3$ 的流量范数平方？",
+      "hint": "代入全部三条边。",
+      "solution": [
+        "$(-2/3)^2+(1/3)^2+(1/3)^2=2/3$。"
+      ],
+      "answer": "$2/3$",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.6666666666666666,
+      "id": "la-networks-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-four-spaces",
+    "la-positive-definite"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "la-networks-m1",
+    "la-networks-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-networks",
+    "caption": "三角形三条边按循环方向定向。流量可为负；节点读数分别为 $c-a,a-b,b-c$。",
+    "prediction": "给所有边加相同循环流时，节点的净流入会改变吗？"
+  },
+  "learningCheck": {
+    "question": "关联矩阵的核描述什么？",
+    "choices": [
+      "循环且节点守恒的边流量",
+      "所有节点势",
+      "任意右端"
+    ],
+    "correctIndex": 0,
+    "explanation": "核的输入属于边空间，输出节点净流入为零。"
+  },
+  "teaching": {
+    "explain": "网络问题仍是方程与核：一个特定供需流加任意循环流，供需不变。先把节点空间和边空间分清。",
+    "steps": [
+      {
+        "title": "循环守恒",
+        "instruction": "取 $a=b=c=1$。",
+        "preset": {
+          "a": 1,
+          "b": 1,
+          "c": 1
+        },
+        "observation": "每个节点净流入为零。"
+      },
+      {
+        "title": "只留一条边",
+        "instruction": "取 $a=1,b=c=0$。",
+        "preset": {
+          "a": 1,
+          "b": 0,
+          "c": 0
+        },
+        "observation": "节点净流入为 $(-1,1,0)$，全网和为零。"
+      },
+      {
+        "title": "边反向",
+        "instruction": "取 $a=-1,b=c=0$。",
+        "preset": {
+          "a": -1,
+          "b": 0,
+          "c": 0
+        },
+        "observation": "节点净流入为 $(1,-1,0)$，负流量表示反向。"
+      }
+    ]
+  }
+}

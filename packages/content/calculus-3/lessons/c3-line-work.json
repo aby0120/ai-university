@@ -1,0 +1,194 @@
+{
+  "id": "c3-line-work",
+  "chapterId": "c3-line-integrals",
+  "number": "7.3",
+  "title": "功与向量曲线积分",
+  "subtitle": "只累积沿位移方向的力",
+  "concept": "功积分把每一步的力与有向位移做点积；反向走时符号反转。",
+  "intuition": "顺着推会做正功，顶着走做负功，横向力不贡献这一小步的功。",
+  "objectives": [
+    "参数化计算功积分",
+    "检查反向与闭路功"
+  ],
+  "body": [
+    {
+      "title": "和弧长积分怎样连接？",
+      "text": "位移元等于单位切向量乘弧长元。功可以看成切向力分量的弧长积分。"
+    },
+    {
+      "title": "必须走直线吗？",
+      "text": "任何分段光滑路径都可参数化计算。场在路径上取值后点乘速度，不能只算两端的力。"
+    },
+    {
+      "title": "路径闭合就一定为零吗？",
+      "text": "一般不为零；持续沿圆周推动就会累积正功。只有保守场等额外条件保证闭路功为零。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "只累积沿位移方向的力",
+    "latex": "\\int_C\\mathbf F\\cdot d\\mathbf r=\\int_a^b\\mathbf F(\\mathbf r(t))\\cdot\\mathbf r\\prime(t)dt=\\int_C\\mathbf F\\cdot\\mathbf T\\,ds",
+    "conditions": [
+      "场沿路径连续、路径分段光滑且带定向；反向取相反定向；单位切向仅在规则段定义。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "短步功由力与位移点积给出。",
+      "latex": "\\Delta W\\approx\\mathbf F\\cdot\\Delta\\mathbf r"
+    },
+    {
+      "text": "将位移写成参数速度。",
+      "latex": "d\\mathbf r=\\mathbf r\\prime(t)dt"
+    },
+    {
+      "text": "反向参数使有向位移变号。",
+      "latex": "\\int_{-C}\\mathbf F\\cdot d\\mathbf r=-\\int_C\\mathbf F\\cdot d\\mathbf r"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "圆周推动",
+      "problem": "$\\mathbf F=(-y,x,0)$ 沿半径 2 的逆时针圆一周做功？",
+      "steps": [
+        "取 $\\mathbf r=(2\\cos t,2\\sin t,0)$，速度等于场值。",
+        "点积为 4，积分得 $8\\pi$。"
+      ],
+      "answer": "$8\\pi$。"
+    },
+    {
+      "title": "径向力沿圆",
+      "problem": "$\\mathbf F=(x,y,0)$ 沿同一圆做功？",
+      "steps": [
+        "场径向，速度切向，点积为零。",
+        "每小步贡献都零，整圈也零。"
+      ],
+      "answer": "0。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-line-work-m1",
+      "claim": "只积分场的长度就是功。",
+      "correction": "要取沿位移的有向分量。"
+    },
+    {
+      "id": "c3-line-work-m2",
+      "claim": "所有闭合路径上的功都为零。",
+      "correction": "旋转场给出直接反例。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-line-work-q1",
+      "problem": "常力 $(2,0,0)$ 从原点直走到 $(3,1,0)$ 做功？",
+      "hint": "常力点乘总位移。",
+      "solution": [
+        "$2\\cdot3=6$。"
+      ],
+      "answer": "6",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 6
+    },
+    {
+      "id": "c3-line-work-q2",
+      "problem": "沿相反方向走，上题功是多少？",
+      "hint": "有向位移反号。",
+      "solution": [
+        "由终点回原点，位移为 $(-3,-1,0)$，功为 $-6$。"
+      ],
+      "answer": "$-6$",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": -6
+    },
+    {
+      "id": "c3-line-work-q3",
+      "problem": "力始终垂直于速度时功是多少？",
+      "hint": "看每个点积。",
+      "solution": [
+        "每个局部点积为零，积分为零。"
+      ],
+      "answer": "0",
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "numericAnswer": 0
+    },
+    {
+      "id": "c3-line-work-q4",
+      "problem": "单位圆顺时针一周在场 $(-y,x,0)$ 中做功？",
+      "hint": "先算逆时针再反向。",
+      "solution": [
+        "逆时针功为 $2\\pi$。",
+        "反向后为 $-2\\pi$。"
+      ],
+      "answer": "$-2\\pi$。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "将路径反向，功积分怎样变化？",
+    "choices": [
+      "不变",
+      "反号",
+      "变成绝对值"
+    ],
+    "correctIndex": 1,
+    "explanation": "功累积有向位移。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-line-work",
+    "caption": "单位圆逆时针运动，场 $\\mathbf F=(-y,x,0)$；切向力做正功。",
+    "prediction": "起终点相同，为什么功还能不为零？"
+  },
+  "teaching": {
+    "explain": "每一步只取力在位移方向上的贡献，横向力不做这一小步的功。",
+    "steps": [
+      {
+        "title": "逆时针局部",
+        "instruction": "将路径参数 $t$ 设为 $\\frac\\pi2$。",
+        "preset": {
+          "x": 1.5707963267948966
+        },
+        "observation": "旋转场沿路径推动，累计功为正。"
+      },
+      {
+        "title": "半周",
+        "instruction": "将路径参数 $t$ 设为 $\\pi$。",
+        "preset": {
+          "x": 3.141592653589793
+        },
+        "observation": "局部点积一直为一，功继续增加。"
+      },
+      {
+        "title": "完整闭路",
+        "instruction": "将路径参数 $t$ 设为 $2\\pi$。",
+        "preset": {
+          "x": 6.283185307179586
+        },
+        "observation": "闭合但功为 $2\\pi$，并不抵消。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-line-scalar",
+    "c3-dot"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-line-work-m1",
+    "c3-line-work-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

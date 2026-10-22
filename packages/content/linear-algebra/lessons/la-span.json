@@ -1,0 +1,190 @@
+{
+  "id": "la-span",
+  "chapterId": "la-spaces",
+  "number": "3.2",
+  "title": "张成与生成集",
+  "subtitle": "这些方向能到达哪里",
+  "concept": "张成是给定向量的所有线性组合组成的集合。",
+  "intuition": "两个不平行的平面方向可以走到整个平面；若它们平行，无论系数怎样改，都离不开同一条线。",
+  "objectives": [
+    "判断目标是否在张成空间中",
+    "识别生成集中的冗余"
+  ],
+  "body": [
+    {
+      "title": "张成包含哪些向量？",
+      "text": "允许所有实系数，不限正负或大小。有限图形中画出的平行四边形只是有界系数的一部分，不是整个张成空间。"
+    },
+    {
+      "title": "怎样判断目标是否在内？",
+      "text": "把给定向量放成列，解 $Ac=b$。相容当且仅当目标在这些列的张成中。"
+    },
+    {
+      "title": "生成集一定最简吗？",
+      "text": "不一定。额外放入一个已有线性组合，不会扩大空间。去掉冗余才会得到基。 一个空间需要多少个独立方向，后面用“维数”来准确描述。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "张成与生成集",
+    "latex": "\\operatorname{span}(v_1,\\ldots,v_k)=\\left\\{\\sum_{j=1}^k c_jv_j:c_j\\in\\mathbb R\\right\\}",
+    "conditions": [
+      "向量处于同一空间；空生成集的张成约定为零子空间。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "所有系数为零，得到原点。",
+      "latex": "0=\\sum_j0v_j"
+    },
+    {
+      "text": "两种组合相加仍是组合。",
+      "latex": "\\sum_j a_jv_j+\\sum_j b_jv_j=\\sum_j(a_j+b_j)v_j"
+    },
+    {
+      "text": "每个包含生成向量的子空间都包含这些组合。",
+      "latex": "v_j\\in W\\Rightarrow\\operatorname{span}(v_j)\\subseteq W"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "是否能到达",
+      "problem": "$(2,3)$ 是否在 $(1,0),(1,1)$ 的张成中？",
+      "steps": [
+        "解 $a+b=2,b=3$。",
+        "$a=-1,b=3$ 可行。"
+      ],
+      "answer": "在。"
+    },
+    {
+      "title": "冗余不增加空间",
+      "problem": "$(1,0),(0,1),(1,1)$ 张成哪些向量？第三个向量增加新方向吗？",
+      "steps": [
+        "前两向量已经生成整个平面。",
+        "第三个等于前两者之和。"
+      ],
+      "answer": "张成整个 $\\mathbb R^2$；第三个向量冗余。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-span-m1",
+      "claim": "系数限制在 $[0,1]$ 就是张成。",
+      "correction": "这只画出有界的一部分。"
+    },
+    {
+      "id": "la-span-m2",
+      "claim": "向量数量越多，张成空间必然越大。",
+      "correction": "新向量可能已经在原来的张成里。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$(3,6)$ 是否在 $(1,2)$ 的张成中？",
+      "hint": "看是否为数乘。",
+      "solution": [
+        "$(3,6)=3(1,2)$。"
+      ],
+      "answer": "在。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "la-span-q1"
+    },
+    {
+      "problem": "$(1,0)$ 是否在 $(1,1),(2,2)$ 的张成中？",
+      "hint": "所有组合有什么共同关系？",
+      "solution": [
+        "所有组合的两个坐标相等。"
+      ],
+      "answer": "不在。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-span-q2"
+    },
+    {
+      "problem": "$\\operatorname{span}(0)$ 是什么？",
+      "hint": "零向量的任意倍数。",
+      "solution": [
+        "始终是零。"
+      ],
+      "answer": "零子空间。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-span-q3"
+    },
+    {
+      "problem": "两个子空间的并集一定是子空间吗？",
+      "hint": "用横轴和纵轴作反例。",
+      "solution": [
+        "$(1,0),(0,1)$ 都在并集中，但 $(1,1)$ 不在。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-span-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-subspaces",
+    "la-vectors"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "la-span-m1",
+    "la-span-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-span",
+    "caption": "生成向量为 $u=(1,0,0),v=(1,c,0)$。淡色平面表示全部张成；边框只表示有限系数画出的部分。",
+    "prediction": "箭头几乎平行与完全平行，张成空间相同吗？"
+  },
+  "learningCheck": {
+    "question": "加入一个已在原张成中的向量会怎样？",
+    "choices": [
+      "空间扩大一维",
+      "空间不变",
+      "原点消失"
+    ],
+    "correctIndex": 1,
+    "explanation": "它不能提供原来没有的方向。"
+  },
+  "teaching": {
+    "explain": "张成问的是“能表示哪些向量”，不是“列出了多少个向量”。重复方向不会增加能力。",
+    "steps": [
+      {
+        "title": "两个独立方向",
+        "instruction": "取 $c=1$。",
+        "preset": {
+          "c": 1
+        },
+        "observation": "两个向量张成整个水平面，维数二。"
+      },
+      {
+        "title": "很接近平行",
+        "instruction": "取 $c=0.1$。",
+        "preset": {
+          "c": 0.1
+        },
+        "observation": "有限系数区域很窄，但仍张成整个平面。"
+      },
+      {
+        "title": "恰好相关",
+        "instruction": "取 $c=0$。",
+        "preset": {
+          "c": 0
+        },
+        "observation": "两个向量重合，张成只剩一条直线。"
+      }
+    ]
+  }
+}

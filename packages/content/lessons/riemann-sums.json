@@ -4,7 +4,7 @@
   "number": "6.2",
   "title": "黎曼和与数值积分",
   "subtitle": "让矩形越来越细",
-  "concept": "把区间切成小段，用“高度×宽度”估计每段贡献，再相加；切片宽度趋于 0，得到定积分。",
+  "concept": "把区间切成小段，用“$\\text{高度}\\times\\text{宽度}$”估计每段贡献，再相加；切片宽度趋于 0，得到定积分。",
   "intuition": "用矩形估计曲线下的面积。矩形越细，近似通常越好；关键是最宽的那一段也要变小。",
   "objectives": [
     "分割、样点与网格",
@@ -22,7 +22,7 @@
     },
     {
       "title": "有限个矩形是精确值吗？",
-      "text": "一般是近似。中点法取各段中点，梯形法连接两端；在适当光滑条件下，两者误差通常按 1/n² 缩小。"
+      "text": "一般是近似。中点法取各段中点，梯形法连接两端；在适当光滑条件下，两者误差通常按 $\\frac{1}{n^{2}}$ 缩小。"
     }
   ],
   "formalDefinition": {
@@ -34,7 +34,7 @@
   },
   "derivation": [
     {
-      "text": "对 x² 在 [0,1] 使用 n 个右端矩形。",
+      "text": "对 $x^{2}$ 在 $[0,1]$ 使用 $n$ 个右端矩形。",
       "latex": "R_n=\\frac1n\\sum_{i=1}^n\\left(\\frac in\\right)^2=\\frac1{n^3}\\sum_{i=1}^n i^2"
     },
     {
@@ -42,32 +42,32 @@
       "latex": "R_n=\\frac{n(n+1)(2n+1)}{6n^3}"
     },
     {
-      "text": "取极限得到 1/3。",
+      "text": "取极限得到 $\\frac{1}{3}$。",
       "latex": "\\lim_{n\\to\\infty}R_n=\\frac13"
     }
   ],
   "interactiveVisual": {
     "kind": "riemann",
     "function": "square",
-    "caption": "切换左端、右端、中点与梯形，增加 n；x² 在 [0,1] 的精确积分为 1/3。",
-    "prediction": "同样的分割数，左端与右端矩形谁更大？增加 n 后，两者会怎样靠近？"
+    "caption": "切换左端、右端、中点与梯形，增加 $n$；$x^{2}$ 在 $[0,1]$ 的精确积分为 $\\frac{1}{3}$。",
+    "prediction": "同样的分割数，左端与右端矩形谁更大？增加 $n$ 后，两者会怎样靠近？"
   },
   "workedExamples": [
     {
       "title": "两个右端矩形",
-      "problem": "对 x² 在 [0,1] 取 n=2 的右端和。",
+      "problem": "对 $x^{2}$ 在 $[0,1]$ 取 $n = 2$ 的右端和。",
       "steps": [
-        "宽度 1/2，高度分别为 1/4、1。",
-        "相加乘宽度得到 (1/2)(1/4+1)。"
+        "宽度 $\\frac{1}{2}$，高度分别为 $\\frac{1}{4}$、1。",
+        "相加乘宽度得到 $(\\frac{1}{2}) (\\frac{1}{4} + 1)$。"
       ],
-      "answer": "R₂=5/8=0.625，高于精确 1/3。"
+      "answer": "$R_{2} = \\frac{5}{8} = 0.625$，高于精确 $\\frac{1}{3}$。"
     },
     {
       "title": "梯形对直线恰好准确",
       "problem": "用两个梯形估计 $\\int_0^2(2x+1)dx$。",
       "steps": [
         "节点高度为 1、3、5，步长为 1。",
-        "T=1[(1+5)/2+3]=6。"
+        "$T = 1 [\\frac{1 + 5}{2} + 3] = 6$。"
       ],
       "answer": "结果 6，因直线与每块斜顶完全一致。"
     }
@@ -80,21 +80,21 @@
     },
     {
       "id": "riemann-sums-m2",
-      "claim": "只增加 n 却保留一块很宽的区间。",
+      "claim": "只增加 $n$ 却保留一块很宽的区间。",
       "correction": "必须让最大宽度趋零，才覆盖整体细分。"
     }
   ],
   "practice": [
     {
       "id": "riemann-sums-p1",
-      "difficulty": 1,
+      "difficulty": 2,
       "misconceptionTags": [
         "riemann-sums-m1"
       ],
-      "problem": "f(x)=x 在 [0,1] 的 n=2 左端和？",
-      "answer": "$1/4$。",
+      "problem": "$f (x) = x$ 在 $[0,1]$ 的 $n = 2$ 左端和？",
+      "answer": "$\\frac{1}{4}$。",
       "solution": [
-        "宽 1/2，高度 0、1/2，和为 1/4。"
+        "宽 $\\frac{1}{2}$，高度 0、$\\frac{1}{2}$，和为 $\\frac{1}{4}$。"
       ],
       "hint": "左端高度偏低。",
       "numericAnswer": 0.25
@@ -103,22 +103,20 @@
       "id": "riemann-sums-p2",
       "difficulty": 2,
       "misconceptionTags": [
-        "riemann-sums-m2"
+        "riemann-sums-m1"
       ],
-      "problem": "x² 在 [0,1] 的单个中点矩形值？",
-      "answer": "$1/4$。",
+      "problem": "$x^{2}$ 在 $[0,1]$ 的单个中点矩形值？",
+      "answer": "$\\frac{1}{4}$。",
       "solution": [
-        "中点 x=1/2，高度 1/4，宽度 1。"
+        "中点 $x = \\frac{1}{2}$，高度 $\\frac{1}{4}$，宽度 1。"
       ],
-      "hint": "这是 n=1。",
+      "hint": "这是 $n = 1$。",
       "numericAnswer": 0.25
     },
     {
       "id": "riemann-sums-p3",
-      "difficulty": 3,
-      "misconceptionTags": [
-        "riemann-sums-m2"
-      ],
+      "difficulty": 1,
+      "misconceptionTags": [],
       "problem": "对递增非负函数，左端和通常高估还是低估积分？",
       "answer": "低估。",
       "solution": [
@@ -128,11 +126,9 @@
     },
     {
       "id": "riemann-sums-p4",
-      "difficulty": 4,
-      "misconceptionTags": [
-        "riemann-sums-m2"
-      ],
-      "problem": "常数函数 3 在 [0,2] 的任意黎曼和是多少？",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "problem": "常数函数 3 在 $[0,2]$ 的任意黎曼和是多少？",
       "answer": "$6$。",
       "solution": [
         "每块高度为 3，总宽度为 2，所以和恒为 6。"
@@ -152,7 +148,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.3.2",
     "status": "revised",
     "humanReviewed": false
   },
@@ -172,5 +168,37 @@
     ],
     "correctIndex": 1,
     "explanation": "每段右端点的函数值不小于左端点，所以右端点矩形的高度不小于左端点。"
+  },
+  "teaching": {
+    "explain": "先用有限小块近似，再让最大块宽趋零。有限和一般不是积分本身；不同取样方法会从不同方向靠近。",
+    "steps": [
+      {
+        "title": "两个右端矩形",
+        "instruction": "分割数取 2，使用右端。",
+        "preset": {
+          "n": 2,
+          "method": "right"
+        },
+        "observation": "右端和为 $\\frac58=0.625$，高于精确积分。"
+      },
+      {
+        "title": "同样分割换左端",
+        "instruction": "分割数仍为 2，改为左端。",
+        "preset": {
+          "n": 2,
+          "method": "left"
+        },
+        "observation": "左端和为 $\\frac18=0.125$，低于精确积分。"
+      },
+      {
+        "title": "增加细分",
+        "instruction": "改为 60 个右端矩形。",
+        "preset": {
+          "n": 60,
+          "method": "right"
+        },
+        "observation": "近似更接近 $\\frac13$；误差仍有限，不能把数值采样当证明。"
+      }
+    ]
   }
 }

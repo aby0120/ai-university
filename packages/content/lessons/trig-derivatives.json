@@ -4,8 +4,8 @@
   "number": "3.4",
   "title": "三角函数的导数",
   "subtitle": "周期运动的瞬时变化",
-  "concept": "用弧度时，sin 的导数是 cos，cos 的导数是 −sin；复合角还要乘内层导数。",
-  "intuition": "sin(3x) 比 sin x 的角度变化快 3 倍，所以导数是 3cos(3x)。这个 3 来自链式法则。",
+  "concept": "用弧度时，$\\sin$ 的导数是 $\\cos$，$\\cos$ 的导数是 $- \\sin$；复合角还要乘内层导数。",
+  "intuition": "$\\sin (3 x)$ 比 $\\sin x$ 的角度变化快 3 倍，所以导数是 $3 \\cos (3 x)$。这个 3 来自链式法则。",
   "objectives": [
     "正弦公式从哪里来",
     "其他三角导数",
@@ -14,22 +14,22 @@
   "body": [
     {
       "title": "正弦的公式怎么来？",
-      "text": "用加法公式展开 sin(x+h)。差商中的 sin h/h→1、(cos h−1)/h→0，剩下 cos x。"
+      "text": "用加法公式展开 $\\sin (x + h)$。差商中的 $\\frac{\\sin h}{h} \\to 1$、$\\frac{\\cos h - 1}{h} \\to 0$，剩下 $\\cos x$。"
     },
     {
       "title": "其他三角函数要死记吗？",
-      "text": "tan=sin/cos，可由商法则得到 sec²。cot、sec、csc 同样可用商或倒数求导，注意定义域。"
+      "text": "用商法则或倒数求导即可补全：$(\\cot x)\\prime=-\\csc^2x$，$(\\sec x)\\prime=\\sec x\\tan x$，$(\\csc x)\\prime=-\\csc x\\cot x$。含正切、正割时要求 $\\cos x\\ne0$；含余切、余割时要求 $\\sin x\\ne0$。"
     },
     {
       "title": "为什么必须用弧度？",
-      "text": "角度数 θ 对应 πθ/180 弧度，对 θ 求导就多出 π/180。公式默认弧度；cos 求导的负号也不能漏。"
+      "text": "角度数 $\\theta$ 对应 $\\frac{\\pi  \\theta }{180}$ 弧度，对 $\\theta$ 求导就多出 $\\frac{\\pi }{180}$。公式默认弧度；$\\cos$ 求导的负号也不能漏。"
     }
   ],
   "formalDefinition": {
     "text": "在各三角函数有定义的点，使用弧度输入。",
     "latex": "(\\sin x)\\prime=\\cos x,\\quad(\\cos x)\\prime=-\\sin x,\\quad(\\tan x)\\prime=\\sec^2x",
     "conditions": [
-      "sec x=1/cos x；csc x=1/sin x；相应分母不能为零。"
+      "$\\sec x = \\frac{1}{\\cos x}$；$\\csc x = \\frac{1}{\\sin x}$；相应分母不能为零。"
     ]
   },
   "derivation": [
@@ -42,7 +42,7 @@
       "latex": "\\lim_{h\\to0}\\frac{\\cos h-1}{h}=0,\\quad\\lim_{h\\to0}\\frac{\\sin h}{h}=1"
     },
     {
-      "text": "因此得到 cos x。",
+      "text": "因此得到 $\\cos x$。",
       "latex": "(\\sin x)\\prime=\\cos x"
     }
   ],
@@ -50,15 +50,15 @@
     "kind": "derivative",
     "function": "sin",
     "a": 0,
-    "caption": "在正弦曲线上移动 a；切线斜率等于 cos(a)。",
-    "prediction": "sin x 的最高点，切线斜率是多少？用 cos(a) 核对。"
+    "caption": "在正弦曲线上移动 $a$；切线斜率等于 $\\cos (a)$。",
+    "prediction": "$\\sin x$ 的最高点，切线斜率是多少？用 $\\cos (a)$ 核对。"
   },
   "workedExamples": [
     {
       "title": "缩短周期后的速度",
       "problem": "求 $y=\\sin(4x)$ 的导数。",
       "steps": [
-        "外层给 cos(4x)。",
+        "外层给 $\\cos (4 x)$。",
         "内层给 4，连乘。"
       ],
       "answer": "$y\\prime=4\\cos(4x)$。"
@@ -67,7 +67,7 @@
       "title": "积与三角函数",
       "problem": "求 $y=x\\cos x$ 的导数。",
       "steps": [
-        "积法则给 1·cos x+x·(−sin x)。",
+        "积法则给 $1 \\cdot \\cos x + x \\cdot (- \\sin x)$。",
         "第二项的负号必须保留。"
       ],
       "answer": "$y\\prime=\\cos x-x\\sin x$。"
@@ -77,7 +77,7 @@
     {
       "id": "trig-derivatives-m1",
       "claim": "余弦求导忘记负号。",
-      "correction": "cos 在零点右侧下降，导数 −sin 与图像一致。"
+      "correction": "$\\cos$ 在零点右侧下降，导数 $- \\sin$ 与图像一致。"
     },
     {
       "id": "trig-derivatives-m2",
@@ -88,9 +88,10 @@
   "practice": [
     {
       "id": "trig-derivatives-p1",
-      "difficulty": 1,
+      "difficulty": 2,
       "misconceptionTags": [
-        "trig-derivatives-m1"
+        "trig-derivatives-m1",
+        "trig-derivatives-m2"
       ],
       "problem": "求 $\\cos(2x)$ 的导数。",
       "answer": "$-2\\sin(2x)$。",
@@ -110,32 +111,28 @@
       "solution": [
         "外层平方与内层正弦连乘。"
       ],
-      "hint": "这是平方复合，不是 sin(x²)。"
+      "hint": "这是平方复合，不是 $\\sin (x^{2})$。"
     },
     {
       "id": "trig-derivatives-p3",
-      "difficulty": 3,
-      "misconceptionTags": [
-        "trig-derivatives-m2"
-      ],
-      "problem": "求 tan x 在 0 的导数值。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "problem": "求 $\\tan x$ 在 0 的导数值。",
       "answer": "$1$。",
       "solution": [
-        "sec²0=1/cos²0=1。"
+        "$\\sec^{2} 0 = \\frac{1}{\\cos^{2} 0} = 1$。"
       ],
       "hint": "商法则也能算出。",
       "numericAnswer": 1
     },
     {
       "id": "trig-derivatives-p4",
-      "difficulty": 4,
-      "misconceptionTags": [
-        "trig-derivatives-m2"
-      ],
+      "difficulty": 2,
+      "misconceptionTags": [],
       "problem": "求 $\\sec x$ 的导数。",
       "answer": "$\\sec x\\tan x$。",
       "solution": [
-        "写成 (cos x)^−1，求导得 sin x/cos²x。"
+        "写成 $(\\cos x)^{- 1}$，求导得 $\\frac{\\sin x}{\\cos^{2} x}$。"
       ],
       "hint": "把它写成余弦的倒数。"
     }
@@ -152,7 +149,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.3.2",
     "status": "revised",
     "humanReviewed": false
   },
@@ -164,13 +161,48 @@
     "3b1b-calculus"
   ],
   "learningCheck": {
-    "question": "(cos x)′ 等于什么？",
+    "question": "$(\\cos x)'$ 等于什么？",
     "choices": [
-      "sin x",
-      "−sin x",
-      "−cos x"
+      "$\\sin x$",
+      "$- \\sin x$",
+      "$- \\cos x$"
     ],
     "correctIndex": 1,
-    "explanation": "在 x=π/2 附近，cos x 向下变化，斜率为 −1。这与 −sin x 相符；角以弧度计。"
+    "explanation": "在 $x = \\frac{\\pi }{2}$ 附近，$\\cos x$ 向下变化，斜率为 −1。这与 $- \\sin x$ 相符；角以弧度计。"
+  },
+  "teaching": {
+    "explain": "曲线的高度和变化率不是同一个量。正弦的变化率由余弦给出；波峰很高，但瞬时变化率接近零。",
+    "steps": [
+      {
+        "title": "看零点",
+        "instruction": "切点取 0，间隔取 0.01。",
+        "preset": {
+          "a": 0,
+          "h": 0.01,
+          "side": 1
+        },
+        "observation": "$\\sin0=0$，导数 $\\cos0=1$。"
+      },
+      {
+        "title": "看波峰附近",
+        "instruction": "切点取 1.57。",
+        "preset": {
+          "a": 1.57,
+          "h": 0.01,
+          "side": 1
+        },
+        "observation": "曲线高度接近 1，斜率却接近 0。"
+      },
+      {
+        "title": "看向下穿过零点",
+        "instruction": "切点取 3.14。",
+        "preset": {
+          "a": 3.14,
+          "h": 0.01,
+          "side": 1
+        },
+        "observation": "曲线高度接近 0，斜率接近 −1。这些切点是弧度的小数近似。"
+      }
+    ]
   }
 }

@@ -1,0 +1,194 @@
+{
+  "id": "c3-differentiability",
+  "chapterId": "c3-differentiation",
+  "number": "3.4",
+  "title": "可微性、切平面与误差",
+  "subtitle": "一个平面能同时预测所有小位移吗",
+  "concept": "可微意味着函数增量能被同一个线性表达式解释，剩余误差相对位移长度趋零。",
+  "intuition": "切平面不是只贴住两条轴向切线；靠近该点的任何小方向都必须被同一个平面越来越准确地描述。",
+  "objectives": [
+    "建立切平面与线性近似",
+    "用余项定义检查可微"
+  ],
+  "body": [
+    {
+      "title": "比偏导多了什么？",
+      "text": "偏导只检查几个坐标方向，可微要求误差对所有方向都小于一阶尺度。可微必连续，偏导存在不够。"
+    },
+    {
+      "title": "怎样快速确认可微？",
+      "text": "点附近偏导存在且连续是常用充分条件。它不是必要条件，不能把条件失败直接当不可微。"
+    },
+    {
+      "title": "近似与精确如何分开？",
+      "text": "切平面给一阶近似；实际误差要用余项或额外估计。离中心更远时不能默认仍准确。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "一个平面能同时预测所有小位移吗",
+    "latex": "f(a+h,b+k)=f(a,b)+f_x(a,b)h+f_y(a,b)k+o(\\sqrt{h^2+k^2})",
+    "conditions": [
+      "小 $o$ 表示余项除以位移长度趋零；切平面建立在可微性上；偏导在邻域连续可保证可微。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "设线性模型误差为余项。",
+      "latex": "R=f(a+h,b+k)-f(a,b)-f_xh-f_yk"
+    },
+    {
+      "text": "用位移长度衡量误差阶。",
+      "latex": "\\lim_{(h,k)\\to(0,0)}\\frac{R}{\\sqrt{h^2+k^2}}=0"
+    },
+    {
+      "text": "对平方和直接展开检查。",
+      "latex": "(a+h)^2+(b+k)^2=a^2+b^2+2ah+2bk+h^2+k^2"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "切平面",
+      "problem": "$f=x^2+y^2$ 在 $(1,-1)$ 的切平面？",
+      "steps": [
+        "函数值为 2，梯度为 $(2,-2)$。",
+        "线性模型为 $2+2(x-1)-2(y+1)$。"
+      ],
+      "answer": "$z=2x-2y-2$。"
+    },
+    {
+      "title": "近似与误差",
+      "problem": "用原点线性化近似 $f(0.1,0.2)$，其中 $f=1+x+y+x^2+y^2$。",
+      "steps": [
+        "线性模型给 $1+0.1+0.2=1.3$。",
+        "实际值为 $1.35$，误差 $0.05$ 正好是平方和。"
+      ],
+      "answer": "近似 1.3，实际误差 0.05。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-differentiability-m1",
+      "claim": "偏导存在就能用切平面保证近似。",
+      "correction": "先确认可微性，偏导只给候选线性模型。"
+    },
+    {
+      "id": "c3-differentiability-m2",
+      "claim": "误差趋零就证明可微。",
+      "correction": "还要除以位移长度后趋零，这比连续性更强。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-differentiability-q1",
+      "problem": "$f=3x-2y+1$ 的线性化误差是多少？",
+      "hint": "函数本身就是平面。",
+      "solution": [
+        "线性模型与原函数完全重合。"
+      ],
+      "answer": "0",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0
+    },
+    {
+      "id": "c3-differentiability-q2",
+      "problem": "$f=x^2+y^2$ 在原点的余项除以距离是多少？",
+      "hint": "令距离为 $r$。",
+      "solution": [
+        "余项为 $r^2$，除以 $r>0$ 得 $r$。",
+        "它趋零，所以可微。"
+      ],
+      "answer": "$r=\\sqrt{x^2+y^2}$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-differentiability-q3",
+      "problem": "$f=\\sqrt{x^2+y^2}$ 在原点可微吗？",
+      "hint": "先看横轴偏导。",
+      "solution": [
+        "横轴切片为 $|x|$，原点导数不存在。",
+        "因此原函数不可微。"
+      ],
+      "answer": "不可微。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-differentiability-q4",
+      "problem": "偏导不连续就一定不可微吗？",
+      "hint": "区分充分与必要。",
+      "solution": [
+        "连续偏导是充分条件。",
+        "条件失败时仍可用余项定义检查，不能直接否定。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "可微时，余项与位移长度的比值趋向什么？",
+    "choices": [
+      "零",
+      "一",
+      "任意常数"
+    ],
+    "correctIndex": 0,
+    "explanation": "一阶线性项之外的误差必须比距离更小一阶。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-differentiability",
+    "caption": "$f=x^2+y^2$ 在 $(0.5,0.5)$ 的切平面；沿对角线位移 $(h,h)$，对照精确误差与归一化误差。",
+    "prediction": "位移缩小十倍，二次误差约缩小多少倍？"
+  },
+  "teaching": {
+    "explain": "把真实增量减去线性预测，再除以位移长度；这个比值趋零才叫可微。",
+    "steps": [
+      {
+        "title": "较远位移",
+        "instruction": "将对角线位移 $h$ 设为 $1$。",
+        "preset": {
+          "h": 1
+        },
+        "observation": "碗面和切平面之间有明显二次误差。"
+      },
+      {
+        "title": "缩小位移",
+        "instruction": "将对角线位移 $h$ 设为 $0.2$。",
+        "preset": {
+          "h": 0.2
+        },
+        "observation": "误差缩小得比距离快。"
+      },
+      {
+        "title": "逼近中心",
+        "instruction": "将对角线位移 $h$ 设为 $0.0001$。",
+        "preset": {
+          "h": 0.0001
+        },
+        "observation": "余项与距离之比继续趋近零；程序显示仍为有限精度。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-partials",
+    "linearization"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "c3-differentiability-m1",
+    "c3-differentiability-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

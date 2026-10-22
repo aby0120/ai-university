@@ -1,0 +1,196 @@
+{
+  "id": "c2-euler-logistic",
+  "title": "Euler 法与 Logistic 模型",
+  "subtitle": "用当前斜率走一步，同时观察模型的平衡",
+  "concept": "Euler 法用当前点的斜率推进一步；Logistic 方程让增长率随资源余量降低。",
+  "intuition": "连续模型可能稳定，过大的数值步长却会跳出合理范围。模型性质和数值算法性质要分开看。",
+  "body": [
+    {
+      "title": "Euler 一步怎么算？",
+      "text": "在 $(x_n,y_n)$ 处用斜率 $f(x_n,y_n)$，前进宽度 $h$；每一步重新取斜率，而不是一直沿初始切线。"
+    },
+    {
+      "title": "Logistic 的平衡是什么？",
+      "text": "$y\\prime=ry(1-y/K)$，$r,K>0$。平衡为零和 $K$；正解低于 $K$ 时增长，高于 $K$ 时下降。"
+    },
+    {
+      "title": "数值误差如何理解？",
+      "text": "在固定有限区间上，若精确解二阶导数有界，且右端对纵变量的导数在解附近有界，Euler 全局误差可被某个常数乘步长控制。步长减半通常降低误差，但有限次数值比较不是统一保证。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "用当前斜率走一步，同时观察模型的平衡",
+    "latex": "x_{n+1}=x_n+h,\\quad y_{n+1}=y_n+h f(x_n,y_n);\\qquad y\\prime=ry\\left(1-\\frac yK\\right)",
+    "conditions": [
+      "Euler 使用固定正步长；收敛讨论要求区间内有足够正则性与受控导数。Logistic 取 $r,K>0$，正初值时可用显式解比较。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "对 Logistic 做分离，保留两个平衡解。",
+      "latex": "\\frac{dy}{y(1-y/K)}=r\\,dx"
+    },
+    {
+      "text": "部分分式积分并解出正初值解。",
+      "latex": "y(x)=\\frac K{1+Ae^{-rx}},\\quad A=\\frac K{y(0)}-1"
+    },
+    {
+      "text": "用当前斜率给一步数值近似。",
+      "latex": "y_{n+1}=y_n+hr y_n\\left(1-\\frac{y_n}K\\right)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Euler 两步",
+      "problem": "用 $h=0.1$ 近似 $y\\prime=y$、$y(0)=1$ 到 $x=0.2$。",
+      "steps": [
+        "第一步 $y_1=1+0.1\\cdot1=1.1$。",
+        "第二步 $y_2=1.1+0.1\\cdot1.1=1.21$；真值为 $e^{0.2}$。"
+      ],
+      "answer": "近似 $1.21$，低于真值约 $1.2214$。"
+    },
+    {
+      "title": "资源限制",
+      "problem": "$y\\prime=y(1-y/10)$、$y(0)=2$ 的解及长期趋势？",
+      "steps": [
+        "$A=\\frac{10}{2}-1=4$。",
+        "$y=\\frac{10}{1+4e^{-x}}$，分母从 5 降到 1。"
+      ],
+      "answer": "正解递增趋于 10。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-euler-logistic-m1",
+      "claim": "Euler 的折线就是真实解。",
+      "correction": "它是离散近似；可与精确解或误差界比较。"
+    },
+    {
+      "id": "c2-euler-logistic-m2",
+      "claim": "连续模型稳定，任意步长都稳定。",
+      "correction": "步长过大可导致数值振荡、过冲甚至不合理负值。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$y\\prime=y,y(0)=1,h=0.5$，一步后的值？",
+      "answer": "$1.5$。",
+      "hint": "当前值加步长乘斜率。",
+      "solution": [
+        "$y_1=1+0.5\\cdot1=1.5$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 1.5,
+      "id": "c2-euler-logistic-p1"
+    },
+    {
+      "problem": "$r=2,K=5$ 的 Logistic 方程平衡解？",
+      "answer": "$y=0$ 与 $y=5$。",
+      "hint": "令右端为零。",
+      "solution": [
+        "$2y(1-y/5)=0$，得到两个常数解。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-euler-logistic-p2"
+    },
+    {
+      "problem": "$y\\prime=y(1-y/10)$，$y=12$ 时斜率？",
+      "answer": "$-2.4$。",
+      "hint": "超过承载量会下降。",
+      "solution": [
+        "$12(1-12/10)=-2.4$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": -2.4,
+      "id": "c2-euler-logistic-p3"
+    },
+    {
+      "problem": "$y\\prime=-y,y(0)=1$，Euler 取 $h=3$，两步会怎样？",
+      "answer": "$1\\to-2\\to4$，与连续衰减相违。",
+      "hint": "计算数值递推的倍率。",
+      "solution": [
+        "$y_{n+1}=(1-h)y_n=-2y_n$，幅度增长；说明步长选择造成数值不稳定。"
+      ],
+      "difficulty": 4,
+      "misconceptionTags": [
+        "c2-euler-logistic-m2"
+      ],
+      "id": "c2-euler-logistic-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "Euler 步长过大导致负人口，优先理解为？",
+    "choices": [
+      "真实人口必变负",
+      "数值近似可能失效",
+      "微分方程没有定义"
+    ],
+    "correctIndex": 1,
+    "explanation": "应检查步长与算法，不把近似轨迹误当模型精确解。"
+  },
+  "teaching": {
+    "explain": "连续方程规定每一刻怎么变；Euler 每隔一小步更新一次。步子太大，可能错过本应发生的变化。",
+    "steps": [
+      {
+        "title": "较大步长",
+        "instruction": "分段数取 4。",
+        "observation": "在固定区间 $[0,4]$ 用四步，折线与精确解有明显差距。",
+        "preset": {
+          "n": 4
+        }
+      },
+      {
+        "title": "减小步长",
+        "instruction": "分段数取 16。",
+        "observation": "步长变为 0.25，误差可与精确解直接比较。",
+        "preset": {
+          "n": 16
+        }
+      },
+      {
+        "title": "继续细分",
+        "instruction": "分段数取 64。",
+        "observation": "离散近似仍是有限步；方向场不等于唯一性证明。",
+        "preset": {
+          "n": 64
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-linear-ode",
+    "c2-separable",
+    "c2-partial-fractions"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-ode",
+  "number": "8.4",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-euler-logistic",
+    "caption": "比较 $y\\prime=y(1-y/10)$ 的方向场、精确解与 Euler 折线；初值为 $y(0)=2$。",
+    "prediction": "步长减小时，折线与精确曲线之间的差别怎样变化？"
+  },
+  "misconceptionTags": [
+    "c2-euler-logistic-m1",
+    "c2-euler-logistic-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "计算 Euler 单步与多步近似",
+    "分析 Logistic 平衡与长期趋势",
+    "区分数值稳定性与模型性质"
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "id": "c2-series-applications",
+  "title": "用级数计算积分与极限",
+  "subtitle": "把难函数换成容易累积的多项式项",
+  "concept": "级数能计算没有初等原函数的积分，也能找出极限里最先没有抵消的项。",
+  "intuition": "很多极限之所以看不清，是因为低阶项互相抵消。展开让第一个留下的项直接出现。",
+  "body": [
+    {
+      "title": "积分能逐项吗？",
+      "text": "在幂级数收敛半径内的闭区间可逐项积分。到端点要额外证明，不能省掉这一步。"
+    },
+    {
+      "title": "近似误差怎么给？",
+      "text": "若积分后的项是幅度递减到零的交错级数，可用下一项界；其他情形用余项积分或适用上界。"
+    },
+    {
+      "title": "极限要展开到多高？",
+      "text": "至少展开到第一个不被分子抵消、且与分母量级有关的项；用余项说明后面的项不会影响结论。这里 $O(x^k)$ 表示余项在零附近的绝对值不超过某个固定常数乘 $|x|^k$。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "把难函数换成容易累积的多项式项",
+    "latex": "\\int_0^x e^{-t^2}dt=\\sum_{n=0}^\\infty\\frac{(-1)^nx^{2n+1}}{n!(2n+1)}",
+    "conditions": [
+      "指数幂级数半径无穷，可在任意有限积分区间逐项积分；误差界另检查递减性。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先展开被积函数。",
+      "latex": "e^{-t^2}=1-t^2+\\frac{t^4}{2!}-\\frac{t^6}{3!}+\\cdots"
+    },
+    {
+      "text": "在有限区间逐项积分。",
+      "latex": "\\int_0^x e^{-t^2}dt=x-\\frac{x^3}{3}+\\frac{x^5}{10}-\\frac{x^7}{42}+\\cdots"
+    },
+    {
+      "text": "在零到一的输入上，积分后的幅度递减，尾部可用下一项控制。",
+      "latex": "|R|\\leq\\frac{x^{2N+3}}{(N+1)!(2N+3)}\\quad(0\\leq x\\leq1)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "非初等积分的近似",
+      "problem": "估计 $\\int_0^1e^{-t^2}dt$，保留到 $t^4$。",
+      "steps": [
+        "积分前三项得到 $1-\\frac13+\\frac1{10}=\\frac{23}{30}$。",
+        "下一项幅度为 $\\frac1{42}$，余项为负，所以真值在 $[\\frac{23}{30}-\\frac1{42},\\frac{23}{30}]$ 内。"
+      ],
+      "answer": "近似 $\\frac{23}{30}$，误差不超过 $\\frac1{42}$。"
+    },
+    {
+      "title": "抵消后的极限",
+      "problem": "求 $\\lim_{x\\to0}\\frac{\\sin x-x}{x^3}$。",
+      "steps": [
+        "$\\sin x=x-\\frac{x^3}{6}+O(x^5)$。",
+        "抵消一次项并除以 $x^3$，高阶余项趋零。"
+      ],
+      "answer": "$-\\frac16$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-series-applications-m1",
+      "claim": "只写省略号就等于控制了误差。",
+      "correction": "要给出余项的量级或数值上界。"
+    },
+    {
+      "id": "c2-series-applications-m2",
+      "claim": "没有初等原函数就不能积分。",
+      "correction": "级数与数值积分仍可计算并控制近似。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "求 $\\lim_{x\\to0}\\frac{1-\\cos x}{x^2}$。",
+      "answer": "$\\frac12$。",
+      "hint": "找首个非零项。",
+      "solution": [
+        "$1-\\cos x=\\frac{x^2}{2}+O(x^4)$，除以后余项趋零。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.5,
+      "id": "c2-series-applications-p1"
+    },
+    {
+      "problem": "用前两项估计 $\\int_0^{1/2}e^{-t^2}dt$。",
+      "answer": "$\\frac{11}{24}$，误差不超过 $\\frac1{320}$。",
+      "hint": "积分常数项和平方项。",
+      "solution": [
+        "$x-\\frac{x^3}{3}$ 在 $x=\\frac12$ 为 $\\frac{11}{24}$；下一项为 $\\frac{x^5}{10}=\\frac1{320}$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-series-applications-p2"
+    },
+    {
+      "problem": "求 $\\lim_{x\\to0}\\frac{e^x-1-x}{x^2}$。",
+      "answer": "$\\frac12$。",
+      "hint": "保留二次项。",
+      "solution": [
+        "$e^x=1+x+\\frac{x^2}{2}+O(x^3)$，消去前两项。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.5,
+      "id": "c2-series-applications-p3"
+    },
+    {
+      "problem": "用 $1-t^2+\\frac{t^4}{2}$ 近似被积函数，积分时能只替换上限吗？",
+      "answer": "不能，每一项都要积分。",
+      "hint": "不要把函数值当累积。",
+      "solution": [
+        "积分后幂次提高并除以新幂次：$x-\\frac{x^3}{3}+\\frac{x^5}{10}$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-series-applications-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "极限中低阶项抵消后，应关注？",
+    "choices": [
+      "第一个没被抵消的项和余项",
+      "只代入零",
+      "把所有小量都删掉"
+    ],
+    "correctIndex": 0,
+    "explanation": "相对于分母的阶数决定哪些小量仍有贡献。"
+  },
+  "teaching": {
+    "explain": "展开不是把函数变粗糙，而是按量级整理它。该留哪项，取决于你要算什么和允许多大误差。",
+    "steps": [
+      {
+        "title": "低阶",
+        "instruction": "阶数取 2，输入取 0.5。",
+        "observation": "有限多项式匹配低阶导数；读数保留实际误差。",
+        "preset": {
+          "n": 2,
+          "x": 0.5
+        }
+      },
+      {
+        "title": "增加阶数",
+        "instruction": "阶数取 6，输入仍取 0.5。",
+        "observation": "在这个输入处，观察实际误差的变化。",
+        "preset": {
+          "n": 6,
+          "x": 0.5
+        }
+      },
+      {
+        "title": "靠近边界或远处",
+        "instruction": "阶数取 10，输入取 0.9。",
+        "observation": "近似质量随输入与函数变化；仍需正文中的范围与余项条件。",
+        "preset": {
+          "n": 10,
+          "x": 0.9
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-standard-series",
+    "c2-alternating"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-taylor-use",
+  "number": "6.3",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-series-applications",
+    "caption": "比较 $e^{-x^2}$ 与零点展开的有限近似，读取误差。",
+    "prediction": "增加阶数后，远处是否与中心附近一样准确？"
+  },
+  "misconceptionTags": [
+    "c2-series-applications-m1",
+    "c2-series-applications-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "逐项积分计算非初等累积",
+    "用展开识别极限的首个未抵消项",
+    "给出截断或余项误差"
+  ]
+}

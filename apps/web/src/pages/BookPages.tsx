@@ -1,3 +1,5 @@
+import {useCurriculum} from "../lib/curriculum";
+import { MathText } from "../components/MathText";
 import {
   ArrowLeft,
   ArrowRight,
@@ -7,7 +9,7 @@ import {
   GraduationCap,
   Layers3,
 } from "lucide-react";
-import { book, lessonById } from "../../../../packages/content";
+import {lessonById, allLessons, collections} from "../../../../packages/content";
 
 import {
   BookCover,
@@ -169,27 +171,28 @@ export function Library() {
 }
 
 export function BookPage() {
+  const {book,lessons,bookStats,supplements,BOOK,filename,printFile}=useCurriculum();
   const { reading } = useApp();
-  const resume = reading.recent[0];
+  const resume=reading.recent.find(id=>book.lessonIds.includes(id));
+  const volume=volumes.find(v=>v.id===book.id) as PublishedVolume;
+  const previous=({"calculus-2":"calculus-1","calculus-3":"calculus-2"} as Record<string,string|undefined>)[book.id];
   return (
     <>
       <Breadcrumb
-        items={[{ label: "教科书库", to: "library" }, { label: "微积分 I" }]}
+        items={[{ label: "教科书库", to: "library" }, { label: book.titleZh }]}
       />
       <section className="book-overview">
         <div>
-          <Eyebrow>MATHEMATICS / VOLUME 01</Eyebrow>
+          <Eyebrow>MATHEMATICS / {book.title.toUpperCase()}</Eyebrow>
           <h1>
-            微积分 I<span>Calculus I</span>
+            {book.titleZh}<span>{book.title}</span>
           </h1>
           <p className="book-lead">
-            把变化看清楚，
-            <br />
-            把累积想明白。
+            {book.subtitle}
           </p>
           <p>{book.description}</p>
           <div className="hero-actions">
-            <Link to={lessonPath(resume || "domain")} className="primary-btn">
+            <Link to={lessonPath(resume || book.lessonIds[0])} className="primary-btn">
               {resume ? "继续阅读" : "从第一节开始"}
               <ArrowRight size={17} />
             </Link>
@@ -198,14 +201,15 @@ export function BookPage() {
               <ArrowUpRight size={16} />
             </Link>
           </div>
-          <BookStats />
+          {previous&&<Link to={'book/'+previous} className="text-btn">需要复习？打开前一卷<ArrowUpRight size={15}/></Link>}
+          <BookStats volume={volume}/>
         </div>
-        <BookCover small />
+        <BookCover small volume={volume}/>
       </section>
       <div className="book-meta-bar">
         <span>
           <GraduationCap size={17} />
-          先修：初等代数与函数基础
+          {book.audience}
         </span>
         <span>
           <CircleCheck size={17} />
@@ -222,7 +226,7 @@ export function BookPage() {
             <Eyebrow>CONTENTS</Eyebrow>
             <h2>全书目录</h2>
           </div>
-          <span>{reading.read.length} / 35 节已读</span>
+          <span>{reading.read.filter(id=>book.lessonIds.includes(id)).length} / {lessons.length} 节已读</span>
         </div>
         {book.chapters.map((ch, i) => (
           <div className="chapter-row" key={ch.id}>
@@ -238,7 +242,7 @@ export function BookPage() {
               </Link>
               <p>{ch.intro}</p>
               <Link to={"practice/review/" + ch.id} className="chapter-review">
-                章末回顾 · 3 题<ArrowRight size={14} />
+                章末回顾 · {supplements.reviews.find(r=>r.chapterId===ch.id)?.questions.length} 题<ArrowRight size={14} />
               </Link>
             </div>
             <div className="chapter-lessons">
@@ -253,7 +257,7 @@ export function BookPage() {
         <Link to="practice/exam">
           <GraduationCap />
           <h3>综合测试</h3>
-          <p>用 14 道题连接整本书的知识。</p>
+          <p>用 {supplements.exam.length} 道题连接整本书的知识。</p>
           <ArrowRight />
         </Link>
         <Link to="reference">
@@ -274,6 +278,7 @@ export function BookPage() {
 }
 
 export function ChapterPage() {
+  const {book,lessons,bookStats,supplements,BOOK,filename,printFile}=useCurriculum();
   const { route } = useApp();
   const ch = book.chapters.find((c) => chapterPath(c.id) === route.path);
   if (!ch) return <NotFound />;
@@ -282,7 +287,7 @@ export function ChapterPage() {
     <div className="chapter-page">
       <Breadcrumb
         items={[
-          { label: "微积分 I", to: BOOK },
+          { label: book.titleZh, to: BOOK },
           { label: "第 " + num + " 章" },
         ]}
       />
@@ -298,12 +303,12 @@ export function ChapterPage() {
       </div>
       <section className="chapter-goals">
         <Eyebrow>AFTER THIS CHAPTER</Eyebrow>
-        <h2>这一章，你会学到</h2>
+        <h2>本章学习目标</h2>
         <ul>
           {ch.goals.map((g) => (
             <li key={g}>
               <CircleCheck size={18} />
-              {g}
+              <MathText text={g} />
             </li>
           ))}
         </ul>
@@ -311,7 +316,7 @@ export function ChapterPage() {
       <section>
         <div className="section-title">
           <h2>本章目录</h2>
-          <span>5 节 · 10 例题 · 20 节内练习</span>
+          <span>{ch.lessonIds.length} 节 · {ch.lessonIds.reduce((n,id)=>n+lessonById[id].workedExamples.length,0)} 例题 · {ch.lessonIds.reduce((n,id)=>n+lessonById[id].practice.length,0)} 节内练习</span>
         </div>
         <div className="chapter-detail-list">
           {ch.lessonIds.map((id) => {
@@ -320,8 +325,8 @@ export function ChapterPage() {
               <Link to={lessonPath(id)} key={id}>
                 <span>{l.number}</span>
                 <div>
-                  <h3>{l.title}</h3>
-                  <p>{l.subtitle}</p>
+                  <h3><MathText text={l.title} /></h3>
+                  <p><MathText text={l.subtitle} /></p>
                 </div>
                 <span className="lesson-detail-meta">阅读 · 演示 · 练习</span>
                 <ArrowRight size={19} />
@@ -334,7 +339,7 @@ export function ChapterPage() {
         <GraduationCap size={24} />
         <div>
           <h3>章末回顾</h3>
-          <p>用三道题检查本章最重要的概念与条件。</p>
+          <p>用 {supplements.reviews.find(r=>r.chapterId===ch.id)?.questions.length} 道题检查本章的概念与条件。</p>
         </div>
         <Link to={"practice/review/" + ch.id} className="secondary-btn">
           开始回顾
@@ -349,7 +354,7 @@ export function ChapterPage() {
           </Link>
         )}
         <Link to={BOOK}>完整目录</Link>
-        {num < 7 && (
+        {num < book.chapters.length && (
           <Link to={chapterPath(book.chapters[num].id)}>
             下一章
             <ArrowRight size={16} />
@@ -362,8 +367,8 @@ export function ChapterPage() {
 const sections = [
   ["idea", "核心意思"],
   ["intuition", "建立直觉"],
-  ["visual", "亲手探索"],
-  ["explain", "展开理解"],
+  ["visual", "交互演示"],
+  ["explain", "关键问题"],
   ["definition", "定义与条件"],
   ["derivation", "一步步推导"],
   ["examples", "逐步例题"],

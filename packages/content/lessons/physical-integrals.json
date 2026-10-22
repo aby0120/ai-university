@@ -4,8 +4,8 @@
   "number": "7.5",
   "title": "位移、功、质量与平均值",
   "subtitle": "总量等于局部贡献的累积",
-  "concept": "先写一小段贡献多少，再积分：速度×时间给位移，力×位移给功，线密度×长度给质量。",
-  "intuition": "检查单位，往往就知道该乘什么：m/s×s=m，N×m=J，kg/m×m=kg。",
+  "concept": "先写一小段贡献多少，再积分：$\\text{速度}\\times\\text{时间}$给位移，$\\text{力}\\times\\text{位移}$给功，$\\text{线密度}\\times\\text{长度}$给质量。",
+  "intuition": "检查单位，往往就知道该乘什么：$\\frac{\\mathrm{m}}{\\mathrm{s}}\\times\\mathrm{s}=\\mathrm{m}$，$\\mathrm{N}\\times\\mathrm{m}=\\mathrm{J}$，$\\frac{\\mathrm{kg}}{\\mathrm{m}}\\times\\mathrm{m}=\\mathrm{kg}$。",
   "objectives": [
     "位移与总路程",
     "变力做功",
@@ -14,15 +14,23 @@
   "body": [
     {
       "title": "位移与路程有什么不同？",
-      "text": "位移为 ∫v dt，路程为 ∫|v|dt。速度变号时分段；求位置还要加初始位置，平均速度则用位移除以时间。"
+      "text": "位移为 $\\int  v \\mathrm{d}t$，路程为 $\\int  |v| \\mathrm{d}t$。速度变号时分段；求位置还要加初始位置，平均速度则用位移除以时间。"
     },
     {
       "title": "变力做功怎样算？",
-      "text": "沿运动方向的力贡献 dW=F(x)dx。拉伸弹簧所需外力为 kx，功为 ∫kx dx；弹簧的回复力方向相反。"
+      "text": "沿运动方向的力贡献 $\\mathrm{d}W = F (x) \\mathrm{d}x$。拉伸弹簧所需外力为 $k x$，功为 $\\int kx\\,\\mathrm{d}x$；弹簧的回复力方向相反。"
     },
     {
       "title": "质量与质心怎样算？",
-      "text": "线密度 λ 给质量 m=∫λ dx；位置加权量 M=∫xλ dx，质心为 M/m（m>0）。流体压力等模型还需注明密度、深度等物理假设。"
+      "text": "线密度 $\\lambda$ 给质量 $m = \\int  \\lambda  \\mathrm{d}x$；位置加权量 $M = \\int  x \\lambda  \\mathrm{d}x$，质心为 $\\frac{M}{m}$（$m > 0$）。流体压力等模型还需注明密度、深度等物理假设。"
+    },
+    {
+      "title": "抽水为什么不能用同一个提升距离？",
+      "text": "水箱底为 $y=0$、出口高 $H$，高度 $y$ 的薄层体积为 $A(y)\\,\\mathrm{d}y$，需提升 $H-y$。功为 $W=\\int\\rho gA(y)(H-y)\\,\\mathrm{d}y$，积分覆盖实际水层。这里密度 $\\rho$、重力加速度 $g$ 恒定，忽略损耗与流出速度。"
+    },
+    {
+      "title": "水压怎样累积成力？",
+      "text": "深度 $h$ 从液面向下量，表压为 $p=\\rho gh$。竖直薄条宽 $w(h)$、高 $\\mathrm{d}h$，受力为 $\\rho ghw(h)\\,\\mathrm{d}h$。沿深度积分，得到垂直平板一侧的合力；若两侧都受压，要比较压差。"
     }
   ],
   "formalDefinition": {
@@ -34,7 +42,7 @@
   },
   "derivation": [
     {
-      "text": "对 v(t)=t−1，0≤t≤3，先找方向改变的时间。",
+      "text": "对 $v (t) = t - 1$，$0 \\le t \\le 3$，先找方向改变的时间。",
       "latex": "v(t)=0\\Rightarrow t=1"
     },
     {
@@ -49,27 +57,45 @@
   "interactiveVisual": {
     "kind": "signed-area",
     "function": "velocity",
-    "caption": "v(t)=t−1：负段表示倒退，正段表示前进；显示位移与总路程两个读数。",
+    "caption": "$v (t) = t - 1$：负段表示倒退，正段表示前进；显示位移与总路程两个读数。",
     "prediction": "速度先负后正时，位移和路程是否相同？比较上限为 2 时的两个读数。"
   },
   "workedExamples": [
     {
       "title": "拉伸弹簧",
-      "problem": "k=100 N/m，从自然长度拉到 0.2 m，需要多少功？",
+      "problem": "$k=100\\,\\mathrm{N}\\,\\mathrm{m}^{-1}$，从自然长度拉到 $0.2\\,\\mathrm{m}$，需要多少功？",
       "steps": [
-        "外力 F=100x。",
-        "W=∫₀^0.2 100x dx=50×0.04。"
+        "外力 $F = 100 x$。",
+        "$W = \\int _{0}^{0.2} 100 x \\mathrm{d}x = 50 \\times 0.04$。"
       ],
-      "answer": "2 J，忽略损耗并采用准静态拉伸。"
+      "answer": "$2\\,\\mathrm{J}$，忽略损耗并采用准静态拉伸。"
     },
     {
       "title": "非均匀杆的质量与质心",
-      "problem": "杆 x∈[0,2]，线密度 λ(x)=1+x，求质量与质心。",
+      "problem": "杆 $x \\in [0 , 2]$，线密度 $\\lambda  (x) = 1 + x$，求质量与质心。",
       "steps": [
-        "质量 [x+x²/2]₀²=4。",
-        "矩 [x²/2+x³/3]₀²=14/3，除以质量。"
+        "质量 $[x + \\frac{x^{2}}{2}]_{0}^{2} = 4$。",
+        "矩 $[\\frac{x^{2}}{2} + \\frac{x^{3}}{3}]_{0}^{2} = \\frac{14}{3}$，除以质量。"
       ],
-      "answer": "质量 4，质心 7/6；偏向密度较大的右侧。"
+      "answer": "质量 4，质心 $\\frac{7}{6}$；偏向密度较大的右侧。"
+    },
+    {
+      "title": "每层水提升距离不同",
+      "problem": "圆柱水箱底为 $y=0$，半径 $1\\,\\mathrm{m}$，水深 $2\\,\\mathrm{m}$，出口高 $3\\,\\mathrm{m}$。取 $\\rho=1000\\,\\mathrm{kg}\\,\\mathrm{m}^{-3}$、$g=9.8\\,\\mathrm{m}\\,\\mathrm{s}^{-2}$，忽略损耗，求全部抽出的功。",
+      "steps": [
+        "高度 $y$ 的薄层截面积是 $\\pi\\,\\mathrm{m}^2$，重量为 $9800\\pi\\,\\mathrm{d}y$，提升距离为 $3-y$。",
+        "$W=9800\\pi\\int_0^2(3-y)\\,\\mathrm{d}y=9800\\pi[3y-\\frac{y^2}{2}]_0^2$。"
+      ],
+      "answer": "$W=39200\\pi\\,\\mathrm{J}$。不能把所有水都当成从水箱底提升。"
+    },
+    {
+      "title": "压力随深度增长",
+      "problem": "竖直矩形闸门宽 $2\\,\\mathrm{m}$、高 $3\\,\\mathrm{m}$，上边在水面。门一侧为水、另一侧为相同大气压。取 $\\rho=1000\\,\\mathrm{kg}\\,\\mathrm{m}^{-3}$、$g=9.8\\,\\mathrm{m}\\,\\mathrm{s}^{-2}$，求净水压力。",
+      "steps": [
+        "深度 $h$ 处压差 $p=9800h$，薄条面积 $2\\,\\mathrm{d}h$，所以 $\\mathrm{d}F=19600h\\,\\mathrm{d}h$。",
+        "$F=19600\\int_0^3h\\,\\mathrm{d}h=19600\\times\\frac92$。"
+      ],
+      "answer": "$F=88200\\,\\mathrm{N}$；这是力，不是功。"
     }
   ],
   "commonMistakes": [
@@ -91,10 +117,10 @@
       "misconceptionTags": [
         "physical-integrals-m1"
       ],
-      "problem": "v(t)=2t，0≤t≤2，位移是多少？",
+      "problem": "$v (t) = 2 t$，$0 \\le t \\le 2$，位移是多少？",
       "answer": "$4$。",
       "solution": [
-        "积分 t² 在 0 到 2 的端点差为 4。"
+        "积分 $t^{2}$ 在 0 到 2 的端点差为 4。"
       ],
       "hint": "速度此处始终非负。",
       "numericAnswer": 4
@@ -105,41 +131,84 @@
       "misconceptionTags": [
         "physical-integrals-m2"
       ],
-      "problem": "k=50 N/m 的弹簧从 0 拉到 0.4 m，外力做功？",
-      "answer": "$4$ J。",
+      "problem": "$k=50\\,\\mathrm{N}\\,\\mathrm{m}^{-1}$ 的弹簧从 0 拉到 $0.4\\,\\mathrm{m}$，外力做功？",
+      "answer": "$4\\,\\mathrm{J}$。",
       "solution": [
-        "W=(1/2)×50×0.4²=4。"
+        "$W = (\\frac{1}{2}) \\times 50 \\times 0.4^{2} = 4$。"
       ],
       "hint": "力会从零逐渐变大。",
       "numericAnswer": 4
     },
     {
       "id": "physical-integrals-p3",
-      "difficulty": 3,
+      "difficulty": 1,
       "misconceptionTags": [
         "physical-integrals-m2"
       ],
-      "problem": "密度 λ=3、杆长 2，质量是多少？",
+      "problem": "密度 $\\lambda  = 3$、杆长 2，质量是多少？",
       "answer": "$6$。",
       "solution": [
-        "∫₀²3 dx=6。"
+        "$\\int _{0}^{2} 3 \\mathrm{d}x = 6$。"
       ],
       "hint": "常密度乘长度。",
       "numericAnswer": 6
     },
     {
       "id": "physical-integrals-p4",
-      "difficulty": 4,
+      "difficulty": 2,
       "misconceptionTags": [
-        "physical-integrals-m2"
+        "physical-integrals-m1"
       ],
-      "problem": "对 v(t)=t−1、0≤t≤2，位移与路程分别是多少？",
+      "problem": "对 $v (t) = t - 1$、$0 \\le t \\le 2$，位移与路程分别是多少？",
       "answer": "位移 0，路程 1。",
       "solution": [
-        "在 1 分段，前后位移 −1/2 与 1/2 抵消。",
+        "在 1 分段，前后位移 $\\frac{- 1}{2}$ 与 $\\frac{1}{2}$ 抵消。",
         "绝对值相加为 1。"
       ],
       "hint": "方向与长度是不同的总量。"
+    },
+    {
+      "id": "physical-integrals-p5",
+      "problem": "上例圆柱水箱仍有 $2\\,\\mathrm{m}$ 深的水，把出口从高 3 改为高 $2\\,\\mathrm{m}$，需多少功？其他假设相同。",
+      "answer": "$19600\\pi\\,\\mathrm{J}$。",
+      "solution": [
+        "提升距离改为 $2-y$，$W=9800\\pi\\int_0^2(2-y)\\,\\mathrm{d}y$。",
+        "积分为 2，得到 $19600\\pi\\,\\mathrm{J}$。出口处薄层的提升距离为零。"
+      ],
+      "hint": "只改提升距离；水层区间没有改变。",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "physical-integrals-m2"
+      ]
+    },
+    {
+      "id": "physical-integrals-p6",
+      "problem": "上例闸门若上边在水下 $1\\,\\mathrm{m}$、下边在水下 $4\\,\\mathrm{m}$，净水压力是多少？宽度与物理假设不变。",
+      "answer": "$147000\\,\\mathrm{N}$。",
+      "solution": [
+        "深度从 1 积到 4，$F=19600\\int_1^4h\\,\\mathrm{d}h$。",
+        "$F=19600\\times\\frac{16-1}{2}=147000\\,\\mathrm{N}$。"
+      ],
+      "hint": "积分变量是离水面的深度。",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "physical-integrals-m2"
+      ],
+      "numericAnswer": 147000
+    },
+    {
+      "id": "physical-integrals-p7",
+      "problem": "抽水积分中，$\\rho gA(y)\\,\\mathrm{d}y$ 与再乘 $H-y$ 后分别表示什么量？",
+      "answer": "前者是薄层重量（力），后者是提升该薄层的功。",
+      "solution": [
+        "密度乘体积给质量，乘重力加速度给力。",
+        "力乘提升距离给功；量纲分别为 $\\mathrm{N}$ 和 $\\mathrm{J}$。"
+      ],
+      "hint": "把质量、力、功三个量依次分清。",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "physical-integrals-m2"
+      ]
     }
   ],
   "prerequisites": [
@@ -153,7 +222,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -164,13 +233,42 @@
     "phet-design"
   ],
   "learningCheck": {
-    "question": "速度 v(t) 有正有负。总路程应积分什么？",
+    "question": "速度 $v (t)$ 有正有负。总路程应积分什么？",
     "choices": [
-      "v(t)",
-      "|v(t)|",
-      "v′(t)"
+      "$v (t)$",
+      "$|v (t)|$",
+      "$v' (t)$"
     ],
     "correctIndex": 1,
-    "explanation": "位移积分带方向的 v(t)，路程积分速率 |v(t)|。往返运动的位移会抵消，路程不会。"
+    "explanation": "位移积分带方向的 $v (t)$，路程积分速率 $|v (t)|$。往返运动的位移会抵消，路程不会。"
+  },
+  "teaching": {
+    "explain": "先给每个小段的贡献配上正确单位，再积分。负速度影响方向，重量乘提升距离给功，密度乘体积给质量。",
+    "steps": [
+      {
+        "title": "向回走的一段",
+        "instruction": "速度模型的上限取 1。",
+        "preset": {
+          "b": 1
+        },
+        "observation": "位移为 $-\\frac12$，路程为 $\\frac12$。"
+      },
+      {
+        "title": "返回起点",
+        "instruction": "上限取 2。",
+        "preset": {
+          "b": 2
+        },
+        "observation": "正负位移抵消为零，但总路程是 1。"
+      },
+      {
+        "title": "继续向前",
+        "instruction": "上限取 3。",
+        "preset": {
+          "b": 3
+        },
+        "observation": "位移为 $\\frac32$，路程为 $\\frac52$；观察数值前先分清要求的量。"
+      }
+    ]
   }
 }

@@ -32,6 +32,7 @@ draft.practice.forEach((q, i) => {
 });
 for (const key of ["subtitle", "concept", "intuition"]) draft[key] = "TODO";
 draft.objectives = ["TODO", "TODO"];
+draft.teaching = { explain: "TODO", steps: Array.from({length:3},()=>({title:"TODO",instruction:"TODO",observation:"TODO",preset:{x:0}})) };
 draft.body = [
   { title: "TODO", text: "TODO" },
   { title: "TODO", text: "TODO" },

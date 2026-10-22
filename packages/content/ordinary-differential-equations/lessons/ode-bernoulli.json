@@ -1,0 +1,193 @@
+{
+  "id": "ode-bernoulli",
+  "chapterId": "ode-first-order",
+  "number": "2.6",
+  "title": "Bernoulli 方程与 Logistic 模型",
+  "subtitle": "把非线性幂次变成线性",
+  "body": [
+    {
+      "title": "什么结构适用？",
+      "text": "对 $y'+p y=q y^m$，当 $m\\ne0,1$，在合法非零分支上令 $v=y^{1-m}$。"
+    },
+    {
+      "title": "Logistic 怎样出现？",
+      "text": "$y'=r y(1-y/K)$ 有初期比例增长和随数量增强的抑制，$K>0$ 是承载量。"
+    },
+    {
+      "title": "解式的限制",
+      "text": "正初值给正解，初值高于承载量时向下靠近。非物理负初值可能出现有限奇点，不能直接沿用正数量结论。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "Logistic 展开后令倒数为新变量。",
+      "latex": "y'-ry=-\\frac rK y^2,\\qquad v=\\frac1y"
+    },
+    {
+      "text": "得到线性方程。",
+      "latex": "v'+rv=\\frac rK"
+    },
+    {
+      "text": "代入正初值后取倒数。",
+      "latex": "y(t)=\\frac K{1+(K/y_0-1)e^{-rt}}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "承载量为二",
+      "problem": "解 $y'=y(1-y/2),y(0)=1$。",
+      "steps": [
+        "使用 $r=1,K=2$。",
+        "系数 $K/y_0-1=1$。"
+      ],
+      "answer": "$y=2/(1+e^{-t})$。"
+    },
+    {
+      "title": "另一个 Bernoulli 方程",
+      "problem": "解 $y'+y=y^2$ 的非零解。",
+      "steps": [
+        "令 $v=1/y$，得 $v'-v=-1$。",
+        "解得 $v=1+Ce^t$，取倒数。"
+      ],
+      "answer": "$y=1/(1+Ce^t)$；另有零解，区间避开分母零点。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-bernoulli-q1",
+      "problem": "Logistic 方程 $y'=2y(1-y/5)$ 的正平衡值？",
+      "hint": "令右端为零。",
+      "solution": [
+        "两个平衡值为零与五。"
+      ],
+      "answer": "$5$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 5.0
+    },
+    {
+      "id": "ode-bernoulli-q2",
+      "problem": "$0<y<K$ 时 Logistic 解增还是减？",
+      "hint": "看三个因子的符号。",
+      "solution": [
+        "正增长率、正数量、正剩余容量，导数正。"
+      ],
+      "answer": "递增。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-bernoulli-q3",
+      "problem": "$y>K$ 时是否继续指数爆炸？",
+      "hint": "看容量因子。",
+      "solution": [
+        "$1-y/K<0$，数量下降。"
+      ],
+      "answer": "不会，向承载量下降。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-bernoulli-q4",
+      "problem": "Bernoulli 方程幂次为 $m=3$ 时，采用哪个新变量？",
+      "hint": "计算一减幂次。",
+      "solution": [
+        "$1-m=-2$。"
+      ],
+      "answer": "$v=y^{-2}$，在非零分支上。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-bernoulli-m1",
+      "claim": "倒数代换得到的解族一定包含零解。",
+      "correction": "取倒数时已经排除了零。"
+    },
+    {
+      "id": "ode-bernoulli-m2",
+      "claim": "承载量是所有时刻都不能超过的硬上界。",
+      "correction": "初值可以高于承载量，模型随后使其下降。"
+    }
+  ],
+  "prerequisites": [
+    "ode-substitutions"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-bernoulli-m1",
+    "ode-bernoulli-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "Bernoulli 代换把特定幂次非线性化成线性方程，同时需要保留被除掉的解。",
+  "intuition": "幂函数的导数正好能吸收非线性因子，Logistic 方程就是一个重要例子。",
+  "objectives": [
+    "使用幂次代换",
+    "解释承载量与平衡解"
+  ],
+  "formalDefinition": {
+    "text": "Bernoulli 方程与 Logistic 模型",
+    "latex": "v'+(1-m)pv=(1-m)q,\\qquad v=y^{1-m}",
+    "conditions": [
+      "幂次在所选实分支上可微，$y\\ne0$；零解和其他被除条件须回原式检查。Logistic 使用 $r,K>0$。"
+    ]
+  },
+  "learningCheck": {
+    "question": "Logistic 正初值高于承载量时，解最初怎样变化？",
+    "choices": [
+      "继续加速增长",
+      "下降",
+      "立即跳到承载量"
+    ],
+    "correctIndex": 1,
+    "explanation": "右端此时为负，解连续下降。"
+  },
+  "teaching": {
+    "explain": "非线性并不都难以求解。先检查它是否能通过一个明确代换变成线性关系。",
+    "steps": [
+      {
+        "title": "低于承载量",
+        "preset": {
+          "a": 0.3,
+          "b": 5
+        },
+        "observation": "数量上升且始终不越过平衡一。",
+        "instruction": "将初始值 $y_0$设为 $0.3$；将观察时间 $t$设为 $5$。"
+      },
+      {
+        "title": "高于承载量",
+        "preset": {
+          "a": 1.8,
+          "b": 5
+        },
+        "observation": "数量下降趋向一。",
+        "instruction": "将初始值 $y_0$设为 $1.8$；将观察时间 $t$设为 $5$。"
+      },
+      {
+        "title": "恰在平衡",
+        "preset": {
+          "a": 1,
+          "b": 5
+        },
+        "observation": "平衡解保持不动。",
+        "instruction": "将初始值 $y_0$设为 $1$；将观察时间 $t$设为 $5$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-bernoulli",
+    "caption": "承载量取一。正初值下方上升、上方下降；虚线为平衡值，零平衡在正文单独讨论。",
+    "prediction": "初值高于承载量时，数量会继续增长吗？"
+  }
+}

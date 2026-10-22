@@ -5,7 +5,7 @@
   "title": "连续性与介值定理",
   "subtitle": "附近趋势与点上数值接起来",
   "concept": "在一点连续，就是极限存在，并且等于该点的函数值。连续不能有孔洞或跳跃。",
-  "intuition": "把 x 缓慢移到 a，输出也移到 f(a)。连续时，附近的趋势与点上的值对得上。",
+  "intuition": "把 $x$ 缓慢移到 $a$，输出也移到 $f (a)$。连续时，附近的趋势与点上的值对得上。",
   "objectives": [
     "三件事一起检查",
     "连续函数的组合",
@@ -14,7 +14,7 @@
   "body": [
     {
       "title": "要检查哪三件事？",
-      "text": "f(a) 有定义，x→a 的极限存在，且极限等于 f(a)。区间端点只检查定义域内的单侧极限。"
+      "text": "$f (a)$ 有定义，$x \\to a$ 的极限存在，且极限等于 $f (a)$。区间端点只检查定义域内的单侧极限。"
     },
     {
       "title": "复合函数会连续吗？",
@@ -22,14 +22,14 @@
     },
     {
       "title": "介值定理保证什么？",
-      "text": "f 在整个 [a,b] 连续时，会取到两端函数值之间的每个数。它保证存在，不保证唯一，也不直接给出位置。"
+      "text": "$f$ 在整个 $[a , b]$ 连续时，会取到两端函数值之间的每个数。它保证存在，不保证唯一，也不直接给出位置。"
     }
   ],
   "formalDefinition": {
     "text": "连续性的等式；介值定理要求在整个闭区间连续。",
     "latex": "\\lim_{x\\to a}f(x)=f(a)",
     "conditions": [
-      "介值定理：f 在 [a,b] 连续；N 位于 f(a) 与 f(b) 之间，则存在 c∈[a,b] 使 f(c)=N。"
+      "介值定理：$f$ 在 $[a , b]$ 连续；$N$ 位于 $f (a)$ 与 $f (b)$ 之间，则存在 $c \\in [a , b]$ 使 $f (c) = N$。"
     ]
   },
   "derivation": [
@@ -38,11 +38,11 @@
       "latex": "f(x)=\\begin{cases}x^2,&x<1\\\\ kx+1,&x\\ge1\\end{cases}"
     },
     {
-      "text": "左侧极限为 1，右侧极限和点值为 k+1。",
+      "text": "左侧极限为 1，右侧极限和点值为 $k + 1$。",
       "latex": "1=k+1"
     },
     {
-      "text": "所以只有 k=0 能让连接处连续。",
+      "text": "所以只有 $k = 0$ 能让连接处连续。",
       "latex": "k=0"
     }
   ],
@@ -56,21 +56,21 @@
   "workedExamples": [
     {
       "title": "补一个孔洞",
-      "problem": "令 f(x)=(x²−4)/(x−2)（x≠2），应设 f(2) 为多少？",
+      "problem": "令 $f (x) = \\frac{x^{2} - 4}{x - 2}$（$x \\ne 2$），应设 $f (2)$ 为多少？",
       "steps": [
-        "附近等于 x+2，因此极限为 4。",
+        "附近等于 $x + 2$，因此极限为 4。",
         "连续要求点值等于该极限。"
       ],
-      "answer": "设 f(2)=4。"
+      "answer": "设 $f (2) = 4$。"
     },
     {
       "title": "保证方程有根",
-      "problem": "说明 $x^3+x-1=0$ 在 (0,1) 有根。",
+      "problem": "说明 $x^3+x-1=0$ 在 $(0,1)$ 有根。",
       "steps": [
-        "多项式在 [0,1] 连续。",
-        "f(0)=−1，f(1)=1，零在端点值之间。"
+        "多项式在 $[0,1]$ 连续。",
+        "$f (0) = - 1$，$f (1) = 1$，零在端点值之间。"
       ],
-      "answer": "由介值定理，至少有一个根在 (0,1)。"
+      "answer": "由介值定理，至少有一个根在 $(0,1)$。"
     }
   ],
   "commonMistakes": [
@@ -92,7 +92,7 @@
       "misconceptionTags": [
         "continuity-m1"
       ],
-      "problem": "若 $\\lim_{x\\to2}f(x)=5$、f(2)=3，连续吗？",
+      "problem": "若 $\\lim_{x\\to2}f(x)=5$、$f (2) = 3$，连续吗？",
       "answer": "不连续。",
       "solution": [
         "极限与函数值不相等。"
@@ -103,12 +103,12 @@
       "id": "continuity-p2",
       "difficulty": 2,
       "misconceptionTags": [
-        "continuity-m2"
+        "continuity-m1"
       ],
-      "problem": "使 $(x^2-9)/(x-3)$ 在 3 连续的补值是多少？",
+      "problem": "使 $\\frac{x^2-9}{x-3}$ 在 3 连续的补值是多少？",
       "answer": "$6$。",
       "solution": [
-        "约分后是 x+3，极限为 6。"
+        "约分后是 $x + 3$，极限为 6。"
       ],
       "hint": "先求孔洞附近的极限。",
       "numericAnswer": 6
@@ -119,19 +119,19 @@
       "misconceptionTags": [
         "continuity-m2"
       ],
-      "problem": "用介值定理说明 $\\cos x=x$ 在 (0,1) 有解。",
+      "problem": "用介值定理说明 $\\cos x=x$ 在 $(0,1)$ 有解。",
       "answer": "存在解。",
       "solution": [
-        "g(x)=cos x−x 连续；g(0)=1>0，g(1)=cos 1−1<0。",
-        "所以 g 在区间内部至少一次为零。"
+        "$g (x) = \\cos x - x$ 连续；$g (0) = 1 > 0$，$g (1) = \\cos 1 - 1 < 0$。",
+        "所以 $g$ 在区间内部至少一次为零。"
       ],
       "hint": "把方程移到一边形成连续函数。"
     },
     {
       "id": "continuity-p4",
-      "difficulty": 4,
+      "difficulty": 2,
       "misconceptionTags": [
-        "continuity-m2"
+        "continuity-m1"
       ],
       "problem": "跳跃间断能仅靠改变该点值修复吗？",
       "answer": "不能。",
@@ -152,7 +152,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.3.2",
     "status": "revised",
     "humanReviewed": false
   },
@@ -164,13 +164,47 @@
     "3b1b-calculus"
   ],
   "learningCheck": {
-    "question": "极限存在，但不等于 f(a)，函数在 a 连续吗？",
+    "question": "极限存在，但不等于 $f (a)$，函数在 $a$ 连续吗？",
     "choices": [
       "连续",
       "不连续",
-      "只要 f(a) 很小就连续"
+      "只要 $f (a)$ 很小就连续"
     ],
     "correctIndex": 1,
-    "explanation": "连续要求 f(a) 有定义、极限存在，并且两者相等。少一个条件都不行。"
+    "explanation": "连续要求 $f (a)$ 有定义、极限存在，并且两者相等。少一个条件都不行。"
+  },
+  "teaching": {
+    "explain": "附近的趋势和点上的输出接上，才叫连续。只把左右趋势算对，还没检查点值。",
+    "steps": [
+      {
+        "title": "右侧的趋势",
+        "instruction": "从右侧距孔洞 0.1 处观察。",
+        "preset": {
+          "h": 0.1,
+          "side": 1
+        },
+        "observation": "输出是 2.1，目标点附近的趋势是 2。"
+      },
+      {
+        "title": "左侧的趋势",
+        "instruction": "同样距离改看左侧。",
+        "preset": {
+          "h": 0.1,
+          "side": -1
+        },
+        "observation": "输出是 1.9；左右趋势相同。"
+      },
+      {
+        "title": "补上这个点",
+        "instruction": "把目标点的输出补为 2。",
+        "preset": {
+          "h": 0.001,
+          "side": -1,
+          "comparison": "filled",
+          "c": 2
+        },
+        "observation": "左右输出都趋近 2，点值也等于 2，所以补后的函数在该点连续。再手动改错点值，对比为什么不连续。"
+      }
+    ]
   }
 }

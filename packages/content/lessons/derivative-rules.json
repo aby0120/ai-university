@@ -5,7 +5,7 @@
   "title": "基本求导规则",
   "subtitle": "规则是定义的压缩版",
   "concept": "求导规则把常见结构直接转换成导数。先看最外层：和、乘积，还是商。",
-  "intuition": "乘积 uv 变化时，两个因子都会变，所以要把 u′v 和 uv′ 相加；不是只乘两个导数。",
+  "intuition": "乘积 $u v$ 变化时，两个因子都会变，所以要把 $u' v$ 和 $uv\\prime$ 相加；不是只乘两个导数。",
   "objectives": [
     "线性与幂法则",
     "乘积法则",
@@ -14,22 +14,22 @@
   "body": [
     {
       "title": "和与幂怎样求导？",
-      "text": "常数导数为 0，和与常数倍可逐项求导。xⁿ 的导数为 nxⁿ⁻¹；实数幂要在相应定义域使用，0 等边界另查。"
+      "text": "常数导数为 0，和与常数倍可逐项求导。$x^{n}$ 的导数为 $n x^{n-1}$；实数幂要在相应定义域使用，0 等边界另查。"
     },
     {
       "title": "乘积为什么有两项？",
-      "text": "让 u 变、v 暂时固定，贡献 u′v；让 v 变、u 暂时固定，贡献 uv′。相加得到 (uv)′=u′v+uv′。"
+      "text": "让 $u$ 变、$v$ 暂时固定，贡献 $u' v$；让 $v$ 变、$u$ 暂时固定，贡献 $uv\\prime$。相加得到 $(u v)' = u' v + u v'$。"
     },
     {
       "title": "商的负号放哪里？",
-      "text": "(u/v)′=(u′v−uv′)/v²，要求 v≠0。可以把商改写为 u·v⁻¹，再用乘积与链式法则核对。"
+      "text": "$(\\frac{u}{v})' = \\frac{u' v - u v'}{v^{2}}$，要求 $v \\ne 0$。可以把商改写为 $u \\cdot v^{-1}$，再用乘积与链式法则核对。"
     }
   ],
   "formalDefinition": {
-    "text": "若 u、v 在该点可导，则有下列规则。",
+    "text": "若 $u$、$v$ 在该点可导，则有下列规则。",
     "latex": "(uv)\\prime=u\\prime v+uv\\prime,\\qquad\\left(\\frac uv\\right)\\prime=\\frac{u\\prime v-uv\\prime}{v^2}",
     "conditions": [
-      "商法则要求 v 不为零；幂法则在相应实函数可导的点成立。"
+      "商法则要求 $v$ 不为零；幂法则在相应实函数可导的点成立。"
     ]
   },
   "derivation": [
@@ -38,7 +38,7 @@
       "latex": "\\Delta(uv)=v\\Delta u+u\\Delta v+\\Delta u\\Delta v"
     },
     {
-      "text": "除以 h 后，可导性让交叉项趋近零。",
+      "text": "除以 $h$ 后，可导性让交叉项趋近零。",
       "latex": "\\frac{\\Delta u\\Delta v}{h}=\\frac{\\Delta u}{h}\\Delta v\\to0"
     },
     {
@@ -50,8 +50,8 @@
     "kind": "derivative",
     "function": "cubic",
     "a": 1,
-    "caption": "观察 x³ 的差商趋近 3x²；改变 a 检查不同点。",
-    "prediction": "x³ 的切点从 0 移到 1，斜率会怎样变？用 3a² 核对读数。"
+    "caption": "观察 $x^{3}$ 的差商趋近 $3 x^{2}$；改变 $a$ 检查不同点。",
+    "prediction": "$x^{3}$ 的切点从 0 移到 1，斜率会怎样变？用 $3 a^{2}$ 核对读数。"
   },
   "workedExamples": [
     {
@@ -65,33 +65,31 @@
     },
     {
       "title": "商的计算",
-      "problem": "求 $f(x)=(x+1)/(x-1)$ 的导数。",
+      "problem": "求 $f(x)=\\frac{x+1}{x-1}$ 的导数。",
       "steps": [
-        "u=x+1，v=x−1，u′=v′=1。",
-        "分子为 (x−1)−(x+1)=−2。"
+        "$u = x + 1$，$v = x - 1$，$u' = v' = 1$。",
+        "分子为 $(x - 1) - (x + 1) = - 2$。"
       ],
-      "answer": "$f\\prime(x)=-2/(x-1)^2$，x≠1。"
+      "answer": "$f\\prime(x)=-\\frac{2}{(x-1)^2}$，$x \\ne 1$。"
     }
   ],
   "commonMistakes": [
     {
       "id": "derivative-rules-m1",
-      "claim": "把积的导数写成 u′v′。",
+      "claim": "把积的导数写成 $u' v'$。",
       "correction": "正确规则有两项，每项只对一个因素求导。"
     },
     {
       "id": "derivative-rules-m2",
       "claim": "商法则分子次序颠倒。",
-      "correction": "先“分子导数×分母”，再减“分子×分母导数”。"
+      "correction": "先“$\\text{分子导数}\\times\\text{分母}$”，再减“$\\text{分子}\\times\\text{分母导数}$”。"
     }
   ],
   "practice": [
     {
       "id": "derivative-rules-p1",
       "difficulty": 1,
-      "misconceptionTags": [
-        "derivative-rules-m1"
-      ],
+      "misconceptionTags": [],
       "problem": "求 $x^5-3x$ 的导数。",
       "answer": "$5x^4-3$。",
       "solution": [
@@ -103,40 +101,38 @@
       "id": "derivative-rules-p2",
       "difficulty": 2,
       "misconceptionTags": [
-        "derivative-rules-m2"
+        "derivative-rules-m1"
       ],
       "problem": "求 $x^2(x+1)$ 的导数。",
       "answer": "$3x^2+2x$。",
       "solution": [
-        "积法则得到 2x(x+1)+x²，合并同类项。"
+        "积法则得到 $2 x (x + 1) + x^{2}$，合并同类项。"
       ],
       "hint": "也可先展开验证。"
     },
     {
       "id": "derivative-rules-p3",
-      "difficulty": 3,
+      "difficulty": 1,
       "misconceptionTags": [
         "derivative-rules-m2"
       ],
-      "problem": "求 $1/x$ 在 x=2 的导数值。",
-      "answer": "$-1/4$。",
+      "problem": "求 $\\frac{1}{x}$ 在 $x = 2$ 的导数值。",
+      "answer": "$-\\frac{1}{4}$。",
       "solution": [
-        "导数为−x^−2，代入 2。"
+        "导数为$- x^{- 2}$，代入 2。"
       ],
       "hint": "把倒数写成负指数。",
       "numericAnswer": -0.25
     },
     {
       "id": "derivative-rules-p4",
-      "difficulty": 4,
-      "misconceptionTags": [
-        "derivative-rules-m2"
-      ],
-      "problem": "求 $\\sqrt{x}$ 的导数并注明 x。",
-      "answer": "$1/(2\\sqrt{x})$，x>0。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "problem": "求 $\\sqrt{x}$ 的导数并注明 $x$。",
+      "answer": "$\\frac{1}{2\\sqrt{x}}$，$x > 0$。",
       "solution": [
-        "写成 x^(1/2) 使用幂法则。",
-        "在 x=0 处没有有限双侧导数。"
+        "写成 $x^{\\frac{1}{2}}$ 使用幂法则。",
+        "在 $x = 0$ 处没有有限双侧导数。"
       ],
       "hint": "半次幂的导数有分母。"
     }
@@ -151,7 +147,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -163,13 +159,48 @@
     "3b1b-calculus"
   ],
   "learningCheck": {
-    "question": "(f(x)g(x))′ 等于什么？",
+    "question": "$(f (x) g (x))'$ 等于什么？",
     "choices": [
-      "f′g′",
-      "f′g+fg′",
-      "f′+g′"
+      "$f' g'$",
+      "$f' g + f g'$",
+      "$f' + g'$"
     ],
     "correctIndex": 1,
     "explanation": "两因子都可能变化：一个变化时乘上另一个的原值。积的导数要把这两部分相加。"
+  },
+  "teaching": {
+    "explain": "求导规则把定义中的极限整理成快捷计算。结果仍应能与差商核对；积的导数不能把两个导数直接相乘。",
+    "steps": [
+      {
+        "title": "水平的位置",
+        "instruction": "对立方曲线，切点取 0。",
+        "preset": {
+          "a": 0,
+          "h": 0.1,
+          "side": 1
+        },
+        "observation": "精确导数 $3a^2=0$；有限差商仍有小误差。"
+      },
+      {
+        "title": "到另一个点",
+        "instruction": "切点改为 1，间隔缩小。",
+        "preset": {
+          "a": 1,
+          "h": 0.01,
+          "side": 1
+        },
+        "observation": "精确导数为 3，右侧差商约 3.0301。"
+      },
+      {
+        "title": "比较负输入",
+        "instruction": "切点改为 −1，保持小间隔。",
+        "preset": {
+          "a": -1,
+          "h": 0.01,
+          "side": 1
+        },
+        "observation": "导数也为 3。函数值可为负，变化率仍可为正。"
+      }
+    ]
   }
 }

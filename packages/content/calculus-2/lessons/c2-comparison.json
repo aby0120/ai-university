@@ -1,0 +1,190 @@
+{
+  "id": "c2-comparison",
+  "title": "比较与极限比较",
+  "subtitle": "找到一个已经认识的尾部",
+  "concept": "正项级数可与已知级数比大小；极限比较则检查两种尾部是否只差有限正倍数。",
+  "intuition": "当 $n$ 很大时，$\\frac1{n^2+1}$ 像 $\\frac1{n^2}$。极限比较把“像”变成严格可用的比例关系。",
+  "body": [
+    {
+      "title": "大小方向怎么记？",
+      "text": "小于收敛正项级数，则收敛；大于发散正项级数，则发散。反过来两种比较都不能得结论。"
+    },
+    {
+      "title": "极限比较要求什么？",
+      "text": "两列最终为正，比例极限为有限正数，才同敛散。比例为零或无穷时可有单向结论，但不能直接说同敛散。"
+    },
+    {
+      "title": "怎么挑参照？",
+      "text": "有理式先看最高次幂；根式比较主要增长率；不要把有限开头的大小当作尾部行为。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "找到一个已经认识的尾部",
+    "latex": "a_n,b_n>0,\\quad\\lim_{n\\to\\infty}\\frac{a_n}{b_n}=c\\in(0,\\infty)\\ \\Longrightarrow\\ \\sum a_n,\\sum b_n\\text{ 同敛散}",
+    "conditions": [
+      "最终正项；有限个初始项不影响收敛性。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "比例趋于正数，最终会被两个正倍数夹住。",
+      "latex": "\\frac c2b_n\\leq a_n\\leq\\frac{3c}{2}b_n\\quad(n\\geq N)"
+    },
+    {
+      "text": "参照级数收敛时，用上界比较。",
+      "latex": "\\sum b_n<\\infty\\Longrightarrow\\sum a_n<\\infty"
+    },
+    {
+      "text": "参照级数发散时，用下界比较。",
+      "latex": "\\sum b_n=\\infty\\Longrightarrow\\sum a_n=\\infty"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "直接比较",
+      "problem": "$\\sum\\frac1{n^2+1}$ 收敛吗？",
+      "steps": [
+        "$0<\\frac1{n^2+1}\\leq\\frac1{n^2}$。",
+        "平方倒数级数收敛，所以更小的正项和收敛。"
+      ],
+      "answer": "收敛。"
+    },
+    {
+      "title": "极限比较",
+      "problem": "$\\sum\\frac{3n+1}{n^2+5}$ 收敛吗？",
+      "steps": [
+        "与 $b_n=\\frac1n$ 比，比例为 $\\frac{3n^2+n}{n^2+5}\\to3$。",
+        "调和级数发散，比例极限为有限正数。"
+      ],
+      "answer": "发散。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-comparison-m1",
+      "claim": "小于一个发散级数就收敛。",
+      "correction": "发散上界太宽，无法决定被比较级数。"
+    },
+    {
+      "id": "c2-comparison-m2",
+      "claim": "比例为零也必同敛散。",
+      "correction": "零比例不保证同敛散；例如平方倒数与调和项。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$\\sum\\frac1{n^2+n}$ 收敛吗？",
+      "answer": "收敛。",
+      "hint": "与平方倒数比。",
+      "solution": [
+        "正项且不超过 $\\frac1{n^2}$，上界级数收敛。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-comparison-p1"
+    },
+    {
+      "problem": "$\\sum\\frac1{\\sqrt{n^2+1}}$ 收敛吗？",
+      "answer": "发散。",
+      "hint": "极限比较调和项。",
+      "solution": [
+        "$\\frac{n}{\\sqrt{n^2+1}}\\to1$，与调和级数同敛散。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-comparison-p2"
+    },
+    {
+      "problem": "$0<a_n\\leq\\frac1n$ 能判断 $\\sum a_n$ 吗？",
+      "answer": "不能。",
+      "hint": "尝试两种满足上界的数列。",
+      "solution": [
+        "$a_n=\\frac1{n^2}$ 收敛，而 $a_n=\\frac1n$ 发散。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-comparison-p3"
+    },
+    {
+      "problem": "$\\sum\\frac{n+1}{n^3+2}$ 收敛吗？",
+      "answer": "收敛。",
+      "hint": "参照平方倒数。",
+      "solution": [
+        "$\\frac{(n+1)n^2}{n^3+2}\\to1$，有限正比例，故收敛。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-comparison-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "哪种比较能推出正项级数收敛？",
+    "choices": [
+      "大于一个收敛级数",
+      "小于一个发散级数",
+      "小于一个收敛级数"
+    ],
+    "correctIndex": 2,
+    "explanation": "尾和被有限上界控制。"
+  },
+  "teaching": {
+    "explain": "先决定你需要上界还是下界，再去找参照；只有方向正确的比较才提供信息。",
+    "steps": [
+      {
+        "title": "前五项",
+        "instruction": "项数取 5。",
+        "observation": "前者每项都较小。",
+        "preset": {
+          "n": 5
+        }
+      },
+      {
+        "title": "二十项",
+        "instruction": "项数取 20。",
+        "observation": "比例更接近 1；只是尾部量级相同。",
+        "preset": {
+          "n": 20
+        }
+      },
+      {
+        "title": "八十项",
+        "instruction": "项数取 80。",
+        "observation": "两种有限部分和仍不相等；比较用于判断收敛。",
+        "preset": {
+          "n": 80
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-integral-test"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-convergence",
+  "number": "4.2",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-comparison",
+    "caption": "对照 $\\frac1{n^2+1}$ 与 $\\frac1{n^2}$ 的项，显示比例。",
+    "prediction": "两列越来越接近，能直接说它们的和相等吗？"
+  },
+  "misconceptionTags": [
+    "c2-comparison-m1",
+    "c2-comparison-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "选择正确方向的大小比较",
+    "计算有限正比例极限",
+    "识别零或无穷比例的限制"
+  ]
+}

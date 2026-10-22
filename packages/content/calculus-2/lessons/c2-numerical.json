@@ -1,0 +1,196 @@
+{
+  "id": "c2-numerical",
+  "title": "数值积分与误差",
+  "subtitle": "算近似值，也说明它离真值有多远",
+  "concept": "梯形用直线贴曲线，Simpson 用抛物线；误差界告诉你需要分多少段。",
+  "intuition": "增加分段通常会更准确，但“图看起来贴合”不是误差保证。曲率与高阶导数决定保证的大小。",
+  "body": [
+    {
+      "title": "Simpson 怎么加权？",
+      "text": "等距分段且段数 $n$ 为偶数。端点权重为 1，内部奇数节点权重为 4，内部偶数节点权重为 2。"
+    },
+    {
+      "title": "误差为什么不同？",
+      "text": "梯形误差与 $n^{-2}$ 成正比的界有关；Simpson 在四阶导数有界时有 $n^{-4}$ 的误差界。高阶方法也需要更强的光滑性。"
+    },
+    {
+      "title": "怎样确定段数？",
+      "text": "先给容差，再把导数上界代入误差公式，解出足够的 $n$。这是保守保证，实际误差可能更小。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "算近似值，也说明它离真值有多远",
+    "latex": "|I-T_n|\\leq\\frac{M_2(b-a)^3}{12n^2},\\qquad |I-S_n|\\leq\\frac{M_4(b-a)^5}{180n^4}",
+    "conditions": [
+      "$f\\in C^2[a,b]$ 且 $|f^{(2)}|\\leq M_2$ 用于梯形；$f\\in C^4[a,b]$ 且 $|f^{(4)}|\\leq M_4$ 用于 Simpson，后者 $n$ 为正偶数。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "用相邻两段的抛物线近似积分。",
+      "latex": "\\int_{x_0}^{x_2}f(x)dx\\approx\\frac h3(f_0+4f_1+f_2)"
+    },
+    {
+      "text": "把每对小段相加，内部偶数节点重复一次。",
+      "latex": "S_n=\\frac h3\\left(f_0+4\\sum_{j\\text{ odd}}f_j+2\\sum_{\\substack{j\\text{ even}\\\\0<j<n}}f_j+f_n\\right)"
+    },
+    {
+      "text": "代入四阶导数上界得到误差保证。",
+      "latex": "h=\\frac{b-a}{n},\\quad |I-S_n|\\leq\\frac{M_4(b-a)h^4}{180}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "二次函数恰好吻合",
+      "problem": "用两段 Simpson 估计 $\\int_0^1x^2dx$。",
+      "steps": [
+        "$h=\\frac12$，三个节点值为 $0,\\frac14,1$。",
+        "$S_2=\\frac16(0+4\\cdot\\frac14+1)=\\frac13$；四阶导数为零。"
+      ],
+      "answer": "$\\frac13$，此题恰好精确。"
+    },
+    {
+      "title": "选段数",
+      "problem": "用梯形估计 $\\int_0^1e^x dx$，要求误差小于 $0.001$，给一个足够的段数。",
+      "steps": [
+        "$M_2=e$，故误差不超过 $\\frac e{12n^2}$。",
+        "$n^2>\\frac e{0.012}$，取 $n=16$ 即可。"
+      ],
+      "answer": "取 16 段；这是上界保证。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-numerical-m1",
+      "claim": "Simpson 可以随便用奇数段。",
+      "correction": "本节复合公式按两段一组，要求偶数段。"
+    },
+    {
+      "id": "c2-numerical-m2",
+      "claim": "两次近似相近，就已经证明误差很小。",
+      "correction": "相近可作诊断，严格保证还需要相应条件与误差界。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "用两段梯形求 $\\int_0^1x^2dx$ 的近似。",
+      "answer": "$\\frac38$。",
+      "hint": "端点半权，内部全权。",
+      "solution": [
+        "$T_2=\\frac14(0+2\\cdot\\frac14+1)=\\frac38$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.375,
+      "id": "c2-numerical-p1"
+    },
+    {
+      "problem": "两段 Simpson 对 $\\int_0^1x^3dx$ 给出什么？",
+      "answer": "$\\frac14$。",
+      "hint": "三次多项式也会精确。",
+      "solution": [
+        "$S_2=\\frac16(0+4\\cdot\\frac18+1)=\\frac14$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.25,
+      "id": "c2-numerical-p2"
+    },
+    {
+      "problem": "梯形误差界要求 $M_2=12$，区间长为 1，要使界不超过 $0.01$，最小保证段数？",
+      "answer": "$10$。",
+      "hint": "解不等式。",
+      "solution": [
+        "$\\frac1{n^2}\\leq0.01$ 得 $n\\geq10$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 10,
+      "id": "c2-numerical-p3"
+    },
+    {
+      "problem": "函数在区间里有尖角，能直接套四阶导数误差界吗？",
+      "answer": "不能。",
+      "hint": "检查光滑性。",
+      "solution": [
+        "四阶导数可能不存在；应在尖角分段或改用有适用条件的估计。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [
+        "c2-numerical-m2"
+      ],
+      "id": "c2-numerical-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "复合 Simpson 的段数需要？",
+    "choices": [
+      "任意正整数",
+      "正偶数",
+      "只能取两段"
+    ],
+    "correctIndex": 1,
+    "explanation": "每两段拟合一条抛物线，内部按奇偶节点分配权重。"
+  },
+  "teaching": {
+    "explain": "近似算法负责给数字，误差理论负责给这个数字的可信范围。两件事要分开看。",
+    "steps": [
+      {
+        "title": "两段",
+        "instruction": "分段数设为 2。",
+        "observation": "Simpson 用三点抛物线，梯形仍是两条线段。",
+        "preset": {
+          "n": 2
+        }
+      },
+      {
+        "title": "八段",
+        "instruction": "分段数设为 8。",
+        "observation": "对这个光滑指数模型，两种误差均减小。",
+        "preset": {
+          "n": 8
+        }
+      },
+      {
+        "title": "三十二段",
+        "instruction": "分段数设为 32。",
+        "observation": "误差与保守上界分别显示，避免混为同一个量。",
+        "preset": {
+          "n": 32
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-strategy",
+    "riemann-sums"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-extended-integrals",
+  "number": "2.1",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-numerical",
+    "caption": "比较 $e^x$ 在 $[0,1]$ 的梯形、Simpson 近似与精确值。",
+    "prediction": "同样的分段数下，哪种方法的误差更小？"
+  },
+  "misconceptionTags": [
+    "c2-numerical-m1",
+    "c2-numerical-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "使用复合梯形与 Simpson 公式",
+    "检查偶数分段和光滑条件",
+    "按容差选择足够段数"
+  ]
+}

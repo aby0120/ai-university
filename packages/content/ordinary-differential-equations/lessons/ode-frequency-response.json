@@ -1,0 +1,197 @@
+{
+  "id": "ode-frequency-response",
+  "chapterId": "ode-forcing",
+  "number": "5.5",
+  "title": "频率响应、幅值与相位",
+  "subtitle": "稳态怎样跟随周期外力",
+  "body": [
+    {
+      "title": "瞬态是什么？",
+      "text": "齐次解记录初始条件；在正质量、刚度、阻尼下会衰减。它决定起步过程。"
+    },
+    {
+      "title": "稳态是什么？",
+      "text": "对正弦外力，特解可写成 $A\\cos(\\omega t-\\phi)$。幅值为非负数，相位需要使用正确象限。"
+    },
+    {
+      "title": "峰值在哪里？",
+      "text": "若 $c^2<2mk$，位移幅值峰值在 $\\sqrt{k/m-c^2/(2m^2)}$；并非总等于固有频率。强阻尼时没有正频率峰。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "使用复数试解。",
+      "latex": "\\widetilde y=H e^{i\\omega t}"
+    },
+    {
+      "text": "代入算子得到复响应。",
+      "latex": "H=\\frac F{k-m\\omega^2+ic\\omega}"
+    },
+    {
+      "text": "取模与辐角得到幅值和滞后。",
+      "latex": "H=Ae^{-i\\phi}\\Rightarrow y_{ss}=A\\cos(\\omega t-\\phi)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "固有频率上的阻尼响应",
+      "problem": "取 $m=k=c=F=1,\\omega=1$。",
+      "steps": [
+        "分母实部为零、虚部为一。",
+        "幅值一、滞后 $\\pi/2$。"
+      ],
+      "answer": "稳态 $y=\\sin t$。"
+    },
+    {
+      "title": "静态输入",
+      "problem": "取 $m=1,k=4,c=2,F=8,\\omega=0$。",
+      "steps": [
+        "外力是常数八。",
+        "稳态导数为零，故 $4y=8$。"
+      ],
+      "answer": "稳态位移为二。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-frequency-response-q1",
+      "problem": "$m=k=1,c=2,F=1,\\omega=1$ 的稳态幅值？",
+      "hint": "分母只剩阻尼项。",
+      "solution": [
+        "分母为二。"
+      ],
+      "answer": "$1/2$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.5
+    },
+    {
+      "id": "ode-frequency-response-q2",
+      "problem": "正阻尼下初值对长期稳态还保留影响吗？",
+      "hint": "看齐次项是否衰减。",
+      "solution": [
+        "齐次根实部为负，初值响应逐渐消失。"
+      ],
+      "answer": "不保留长期差异。",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "ode-frequency-response-m2"
+      ]
+    },
+    {
+      "id": "ode-frequency-response-q3",
+      "problem": "可否只用普通反正切而不管象限？",
+      "hint": "分母实部可能为负。",
+      "solution": [
+        "普通比值反正切会漏掉相位的象限。"
+      ],
+      "answer": "应使用带象限的相位判断。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-frequency-response-q4",
+      "problem": "$m=k=1,c=2$ 有正频率位移共振峰吗？",
+      "hint": "检查峰值条件。",
+      "solution": [
+        "$c^2=4>2mk$，幅值从静态值起下降。"
+      ],
+      "answer": "没有。",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "ode-frequency-response-m1"
+      ]
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-frequency-response-m1",
+      "claim": "有阻尼时峰值频率永远等于固有频率。",
+      "correction": "位移峰值还依赖阻尼。"
+    },
+    {
+      "id": "ode-frequency-response-m2",
+      "claim": "稳态公式自动满足任意初值。",
+      "correction": "还要加衰减的齐次项匹配初值。"
+    }
+  ],
+  "prerequisites": [
+    "ode-resonance"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ode-frequency-response-m1",
+    "ode-frequency-response-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "有正阻尼的线性系统最终以外力频率振动，幅值和相位由频率响应决定。",
+  "intuition": "快慢不同的推动，对同一个系统会产生不同程度的放大与滞后。",
+  "objectives": [
+    "计算稳态幅值",
+    "区分瞬态与稳态及共振峰"
+  ],
+  "formalDefinition": {
+    "text": "频率响应、幅值与相位",
+    "latex": "A(\\omega)=\\frac F{\\sqrt{(k-m\\omega^2)^2+c^2\\omega^2}},\\quad\\phi=\\operatorname{atan2}(c\\omega,k-m\\omega^2)",
+    "conditions": [
+      "$m,k,c>0,F\\ge0,\\omega\\ge0$；在零频率时是恒定输入，稳态位移为 $F/k$。"
+    ]
+  },
+  "learningCheck": {
+    "question": "有正阻尼时，长期周期响应的频率由谁决定？",
+    "choices": [
+      "齐次根实部",
+      "初始速度",
+      "周期外力"
+    ],
+    "correctIndex": 2,
+    "explanation": "初值影响的瞬态会衰减。"
+  },
+  "teaching": {
+    "explain": "先把起步过程和长期响应分开，幅值曲线才不会与某一条初值曲线混淆。",
+    "steps": [
+      {
+        "title": "弱阻尼",
+        "preset": {
+          "a": 1,
+          "c": 0.2
+        },
+        "observation": "固有频率附近响应大但有限。",
+        "instruction": "将驱动角频率 $\\omega$设为 $1$；将阻尼系数 $c$设为 $0.2$。"
+      },
+      {
+        "title": "增强阻尼",
+        "preset": {
+          "a": 1,
+          "c": 1
+        },
+        "observation": "同频幅值降低。",
+        "instruction": "将驱动角频率 $\\omega$设为 $1$；将阻尼系数 $c$设为 $1$。"
+      },
+      {
+        "title": "静态",
+        "preset": {
+          "a": 0,
+          "c": 1
+        },
+        "observation": "静态位移为一，滞后为零。",
+        "instruction": "将驱动角频率 $\\omega$设为 $0$；将阻尼系数 $c$设为 $1$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-frequency-response",
+    "caption": "横轴为驱动角频率，纵轴为稳态位移幅值。亮点不是时间运动，读数保留相位的正确象限。",
+    "prediction": "增加阻尼后，幅值峰的位置和高度怎样变？"
+  }
+}

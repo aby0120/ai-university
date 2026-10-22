@@ -1,0 +1,194 @@
+{
+  "id": "la-markov",
+  "chapterId": "la-applications",
+  "number": "10.1",
+  "title": "Markov 矩阵与稳态",
+  "subtitle": "转移概率与不变分布",
+  "concept": "Markov 矩阵用非负转移概率更新状态分布，稳态是特征值为一的概率向量。",
+  "intuition": "每一列把一个旧状态的概率分配到新状态，列和为一保证总概率不变。",
+  "objectives": [
+    "按列随机约定更新状态",
+    "求稳态并检查收敛条件"
+  ],
+  "body": [
+    {
+      "title": "本书采用哪种约定？",
+      "text": "概率分布写成列向量，更新为 $p_{k+1}=Pp_k$，所以 $P$ 的列和为一。行向量约定会转置，不能混用。"
+    },
+    {
+      "title": "怎样求稳态？",
+      "text": "解 $(P-I)p_*=0$，再加分量非负及总和一。并不是每个特征向量都自动是概率分布。"
+    },
+    {
+      "title": "一定会收敛吗？",
+      "text": "不一定，周期链会振荡。若矩阵所有元素严格为正，则稳态唯一且所有初始概率分布收敛到它；更一般情形需要不可约和非周期等条件。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "Markov 矩阵与稳态",
+    "latex": "P_{ij}\\ge0,\\quad\\mathbf1^TP=\\mathbf1^T,\\quad Pp_*=p_*,\\quad\\mathbf1^Tp_*=1",
+    "conditions": [
+      "$P$ 为有限状态列随机矩阵；稳态须非负。严格正的收敛结论是引用的 Perron–Frobenius 特例，不由有限迭代图证明。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "总概率更新后不变。",
+      "latex": "\\mathbf1^Tp_{k+1}=\\mathbf1^TPp_k=\\mathbf1^Tp_k"
+    },
+    {
+      "text": "稳态是不随更新改变的向量。",
+      "latex": "(P-I)p_*=0"
+    },
+    {
+      "text": "二状态例的非稳态方向按另一特征值衰减。",
+      "latex": "p_k=p_*+0.5^k(p_0-p_*)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "求并验证稳态",
+      "problem": "$P=\\begin{pmatrix}0.8&0.3\\\\0.2&0.7\\end{pmatrix}$ 的稳态？",
+      "steps": [
+        "$0.2p_1=0.3p_2$，再用 $p_1+p_2=1$。",
+        "得 $(0.6,0.4)$，代回矩阵验证。"
+      ],
+      "answer": "稳态为 $(0.6,0.4)^T$。"
+    },
+    {
+      "title": "不收敛的随机矩阵",
+      "problem": "$P=\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}$ 从 $(1,0)$ 开始。",
+      "steps": [
+        "一次更新到另一个状态，下一次又回来。",
+        "稳态 $(1/2,1/2)$ 存在，但当前初值周期振荡。"
+      ],
+      "answer": "不收敛。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-markov-m1",
+      "claim": "随机矩阵的所有初值必收敛。",
+      "correction": "周期与分解为多个封闭类都可能妨碍该结论。"
+    },
+    {
+      "id": "la-markov-m2",
+      "claim": "稳态只需解特征方程，不必归一化。",
+      "correction": "还须满足概率约束。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$P=\\begin{pmatrix}0.9&0.4\\\\0.1&0.6\\end{pmatrix}$，是否符合列随机约定？",
+      "hint": "逐列检查非负和总和。",
+      "solution": [
+        "两列均非负且和一。"
+      ],
+      "answer": "符合。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-markov-q1"
+    },
+    {
+      "problem": "上题稳态第一分量？",
+      "hint": "用流量平衡。",
+      "solution": [
+        "$0.1p_1=0.4p_2$，和一给 $p_1=0.8$。"
+      ],
+      "answer": "0.8",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.8,
+      "id": "la-markov-q2"
+    },
+    {
+      "problem": "列随机矩阵必有哪个特征值？",
+      "hint": "左全一向量是左特征向量。",
+      "solution": [
+        "$P^T\\mathbf1=\\mathbf1$，$P$ 与转置特征多项式相同。"
+      ],
+      "answer": "1",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 1,
+      "id": "la-markov-q3"
+    },
+    {
+      "problem": "单位矩阵作为转移矩阵，稳态唯一吗？",
+      "hint": "每个初始分布都不变。",
+      "solution": [
+        "所有概率向量都是稳态。"
+      ],
+      "answer": "不唯一。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-markov-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-diagonalization"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "la-markov-m1",
+    "la-markov-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-markov",
+    "caption": "固定严格正转移矩阵 $P=\\begin{pmatrix}0.8&0.3\\\\0.2&0.7\\end{pmatrix}$，初始分布为 $(a,1-a)$。",
+    "prediction": "初始分布不同，严格正转移矩阵的长期分布会相同吗？"
+  },
+  "learningCheck": {
+    "question": "存在稳态是否足以保证每个初值收敛到它？",
+    "choices": [
+      "足以",
+      "不够",
+      "只要总概率为一就足够"
+    ],
+    "correctIndex": 1,
+    "explanation": "周期更新可反复交换两个状态。"
+  },
+  "teaching": {
+    "explain": "稳态说明“有一种分布不再改变”，收敛说明“其他分布会不会接近它”。这是两个不同问题。",
+    "steps": [
+      {
+        "title": "初始状态",
+        "instruction": "取 $a=1,n=0$。",
+        "preset": {
+          "a": 1,
+          "n": 0
+        },
+        "observation": "所有概率在第一状态。"
+      },
+      {
+        "title": "一次更新",
+        "instruction": "取 $a=1,n=1$。",
+        "preset": {
+          "a": 1,
+          "n": 1
+        },
+        "observation": "分布为 $(0.8,0.2)$。"
+      },
+      {
+        "title": "接近稳态",
+        "instruction": "取 $a=1,n=8$。",
+        "preset": {
+          "a": 1,
+          "n": 8
+        },
+        "observation": "第一分量为 $0.6015625$，接近但尚未等于 $0.6$。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "id": "c3-potential",
+  "chapterId": "c3-line-integrals",
+  "number": "7.4",
+  "title": "势函数、路径无关与洞",
+  "subtitle": "什么时候只看端点就够",
+  "concept": "场是某个单值函数的梯度时，功积分等于势函数的终值减初值。",
+  "intuition": "沿路每步的功就是同一个高度函数的增量，把这些增量相加，中间值会抵消，只剩端点。",
+  "objectives": [
+    "寻找并验证全局势函数",
+    "识别有洞定义域的反例"
+  ],
+  "body": [
+    {
+      "title": "如何找势函数？",
+      "text": "先对场的一个分量积分，把积分常数改写成其余变量的函数；再用其他分量确定它，最后求梯度复查。"
+    },
+    {
+      "title": "交叉偏导相等够吗？",
+      "text": "在单连通开域上，连续一阶偏导且旋度为零足以推出势函数存在。单连通可理解为每条闭路都能留在域内连续缩成一点。"
+    },
+    {
+      "title": "有洞为什么危险？",
+      "text": "局部无旋仍可能绕洞累计非零功。势函数必须在整个讨论域内单值，不能用跨分支角度冒充全局势。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "什么时候只看端点就够",
+    "latex": "\\mathbf F=\\nabla\\varphi\\ \\Longrightarrow\\ \\int_C\\mathbf F\\cdot d\\mathbf r=\\varphi(B)-\\varphi(A)",
+    "conditions": [
+      "势函数在含路径的开域一阶连续可导，路径分段光滑；无旋推出保守另要求开域单连通及场一阶连续可导。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "沿路径对势函数用链式法则。",
+      "latex": "\\frac d{dt}\\varphi(\\mathbf r(t))=\\nabla\\varphi\\cdot\\mathbf r\\prime"
+    },
+    {
+      "text": "再用一元微积分基本定理。",
+      "latex": "\\int_a^b\\frac d{dt}\\varphi(\\mathbf r(t))dt=\\varphi(B)-\\varphi(A)"
+    },
+    {
+      "text": "闭路两端同点，因此差值为零。",
+      "latex": "\\oint_C\\nabla\\varphi\\cdot d\\mathbf r=0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "寻找势",
+      "problem": "$\\mathbf F=(2xy,x^2+2y,0)$，从原点到 $(1,2,0)$ 的功？",
+      "steps": [
+        "对第一分量积分得 $\\varphi=x^2y+g(y)$。",
+        "第二分量给 $g\\prime=2y$，故 $\\varphi=x^2y+y^2$，端点值为 6。"
+      ],
+      "answer": "6，路径任意但留在定义域内。"
+    },
+    {
+      "title": "洞的反例",
+      "problem": "平面去掉原点，场 $\\mathbf F=(-y/r^2,x/r^2)$ 绕单位圆一圈做功？",
+      "steps": [
+        "单位圆上场等于单位切向，积分为 $2\\pi$。",
+        "场局部交叉偏导相等，但域有洞，不存在该域上的单值全局势。"
+      ],
+      "answer": "$2\\pi$，不是保守场。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-potential-m1",
+      "claim": "交叉偏导相等就可忽略定义域。",
+      "correction": "有洞的域可能保留非零闭路积分。"
+    },
+    {
+      "id": "c3-potential-m2",
+      "claim": "随手积分一个分量就是势函数。",
+      "correction": "必须再匹配所有其他分量并复查。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-potential-q1",
+      "problem": "场 $(2x,2y,2z)$ 的一个势函数？",
+      "hint": "寻找平方和的梯度。",
+      "solution": [
+        "$\\nabla(x^2+y^2+z^2)=(2x,2y,2z)$。"
+      ],
+      "answer": "$x^2+y^2+z^2$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-potential-q2",
+      "problem": "上题场从原点到 $(1,2,2)$ 的功？",
+      "hint": "使用端点势差。",
+      "solution": [
+        "终值 $1+4+4=9$，初值零。"
+      ],
+      "answer": "9",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 9
+    },
+    {
+      "id": "c3-potential-q3",
+      "problem": "同一连通域上两个势函数可以差什么？",
+      "hint": "梯度之差为零。",
+      "solution": [
+        "两函数差的梯度为零，沿任意可连接路径保持常数。"
+      ],
+      "answer": "一个常数。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-potential-q4",
+      "problem": "去掉原点的平面上，无旋能自动推出闭路功为零吗？",
+      "hint": "用角向场反例。",
+      "solution": [
+        "绕洞的单位圆积分可能为 $2\\pi$。",
+        "局部无旋不能消除全局绕洞效应。"
+      ],
+      "answer": "不能。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "全局势函数存在时，功依赖什么？",
+    "choices": [
+      "只依赖端点",
+      "只依赖长度",
+      "只依赖速度"
+    ],
+    "correctIndex": 0,
+    "explanation": "链式法则和基本定理使沿路增量抵消。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-potential",
+    "caption": "场 $\\nabla(\\frac12(x^2+y^2))=(x,y)$ 沿单位圆的功为零；可与上一节旋转场对照。",
+    "prediction": "闭路积分为零的结论，依赖哪一个场的条件？"
+  },
+  "teaching": {
+    "explain": "如果场是一个单值函数的梯度，每段功就是它的增量，总和只剩端点差。",
+    "steps": [
+      {
+        "title": "路径起点",
+        "instruction": "将路径参数 $t$ 设为 $0$。",
+        "preset": {
+          "x": 0
+        },
+        "observation": "径向梯度场的势值为一。"
+      },
+      {
+        "title": "中途",
+        "instruction": "将路径参数 $t$ 设为 $\\pi$。",
+        "preset": {
+          "x": 3.141592653589793
+        },
+        "observation": "沿单位圆势值保持一，累计功为零。"
+      },
+      {
+        "title": "回到起点",
+        "instruction": "将路径参数 $t$ 设为 $2\\pi$。",
+        "preset": {
+          "x": 6.283185307179586
+        },
+        "observation": "闭路势差为零；这来自全局势，而非仅因路径闭合。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-line-work",
+    "c3-chain"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "c3-potential-m1",
+    "c3-potential-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

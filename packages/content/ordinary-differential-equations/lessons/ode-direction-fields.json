@@ -1,0 +1,193 @@
+{
+  "id": "ode-direction-fields",
+  "chapterId": "ode-intro",
+  "number": "1.4",
+  "title": "方向场与积分曲线",
+  "subtitle": "不用解出公式，也能读懂趋势",
+  "body": [
+    {
+      "title": "短线表示什么？",
+      "text": "在点 $(t,y)$，$y'=f(t,y)$ 规定斜率。显示时将线段归一化，只改变绘图长度，不改变斜率。"
+    },
+    {
+      "title": "零斜率意味着什么？",
+      "text": "$f(t,y)=0$ 表示该点水平，不保证整条水平线都是解。要成为常数解，必须对全部时间都为零。"
+    },
+    {
+      "title": "怎样跟踪？",
+      "text": "本节演示 $y'=y-t$，其精确解为 $y=t+1+(y_0-1)e^t$。曲线应沿方向场走，而不应逐段直连替代证明。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "解线性方程。",
+      "latex": "y'-y=-t"
+    },
+    {
+      "text": "代入一个特解并补齐齐次项。",
+      "latex": "y=t+1+Ce^t"
+    },
+    {
+      "text": "用起点确定整条曲线。",
+      "latex": "y(0)=y_0\\Rightarrow C=y_0-1"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "读取斜率",
+      "problem": "在 $y'=y-t$ 的点 $(2,3)$，斜率多少？",
+      "steps": [
+        "代入右端。",
+        "$3-2=1$，切线向右上倾斜。"
+      ],
+      "answer": "$1$。"
+    },
+    {
+      "title": "水平线不一定是解",
+      "problem": "$y'=t$ 在 $t=0$ 都水平；$y\\equiv2$ 是解吗？",
+      "steps": [
+        "常数解导数恒为零。",
+        "右端在非零时间并不为零。"
+      ],
+      "answer": "不是；真实解为 $y=t^2/2+C$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-direction-fields-q1",
+      "problem": "$y'=y-t$ 在 $(1,-1)$ 的斜率？",
+      "hint": "代入点坐标。",
+      "solution": [
+        "$-1-1=-2$。"
+      ],
+      "answer": "$-2$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": -2.0
+    },
+    {
+      "id": "ode-direction-fields-q2",
+      "problem": "该方向场中零斜率点组成什么曲线？",
+      "hint": "令右端为零。",
+      "solution": [
+        "$y-t=0$。"
+      ],
+      "answer": "直线 $y=t$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-direction-fields-q3",
+      "problem": "$y'=y-t,y(0)=1$ 的解？",
+      "hint": "使用正文中的解族。",
+      "solution": [
+        "常数 $C=0$，得到 $y=t+1$。"
+      ],
+      "answer": "$y=t+1$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-direction-fields-q4",
+      "problem": "$y'=y-t$ 中直线 $y=t$ 是解吗？",
+      "hint": "比较其导数和场斜率。",
+      "solution": [
+        "直线导数是 $1$，而右端是 $0$。"
+      ],
+      "answer": "不是。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-direction-fields-m1",
+      "claim": "零斜率点组成的曲线就是一条解。",
+      "correction": "曲线本身的导数还须等于场给出的斜率。"
+    },
+    {
+      "id": "ode-direction-fields-m2",
+      "claim": "短线越长表示斜率越大。",
+      "correction": "图中短线归一化，方向才表示斜率。"
+    }
+  ],
+  "prerequisites": [
+    "ode-initial-values"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ode-direction-fields-m1",
+    "ode-direction-fields-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "方向场把每一点允许的斜率画出来，解曲线的切线必须与它一致。",
+  "intuition": "每条短线都给出局部路标；初值决定从哪一个路标出发。",
+  "objectives": [
+    "从方程读取局部斜率",
+    "区分方向场与显式解"
+  ],
+  "formalDefinition": {
+    "text": "方向场与积分曲线",
+    "latex": "\\frac{dy}{dt}=f(t,y)",
+    "conditions": [
+      "方向场只在 $f$ 有定义的地方绘制；斜率场中的独立轴是 $t$，竖轴是 $y$。"
+    ]
+  },
+  "learningCheck": {
+    "question": "解曲线在某点必须满足什么？",
+    "choices": [
+      "穿过所有相邻短线",
+      "切线斜率等于该点的场斜率",
+      "始终朝横轴移动"
+    ],
+    "correctIndex": 1,
+    "explanation": "方向场规定导数，不规定固定步长。"
+  },
+  "teaching": {
+    "explain": "沿着解走时，每到一点重新读取斜率；曲线是连续遵守这些局部规则的结果。",
+    "steps": [
+      {
+        "title": "直线解",
+        "preset": {
+          "a": 1,
+          "b": 2
+        },
+        "observation": "初值一给出直线解，曲线沿场方向前进。",
+        "instruction": "将初始值 $y_0$设为 $1$；将观察时间 $t$设为 $2$。"
+      },
+      {
+        "title": "向上偏离",
+        "preset": {
+          "a": 1.5,
+          "b": 1
+        },
+        "observation": "高于该初值会出现正指数差。",
+        "instruction": "将初始值 $y_0$设为 $1.5$；将观察时间 $t$设为 $1$。"
+      },
+      {
+        "title": "向下偏离",
+        "preset": {
+          "a": 0.5,
+          "b": 1
+        },
+        "observation": "低于该初值会出现负指数差。",
+        "instruction": "将初始值 $y_0$设为 $0.5$；将观察时间 $t$设为 $1$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-direction-fields",
+    "caption": "短线显示方向场，曲线为解析初值解。线段长度归一化，只读斜率方向。",
+    "prediction": "把初始值从一调高或调低，解会怎样偏离直线？"
+  }
+}

@@ -5,7 +5,7 @@
   "title": "导数：割线变成切线",
   "subtitle": "把平均变化率的区间缩到零",
   "concept": "导数就是一个点上的变化率：把两点距离缩到 0，看平均变化率趋近什么数。",
-  "intuition": "对 y=x²，在 x=1 附近，割线斜率是 2+h。h→0 时它趋近 2，这就是该点的导数，也是切线斜率。",
+  "intuition": "对 $y = x^{2}$，在 $x = 1$ 附近，割线斜率是 $2 + h$。$h \\to 0$ 时它趋近 2，这就是该点的导数，也是切线斜率。",
   "objectives": [
     "差商的单位",
     "可导比连续强",
@@ -18,18 +18,18 @@
     },
     {
       "title": "连续就一定可导吗？",
-      "text": "不一定。|x| 在 0 连续，但左右斜率为 −1 和 1，所以不可导。可导一定连续；连续不一定可导。"
+      "text": "不一定。$|x|$ 在 0 连续，但左右斜率为 −1 和 1，所以不可导。可导一定连续；连续不一定可导。"
     },
     {
       "title": "切线怎样写？",
-      "text": "知道点 (a,f(a)) 和斜率 f′(a)，切线就是 y=f(a)+f′(a)(x−a)。它描述该点附近，也可能在别处再次穿过曲线。"
+      "text": "知道点 $(a , f (a))$ 和斜率 $f' (a)$，切线就是 $y = f (a) + f' (a) (x - a)$。它描述该点附近，也可能在别处再次穿过曲线。"
     }
   ],
   "formalDefinition": {
-    "text": "当双侧差商极限存在且有限时，称 f 在 a 可导。",
+    "text": "当双侧差商极限存在且有限时，称 $f$ 在 $a$ 可导。",
     "latex": "f\\prime(a)=\\lim_{h\\to0}\\frac{f(a+h)-f(a)}h",
     "conditions": [
-      "f 在 a 及附近有定义；端点可另讨论单侧导数。"
+      "$f$ 在 $a$ 及附近有定义；端点可另讨论单侧导数。"
     ]
   },
   "derivation": [
@@ -38,11 +38,11 @@
       "latex": "\\frac{(a+h)^2-a^2}{h}=2a+h\\quad(h\\ne0)"
     },
     {
-      "text": "令 h 趋近零，割线斜率趋近 2a。",
+      "text": "令 $h$ 趋近零，割线斜率趋近 $2 a$。",
       "latex": "f\\prime(a)=2a"
     },
     {
-      "text": "切线经过 (a,a²) 且斜率为 2a。",
+      "text": "切线经过 $(a , a^{2})$ 且斜率为 $2 a$。",
       "latex": "y=a^2+2a(x-a)"
     }
   ],
@@ -50,25 +50,25 @@
     "kind": "derivative",
     "function": "square",
     "a": 1,
-    "caption": "缩小 h：蓝色割线靠近金色切线。读数显示差商与精确导数的差。",
-    "prediction": "缩小 h，割线斜率会等于还是靠近导数？再看 |x| 的尖角，左右差商相同吗？"
+    "caption": "缩小 $h$：蓝色割线靠近金色切线。读数显示差商与精确导数的差。",
+    "prediction": "缩小 $h$，割线斜率会等于还是靠近导数？再看 $|x|$ 的尖角，左右差商相同吗？"
   },
   "workedExamples": [
     {
       "title": "瞬时速度",
-      "problem": "位置 $s(t)=t^2+3t$，求 t=2 的速度。",
+      "problem": "位置 $s(t)=t^2+3t$，求 $t = 2$ 的速度。",
       "steps": [
-        "差商等于 2t+h+3，取 h→0 得 v(t)=2t+3。",
-        "代入 t=2。"
+        "差商等于 $2 t + h + 3$，取 $h \\to 0$ 得 $v (t) = 2 t + 3$。",
+        "代入 $t = 2$。"
       ],
-      "answer": "v(2)=7；若位置为米、时间为秒，则为 7 米/秒。"
+      "answer": "$v (2) = 7$；若位置为米、时间为秒，则为 7 米/秒。"
     },
     {
       "title": "连续但不可导",
       "problem": "检查 $f(x)=|x|$ 在 0 的可导性。",
       "steps": [
-        "h>0 时差商 |h|/h=1。",
-        "h<0 时差商为−1，两侧不一致。"
+        "$h > 0$ 时差商 $\\frac{|h|}{h} = 1$。",
+        "$h < 0$ 时差商为−1，两侧不一致。"
       ],
       "answer": "在 0 不可导，但连续。"
     }
@@ -76,8 +76,8 @@
   "commonMistakes": [
     {
       "id": "derivative-definition-m1",
-      "claim": "把 h=0 代进原差商。",
-      "correction": "原差商除以 h，只能化简后取极限。"
+      "claim": "把 $h = 0$ 代进原差商。",
+      "correction": "原差商除以 $h$，只能化简后取极限。"
     },
     {
       "id": "derivative-definition-m2",
@@ -88,14 +88,14 @@
   "practice": [
     {
       "id": "derivative-definition-p1",
-      "difficulty": 1,
+      "difficulty": 2,
       "misconceptionTags": [
         "derivative-definition-m1"
       ],
       "problem": "用定义求 $f(x)=3x+2$ 的导数。",
       "answer": "$3$。",
       "solution": [
-        "差商为 (3(x+h)+2−3x−2)/h=3。"
+        "差商为 $\\frac{3 (x + h) + 2 - 3 x - 2}{h} = 3$。"
       ],
       "hint": "线性函数所有割线同斜率。",
       "numericAnswer": 3
@@ -103,39 +103,35 @@
     {
       "id": "derivative-definition-p2",
       "difficulty": 2,
-      "misconceptionTags": [
-        "derivative-definition-m2"
-      ],
-      "problem": "$y=x^2$ 在 x=2 的切线？",
+      "misconceptionTags": [],
+      "problem": "$y=x^2$ 在 $x = 2$ 的切线？",
       "answer": "$y=4x-4$。",
       "solution": [
-        "点 (2,4)、斜率 4；y−4=4(x−2)。"
+        "点 $(2,4)$、斜率 4；$y - 4 = 4 (x - 2)$。"
       ],
       "hint": "点与斜率都需要。"
     },
     {
       "id": "derivative-definition-p3",
-      "difficulty": 3,
+      "difficulty": 1,
       "misconceptionTags": [
         "derivative-definition-m2"
       ],
-      "problem": "若 f 在 a 可导，f 在 a 连续吗？",
+      "problem": "若 $f$ 在 $a$ 可导，$f$ 在 $a$ 连续吗？",
       "answer": "是。",
       "solution": [
-        "变化量等于 h 乘趋向有限数的差商，因此趋近零。"
+        "变化量等于 $h$ 乘趋向有限数的差商，因此趋近零。"
       ],
-      "hint": "把函数变化写成 h×差商。"
+      "hint": "把函数变化写成 $h\\times\\text{差商}$。"
     },
     {
       "id": "derivative-definition-p4",
-      "difficulty": 4,
-      "misconceptionTags": [
-        "derivative-definition-m2"
-      ],
-      "problem": "$s(t)=t^2$ 在 t=3 的瞬时速度？",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "problem": "$s(t)=t^2$ 在 $t = 3$ 的瞬时速度？",
       "answer": "$6$。",
       "solution": [
-        "导函数 2t，在 3 为 6。"
+        "导函数 $2 t$，在 3 为 6。"
       ],
       "hint": "变化率不是当前位置 9。",
       "numericAnswer": 6
@@ -152,7 +148,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.3.2",
     "status": "revised",
     "humanReviewed": false
   },
@@ -164,13 +160,51 @@
     "3b1b-calculus"
   ],
   "learningCheck": {
-    "question": "f(x)=x²。在 a=1，h=0.1 时的割线斜率是不是导数？",
+    "question": "$f (x) = x^{2}$。在 $a = 1$，$h = 0.1$ 时的割线斜率是不是导数？",
     "choices": [
-      "是，因为 h 已经很小",
+      "是，因为 $h$ 已经很小",
       "不是；割线斜率是 2.1，导数是极限 2",
       "导数不存在"
     ],
     "correctIndex": 1,
-    "explanation": "差商是 ((1+h)²−1)/h=2+h。h=0.1 得到 2.1；让 h→0，才得到导数 2。"
+    "explanation": "差商是 $\\frac{(1 + h)^{2} - 1}{h} = 2 + h$。$h = 0.1$ 得到 2.1；让 $h \\to 0$，才得到导数 2。"
+  },
+  "teaching": {
+    "explain": "先用一段路算平均变化率，再把这段路缩短。导数是这个过程的极限，不是某条很短的割线本身。",
+    "steps": [
+      {
+        "title": "先留一段间隔",
+        "instruction": "切点为 1，右侧间隔为 1。",
+        "preset": {
+          "a": 1,
+          "h": 1,
+          "side": 1,
+          "comparison": "original"
+        },
+        "observation": "割线斜率为 3；切线斜率是 2，仍有差距。"
+      },
+      {
+        "title": "把间隔缩小",
+        "instruction": "保持切点不变，间隔改为 0.01。",
+        "preset": {
+          "a": 1,
+          "h": 0.01,
+          "side": 1,
+          "comparison": "original"
+        },
+        "observation": "割线斜率为 2.01，更接近 2，但还不是极限。"
+      },
+      {
+        "title": "检查尖角",
+        "instruction": "切换绝对值函数，切点为 0。",
+        "preset": {
+          "a": 0,
+          "h": 0.01,
+          "side": 1,
+          "comparison": "corner"
+        },
+        "observation": "右侧差商为 1，左侧为 −1。它连续，却没有同一个双侧导数。"
+      }
+    ]
   }
 }

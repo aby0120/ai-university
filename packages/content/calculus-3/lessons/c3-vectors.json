@@ -1,0 +1,191 @@
+{
+  "id": "c3-vectors",
+  "chapterId": "c3-space",
+  "number": "1.1",
+  "title": "空间坐标与向量",
+  "subtitle": "位置是点，位移是向量",
+  "concept": "向量记录移动的方向和距离；同一位移可以从不同位置出发。",
+  "intuition": "把三个坐标看成沿三根互相垂直的轴分别走多远。分量相加，就是把两次移动接起来。",
+  "objectives": [
+    "计算位移、长度与单位方向",
+    "区分点与自由向量"
+  ],
+  "body": [
+    {
+      "title": "点和向量有什么区别？",
+      "text": "点是位置。由点 $A$ 指向点 $B$ 的向量是 $B-A$；平移起点不会改变这个向量。"
+    },
+    {
+      "title": "长度怎么算？",
+      "text": "对三方向位移用勾股定理。长度非负，只有零向量长度为零。距离是两点之差的长度。"
+    },
+    {
+      "title": "单位向量有什么用？",
+      "text": "非零向量除以自身长度后只保留方向。负倍数反向，零向量没有可归一化的方向。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "位置是点，位移是向量",
+    "latex": "\\mathbf v=\\langle v_1,v_2,v_3\\rangle,\\quad\\|\\mathbf v\\|=\\sqrt{v_1^2+v_2^2+v_3^2},\\quad\\widehat{\\mathbf v}=\\frac{\\mathbf v}{\\|\\mathbf v\\|}",
+    "conditions": [
+      "本卷使用正交直角坐标与欧氏距离；归一化要求 $\\mathbf v\\ne\\mathbf0$。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先减出位移。",
+      "latex": "\\overrightarrow{AB}=\\langle B_1-A_1,B_2-A_2,B_3-A_3\\rangle"
+    },
+    {
+      "text": "两段位移首尾连接。",
+      "latex": "\\overrightarrow{AB}+\\overrightarrow{BC}=\\overrightarrow{AC}"
+    },
+    {
+      "text": "缩放所有分量时长度按绝对值缩放。",
+      "latex": "\\|c\\mathbf v\\|=|c|\\|\\mathbf v\\|"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "位移与距离",
+      "problem": "$A=(1,-1,2),B=(3,2,-4)$。求位移与距离。",
+      "steps": [
+        "逐坐标相减得 $\\langle2,3,-6\\rangle$。",
+        "距离为 $\\sqrt{4+9+36}=7$。"
+      ],
+      "answer": "位移 $\\langle2,3,-6\\rangle$，距离 7。"
+    },
+    {
+      "title": "保留方向",
+      "problem": "把 $\\mathbf v=\\langle0,3,4\\rangle$ 变成长度为 2 的同向向量。",
+      "steps": [
+        "原长度是 5，先除以 5。",
+        "再乘以 2 得 $\\langle0,6/5,8/5\\rangle$。"
+      ],
+      "answer": "$\\langle0,\\frac65,\\frac85\\rangle$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-vectors-m1",
+      "claim": "向量必须从原点出发。",
+      "correction": "原点只是常用的展示起点；自由向量可以平移。"
+    },
+    {
+      "id": "c3-vectors-m2",
+      "claim": "负倍数会产生负长度。",
+      "correction": "长度按倍数的绝对值变化，负号改变方向。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-vectors-q1",
+      "problem": "$\\|\\langle2,-3,6\\rangle\\|$ 是多少？",
+      "hint": "把分量平方后相加。",
+      "solution": [
+        "$4+9+36=49$，开方得 7。"
+      ],
+      "answer": "7",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 7
+    },
+    {
+      "id": "c3-vectors-q2",
+      "problem": "$A=(0,2,1),B=(2,0,2)$ 的中点是什么？",
+      "hint": "逐坐标取平均。",
+      "solution": [
+        "$\\frac12(A+B)=(1,1,\\frac32)$。"
+      ],
+      "answer": "$(1,1,\\frac32)$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-vectors-q3",
+      "problem": "$\\mathbf u=\\langle1,0,1\\rangle,\\mathbf v=\\langle-1,2,0\\rangle$，求 $2\\mathbf u+\\mathbf v$。",
+      "hint": "先缩放，再逐分量相加。",
+      "solution": [
+        "$2\\mathbf u=\\langle2,0,2\\rangle$。",
+        "相加得到 $\\langle1,2,2\\rangle$。"
+      ],
+      "answer": "$\\langle1,2,2\\rangle$。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-vectors-q4",
+      "problem": "零向量的单位向量是什么？",
+      "hint": "检查分母。",
+      "solution": [
+        "零向量长度为零，无法用除法选出唯一方向。"
+      ],
+      "answer": "不存在由归一化得到的单位方向。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "把非零向量乘以 $-2$，长度如何变化？",
+    "choices": [
+      "变成负数",
+      "变为原来的 2 倍",
+      "不变"
+    ],
+    "correctIndex": 1,
+    "explanation": "负号反向，长度乘以绝对值 2。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-vectors",
+    "caption": "$\\mathbf u=\\langle1,1,0\\rangle$ 与 $\\mathbf v=\\langle c,0,1\\rangle$ 首尾相接。虚线补全平行四边形。",
+    "prediction": "水平分量反向，会让长度变成负数吗？"
+  },
+  "teaching": {
+    "explain": "位移相加就是把移动首尾接起来；坐标位置可以换，位移本身不变。",
+    "steps": [
+      {
+        "title": "负倍数",
+        "instruction": "将水平分量 $c$ 设为 $-1$。",
+        "preset": {
+          "c": -1
+        },
+        "observation": "第二个向量的水平分量反向；长度仍非负。"
+      },
+      {
+        "title": "零分量",
+        "instruction": "将水平分量 $c$ 设为 $0$。",
+        "preset": {
+          "c": 0
+        },
+        "observation": "第二个向量只剩竖直分量；它不是零向量。"
+      },
+      {
+        "title": "正倍数",
+        "instruction": "将水平分量 $c$ 设为 $2$。",
+        "preset": {
+          "c": 2
+        },
+        "observation": "合向量的水平分量随参数增加，竖直分量保持不变。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-parametric"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-vectors-m1",
+    "c3-vectors-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "id": "c3-surfaces",
+  "chapterId": "c3-differentiation",
+  "number": "3.1",
+  "title": "多元函数与等高线",
+  "subtitle": "一个位置对应一个数",
+  "concept": "二元函数给平面上每个允许位置一个高度；等高线把相同高度的位置连起来。",
+  "intuition": "地图上颜色和等高线表示同一件事：每个平面位置对应多高。三维图帮助看形状，等高线帮助读方向。",
+  "objectives": [
+    "确定多元函数定义域",
+    "读取等高线和等值面"
+  ],
+  "body": [
+    {
+      "title": "定义域怎么找？",
+      "text": "根式内部要非负，对数内部要正，分母不能为零；把条件取交集，得到平面或空间中的区域。"
+    },
+    {
+      "title": "图像与等高线差在哪？",
+      "text": "图像把输出抬成高度；等高线留在输入平面，只记录输出固定时的位置。不同常数的等高线不会相交。"
+    },
+    {
+      "title": "三元函数怎样画？",
+      "text": "三元输入已占满空间，用等值面或切片显示输出；不要把四维图像误认为普通三维曲面。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "一个位置对应一个数",
+    "latex": "G_f=\\{(x,y,f(x,y)):(x,y)\\in D\\},\\quad L_c=\\{(x,y)\\in D:f(x,y)=c\\}",
+    "conditions": [
+      "函数必须在给定定义域内单值；等高集可为空、点、曲线或区域，不保证处处光滑。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先规定允许输入。",
+      "latex": "D\\subseteq\\mathbb R^2"
+    },
+    {
+      "text": "固定输出得到等高集。",
+      "latex": "f(x,y)=c"
+    },
+    {
+      "text": "用坐标切片查看高度变化。",
+      "latex": "g(x)=f(x,y_0)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "根式定义域",
+      "problem": "$f(x,y)=\\sqrt{9-x^2-y^2}$ 的定义域？",
+      "steps": [
+        "根式内须非负，得 $x^2+y^2\\le9$。",
+        "边界上根式为零，也允许。"
+      ],
+      "answer": "半径 3 的闭圆盘。"
+    },
+    {
+      "title": "等高线",
+      "problem": "$f(x,y)=x^2+4y^2$ 的高度 4 等高线？",
+      "steps": [
+        "令输出等于 4。",
+        "化为 $x^2/4+y^2=1$。"
+      ],
+      "answer": "半轴为 2 和 1 的椭圆。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-surfaces-m1",
+      "claim": "二元函数图像是平面区域。",
+      "correction": "平面区域是定义域，图像通常是空间曲面。"
+    },
+    {
+      "id": "c3-surfaces-m2",
+      "claim": "等高线密就一定高度大。",
+      "correction": "密度在相同高度间隔和尺度下反映变化快，不表示绝对高度大。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-surfaces-q1",
+      "problem": "$\\ln(y-x^2)$ 的定义域？",
+      "hint": "对数输入须严格为正。",
+      "solution": [
+        "$y-x^2>0$，边界抛物线不包括。"
+      ],
+      "answer": "$y>x^2$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-surfaces-q2",
+      "problem": "$x^2+y^2$ 的零等高集是什么？",
+      "hint": "平方非负。",
+      "solution": [
+        "只有两个坐标都为零才可能。"
+      ],
+      "answer": "原点。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-surfaces-q3",
+      "problem": "两条不同高度等高线可以交叉吗？",
+      "hint": "同一输入的输出是否唯一？",
+      "solution": [
+        "交点会让函数同一输入同时有两个不同输出。"
+      ],
+      "answer": "不可以。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-surfaces-q4",
+      "problem": "三元温度函数的等值面代表什么？",
+      "hint": "固定温度而保留空间位置。",
+      "solution": [
+        "集合包含所有温度等于指定值的空间点。"
+      ],
+      "answer": "相同温度的空间位置集合。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "$x^2+y^2=0$ 是一条圆曲线吗？",
+    "choices": [
+      "是正常圆",
+      "是一个点",
+      "是空集"
+    ],
+    "correctIndex": 1,
+    "explanation": "只有原点满足，等高集不一定是规则曲线。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-surfaces",
+    "caption": "曲面 $z=x^2+y^2$ 与固定横坐标的切片；下方投影显示相应输入位置。",
+    "prediction": "沿平面移动，哪一部分是输入，哪一部分是输出？"
+  },
+  "teaching": {
+    "explain": "定义域在输入平面，图像把输出抬成高度；等高线只留下同高度的位置。",
+    "steps": [
+      {
+        "title": "中心截面",
+        "instruction": "将固定横坐标 $x$ 设为 $0$。",
+        "preset": {
+          "x": 0
+        },
+        "observation": "截面穿过碗底，最低高度为零。"
+      },
+      {
+        "title": "平移截面",
+        "instruction": "将固定横坐标 $x$ 设为 $0.5$。",
+        "preset": {
+          "x": 0.5
+        },
+        "observation": "固定横坐标后，截面整体升高。"
+      },
+      {
+        "title": "远处截面",
+        "instruction": "将固定横坐标 $x$ 设为 $1$。",
+        "preset": {
+          "x": 1
+        },
+        "observation": "最低高度为 1。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-quadrics"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-surfaces-m1",
+    "c3-surfaces-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

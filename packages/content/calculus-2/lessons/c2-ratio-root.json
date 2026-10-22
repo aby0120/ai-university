@@ -1,0 +1,194 @@
+{
+  "id": "c2-ratio-root",
+  "title": "比值与根值判别",
+  "subtitle": "检查尾部是否最终被几何衰减控制",
+  "concept": "相邻比值或每项的根值小于一，就能被某个收敛几何尾部控制；等于一时不作结论。",
+  "intuition": "阶乘与指数常适合比值；整体的 $n$ 次幂常适合根值。二者都在寻找隐藏的几何级数。",
+  "body": [
+    {
+      "title": "比值怎么用？",
+      "text": "对最终非零项计算 $|a_{n+1}/a_n|$ 的极限。小于一绝对收敛，大于一或无穷发散。阶乘定义为 $n!=1\\cdot2\\cdots n$，并规定 $0!=1$。"
+    },
+    {
+      "title": "根值怎么用？",
+      "text": "计算 $\\sqrt[n]{|a_n|}$ 的极限；阈值同样为一。若极限不存在，本节的极限版本不能直接使用。"
+    },
+    {
+      "title": "结果等于一怎么办？",
+      "text": "换方法。$\\sum\\frac1n$ 与 $\\sum\\frac1{n^2}$ 的比值极限都为一，结论却相反。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "检查尾部是否最终被几何衰减控制",
+    "latex": "L=\\lim\\left|\\frac{a_{n+1}}{a_n}\\right|\\ \\text{或}\\ \\lim\\sqrt[n]{|a_n|}:\\quad L<1\\Rightarrow\\text{绝对收敛},\\quad L>1\\Rightarrow\\text{发散}",
+    "conditions": [
+      "所用极限存在（可为正无穷）；比值的分母最终非零；$L=1$ 无结论。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "当极限小于一，选中间的几何比。",
+      "latex": "L<q<1"
+    },
+    {
+      "text": "从足够往后的项开始，比例不超过它。",
+      "latex": "|a_{N+k}|\\leq|a_N|q^k"
+    },
+    {
+      "text": "几何尾部收敛，比较得到绝对收敛。",
+      "latex": "\\sum_{k=0}^\\infty|a_{N+k}|\\leq\\frac{|a_N|}{1-q}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "阶乘压过指数",
+      "problem": "$\\sum_{n=0}^\\infty\\frac{2^n}{n!}$ 收敛吗？",
+      "steps": [
+        "相邻比值为 $\\frac2{n+1}\\to0$。",
+        "小于一，所以绝对收敛；本判别不计算总和。"
+      ],
+      "answer": "绝对收敛。"
+    },
+    {
+      "title": "整体次幂",
+      "problem": "$\\sum_{n=1}^\\infty(\\frac{3n+1}{5n})^n$ 收敛吗？",
+      "steps": [
+        "根值为 $\\frac{3n+1}{5n}\\to\\frac35$。",
+        "有限开头即使较大，也不改变尾部收敛。"
+      ],
+      "answer": "收敛。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-ratio-root-m1",
+      "claim": "比值趋于一，所以发散。",
+      "correction": "等于一是无结论，须换判别法。"
+    },
+    {
+      "id": "c2-ratio-root-m2",
+      "claim": "比值判别可以直接算出总和。",
+      "correction": "它只判断收敛性，不自动给出和。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$\\sum\\frac{3^n}{n!}$ 收敛吗？",
+      "answer": "绝对收敛。",
+      "hint": "相邻项相除。",
+      "solution": [
+        "比值 $\\frac3{n+1}\\to0$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-ratio-root-p1"
+    },
+    {
+      "problem": "$\\sum\\frac{n!}{2^n}$ 收敛吗？",
+      "answer": "发散。",
+      "hint": "比值会增大。",
+      "solution": [
+        "比值 $\\frac{n+1}{2}\\to\\infty$，项也不趋于零。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-ratio-root-p2"
+    },
+    {
+      "problem": "$\\sum(\\frac{n}{2n+1})^n$ 的根值极限？",
+      "answer": "$\\frac12$，所以收敛。",
+      "hint": "先开次方根。",
+      "solution": [
+        "根值为 $\\frac{n}{2n+1}\\to\\frac12<1$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.5,
+      "id": "c2-ratio-root-p3"
+    },
+    {
+      "problem": "$\\sum\\frac1{n^2}$ 的比值极限为一，下一步？",
+      "answer": "改用正项 $p$ 级数结论或积分判别，得收敛。",
+      "hint": "本题是已知的正项幂尾部。",
+      "solution": [
+        "比值法无结论；$p$ 级数中 $p=2>1$，故收敛。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [
+        "c2-ratio-root-m2"
+      ],
+      "id": "c2-ratio-root-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "比值极限等于一意味着？",
+    "choices": [
+      "发散",
+      "绝对收敛",
+      "这个判别法无法判断"
+    ],
+    "correctIndex": 2,
+    "explanation": "必须改用比较、积分或其他适用方法。"
+  },
+  "teaching": {
+    "explain": "小于一时，尾部最终每走一步就至少按某个固定比例缩小；等于一没有这种几何保证。",
+    "steps": [
+      {
+        "title": "开头",
+        "instruction": "项数取 2。",
+        "observation": "单项可先增大；不能只看最初趋势。",
+        "preset": {
+          "n": 2
+        }
+      },
+      {
+        "title": "进入尾部",
+        "instruction": "项数取 8。",
+        "observation": "相邻项比值小于 1，尾部开始明显缩小。",
+        "preset": {
+          "n": 8
+        }
+      },
+      {
+        "title": "更后面",
+        "instruction": "项数取 20。",
+        "observation": "比值继续趋零；数值不显示小项不代表数学上等于零。",
+        "preset": {
+          "n": 20
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-comparison",
+    "c2-geometric"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-convergence",
+  "number": "4.3",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-ratio-root",
+    "caption": "显示 $\\frac{2^n}{n!}$ 的项、部分和与下一项比值。",
+    "prediction": "前几项没变小，是否就能判定整个级数发散？"
+  },
+  "misconceptionTags": [
+    "c2-ratio-root-m1",
+    "c2-ratio-root-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "按阶乘与指数结构选择比值法",
+    "对整体次幂使用根值法",
+    "正确处理极限等于一"
+  ]
+}

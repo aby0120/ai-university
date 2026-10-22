@@ -1,0 +1,199 @@
+{
+  "id": "c2-geometric",
+  "title": "几何级数与望远镜求和",
+  "subtitle": "一种按比例缩小，一种让中间项抵消",
+  "concept": "先写有限部分和，再取极限；不要直接操作一个尚未证明收敛的无穷式。",
+  "intuition": "几何和乘一次公比会错开一格；望远镜和则把每项拆成前后之差，让内部项抵消。",
+  "body": [
+    {
+      "title": "公比为什么必须小于一？",
+      "text": "有限和的剩余项含 $r^{N+1}$。只有 $|r|<1$ 才会趋零；$r=1$ 需单算，$r=-1$ 会振荡。"
+    },
+    {
+      "title": "起始项重要吗？",
+      "text": "从零次幂开始和从一次幂开始差一项。先列前两项，避免整个答案少乘一个公比。"
+    },
+    {
+      "title": "望远镜要看哪些项？",
+      "text": "写出前几项与最后几项，确认抵消后留下什么。剩余边界项的极限才决定收敛性。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "一种按比例缩小，一种让中间项抵消",
+    "latex": "\\sum_{n=0}^N ar^n=\\frac{a(1-r^{N+1})}{1-r},\\qquad\\sum_{n=0}^\\infty ar^n=\\frac a{1-r}\\quad(|r|<1)",
+    "conditions": [
+      "有限和要求 $r\\neq1$；若 $a\\neq0$，无穷几何级数恰在 $|r|<1$ 收敛。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "有限和乘公比后相减。",
+      "latex": "(1-r)S_N=a-ar^{N+1}"
+    },
+    {
+      "text": "解出有限和。",
+      "latex": "S_N=\\frac{a(1-r^{N+1})}{1-r}"
+    },
+    {
+      "text": "收敛范围内尾项消失。",
+      "latex": "|r|<1\\Longrightarrow S_N\\to\\frac a{1-r}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "注意起点",
+      "problem": "求 $\\sum_{n=1}^\\infty\\frac1{3^n}$。",
+      "steps": [
+        "第一项为 $\\frac13$，公比为 $\\frac13$。",
+        "总和为 $\\frac{1/3}{1-1/3}$。"
+      ],
+      "answer": "$\\frac12$。"
+    },
+    {
+      "title": "望远镜",
+      "problem": "求 $\\sum_{n=1}^\\infty\\frac1{n(n+1)}$。",
+      "steps": [
+        "分解为 $\\frac1n-\\frac1{n+1}$。",
+        "$S_N=1-\\frac1{N+1}\\to1$。"
+      ],
+      "answer": "$1$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-geometric-m1",
+      "claim": "任何公比都能代入无穷和公式。",
+      "correction": "必须先检查 $|r|<1$。"
+    },
+    {
+      "id": "c2-geometric-m2",
+      "claim": "抵消后所有项都没了。",
+      "correction": "第一端与最后一端仍需保留。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "求 $\\sum_{n=0}^\\infty(\\frac14)^n$。",
+      "answer": "$\\frac43$。",
+      "hint": "第一项为一。",
+      "solution": [
+        "$|r|=\\frac14<1$，总和为 $\\frac1{1-1/4}=\\frac43$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 1.3333333333333333,
+      "id": "c2-geometric-p1"
+    },
+    {
+      "problem": "求 $\\sum_{n=0}^\\infty(-\\frac12)^n$。",
+      "answer": "$\\frac23$。",
+      "hint": "负公比也能收敛。",
+      "solution": [
+        "$|r|=\\frac12<1$，总和 $\\frac1{1+1/2}=\\frac23$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.6666666666666666,
+      "id": "c2-geometric-p2"
+    },
+    {
+      "problem": "求 $\\sum_{n=2}^\\infty\\frac1{n(n+1)}$。",
+      "answer": "$\\frac12$。",
+      "hint": "望远镜从第二项开始。",
+      "solution": [
+        "$S_N=\\frac12-\\frac1{N+1}\\to\\frac12$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.5,
+      "id": "c2-geometric-p3"
+    },
+    {
+      "problem": "$\\sum_{n=0}^\\infty2^n$ 能用 $\\frac1{1-2}=-1$ 吗？",
+      "answer": "不能；级数发散。",
+      "hint": "检查公比范围和正项性。",
+      "solution": [
+        "公比绝对值大于一，且单项不趋零；有限和 $2^{N+1}-1$ 无界。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [
+        "c2-geometric-m2"
+      ],
+      "id": "c2-geometric-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "$\\sum_{n=1}^\\infty r^n$ 的和在 $|r|<1$ 时是？",
+    "choices": [
+      "$\\frac1{1-r}$",
+      "$\\frac r{1-r}$",
+      "$1-r$"
+    ],
+    "correctIndex": 1,
+    "explanation": "从一次幂开始，第一项是公比本身。"
+  },
+  "teaching": {
+    "explain": "无穷和的每一步，都可以先在有限和上做。写清未抵消的尾项，就不会把发散误算成一个数。",
+    "steps": [
+      {
+        "title": "正公比",
+        "instruction": "公比取 0.5，项数取 8。",
+        "observation": "从零次幂开始，总和极限为 2。",
+        "preset": {
+          "c": 0.5,
+          "n": 8
+        }
+      },
+      {
+        "title": "负公比",
+        "instruction": "公比取 -0.5，项数取 8。",
+        "observation": "部分和交替靠近 $\\frac23$。",
+        "preset": {
+          "c": -0.5,
+          "n": 8
+        }
+      },
+      {
+        "title": "超出范围",
+        "instruction": "公比取 1.1，项数取 20。",
+        "observation": "单项与部分和增长；不能套无穷和公式。",
+        "preset": {
+          "c": 1.1,
+          "n": 20
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-series",
+    "c2-partial-fractions"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-sequences",
+  "number": "3.4",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-geometric",
+    "caption": "调整公比与部分和项数，区分收敛、振荡和增长。",
+    "prediction": "负公比时部分和会怎样靠近总和？"
+  },
+  "misconceptionTags": [
+    "c2-geometric-m1",
+    "c2-geometric-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "先求有限几何和再取极限",
+    "检查起点与公比范围",
+    "保留望远镜求和的边界项"
+  ]
+}

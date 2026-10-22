@@ -1,0 +1,192 @@
+{
+  "id": "c2-differential-models",
+  "title": "微分方程与方向场",
+  "subtitle": "给出变化规律，寻找符合规律的整条曲线",
+  "concept": "微分方程指定斜率；初值指定从哪里出发。方向场把每个位置允许的局部方向画出来。",
+  "intuition": "函数是未知量。$y\\prime=y$ 要找的是“变化率等于自身”的全部曲线；初值再选出其中一条。",
+  "body": [
+    {
+      "title": "怎样验证一个解？",
+      "text": "把函数和导数代回方程，并检查所声明区间与初值。只满足初值并不够。"
+    },
+    {
+      "title": "方向场能告诉什么？",
+      "text": "在每个 $(x,y)$ 处画斜率 $f(x,y)$ 的小线段，帮助预测上升、下降和平衡；有限线段不是解的存在证明。"
+    },
+    {
+      "title": "解一定唯一吗？",
+      "text": "右端连续时有局部存在保证。若把横变量固定、只对纵变量求导，得到的导数在初值附近也连续，就有局部唯一性保证；仅连续仍可能不唯一。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "给出变化规律，寻找符合规律的整条曲线",
+    "latex": "y\\prime=f(x,y),\\quad y(x_0)=y_0",
+    "conditions": [
+      "局部唯一性的一个充分条件：$f$ 及 $\\frac{\\partial f}{\\partial y}$ 在初值附近连续。后一个符号指固定 $x$ 后，仅对 $y$ 求导。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "对指数候选求导。",
+      "latex": "y=Ce^x\\Longrightarrow y\\prime=Ce^x=y"
+    },
+    {
+      "text": "初值把常数确定下来。",
+      "latex": "y(0)=2\\Longrightarrow C=2"
+    },
+    {
+      "text": "代回同时检查方程与初值。",
+      "latex": "y=2e^x,\\quad y\\prime=2e^x,\\quad y(0)=2"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "验证一族解",
+      "problem": "$y=Ce^{-2x}$ 是否满足 $y\\prime=-2y$？",
+      "steps": [
+        "求导为 $-2Ce^{-2x}$。",
+        "右端 $-2y$ 给出相同表达式，对所有实数成立。"
+      ],
+      "answer": "满足；初值决定常数。"
+    },
+    {
+      "title": "初值选择",
+      "problem": "解 $y\\prime=y$，$y(0)=3$。",
+      "steps": [
+        "候选通解为 $Ce^x$。",
+        "初值给 $C=3$，代回验证。"
+      ],
+      "answer": "$y=3e^x$，对所有实数成立。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-differential-models-m1",
+      "claim": "初值指定一个斜率。",
+      "correction": "初值给曲线上的位置；方程在该位置给斜率。"
+    },
+    {
+      "id": "c2-differential-models-m2",
+      "claim": "任何连续斜率场都保证唯一解。",
+      "correction": "还需要额外的局部唯一性条件。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$y=x^2+1$ 是否满足 $y\\prime=2x$、$y(0)=1$？",
+      "answer": "满足。",
+      "hint": "方程和初值都检查。",
+      "solution": [
+        "$y\\prime=2x$ 且 $y(0)=1$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-differential-models-p1"
+    },
+    {
+      "problem": "$y\\prime=y$、$y(0)=0$ 的解？",
+      "answer": "$y=0$。",
+      "hint": "平衡解也算解。",
+      "solution": [
+        "零函数导数与右端均为零；此光滑右端下初值解唯一。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-differential-models-p2"
+    },
+    {
+      "problem": "对 $y\\prime=1-y$，在 $y=2$ 处斜率是多少？",
+      "answer": "$-1$。",
+      "hint": "代入当前高度。",
+      "solution": [
+        "$1-2=-1$，曲线向右下降。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": -1,
+      "id": "c2-differential-models-p3"
+    },
+    {
+      "problem": "$y\\prime=3y$、$y(0)=2$ 的解？",
+      "answer": "$2e^{3x}$。",
+      "hint": "用指数并代回。",
+      "solution": [
+        "导数为 $6e^{3x}=3y$，初值为 2。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-differential-models-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "初值问题中的初值决定？",
+    "choices": [
+      "曲线经过的位置",
+      "所有位置的斜率",
+      "解一定存在于整个实轴"
+    ],
+    "correctIndex": 0,
+    "explanation": "局部斜率由方程给出，全局存在还需另外检查。"
+  },
+  "teaching": {
+    "explain": "斜率场像每个地点的一支方向箭头；解曲线要一路顺着这些箭头走。",
+    "steps": [
+      {
+        "title": "较大步长",
+        "instruction": "分段数取 4。",
+        "observation": "在固定区间 $[0,4]$ 用四步，折线与精确解有明显差距。",
+        "preset": {
+          "n": 4
+        }
+      },
+      {
+        "title": "减小步长",
+        "instruction": "分段数取 16。",
+        "observation": "步长变为 0.25，误差可与精确解直接比较。",
+        "preset": {
+          "n": 16
+        }
+      },
+      {
+        "title": "继续细分",
+        "instruction": "分段数取 64。",
+        "observation": "离散近似仍是有限步；方向场不等于唯一性证明。",
+        "preset": {
+          "n": 64
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "derivative-definition",
+    "c2-improper-infinity"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-ode",
+  "number": "8.1",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-differential-models",
+    "caption": "比较 $y\\prime=y(1-y/10)$ 的方向场、精确解与 Euler 折线；初值为 $y(0)=2$。",
+    "prediction": "步长减小时，折线与精确曲线之间的差别怎样变化？"
+  },
+  "misconceptionTags": [
+    "c2-differential-models-m1",
+    "c2-differential-models-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "验证微分方程与初值",
+    "读取方向场和平衡斜率",
+    "区分局部存在与局部唯一"
+  ]
+}

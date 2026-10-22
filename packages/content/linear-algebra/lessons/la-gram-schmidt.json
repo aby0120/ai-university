@@ -1,0 +1,193 @@
+{
+  "id": "la-gram-schmidt",
+  "chapterId": "la-orthogonal",
+  "number": "7.4",
+  "title": "Gram–Schmidt 正交化",
+  "subtitle": "先减投影，再归一化",
+  "concept": "正交化逐次减去已知方向上的投影，保留新的独立部分。",
+  "intuition": "每来一个新向量，先把它在旧方向上的分量拿掉；剩下的部分才是它真正新增的方向。",
+  "objectives": [
+    "逐步构造标准正交基",
+    "识别零余量与相关输入"
+  ],
+  "body": [
+    {
+      "title": "每步怎样做？",
+      "text": "先计算 $r_j=a_j-\\sum_{i<j}(q_i^Ta_j)q_i$，再除以 $\\|r_j\\|$。每次都使用已归一化的旧方向。"
+    },
+    {
+      "title": "余量为零怎么办？",
+      "text": "说明这个输入没有新增方向。若目标是给定独立列的正交基，该条件失败，不能继续除以零；可跳过依赖列重新选基。"
+    },
+    {
+      "title": "张成会变吗？",
+      "text": "每次只减去已有方向，所以每个前缀的张成都不变。浮点实现通常用修正方法或 Householder 变换提高稳定性。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "Gram–Schmidt 正交化",
+    "latex": "r_j=a_j-\\sum_{i<j}(q_i^Ta_j)q_i,\\qquad q_j=\\frac{r_j}{\\|r_j\\|}",
+    "conditions": [
+      "无跳过版本要求输入列表线性无关；零余量不能归一化。图示按有限精度计算。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "对任意已有方向取点积。",
+      "latex": "q_k^Tr_j=q_k^Ta_j-\\sum_{i<j}(q_i^Ta_j)q_k^Tq_i"
+    },
+    {
+      "text": "正交归一性只留下同下标项。",
+      "latex": "q_k^Tr_j=0\\quad(k<j)"
+    },
+    {
+      "text": "归一化只改变长度。",
+      "latex": "\\|q_j\\|=1,\\quad\\operatorname{span}(a_1,\\ldots,a_j)=\\operatorname{span}(q_1,\\ldots,q_j)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "两个斜方向正交化",
+      "problem": "$a_1=(1,1),a_2=(1,0)$。",
+      "steps": [
+        "$q_1=(1,1)/\\sqrt2$。",
+        "$r_2=(1,0)-(1/2,1/2)=(1/2,-1/2)$，长度 $1/\\sqrt2$。"
+      ],
+      "answer": "$q_2=(1,-1)/\\sqrt2$。"
+    },
+    {
+      "title": "发现依赖列",
+      "problem": "$a_1=(1,0),a_2=(2,0)$。",
+      "steps": [
+        "$q_1=(1,0)$。",
+        "$r_2=a_2-2q_1=0$，无法归一化。"
+      ],
+      "answer": "第二列冗余，应跳过。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-gram-schmidt-m1",
+      "claim": "只要最后归一化所有原向量就会正交。",
+      "correction": "归一化不改变夹角；先减投影才产生垂直。"
+    },
+    {
+      "id": "la-gram-schmidt-m2",
+      "claim": "零余量说明整个空间不存在基。",
+      "correction": "只是当前列表有冗余。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "将 $(3,4)$ 归一化。",
+      "hint": "除以长度。",
+      "solution": [
+        "长度五，得 $(3/5,4/5)$。"
+      ],
+      "answer": "$(3/5,4/5)$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "la-gram-schmidt-q1"
+    },
+    {
+      "problem": "$q_1=(1,0),a_2=(2,3)$，余量是什么？",
+      "hint": "减去横轴投影。",
+      "solution": [
+        "$(2,3)-(2,0)=(0,3)$。"
+      ],
+      "answer": "$(0,3)$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-gram-schmidt-q2"
+    },
+    {
+      "problem": "改变输入向量顺序会改变正交基吗？",
+      "hint": "第一个方向被优先保留。",
+      "solution": [
+        "一般会，但最终张成空间相同。"
+      ],
+      "answer": "可能改变。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-gram-schmidt-q3"
+    },
+    {
+      "problem": "三个无关空间向量正交化后还会无关吗？",
+      "hint": "非零正交向量之间的关系。",
+      "solution": [
+        "对零组合分别与每个单位向量点积，所有系数为零。"
+      ],
+      "answer": "仍无关。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-gram-schmidt-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-projection",
+    "la-basis"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "la-gram-schmidt-m1",
+    "la-gram-schmidt-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-gram-schmidt",
+    "caption": "列向量为 $(1,0),(1,c)$。切换原列、减投影、归一化，查看依赖列如何产生零余量。",
+    "prediction": "第二个向量减去投影后，什么时候余量消失？"
+  },
+  "learningCheck": {
+    "question": "正交化中余量为零说明什么？",
+    "choices": [
+      "新向量已在旧方向的张成中",
+      "它已经是单位向量",
+      "必须把零除以零"
+    ],
+    "correctIndex": 0,
+    "explanation": "没有新的独立方向，就没有可归一化的余量。"
+  },
+  "teaching": {
+    "explain": "正交化保留每一步新增的信息，删去与已有方向重复的部分。它不会凭空制造缺少的方向。",
+    "steps": [
+      {
+        "title": "原列",
+        "instruction": "取 $c=1$，选择原列。",
+        "preset": {
+          "c": 1,
+          "n": 0
+        },
+        "observation": "第二列包含横轴分量。"
+      },
+      {
+        "title": "减投影",
+        "instruction": "选择减去投影。",
+        "preset": {
+          "c": 1,
+          "n": 1
+        },
+        "observation": "余量为 $(0,1)$，与第一方向垂直。"
+      },
+      {
+        "title": "相关列",
+        "instruction": "取 $c=0$，选择归一化。",
+        "preset": {
+          "c": 0,
+          "n": 2
+        },
+        "observation": "余量为零，当前逐列正交化不能归一化；一般 QR 分解仍可能存在。"
+      }
+    ]
+  }
+}

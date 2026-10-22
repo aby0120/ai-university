@@ -1,0 +1,193 @@
+{
+  "id": "la-rayleigh",
+  "chapterId": "la-symmetric",
+  "number": "8.5",
+  "title": "Rayleigh 商与单位球上的最值",
+  "subtitle": "固定长度后比较方向",
+  "concept": "对称矩阵在单位球上的二次型最值，正好是最大、最小特征值。",
+  "intuition": "在特征坐标里，单位向量的坐标平方是非负且和为一的权重；二次型就是特征值的加权平均。",
+  "objectives": [
+    "计算单位球上的二次型最值",
+    "说明最大最小特征值界"
+  ],
+  "body": [
+    {
+      "title": "为什么除以长度平方？",
+      "text": "Rayleigh 商 $x^TAx/(x^Tx)$ 不受非零整体缩放影响，只比较方向。"
+    },
+    {
+      "title": "最值在哪里取到？",
+      "text": "在最小或最大特征值的特征空间里取到。若特征值重复，最优方向不止一条。"
+    },
+    {
+      "title": "非对称也能照搬吗？",
+      "text": "二次型只看矩阵的对称部分。一般非对称矩阵的特征值不能直接作为这个实极值。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "Rayleigh 商与单位球上的最值",
+    "latex": "\\lambda_{\\min}\\le\\frac{x^TAx}{x^Tx}\\le\\lambda_{\\max}\\quad(x\\ne0)",
+    "conditions": [
+      "$A$ 为实对称矩阵；单位球约束使用欧氏长度。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "用正交坐标展开。",
+      "latex": "x^TAx=\\sum_i\\lambda_i y_i^2,\\quad x^Tx=\\sum_i y_i^2"
+    },
+    {
+      "text": "将商写成加权平均。",
+      "latex": "R(x)=\\sum_i\\lambda_i\\frac{y_i^2}{\\sum_jy_j^2}"
+    },
+    {
+      "text": "所有权重非负且和为一。",
+      "latex": "\\lambda_{\\min}\\le R(x)\\le\\lambda_{\\max}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "简单椭圆约束",
+      "problem": "$q=2x^2+5y^2$，$x^2+y^2=1$，最值？",
+      "steps": [
+        "$q=2+3y^2$。",
+        "在 $y=0$ 得最小二；在 $x=0$ 得最大五。"
+      ],
+      "answer": "最小 2，最大 5。"
+    },
+    {
+      "title": "有交叉项的极值",
+      "problem": "$q=2x^2+2xy+2y^2$ 在单位圆上的最大值？",
+      "steps": [
+        "特征值为三和一。",
+        "最大方向是 $(1,1)/\\sqrt2$ 及其反向。"
+      ],
+      "answer": "最大 3。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-rayleigh-m1",
+      "claim": "任意向量代入二次型都受固定特征值界限制。",
+      "correction": "未归一化时界还应乘长度平方。"
+    },
+    {
+      "id": "la-rayleigh-m2",
+      "claim": "最大方向就是元素最大的坐标轴。",
+      "correction": "交叉项可能让最优方向倾斜。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$A=\\operatorname{diag}(-2,4)$ 的最小 Rayleigh 商？",
+      "hint": "取最小特征值。",
+      "solution": [
+        "沿横轴取到 $-2$。"
+      ],
+      "answer": "$-2$",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": -2,
+      "id": "la-rayleigh-q1"
+    },
+    {
+      "problem": "$R(3x)$ 与 $R(x)$ 相比？",
+      "hint": "分子分母都乘九。",
+      "solution": [
+        "非零整体缩放抵消。"
+      ],
+      "answer": "相同。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-rayleigh-q2"
+    },
+    {
+      "problem": "最小特征值为零、其余正时二次型是什么类型？",
+      "hint": "所有加权项非负，某方向取零。",
+      "solution": [
+        "半正定而非正定。"
+      ],
+      "answer": "半正定。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-rayleigh-q3"
+    },
+    {
+      "problem": "$A=2I$ 的最优方向唯一吗？",
+      "hint": "每个单位向量取同一值。",
+      "solution": [
+        "$R(x)=2$ 对所有非零输入成立。"
+      ],
+      "answer": "不唯一。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-rayleigh-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-quadratic-forms"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "la-rayleigh-m1",
+    "la-rayleigh-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-rayleigh",
+    "caption": "二次型 $q=x^2+cy^2$；金色点在单位圆上，竖线和高度对应该方向的二次型值。",
+    "prediction": "沿单位圆转动输入，二次型在哪里达到上下界？"
+  },
+  "learningCheck": {
+    "question": "Rayleigh 商为什么不受向量长度影响？",
+    "choices": [
+      "忽略了分母",
+      "分子分母按同一平方倍数缩放",
+      "矩阵一定为单位矩阵"
+    ],
+    "correctIndex": 1,
+    "explanation": "分子和分母都是二次齐次表达。"
+  },
+  "teaching": {
+    "explain": "固定长度后比较二次型，本质上是在比较方向。对称矩阵的特征方向给出这件事的精确极限。",
+    "steps": [
+      {
+        "title": "正定",
+        "instruction": "取 $c=1,\\theta=\\pi/2$。",
+        "preset": {
+          "c": 1,
+          "a": 1.5707963267948966
+        },
+        "observation": "单位圆上取值恒为一。"
+      },
+      {
+        "title": "半正定",
+        "instruction": "取 $c=0,\\theta=\\pi/2$。",
+        "preset": {
+          "c": 0,
+          "a": 1.5707963267948966
+        },
+        "observation": "纵向非零输入给零，严格正定失效。"
+      },
+      {
+        "title": "出现负方向",
+        "instruction": "取 $c=-1,\\theta=\\pi/2$。",
+        "preset": {
+          "c": -1,
+          "a": 1.5707963267948966
+        },
+        "observation": "纵向取负一，横向取正一，成为不定二次型。"
+      }
+    ]
+  }
+}

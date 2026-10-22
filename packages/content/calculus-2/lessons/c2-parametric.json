@@ -1,0 +1,192 @@
+{
+  "id": "c2-parametric",
+  "title": "参数方程与运动轨迹",
+  "subtitle": "用一个参数同时决定两个坐标",
+  "concept": "参数方程给出点随参数怎样走；同一条几何曲线可以有不同方向和速度。",
+  "intuition": "$x=\\cos t,y=\\sin t$ 不只描述一个圆，还说明从哪里出发、往哪边走、何时走一圈。",
+  "body": [
+    {
+      "title": "消掉参数就够了吗？",
+      "text": "消参可以找曲线关系，但会丢失方向、起点、描绘范围和重复次数。还要注明参数区间。"
+    },
+    {
+      "title": "参数一定是时间？",
+      "text": "可以是时间，也可以是角度或其他量。只有把它定义为时间，导数的单位才是速度。"
+    },
+    {
+      "title": "负速度是什么意思？",
+      "text": "某个坐标的变化率可为负，表示沿该坐标轴反方向移动；速率是速度向量长度，非负。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "用一个参数同时决定两个坐标",
+    "latex": "\\mathbf r(t)=(x(t),y(t)),\\quad\\mathbf v(t)=(x\\prime(t),y\\prime(t)),\\quad v(t)=\\sqrt{x\\prime(t)^2+y\\prime(t)^2}",
+    "conditions": [
+      "坐标函数在所讨论区间可导；参数若是时间，单位须随之解释。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "用两个坐标描述圆上的点。",
+      "latex": "x=\\cos t,\\quad y=\\sin t"
+    },
+    {
+      "text": "平方相加，识别几何位置。",
+      "latex": "x^2+y^2=1"
+    },
+    {
+      "text": "导数保留运动信息。",
+      "latex": "\\mathbf v=(-\\sin t,\\cos t),\\quad v=1"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "椭圆参数",
+      "problem": "$x=2\\cos t,y=\\sin t$，$0\\leq t\\leq2\\pi$，描述轨迹和方向。",
+      "steps": [
+        "消参得到 $\\frac{x^2}{4}+y^2=1$。",
+        "起点为 $(2,0)$，初速度 $(0,1)$，逆时针走一圈。"
+      ],
+      "answer": "横半轴 2、纵半轴 1 的椭圆，逆时针。"
+    },
+    {
+      "title": "同路不同速度",
+      "problem": "$x=\\cos2t,y=\\sin2t$ 在 $0\\leq t\\leq2\\pi$ 走几圈？",
+      "steps": [
+        "几何关系仍是单位圆。",
+        "角度从零到 $4\\pi$，速率为 2。"
+      ],
+      "answer": "逆时针两圈。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-parametric-m1",
+      "claim": "消参后曲线相同，运动也相同。",
+      "correction": "方向、速度和重复描绘可完全不同。"
+    },
+    {
+      "id": "c2-parametric-m2",
+      "claim": "把坐标变化率当成速率。",
+      "correction": "速率是两个变化率的平方和开根号。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$x=t,y=t^2$ 的轨迹是什么？",
+      "answer": "抛物线。",
+      "hint": "直接以横坐标替换参数。",
+      "solution": [
+        "$y=x^2$；若参数遍历全体实数，点从左向右走。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-parametric-p1"
+    },
+    {
+      "problem": "$x=\\cos t,y=-\\sin t$ 的方向？",
+      "answer": "顺时针。",
+      "hint": "检查初速度。",
+      "solution": [
+        "从 $(1,0)$ 出发，初速度 $(0,-1)$，先向下。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-parametric-p2"
+    },
+    {
+      "problem": "$x=3t,y=4t$ 的速率？",
+      "answer": "$5$。",
+      "hint": "取速度向量长度。",
+      "solution": [
+        "$\\sqrt{3^2+4^2}=5$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 5,
+      "id": "c2-parametric-p3"
+    },
+    {
+      "problem": "$x=\\cos t,y=\\sin t$，$0\\leq t\\leq\\pi$ 走哪部分？",
+      "answer": "上半圆，从右端走向左端。",
+      "hint": "检查区间内正弦符号。",
+      "solution": [
+        "$\\sin t\\geq0$，起终点为 $(1,0)$ 与 $(-1,0)$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-parametric-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "消去参数可能丢失什么？",
+    "choices": [
+      "几何方程",
+      "方向与重复次数",
+      "所有坐标关系"
+    ],
+    "correctIndex": 1,
+    "explanation": "参数区间与推进方式包含额外的运动信息。"
+  },
+  "teaching": {
+    "explain": "曲线是留下的足迹，参数方程还告诉你这串足迹是怎样走出来的。",
+    "steps": [
+      {
+        "title": "最右侧",
+        "instruction": "参数取 0。",
+        "observation": "点为 $(2,0)$，速率为 1，切线竖直。",
+        "preset": {
+          "x": 0
+        }
+      },
+      {
+        "title": "最高点",
+        "instruction": "参数取 1.5707963267948966。",
+        "observation": "点为 $(0,1)$，速率为 2，切线水平。",
+        "preset": {
+          "x": 1.5707963267948966
+        }
+      },
+      {
+        "title": "左侧",
+        "instruction": "参数取 3.141592653589793。",
+        "observation": "点为 $(-2,0)$，速率回到 1，方向继续逆时针。",
+        "preset": {
+          "x": 3.141592653589793
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "trigonometry",
+    "derivative-rules"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-curves",
+  "number": "7.1",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-parametric",
+    "caption": "点沿椭圆 $(2\\cos t,\\sin t)$ 移动，显示速度向量与参数位置。",
+    "prediction": "同一圈上，速率是否处处相同？"
+  },
+  "misconceptionTags": [
+    "c2-parametric-m1",
+    "c2-parametric-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "读取参数路径、方向与重复次数",
+    "消去参数并保留参数区间",
+    "计算速度与非负速率"
+  ]
+}

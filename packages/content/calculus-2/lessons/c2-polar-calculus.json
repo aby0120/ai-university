@@ -1,0 +1,195 @@
+{
+  "id": "c2-polar-calculus",
+  "title": "极坐标的面积与弧长",
+  "subtitle": "面积用扇形，长度用参数速度",
+  "concept": "极坐标面积累积小扇形，弧长累积小弧；先确认曲线描绘范围，避免重复计数。",
+  "intuition": "小扇形面积约为 $\\frac12r^2\\Delta\\theta$；半径改变还会增加弧长，所以长度公式同时含半径与半径变化率。",
+  "body": [
+    {
+      "title": "面积为什么除以二？",
+      "text": "完整圆面积按角度比例分给小扇形：$\\pi r^2\\cdot\\frac{\\Delta\\theta}{2\\pi}$。"
+    },
+    {
+      "title": "两个极曲线之间呢？",
+      "text": "在相同角度范围内，若 $0\\leq r_{in}\\leq r_{out}$，面积是两个平方半径之差的一半积分。交点与描绘范围先分段。"
+    },
+    {
+      "title": "弧长怎么来？",
+      "text": "把 $x=r\\cos\\theta,y=r\\sin\\theta$ 代进参数弧长；平方相加时交叉项抵消。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "面积用扇形，长度用参数速度",
+    "latex": "A=\\frac12\\int_\\alpha^\\beta r(\\theta)^2d\\theta,\\qquad L=\\int_\\alpha^\\beta\\sqrt{r(\\theta)^2+r\\prime(\\theta)^2}\\,d\\theta",
+    "conditions": [
+      "面积公式用于不重复覆盖的径向区域，通常取非负连续半径；弧长要求分段连续可导，重复描绘会重复计数。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "以小扇形近似面积。",
+      "latex": "\\Delta A\\approx\\frac12r^2\\Delta\\theta"
+    },
+    {
+      "text": "对两个坐标求导后相加平方。",
+      "latex": "\\left(\\frac{dx}{d\\theta}\\right)^2+\\left(\\frac{dy}{d\\theta}\\right)^2=(r\\prime)^2+r^2"
+    },
+    {
+      "text": "得到面积与长度的不同积分。",
+      "latex": "dA=\\frac12r^2d\\theta,\\quad ds=\\sqrt{r^2+(r\\prime)^2}\\,d\\theta"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "心形线面积",
+      "problem": "$r=1+\\cos\\theta$，$0\\leq\\theta\\leq2\\pi$ 的包围面积？",
+      "steps": [
+        "面积 $A=\\frac12\\int_0^{2\\pi}(1+2\\cos\\theta+\\cos^2\\theta)d\\theta$。",
+        "三个积分为 $2\\pi,0,\\pi$，再乘二分之一。"
+      ],
+      "answer": "$\\frac{3\\pi}{2}$。"
+    },
+    {
+      "title": "圆的弧长",
+      "problem": "$r=2$，$0\\leq\\theta\\leq\\pi$ 的弧长？",
+      "steps": [
+        "$r\\prime=0$，长度微元为 $2d\\theta$。",
+        "$L=\\int_0^\\pi2d\\theta=2\\pi$。"
+      ],
+      "answer": "$2\\pi$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-polar-calculus-m1",
+      "claim": "极坐标面积是半径的一次积分。",
+      "correction": "扇形面积取半径平方，并有二分之一。"
+    },
+    {
+      "id": "c2-polar-calculus-m2",
+      "claim": "任何角度区间都只描一遍。",
+      "correction": "有些曲线在完整角度范围重复，先检查参数路径。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$r=3$ 的整圆面积？",
+      "answer": "$9\\pi$。",
+      "hint": "从零到完整一圈。",
+      "solution": [
+        "$A=\\frac12\\int_0^{2\\pi}9d\\theta=9\\pi$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 28.274333882308138,
+      "id": "c2-polar-calculus-p1"
+    },
+    {
+      "problem": "$r=2\\cos\\theta$ 的圆，取 $[-\\frac\\pi2,\\frac\\pi2]$，面积？",
+      "answer": "$\\pi$。",
+      "hint": "这个区间只描一圈。",
+      "solution": [
+        "$A=2\\int_{-\\pi/2}^{\\pi/2}\\cos^2\\theta d\\theta=\\pi$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 3.141592653589793,
+      "id": "c2-polar-calculus-p2"
+    },
+    {
+      "problem": "$r=2$ 与 $r=1$ 之间的整圆环面积？",
+      "answer": "$3\\pi$。",
+      "hint": "外平方减内平方。",
+      "solution": [
+        "$\\frac12\\int_0^{2\\pi}(4-1)d\\theta=3\\pi$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 9.42477796076938,
+      "id": "c2-polar-calculus-p3"
+    },
+    {
+      "problem": "$r=\\theta$，$0\\leq\\theta\\leq1$ 的弧长积分如何设置？",
+      "answer": "$\\int_0^1\\sqrt{\\theta^2+1}d\\theta$。",
+      "hint": "半径导数为一。",
+      "solution": [
+        "$r\\prime=1$，代入极坐标弧长公式；面积公式不能替代它。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-polar-calculus-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "同一极曲线被重复描绘两遍，直接积分面积会怎样？",
+    "choices": [
+      "自动去重",
+      "可能重复计数",
+      "必定为零"
+    ],
+    "correctIndex": 1,
+    "explanation": "积分按参数过程累积，需要先选正确描绘范围。"
+  },
+  "teaching": {
+    "explain": "面积看扫过多少扇形，长度看点实际走多远。公式不同，因为累积的小块不同。",
+    "steps": [
+      {
+        "title": "起点",
+        "instruction": "角度取 0。",
+        "observation": "点为 $(2,0)$，尚未扫出面积。",
+        "preset": {
+          "x": 0
+        }
+      },
+      {
+        "title": "半圈",
+        "instruction": "角度取 3.141592653589793。",
+        "observation": "点回到原点，扫过上半部分面积 $\\frac{3\\pi}{4}$。",
+        "preset": {
+          "x": 3.141592653589793
+        }
+      },
+      {
+        "title": "一圈",
+        "instruction": "角度取 6.283185307179586。",
+        "observation": "扫过完整心形区域，面积为 $\\frac{3\\pi}{2}$。",
+        "preset": {
+          "x": 6.283185307179586
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-polar",
+    "c2-parametric-calculus",
+    "c2-trig-integrals"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-curves",
+  "number": "7.4",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-polar-calculus",
+    "caption": "点沿 $r=1+\\cos\\theta$ 移动，并显示从零角度扫过的扇形区域。",
+    "prediction": "半圈的扫过面积和半径的一半有什么关系？"
+  },
+  "misconceptionTags": [
+    "c2-polar-calculus-m1",
+    "c2-polar-calculus-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "用小扇形建立面积",
+    "从参数弧长推导极坐标弧长",
+    "避免参数过程重复计数"
+  ]
+}

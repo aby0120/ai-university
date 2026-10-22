@@ -1,0 +1,191 @@
+{
+  "id": "c2-polar",
+  "title": "极坐标与曲线",
+  "subtitle": "用距离和方向定位一个点",
+  "concept": "极坐标用半径与角度描述位置；负半径表示沿指定方向的反方向走。",
+  "intuition": "同一个点有很多组极坐标，不能把参数对的不同误当成空间点不同。",
+  "body": [
+    {
+      "title": "怎样转成直角坐标？",
+      "text": "$x=r\\cos\\theta,y=r\\sin\\theta$。距离原点是 $|r|$，不是总等于带符号的 $r$。"
+    },
+    {
+      "title": "负半径怎么画？",
+      "text": "先看角度方向，再沿反方向走 $|r|$。等价地，把半径改正并把角度加上 $\\pi$。"
+    },
+    {
+      "title": "交点怎样找？",
+      "text": "相同角度下半径相等可找到一部分交点；还要检查负半径表示和原点，因为同一点可能对应不同角度。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "用距离和方向定位一个点",
+    "latex": "x=r\\cos\\theta,\\quad y=r\\sin\\theta,\\quad(r,\\theta)\\sim(r,\\theta+2\\pi)\\sim(-r,\\theta+\\pi)",
+    "conditions": [
+      "角度按弧度；原点可对应任意角度。极角的反求需要按象限选择。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "从方向单位向量出发。",
+      "latex": "\\mathbf e_\\theta=(\\cos\\theta,\\sin\\theta)"
+    },
+    {
+      "text": "乘带符号半径得到点。",
+      "latex": "(x,y)=r\\mathbf e_\\theta"
+    },
+    {
+      "text": "反方向同时改半径符号，点不变。",
+      "latex": "(-r)(\\cos(\\theta+\\pi),\\sin(\\theta+\\pi))=(r\\cos\\theta,r\\sin\\theta)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "负半径",
+      "problem": "极坐标 $(-2,\\frac\\pi6)$ 对应哪个点？",
+      "steps": [
+        "$x=-2\\cos\\frac\\pi6=-\\sqrt3$，$y=-2\\sin\\frac\\pi6=-1$。",
+        "也可写成 $(2,\\frac{7\\pi}{6})$。"
+      ],
+      "answer": "直角坐标 $(-\\sqrt3,-1)$。"
+    },
+    {
+      "title": "极坐标圆",
+      "problem": "$r=2\\cos\\theta$ 是什么曲线？",
+      "steps": [
+        "乘以 $r$ 得 $r^2=2r\\cos\\theta$。",
+        "因此 $x^2+y^2=2x$，配方为 $(x-1)^2+y^2=1$。"
+      ],
+      "answer": "圆心 $(1,0)$、半径 1 的圆；$-\\frac\\pi2\\leq\\theta\\leq\\frac\\pi2$ 描一圈。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-polar-m1",
+      "claim": "负半径没有几何意义。",
+      "correction": "它表示反方向，同样可定位一个点。"
+    },
+    {
+      "id": "c2-polar-m2",
+      "claim": "把两个曲线的半径设相等就一定找全交点。",
+      "correction": "还需考虑同点不同极坐标和原点。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$(2,\\frac\\pi2)$ 的直角坐标？",
+      "answer": "$(0,2)$。",
+      "hint": "用正弦余弦。",
+      "solution": [
+        "$x=2\\cos\\frac\\pi2=0$，$y=2\\sin\\frac\\pi2=2$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-polar-p1"
+    },
+    {
+      "problem": "$(-1,0)$ 与哪个正半径极坐标等价？",
+      "answer": "$(1,\\pi)$。",
+      "hint": "负半径要反向。",
+      "solution": [
+        "把半径取正，同时角度加 $\\pi$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-polar-p2"
+    },
+    {
+      "problem": "$r=3$ 表示什么？",
+      "answer": "以原点为圆心、半径 3 的圆。",
+      "hint": "点到原点距离恒定。",
+      "solution": [
+        "$x^2+y^2=r^2=9$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-polar-p3"
+    },
+    {
+      "problem": "$r=2\\sin\\theta$ 的直角坐标方程？",
+      "answer": "$x^2+(y-1)^2=1$。",
+      "hint": "先乘半径再配方。",
+      "solution": [
+        "$r^2=2r\\sin\\theta$ 得 $x^2+y^2=2y$，移项配方。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-polar-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "极坐标 $r<0$ 表示？",
+    "choices": [
+      "点不存在",
+      "沿角度反方向走",
+      "角度必须为负"
+    ],
+    "correctIndex": 1,
+    "explanation": "带符号半径编码方向翻转。"
+  },
+  "teaching": {
+    "explain": "直角坐标先横走再竖走；极坐标先转方向再走距离。它们是同一平面上的两种描述。",
+    "steps": [
+      {
+        "title": "起点",
+        "instruction": "角度取 0。",
+        "observation": "点为 $(2,0)$，尚未扫出面积。",
+        "preset": {
+          "x": 0
+        }
+      },
+      {
+        "title": "半圈",
+        "instruction": "角度取 3.141592653589793。",
+        "observation": "点回到原点，扫过上半部分面积 $\\frac{3\\pi}{4}$。",
+        "preset": {
+          "x": 3.141592653589793
+        }
+      },
+      {
+        "title": "一圈",
+        "instruction": "角度取 6.283185307179586。",
+        "observation": "扫过完整心形区域，面积为 $\\frac{3\\pi}{2}$。",
+        "preset": {
+          "x": 6.283185307179586
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-parametric",
+    "trigonometry"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-curves",
+  "number": "7.3",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-polar",
+    "caption": "点沿 $r=1+\\cos\\theta$ 移动，并显示从零角度扫过的扇形区域。",
+    "prediction": "半圈的扫过面积和半径的一半有什么关系？"
+  },
+  "misconceptionTags": [
+    "c2-polar-m1",
+    "c2-polar-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "在两种坐标之间转换",
+    "解释负半径与等价表示",
+    "检查曲线范围和遗漏交点"
+  ]
+}

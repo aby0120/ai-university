@@ -1,0 +1,195 @@
+{
+  "id": "la-inverse",
+  "chapterId": "la-matrices",
+  "number": "2.4",
+  "title": "逆矩阵与可逆矩阵定理",
+  "subtitle": "输出能否唯一还原",
+  "concept": "方阵可逆，意味着每个输出都能唯一地还原为输入。",
+  "intuition": "压扁了某个方向后，不同输入会挤在一起，无法只凭输出找回原输入。",
+  "objectives": [
+    "判断方阵是否可逆",
+    "用增广矩阵或二阶公式求逆"
+  ],
+  "body": [
+    {
+      "title": "逆矩阵满足什么？",
+      "text": "$A^{-1}A=AA^{-1}=I$。逆矩阵只对方阵这样定义；长方矩阵的左逆、右逆要另行区分。"
+    },
+    {
+      "title": "怎样计算？",
+      "text": "对 $[A\\mid I]$ 消元。如果左边能化成 $I$，右边就是逆矩阵。解一次方程通常直接消元，不必先求逆。"
+    },
+    {
+      "title": "哪些条件等价？",
+      "text": "对 $n\\times n$ 矩阵：可逆、每列有主元、齐次解只有零、每个右端唯一可解互相等价。它们还等价于每个向量都能用这些列唯一表示；后面把这样的方向组称为一组基。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "逆矩阵与可逆矩阵定理",
+    "latex": "\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}^{-1}=\\frac1{ad-bc}\\begin{pmatrix}d&-b\\\\-c&a\\end{pmatrix}",
+    "conditions": [
+      "二阶公式要求 $ad-bc\\ne0$；一般可逆矩阵定理只在方阵条件下直接使用。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "逆保证齐次方程只有零解。",
+      "latex": "Ax=0\\Rightarrow A^{-1}Ax=x=0"
+    },
+    {
+      "text": "满主元消元可还原每个右端。",
+      "latex": "[A\\mid I]\\sim[I\\mid B]"
+    },
+    {
+      "text": "同一行变换给出逆。",
+      "latex": "BA=I\\quad\\Rightarrow\\quad B=A^{-1}\\quad(A\\text{ 方阵})"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "二阶求逆",
+      "problem": "$A=\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}$ 的逆？",
+      "steps": [
+        "要撤销 $x$ 中加上的 $2y$。",
+        "候选 $B=\\begin{pmatrix}1&-2\\\\0&1\\end{pmatrix}$，左右相乘均为 $I$。"
+      ],
+      "answer": "$A^{-1}=B$。"
+    },
+    {
+      "title": "压扁后不可逆",
+      "problem": "$A=\\operatorname{diag}(1,0)$ 可逆吗？",
+      "steps": [
+        "$A(0,1)=0$，非零输入被消掉。",
+        "同一个输出对应多个输入。"
+      ],
+      "answer": "不可逆。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-inverse-m1",
+      "claim": "把每个元素取倒数就是矩阵逆。",
+      "correction": "矩阵逆须按乘积等于单位矩阵检查。"
+    },
+    {
+      "id": "la-inverse-m2",
+      "claim": "可逆一定要每个元素非零。",
+      "correction": "单位矩阵含零，仍然可逆。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$\\operatorname{diag}(2,4)$ 的逆？",
+      "hint": "分别撤销两个方向的缩放。",
+      "solution": [
+        "对角元素取 $1/2,1/4$。"
+      ],
+      "answer": "$\\operatorname{diag}(1/2,1/4)$。",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "la-inverse-m2"
+      ],
+      "id": "la-inverse-q1"
+    },
+    {
+      "problem": "$\\begin{pmatrix}1&2\\\\2&4\\end{pmatrix}$ 可逆吗？",
+      "hint": "第二行是否独立？",
+      "solution": [
+        "第二行是第一行的两倍，消元少一个主元。"
+      ],
+      "answer": "不可逆。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-inverse-q2"
+    },
+    {
+      "problem": "可逆 $A,B$ 的乘积逆是？",
+      "hint": "从最后一次作用开始撤销。",
+      "solution": [
+        "$(B^{-1}A^{-1})(AB)=I$。"
+      ],
+      "answer": "$(AB)^{-1}=B^{-1}A^{-1}$。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-inverse-q3"
+    },
+    {
+      "problem": "$2\\times3$ 矩阵能有本节定义的双侧逆吗？",
+      "hint": "两侧单位矩阵维数不同。",
+      "solution": [
+        "它不可能同时是一一且满到两个不同维空间。"
+      ],
+      "answer": "不能。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-inverse-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-pivots",
+    "la-matrix-product"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "la-inverse-m1",
+    "la-inverse-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-inverse",
+    "caption": "矩阵 $A=\\begin{pmatrix}1&c\\\\0&a\\end{pmatrix}$ 作用于 $(1,1)$。参数 $a$ 为零时无法反演。",
+    "prediction": "哪一种压缩会使原输入无法恢复？"
+  },
+  "learningCheck": {
+    "question": "一个方阵把某个非零向量送到零，能可逆吗？",
+    "choices": [
+      "能",
+      "不能",
+      "只要元素够大就能"
+    ],
+    "correctIndex": 1,
+    "explanation": "逆映射无法同时把零还原成两个不同输入。"
+  },
+  "teaching": {
+    "explain": "可逆要求既不遗漏输出，也不合并输入。方阵中，这两件事由同一个满主元条件控制。",
+    "steps": [
+      {
+        "title": "可还原",
+        "instruction": "取 $a=1,c=1$。",
+        "preset": {
+          "a": 1,
+          "c": 1
+        },
+        "observation": "输出为 $(2,1)$，可用逆矩阵还原 $(1,1)$。"
+      },
+      {
+        "title": "反向仍可逆",
+        "instruction": "取 $a=-1,c=1$。",
+        "preset": {
+          "a": -1,
+          "c": 1
+        },
+        "observation": "行列式为负一，翻转并不妨碍可逆。"
+      },
+      {
+        "title": "丢失方向",
+        "instruction": "取 $a=0,c=1$。",
+        "preset": {
+          "a": 0,
+          "c": 1
+        },
+        "observation": "输出被压到横轴，核非零，逆不存在。"
+      }
+    ]
+  }
+}

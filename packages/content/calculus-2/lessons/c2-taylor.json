@@ -1,0 +1,195 @@
+{
+  "id": "c2-taylor",
+  "title": "Taylor 多项式",
+  "subtitle": "让一个多项式匹配某点的各阶变化",
+  "concept": "Taylor 多项式在中心处匹配函数值与前几阶导数；这是局部匹配，不自动保证远处也准确。",
+  "intuition": "一次项匹配切线，二次项再匹配弯曲，后续项继续匹配更高阶变化。阶乘正好消除重复求导产生的倍率。",
+  "body": [
+    {
+      "title": "系数为什么除以阶乘？",
+      "text": "$c_k(x-a)^k$ 在中心处求 $k$ 阶导数，留下 $k!c_k$；要等于函数的该阶导数，就除以 $k!$。"
+    },
+    {
+      "title": "Maclaurin 是另一个工具吗？",
+      "text": "只是中心取零的 Taylor 展开；公式与逻辑完全相同。"
+    },
+    {
+      "title": "多项式与无穷级数一样吗？",
+      "text": "有限 Taylor 多项式永远能写出（有相应阶导数时）；无穷级数是否等于原函数，还要看余项是否趋零。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "让一个多项式匹配某点的各阶变化",
+    "latex": "T_m(x)=\\sum_{k=0}^m\\frac{f^{(k)}(a)}{k!}(x-a)^k",
+    "conditions": [
+      "$f$ 在中心处具有到 $m$ 阶的导数；近似精度需要另外估计余项。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "设候选多项式。",
+      "latex": "P(x)=c_0+c_1(x-a)+\\cdots+c_m(x-a)^m"
+    },
+    {
+      "text": "在中心反复求导，逐个隔离系数。",
+      "latex": "P^{(k)}(a)=k!c_k"
+    },
+    {
+      "text": "令导数与原函数匹配。",
+      "latex": "c_k=\\frac{f^{(k)}(a)}{k!}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "指数函数",
+      "problem": "写出 $e^x$ 在零点的三次 Taylor 多项式。",
+      "steps": [
+        "各阶导数在零点均为 1。",
+        "依次除以 $0!,1!,2!,3!$。"
+      ],
+      "answer": "$T_3=1+x+\\frac{x^2}{2}+\\frac{x^3}{6}$。"
+    },
+    {
+      "title": "换一个中心",
+      "problem": "写出 $\\ln x$ 在 $a=1$ 的二次 Taylor 多项式。",
+      "steps": [
+        "$f(1)=0,f\\prime(1)=1,f^{(2)}(1)=-1$。",
+        "围绕 1 使用 $x-1$，而不是直接用 $x$。"
+      ],
+      "answer": "$T_2=(x-1)-\\frac12(x-1)^2$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-taylor-m1",
+      "claim": "二次系数就是二阶导数。",
+      "correction": "还需除以 $2!$。"
+    },
+    {
+      "id": "c2-taylor-m2",
+      "claim": "匹配越多阶，任何位置一定越准。",
+      "correction": "它是局部信息；远处误差要靠余项判断。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "写出 $\\sin x$ 的三次 Maclaurin 多项式。",
+      "answer": "$x-\\frac{x^3}{6}$。",
+      "hint": "计算零点导数。",
+      "solution": [
+        "常数与二次项为零，一次导数为 1，三次导数为 $-1$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-taylor-p1"
+    },
+    {
+      "problem": "写出 $\\cos x$ 的四次 Maclaurin 多项式。",
+      "answer": "$1-\\frac{x^2}{2}+\\frac{x^4}{24}$。",
+      "hint": "奇次导数在零点消失。",
+      "solution": [
+        "偶数阶导数依次为 $1,-1,1$，分别除阶乘。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-taylor-p2"
+    },
+    {
+      "problem": "$f(2)=3,f\\prime(2)=-1,f^{(2)}(2)=4$，写二次展开。",
+      "answer": "$3-(x-2)+2(x-2)^2$。",
+      "hint": "不要忘记中心与阶乘。",
+      "solution": [
+        "系数为 $3,-1,\\frac4{2!}=2$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-taylor-p3"
+    },
+    {
+      "problem": "用 $e^x$ 的二次展开估计 $e^{0.1}$。",
+      "answer": "$1.105$，是近似值。",
+      "hint": "代入有限多项式。",
+      "solution": [
+        "$1+0.1+\\frac{0.1^2}{2}=1.105$；误差需另估。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 1.105,
+      "id": "c2-taylor-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "Taylor 多项式的二次系数是？",
+    "choices": [
+      "$f^{(2)}(a)$",
+      "$\\frac{f^{(2)}(a)}{2}$",
+      "$2f^{(2)}(a)$"
+    ],
+    "correctIndex": 1,
+    "explanation": "二次项求两次导数会产生因子二。"
+  },
+  "teaching": {
+    "explain": "你在中心附近造一个替身：先让位置一样，再让斜率一样、弯曲一样，逐阶补上细节。",
+    "steps": [
+      {
+        "title": "低阶",
+        "instruction": "阶数取 2，输入取 0.5。",
+        "observation": "有限多项式匹配低阶导数；读数保留实际误差。",
+        "preset": {
+          "n": 2,
+          "x": 0.5
+        }
+      },
+      {
+        "title": "增加阶数",
+        "instruction": "阶数取 6，输入仍取 0.5。",
+        "observation": "在这个输入处，观察实际误差的变化。",
+        "preset": {
+          "n": 6,
+          "x": 0.5
+        }
+      },
+      {
+        "title": "靠近边界或远处",
+        "instruction": "阶数取 10，输入取 0.9。",
+        "observation": "近似质量随输入与函数变化；仍需正文中的范围与余项条件。",
+        "preset": {
+          "n": 10,
+          "x": 0.9
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "c2-power-operations",
+    "linearization"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-power",
+  "number": "5.4",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-taylor",
+    "caption": "比较 $e^x$ 与零点展开的有限近似，读取误差。",
+    "prediction": "增加阶数后，远处是否与中心附近一样准确？"
+  },
+  "misconceptionTags": [
+    "c2-taylor-m1",
+    "c2-taylor-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "按中心导数构造多项式",
+    "保留阶乘与中心偏移",
+    "区分局部匹配与误差保证"
+  ]
+}

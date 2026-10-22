@@ -1,0 +1,191 @@
+{
+  "id": "c3-triple-integrals",
+  "chapterId": "c3-triple",
+  "number": "6.1",
+  "title": "三重积分与空间区域",
+  "subtitle": "每块小体积都贡献一次",
+  "concept": "三重积分累积空间密度；积分常数一得到体积。",
+  "intuition": "先把物体切成一根根竖直细柱，再把每根柱里的密度累加。三次积分描述三方向的扫描。",
+  "objectives": [
+    "为三维区域建立积分限",
+    "计算体积与体密度总量"
+  ],
+  "body": [
+    {
+      "title": "积分限怎样建立？",
+      "text": "先画投影区域，再给每个投影点上允许的高度区间；区域不能一根柱表示时分块或换扫描方向。"
+    },
+    {
+      "title": "质量和体积差在哪？",
+      "text": "积分一是体积，积分体密度是质量；体密度和面密度的单位不同。"
+    },
+    {
+      "title": "能交换次序吗？",
+      "text": "有界规则区域上的连续函数可按不同次序计算，但每次都必须重新描述同一个区域。非连续或无界情形另查可积性。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "每块小体积都贡献一次",
+    "latex": "\\iiint_E f\\,dV=\\iint_D\\int_{g_1(x,y)}^{g_2(x,y)}f(x,y,z)\\,dz\\,dA",
+    "conditions": [
+      "此处区域有界、边界分段光滑且可按上下图表示，函数在区域上连续；更一般区域可分块。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "固定平面位置累积一根柱。",
+      "latex": "A(x,y)=\\int_{g_1}^{g_2}f(x,y,z)dz"
+    },
+    {
+      "text": "再对全部投影累积。",
+      "latex": "\\iiint_E f\\,dV=\\iint_D A(x,y)dA"
+    },
+    {
+      "text": "取常数一检查上下表面。",
+      "latex": "V=\\iint_D(g_2-g_1)dA"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "四面体体积",
+      "problem": "第一卦限 $x+y+z\\le2$ 的体积？",
+      "steps": [
+        "积分限可取 $0\\le x\\le2,0\\le y\\le2-x,0\\le z\\le2-x-y$。",
+        "先积高度，再积三角形，得 $\\int_0^2(2-x)^2/2\\,dx=4/3$。"
+      ],
+      "answer": "$\\frac43$。"
+    },
+    {
+      "title": "长方体质量",
+      "problem": "$0\\le x,y,z\\le1$，体密度 $\\rho=1+z$ 的质量？",
+      "steps": [
+        "先沿高度积分得 $3/2$。",
+        "底面积为 1，质量保持 $3/2$。"
+      ],
+      "answer": "$\\frac32$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-triple-integrals-m1",
+      "claim": "三重积分的三个上下限都必须是常数。",
+      "correction": "曲边空间区域通常需要依赖外层变量的限。"
+    },
+    {
+      "id": "c3-triple-integrals-m2",
+      "claim": "三重积分算的是表面积。",
+      "correction": "体积元累积空间量，表面积需要曲面积分。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-triple-integrals-q1",
+      "problem": "边长 2 的立方体体积？",
+      "hint": "积分常数一。",
+      "solution": [
+        "三个边长相乘得 8。"
+      ],
+      "answer": "8",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 8
+    },
+    {
+      "id": "c3-triple-integrals-q2",
+      "problem": "单位立方体上 $\\iiint xyz\\,dV$？",
+      "hint": "三个独立积分相乘。",
+      "solution": [
+        "每个积分为 $1/2$，乘积为 $1/8$。"
+      ],
+      "answer": "$\\frac18$",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.125
+    },
+    {
+      "id": "c3-triple-integrals-q3",
+      "problem": "区域 $0\\le z\\le1-x-y$ 要求投影满足什么？",
+      "hint": "高度上界不能小于下界。",
+      "solution": [
+        "若横纵坐标非负，还须 $x+y\\le1$。"
+      ],
+      "answer": "第一象限单位直角三角形。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-triple-integrals-q4",
+      "problem": "改变积分次序是否改变密度的单位？",
+      "hint": "几何区域和物理量是否改变？",
+      "solution": [
+        "只是扫描方式变化，密度仍为质量除以体积。"
+      ],
+      "answer": "不改变。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "在空间区域上积分常数一得到什么？",
+    "choices": [
+      "体积",
+      "表面积",
+      "边界长度"
+    ],
+    "correctIndex": 0,
+    "explanation": "每块贡献为小体积。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-triple-integrals",
+    "caption": "第一卦限 $x+y+z\\le1$ 的四面体，移动水平切片看截面如何缩小。",
+    "prediction": "截面边长减半时，面积也只减半吗？"
+  },
+  "teaching": {
+    "explain": "先确定每个投影位置上有多高，再对整个底面累积。",
+    "steps": [
+      {
+        "title": "低切片",
+        "instruction": "将相对切片高度设为 $0$。",
+        "preset": {
+          "slice": 0
+        },
+        "observation": "四面体底部的水平截面最大。"
+      },
+      {
+        "title": "中切片",
+        "instruction": "将相对切片高度设为 $0.5$。",
+        "preset": {
+          "slice": 0.5
+        },
+        "observation": "截面边长变为一半，面积变为四分之一。"
+      },
+      {
+        "title": "顶切片",
+        "instruction": "将相对切片高度设为 $1$。",
+        "preset": {
+          "slice": 1
+        },
+        "observation": "截面退化成点，有限高度下的体积积分仍有效。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-regions-order"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-triple-integrals-m1",
+    "c3-triple-integrals-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "id": "c3-conservation",
+  "chapterId": "c3-theorems",
+  "number": "9.4",
+  "title": "守恒、局部变化与整卷连接",
+  "subtitle": "边界净流出等于内部总量的减少",
+  "concept": "连续性方程把密度的局部时间变化与通量散度连接起来；积分后就是整个固定区域的质量守恒。",
+  "intuition": "固定一个容器，质量变少的速度等于从边界净流出的速度。把容器缩小，就得到每个位置的同一条平衡规律。",
+  "objectives": [
+    "连接局部连续性与整体守恒",
+    "区分速度通量与质量通量"
+  ],
+  "body": [
+    {
+      "title": "通量场是速度吗？",
+      "text": "质量通量是密度乘速度。仅积分速度通量得到体积流率；密度不恒定时不能把两者混同。"
+    },
+    {
+      "title": "积分和微分怎样连接？",
+      "text": "固定空间区域内，密度与时间导数足够光滑时可交换时间微分和体积积分；再用散度定理把边界流出移到内部。"
+    },
+    {
+      "title": "整卷用了哪些工具？",
+      "text": "梯度描述局部标量变化，散度描述局部净流出，重积分累积内部，曲面积分累积边界。方程求解本身是后续偏微分方程的范围。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "边界净流出等于内部总量的减少",
+    "latex": "\\frac d{dt}\\iiint_E\\rho\\,dV=-\\iint_{\\partial E}\\rho\\mathbf v\\cdot\\mathbf n\\,dS,\\quad\\frac{\\partial\\rho}{\\partial t}+\\nabla\\cdot(\\rho\\mathbf v)=0",
+    "conditions": [
+      "区域固定且边界分片光滑；无体源项；密度与速度具有所需连续偏导并可交换积分微分。移动边界或质量源需增加相应项。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "总质量变化等于负的边界净流出。",
+      "latex": "M\\prime(t)=-\\iint_{\\partial E}\\rho\\mathbf v\\cdot\\mathbf n\\,dS"
+    },
+    {
+      "text": "用散度定理转为体积。",
+      "latex": "M\\prime(t)=-\\iiint_E\\nabla\\cdot(\\rho\\mathbf v)dV"
+    },
+    {
+      "text": "对任意足够小固定区域成立时得到局部平衡。",
+      "latex": "\\rho_t+\\nabla\\cdot(\\rho\\mathbf v)=0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "均匀膨胀",
+      "problem": "速度场 $\\mathbf v=(x,y,z)$，密度空间均匀、初值一，求满足守恒的密度。",
+      "steps": [
+        "散度为 3，空间均匀使 $\\nabla\\rho=0$。",
+        "方程化成 $\\rho\\prime+3\\rho=0$，初值得 $e^{-3t}$。"
+      ],
+      "answer": "$\\rho(t)=e^{-3t}$。"
+    },
+    {
+      "title": "固定球的质量变化",
+      "problem": "上述模型在单位球内的质量与外流率？",
+      "steps": [
+        "质量 $M=(4\\pi/3)e^{-3t}$，导数 $-4\\pi e^{-3t}$。",
+        "边界速度法向分量为一，通量 $4\\pi e^{-3t}$。"
+      ],
+      "answer": "质量减少率等于外流率，两者符号相反。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-conservation-m1",
+      "claim": "速度场就是质量通量场。",
+      "correction": "要乘密度；量纲不同。"
+    },
+    {
+      "id": "c3-conservation-m2",
+      "claim": "守恒表示每个固定区域质量恒定。",
+      "correction": "只要有边界流入流出，区域内质量就会变化，平衡关系才是守恒。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-conservation-q1",
+      "problem": "固定区域的向外质量净流率为 5、无源，质量导数是多少？",
+      "hint": "流出对内部质量是什么符号？",
+      "solution": [
+        "质量减少，所以导数为 $-5$。"
+      ],
+      "answer": "$-5$",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": -5
+    },
+    {
+      "id": "c3-conservation-q2",
+      "problem": "速度为常向量、密度空间时间均匀，连续性方程成立吗？",
+      "hint": "分别看时间变化与散度。",
+      "solution": [
+        "密度时间导数为零，常质量通量散度也为零。"
+      ],
+      "answer": "成立。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-conservation-q3",
+      "problem": "速度无散并且密度为空间常数时，无源密度可随时间任意改变吗？",
+      "hint": "代入局部平衡。",
+      "solution": [
+        "空间梯度零且速度散度零，使连续性方程要求密度时间导数为零。"
+      ],
+      "answer": "不可以，须在时间上恒定。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-conservation-q4",
+      "problem": "区域内还每单位时间产生质量 2，向外流率 5，质量导数？",
+      "hint": "把源项加入平衡。",
+      "solution": [
+        "产生减流出为 $2-5=-3$。"
+      ],
+      "answer": "$-3$",
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "numericAnswer": -3
+    }
+  ],
+  "learningCheck": {
+    "question": "固定容器内质量减少，是否违反质量守恒？",
+    "choices": [
+      "一定违反",
+      "不一定，可能有净流出",
+      "说明密度为负"
+    ],
+    "correctIndex": 1,
+    "explanation": "守恒要把边界交换一起计算。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-conservation",
+    "caption": "固定单位球、速度 $(x,y,z)$、密度 $e^{-3t}$；比较内部质量导数与向外质量通量。",
+    "prediction": "质量越来越少，边界流出率一定保持常数吗？"
+  },
+  "teaching": {
+    "explain": "固定区域里少掉的质量，要能由边界净流出或内部源项解释。",
+    "steps": [
+      {
+        "title": "初始时刻",
+        "instruction": "将时间 $t$ 设为 $0$。",
+        "preset": {
+          "x": 0
+        },
+        "observation": "密度为一，质量与边界外流率都为正。"
+      },
+      {
+        "title": "稍后",
+        "instruction": "将时间 $t$ 设为 $0.5$。",
+        "preset": {
+          "x": 0.5
+        },
+        "observation": "空间均匀密度按指数降低，外流率随之降低。"
+      },
+      {
+        "title": "末时刻",
+        "instruction": "将时间 $t$ 设为 $1$。",
+        "preset": {
+          "x": 1
+        },
+        "observation": "质量继续降低，质量导数与外流率仍互为相反数。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-choosing-theorem",
+    "c2-linear-ode"
+  ],
+  "difficulty": 5,
+  "misconceptionTags": [
+    "c3-conservation-m1",
+    "c3-conservation-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

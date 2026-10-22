@@ -5,7 +5,7 @@
   "title": "复合函数与反函数",
   "subtitle": "把两条规则接起来",
   "concept": "复合函数是接着算：先算内层，再把结果交给外层。反函数则把可逆的规则倒着算。",
-  "intuition": "比如先平方再加 1，是 x→x²→x²+1。反过来找输入时，若一个输出对应多个输入，就需要先限制范围。",
+  "intuition": "比如先平方再加 1，是 $x \\to x^{2} \\to x^{2} + 1$。反过来找输入时，若一个输出对应多个输入，就需要先限制范围。",
   "objectives": [
     "复合的定义域",
     "一一对应才可逆",
@@ -14,19 +14,19 @@
   "body": [
     {
       "title": "复合的输入有什么限制？",
-      "text": "对 f(g(x))，x 要能代入 g，g(x) 也要能代入 f。两个条件都要满足。"
+      "text": "对 $f (g (x))$，$x$ 要能代入 $g$，$g (x)$ 也要能代入 $f$。两个条件都要满足。"
     },
     {
-      "title": "为什么 x² 不能直接求反函数？",
-      "text": "2 和 −2 都得到 4，反过来无法唯一选一个。限制 x≥0 后，反函数才是 √x。"
+      "title": "为什么 $x^{2}$ 不能直接求反函数？",
+      "text": "2 和 −2 都得到 4，反过来无法唯一选一个。限制 $x \\ge 0$ 后，反函数才是 $\\sqrt{x}$。"
     },
     {
       "title": "反函数怎样求？",
-      "text": "写 y=f(x)，解出 x，再交换 x、y 的名字。反函数的定义域是原函数的值域；f⁻¹ 表示反函数，不是 1/f。"
+      "text": "写 $y = f (x)$，解出 $x$，再交换 $x$、$y$ 的名字。反函数的定义域是原函数的值域；$f^{-1}$ 表示反函数，不是 $\\frac{1}{f}$。"
     }
   ],
   "formalDefinition": {
-    "text": "若 f 为一一映射到其值域，反函数把输出还原为输入。",
+    "text": "若 $f$ 为一一映射到其值域，反函数把输出还原为输入。",
     "latex": "f^{-1}(f(x))=x,\\qquad f(f^{-1}(y))=y",
     "conditions": [
       "两个等式各自在对应定义域内成立。"
@@ -57,8 +57,8 @@
       "title": "顺序真的重要",
       "problem": "$f(x)=x^2$，$g(x)=x+1$，求两种复合。",
       "steps": [
-        "f(g(x)) 先加 1 再平方。",
-        "g(f(x)) 先平方再加 1。"
+        "$f (g (x))$ 先加 1 再平方。",
+        "$g (f (x))$ 先平方再加 1。"
       ],
       "answer": "$(f\\circ g)(x)=(x+1)^2$；$(g\\circ f)(x)=x^2+1$。"
     },
@@ -66,46 +66,42 @@
       "title": "复合的限制",
       "problem": "求 $\\ln(\\sqrt{x-1})$ 的定义域。",
       "steps": [
-        "根号要求 x≥1，但对数还要求根号值严格大于零。",
-        "因此不能取 x=1。"
+        "根号要求 $x \\ge 1$，但对数还要求根号值严格大于零。",
+        "因此不能取 $x = 1$。"
       ],
-      "answer": "x>1。"
+      "answer": "$x > 1$。"
     }
   ],
   "commonMistakes": [
     {
       "id": "composition-m1",
-      "claim": "把反函数看作 $1/f(x)$。",
+      "claim": "把反函数看作 $\\frac{1}{f(x)}$。",
       "correction": "反函数撤销输入输出关系，倒数只改变数值。"
     },
     {
       "id": "composition-m2",
       "claim": "认为复合可以交换顺序。",
-      "correction": "一般 f∘g≠g∘f。"
+      "correction": "一般 $f \\circ g \\ne g \\circ f$。"
     }
   ],
   "practice": [
     {
       "id": "composition-p1",
-      "difficulty": 1,
-      "misconceptionTags": [
-        "composition-m1"
-      ],
+      "difficulty": 2,
+      "misconceptionTags": [],
       "problem": "$f(x)=2x+5$ 的反函数？",
-      "answer": "$f^{-1}(x)=(x-5)/2$。",
+      "answer": "$f^{-1}(x)=\\frac{x-5}{2}$。",
       "solution": [
-        "由 y=2x+5 解出 x=(y−5)/2。"
+        "由 $y = 2 x + 5$ 解出 $x = \\frac{y - 5}{2}$。"
       ],
       "hint": "先解出原输入。"
     },
     {
       "id": "composition-p2",
       "difficulty": 2,
-      "misconceptionTags": [
-        "composition-m2"
-      ],
+      "misconceptionTags": [],
       "problem": "$f(x)=x^2$ 限制到 $x\\le0$ 的反函数？",
-      "answer": "$-\\sqrt{x}$，反函数定义域 x≥0。",
+      "answer": "$-\\sqrt{x}$，反函数定义域 $x \\ge 0$。",
       "solution": [
         "原输入必须非正，因此选平方根的负分支。"
       ],
@@ -113,27 +109,27 @@
     },
     {
       "id": "composition-p3",
-      "difficulty": 3,
+      "difficulty": 1,
       "misconceptionTags": [
         "composition-m2"
       ],
       "problem": "$f(x)=\\sqrt{x}$、$g(x)=x-4$，求 $(f\\circ g)(9)$。",
       "answer": "$\\sqrt5$。",
       "solution": [
-        "先算 g(9)=5，再算 f(5)。"
+        "先算 $g (9) = 5$，再算 $f (5)$。"
       ],
       "hint": "从内向外算。"
     },
     {
       "id": "composition-p4",
-      "difficulty": 4,
+      "difficulty": 1,
       "misconceptionTags": [
-        "composition-m2"
+        "composition-m1"
       ],
-      "problem": "$1/(x^2+1)$ 是 $x^2+1$ 的反函数吗？",
+      "problem": "$\\frac{1}{x^2+1}$ 是 $x^2+1$ 的反函数吗？",
       "answer": "不是。",
       "solution": [
-        "它是倒数；x²+1 在全实数上甚至不是一一对应。"
+        "它是倒数；$x^{2} + 1$ 在全实数上甚至不是一一对应。"
       ],
       "hint": "反函数需要还原输入。"
     }
@@ -149,7 +145,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -160,13 +156,42 @@
     "phet-design"
   ],
   "learningCheck": {
-    "question": "f(x)=x²，g(x)=x+1。f(g(2)) 是多少？",
+    "question": "$f (x) = x^{2}$，$g (x) = x + 1$。$f (g (2))$ 是多少？",
     "choices": [
-      "9",
-      "5",
-      "7"
+      "$9$",
+      "$5$",
+      "$7$"
     ],
     "correctIndex": 0,
-    "explanation": "先算内层 g(2)=3，再算外层 f(3)=9。交换顺序会得到 g(f(2))=5。"
+    "explanation": "先算内层 $g (2) = 3$，再算外层 $f (3) = 9$。交换顺序会得到 $g (f (2)) = 5$。"
+  },
+  "teaching": {
+    "explain": "正着算可以丢掉信息：平方会把正负两种输入合到同一输出。倒着算要唯一，就得先保留一个分支。",
+    "steps": [
+      {
+        "title": "先取正输入",
+        "instruction": "输入取 1，记下平方的输出。",
+        "preset": {
+          "x": 1
+        },
+        "observation": "$1^2=1$。"
+      },
+      {
+        "title": "再取负输入",
+        "instruction": "输入换成 −1，比较输出。",
+        "preset": {
+          "x": -1
+        },
+        "observation": "$(-1)^2=1$：不同输入得到同一输出。"
+      },
+      {
+        "title": "换一对输入",
+        "instruction": "再取 −2，并与正输入 2 比较。",
+        "preset": {
+          "x": -2
+        },
+        "observation": "两边都会输出 4。限制到非负分支，反向才有唯一选择。"
+      }
+    ]
   }
 }

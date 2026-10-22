@@ -1,0 +1,194 @@
+{
+  "id": "c3-gradient",
+  "chapterId": "c3-differentiation",
+  "number": "3.6",
+  "title": "方向导数与梯度",
+  "subtitle": "哪条方向上升最快",
+  "concept": "可微函数的梯度把所有方向的一阶变化率编码在一个向量中。",
+  "intuition": "梯度指向最陡上升；和它垂直的方向没有一阶高度变化，因此贴着等高线走。",
+  "objectives": [
+    "计算方向导数与最陡方向",
+    "用梯度建立等值面切平面"
+  ],
+  "body": [
+    {
+      "title": "方向为什么要单位化？",
+      "text": "方向导数按单位距离计量；非单位向量把走得多远也混进结果。沿时间路径的导数则可以直接用实际速度。"
+    },
+    {
+      "title": "最陡上升有多快？",
+      "text": "点积不超过两长度乘积。单位方向与梯度同向时达到梯度长度，反向时为负的最大幅度。"
+    },
+    {
+      "title": "梯度为何垂直等值面？",
+      "text": "沿等值面任意切向移动，函数不变，梯度和切向量点积为零。梯度为零时不能用它给唯一法向。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "哪条方向上升最快",
+    "latex": "D_{\\mathbf u}f=\\nabla f\\cdot\\mathbf u,\\quad\\|\\mathbf u\\|=1,\\quad\\nabla f=\\langle f_x,f_y,f_z\\rangle",
+    "conditions": [
+      "点积公式要求函数可微；单位方向定义的是每单位距离变化率；正则等值面法向要求梯度非零。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "把直线路径代入链式法则。",
+      "latex": "\\mathbf r(t)=\\mathbf a+t\\mathbf u"
+    },
+    {
+      "text": "路径速度就是单位方向。",
+      "latex": "\\frac d{dt}f(\\mathbf r(t))\\big|_{t=0}=\\nabla f(\\mathbf a)\\cdot\\mathbf u"
+    },
+    {
+      "text": "点积的上界给最陡方向。",
+      "latex": "-\\|\\nabla f\\|\\le D_{\\mathbf u}f\\le\\|\\nabla f\\|"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "指定方向",
+      "problem": "$f=x^2+2y^2$ 在 $(1,1)$ 沿 $\\langle3,4\\rangle$ 的方向导数？",
+      "steps": [
+        "梯度为 $\\langle2,4\\rangle$，方向单位化为 $\\langle3/5,4/5\\rangle$。",
+        "点积 $6/5+16/5=22/5$。"
+      ],
+      "answer": "$\\frac{22}5$。"
+    },
+    {
+      "title": "等值面法向",
+      "problem": "$x^2+y^2+z^2=9$ 在 $(1,2,2)$ 的切平面？",
+      "steps": [
+        "梯度 $\\langle2,4,4\\rangle$ 为法向。",
+        "点法式化简为 $x+2y+2z=9$。"
+      ],
+      "answer": "$x+2y+2z=9$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-gradient-m1",
+      "claim": "方向向量不需要归一化。",
+      "correction": "每单位距离的方向导数需要单位向量。"
+    },
+    {
+      "id": "c3-gradient-m2",
+      "claim": "梯度为零就没有任何高阶变化。",
+      "correction": "一阶变化全为零，二阶或更高阶仍可能显著。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-gradient-q1",
+      "problem": "$f=3x+4y$ 的最大方向导数？",
+      "hint": "求梯度长度。",
+      "solution": [
+        "梯度为 $(3,4)$，长度 5。"
+      ],
+      "answer": "5",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 5
+    },
+    {
+      "id": "c3-gradient-q2",
+      "problem": "$f=x^2+y^2$ 在 $(1,0)$ 沿正纵轴的方向导数？",
+      "hint": "做梯度点积。",
+      "solution": [
+        "梯度 $(2,0)$ 点乘 $(0,1)$ 得零。"
+      ],
+      "answer": "0",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0
+    },
+    {
+      "id": "c3-gradient-q3",
+      "problem": "在等高线切方向上方向导数为零，函数沿直线永远不变吗？",
+      "hint": "一阶与全程是否相同？",
+      "solution": [
+        "只说明该点的一阶变化为零。",
+        "例如碗面在 $(1,0)$ 沿纵向直线仍有二次上升。"
+      ],
+      "answer": "不保证。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-gradient-q4",
+      "problem": "$f=x^2-y^2$ 在原点梯度为零，是否证明极小？",
+      "hint": "比较坐标轴。",
+      "solution": [
+        "横轴值非负，纵轴值非正。",
+        "附近有高有低，是鞍点。"
+      ],
+      "answer": "不是极小。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "梯度与单位方向垂直时，方向导数是多少？",
+    "choices": [
+      "梯度长度",
+      "零",
+      "无法计算"
+    ],
+    "correctIndex": 1,
+    "explanation": "点积为零，但不排除二阶变化。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-gradient",
+    "caption": "碗面在 $(1,0,1)$ 的梯度指向正横轴；旋转单位方向，比较切向斜率。",
+    "prediction": "最陡方向与零一阶变化方向相差多少角度？"
+  },
+  "teaching": {
+    "explain": "沿任意单位方向的一阶变化，只需将梯度投影到该方向上。",
+    "steps": [
+      {
+        "title": "同向",
+        "instruction": "将与梯度的夹角 $\\theta$ 设为 $0$。",
+        "preset": {
+          "a": 0
+        },
+        "observation": "沿梯度方向，方向导数达到最大。"
+      },
+      {
+        "title": "垂直",
+        "instruction": "将与梯度的夹角 $\\theta$ 设为 $\\frac\\pi2$。",
+        "preset": {
+          "a": 1.5707963267948966
+        },
+        "observation": "方向导数为零，只表示一阶变化为零。"
+      },
+      {
+        "title": "反向",
+        "instruction": "将与梯度的夹角 $\\theta$ 设为 $\\pi$。",
+        "preset": {
+          "a": 3.141592653589793
+        },
+        "observation": "方向导数为负，下降最快。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-chain",
+    "c3-dot"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-gradient-m1",
+    "c3-gradient-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

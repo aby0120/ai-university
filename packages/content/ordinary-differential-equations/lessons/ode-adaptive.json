@@ -1,0 +1,195 @@
+{
+  "id": "ode-adaptive",
+  "chapterId": "ode-numerical",
+  "number": "11.6",
+  "title": "自适应步长与求解流程",
+  "subtitle": "用误差估计决定下一步",
+  "body": [
+    {
+      "title": "怎样估计？",
+      "text": "同一起点用一步长度 $h$ 与两步 $h/2$ 比较。若方法阶数为 $p$ 且处在渐近区间，细步局部误差约为两者差除以 $2^p-1$。"
+    },
+    {
+      "title": "怎样接受一步？",
+      "text": "比较误差与绝对、相对容差组合。误差过大则缩步重算；不能把被拒绝的点当已完成状态。"
+    },
+    {
+      "title": "完整流程",
+      "text": "先查定义域、事件与已知跳点，再选方法和容差；记录接受步与误差估计，最后做加密或独立核对。达到最小步长或最大步数时应报告停止，不能冒充成功。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "粗步局部误差主项设为 $Ch^{p+1}$。",
+      "latex": "e_{\\rm coarse}\\approx Ch^{p+1}"
+    },
+    {
+      "text": "两个半步主误差约缩小 $2^p$ 倍。",
+      "latex": "e_{\\rm fine}\\approx\\frac{Ch^{p+1}}{2^p}"
+    },
+    {
+      "text": "差值除以比例差，估计细步误差。",
+      "latex": "e_{\\rm fine}\\approx\\frac{y_{\\rm fine}-y_{\\rm coarse}}{2^p-1}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "二阶估计",
+      "problem": "两半步与粗步之差为 $0.003$，估计细步局部误差大小。",
+      "steps": [
+        "阶数二，分母为 $4-1=3$。",
+        "取差值绝对值除以三。"
+      ],
+      "answer": "约 $0.001$。"
+    },
+    {
+      "title": "拒绝后怎样走",
+      "problem": "误差估计 $0.02$，容差 $0.001$，能否接受该步？",
+      "steps": [
+        "估计超过容差二十倍。",
+        "缩步并从原已接受状态重算。"
+      ],
+      "answer": "拒绝此步，不能向后继续。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-adaptive-q1",
+      "problem": "四阶步长加倍比较的分母是多少？",
+      "hint": "计算二的四次方减一。",
+      "solution": [
+        "$16-1=15$。"
+      ],
+      "answer": "$15$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 15.0
+    },
+    {
+      "id": "ode-adaptive-q2",
+      "problem": "相对容差在解接近零时为何不够？",
+      "hint": "允许绝对误差也会趋零。",
+      "solution": [
+        "加入绝对容差给零附近合理尺度。"
+      ],
+      "answer": "需要绝对容差共同控制。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-adaptive-q3",
+      "problem": "局部估计达标是否证明整段全局误差低于同一容差？",
+      "hint": "局部误差会传播累积。",
+      "solution": [
+        "需要全局分析或独立验证。"
+      ],
+      "answer": "不证明。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-adaptive-q4",
+      "problem": "求解器步长缩到下限仍不达标，应该怎样输出？",
+      "hint": "不能伪装成功。",
+      "solution": [
+        "报告失败位置与原因，保留已接受区间。"
+      ],
+      "answer": "明确停止并报告。",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "ode-adaptive-m2"
+      ]
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-adaptive-m1",
+      "claim": "自适应就是把步长一直减小。",
+      "correction": "平缓区域也应适度增步。"
+    },
+    {
+      "id": "ode-adaptive-m2",
+      "claim": "算法返回一串数就证明覆盖了目标区间。",
+      "correction": "还要检查终点是否真正达到、有没有失败或越界。"
+    }
+  ],
+  "prerequisites": [
+    "ode-stability-stiffness"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ode-adaptive-m1",
+    "ode-adaptive-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "自适应方法根据局部误差估计接受或拒绝一步，并调整下一步长度，而不是固定用最小步长。",
+  "intuition": "变化平缓时大步，变化剧烈时小步；是否剧烈应由误差估计判断。",
+  "objectives": [
+    "理解步长加倍比较",
+    "制定带检查的数值求解流程"
+  ],
+  "formalDefinition": {
+    "text": "自适应步长与求解流程",
+    "latex": "\\widehat e\\approx\\frac{y_{h/2,h/2}-y_h}{2^p-1},\\qquad h_{\\rm new}=\\eta h\\left(\\frac{\\mathrm{tol}}{\\lvert\\widehat e\\rvert}\\right)^{1/(p+1)}",
+    "conditions": [
+      "同一起点、同一终点、足够光滑和渐近误差展开；$0<\\eta<1$，限制倍率与最大步长。该局部估计不是全局误差保证。"
+    ]
+  },
+  "learningCheck": {
+    "question": "一步误差超出容差时，下一步应该怎样？",
+    "choices": [
+      "接受后再提醒",
+      "拒绝并缩步重算",
+      "直接改小显示误差"
+    ],
+    "correctIndex": 1,
+    "explanation": "不能从未接受的状态继续推进。"
+  },
+  "teaching": {
+    "explain": "数值解的可信度来自可解释的停止条件、误差估计与复算，不来自曲线是否足够平滑。",
+    "steps": [
+      {
+        "title": "较松容差",
+        "preset": {
+          "a": 0.01,
+          "b": 2
+        },
+        "observation": "允许更大的接受步。",
+        "instruction": "将局部绝对容差 $\\mathrm{tol}$设为 $0.01$；将目标时间 $T$设为 $2$。"
+      },
+      {
+        "title": "收紧",
+        "preset": {
+          "a": 0.001,
+          "b": 2
+        },
+        "observation": "通常需要更多接受节点。",
+        "instruction": "将局部绝对容差 $\\mathrm{tol}$设为 $0.001$；将目标时间 $T$设为 $2$。"
+      },
+      {
+        "title": "更严格",
+        "preset": {
+          "a": 1e-05,
+          "b": 2
+        },
+        "observation": "继续控制局部估计，同时报告终点全局误差。",
+        "instruction": "将局部绝对容差 $\\mathrm{tol}$设为 $1e-05$；将目标时间 $T$设为 $2$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-adaptive",
+    "caption": "用 Heun 的步长加倍比较估计细步局部误差，显示实际接受节点与被拒绝次数；容差不是全局误差承诺。",
+    "prediction": "收紧局部容差后，接受步数与终点误差怎样变化？"
+  }
+}

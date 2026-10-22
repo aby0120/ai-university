@@ -56,7 +56,10 @@
       "areaId": "calculus",
       "title": "微积分 I",
       "englishTitle": "Calculus I",
-      "coverTitle": ["Calculus", "I"],
+      "coverTitle": [
+        "Calculus",
+        "I"
+      ],
       "tagline": "从变化率到累积量",
       "description": "从函数基础出发，系统学习极限、导数、积分与应用。",
       "audience": "有初等代数基础的自学者",
@@ -66,8 +69,8 @@
       "stats": {
         "chapters": 7,
         "lessons": 35,
-        "examples": 70,
-        "exercises": 175
+        "examples": 79,
+        "exercises": 191
       },
       "coverFormula": "\\frac{d}{dx}\\int_a^x f(t)\\,dt=f(x)"
     },
@@ -76,43 +79,103 @@
       "areaId": "calculus",
       "title": "微积分 II",
       "englishTitle": "Calculus II",
-      "coverTitle": ["Calculus", "II"],
+      "coverTitle": [
+        "Calculus",
+        "II"
+      ],
       "tagline": "延伸累积与逼近的方法",
-      "description": "积分技巧、反常积分、数列与级数；继续拓展一元微积分。",
+      "description": "积分技巧与误差、反常积分、数列级数、Taylor 展开、参数曲线与极坐标，以及一阶微分方程入门。",
       "audience": "已掌握微积分 I 的学习者",
-      "scope": "积分技巧 · 反常积分 · 数列与级数",
-      "status": "planned"
+      "scope": "积分技巧 · 无穷级数 · Taylor 展开 · 参数曲线 · 一阶方程",
+      "status": "published",
+      "route": "book/calculus-2",
+      "stats": {
+        "chapters": 8,
+        "lessons": 35,
+        "examples": 72,
+        "exercises": 179
+      },
+      "coverFormula": "T_m(x)=\\sum_{n=0}^{m}\\frac{f^{(n)}(a)}{n!}(x-a)^n"
+    },
+    {
+      "id": "calculus-3",
+      "areaId": "calculus",
+      "title": "微积分 III",
+      "englishTitle": "Calculus III",
+      "coverTitle": [
+        "Calculus",
+        "III"
+      ],
+      "tagline": "看见多元变化与空间守恒",
+      "description": "空间向量、偏导与优化、重积分、曲线与曲面积分、Green、Stokes 和散度定理。",
+      "audience": "已掌握一元微积分与参数曲线的学习者",
+      "scope": "空间几何 · 多元变化 · 重积分 · 向量微积分",
+      "status": "published",
+      "route": "book/calculus-3",
+      "stats": {
+        "chapters": 9,
+        "lessons": 40,
+        "examples": 81,
+        "exercises": 203
+      },
+      "coverFormula": "\\iint_{\\partial E}\\mathbf F\\cdot\\mathbf n\\,dS=\\iiint_E\\nabla\\cdot\\mathbf F\\,dV"
     },
     {
       "id": "linear-algebra",
       "areaId": "linear-algebra",
       "title": "线性代数",
       "englishTitle": "Linear Algebra",
-      "coverTitle": ["Linear", "Algebra"],
+      "coverTitle": [
+        "Linear",
+        "Algebra"
+      ],
       "tagline": "看见空间的结构",
-      "description": "从向量与方程组到线性变换、特征值与正交性。",
+      "description": "从方程组、矩阵与向量空间，到特征值、正交投影、SVD、网络与 PCA。",
       "audience": "有初等代数基础的学习者",
-      "scope": "向量 · 矩阵 · 线性映射 · 特征值",
-      "status": "planned"
+      "scope": "方程组 · 向量空间 · 特征值 · 正交与最小二乘 · SVD",
+      "status": "published",
+      "route": "book/linear-algebra",
+      "stats": {
+        "chapters": 10,
+        "lessons": 50,
+        "examples": 100,
+        "exercises": 250
+      },
+      "coverFormula": "A=U\\Sigma V^T"
     },
     {
-      "id": "differential-equations",
+      "id": "ordinary-differential-equations",
       "areaId": "differential-equations",
-      "title": "微分方程",
-      "englishTitle": "Differential Equations",
-      "coverTitle": ["Differential", "Equations"],
-      "tagline": "把变化写成规律",
-      "description": "从一阶方程到高阶线性方程、方程组与定性分析。",
-      "audience": "已掌握微积分的学习者",
-      "scope": "一阶方程 · 线性方程 · 系统 · 动态模型",
-      "status": "planned"
+      "title": "常微分方程",
+      "englishTitle": "Ordinary Differential Equations",
+      "coverTitle": [
+        "Ordinary",
+        "Differential",
+        "Equations"
+      ],
+      "tagline": "从局部变化到完整运动",
+      "description": "一阶与高阶方程、存在唯一性、振动与共振、Laplace、线性与非线性系统、级数及数值方法。",
+      "audience": "掌握一元微积分，愿意补充矩阵与特征值的学习者",
+      "scope": "一阶 · 振动 · Laplace · 方程组 · 非线性 · 级数与数值法",
+      "status": "published",
+      "route": "book/ordinary-differential-equations",
+      "stats": {
+        "chapters": 11,
+        "lessons": 55,
+        "examples": 110,
+        "exercises": 275
+      },
+      "coverFormula": "\\mathbf x'=A\\mathbf x+\\mathbf b(t)"
     },
     {
       "id": "probability-statistics",
       "areaId": "probability",
       "title": "概率与统计",
       "englishTitle": "Probability & Statistics",
-      "coverTitle": ["Probability", "& Statistics"],
+      "coverTitle": [
+        "Probability",
+        "& Statistics"
+      ],
       "tagline": "理解不确定性",
       "description": "从概率与随机变量到数据描述、参数估计与统计推断。",
       "audience": "有函数与基础微积分知识的学习者",
@@ -124,7 +187,10 @@
       "areaId": "discrete-math",
       "title": "离散数学",
       "englishTitle": "Discrete Mathematics",
-      "coverTitle": ["Discrete", "Mathematics"],
+      "coverTitle": [
+        "Discrete",
+        "Mathematics"
+      ],
       "tagline": "组织有限的世界",
       "description": "从逻辑与证明到组合计数、图论与递归。",
       "audience": "有初等代数基础的学习者",
@@ -136,7 +202,10 @@
       "areaId": "analysis",
       "title": "实分析",
       "englishTitle": "Real Analysis",
-      "coverTitle": ["Real", "Analysis"],
+      "coverTitle": [
+        "Real",
+        "Analysis"
+      ],
       "tagline": "追问结论的根基",
       "description": "以实数、序列与极限为起点，严谨建立连续、微分与积分。",
       "audience": "已学过微积分并熟悉基础证明的学习者",

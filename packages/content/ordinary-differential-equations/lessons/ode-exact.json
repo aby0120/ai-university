@@ -1,0 +1,193 @@
+{
+  "id": "ode-exact",
+  "chapterId": "ode-first-order",
+  "number": "2.4",
+  "title": "恰当方程与势函数",
+  "subtitle": "寻找一个保持不变的量",
+  "body": [
+    {
+      "title": "恰当是什么意思？",
+      "text": "$M(t,y)dt+N(t,y)dy=0$ 若等于 $d\\Phi$，则解曲线上 $\\Phi$ 保持常数。"
+    },
+    {
+      "title": "怎样检验？",
+      "text": "若偏导连续，必要条件是 $M_y=N_t$；在矩形等单连通区域上，此条件也保证存在势函数。 下标偏导表示固定另一个变量，只对指定变量求导。"
+    },
+    {
+      "title": "怎样求势函数？",
+      "text": "先对一个变量积分，再用另一个偏导确定遗漏的单变量函数。等值线在 $N=0$ 处未必能写成以时间为自变量的图像。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "考虑圆的微分关系。",
+      "latex": "2t\\,dt+2y\\,dy=0"
+    },
+    {
+      "text": "对时间积分并补上单变量项。",
+      "latex": "\\Phi=t^2+g(y),\\quad g'(y)=2y"
+    },
+    {
+      "text": "沿曲线的全导数为零。",
+      "latex": "\\Phi=t^2+y^2=C"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "带交叉项",
+      "problem": "解 $(2t+y)dt+(t+2y)dy=0$。",
+      "steps": [
+        "交叉偏导同为 $1$。",
+        "积分得 $\\Phi=t^2+ty+y^2$，两个偏导均匹配。"
+      ],
+      "answer": "$t^2+ty+y^2=C$。"
+    },
+    {
+      "title": "圆的上半支",
+      "problem": "解 $t+y y'=0,y(0)=2$。",
+      "steps": [
+        "势函数可取 $(t^2+y^2)/2$，初值给 $t^2+y^2=4$。",
+        "取正分支，在两端导数不再有限。"
+      ],
+      "answer": "$y=\\sqrt{4-t^2}$，区间 $(-2,2)$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-exact-q1",
+      "problem": "$M=y,N=t$ 是否恰当？",
+      "hint": "比较交叉偏导。",
+      "solution": [
+        "$M_y=1=N_t$，势函数为 $ty$。"
+      ],
+      "answer": "是，$ty=C$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-exact-q2",
+      "problem": "$M=y,N=2t$ 是否恰当？",
+      "hint": "计算两个偏导。",
+      "solution": [
+        "$M_y=1$ 而 $N_t=2$。"
+      ],
+      "answer": "不是。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-exact-q3",
+      "problem": "$d(t^2+3y^2)=0$ 的隐式解？",
+      "hint": "直接保留势函数。",
+      "solution": [
+        "沿曲线势函数不变。"
+      ],
+      "answer": "$t^2+3y^2=C$。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-exact-q4",
+      "problem": "圆的等值线是否总是全局单值函数？",
+      "hint": "同一个时间可能有两点。",
+      "solution": [
+        "除端点外通常有上下两支，须按初值选支。"
+      ],
+      "answer": "不是。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-exact-m1",
+      "claim": "只要交叉偏导相同，任意区域都自动有全局势函数。",
+      "correction": "全局结论还需区域条件；单连通是常用充分条件。"
+    },
+    {
+      "id": "ode-exact-m2",
+      "claim": "找到势函数后，不必检查初值分支。",
+      "correction": "隐式曲线可能含多个函数分支。"
+    }
+  ],
+  "prerequisites": [
+    "ode-linear-first",
+    "c3-partials"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-exact-m1",
+    "ode-exact-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "恰当方程把沿解曲线的变化写成某个函数的全微分，因此解是一条等值线。",
+  "intuition": "如果两个系数恰好是一座地形的两个偏导，运动方向就沿等高线走。",
+  "objectives": [
+    "检验恰当性",
+    "构造势函数并处理竖直切线"
+  ],
+  "formalDefinition": {
+    "text": "恰当方程与势函数",
+    "latex": "\\Phi_t=M,\\quad\\Phi_y=N,\\qquad\\Phi(t,y)=C",
+    "conditions": [
+      "在单连通开区域上，$M,N$ 一阶连续可微且 $M_y=N_t$；写成 $y(t)$ 还须在局部满足 $N\\ne0$。"
+    ]
+  },
+  "learningCheck": {
+    "question": "恰当方程求解后保持不变的是什么？",
+    "choices": [
+      "势函数的值",
+      "两个坐标各自不变",
+      "每一点的斜率"
+    ],
+    "correctIndex": 0,
+    "explanation": "全微分为零表示沿曲线势函数恒定。"
+  },
+  "teaching": {
+    "explain": "把微分方程认成一个总微分，就把求曲线变成了找等值线。",
+    "steps": [
+      {
+        "title": "等值线",
+        "preset": {
+          "a": 1,
+          "b": 0.5
+        },
+        "observation": "势函数在整条圆上恒定。",
+        "instruction": "将等值线半径 $R$设为 $1$；将轨迹角 $\\theta$设为 $0.5$。"
+      },
+      {
+        "title": "竖直切线",
+        "preset": {
+          "a": 1,
+          "b": 0
+        },
+        "observation": "此点不能用有限的状态导数表示。",
+        "instruction": "将等值线半径 $R$设为 $1$；将轨迹角 $\\theta$设为 $0$。"
+      },
+      {
+        "title": "另一等值线",
+        "preset": {
+          "a": 2,
+          "b": 1
+        },
+        "observation": "半径改变，势函数常数随之改变。",
+        "instruction": "将等值线半径 $R$设为 $2$；将轨迹角 $\\theta$设为 $1$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-exact",
+    "caption": "这是一条隐式解曲线的参数化。整圆不能写成一个全局单值时间函数，亮点移动不表示原方程可穿过竖直切线。",
+    "prediction": "整条等值线能否写成一个单值时间函数？"
+  }
+}

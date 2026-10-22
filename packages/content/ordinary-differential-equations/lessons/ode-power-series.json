@@ -1,0 +1,193 @@
+{
+  "id": "ode-power-series",
+  "chapterId": "ode-series",
+  "number": "10.1",
+  "title": "普通点的幂级数解",
+  "subtitle": "把未知函数变成系数序列",
+  "body": [
+    {
+      "title": "普通点是什么？",
+      "text": "标准二阶方程的系数在展开点附近解析，则该点为普通点，解可在附近用 Taylor 级数表示。"
+    },
+    {
+      "title": "如何对齐？",
+      "text": "求导后改指标，使每个和式都写成同一幂次。最低阶项要单独检查，不能随意丢弃。"
+    },
+    {
+      "title": "截断不是精确解",
+      "text": "有限部分和通常只近似满足原方程。收敛半径由系数解析区域提供下界，具体解可能有更大延拓范围。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "代入 $y''+y=0$。",
+      "latex": "\\sum_{n=0}^\\infty[(n+2)(n+1)a_{n+2}+a_n]t^n=0"
+    },
+    {
+      "text": "每个系数都须为零。",
+      "latex": "a_{n+2}=-\\frac{a_n}{(n+2)(n+1)}"
+    },
+    {
+      "text": "初值确定偶数链与奇数链。",
+      "latex": "a_0=y(0),\\quad a_1=y'(0)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "余弦级数",
+      "problem": "对 $y''+y=0,y(0)=1,y'(0)=0$ 求到四次。",
+      "steps": [
+        "递推得 $a_2=-1/2,a_3=0,a_4=1/24$。",
+        "奇数链全零。"
+      ],
+      "answer": "$y=1-t^2/2+t^4/24+\\cdots$。"
+    },
+    {
+      "title": "变系数递推",
+      "problem": "对 $y''=ty,y(0)=1,y'(0)=0$ 求到三次。",
+      "steps": [
+        "常数项给 $a_2=0$。",
+        "一次项给 $6a_3=a_0=1$。"
+      ],
+      "answer": "$y=1+t^3/6+\\cdots$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-power-series-q1",
+      "problem": "$y''+y=0$ 递推中 $a_4$ 与 $a_2$ 如何关联？",
+      "hint": "令递推索引为二。",
+      "solution": [
+        "$a_4=-a_2/(4\\times3)$。"
+      ],
+      "answer": "$a_4=-a_2/12$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-power-series-q2",
+      "problem": "$a_0=0,a_1=1$ 对应哪条熟悉的解？",
+      "hint": "奇数链交替。",
+      "solution": [
+        "得到 $t-t^3/6+\\cdots$。"
+      ],
+      "answer": "$\\sin t$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-power-series-q3",
+      "problem": "幂级数有限截断是否通常仍精确满足方程？",
+      "hint": "会留下高次残差。",
+      "solution": [
+        "只有特殊终止情形才精确。"
+      ],
+      "answer": "通常不是。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-power-series-q4",
+      "problem": "$y''=ty$ 中常数项为什么给 $a_2=0$？",
+      "hint": "右端乘时间后没有常数项。",
+      "solution": [
+        "左侧常数为 $2a_2$。"
+      ],
+      "answer": "比较常数系数得到。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-power-series-m1",
+      "claim": "移指标只改变符号，不需检查起点。",
+      "correction": "和式最低项可能需要单独处理。"
+    },
+    {
+      "id": "ode-power-series-m2",
+      "claim": "多画几项吻合就证明级数收敛。",
+      "correction": "收敛需要解析理论或独立估计。"
+    }
+  ],
+  "prerequisites": [
+    "ode-bifurcations",
+    "c2-taylor"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ode-power-series-m1",
+    "ode-power-series-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "在普通点附近，将解写成幂级数，按同次幂比较系数便得到递推关系。",
+  "intuition": "初值决定前几个系数，方程再把后面的系数逐个补出来。",
+  "objectives": [
+    "对齐幂次求递推",
+    "区分级数解与截断近似"
+  ],
+  "formalDefinition": {
+    "text": "普通点的幂级数解",
+    "latex": "y=\\sum_{n=0}^\\infty a_nt^n,\\quad y''=\\sum_{n=0}^\\infty(n+2)(n+1)a_{n+2}t^n",
+    "conditions": [
+      "在收敛圆内可逐项求导；本节在普通点零展开，其他中心先平移变量。"
+    ]
+  },
+  "learningCheck": {
+    "question": "二阶普通点级数解最初由哪些系数决定？",
+    "choices": [
+      "所有系数任意",
+      "常数项与一次项",
+      "只由最高次项"
+    ],
+    "correctIndex": 1,
+    "explanation": "它们分别对应初始值和初始导数。"
+  },
+  "teaching": {
+    "explain": "级数法仍是在用方程补全未来，只是补全对象从函数值变成了系数。",
+    "steps": [
+      {
+        "title": "二次截断",
+        "preset": {
+          "n": 2,
+          "b": 1
+        },
+        "observation": "只有常数与二次项。",
+        "instruction": "将截断次数 $n$设为 $2$；将观察时间 $t$设为 $1$。"
+      },
+      {
+        "title": "六次截断",
+        "preset": {
+          "n": 6,
+          "b": 2
+        },
+        "observation": "同一窗口内误差变小。",
+        "instruction": "将截断次数 $n$设为 $6$；将观察时间 $t$设为 $2$。"
+      },
+      {
+        "title": "十二次截断",
+        "preset": {
+          "n": 12,
+          "b": 3
+        },
+        "observation": "更多项改善逼近，但仍是有限近似。",
+        "instruction": "将截断次数 $n$设为 $12$；将观察时间 $t$设为 $3$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-power-series",
+    "caption": "金线保留不超过指定次数的项，蓝线为精确余弦。比较函数误差和方程残差。",
+    "prediction": "增加截断次数后，误差和方程残差怎样变化？"
+  }
+}

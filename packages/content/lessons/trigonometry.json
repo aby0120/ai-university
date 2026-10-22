@@ -4,7 +4,7 @@
   "number": "1.4",
   "title": "三角函数与弧度",
   "subtitle": "用单位圆理解周期变化",
-  "concept": "单位圆上，cos 是横坐标，sin 是纵坐标。弧度把角度直接写成弧长与半径的比。",
+  "concept": "单位圆上，$\\cos$ 是横坐标，$\\sin$ 是纵坐标。弧度把角度直接写成弧长与半径的比。",
   "intuition": "在单位圆上走过长度 1 的圆弧，就是 1 弧度。微积分中的三角公式默认用弧度。",
   "objectives": [
     "弧度与周期",
@@ -14,27 +14,27 @@
   "body": [
     {
       "title": "弧度怎样换算？",
-      "text": "θ=s/r，整圈为 2π 弧度，180°=π 弧度。sin、cos 的周期是 2π；tan 的周期是 π，在 cos=0 处无定义。"
+      "text": "$\\theta  = \\frac{s}{r}$，整圈为 $2 \\pi$ 弧度，$180^{\\circ} = \\pi$ 弧度。$\\sin$、$\\cos$ 的周期是 $2 \\pi$；$\\tan$ 的周期是 $\\pi$，在 $\\cos = 0$ 处无定义。"
     },
     {
       "title": "恒等式从哪里来？",
-      "text": "单位圆方程给出 sin²x+cos²x=1；tan x=sin x/cos x。化简后仍要保留原式的定义域限制。"
+      "text": "单位圆方程给出 $\\sin^{2} x + \\cos^{2} x = 1$；$\\tan x = \\frac{\\sin x}{\\cos x}$。化简后仍要保留原式的定义域限制。"
     },
     {
       "title": "为什么小角度很重要？",
-      "text": "弧度下，x→0 时 sin x/x→1，这是正弦求导的基础。它不表示所有 x 都满足 sin x=x。"
+      "text": "弧度下，$x \\to 0$ 时 $\\frac{\\sin x}{x} \\to 1$，这是正弦求导的基础。它不表示所有 $x$ 都满足 $\\sin x = x$。"
     }
   ],
   "formalDefinition": {
-    "text": "单位圆上角 x 对应点 $(\\cos x,\\sin x)$。",
+    "text": "单位圆上角 $x$ 对应点 $(\\cos x,\\sin x)$。",
     "latex": "\\sin^2x+\\cos^2x=1,\\qquad \\tan x=\\frac{\\sin x}{\\cos x}",
     "conditions": [
-      "本书三角函数的输入默认弧度；tan 要求 cos x≠0。"
+      "本书三角函数的输入默认弧度；$\\tan$ 要求 $\\cos x \\ne 0$。"
     ]
   },
   "derivation": [
     {
-      "text": "圆周长为 2πr，除以半径得到整圈角度。",
+      "text": "圆周长为 $2 \\pi  r$，除以半径得到整圈角度。",
       "latex": "\\theta=\\frac sr,\\qquad \\theta_{\\mathrm{circle}}=2\\pi"
     },
     {
@@ -49,39 +49,39 @@
   "interactiveVisual": {
     "kind": "graph",
     "function": "sin",
-    "caption": "拖动 x 观察正弦的周期；横轴单位是弧度。",
-    "prediction": "把 x 增加 2π，sin x 的值会怎样？比较相隔一个周期的两个输入。"
+    "caption": "拖动 $x$ 观察正弦的周期；横轴单位是弧度。",
+    "prediction": "把 $x$ 增加 $2 \\pi$，$\\sin x$ 的值会怎样？比较相隔一个周期的两个输入。"
   },
   "workedExamples": [
     {
       "title": "角度换单位",
       "problem": "把 150° 换成弧度并计算正弦。",
       "steps": [
-        "乘 π/180，得到 5π/6。",
-        "5π/6 位于第二象限，正弦为正，与 π/6 同高。"
+        "乘 $\\frac{\\pi }{180}$，得到 $\\frac{5 \\pi }{6}$。",
+        "$\\frac{5 \\pi }{6}$ 位于第二象限，正弦为正，与 $\\frac{\\pi }{6}$ 同高。"
       ],
-      "answer": "$5\\pi/6$，正弦 $1/2$。"
+      "answer": "$\\frac{5\\pi}{6}$，正弦 $\\frac{1}{2}$。"
     },
     {
       "title": "找不到输出的位置",
       "problem": "$\\tan x$ 在哪里没有定义？",
       "steps": [
-        "分母 cos x=0 时不允许除法。",
-        "这些角度是 π/2 加任意整数个 π。"
+        "分母 $\\cos x = 0$ 时不允许除法。",
+        "这些角度是 $\\frac{\\pi }{2}$ 加任意整数个 $\\pi$。"
       ],
-      "answer": "$x=\\pi/2+k\\pi$，$k\\in\\mathbb Z$。"
+      "answer": "$x=\\frac{\\pi}{2}+k\\pi$，$k\\in\\mathbb Z$。"
     }
   ],
   "commonMistakes": [
     {
       "id": "trigonometry-m1",
-      "claim": "把 30 当成 30° 输入正弦。",
-      "correction": "本书公式中的 30 是弧度，30° 要换成 π/6。"
+      "claim": "把 30 当成 $30^{\\circ}$ 输入正弦。",
+      "correction": "本书公式中的 30 是弧度，$30^{\\circ}$ 要换成 $\\frac{\\pi }{6}$。"
     },
     {
       "id": "trigonometry-m2",
-      "claim": "把 sin²x 写成 sin(x²)。",
-      "correction": "前者是 (sin x)²，先求正弦再平方。"
+      "claim": "把 $\\sin^{2} x$ 写成 $\\sin (x^{2})$。",
+      "correction": "前者是 $(\\sin x)^{2}$，先求正弦再平方。"
     }
   ],
   "practice": [
@@ -92,29 +92,27 @@
         "trigonometry-m1"
       ],
       "problem": "90° 等于多少弧度？",
-      "answer": "$\\pi/2$。",
+      "answer": "$\\frac{\\pi}{2}$。",
       "solution": [
-        "90×π/180=π/2。"
+        "$\\frac{90 \\times \\pi }{180} = \\frac{\\pi }{2}$。"
       ],
-      "hint": "整圈是 2π。"
+      "hint": "整圈是 $2 \\pi$。"
     },
     {
       "id": "trigonometry-p2",
-      "difficulty": 2,
-      "misconceptionTags": [
-        "trigonometry-m2"
-      ],
+      "difficulty": 1,
+      "misconceptionTags": [],
       "problem": "求 $\\cos\\pi$。",
       "answer": "$-1$。",
       "solution": [
-        "单位圆转半圈到达 (−1,0)。"
+        "单位圆转半圈到达 $(-1,0)$。"
       ],
       "hint": "看横坐标。",
       "numericAnswer": -1
     },
     {
       "id": "trigonometry-p3",
-      "difficulty": 3,
+      "difficulty": 1,
       "misconceptionTags": [
         "trigonometry-m2"
       ],
@@ -127,10 +125,8 @@
     },
     {
       "id": "trigonometry-p4",
-      "difficulty": 4,
-      "misconceptionTags": [
-        "trigonometry-m2"
-      ],
+      "difficulty": 1,
+      "misconceptionTags": [],
       "problem": "$\\sin(x+2\\pi)$ 与 $\\sin x$ 有什么关系？",
       "answer": "相等。",
       "solution": [
@@ -149,7 +145,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.3.2",
     "status": "revised",
     "humanReviewed": false
   },
@@ -167,6 +163,35 @@
       "角度不能求导"
     ],
     "correctIndex": 1,
-    "explanation": "sin h/h→1 要求 h 用弧度。若用角度，换算会带来 π/180 的系数。"
+    "explanation": "$\\frac{\\sin h}{h} \\to 1$ 要求 $h$ 用弧度。若用角度，换算会带来 $\\frac{\\pi }{180}$ 的系数。"
+  },
+  "teaching": {
+    "explain": "正弦记录单位圆上的高度。绕一圈回到同一个点，高度就重复；横轴使用弧度，整圈是两个圆周率。",
+    "steps": [
+      {
+        "title": "从零角开始",
+        "instruction": "把输入设为 0。",
+        "preset": {
+          "x": 0
+        },
+        "observation": "$\\sin0=0$。"
+      },
+      {
+        "title": "走四分之一圈",
+        "instruction": "输入设为接近 $\\frac\\pi2$ 的 1.57。",
+        "preset": {
+          "x": 1.57
+        },
+        "observation": "高度接近 1，位于正弦波峰附近。"
+      },
+      {
+        "title": "走完一圈",
+        "instruction": "输入设为接近 $2\\pi$ 的 6.28。",
+        "preset": {
+          "x": 6.28
+        },
+        "observation": "输出再次接近 0；预设值是小数近似，不是精确圆周率。"
+      }
+    ]
   }
 }

@@ -1,0 +1,193 @@
+{
+  "id": "c2-parts",
+  "title": "分部积分",
+  "subtitle": "把难积的乘积，换成更容易的乘积",
+  "concept": "分部积分把一个因子求导、另一个积分；目标是让剩下的积分更简单。",
+  "intuition": "乘积求导会产生两项。把其中一项移到另一边，再积分，就得到了分部积分。",
+  "body": [
+    {
+      "title": "谁当作第一部分？",
+      "text": "先试着让多项式或对数求导。不是按口诀固定选择：选完后，检查剩下的积分是否真的更简单。"
+    },
+    {
+      "title": "何时需要重复？",
+      "text": "多项式乘指数函数，通常反复分部，直到多项式消失。循环回到原积分时，把它当作未知量移项。"
+    },
+    {
+      "title": "定积分怎么做？",
+      "text": "边界项也要代上下限。每一步都在同一有限区间内进行；遇到无穷界，先截断再取极限。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "把难积的乘积，换成更容易的乘积",
+    "latex": "\\int_a^b u v\\prime\\,dx=[uv]_a^b-\\int_a^b u\\prime v\\,dx",
+    "conditions": [
+      "$u,v$ 在 $[a,b]$ 上连续可导；不定积分在同一连通区间上讨论。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "从乘积法则开始。",
+      "latex": "(uv)\\prime=u\\prime v+uv\\prime"
+    },
+    {
+      "text": "积分并分离两项。",
+      "latex": "[uv]_a^b=\\int_a^b u\\prime v\\,dx+\\int_a^b uv\\prime\\,dx"
+    },
+    {
+      "text": "移项，难积分被替换。",
+      "latex": "\\int_a^b uv\\prime\\,dx=[uv]_a^b-\\int_a^b u\\prime v\\,dx"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "一次就够",
+      "problem": "求 $\\int x e^x\\,dx$。",
+      "steps": [
+        "取 $u=x$，$dv=e^x dx$，于是 $du=dx$，$v=e^x$。",
+        "原式为 $xe^x-\\int e^x dx$；求导复查得到 $xe^x$。"
+      ],
+      "answer": "$e^x(x-1)+C$。"
+    },
+    {
+      "title": "对数也可以分部",
+      "problem": "求 $\\int_1^e\\ln x\\,dx$。",
+      "steps": [
+        "把 $1$ 当作另一个因子：$u=\\ln x$，$dv=dx$。",
+        "得到 $[x\\ln x-x]_1^e=0-(-1)$。"
+      ],
+      "answer": "$1$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-parts-m1",
+      "claim": "分部以后一定更简单。",
+      "correction": "若新积分更难，交换选择；方法的价值取决于剩余积分。"
+    },
+    {
+      "id": "c2-parts-m2",
+      "claim": "边界项只有上限。",
+      "correction": "$[uv]_a^b=u(b)v(b)-u(a)v(a)$。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "求 $\\int x\\cos x\\,dx$。",
+      "answer": "$x\\sin x+\\cos x+C$。",
+      "hint": "让多项式求导。",
+      "solution": [
+        "$u=x,v=\\sin x$；得到 $x\\sin x-\\int\\sin x\\,dx$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-parts-p1"
+    },
+    {
+      "problem": "求 $\\int_0^1 xe^x\\,dx$。",
+      "answer": "$1$。",
+      "hint": "使用例题的原函数。",
+      "solution": [
+        "$[e^x(x-1)]_0^1=0-(-1)=1$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 1,
+      "id": "c2-parts-p2"
+    },
+    {
+      "problem": "求 $\\int x^2e^x\\,dx$。",
+      "answer": "$e^x(x^2-2x+2)+C$。",
+      "hint": "分部两次。",
+      "solution": [
+        "$x^2e^x-2\\int xe^x dx=e^x(x^2-2x+2)+C$。"
+      ],
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "id": "c2-parts-p3"
+    },
+    {
+      "problem": "求 $\\int e^x\\cos x\\,dx$。",
+      "answer": "$\\frac{e^x(\\sin x+\\cos x)}2+C$。",
+      "hint": "两次分部后移项。",
+      "solution": [
+        "设积分为 $I$，第一次得到 $I=e^x\\cos x+\\int e^x\\sin x dx$。",
+        "第二次得到 $I=e^x\\cos x+e^x\\sin x-I$，所以解出 $2I$。"
+      ],
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "id": "c2-parts-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "对 $\\int xe^x dx$，哪种选择使剩余积分最简单？",
+    "choices": [
+      "$u=x,\\ dv=e^x dx$",
+      "$u=e^x,\\ dv=x dx$",
+      "两种都不合法"
+    ],
+    "correctIndex": 0,
+    "explanation": "第一种让多项式降为常数。"
+  },
+  "teaching": {
+    "explain": "把乘积的一次总变化拆成两部分：一部分容易累积，就用它去换掉难的那部分。",
+    "steps": [
+      {
+        "title": "小区间",
+        "instruction": "上限设为 0.5。",
+        "observation": "面积为 $1-\\frac12e^{1/2}$，分部右侧给出同值。",
+        "preset": {
+          "b": 0.5
+        }
+      },
+      {
+        "title": "核对端点",
+        "instruction": "上限设为 1。",
+        "observation": "积分为 1；边界项减剩余积分也为 1。",
+        "preset": {
+          "b": 1
+        }
+      },
+      {
+        "title": "放大区间",
+        "instruction": "上限设为 2。",
+        "observation": "积分为 $e^2+1$；边界项与剩余项都必须计算。",
+        "preset": {
+          "b": 2
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "substitution",
+    "derivative-rules"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-techniques",
+  "number": "1.1",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-parts",
+    "caption": "显示 $\\int_0^b xe^x dx$ 与边界项、剩余积分的关系。",
+    "prediction": "上限扩大时，两种写法的累计值是否一致？"
+  },
+  "misconceptionTags": [
+    "c2-parts-m1",
+    "c2-parts-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "选择让剩余积分更简单的因子",
+    "处理重复分部与循环积分",
+    "计算定积分边界项"
+  ]
+}

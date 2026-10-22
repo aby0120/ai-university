@@ -4,7 +4,7 @@
   "number": "4.5",
   "title": "牛顿法：沿切线找根",
   "subtitle": "从猜测开始，用斜率改进",
-  "concept": "牛顿法用切线找根：从当前点画切线，把它与 x 轴的交点作为下一次猜测。",
+  "concept": "牛顿法用切线找根：从当前点画切线，把它与 $x$ 轴的交点作为下一次猜测。",
   "intuition": "猜测越靠近合适的根，切线通常越能给出更好的位置。每一步都要检查导数不为 0。",
   "objectives": [
     "迭代公式",
@@ -14,7 +14,7 @@
   "body": [
     {
       "title": "下一点怎么算？",
-      "text": "令当前切线的 y=0，得到 x_(n+1)=x_n−f(x_n)/f′(x_n)。分母为 0 或过小时，这一步不可靠。"
+      "text": "令当前切线的 $y = 0$，得到 $x_{n + 1} = x_{n} - \\frac{f (x_{n})}{f' (x_{n})}$。分母为 0 或过小时，这一步不可靠。"
     },
     {
       "title": "什么时候停止？",
@@ -22,7 +22,7 @@
     },
     {
       "title": "一定收敛吗？",
-      "text": "不一定。单根附近通常很快，重根可能慢；x³−2x+2 从 0 出发会在 0、1 之间循环。失败时可改初值或用二分法。"
+      "text": "不一定。单根附近通常很快，重根可能慢；$x^{3} - 2 x + 2$ 从 0 出发会在 0、1 之间循环。失败时可改初值或用二分法。"
     }
   ],
   "formalDefinition": {
@@ -42,7 +42,7 @@
       "latex": "x_{n+1}=x_n-\\frac{f(x_n)}{f\\prime(x_n)}"
     },
     {
-      "text": "对 x²−2，公式化成平均形式。",
+      "text": "对 $x^{2} - 2$，公式化成平均形式。",
       "latex": "x_{n+1}=\\frac12\\left(x_n+\\frac2{x_n}\\right)"
     }
   ],
@@ -54,20 +54,20 @@
   },
   "workedExamples": [
     {
-      "title": "近似 √2",
-      "problem": "对 x²−2 从 x₀=1 开始迭代两次。",
+      "title": "近似 $\\sqrt{2}$",
+      "problem": "对 $x^{2} - 2$ 从 $x_{0} = 1$ 开始迭代两次。",
       "steps": [
-        "x₁=(1+2)/2=1.5。",
-        "x₂=(1.5+2/1.5)/2=17/12≈1.416667。"
+        "$x_{1} = \\frac{1 + 2}{2} = 1.5$。",
+        "$x_{2} = \\frac{1.5 + \\frac{2}{1.5}}{2} = \\frac{17}{12} \\approx 1.416667$。"
       ],
-      "answer": "两步后约 1.416667，已接近 √2。"
+      "answer": "两步后约 1.416667，已接近 $\\sqrt{2}$。"
     },
     {
       "title": "一个明确的循环",
-      "problem": "f(x)=x³−2x+2，从 x₀=0 开始会如何？",
+      "problem": "$f (x) = x^{3} - 2 x + 2$，从 $x_{0} = 0$ 开始会如何？",
       "steps": [
-        "f(0)=2、f′(0)=−2，得到 x₁=1。",
-        "f(1)=1、f′(1)=1，得到 x₂=0。"
+        "$f (0) = 2$、$f' (0) = - 2$，得到 $x_{1} = 1$。",
+        "$f (1) = 1$、$f' (1) = 1$，得到 $x_{2} = 0$。"
       ],
       "answer": "在 0 与 1 循环，不收敛。"
     }
@@ -87,50 +87,46 @@
   "practice": [
     {
       "id": "newton-p1",
-      "difficulty": 1,
-      "misconceptionTags": [
-        "newton-m1"
-      ],
-      "problem": "对 x²−4，从 x₀=3 做一步。",
-      "answer": "$13/6$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "problem": "对 $x^{2} - 4$，从 $x_{0} = 3$ 做一步。",
+      "answer": "$\\frac{13}{6}$。",
       "solution": [
-        "3−(9−4)/6=13/6。"
+        "$3 - \\frac{9 - 4}{6} = \\frac{13}{6}$。"
       ],
       "hint": "使用当前函数值与导数。",
       "numericAnswer": 2.1666666666666665
     },
     {
       "id": "newton-p2",
-      "difficulty": 2,
+      "difficulty": 1,
       "misconceptionTags": [
         "newton-m2"
       ],
-      "problem": "对 f(x)=x²−2，x₀=0 能做第一步吗？",
+      "problem": "对 $f (x) = x^{2} - 2$，$x_{0} = 0$ 能做第一步吗？",
       "answer": "不能。",
       "solution": [
-        "f′(0)=0，迭代式出现除零。"
+        "$f' (0) = 0$，迭代式出现除零。"
       ],
       "hint": "先检查导数。"
     },
     {
       "id": "newton-p3",
-      "difficulty": 3,
-      "misconceptionTags": [
-        "newton-m2"
-      ],
-      "problem": "对线性函数 2x−6，任何初值一步会到哪里？",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "problem": "对线性函数 $2 x - 6$，任何初值一步会到哪里？",
       "answer": "$3$。",
       "solution": [
-        "x−(2x−6)/2=3；直线等于自己的切线。"
+        "$x - \\frac{2 x - 6}{2} = 3$；直线等于自己的切线。"
       ],
       "hint": "所有切线都是原直线。",
       "numericAnswer": 3
     },
     {
       "id": "newton-p4",
-      "difficulty": 4,
+      "difficulty": 3,
       "misconceptionTags": [
-        "newton-m2"
+        "newton-m1"
       ],
       "problem": "残差小是否能单独证明输入误差小？",
       "answer": "一般不能。",
@@ -151,7 +147,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.3.1",
     "status": "revised",
     "humanReviewed": false
   },
@@ -162,13 +158,45 @@
     "phet-design"
   ],
   "learningCheck": {
-    "question": "牛顿法某一步遇到 f′(xₙ)=0，怎么办？",
+    "question": "牛顿法某一步遇到 $f' (x_{n}) = 0$，怎么办？",
     "choices": [
       "继续除以零",
       "这一步公式失效，需要更换初值或方法",
-      "说明 xₙ 一定是根"
+      "说明 $x_{n}$ 一定是根"
     ],
     "correctIndex": 1,
-    "explanation": "更新要除以 f′(xₙ)。斜率为零时不能这样做；函数值也可能不为零。"
+    "explanation": "更新要除以 $f' (x_{n})$。斜率为零时不能这样做；函数值也可能不为零。"
+  },
+  "teaching": {
+    "explain": "每一步把弯曲函数临时换成当前切线，求切线的零点作为下一次猜测。猜测能更新，但不能保证每次都更好。",
+    "steps": [
+      {
+        "title": "先做一步",
+        "instruction": "初值取 1，迭代一次。",
+        "preset": {
+          "x": 1,
+          "n": 1
+        },
+        "observation": "对平方减 2 的模型，下一猜测是 1.5。"
+      },
+      {
+        "title": "继续核对",
+        "instruction": "仍从 1 出发，迭代四次。",
+        "preset": {
+          "x": 1,
+          "n": 4
+        },
+        "observation": "近似接近平方根 2，残差很小。"
+      },
+      {
+        "title": "尝试失效点",
+        "instruction": "初值改为 0。",
+        "preset": {
+          "x": 0,
+          "n": 4
+        },
+        "observation": "导数为零，不能除；演示应给出停止原因。"
+      }
+    ]
   }
 }

@@ -1,0 +1,193 @@
+{
+  "id": "c3-cross",
+  "chapterId": "c3-space",
+  "number": "1.3",
+  "title": "叉积、面积与法向量",
+  "subtitle": "同时求面积和垂直方向",
+  "concept": "叉积是垂直于两个向量的向量；它的长度等于两向量张成的平行四边形面积。",
+  "intuition": "底乘高给面积，右手规则给方向。交换两个向量，面积不变，法向反过来。",
+  "objectives": [
+    "求法向量与面积",
+    "计算三重积体积"
+  ],
+  "body": [
+    {
+      "title": "与点积有什么区别？",
+      "text": "点积是标量，关注对齐；三维叉积是向量，关注垂直方向与张开的面积。"
+    },
+    {
+      "title": "为什么要规定顺序？",
+      "text": "从第一个向量转向第二个向量，用右手确定正法向。交换顺序就反号。"
+    },
+    {
+      "title": "三重积有什么用？",
+      "text": "把叉积再点乘第三个向量，得到有向体积；绝对值是平行六面体体积。为零表示三个向量共面。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "同时求面积和垂直方向",
+    "latex": "\\mathbf u\\times\\mathbf v=\\langle u_2v_3-u_3v_2,u_3v_1-u_1v_3,u_1v_2-u_2v_1\\rangle,\\quad A=\\|\\mathbf u\\times\\mathbf v\\|,\\quad V=|\\mathbf w\\cdot(\\mathbf u\\times\\mathbf v)|",
+    "conditions": [
+      "本节叉积使用三维右手直角坐标；单位法向要求叉积非零。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先选与两者都垂直的向量。",
+      "latex": "(\\mathbf u\\times\\mathbf v)\\cdot\\mathbf u=(\\mathbf u\\times\\mathbf v)\\cdot\\mathbf v=0"
+    },
+    {
+      "text": "底乘高给长度。",
+      "latex": "\\|\\mathbf u\\times\\mathbf v\\|=\\|\\mathbf u\\|\\|\\mathbf v\\|\\sin\\theta"
+    },
+    {
+      "text": "再取第三方向的有向高度。",
+      "latex": "V=|\\mathbf w\\cdot(\\mathbf u\\times\\mathbf v)|"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "三角形面积",
+      "problem": "$\\mathbf u=\\langle2,0,0\\rangle,\\mathbf v=\\langle1,3,0\\rangle$ 张成的三角形面积？",
+      "steps": [
+        "叉积为 $\\langle0,0,6\\rangle$。",
+        "平行四边形面积是 6，三角形取一半。"
+      ],
+      "answer": "3。"
+    },
+    {
+      "title": "空间体积",
+      "problem": "$\\mathbf u=\\langle1,0,1\\rangle,\\mathbf v=\\langle0,2,0\\rangle,\\mathbf w=\\langle0,0,3\\rangle$ 的平行六面体体积？",
+      "steps": [
+        "叉积 $\\langle-2,0,2\\rangle$。",
+        "点乘第三向量得 6，取绝对值。"
+      ],
+      "answer": "6。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-cross-m1",
+      "claim": "叉积交换顺序不变。",
+      "correction": "叉积满足反交换律，顺序决定定向。"
+    },
+    {
+      "id": "c3-cross-m2",
+      "claim": "平行向量也有唯一单位法向。",
+      "correction": "叉积为零，垂直方向不唯一。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-cross-q1",
+      "problem": "$\\mathbf i\\times\\mathbf k$ 等于什么？",
+      "hint": "用右手次序或分量式。",
+      "solution": [
+        "第三分量轴与第一分量轴的交换改变正负。",
+        "计算得 $-\\mathbf j$。"
+      ],
+      "answer": "$-\\mathbf j$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-cross-q2",
+      "problem": "$\\langle3,0,0\\rangle$ 与 $\\langle0,4,0\\rangle$ 张成的平行四边形面积？",
+      "hint": "算叉积的长度。",
+      "solution": [
+        "叉积为 $\\langle0,0,12\\rangle$，长度 12。"
+      ],
+      "answer": "12",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 12
+    },
+    {
+      "id": "c3-cross-q3",
+      "problem": "交换三重积中的两个向量，体积变吗？",
+      "hint": "区分有向体积和体积。",
+      "solution": [
+        "有向三重积变号。",
+        "绝对值不变，几何体积不变。"
+      ],
+      "answer": "几何体积不变。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-cross-q4",
+      "problem": "若两个非零向量叉积为零，能判断什么？",
+      "hint": "面积为零意味着什么？",
+      "solution": [
+        "$\\sin\\theta=0$，夹角为零或 $\\pi$。",
+        "两向量平行，方向可能相同也可能相反。"
+      ],
+      "answer": "两向量平行。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "交换叉积次序会怎样？",
+    "choices": [
+      "长度变号",
+      "方向反转，长度不变",
+      "完全不变"
+    ],
+    "correctIndex": 1,
+    "explanation": "有向法向反转，面积仍非负。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-cross",
+    "caption": "旋转平面内的第二个向量，观察平行四边形与垂直的叉积。",
+    "prediction": "反向平行会张出面积吗？"
+  },
+  "teaching": {
+    "explain": "叉积长度给底乘高，方向按右手规则选；面积与定向要分开。",
+    "steps": [
+      {
+        "title": "平行",
+        "instruction": "将夹角 $\\theta$ 设为 $0$。",
+        "preset": {
+          "a": 0
+        },
+        "observation": "平行四边形退化，叉积为零。"
+      },
+      {
+        "title": "最大面积",
+        "instruction": "将夹角 $\\theta$ 设为 $\\frac\\pi2$。",
+        "preset": {
+          "a": 1.5707963267948966
+        },
+        "observation": "两向量垂直，张成的面积最大。"
+      },
+      {
+        "title": "再次退化",
+        "instruction": "将夹角 $\\theta$ 设为 $\\pi$。",
+        "preset": {
+          "a": 3.141592653589793
+        },
+        "observation": "反向平行仍给零面积，不能归一化叉积。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-dot"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-cross-m1",
+    "c3-cross-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

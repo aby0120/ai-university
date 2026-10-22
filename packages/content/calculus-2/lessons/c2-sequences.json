@@ -1,0 +1,193 @@
+{
+  "id": "c2-sequences",
+  "title": "数列与极限",
+  "subtitle": "看第几项，而不是看连续时间",
+  "concept": "数列的极限描述后面的每一项是否最终留在某个数附近；前面有限项不决定极限。",
+  "intuition": "$a_n=\\frac1n$ 越来越靠近零，却没有任何一项等于零。数列只在整数位置取值。",
+  "body": [
+    {
+      "title": "怎样把“靠近”说清？",
+      "text": "任给正容差，都能找到一个项数，使后面所有项与极限的距离小于这个容差。不是只有某些项靠近。"
+    },
+    {
+      "title": "怎样计算？",
+      "text": "可用极限运算法则、夹逼或与已知连续函数连接。分母极限不为零时，才能直接使用商法则。"
+    },
+    {
+      "title": "振荡一定发散吗？",
+      "text": "幅度缩到零的振荡仍可收敛。$(-1)^n$ 发散，而 $\\frac{(-1)^n}{n}$ 收敛到零。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "看第几项，而不是看连续时间",
+    "latex": "a_n\\to L\\iff\\forall\\varepsilon>0\\ \\exists N\\ \\forall n\\geq N:\\ |a_n-L|<\\varepsilon",
+    "conditions": [
+      "项数 $n$ 为正整数；$N$ 可依赖容差，但不能依赖后面所选的某一项。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "用目标容差控制倒数。",
+      "latex": "\\left|\\frac1n-0\\right|<\\varepsilon\\iff n>\\frac1\\varepsilon"
+    },
+    {
+      "text": "选择严格更大的整数阈值。",
+      "latex": "N>\\frac1\\varepsilon"
+    },
+    {
+      "text": "阈值以后的每项都满足要求。",
+      "latex": "n\\geq N\\Longrightarrow\\frac1n\\leq\\frac1N<\\varepsilon"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "多项式比值",
+      "problem": "求 $\\lim_{n\\to\\infty}\\frac{3n+1}{2n-5}$。",
+      "steps": [
+        "分子分母同除以 $n$，得到 $\\frac{3+1/n}{2-5/n}$。",
+        "分母趋于 2，不为零，可用商法则。"
+      ],
+      "answer": "$\\frac32$。"
+    },
+    {
+      "title": "振荡但收敛",
+      "problem": "求 $\\lim\\frac{\\sin n}{n}$。",
+      "steps": [
+        "用 $|\\sin n|\\leq1$，得 $|\\frac{\\sin n}{n}|\\leq\\frac1n$。",
+        "右侧趋于零，夹逼得原数列趋于零。"
+      ],
+      "answer": "$0$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c2-sequences-m1",
+      "claim": "出现一项很接近，就已经收敛。",
+      "correction": "极限要求后面所有项都足够接近。"
+    },
+    {
+      "id": "c2-sequences-m2",
+      "claim": "有界数列必收敛。",
+      "correction": "$(-1)^n$ 有界却没有极限。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "求 $\\lim\\frac{n}{n+1}$。",
+      "answer": "$1$。",
+      "hint": "改写成一减一个小量。",
+      "solution": [
+        "$\\frac n{n+1}=1-\\frac1{n+1}\\to1$。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 1,
+      "id": "c2-sequences-p1"
+    },
+    {
+      "problem": "$(-1)^n$ 为什么不收敛？",
+      "answer": "奇数项与偶数项有不同极限。",
+      "hint": "分别看两个子序列。",
+      "solution": [
+        "奇数项恒为 $-1$，偶数项恒为 1；若全数列收敛，二者必须趋于同一个数。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "c2-sequences-p2"
+    },
+    {
+      "problem": "要使 $\\frac1n<0.01$，可取最小整数阈值 $N$ 是多少？",
+      "answer": "$101$。",
+      "hint": "注意严格小于。",
+      "solution": [
+        "$n>100$，所以所有 $n\\geq101$ 都满足。"
+      ],
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 101,
+      "id": "c2-sequences-p3"
+    },
+    {
+      "problem": "求 $\\lim\\sqrt{n^2+n}-n$。",
+      "answer": "$\\frac12$。",
+      "hint": "乘共轭。",
+      "solution": [
+        "$\\sqrt{n^2+n}-n=\\frac{n}{\\sqrt{n^2+n}+n}=\\frac1{\\sqrt{1+1/n}+1}\\to\\frac12$。"
+      ],
+      "difficulty": 4,
+      "misconceptionTags": [],
+      "numericAnswer": 0.5,
+      "id": "c2-sequences-p4"
+    }
+  ],
+  "learningCheck": {
+    "question": "哪个数列收敛？",
+    "choices": [
+      "$(-1)^n$",
+      "$\\frac{(-1)^n}{n}$",
+      "$n$"
+    ],
+    "correctIndex": 1,
+    "explanation": "第二个数列的振荡幅度趋于零。"
+  },
+  "teaching": {
+    "explain": "极限允许前面很乱，要求的是足够往后以后，每一项都不会再跑远。",
+    "steps": [
+      {
+        "title": "前十项",
+        "instruction": "项数取 10。",
+        "observation": "最后一项为 $\\frac1{10}$。",
+        "preset": {
+          "n": 10
+        }
+      },
+      {
+        "title": "四十项",
+        "instruction": "项数取 40。",
+        "observation": "最后一项为 $\\frac1{40}$；离散点之间不表示额外数列项。",
+        "preset": {
+          "n": 40
+        }
+      },
+      {
+        "title": "八十项",
+        "instruction": "项数取 80。",
+        "observation": "最后一项仍为正，极限不是必须实际取到的项。",
+        "preset": {
+          "n": 80
+        }
+      }
+    ]
+  },
+  "prerequisites": [
+    "limit-laws"
+  ],
+  "difficulty": 3,
+  "chapterId": "c2-sequences",
+  "number": "3.1",
+  "interactiveVisual": {
+    "kind": "calculus2",
+    "function": "c2-sequences",
+    "caption": "对照 $a_n=\\frac1n$ 的离散项与目标零。",
+    "prediction": "后面 20 项都很接近零，能代替对所有后续项的论证吗？"
+  },
+  "misconceptionTags": [
+    "c2-sequences-m1",
+    "c2-sequences-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "openstax-calculus-2",
+    "active-calculus"
+  ],
+  "objectives": [
+    "用容差解释数列极限",
+    "使用夹逼和极限运算法则",
+    "区分振荡幅度与收敛"
+  ]
+}

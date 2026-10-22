@@ -1,0 +1,192 @@
+{
+  "id": "c3-divergence",
+  "chapterId": "c3-theorems",
+  "number": "9.2",
+  "title": "散度定理与闭曲面",
+  "subtitle": "把全部向外通量换成内部净流出",
+  "concept": "散度定理把闭曲面的向外通量与其包围体积内的散度积分相连。",
+  "intuition": "把体积分成小盒子，相邻盒子的公共面一个向外一个向内，相互抵消，留下整体外壳。",
+  "objectives": [
+    "计算闭面的外向通量",
+    "补面并处理奇点与空腔"
+  ],
+  "body": [
+    {
+      "title": "必须是闭合表面吗？",
+      "text": "定理需要整个体积边界。开放盖子先补全，再减去补上的那片通量；不能直接对单片曲面套闭面公式。"
+    },
+    {
+      "title": "空腔法向怎么选？",
+      "text": "对实际体积向外，内边界指向空腔。各片都按同一个体积的外侧选择，而不是都远离原点。"
+    },
+    {
+      "title": "奇点怎样处理？",
+      "text": "场要在包含实体的开邻域一阶连续可导。点源场在原点未定义时，不能用原点外散度零断言围住原点的通量零。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "把全部向外通量换成内部净流出",
+    "latex": "\\iint_{\\partial E}\\mathbf F\\cdot\\mathbf n_{\\rm out}dS=\\iiint_E\\nabla\\cdot\\mathbf F\\,dV",
+    "conditions": [
+      "实体有界、边界分片光滑且向外定向；场在包含实体及边界的开邻域一阶连续可导；空腔边界也须包含。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "对小长方体的相对面使用一元基本定理。",
+      "latex": "\\Phi_x=\\iiint_E P_x\\,dV"
+    },
+    {
+      "text": "三个坐标方向相加。",
+      "latex": "\\Phi=\\iiint_E(P_x+Q_y+R_z)dV"
+    },
+    {
+      "text": "分块后公共面反向抵消。",
+      "latex": "\\sum\\Phi_{\\rm interior}=0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "径向场穿球",
+      "problem": "$\\mathbf F=(x,y,z)$ 穿过半径 2 球面的外向通量。",
+      "steps": [
+        "散度为 3。",
+        "乘体积 $32\\pi/3$，得 $32\\pi$；与直接曲面计算一致。"
+      ],
+      "answer": "$32\\pi$。"
+    },
+    {
+      "title": "补底面",
+      "problem": "$\\mathbf F=(0,0,z+1)$ 穿过单位上半球曲面的向外通量？",
+      "steps": [
+        "补上底圆盘形成半球体，散度一，闭面通量为 $2\\pi/3$。",
+        "底面向下，场竖分量为一，底通量为 $-\\pi$。",
+        "半球曲面通量为闭面减底面，得 $5\\pi/3$。"
+      ],
+      "answer": "$\\frac{5\\pi}3$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-divergence-m1",
+      "claim": "开放曲面直接等于某体积的散度积分。",
+      "correction": "要补成闭面，并扣回补面的通量。"
+    },
+    {
+      "id": "c3-divergence-m2",
+      "claim": "奇点只占一个点所以无须管。",
+      "correction": "场的导数假设可能在该点失效，通量仍可非零。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-divergence-q1",
+      "problem": "场 $(2x,2y,2z)$ 穿过单位球的向外通量？",
+      "hint": "散度六乘球体积。",
+      "solution": [
+        "$6\\cdot4\\pi/3=8\\pi$。"
+      ],
+      "answer": "$8\\pi$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-divergence-q2",
+      "problem": "常场穿过任意规则闭曲面的净通量？",
+      "hint": "散度为零。",
+      "solution": [
+        "场全域光滑，散度积分为零。"
+      ],
+      "answer": "0",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0
+    },
+    {
+      "id": "c3-divergence-q3",
+      "problem": "将闭球面定向改为向内，径向场通量如何变？",
+      "hint": "法向反转。",
+      "solution": [
+        "与向外通量大小相等、符号相反。"
+      ],
+      "answer": "反号。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-divergence-q4",
+      "problem": "球壳的内球面向外法向指向哪里？",
+      "hint": "从壳的物质区域走向外部。",
+      "solution": [
+        "内球面外部是空腔，因此法向指向球心一侧。"
+      ],
+      "answer": "指向空腔。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "散度定理直接适用于哪种表面？",
+    "choices": [
+      "任意一片面",
+      "一个体积的完整向外边界",
+      "只有圆盘"
+    ],
+    "correctIndex": 1,
+    "explanation": "开放曲面需补面并扣除补面贡献。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-divergence",
+    "caption": "径向场 $\\mathbf F=(x,y,z)$ 穿过半径可变球面。场箭头按统一倍率 0.22 显示。",
+    "prediction": "半径翻倍，为什么通量不只是面积的四倍？"
+  },
+  "teaching": {
+    "explain": "整个外壳的净流出，等于所有内部小盒子的净流出之和；公共面已抵消。",
+    "steps": [
+      {
+        "title": "小球",
+        "instruction": "将球面半径 $R$ 设为 $0.5$。",
+        "preset": {
+          "b": 0.5
+        },
+        "observation": "径向场通量随半径立方变化。"
+      },
+      {
+        "title": "单位球",
+        "instruction": "将球面半径 $R$ 设为 $1$。",
+        "preset": {
+          "b": 1
+        },
+        "observation": "外向通量为 $4\\pi$。"
+      },
+      {
+        "title": "大球",
+        "instruction": "将球面半径 $R$ 设为 $2$。",
+        "preset": {
+          "b": 2
+        },
+        "observation": "半径翻倍，通量变为八倍；场强在球面也增大。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-div-curl",
+    "c3-spherical"
+  ],
+  "difficulty": 5,
+  "misconceptionTags": [
+    "c3-divergence-m1",
+    "c3-divergence-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

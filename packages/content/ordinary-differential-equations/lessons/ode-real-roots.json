@@ -1,0 +1,195 @@
+{
+  "id": "ode-real-roots",
+  "chapterId": "ode-second-order",
+  "number": "4.3",
+  "title": "特征方程与不同实根",
+  "subtitle": "让求导变成乘法",
+  "body": [
+    {
+      "title": "为什么试指数？",
+      "text": "对 $y=e^{rt}$，一阶导数是 $re^{rt}$，二阶是 $r^2e^{rt}$；非零指数因子可消去。"
+    },
+    {
+      "title": "两个实根怎样用？",
+      "text": "不同实根 $r_1,r_2$ 给独立的 $e^{r_1t},e^{r_2t}$，通解是二者组合。"
+    },
+    {
+      "title": "根与长期行为",
+      "text": "正根允许增长，负根对应衰减；通解中该方向的系数是否为零，还取决于初值。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "代入指数试解。",
+      "latex": "a r^2e^{rt}+bre^{rt}+ce^{rt}=0"
+    },
+    {
+      "text": "消去处处非零的因子。",
+      "latex": "ar^2+br+c=0"
+    },
+    {
+      "text": "两个不同指数的 Wronskian 非零。",
+      "latex": "W=(r_2-r_1)e^{(r_1+r_2)t}\\ne0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "两个衰减率",
+      "problem": "解 $y''+3y'+2y=0$。",
+      "steps": [
+        "特征式为 $(r+1)(r+2)=0$。",
+        "根为负一与负二，指数独立。"
+      ],
+      "answer": "$y=c_1e^{-t}+c_2e^{-2t}$。"
+    },
+    {
+      "title": "匹配初值",
+      "problem": "解 $y''-y=0,y(0)=1,y'(0)=0$。",
+      "steps": [
+        "通解为 $c_1e^t+c_2e^{-t}$。",
+        "初值给系数和为一、差为零。"
+      ],
+      "answer": "$y=(e^t+e^{-t})/2$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-real-roots-q1",
+      "problem": "$y''-3y'+2y=0$ 的两个根？",
+      "hint": "分解二次多项式。",
+      "solution": [
+        "$(r-1)(r-2)=0$。"
+      ],
+      "answer": "$1,2$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-real-roots-q2",
+      "problem": "$y''+4y'+3y=0$ 的通解？",
+      "hint": "根为负一与负三。",
+      "solution": [
+        "将两个指数线性组合。"
+      ],
+      "answer": "$c_1e^{-t}+c_2e^{-3t}$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-real-roots-q3",
+      "problem": "若有一个正根，每条解都一定增长吗？",
+      "hint": "检查对应系数。",
+      "solution": [
+        "正根方向的系数可为零，零解也是解。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-real-roots-q4",
+      "problem": "为什么可除以 $e^{rt}$？",
+      "hint": "检查是否有零点。",
+      "solution": [
+        "实时间上的实或复指数均不为零。"
+      ],
+      "answer": "该因子处处非零。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-real-roots-m1",
+      "claim": "常系数特征法直接适用于任意变系数。",
+      "correction": "变系数下指数通常不能消去所有时间依赖。"
+    },
+    {
+      "id": "ode-real-roots-m2",
+      "claim": "一个特征根只对应一个固定解。",
+      "correction": "其指数可乘任意常数。"
+    }
+  ],
+  "prerequisites": [
+    "ode-wronskian"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-real-roots-m1",
+    "ode-real-roots-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "常系数线性方程代入指数函数后，微分运算变成关于指数增长率的代数方程。",
+  "intuition": "指数函数每次求导都只多乘一个常数，因此能把微分算子拆开。",
+  "objectives": [
+    "建立特征方程",
+    "使用不同实根求初值解"
+  ],
+  "formalDefinition": {
+    "text": "特征方程与不同实根",
+    "latex": "ay''+by'+cy=0,\\qquad ar^2+br+c=0",
+    "conditions": [
+      "$a,b,c$ 为实常数且 $a\\ne0$；本节假定两个特征根实且不同。"
+    ]
+  },
+  "learningCheck": {
+    "question": "把指数试解代入的主要收益是？",
+    "choices": [
+      "把导数变成关于根的乘法",
+      "证明所有方程都可积",
+      "免去初值"
+    ],
+    "correctIndex": 0,
+    "explanation": "这是常系数结构带来的简化。"
+  },
+  "teaching": {
+    "explain": "特征方程不是额外记忆规则；把指数函数逐次求导，规则就会自然出现。",
+    "steps": [
+      {
+        "title": "不同负根",
+        "preset": {
+          "a": -1,
+          "c": -2,
+          "b": 1
+        },
+        "observation": "两个方向都衰减，但速度不同。",
+        "instruction": "将第一实根 $r_1$设为 $-1$；将第二实根 $r_2$设为 $-2$；将观察时间 $t$设为 $1$。"
+      },
+      {
+        "title": "一个正根",
+        "preset": {
+          "a": 1,
+          "c": -1,
+          "b": 1
+        },
+        "observation": "一条增长、一条衰减。",
+        "instruction": "将第一实根 $r_1$设为 $1$；将第二实根 $r_2$设为 $-1$；将观察时间 $t$设为 $1$。"
+      },
+      {
+        "title": "根重合",
+        "preset": {
+          "a": -1,
+          "c": -1,
+          "b": 1
+        },
+        "observation": "两条线重合，须用重根方法补第二方向。",
+        "instruction": "将第一实根 $r_1$设为 $-1$；将第二实根 $r_2$设为 $-1$；将观察时间 $t$设为 $1$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-real-roots",
+    "caption": "两指数只在根不同时构成独立基解。根相同时明确标记独立性丢失，而不是继续称为完整基。",
+    "prediction": "两根合并时，这两条指数还能组成独立基吗？"
+  }
+}

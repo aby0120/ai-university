@@ -1,0 +1,195 @@
+{
+  "id": "c3-chain",
+  "chapterId": "c3-differentiation",
+  "number": "3.5",
+  "title": "多元链式法则与隐函数",
+  "subtitle": "把每条变化路径的贡献加起来",
+  "concept": "一个量通过多个中间变量变化时，总变化率等于每条路径的局部变化率乘积之和。",
+  "intuition": "沿山路前进，高度既受向东移动影响，也受向北移动影响；把这两部分贡献相加。",
+  "objectives": [
+    "沿参数路径求总变化率",
+    "在正则点求隐式导数"
+  ],
+  "body": [
+    {
+      "title": "为什么是求和？",
+      "text": "函数的线性增量由各坐标贡献组成。各坐标又随参数变化，代入后自然得到求和。"
+    },
+    {
+      "title": "多个输入参数怎么办？",
+      "text": "对每个输入分别追踪路径，得到一个导数矩阵。矩阵相乘只是把这些求和整齐写在一起。"
+    },
+    {
+      "title": "隐函数如何求导？",
+      "text": "若 $F(x,y)=0$ 且 $F_y\\ne0$，在连续偏导的局部条件下可解出纵坐标作为横坐标的函数，再对恒等式求导。分母为零时不直接套公式。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "把每条变化路径的贡献加起来",
+    "latex": "\\frac{d}{dt}f(x(t),y(t))=f_x\\,x\\prime+f_y\\,y\\prime,\\quad\\frac{dy}{dx}=-\\frac{F_x}{F_y}",
+    "conditions": [
+      "链式法则要求外层在路径点可微、内层可导；隐函数局部结论要求 $F$ 在附近一阶连续可导且 $F_y\\ne0$。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "写出外层的一阶增量。",
+      "latex": "df=f_xdx+f_ydy"
+    },
+    {
+      "text": "除以时间增量并取极限。",
+      "latex": "\\frac{df}{dt}=f_x\\frac{dx}{dt}+f_y\\frac{dy}{dt}"
+    },
+    {
+      "text": "对隐式恒等式求导。",
+      "latex": "F_x+F_y y\\prime=0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "沿路径求导",
+      "problem": "$f=x^2y,x=t,y=t^2$，求沿路径的导数。",
+      "steps": [
+        "链式法则给 $2xy\\cdot1+x^2\\cdot2t$。",
+        "代入得 $4t^3$；直接先代入 $f=t^4$ 复查。"
+      ],
+      "answer": "$4t^3$。"
+    },
+    {
+      "title": "隐式斜率",
+      "problem": "椭圆 $x^2+4y^2=8$ 在 $(2,1)$ 的斜率？",
+      "steps": [
+        "$F_x=2x,F_y=8y$，该点分母为 8。",
+        "斜率为 $-4/8$。"
+      ],
+      "answer": "$-\\frac12$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "c3-chain-m1",
+      "claim": "链式法则只保留一个变化方向。",
+      "correction": "每个随参数变化的输入都要贡献一项。"
+    },
+    {
+      "id": "c3-chain-m2",
+      "claim": "隐式导数分母为零就填无穷大。",
+      "correction": "公式失效，要检查是否为竖直切线或更严重的退化。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "c3-chain-q1",
+      "problem": "$f=x+y,x=t^2,y=\\sin t$，求零时刻变化率。",
+      "hint": "两条路径分别求导。",
+      "solution": [
+        "$2t+\\cos t$ 在零时刻为 1。"
+      ],
+      "answer": "1",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 1
+    },
+    {
+      "id": "c3-chain-q2",
+      "problem": "$f=x^2+y^2$ 沿 $x=\\cos t,y=\\sin t$ 的变化率？",
+      "hint": "先用恒等式复查。",
+      "solution": [
+        "沿路径函数恒为 1，因此导数为零。",
+        "链式法则两项也相互抵消。"
+      ],
+      "answer": "0",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0
+    },
+    {
+      "id": "c3-chain-q3",
+      "problem": "$x^2+y^2=1$ 在 $(1,0)$ 能用 $-x/y$ 吗？",
+      "hint": "检查分母与切线。",
+      "solution": [
+        "分母为零，纵坐标不能在该点作为横坐标的局部可微函数。",
+        "圆在这里有竖直切线。"
+      ],
+      "answer": "不能。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    },
+    {
+      "id": "c3-chain-q4",
+      "problem": "$F(x,y,z)=0,F_z\\ne0$，求局部 $z_x$。",
+      "hint": "固定纵坐标，对恒等式求横偏导。",
+      "solution": [
+        "$F_x+F_z z_x=0$。",
+        "得到 $z_x=-F_x/F_z$。"
+      ],
+      "answer": "$-\\frac{F_x}{F_z}$。",
+      "difficulty": 4,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "沿等高线移动时，函数变化率怎样？",
+    "choices": [
+      "必为正",
+      "为零",
+      "等于路程"
+    ],
+    "correctIndex": 1,
+    "explanation": "函数值恒定，链式求和的各项合起来为零。"
+  },
+  "interactiveVisual": {
+    "kind": "calculus3",
+    "function": "c3-chain",
+    "caption": "在碗面 $z=x^2+y^2$ 上沿单位圆走，观察两条坐标贡献抵消。",
+    "prediction": "两个偏导都不为零时，总变化率仍可能为零吗？"
+  },
+  "teaching": {
+    "explain": "先列出每个中间变量怎样变化，再把各条路径的贡献相加。",
+    "steps": [
+      {
+        "title": "路径起点",
+        "instruction": "将路径参数 $t$ 设为 $0$。",
+        "preset": {
+          "x": 0
+        },
+        "observation": "从 $(1,0)$ 出发，曲面高度为 1。"
+      },
+      {
+        "title": "路径中段",
+        "instruction": "将路径参数 $t$ 设为 $\\frac\\pi4$。",
+        "preset": {
+          "x": 0.7853981633974483
+        },
+        "observation": "沿单位圆运动，高度仍为 1。"
+      },
+      {
+        "title": "路径终点",
+        "instruction": "将路径参数 $t$ 设为 $\\frac\\pi2$。",
+        "preset": {
+          "x": 1.5707963267948966
+        },
+        "observation": "位置方向改变，但高度总变化率一直为零。"
+      }
+    ]
+  },
+  "prerequisites": [
+    "c3-differentiability",
+    "chain-rule"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "c3-chain-m1",
+    "c3-chain-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.1",
+    "status": "revised",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1802",
+    "openstax-calculus-3"
+  ]
+}

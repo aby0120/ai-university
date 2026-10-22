@@ -1,0 +1,195 @@
+{
+  "id": "ode-laplace-definition",
+  "chapterId": "ode-laplace",
+  "number": "7.1",
+  "title": "Laplace 变换与收敛",
+  "subtitle": "给未来加上指数权重",
+  "body": [
+    {
+      "title": "定义是什么？",
+      "text": "本卷用单边变换，从零积分到正无穷；它适合记录初值和因果输入。"
+    },
+    {
+      "title": "何时存在？",
+      "text": "分段连续、指数阶是常用充分条件。若最终增长不快于 $Me^{at}$，变换在 $\\operatorname{Re}s>a$ 收敛。"
+    },
+    {
+      "title": "不是所有函数都可用",
+      "text": "例如 $e^{t^2}$ 在正时间增长快于任意线性指数，不满足该充分条件，且通常实参数变换积分发散。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "代入一个指数函数。",
+      "latex": "\\mathcal L\\{e^{at}\\}=\\int_0^\\infty e^{-(s-a)t}dt"
+    },
+    {
+      "text": "收敛要求衰减而不是增长。",
+      "latex": "\\operatorname{Re}s>a"
+    },
+    {
+      "text": "计算端点。",
+      "latex": "\\mathcal L\\{e^{at}\\}=\\frac1{s-a}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "常数函数",
+      "problem": "求常数一的变换。",
+      "steps": [
+        "积分 $e^{-st}$。",
+        "在实参数正数时上端贡献为零。"
+      ],
+      "answer": "$1/s$，复域为 $\\operatorname{Re}s>0$。"
+    },
+    {
+      "title": "指数函数",
+      "problem": "求 $e^{-2t}$ 的变换。",
+      "steps": [
+        "定义中指数合为 $e^{-(s+2)t}$。",
+        "积分为倒数，收敛要求实部大于负二。"
+      ],
+      "answer": "$1/(s+2)$，$\\operatorname{Re}s>-2$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-laplace-definition-q1",
+      "problem": "$e^{3t}$ 的变换与收敛域？",
+      "hint": "把增长率从参数中减掉。",
+      "solution": [
+        "积分为 $1/(s-3)$，实部须大于三。"
+      ],
+      "answer": "$1/(s-3),\\operatorname{Re}s>3$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-laplace-definition-q2",
+      "problem": "$2+e^{-t}$ 的变换？",
+      "hint": "使用线性性。",
+      "solution": [
+        "两项分别为 $2/s$ 与 $1/(s+1)$。"
+      ],
+      "answer": "$2/s+1/(s+1)$，公共收敛域 $\\operatorname{Re}s>0$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-laplace-definition-q3",
+      "problem": "公式 $1/(s-3)$ 在 $s=0$ 的代数值能否冒充变换积分？",
+      "hint": "检查收敛域。",
+      "solution": [
+        "该点积分发散，代数延拓不等于原积分。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-laplace-definition-q4",
+      "problem": "单边变换默认积哪个时间区间？",
+      "hint": "看定义。",
+      "solution": [
+        "从零到正无穷。"
+      ],
+      "answer": "$[0,\\infty)$。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-laplace-definition-m1",
+      "claim": "变换的代数表达式有值，就说明积分收敛。",
+      "correction": "还必须保留收敛域。"
+    },
+    {
+      "id": "ode-laplace-definition-m2",
+      "claim": "所有增长函数都没有变换。",
+      "correction": "指数增长在权重足够强时仍可收敛。"
+    }
+  ],
+  "prerequisites": [
+    "ode-boundary-values"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-laplace-definition-m1",
+    "ode-laplace-definition-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "Laplace 变换用衰减指数对整段未来加权积分，把时间函数变成频域变量的函数。",
+  "intuition": "指数权重压低远处的贡献；只有权重足够强，积分才收敛。",
+  "objectives": [
+    "由定义计算基本变换",
+    "说明收敛半平面"
+  ],
+  "formalDefinition": {
+    "text": "Laplace 变换与收敛",
+    "latex": "\\mathcal L\\{f\\}(s)=\\int_0^\\infty e^{-st}f(t)\\,dt",
+    "conditions": [
+      "在积分绝对收敛的区域定义；本卷先用实参数 $s$ 计算，再说明对应的复半平面。"
+    ]
+  },
+  "learningCheck": {
+    "question": "收敛域说明什么？",
+    "choices": [
+      "哪些变换参数使积分收敛",
+      "函数只有一个频率",
+      "时间的定义域"
+    ],
+    "correctIndex": 0,
+    "explanation": "频域表达式必须与收敛信息一起读。"
+  },
+  "teaching": {
+    "explain": "变换首先是一个积分，表格和代数运算都要遵守这个积分的收敛条件。",
+    "steps": [
+      {
+        "title": "收敛区域",
+        "preset": {
+          "a": 0.5,
+          "c": 2,
+          "b": 6
+        },
+        "observation": "核衰减，截断积分靠近变换值。",
+        "instruction": "将信号指数率 $a$设为 $0.5$；将变换实参数 $s$设为 $2$；将截断上限 $T$设为 $6$。"
+      },
+      {
+        "title": "临界",
+        "preset": {
+          "a": 1,
+          "c": 1,
+          "b": 6
+        },
+        "observation": "被积函数恒为一，积分随上限线性增长。",
+        "instruction": "将信号指数率 $a$设为 $1$；将变换实参数 $s$设为 $1$；将截断上限 $T$设为 $6$。"
+      },
+      {
+        "title": "发散区域",
+        "preset": {
+          "a": 1,
+          "c": 0.5,
+          "b": 6
+        },
+        "observation": "被积函数增长，有限值不能冒充无穷积分。",
+        "instruction": "将信号指数率 $a$设为 $1$；将变换实参数 $s$设为 $0.5$；将截断上限 $T$设为 $6$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-laplace-definition",
+    "caption": "显示被积函数与截断积分。仅当参数实值大于信号增长率时，无穷上限变换收敛；有限积分不等于全变换。",
+    "prediction": "权重衰减率不大于信号增长率时，积分还会收敛吗？"
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "id": "la-projection",
+  "chapterId": "la-orthogonal",
+  "number": "7.2",
+  "title": "向量投影与最近点",
+  "subtitle": "找到子空间中的最近点",
+  "concept": "正交投影是在给定子空间中，离目标最近的向量。",
+  "intuition": "把目标分成沿子空间的部分和垂直于它的部分。垂直余量再怎么沿子空间移动都消不掉。",
+  "objectives": [
+    "计算一维与正交基投影",
+    "验证余量的垂直关系"
+  ],
+  "body": [
+    {
+      "title": "一条线怎样投影？",
+      "text": "沿非零 $u$ 的投影是 $u(u^Tb)/(u^Tu)$。系数可为负，不必投在画出的正向射线上。"
+    },
+    {
+      "title": "最近点为何唯一？",
+      "text": "任意另一个候选与投影之差在子空间内，和余量垂直；勾股展开后距离只会增加。"
+    },
+    {
+      "title": "有正交基时怎样做？",
+      "text": "若 $q_j$ 标准正交，分别取点积系数后相加。斜基不能直接照搬这个公式。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "向量投影与最近点",
+    "latex": "p=\\frac{u^Tb}{u^Tu}u,\\quad r=b-p,\\quad u^Tr=0;\\qquad P_Wb=QQ^Tb",
+    "conditions": [
+      "一维公式要求 $u\\ne0$；后式要求 $Q$ 的列是目标子空间的一组标准正交基。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "让余量与方向垂直。",
+      "latex": "u^T(b-cu)=0"
+    },
+    {
+      "text": "解投影系数。",
+      "latex": "c=\\frac{u^Tb}{u^Tu}"
+    },
+    {
+      "text": "其他候选多出一个非负平方。",
+      "latex": "\\|b-w\\|^2=\\|b-p\\|^2+\\|p-w\\|^2"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "投到斜线",
+      "problem": "把 $b=(3,1)$ 投到 $u=(1,1)$ 上。",
+      "steps": [
+        "系数 $(3+1)/(1+1)=2$。",
+        "$p=(2,2),r=(1,-1)$，两者垂直。"
+      ],
+      "answer": "投影 $(2,2)$，距离 $\\sqrt2$。"
+    },
+    {
+      "title": "负投影",
+      "problem": "把 $(-3,2)$ 投到横轴上。",
+      "steps": [
+        "取 $u=(1,0)$，系数为 $-3$。",
+        "投影在负横轴，余量 $(0,2)$。"
+      ],
+      "answer": "$(-3,0)$。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-projection-m1",
+      "claim": "投影就是把向量长度乘余弦后结束。",
+      "correction": "标量分量和向量投影不同，后者还要带方向。"
+    },
+    {
+      "id": "la-projection-m2",
+      "claim": "投影矩阵总可逆。",
+      "correction": "投到真子空间会消掉正交方向，通常不可逆。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$(2,5)$ 到横轴距离？",
+      "hint": "余量是竖直分量。",
+      "solution": [
+        "投影 $(2,0)$，余量长度五。"
+      ],
+      "answer": "5",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 5,
+      "id": "la-projection-q1"
+    },
+    {
+      "problem": "把 $(1,1)$ 投到 $(1,-1)$ 的张成上。",
+      "hint": "先计算点积。",
+      "solution": [
+        "点积为零，投影为零。"
+      ],
+      "answer": "零向量。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-projection-q2"
+    },
+    {
+      "problem": "正交投影后再投影一次会变吗？",
+      "hint": "结果已经在子空间里。",
+      "solution": [
+        "$P^2b=Pb$。"
+      ],
+      "answer": "不变。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-projection-q3"
+    },
+    {
+      "problem": "$Q$ 的列正交但未归一化，能直接用 $QQ^T$ 投影吗？",
+      "hint": "每条方向还需要除以长度平方。",
+      "solution": [
+        "例如 $Q=(2,0)^T$ 时 $QQ^T$ 把横分量放大四倍。"
+      ],
+      "answer": "不能。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-projection-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-inner-products",
+    "la-subspaces"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "la-projection-m1",
+    "la-projection-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-projection",
+    "caption": "将目标向量 $(1,a)$ 投影到直线 $\\operatorname{span}((1,1))$。金色余量与绿色投影方向垂直。",
+    "prediction": "投影点移动时，余量为何总与目标直线垂直？"
+  },
+  "learningCheck": {
+    "question": "最近点的余量与子空间是什么关系？",
+    "choices": [
+      "平行",
+      "垂直",
+      "长度相等"
+    ],
+    "correctIndex": 1,
+    "explanation": "任何沿子空间的误差都还能被消去，最近点不能留下这种分量。"
+  },
+  "teaching": {
+    "explain": "投影不是随便沿某条方向压过去。只有垂直投影，才同时给出最近点。",
+    "steps": [
+      {
+        "title": "目标在直线上",
+        "instruction": "取 $a=1$。",
+        "preset": {
+          "a": 1
+        },
+        "observation": "投影等于目标，余量零。"
+      },
+      {
+        "title": "部分抵消",
+        "instruction": "取 $a=-1$。",
+        "preset": {
+          "a": -1
+        },
+        "observation": "目标与直线垂直，投影为零。"
+      },
+      {
+        "title": "落在反向",
+        "instruction": "取 $a=-2$。",
+        "preset": {
+          "a": -2
+        },
+        "observation": "投影系数为负，最近点落在直线的负方向。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "id": "ode-stability-stiffness",
+  "chapterId": "ode-numerical",
+  "number": "11.5",
+  "title": "绝对稳定性与刚性",
+  "subtitle": "真实衰减，数值却可能增长",
+  "body": [
+    {
+      "title": "测试方程",
+      "text": "对 $y'=\\lambda y$，数值更新可写成 $y_{n+1}=R(h\\lambda)y_n$。衰减需要放大因子的模小于一。"
+    },
+    {
+      "title": "Euler 的限制",
+      "text": "显式 Euler 有 $R(z)=1+z$。负实参数下稳定区间为 $-2<h\\lambda<0$；端点模为一，不产生真实衰减。"
+    },
+    {
+      "title": "刚性是什么？",
+      "text": "快衰减模态可能迫使显式方法使用远小于慢过程精度所需的步长。隐式 Euler 的负实轴稳定性可解除这种稳定限制，但仍需控制精度。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "显式 Euler 代入测试方程。",
+      "latex": "y_{n+1}=(1+h\\lambda)y_n"
+    },
+    {
+      "text": "负实根上要求倍率严格落在负一与一之间。",
+      "latex": "-1<1+h\\lambda<1\\Rightarrow -2<h\\lambda<0"
+    },
+    {
+      "text": "隐式 Euler 把新状态放到右端。",
+      "latex": "y_{n+1}=y_n+h\\lambda y_{n+1}\\Rightarrow y_{n+1}=\\frac{y_n}{1-h\\lambda}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "错误增长",
+      "problem": "$y'=-10y$ 用显式 Euler，步长 $0.3$。",
+      "steps": [
+        "放大因子为 $1-3=-2$。",
+        "模大于一，交替放大。"
+      ],
+      "answer": "数值不稳定，精确解却衰减。"
+    },
+    {
+      "title": "隐式衰减",
+      "problem": "同题用隐式 Euler。",
+      "steps": [
+        "因子为 $1/(1+3)=1/4$。",
+        "每步保持衰减，但未必精确。"
+      ],
+      "answer": "稳定，步进因子 $1/4$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-stability-stiffness-q1",
+      "problem": "$\\lambda=-4$ 时显式 Euler 稳定正步长范围？",
+      "hint": "解 $-2<-4h<0$。",
+      "solution": [
+        "得到 $0<h<1/2$。"
+      ],
+      "answer": "$(0,1/2)$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-stability-stiffness-q2",
+      "problem": "恰取边界 $h\\lambda=-2$ 会真实衰减吗？",
+      "hint": "倍率为负一。",
+      "solution": [
+        "幅度不变，符号交替。"
+      ],
+      "answer": "不会。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-stability-stiffness-q3",
+      "problem": "稳定是否等于误差足够小？",
+      "hint": "大隐式步也可能很粗。",
+      "solution": [
+        "稳定控制不放大，不等于精确跟随。"
+      ],
+      "answer": "不等于。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-stability-stiffness-q4",
+      "problem": "为什么刚性系统的快模态会影响慢过程计算？",
+      "hint": "显式稳定性受最大负根幅度限制。",
+      "solution": [
+        "即使快模态很快衰减，也可能限制每一步。"
+      ],
+      "answer": "稳定条件要求更小步长。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-stability-stiffness-m1",
+      "claim": "真实解稳定，任意离散方法都稳定。",
+      "correction": "离散放大因子可能不同。"
+    },
+    {
+      "id": "ode-stability-stiffness-m2",
+      "claim": "隐式方法稳定就无需检查误差。",
+      "correction": "稳定与精度需要分别控制。"
+    }
+  ],
+  "prerequisites": [
+    "ode-error-control"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ode-stability-stiffness-m1",
+    "ode-stability-stiffness-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "数值方法也有自己的动力学；步长过大时，衰减方程的近似解可能振荡甚至爆炸。",
+  "intuition": "精确系统稳定，不代表离散更新也稳定。",
+  "objectives": [
+    "用测试方程分析放大因子",
+    "解释刚性带来的步长限制"
+  ],
+  "formalDefinition": {
+    "text": "绝对稳定性与刚性",
+    "latex": "R_{\\rm EE}(z)=1+z,\\quad R_{\\rm IE}(z)=\\frac1{1-z},\\quad \\lvert R(z)\\rvert<1",
+    "conditions": [
+      "测试方程使用 $\\operatorname{Re}\\lambda<0$；稳定区域是方法性质，不是全部非线性问题的无条件正确保证。"
+    ]
+  },
+  "learningCheck": {
+    "question": "显式 Euler 在负实测试方程上的稳定条件是？",
+    "choices": [
+      "$h\\lambda>2$",
+      "$h\\lambda<0$ 就够",
+      "$-2<h\\lambda<0$"
+    ],
+    "correctIndex": 2,
+    "explanation": "绝对值小于一限制了允许步长。"
+  },
+  "teaching": {
+    "explain": "看数值曲线前先看一步会把误差放大几倍，这能解释许多“越算越离谱”的结果。",
+    "steps": [
+      {
+        "title": "显式稳定",
+        "preset": {
+          "a": -4,
+          "h": 0.2,
+          "n": 8
+        },
+        "observation": "显式因子为零点二，逐步衰减。",
+        "instruction": "将负增长率 $\\lambda$设为 $-4$；将步长 $h$设为 $0.2$；将推进步数 $N$设为 $8$。"
+      },
+      {
+        "title": "边界",
+        "preset": {
+          "a": -4,
+          "h": 0.5,
+          "n": 8
+        },
+        "observation": "显式因子负一，符号交替但幅值不衰减。",
+        "instruction": "将负增长率 $\\lambda$设为 $-4$；将步长 $h$设为 $0.5$；将推进步数 $N$设为 $8$。"
+      },
+      {
+        "title": "显式不稳定",
+        "preset": {
+          "a": -4,
+          "h": 0.8,
+          "n": 8
+        },
+        "observation": "显式因子模大于一，隐式仍衰减。",
+        "instruction": "将负增长率 $\\lambda$设为 $-4$；将步长 $h$设为 $0.8$；将推进步数 $N$设为 $8$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-stability-stiffness",
+    "caption": "精确解衰减；两种 Euler 离散曲线按各自放大因子推进。过大的数值状态停止画出，并明确说明。",
+    "prediction": "真实解衰减时，显式 Euler 仍可能越算越大吗？"
+  }
+}

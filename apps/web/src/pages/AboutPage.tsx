@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import { useRef, useState } from "react";
 import research from "../../../../packages/content/learning-research.json";
-import { book, lessonById } from "../../../../packages/content";
+import { book, lessonById, collections } from "../../../../packages/content";
 import { type Progress } from "../components/Practice";
 
 import { Eyebrow, Link, NotFound, PageTitle } from "../components/UI";
@@ -75,11 +75,11 @@ export function AboutPage() {
             {[
               [
                 "完整，而不是摘选",
-                "每本教材都沿着系统的课程结构完成。微积分 I 是首本已出版教材；各方向的后续教材在书库中明确标注为规划中。",
+                "每本教材都沿着系统的课程结构完成。微积分 I、II、III 和线性代数已提供完整正文与演示；其他未出版教材在书库中明确标注为规划中。",
               ],
               [
                 "清楚，也保留必要条件",
-                "用直觉建立入口，用精确定义守住边界。简单讲解不等于省略数学成立所需要的前提。",
+                "解释尽量简明，定义、推导和公式的适用条件仍须写清楚。",
               ],
               [
                 "开放，可以审查与修改",
@@ -178,8 +178,80 @@ export function AboutPage() {
         </div>
       ) : part === "versions" ? (
         <div className="versions-page">
+          <div className="version-entry"><span className="badge">当前网站 · 常微分方程 v0.1.0</span><h2>v0.13.0 · 常微分方程完整首版</h2><time>2026 年 10 月 21 日</time><ul><li>11 章 55 节、110 个例题、275 道练习与完整解答。</li><li>一阶、存在唯一性、振动、Laplace、线性与非线性系统、级数和数值方法。</li><li>55 节交互演示：方向场、可拖动初态、相轨迹、弹簧运动、误差比较与自适应节点。</li><li>整本书稿、打印版、搜索、练习、术语和附录同步提供。</li></ul></div>
+          <div className="version-entry"><span className="badge">Linear Algebra v0.1.0</span><h2>v0.12.0 · 线性代数完整首版</h2><time>2026 年 10 月 21 日</time><ul><li>10 章 50 节、100 个例题、250 道练习与完整解答。</li><li>从方程组、向量空间和特征值，到正交投影、SVD、网络与 PCA。</li><li>50 个二维或三维交互演示，支持矩阵参数输入、消元步骤和退化情形。</li><li>整本阅读、目录、练习、索引和下载均可独立使用，无需先修微积分。</li></ul></div>
+          <div className="version-entry"><span className="badge">历史网站版本</span><h2>v0.11.0 · 补全方法，校准图示</h2><time>2026 年 10 月 21 日</time><ul><li>补充根式三角代换、不可约二次因子和非线性 Jacobian 的完整例题。</li><li>明确抽水几何与固定出口；说明交错误差界必须从递减尾部使用。</li><li>偏导图同时展示两条切线；Jacobian 图比较局部倍率与总面积。</li><li>精简演示、练习和阅读指南的中文提示，删除重复口号。</li><li>微积分 I v0.3.2，II、III v0.1.1；保留原链接与学习记录。</li></ul></div>
+          <div className="version-entry"><span className="badge">历史网站版本</span><h2>v0.10.1 · 图形拖动不再误选文字</h2><time>2026 年 10 月 21 日</time><p>修复坐标文字被划选的问题；拖动、键盘和正文复制可正常使用。</p></div>
+          <div className="version-entry"><span className="badge">Calculus III v0.1.0</span><h2>v0.10.0 · 微积分 III 完整首版</h2><time>2026 年 10 月 14 日</time><ul><li>9 章 40 节、80 个例题与 203 道练习解答。</li><li>多元变化、优化、重积分、向量积分与三个积分定理。</li><li>40 个可旋转的本地三维图，支持俯视、正视、缩放和键盘操作；无需 WebGL。</li></ul></div>
+          <div className="version-entry"><span className="badge">Calculus II · v0.1.0</span><h2>v0.9.0 · 微积分 II 完整首版</h2><time>2026 年 10 月 14 日</time><ul><li>新增 8 章 35 节、70 个例题与 178 道练习解答。</li><li>接入积分、收敛、Taylor、参数与极坐标、一阶方程的本地交互图示。</li><li>目录、练习、索引、下载与学习记录按教材区分，保留微积分 I 的旧链接与记录。</li></ul></div>
           <div className="version-entry">
-            <span className="badge">当前网站 · 教材 v0.2.0</span>
+            <span className="badge">历史版本 · 教材 I v0.3.1</span>
+            <h2>v0.8.2 · 动画完整运行到终点</h2>
+            <time>2026 年 10 月 14 日</time>
+            <ul>
+              <li>修正统一计时导致的提前停止，极限与导数运行到最小正距离。</li>
+              <li>细分到最大分割数，参数扫描到本次区间终点。</li>
+              <li>明确显示有限近似的边界，动画不代替极限与证明。</li>
+            </ul>
+          </div>
+          <div className="version-entry">
+            <span className="badge">教材 v0.3.1</span>
+            <h2>v0.8.1 · 滑块圆点更清楚</h2>
+            <time>2026 年 10 月 14 日</time>
+            <ul>
+              <li>深色面板的圆点改为亮色与白色边框，统一二维、三维和首页滑块。</li>
+              <li>扩大操作区域，增加悬停、拖动和键盘聚焦提示。</li>
+            </ul>
+          </div>
+          <div className="version-entry">
+            <span className="badge">教材 v0.3.1</span>
+            <h2>v0.8.0 · 全站界面精修</h2>
+            <time>2026 年 10 月 14 日</time>
+            <ul>
+              <li>首页控制台、教材卡片与各页标题统一材质和层次。</li>
+              <li>二维与三维实验台统一外框，图形、读数和参数更易辨认。</li>
+              <li>阅读、演示、练习与知识连接以图标辅助识别，核心解释与提示更清楚。</li>
+              <li>改进窄屏控件、按钮和反馈状态；正文保留清晰的阅读底色。</li>
+              <li>教材内容仍为 v0.3.1，保持纯静态运行。</li>
+            </ul>
+          </div>
+          <div className="version-entry">
+            <span className="badge">教材 v0.3.1</span>
+            <h2>v0.7.0 · 回答式教学与引导实验</h2>
+            <time>2026 年 10 月 12 日</time>
+            <ul>
+              <li>全书 35 节增加另一角度的解释与 105 个三步实验预设。</li>
+              <li>操作、观察、核对结论连成一条学习路径，支持自由探索与重新载入。</li>
+              <li>统一可直接输入的数学参数、二维图例与三维控件，延伸模型按需展开。</li>
+              <li>练习提供分层提示和对应误区反馈；数值正确后由读者确认理解。</li>
+              <li>保留完整教材、数学条件、打印版本和纯静态运行。</li>
+            </ul>
+          </div>
+          <div className="version-entry">
+            <span className="badge">教材 v0.3.0</span>
+            <h2>v0.6.0 · 微积分 I 内容补全与复核</h2>
+            <time>2026 年 10 月 12 日</time>
+            <ul>
+              <li>补齐积分中值定理、隐式二阶导数、一般截面体积和水的积分应用。</li>
+              <li>增加基本原函数、非单调换元及洛必达边界的完整例题。</li>
+              <li>加入等面积平均高度、可变截面、抽水与闸门水压的交互图。</li>
+              <li>重新核对练习难度与误区标签，章末题和综合题改用具体提示。</li>
+              <li>全书保留 7 章 35 节，现有 79 个例题与 191 道练习。</li>
+            </ul>
+          </div>
+          <div className="version-entry">
+            <span className="badge">教材 v0.2.1</span>
+            <h2>v0.5.1 · 统一数学排版</h2>
+            <time>2026 年 10 月 11 日</time>
+            <ul>
+              <li>全书题干、选项、解释、推导与解答统一使用数学排版。</li>
+              <li>补齐标题、图示说明、索引与打印版的公式渲染。</li>
+              <li>改善根号、分数、上下标、公式基线与手机布局。</li>
+              <li>加入发布前的排版检查；修正正弦基本极限的记号。</li>
+            </ul>
+          </div>
+          <div className="version-entry">
+            <span className="badge">教材 v0.2.0</span>
             <h2>v0.5.0 · 整站视觉统一与首页精简</h2>
             <time>2026 年 10 月 10 日</time>
             <ul>
@@ -280,8 +352,8 @@ export function PrivacyPanel() {
       [
         JSON.stringify(
           {
-            format: "ai-university-progress-v2",
-            book: book.id,
+            format: "ai-university-progress-v3",
+            books: collections.map(c=>c.book.id),
             reading,
             progress,
           },
@@ -303,7 +375,7 @@ export function PrivacyPanel() {
     try {
       if (file.size > 1000000) throw new Error();
       const data = JSON.parse(await file.text());
-      if (data.book !== book.id || data.format !== "ai-university-progress-v2")
+      if (!((data.format === "ai-university-progress-v2" && data.book === book.id) || (data.format === "ai-university-progress-v3" && Array.isArray(data.books) && data.books.every((id:unknown)=>collections.some(c=>c.book.id===id)))))
         throw new Error();
       const raw = data.reading;
       const valid = (v: unknown): string[] =>

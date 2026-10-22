@@ -1,0 +1,194 @@
+{
+  "id": "la-cofactors",
+  "chapterId": "la-determinants",
+  "number": "5.3",
+  "title": "余子式展开与行列式定义",
+  "subtitle": "把高阶展开为低阶",
+  "concept": "沿一行或一列展开，把高阶行列式递归拆成低阶行列式。",
+  "intuition": "每个元素贡献一个较小的行列式，符号交替；选择零最多的行或列，计算往往更短。",
+  "objectives": [
+    "正确计算代数余子式",
+    "选择合适的行或列展开"
+  ],
+  "body": [
+    {
+      "title": "余子式是什么？",
+      "text": "删去第 $i$ 行第 $j$ 列得到子矩阵 $M_{ij}$；代数余子式为 $C_{ij}=(-1)^{i+j}\\det M_{ij}$。"
+    },
+    {
+      "title": "怎样展开？",
+      "text": "固定一行，将该行元素分别乘其代数余子式再相加。列展开同样成立。"
+    },
+    {
+      "title": "大矩阵也这样算吗？",
+      "text": "手算用于小矩阵、稀疏矩阵和理论推导。一般大矩阵反复递归展开代价很高，通常用分解。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "余子式展开与行列式定义",
+    "latex": "\\det A=\\sum_j a_{ij}(-1)^{i+j}\\det M_{ij}",
+    "conditions": [
+      "沿同一行或同一列展开；递归以一阶行列式为元素本身，零阶行列式约定为一。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "置换求和式按固定行选到的列分组。",
+      "latex": "\\det A=\\sum_{\\pi\\in S_n}\\operatorname{sgn}(\\pi)\\prod_i a_{i,\\pi(i)}"
+    },
+    {
+      "text": "每组留下一个较小的置换求和。",
+      "latex": "\\text{固定 }\\pi(i)=j\\Rightarrow a_{ij}(-1)^{i+j}\\det M_{ij}"
+    },
+    {
+      "text": "将这些互不遗漏的组相加。",
+      "latex": "\\det A=\\sum_j a_{ij}C_{ij}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "沿第一行展开",
+      "problem": "$A=\\begin{pmatrix}1&2&0\\\\0&3&1\\\\2&0&1\\end{pmatrix}$，求行列式。",
+      "steps": [
+        "第一项为 $1(3\\cdot1-1\\cdot0)=3$。",
+        "第二项为 $-2(0\\cdot1-1\\cdot2)=4$，第三项为零。"
+      ],
+      "answer": "7。"
+    },
+    {
+      "title": "选含零的列",
+      "problem": "求 $\\det\\begin{pmatrix}2&0&1\\\\3&4&5\\\\1&0&2\\end{pmatrix}$。",
+      "steps": [
+        "沿第二列只有中间元素非零。",
+        "得到 $4\\det\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix}=4(4-1)$。"
+      ],
+      "answer": "12。"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "la-cofactors-m1",
+      "claim": "余子式的符号总是正。",
+      "correction": "还要乘棋盘式符号 $(-1)^{i+j}$。"
+    },
+    {
+      "id": "la-cofactors-m2",
+      "claim": "删掉元素本身就得到余子式。",
+      "correction": "要删掉它所在的整行和整列。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$C_{12}$ 的符号因子是什么？",
+      "hint": "行列下标相加。",
+      "solution": [
+        "$(-1)^3=-1$。"
+      ],
+      "answer": "$-1$",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "la-cofactors-m1"
+      ],
+      "numericAnswer": -1,
+      "id": "la-cofactors-q1"
+    },
+    {
+      "problem": "$A=\\operatorname{diag}(2,3,4)$，第一行展开只剩哪项？",
+      "hint": "只有第一元素非零。",
+      "solution": [
+        "$2\\det\\operatorname{diag}(3,4)=24$。"
+      ],
+      "answer": "24",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 24,
+      "id": "la-cofactors-q2"
+    },
+    {
+      "problem": "一整行为零，行列式是多少？",
+      "hint": "沿该行展开。",
+      "solution": [
+        "每个元素乘余子式都为零。"
+      ],
+      "answer": "0",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0,
+      "id": "la-cofactors-q3"
+    },
+    {
+      "problem": "沿不同的行展开，结果应当相同吗？",
+      "hint": "它们都重组同一个置换和。",
+      "solution": [
+        "不同分组不改变总和。"
+      ],
+      "answer": "相同。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "id": "la-cofactors-q4"
+    }
+  ],
+  "prerequisites": [
+    "la-det-properties"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "la-cofactors-m1",
+    "la-cofactors-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1806",
+    "gatech-ila"
+  ],
+  "interactiveVisual": {
+    "kind": "linear-algebra",
+    "function": "la-cofactors",
+    "caption": "固定三阶矩阵，沿第一行展开；切换元素，比较该项贡献与行列式总和。",
+    "prediction": "沿同一行选择不同元素时，各自贡献怎样相加？"
+  },
+  "learningCheck": {
+    "question": "沿第一行展开时，符号依次是什么？",
+    "choices": [
+      "全为正",
+      "正、负、正",
+      "负、正、负"
+    ],
+    "correctIndex": 1,
+    "explanation": "符号因子为行列下标之和的奇偶。"
+  },
+  "teaching": {
+    "explain": "展开式不是一张必须硬背的三阶斜线图。它适用于任意阶数，也能选择更省计算的行或列。",
+    "steps": [
+      {
+        "title": "第一项",
+        "instruction": "选择第一列的项。",
+        "preset": {
+          "n": 0
+        },
+        "observation": "贡献为 $1\\cdot3=3$。"
+      },
+      {
+        "title": "第二项",
+        "instruction": "选择第二列的项。",
+        "preset": {
+          "n": 1
+        },
+        "observation": "带负号的代数余子式给贡献 $-2(-2)=4$。"
+      },
+      {
+        "title": "零元素项",
+        "instruction": "选择第三列的项。",
+        "preset": {
+          "n": 2
+        },
+        "observation": "该元素为零，贡献零；总和始终为七。"
+      }
+    ]
+  }
+}

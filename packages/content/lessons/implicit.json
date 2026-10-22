@@ -3,34 +3,34 @@
   "chapterId": "derivatives",
   "number": "3.5",
   "title": "隐函数求导",
-  "subtitle": "不用先解出 y，也能找到斜率",
-  "concept": "关系式里即使没有解出 y，也能求导。把 y 当作 x 的函数，每次对 y 求导都带上 y′。",
-  "intuition": "x²+y²=1 两边求导，得到 2x+2y·y′=0。y≠0 时，斜率为 −x/y。",
+  "subtitle": "不用先解出 $y$，也能找到斜率",
+  "concept": "关系式里即使没有解出 $y$，也能求导。把 $y$ 当作 $x$ 的函数，每次对 $y$ 求导都带上 $y'$。",
+  "intuition": "$x^{2} + y^{2} = 1$ 两边求导，得到 $2 x + 2 y \\cdot y' = 0$。$y \\ne 0$ 时，斜率为 $\\frac{- x}{y}$。",
   "objectives": [
-    "一起对 x 求导",
+    "一起对 $x$ 求导",
     "局部而非全局",
     "更高阶导数"
   ],
   "body": [
     {
-      "title": "怎样把 y′ 解出来？",
-      "text": "两边对 x 求导，含 y 的项用链式法则，含 xy 的项用乘积法则。收集 y′、提公因子，再解方程。"
+      "title": "怎样把 $y'$ 解出来？",
+      "text": "两边对 $x$ 求导，含 $y$ 的项用链式法则，含 $x y$ 的项用乘积法则。收集 $y'$、提公因子，再解方程。"
     },
     {
-      "title": "同一个 x 会有两个斜率吗？",
-      "text": "会。斜率取决于曲线上的具体点 (x,y)。分母为 0 时不能继续相除，要检查竖直切线或其他奇点。"
+      "title": "同一个 $x$ 会有两个斜率吗？",
+      "text": "会。斜率取决于曲线上的具体点 $(x , y)$。分母为 0 时不能继续相除，要检查竖直切线或其他奇点。"
     },
     {
-      "title": "怎样求 y″？",
-      "text": "再对 y′ 求导，出现 y 时仍乘 y′。先完成求导再代入点坐标；过早代入会丢掉变量的变化。"
+      "title": "怎样求 $y''$？",
+      "text": "再对 $y'$ 求导，出现 $y$ 时仍乘 $y'$。先完成求导再代入点坐标；过早代入会丢掉变量的变化。"
     }
   ],
   "formalDefinition": {
-    "text": "若可微关系 F(x,y)=0 局部有可导分支 y=y(x)，且 F_y≠0，对 x 求导可解出斜率。",
+    "text": "若可微关系 $F (x , y) = 0$ 局部有可导分支 $y = y (x)$，且 $F_{y} \\ne 0$，对 $x$ 求导可解出斜率。",
     "latex": "F_x+F_y y\\prime=0,\\qquad y\\prime=-\\frac{F_x}{F_y}",
     "conditions": [
-      "先假设该可导分支存在；F_x、F_y 分别表示只对 x、只对 y 求导，另一个变量暂视为常数。",
-      "导数在曲线上的点 (x,y(x)) 取值；F_y≠0 才能在斜率公式中相除。"
+      "先假设该可导分支存在；$F_{x}$、$F_{y}$ 分别表示只对 $x$、只对 $y$ 求导，另一个变量暂视为常数。",
+      "导数在曲线上的点 $(x , y (x))$ 取值；$F_{y} \\ne 0$ 才能在斜率公式中相除。"
     ]
   },
   "derivation": [
@@ -39,11 +39,11 @@
       "latex": "x^2+y^2=4\\quad\\Rightarrow\\quad2x+2yy\\prime=0"
     },
     {
-      "text": "在 y≠0 处解出 y′。",
+      "text": "在 $y \\ne 0$ 处解出 $y'$。",
       "latex": "y\\prime=-\\frac xy"
     },
     {
-      "text": "上半圆在 x>0 处的斜率为负，与图像吻合。",
+      "text": "上半圆在 $x > 0$ 处的斜率为负，与图像吻合。",
       "latex": null
     }
   ],
@@ -51,16 +51,16 @@
     "kind": "derivative",
     "function": "circle",
     "a": 1,
-    "caption": "在半径 2 的上半圆移动 a。靠近端点时切线越来越陡。",
+    "caption": "在半径 2 的上半圆移动 $a$。靠近端点时切线越来越陡。",
     "prediction": "沿上半圆接近两端，切线会越来越平还是越来越陡？"
   },
   "workedExamples": [
     {
       "title": "圆上的斜率",
-      "problem": "圆 $x^2+y^2=25$ 在 (3,4) 的切线？",
+      "problem": "圆 $x^2+y^2=25$ 在 $(3,4)$ 的切线？",
       "steps": [
-        "隐式求导给 y′=−x/y。",
-        "斜率为 −3/4，通过 (3,4)。"
+        "隐式求导给 $y' = \\frac{- x}{y}$。",
+        "斜率为 $\\frac{- 3}{4}$，通过 $(3,4)$。"
       ],
       "answer": "$y-4=-\\frac34(x-3)$。"
     },
@@ -68,17 +68,26 @@
       "title": "含乘积的关系",
       "problem": "对 $xy+y^2=6$ 求导。",
       "steps": [
-        "xy 给 y+xy′，y² 给 2yy′。",
-        "整理 y+(x+2y)y′=0。"
+        "$x y$ 给 $y + x y'$，$y^{2}$ 给 $2yy\\prime$。",
+        "整理 $y + (x + 2 y) y' = 0$。"
       ],
-      "answer": "$y\\prime=-y/(x+2y)$，分母非零。"
+      "answer": "$y\\prime=-\\frac{y}{x+2y}$，分母非零。"
+    },
+    {
+      "title": "再求一次导数",
+      "problem": "圆 $x^2+y^2=25$ 的上半圆在 $(3,4)$ 处，求 $y\\prime\\prime$。",
+      "steps": [
+        "先得 $y\\prime=-\\frac{x}{y}$，在 $y\\ne0$ 的分支上再次求导：$y\\prime\\prime=\\frac{-y+xy\\prime}{y^2}$。",
+        "代入 $y\\prime=-\\frac{x}{y}$，得 $y\\prime\\prime=-\\frac{x^2+y^2}{y^3}=-\\frac{25}{y^3}$。最后才代入 $(3,4)$。"
+      ],
+      "answer": "$y\\prime\\prime=-\\frac{25}{64}$；上半圆在该点凹向下。"
     }
   ],
   "commonMistakes": [
     {
       "id": "implicit-m1",
-      "claim": "把 y 当作常数。",
-      "correction": "y 沿曲线随 x 变化，每次对 y 的外层求导都要乘 y′。"
+      "claim": "把 $y$ 当作常数。",
+      "correction": "$y$ 沿曲线随 $x$ 变化，每次对 $y$ 的外层求导都要乘 $y'$。"
     },
     {
       "id": "implicit-m2",
@@ -89,14 +98,15 @@
   "practice": [
     {
       "id": "implicit-p1",
-      "difficulty": 1,
+      "difficulty": 2,
       "misconceptionTags": [
-        "implicit-m1"
+        "implicit-m1",
+        "implicit-m2"
       ],
-      "problem": "对 $x^2+y^2=1$ 求 y′。",
-      "answer": "$-x/y$（y≠0）。",
+      "problem": "对 $x^2+y^2=1$ 求 $y'$。",
+      "answer": "$-\\frac{x}{y}$（$y \\ne 0$）。",
       "solution": [
-        "求导得 2x+2yy′=0，解出。"
+        "求导得 $2 x + 2 y y' = 0$，解出。"
       ],
       "hint": "圆的半径不影响这个斜率关系。"
     },
@@ -104,41 +114,56 @@
       "id": "implicit-p2",
       "difficulty": 2,
       "misconceptionTags": [
+        "implicit-m1",
         "implicit-m2"
       ],
-      "problem": "对 $y^3=x$ 求 y′。",
-      "answer": "$1/(3y^2)$（y≠0）。",
+      "problem": "对 $y^3=x$ 求 $y'$。",
+      "answer": "$\\frac{1}{3y^2}$（$y \\ne 0$）。",
       "solution": [
-        "3y²y′=1。"
+        "$3 y^{2} y' = 1$。"
       ],
-      "hint": "先对整个 y³ 求导。"
+      "hint": "先对整个 $y^{3}$ 求导。"
     },
     {
       "id": "implicit-p3",
-      "difficulty": 3,
-      "misconceptionTags": [
-        "implicit-m2"
-      ],
-      "problem": "$x^2+y^2=25$ 在 (0,5) 的斜率？",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "problem": "$x^2+y^2=25$ 在 $(0,5)$ 的斜率？",
       "answer": "$0$。",
       "solution": [
-        "−x/y=−0/5=0。"
+        "$\\frac{- x}{y} = \\frac{- 0}{5} = 0$。"
       ],
       "hint": "代入满足圆方程的点。",
       "numericAnswer": 0
     },
     {
       "id": "implicit-p4",
-      "difficulty": 4,
+      "difficulty": 2,
       "misconceptionTags": [
+        "implicit-m1",
         "implicit-m2"
       ],
-      "problem": "对 $x+y+xy=3$ 求 y′。",
-      "answer": "$-(1+y)/(1+x)$（x≠−1）。",
+      "problem": "对 $x+y+xy=3$ 求 $y'$。",
+      "answer": "$-\\frac{1+y}{1+x}$（$x \\ne - 1$）。",
       "solution": [
-        "1+y′+y+xy′=0，合并 y′ 项。"
+        "$1 + y' + y + x y' = 0$，合并 $y'$ 项。"
       ],
-      "hint": "xy 需要积法则。"
+      "hint": "$x y$ 需要积法则。"
+    },
+    {
+      "id": "implicit-p5",
+      "problem": "圆 $x^2+y^2=4$ 的上半圆在 $(0,2)$ 处，求 $y\\prime\\prime$。",
+      "answer": "$-\\frac12$。",
+      "solution": [
+        "由 $2x+2yy\\prime=0$，再求导得 $2+2(y\\prime)^2+2yy\\prime\\prime=0$。",
+        "该点 $y\\prime=0$，所以 $2+4y\\prime\\prime=0$，得 $y\\prime\\prime=-\\frac12$。"
+      ],
+      "hint": "可以对第一次求导后的方程再求导，避免商式。",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "implicit-m1"
+      ],
+      "numericAnswer": -0.5
     }
   ],
   "prerequisites": [
@@ -152,7 +177,7 @@
   ],
   "provenance": {
     "author": "AI-generated",
-    "version": "0.2.0",
+    "version": "0.3.2",
     "status": "revised",
     "humanReviewed": false
   },
@@ -164,13 +189,48 @@
     "3b1b-calculus"
   ],
   "learningCheck": {
-    "question": "把 y 看成 x 的函数时，(y²)′ 是什么？",
+    "question": "把 $y$ 看成 $x$ 的函数时，$(y^{2})'$ 是什么？",
     "choices": [
-      "2y",
-      "2y·y′",
-      "y′²"
+      "$2 y$",
+      "$2 y \\cdot y'$",
+      "${y'}^{2}$"
     ],
     "correctIndex": 1,
-    "explanation": "y² 是外层平方与内层 y(x) 的复合。要乘上内层导数 y′。"
+    "explanation": "$y^{2}$ 是外层平方与内层 $y (x)$ 的复合。要乘上内层导数 $y'$。"
+  },
+  "teaching": {
+    "explain": "不用先把曲线解成一个完整函数。沿着选定分支求导，记住纵坐标也在变；斜率属于曲线上的具体点。",
+    "steps": [
+      {
+        "title": "圆顶附近",
+        "instruction": "半径 2 的上半圆，切点取 0。",
+        "preset": {
+          "a": 0,
+          "h": 0.01,
+          "side": 1
+        },
+        "observation": "圆顶切线水平，精确斜率为 0。"
+      },
+      {
+        "title": "沿右侧移动",
+        "instruction": "切点改为 1。",
+        "preset": {
+          "a": 1,
+          "h": 0.01,
+          "side": 1
+        },
+        "observation": "高度为 $\\sqrt3$，斜率为 $-\\frac1{\\sqrt3}$。"
+      },
+      {
+        "title": "接近端点",
+        "instruction": "切点取 1.9，间隔保持 0.01。",
+        "preset": {
+          "a": 1.9,
+          "h": 0.01,
+          "side": 1
+        },
+        "observation": "高度更小、斜率更陡。端点不能继续用分母非零的有限斜率公式。"
+      }
+    ]
   }
 }

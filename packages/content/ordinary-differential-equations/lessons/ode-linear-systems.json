@@ -1,0 +1,196 @@
+{
+  "id": "ode-linear-systems",
+  "chapterId": "ode-systems",
+  "number": "8.1",
+  "title": "线性系统与基本矩阵",
+  "subtitle": "每一列都是一条独立解",
+  "body": [
+    {
+      "title": "一般形式",
+      "text": "线性系统为 $\\mathbf x'=A(t)\\mathbf x+\\mathbf b(t)$；齐次时外力向量为零。"
+    },
+    {
+      "title": "基本矩阵",
+      "text": "将独立齐次解排成列得到 $\\Phi$，满足 $\\Phi'=A\\Phi$ 且可逆。"
+    },
+    {
+      "title": "初值解",
+      "text": "齐次初值解为 $\\Phi(t)\\Phi(t_0)^{-1}\\mathbf x_0$。相平面只画状态位置，不把时间作为一个坐标轴。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "把各列方程合成矩阵式。",
+      "latex": "\\Phi'=A\\Phi"
+    },
+    {
+      "text": "常向量组合仍为解。",
+      "latex": "\\mathbf x=\\Phi\\mathbf c"
+    },
+    {
+      "text": "初值确定组合。",
+      "latex": "\\mathbf c=\\Phi(t_0)^{-1}\\mathbf x_0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "对角系统",
+      "problem": "解 $x'=x,y'=-2y$，初值 $(2,3)$。",
+      "steps": [
+        "两个分量各自指数演化。",
+        "初值就是两个指数系数。"
+      ],
+      "answer": "$(x,y)=(2e^t,3e^{-2t})$。"
+    },
+    {
+      "title": "检验基本矩阵",
+      "problem": "对 $A=\\operatorname{diag}(1,-1)$，$\\Phi=\\operatorname{diag}(e^t,e^{-t})$ 是否基本矩阵？",
+      "steps": [
+        "逐列求导可得 $\\Phi'=A\\Phi$。",
+        "行列式恒为一。"
+      ],
+      "answer": "是。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-linear-systems-q1",
+      "problem": "零初始状态的齐次线性系统解是什么？",
+      "hint": "唯一性与线性性。",
+      "solution": [
+        "零函数满足方程及初值。"
+      ],
+      "answer": "零解。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-linear-systems-q2",
+      "problem": "基本矩阵在起点不是单位矩阵时，系数向量等于初值吗？",
+      "hint": "需要逆矩阵转换。",
+      "solution": [
+        "应为 $\\Phi(t_0)^{-1}\\mathbf x_0$。"
+      ],
+      "answer": "通常不等于。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-linear-systems-q3",
+      "problem": "$x'=2x,y'=3y$ 的一个基本矩阵？",
+      "hint": "各列分别提供一个方向。",
+      "solution": [
+        "取对角指数矩阵。"
+      ],
+      "answer": "$\\operatorname{diag}(e^{2t},e^{3t})$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-linear-systems-q4",
+      "problem": "基本矩阵可以在区间内突然变奇异吗？",
+      "hint": "连续线性系统解的独立性保持。",
+      "solution": [
+        "从可逆初值出发，Liouville 公式使行列式保持非零。"
+      ],
+      "answer": "不能。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-linear-systems-m1",
+      "claim": "基本矩阵任意选两条解就行。",
+      "correction": "列必须线性无关。"
+    },
+    {
+      "id": "ode-linear-systems-m2",
+      "claim": "相平面横轴总是时间。",
+      "correction": "两个轴都是状态分量。"
+    }
+  ],
+  "prerequisites": [
+    "ode-system-reduction",
+    "la-diagonalization"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-linear-systems-m1",
+    "ode-linear-systems-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "线性系统的基本矩阵用独立解作列，把任意初始状态映射到后续状态。",
+  "intuition": "先研究每个独立初始方向怎样走，再用线性组合拼出所有运动。",
+  "objectives": [
+    "检验系统解与基本矩阵",
+    "区分轨迹和时间参数"
+  ],
+  "formalDefinition": {
+    "text": "线性系统与基本矩阵",
+    "latex": "\\mathbf x(t)=\\Phi(t)\\Phi(t_0)^{-1}\\mathbf x_0",
+    "conditions": [
+      "矩阵系数在区间连续，基本矩阵在该区间可逆；相轨迹的方向由时间前进规定。"
+    ]
+  },
+  "learningCheck": {
+    "question": "基本矩阵的列是什么？",
+    "choices": [
+      "独立的齐次解向量",
+      "任意初值数字",
+      "方程的系数"
+    ],
+    "correctIndex": 0,
+    "explanation": "它把一组独立运动收集在一起。"
+  },
+  "teaching": {
+    "explain": "一个基本矩阵就是一整组初值实验的结果，线性性让它足以恢复所有初值运动。",
+    "steps": [
+      {
+        "title": "吸引节点",
+        "preset": {
+          "a": -1,
+          "c": -0.5,
+          "b": 3
+        },
+        "observation": "两个分量都衰减。",
+        "instruction": "将第一指数率 $\\lambda_1$设为 $-1$；将第二指数率 $\\lambda_2$设为 $-0.5$；将观察时间 $t$设为 $3$。"
+      },
+      {
+        "title": "鞍点",
+        "preset": {
+          "a": 1,
+          "c": -1,
+          "b": 2
+        },
+        "observation": "一个方向增长，另一个方向衰减。",
+        "instruction": "将第一指数率 $\\lambda_1$设为 $1$；将第二指数率 $\\lambda_2$设为 $-1$；将观察时间 $t$设为 $2$。"
+      },
+      {
+        "title": "排斥节点",
+        "preset": {
+          "a": 0.5,
+          "c": 1,
+          "b": 2
+        },
+        "observation": "两个方向都增长。",
+        "instruction": "将第一指数率 $\\lambda_1$设为 $0.5$；将第二指数率 $\\lambda_2$设为 $1$；将观察时间 $t$设为 $2$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-linear-systems",
+    "caption": "绘制从状态 $(1,1)$ 出发的解析相轨迹及归一化方向场。改参数可比较节点与鞍点，单条轨迹不代表全部初值。",
+    "prediction": "将一个负特征值改为正值，节点会变成什么？"
+  }
+}

@@ -1,0 +1,266 @@
+{
+  "id": "linear-algebra",
+  "title": "Linear Algebra",
+  "titleZh": "线性代数",
+  "subtitle": "从方程组到空间、投影与分解",
+  "version": "0.1.0",
+  "language": "zh-CN",
+  "author": "AI University · AI-generated",
+  "description": "完整的有限维线性代数：方程组、矩阵与映射、向量空间、四个基本子空间、行列式、特征值、正交与最小二乘、对称矩阵、SVD，以及网络和数据应用。",
+  "audience": "掌握初等代数与基本平面几何的学习者；旋转使用简单三角函数，不要求先修微积分",
+  "scope": "十章五十节，覆盖有限维实向量空间与矩阵的一门完整入门课，包含复特征值、伪逆、低秩近似、条件数和 PCA。全 Jordan 理论、抽象对偶、张量与无限维分析留给后续教材。",
+  "chapters": [
+    {
+      "id": "la-systems",
+      "title": "向量与线性方程组",
+      "subtitle": "把多个条件放在一起求解",
+      "intro": "从向量加法读懂矩阵方程，再用消元判断解是否存在、是否唯一。",
+      "goals": [
+        "写出线性组合",
+        "进行等价行变换",
+        "完整描述解集"
+      ],
+      "lessonIds": [
+        "la-vectors",
+        "la-equations",
+        "la-elimination",
+        "la-pivots",
+        "la-parametric"
+      ]
+    },
+    {
+      "id": "la-matrices",
+      "title": "矩阵与线性映射",
+      "subtitle": "把输入变成输出",
+      "intro": "矩阵记录基向量的像；矩阵乘法对应映射复合。逆矩阵与分解用于求解，不靠机械套公式。",
+      "goals": [
+        "理解矩阵乘法",
+        "判断线性映射和可逆性",
+        "用 LU 分解求解"
+      ],
+      "lessonIds": [
+        "la-matrix-product",
+        "la-linear-maps",
+        "la-composition",
+        "la-inverse",
+        "la-lu"
+      ]
+    },
+    {
+      "id": "la-spaces",
+      "title": "向量空间、基与坐标",
+      "subtitle": "哪些方向是必要的",
+      "intro": "从具体坐标推广到满足相同运算规则的对象。基既没有冗余，又能表示空间中的全部向量。",
+      "goals": [
+        "判断子空间",
+        "区分张成与线性无关",
+        "使用基和坐标"
+      ],
+      "lessonIds": [
+        "la-subspaces",
+        "la-span",
+        "la-independence",
+        "la-basis",
+        "la-dimension",
+        "la-coordinates"
+      ]
+    },
+    {
+      "id": "la-fundamental",
+      "title": "零空间、像与秩",
+      "subtitle": "输入中丢了什么，输出中保留什么",
+      "intro": "四个基本子空间把求解、独立性和正交性连接起来。先分别确定它们属于哪个空间。",
+      "goals": [
+        "求零空间与列空间的基",
+        "使用秩—零度定理",
+        "区分四个基本子空间"
+      ],
+      "lessonIds": [
+        "la-nullspace",
+        "la-column-row",
+        "la-rank-nullity",
+        "la-four-spaces"
+      ]
+    },
+    {
+      "id": "la-determinants",
+      "title": "行列式",
+      "subtitle": "有向体积与可逆性",
+      "intro": "行列式用一个数描述方阵对有向体积的缩放。运算规则比反复展开大公式更有用。",
+      "goals": [
+        "解释符号与体积",
+        "用行操作计算",
+        "理解可逆与行列式的关系"
+      ],
+      "lessonIds": [
+        "la-det-geometry",
+        "la-det-properties",
+        "la-cofactors",
+        "la-cramer"
+      ]
+    },
+    {
+      "id": "la-eigen",
+      "title": "特征值与对角化",
+      "subtitle": "哪些方向不会转弯",
+      "intro": "特征向量在变换后只发生数乘。足够多的独立特征向量能把反复作用拆成各方向上的标量计算。",
+      "goals": [
+        "求特征空间",
+        "判断能否对角化",
+        "处理重复及复特征值"
+      ],
+      "lessonIds": [
+        "la-eigenvectors",
+        "la-characteristic",
+        "la-multiplicity",
+        "la-diagonalization",
+        "la-complex-eigen"
+      ]
+    },
+    {
+      "id": "la-orthogonal",
+      "title": "正交、投影与最小二乘",
+      "subtitle": "没有精确解时，怎样找到最近的解",
+      "intro": "长度和垂直关系让坐标计算更简单。正交分解从投影通向 QR 与最小二乘。",
+      "goals": [
+        "计算投影与距离",
+        "构造标准正交基",
+        "建立并求解最小二乘问题"
+      ],
+      "lessonIds": [
+        "la-inner-products",
+        "la-projection",
+        "la-orthogonal-complements",
+        "la-gram-schmidt",
+        "la-qr",
+        "la-least-squares"
+      ]
+    },
+    {
+      "id": "la-symmetric",
+      "title": "对称矩阵与二次型",
+      "subtitle": "用正交方向判断形状与最值",
+      "intro": "实对称矩阵总有标准正交的特征基。二次型因此可分解为互不混合的平方项。",
+      "goals": [
+        "使用谱定理",
+        "判断正定与退化",
+        "完成平方并求约束极值"
+      ],
+      "lessonIds": [
+        "la-spectral",
+        "la-quadratic-forms",
+        "la-positive-definite",
+        "la-cholesky",
+        "la-rayleigh"
+      ]
+    },
+    {
+      "id": "la-svd",
+      "title": "奇异值分解与数值稳定性",
+      "subtitle": "长方矩阵也能分成独立的缩放",
+      "intro": "SVD 用两套正交坐标描述一般矩阵，并统一给出秩、伪逆、最佳低秩近似与条件数。",
+      "goals": [
+        "区分特征值与奇异值",
+        "使用 SVD 与伪逆",
+        "理解低秩误差和病态放大"
+      ],
+      "lessonIds": [
+        "la-singular-values",
+        "la-svd",
+        "la-pseudoinverse",
+        "la-low-rank",
+        "la-conditioning"
+      ]
+    },
+    {
+      "id": "la-applications",
+      "title": "迭代、网络与数据分析",
+      "subtitle": "把分解用于具体问题",
+      "intro": "用同一套矩阵语言处理状态变化、网络守恒与数据降维。每个模型都先说明输入、约束和实际含义。",
+      "goals": [
+        "建立 Markov 与递推模型",
+        "分析图的关联矩阵",
+        "完成 PCA 并选择合适工具"
+      ],
+      "lessonIds": [
+        "la-markov",
+        "la-recurrences",
+        "la-networks",
+        "la-pca",
+        "la-choosing-tools"
+      ]
+    }
+  ],
+  "lessonIds": [
+    "la-vectors",
+    "la-equations",
+    "la-elimination",
+    "la-pivots",
+    "la-parametric",
+    "la-matrix-product",
+    "la-linear-maps",
+    "la-composition",
+    "la-inverse",
+    "la-lu",
+    "la-subspaces",
+    "la-span",
+    "la-independence",
+    "la-basis",
+    "la-dimension",
+    "la-coordinates",
+    "la-nullspace",
+    "la-column-row",
+    "la-rank-nullity",
+    "la-four-spaces",
+    "la-det-geometry",
+    "la-det-properties",
+    "la-cofactors",
+    "la-cramer",
+    "la-eigenvectors",
+    "la-characteristic",
+    "la-multiplicity",
+    "la-diagonalization",
+    "la-complex-eigen",
+    "la-inner-products",
+    "la-projection",
+    "la-orthogonal-complements",
+    "la-gram-schmidt",
+    "la-qr",
+    "la-least-squares",
+    "la-spectral",
+    "la-quadratic-forms",
+    "la-positive-definite",
+    "la-cholesky",
+    "la-rayleigh",
+    "la-singular-values",
+    "la-svd",
+    "la-pseudoinverse",
+    "la-low-rank",
+    "la-conditioning",
+    "la-markov",
+    "la-recurrences",
+    "la-networks",
+    "la-pca",
+    "la-choosing-tools"
+  ],
+  "bridge": [],
+  "sources": [
+    {
+      "id": "mit-1806",
+      "title": "MIT OCW · 18.06 Linear Algebra",
+      "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/pages/syllabus/",
+      "usage": "用于核对完整入门课程范围、四个基本子空间、分解与应用；本书正文、题目、图形及解答独立编写，不复制原讲义、视频或题库。"
+    },
+    {
+      "id": "gatech-ila",
+      "title": "Georgia Tech · Interactive Linear Algebra",
+      "url": "https://textbooks.math.gatech.edu/ila/overview.html",
+      "usage": "用于核对代数与几何的概念顺序、方程解集、特征空间与正交性的条件；不复制原文、例题或图像。"
+    }
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "humanReviewed": false,
+    "checks": "结构、数学排版、先修关系、独立矩阵复算、图示边界与真实页面检查；不等同于逐式形式化证明。"
+  }
+}
