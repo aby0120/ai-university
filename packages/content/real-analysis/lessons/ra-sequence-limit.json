@@ -1,0 +1,200 @@
+{
+  "id": "ra-sequence-limit",
+  "chapterId": "ra-sequences",
+  "number": "2.1",
+  "title": "数列极限的量词",
+  "subtitle": "收敛要求从某一项起，所有后续项都在任意给定误差内。",
+  "concept": "收敛要求从某一项起，所有后续项都在任意给定误差内。",
+  "intuition": "误差先由别人提出，截断位置再由你选择；不能只挑少数好看的项。",
+  "objectives": [
+    "写对先后",
+    "找到合法截断"
+  ],
+  "body": [
+    {
+      "title": "写对先后",
+      "text": "截断位置可以依赖误差，不能依赖随后任意选择的项号。一个固定宽误差带不足以证明收敛。"
+    },
+    {
+      "title": "找到合法截断",
+      "text": "倒数数列要让指标严格大于误差倒数。用向下取整再加一，能兼顾严格不等与整数指标。"
+    },
+    {
+      "title": "证明唯一性",
+      "text": "若两个不同极限都成立，把误差取为两极限间距的三分之一，再同时进入两个尾部，三角不等式会导致距离小于自身。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "本卷数列指标从一开始，除另行说明。",
+    "latex": "a_n\\to L\\iff\\forall\\varepsilon>0\\ \\exists N\\in\\mathbb N\\ \\forall n\\ge N:\\ |a_n-L|<\\varepsilon",
+    "conditions": [
+      "极限值为有限实数。",
+      "无穷发散单独定义，不是有限实数极限。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "对倒数把目标改写成指标约束。",
+      "latex": "|1/n-0|<\\varepsilon\\iff n>1/\\varepsilon"
+    },
+    {
+      "text": "选一个严格更大的整数。",
+      "latex": "N=\\lfloor1/\\varepsilon\\rfloor+1"
+    },
+    {
+      "text": "所有后续项自动满足。",
+      "latex": "n\\ge N\\implies1/n\\le1/N<\\varepsilon"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "一个截断位置",
+      "problem": "$a_n=1/n$，误差 $0.1$ 时可取哪个最小整数截断？",
+      "steps": [
+        "要求 $n>10$。",
+        "从十一开始，全部后续项严格小于十分之一。"
+      ],
+      "answer": "十一。"
+    },
+    {
+      "title": "不收敛的振荡",
+      "problem": "$a_n=(-1)^n$ 为什么不收敛？",
+      "steps": [
+        "偶数项恒为一，奇数项恒为负一。",
+        "若全列收敛，两个子列应有相同极限，或用两个相距二的尾项反驳 Cauchy 条件。"
+      ],
+      "answer": "振荡不会因项号增加而缩小。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$1/n$ 在误差 $1/4$ 下最小合法截断？",
+      "hint": "严格小于四分之一。",
+      "solution": [
+        "指标必须大于四。"
+      ],
+      "answer": "五。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 5,
+      "id": "ra-sequence-limit-q1"
+    },
+    {
+      "problem": "收敛是否允许前几项离极限很远？",
+      "hint": "定义只要求某个尾部。",
+      "solution": [
+        "有限前缀不会改变极限。"
+      ],
+      "answer": "允许。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-sequence-limit-q2"
+    },
+    {
+      "problem": "每个误差里有无穷多项就够吗？",
+      "hint": "仍可能有另一些项一直在外面。",
+      "solution": [
+        "只保证某些子列靠近，不控制全部尾项。"
+      ],
+      "answer": "不够。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-sequence-limit-q3"
+    },
+    {
+      "id": "ra-sequence-limit-q4",
+      "problem": "用极限定义证明 $a_n\\to L$ 时，修改有限多项不会改变极限。",
+      "hint": "把原截断推到所有修改之后。",
+      "solution": [
+        "设只修改前 $M$ 项，新数列记为 $b_n$。",
+        "给定 $\\varepsilon>0$，原列存在 $N_0$ 使 $n\\ge N_0$ 时 $|a_n-L|<\\varepsilon$。",
+        "取 $N=\\max(N_0,M+1)$，则 $n\\ge N$ 时 $b_n=a_n$，仍满足同一误差界。"
+      ],
+      "answer": "取 $N=\\max(N_0,M+1)$，则 $n\\ge N$ 时 $b_n=a_n$，仍满足同一误差界。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-sequence-limit-m1",
+        "ra-sequence-limit-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "截断位置能依赖什么？",
+    "choices": [
+      "误差",
+      "随后任取的项号",
+      "不能依赖任何量"
+    ],
+    "correctIndex": 0,
+    "explanation": "先给误差，再选统一控制后续项的位置。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-sequence-limit-m1",
+      "claim": "只要一部分项接近就收敛",
+      "correction": "要全部后续项都接近。"
+    },
+    {
+      "id": "ra-sequence-limit-m2",
+      "claim": "误差等于边界也满足严格定义",
+      "correction": "定义是严格小于，可选更大截断。"
+    }
+  ],
+  "prerequisites": [
+    "ra-archimedes",
+    "ra-absolute-value"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ra-sequence-limit-m1",
+    "ra-sequence-limit-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-sequence-limit",
+    "prediction": "缩窄误差带，解析计算的截断位置如何变化？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "误差先由别人提出，截断位置再由你选择；不能只挑少数好看的项。 要全部后续项都接近。",
+    "steps": [
+      {
+        "title": "显示到指标：1",
+        "instruction": "将显示到指标设为 $1$。比较解析截断与末项位置，检查截断后是否全部满足误差。",
+        "observation": "解析截断 $11$；当前末项 $1$；是否已到截断：否。",
+        "preset": {
+          "eps": 0.1,
+          "n": 1
+        }
+      },
+      {
+        "title": "显示到指标：100",
+        "instruction": "将显示到指标设为 $100$。比较解析截断与末项位置，检查截断后是否全部满足误差。",
+        "observation": "解析截断 $11$；当前末项 $0.01$；是否已到截断：是。",
+        "preset": {
+          "eps": 0.1,
+          "n": 100
+        }
+      },
+      {
+        "title": "显示到指标：200",
+        "instruction": "将显示到指标设为 $200$。比较解析截断与末项位置，检查截断后是否全部满足误差。",
+        "observation": "解析截断 $11$；当前末项 $0.005$；是否已到截断：是。",
+        "preset": {
+          "eps": 0.1,
+          "n": 200
+        }
+      }
+    ]
+  }
+}

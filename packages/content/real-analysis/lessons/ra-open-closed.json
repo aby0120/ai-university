@@ -1,0 +1,201 @@
+{
+  "id": "ra-open-closed",
+  "chapterId": "ra-topology",
+  "number": "4.1",
+  "title": "开集、闭集与相对拓扑",
+  "subtitle": "开集让每个成员都有可留在集合内的小邻域；闭集包含自己的所有极限点。",
+  "concept": "开集让每个成员都有可留在集合内的小邻域；闭集包含自己的所有极限点。",
+  "intuition": "“开”和“闭”不是互为否定，一个集合可以两者都是，也可以两者都不是。",
+  "objectives": [
+    "从邻域定义开",
+    "用补集定义闭"
+  ],
+  "body": [
+    {
+      "title": "从邻域定义开",
+      "text": "实线子集开，指每个成员周围都有一个正半径区间完全落在集合里。空集与整条实线都是开集。"
+    },
+    {
+      "title": "用补集定义闭",
+      "text": "闭集的补集开。有限交的开集仍开，任意并的开集仍开；无限交不一定开。闭集的对应规则由补集与德摩根律得到。"
+    },
+    {
+      "title": "明确环境",
+      "text": "在闭区间自身中，相对开集是实线开集与该区间相交。端点附近只需检查定义域内部，不要求越出定义域。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "本节未特别标记时以实线为环境。",
+    "latex": "U\\text{ 开}\\iff\\forall x\\in U\\ \\exists r>0:\\ (x-r,x+r)\\subseteq U",
+    "conditions": [
+      "相对开闭需说明环境集合。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "两个开集交中选一个点，各有邻域半径。",
+      "latex": "x\\in U\\cap V,\\quad r_U,r_V>0"
+    },
+    {
+      "text": "取两个半径的较小值。",
+      "latex": "r=\\min(r_U,r_V)>0"
+    },
+    {
+      "text": "新邻域同时落在两者内。",
+      "latex": "(x-r,x+r)\\subseteq U\\cap V"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "无限交失去开性",
+      "problem": "$\\bigcap_{n\\ge1}(-1/n,1/n)$ 是什么，开吗？",
+      "steps": [
+        "交集只有零。",
+        "零的任何正半径邻域含非零点。"
+      ],
+      "answer": "单点集，不开但闭。"
+    },
+    {
+      "title": "相对开",
+      "problem": "$[0,1/2)$ 在 $[0,1]$ 中相对开吗？",
+      "steps": [
+        "它等于 $(-1,1/2)\\cap[0,1]$。",
+        "端点零只检查区间内方向。"
+      ],
+      "answer": "相对开；在实线中不开。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "空集是否既开又闭？",
+      "hint": "逐点条件与补集。",
+      "solution": [
+        "开条件无成员需检验，补集实线也开。"
+      ],
+      "answer": "是。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-open-closed-q1"
+    },
+    {
+      "problem": "任意多个开集的并开吗？",
+      "hint": "一个点属于某个成员开集。",
+      "solution": [
+        "沿用该成员提供的邻域。"
+      ],
+      "answer": "开。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-open-closed-q2"
+    },
+    {
+      "problem": "有限闭集的并闭吗？",
+      "hint": "对补集取有限开交。",
+      "solution": [
+        "补集开，故原并闭。"
+      ],
+      "answer": "闭。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-open-closed-q3"
+    },
+    {
+      "id": "ra-open-closed-q4",
+      "problem": "证明任意多个开集的并仍开。",
+      "hint": "先为并集中的一个点找到所属的某个开集。",
+      "solution": [
+        "设 $x\\in\\bigcup_{\\alpha}U_\\alpha$，选一个满足 $x\\in U_{\\alpha_0}$ 的指标。",
+        "由该集合开，存在 $r>0$ 使 $(x-r,x+r)\\subseteq U_{\\alpha_0}$。",
+        "这个邻域也属于整个并集，故并集中每点都有内邻域，证明了开放性。"
+      ],
+      "answer": "这个邻域也属于整个并集，故并集中每点都有内邻域，证明了开放性。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-open-closed-m1",
+        "ra-open-closed-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "集合“不闭”是否等于“开”？",
+    "choices": [
+      "是",
+      "不是",
+      "只在实线是"
+    ],
+    "correctIndex": 1,
+    "explanation": "半开区间两者都不是。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-open-closed-m1",
+      "claim": "开闭是互补标签",
+      "correction": "闭的补集开，不是所有不闭集合都开。"
+    },
+    {
+      "id": "ra-open-closed-m2",
+      "claim": "不说明环境也可谈相对开",
+      "correction": "相对性质依赖所选空间。"
+    }
+  ],
+  "prerequisites": [
+    "dm-sets",
+    "ra-absolute-value"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ra-open-closed-m1",
+    "ra-open-closed-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-open-closed",
+    "prediction": "把中心移到端点附近，能否找到完全落在集合内的邻域？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "“开”和“闭”不是互为否定，一个集合可以两者都是，也可以两者都不是。 闭的补集开，不是所有不闭集合都开。",
+    "steps": [
+      {
+        "title": "当前输入：-0.2",
+        "instruction": "将当前输入设为 $-0.2$。检查中心是否属于集合，以及整个开邻域是否留在集合内。",
+        "observation": "中心属于集合：否；当前整个邻域留在集合：否。",
+        "preset": {
+          "a": 0,
+          "x": -0.2,
+          "eps": 0.2
+        }
+      },
+      {
+        "title": "当前输入：0.5",
+        "instruction": "将当前输入设为 $0.5$。检查中心是否属于集合，以及整个开邻域是否留在集合内。",
+        "observation": "中心属于集合：是；当前整个邻域留在集合：是。",
+        "preset": {
+          "a": 0,
+          "x": 0.5,
+          "eps": 0.2
+        }
+      },
+      {
+        "title": "当前输入：1.2",
+        "instruction": "将当前输入设为 $1.2$。检查中心是否属于集合，以及整个开邻域是否留在集合内。",
+        "observation": "中心属于集合：否；当前整个邻域留在集合：否。",
+        "preset": {
+          "a": 0,
+          "x": 1.2,
+          "eps": 0.2
+        }
+      }
+    ]
+  }
+}

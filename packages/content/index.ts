@@ -12,6 +12,8 @@ import metadata6 from "./probability-statistics/book.json";
 import supplements6 from "./probability-statistics/supplements.json";
 import metadata7 from "./discrete-math/book.json";
 import supplements7 from "./discrete-math/supplements.json";
+import metadata8 from "./real-analysis/book.json";
+import supplements8 from "./real-analysis/supplements.json";
 import type { Lesson } from "./types";
 export type Book = typeof metadata;
 export type Supplements = typeof supplements1;
@@ -24,6 +26,7 @@ const modules = import.meta.glob(
     "./ordinary-differential-equations/lessons/*.json",
     "./probability-statistics/lessons/*.json",
     "./discrete-math/lessons/*.json",
+    "./real-analysis/lessons/*.json",
   ],
   { eager: true, import: "default" },
 ) as Record<string, Lesson>;
@@ -75,6 +78,7 @@ export const collections = [
   collection(metadata5, supplements5, "./ordinary-differential-equations/lessons", "Ordinary-Differential-Equations.md", "ordinary-differential-equations.html"),
   collection(metadata6, supplements6, "./probability-statistics/lessons", "Probability-Statistics.md", "probability-statistics.html"),
   collection(metadata7, supplements7, "./discrete-math/lessons", "Discrete-Mathematics.md", "discrete-math.html"),
+  collection(metadata8, supplements8, "./real-analysis/lessons", "Real-Analysis.md", "real-analysis.html"),
 ];
 export type Collection = (typeof collections)[number];
 export const allLessons = collections.flatMap((c) => c.lessons);

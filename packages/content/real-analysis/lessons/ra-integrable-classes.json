@@ -1,0 +1,200 @@
+{
+  "id": "ra-integrable-classes",
+  "chapterId": "ra-integration",
+  "number": "7.3",
+  "title": "连续、单调与有限跳跃的可积性",
+  "subtitle": "连续或单调的有界区间函数都可积，但理由不同。",
+  "concept": "连续或单调的有界区间函数都可积，但理由不同。",
+  "intuition": "连续用全域统一的小振幅；单调用增量的望远镜相消。",
+  "objectives": [
+    "连续函数",
+    "单调函数"
+  ],
+  "body": [
+    {
+      "title": "连续函数",
+      "text": "闭区间连续先由极值定理有界，再由一致连续控制每个小区间振幅。让网格足够细，总间隙不超过小振幅乘总宽度。"
+    },
+    {
+      "title": "单调函数",
+      "text": "单调即使有跳跃，每块振幅也可由端点差精确控制。总间隙不超过最大网格宽度乘总函数增量。"
+    },
+    {
+      "title": "有限异常点",
+      "text": "有限个不连续点可用总长度很小的区间包住，其贡献由全域幅度界控制；余下闭片段上用一致连续性。这也说明改动有限点不改变积分。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "连续函数和单调函数在闭有界区间上都 Riemann 可积。",
+    "latex": "U(f,P)-L(f,P)\\le\\|P\\|\\,[f(b)-f(a)]\\quad\\text{若 }f\\text{ 非减}",
+    "conditions": [
+      "单调函数在闭区间上有定义，故有界。",
+      "有限异常点结论仍要求函数全域有界。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "非减函数每块振幅为端点差。",
+      "latex": "M_i-m_i=f(x_i)-f(x_{i-1})"
+    },
+    {
+      "text": "每块宽度不超过最大网格。",
+      "latex": "\\sum_i(M_i-m_i)\\Delta x_i\\le\\|P\\|\\sum_i[f(x_i)-f(x_{i-1})]"
+    },
+    {
+      "text": "端点差相消，网格趋零使间隙趋零。",
+      "latex": "U-L\\le\\|P\\|[f(b)-f(a)]\\to0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "单跳阶跃",
+      "problem": "零到一上，输入小于二分之一输出零，否则输出一，可积吗？",
+      "steps": [
+        "函数有界且非减。",
+        "只有跨跳点的小块产生不确定面积，可把宽度任意缩小。"
+      ],
+      "answer": "可积，积分二分之一。"
+    },
+    {
+      "title": "改一点",
+      "problem": "平方函数只在一个点改为一百，积分变吗？",
+      "steps": [
+        "新函数仍有界，只增加一个异常点。",
+        "包住该点的区间可任意短。"
+      ],
+      "answer": "不变。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "单调函数必须连续才可积吗？",
+      "hint": "单调可积证明未用连续。",
+      "solution": [
+        "不必须。"
+      ],
+      "answer": "不必须。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-integrable-classes-q1"
+    },
+    {
+      "problem": "有限不连续点但函数无界，能套本节结论吗？",
+      "hint": "全域有界是前提。",
+      "solution": [
+        "不能忽略有界性。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-integrable-classes-q2"
+    },
+    {
+      "problem": "零到一恒等函数，网格最大宽度百分之一，间隙最多多少？",
+      "hint": "总增量一。",
+      "solution": [
+        "$0.01\\cdot1=0.01$。"
+      ],
+      "answer": "$0.01$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.01,
+      "id": "ra-integrable-classes-q3"
+    },
+    {
+      "id": "ra-integrable-classes-q4",
+      "problem": "用一致连续性证明闭区间上的连续函数可积。",
+      "hint": "统一限制每块振幅，再乘总宽度。",
+      "solution": [
+        "设 $a<b$。连续函数在 $[a,b]$ 上有界且一致连续。给定 $\\varepsilon>0$，选 $\\delta>0$，使距离小于 $\\delta$ 的输出差小于 $\\varepsilon/[2(b-a)]$。",
+        "取网格小于 $\\delta$ 的分割，每块振幅不超过这个输出误差界。",
+        "故 $U-L\\le(b-a)\\varepsilon/[2(b-a)]=\\varepsilon/2<\\varepsilon$。退化区间积分直接为零。"
+      ],
+      "answer": "故 $U-L\\le(b-a)\\varepsilon/[2(b-a)]=\\varepsilon/2<\\varepsilon$。退化区间积分直接为零。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-integrable-classes-m1",
+        "ra-integrable-classes-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "单调可积的误差界最关键用了什么？",
+    "choices": [
+      "端点差望远镜相消",
+      "函数必须有导数",
+      "每处连续"
+    ],
+    "correctIndex": 0,
+    "explanation": "跳跃也能包含在总增量预算中。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-integrable-classes-m1",
+      "claim": "可积等于连续",
+      "correction": "连续只是充分条件。"
+    },
+    {
+      "id": "ra-integrable-classes-m2",
+      "claim": "有限异常可忽略无需有界",
+      "correction": "无界峰会破坏有限高度控制。"
+    }
+  ],
+  "prerequisites": [
+    "ra-integrability",
+    "ra-uniform-continuity"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ra-integrable-classes-m1",
+    "ra-integrable-classes-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-integrable-classes",
+    "prediction": "比较连续曲线与单跳函数，细分为何都能缩小不确定面积？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "连续用全域统一的小振幅；单调用增量的望远镜相消。 连续只是充分条件。",
+    "steps": [
+      {
+        "title": "等分块数：1",
+        "instruction": "将等分块数设为 $1$。切换连续、跳跃和稠密零一案例，比较间隙能否趋零。",
+        "observation": "下和 $0$；上和 $1$；间隙 $1$；积分 $0.5$。",
+        "preset": {
+          "a": 1,
+          "n": 1
+        }
+      },
+      {
+        "title": "等分块数：20",
+        "instruction": "将等分块数设为 $20$。切换连续、跳跃和稠密零一案例，比较间隙能否趋零。",
+        "observation": "下和 $0.5$；上和 $0.55$；间隙 $0.05$；积分 $0.5$。",
+        "preset": {
+          "a": 1,
+          "n": 20
+        }
+      },
+      {
+        "title": "等分块数：40",
+        "instruction": "将等分块数设为 $40$。切换连续、跳跃和稠密零一案例，比较间隙能否趋零。",
+        "observation": "下和 $0.5$；上和 $0.525$；间隙 $0.025$；积分 $0.5$。",
+        "preset": {
+          "a": 1,
+          "n": 40
+        }
+      }
+    ]
+  }
+}

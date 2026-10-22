@@ -1,0 +1,206 @@
+{
+  "id": "ra-ftc-derivative",
+  "chapterId": "ra-integration",
+  "number": "7.4",
+  "title": "积分累积函数的导数",
+  "subtitle": "在被积函数连续的点，局部平均值趋于该点值，累积函数就在该点有对应导数。",
+  "concept": "在被积函数连续的点，局部平均值趋于该点值，累积函数就在该点有对应导数。",
+  "intuition": "一小段累积除以长度，就是附近值的平均；连续性让这段里的值都靠近中心值。",
+  "objectives": [
+    "先定义累积",
+    "控制差商"
+  ],
+  "body": [
+    {
+      "title": "先定义累积",
+      "text": "有界可积函数在每个子区间可积，故可以定义从固定端点到变动输入的积分。积分的加性与绝对值界在附录证明。"
+    },
+    {
+      "title": "控制差商",
+      "text": "累积函数差商减中心函数值，绝对值不超过该小段内函数偏离中心值的最大幅度。中心连续就把这个幅度压到零。"
+    },
+    {
+      "title": "连续条件是局部的",
+      "text": "被积函数不必处处连续才定义累积；但本结论只在它连续的内点保证导数。跳点处累积可能出现角点。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "若函数可积且在某内点连续，积分累积函数在该点可导。",
+    "latex": "F(x)=\\int_a^x f(t)\\,dt,\\quad f\\text{ 在 }c\\text{ 连续}\\implies F'(c)=f(c)",
+    "conditions": [
+      "被积函数在整个闭区间有界且 Riemann 可积。",
+      "讨论点为内点；端点可用单侧版本。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "用积分加性写出差商。",
+      "latex": "\\frac{F(c+h)-F(c)}h=\\frac1h\\int_c^{c+h}f(t)\\,dt"
+    },
+    {
+      "text": "扣去中心值的平均。",
+      "latex": "\\frac{F(c+h)-F(c)}h-f(c)=\\frac1h\\int_c^{c+h}[f(t)-f(c)]\\,dt"
+    },
+    {
+      "text": "连续性使小段全部误差小。",
+      "latex": "\\left|\\frac1h\\int_c^{c+h}[f(t)-f(c)]\\,dt\\right|\\le\\sup_{t\\text{ 在该段}}|f(t)-f(c)|\\to0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "线性累积",
+      "problem": "$f(t)=t$，从零累积到输入，导数是什么？",
+      "steps": [
+        "$F(x)=x^2/2$。",
+        "导数为 $x$，符合被积函数值。"
+      ],
+      "answer": "$F'(x)=x$。"
+    },
+    {
+      "title": "阶跃累积",
+      "problem": "被积函数在二分之一处从零跳为一，累积在那里可导吗？",
+      "steps": [
+        "左侧累积恒零，斜率零。",
+        "右侧累积线性增长，斜率一。"
+      ],
+      "answer": "该点不可导。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "被积函数只在讨论点连续够本定理局部结论吗？",
+      "hint": "全局还需可积。",
+      "solution": [
+        "可积加该点连续即可。"
+      ],
+      "answer": "够。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-ftc-derivative-q1"
+    },
+    {
+      "problem": "有界可积函数的累积一定连续吗？",
+      "hint": "用积分幅度界。",
+      "solution": [
+        "$|F(y)-F(x)|\\le M|y-x|$。"
+      ],
+      "answer": "一定，甚至 Lipschitz。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-ftc-derivative-q2"
+    },
+    {
+      "problem": "积分累积可导就说明被积函数处处连续吗？",
+      "hint": "反向不是本定理。",
+      "solution": [
+        "单点改值不改积分，却可破坏连续。"
+      ],
+      "answer": "不能推出。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-ftc-derivative-q3"
+    },
+    {
+      "id": "ra-ftc-derivative-q4",
+      "problem": "设 $|f|\\le M$ 且 $f$ 在 $[a,b]$ 可积。证明 $F(x)=\\int_a^x f$ 为 Lipschitz 连续。",
+      "hint": "用积分加性和绝对值界，不需要被积函数处处连续。",
+      "solution": [
+        "对 $x<y$，积分加性给出 $F(y)-F(x)=\\int_x^y f(t)\\,dt$。",
+        "由 $-M\\le f\\le M$ 得 $|F(y)-F(x)|\\le M(y-x)$。",
+        "交换两点后同样得到 $|F(y)-F(x)|\\le M|y-x|$，因而 $F$ 一致连续。"
+      ],
+      "answer": "交换两点后同样得到 $|F(y)-F(x)|\\le M|y-x|$，因而 $F$ 一致连续。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-ftc-derivative-m1",
+        "ra-ftc-derivative-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "累积差商为何趋于中心值？",
+    "choices": [
+      "局部平均误差被连续性统一压小",
+      "采样点很多",
+      "积分总为正"
+    ],
+    "correctIndex": 0,
+    "explanation": "关键在小段所有值接近中心。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-ftc-derivative-m1",
+      "claim": "可积就处处满足导数等式",
+      "correction": "跳点可能失败。"
+    },
+    {
+      "id": "ra-ftc-derivative-m2",
+      "claim": "累积连续要求被积处处连续",
+      "correction": "有界可积已经给出 Lipschitz 界。"
+    }
+  ],
+  "prerequisites": [
+    "ra-integrable-classes",
+    "ra-function-limit"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ra-ftc-derivative-m1",
+    "ra-ftc-derivative-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra",
+    "lebl-ftc"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-ftc-derivative",
+    "prediction": "缩小小段，平均值怎样趋向中心值；跳点为何不同？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "一小段累积除以长度，就是附近值的平均；连续性让这段里的值都靠近中心值。 跳点可能失败。",
+    "steps": [
+      {
+        "title": "增量大小：0.4",
+        "instruction": "将增量大小设为 $0.4$。比较局部平均与中心值；在跳点处切换靠近方向。",
+        "observation": "差商 / 局部平均 $0.8$；被积函数中心值 $0.6$；中心可保证导数：是。",
+        "preset": {
+          "a": 0,
+          "x": 0.6,
+          "h": 0.4,
+          "c": 1
+        }
+      },
+      {
+        "title": "增量大小：0.2001",
+        "instruction": "将增量大小设为 $0.2001$。比较局部平均与中心值；在跳点处切换靠近方向。",
+        "observation": "差商 / 局部平均 $0.70005$；被积函数中心值 $0.6$；中心可保证导数：是。",
+        "preset": {
+          "a": 0,
+          "x": 0.6,
+          "h": 0.2001,
+          "c": 1
+        }
+      },
+      {
+        "title": "增量大小：0.0001",
+        "instruction": "将增量大小设为 $0.0001$。比较局部平均与中心值；在跳点处切换靠近方向。",
+        "observation": "差商 / 局部平均 $0.60005$；被积函数中心值 $0.6$；中心可保证导数：是。",
+        "preset": {
+          "a": 0,
+          "x": 0.6,
+          "h": 0.0001,
+          "c": 1
+        }
+      }
+    ]
+  }
+}

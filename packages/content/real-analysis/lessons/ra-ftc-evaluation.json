@@ -1,0 +1,202 @@
+{
+  "id": "ra-ftc-evaluation",
+  "chapterId": "ra-integration",
+  "number": "7.5",
+  "title": "积分计算、换元与分部积分",
+  "subtitle": "原函数的端点差能计算积分，但原函数与可积性条件必须同时成立。",
+  "concept": "原函数的端点差能计算积分，但原函数与可积性条件必须同时成立。",
+  "intuition": "用每个小区间上的中值定理，把端点增量变成一份带标记的 Riemann 和。",
+  "objectives": [
+    "证明端点公式",
+    "换元的充分条件"
+  ],
+  "body": [
+    {
+      "title": "证明端点公式",
+      "text": "若原函数连续、内部可导且导数可积，对每块使用中值定理。原函数增量相加望远镜相消，导数的标记和在网格趋零时收敛到积分。"
+    },
+    {
+      "title": "换元的充分条件",
+      "text": "内函数连续可导，外被积函数在覆盖其像的区间连续。先取外函数积分原函数，再用链式法则和端点公式；内函数不必单调。"
+    },
+    {
+      "title": "分部积分",
+      "text": "对两连续可导函数的乘积使用求导法则，再积分并移项。定理条件保证出现的函数均可积。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "Newton–Leibniz 本节给出 Riemann 版本的充分条件。",
+    "latex": "F\\in C([a,b]),\\ F'=f\\text{ 于 }(a,b),\\ f\\text{ Riemann 可积}\\implies\\int_a^bf=F(b)-F(a)",
+    "conditions": [
+      "导数在端点的赋值可任意有限指定，不影响积分。",
+      "只知存在导数不能自动保证其 Riemann 可积。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "每个小区间用中值定理。",
+      "latex": "F(x_i)-F(x_{i-1})=f(\\xi_i)\\Delta x_i"
+    },
+    {
+      "text": "端点增量相消。",
+      "latex": "F(b)-F(a)=\\sum_i f(\\xi_i)\\Delta x_i"
+    },
+    {
+      "text": "可积性保证细标记和趋向积分。",
+      "latex": "\\|P\\|\\to0\\implies\\sum_i f(\\xi_i)\\Delta x_i\\to\\int_a^bf"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "换元",
+      "problem": "求零到一的 $2x e^{x^2}$ 积分。",
+      "steps": [
+        "取 $u=x^2$，连续可导。",
+        "$e^{x^2}$ 为原函数，端点差为 $e-1$。"
+      ],
+      "answer": "$e-1$。"
+    },
+    {
+      "title": "分部积分",
+      "problem": "求零到一的 $xe^x$ 积分。",
+      "steps": [
+        "令乘积为 $xe^x$，导数 $e^x+xe^x$。",
+        "$\\int_0^1xe^x dx=[xe^x]_0^1-\\int_0^1e^x dx=e-(e-1)$。"
+      ],
+      "answer": "一。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "连续可导内函数换元一定要求单调吗？",
+      "hint": "原函数链式法则可直接处理回头。",
+      "solution": [
+        "不要求；有向端点差自动计算。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-ftc-evaluation-q1"
+    },
+    {
+      "problem": "任意导数都一定 Riemann 可积吗？",
+      "hint": "导数可无界或不满足可积条件。",
+      "solution": [
+        "存在性本身不够。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-ftc-evaluation-q2"
+    },
+    {
+      "problem": "$\\int_0^2 2x\\,dx$？",
+      "hint": "原函数平方。",
+      "solution": [
+        "$2^2-0^2=4$。"
+      ],
+      "answer": "四。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 4,
+      "id": "ra-ftc-evaluation-q3"
+    },
+    {
+      "id": "ra-ftc-evaluation-q4",
+      "problem": "设 $u,v\\in C^1([a,b])$。证明分部积分公式。",
+      "hint": "把乘积法则积分，并说明可积性。",
+      "solution": [
+        "乘积连续可导，且 $(uv)'=u'v+uv'$。各项连续，故 Riemann 可积。",
+        "基本定理给 $u(b)v(b)-u(a)v(a)=\\int_a^b u'v+\\int_a^b uv'$。",
+        "移项得 $\\int_a^b uv'=[uv]_a^b-\\int_a^b u'v$。"
+      ],
+      "answer": "移项得 $\\int_a^b uv'=[uv]_a^b-\\int_a^b u'v$。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-ftc-evaluation-m1",
+        "ra-ftc-evaluation-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "端点公式用中值定理之后还需要什么？",
+    "choices": [
+      "导数可积保证标记和收敛",
+      "所有标记相同",
+      "函数必须单调"
+    ],
+    "correctIndex": 0,
+    "explanation": "否则不能把有限和极限当作积分。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-ftc-evaluation-m1",
+      "claim": "有原函数就无需检查导数可积",
+      "correction": "此 Riemann 版本仍需条件。"
+    },
+    {
+      "id": "ra-ftc-evaluation-m2",
+      "claim": "换元回头就不能计算",
+      "correction": "在足够光滑条件下有向积分会自动抵消。"
+    }
+  ],
+  "prerequisites": [
+    "ra-mean-value",
+    "ra-integrability",
+    "ra-ftc-derivative"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ra-ftc-evaluation-m1",
+    "ra-ftc-evaluation-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra",
+    "lebl-ftc"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-ftc-evaluation",
+    "prediction": "比较原函数的端点增量与导数的 Riemann 和，它们如何对应？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "用每个小区间上的中值定理，把端点增量变成一份带标记的 Riemann 和。 此 Riemann 版本仍需条件。",
+    "steps": [
+      {
+        "title": "分割块数：1",
+        "instruction": "将分割块数设为 $1$。逐行比较原函数增量与面积，再核对端点差。",
+        "observation": "原函数端点差 $0.3333333$；中值标记和（恒等） $0.3333333$；中点和（近似） $0.25$。",
+        "preset": {
+          "a": 0,
+          "n": 1
+        }
+      },
+      {
+        "title": "分割块数：20",
+        "instruction": "将分割块数设为 $20$。逐行比较原函数增量与面积，再核对端点差。",
+        "observation": "原函数端点差 $0.3333333$；中值标记和（恒等） $0.3333333$；中点和（近似） $0.333125$。",
+        "preset": {
+          "a": 0,
+          "n": 20
+        }
+      },
+      {
+        "title": "分割块数：40",
+        "instruction": "将分割块数设为 $40$。逐行比较原函数增量与面积，再核对端点差。",
+        "observation": "原函数端点差 $0.3333333$；中值标记和（恒等） $0.3333333$；中点和（近似） $0.3332813$。",
+        "preset": {
+          "a": 0,
+          "n": 40
+        }
+      }
+    ]
+  }
+}

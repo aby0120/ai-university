@@ -1,0 +1,204 @@
+{
+  "id": "ra-derivative",
+  "chapterId": "ra-differentiation",
+  "number": "6.1",
+  "title": "导数与局部线性",
+  "subtitle": "可导表示一阶误差可写成线性主项，加上比输入变化更小的余项。",
+  "concept": "可导表示一阶误差可写成线性主项，加上比输入变化更小的余项。",
+  "intuition": "连续只让函数值接近；可导还要求接近方式有统一的一阶斜率。",
+  "objectives": [
+    "把差商改写为余项",
+    "检查左右一致"
+  ],
+  "body": [
+    {
+      "title": "把差商改写为余项",
+      "text": "导数存在，等价于函数增量等于导数乘输入增量，加一个除以增量后趋零的余项。这个形式直接说明可导推出连续。"
+    },
+    {
+      "title": "检查左右一致",
+      "text": "绝对值函数在零连续，右差商一、左差商负一，不能有共同导数。"
+    },
+    {
+      "title": "证明复合规则",
+      "text": "内函数增量代入外函数的局部线性形式。用内函数可导推出其增量被输入增量的常数倍控制，余项因而仍是更小阶。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "函数在内点可导采用双侧差商极限。",
+    "latex": "f(a+h)=f(a)+f'(a)h+o(h)",
+    "conditions": [
+      "中心为定义域内点；端点可另定义单侧导数。",
+      "小阶余项指除以输入增量后趋零。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "把差商极限的误差记作趋零函数。",
+      "latex": "\\frac{f(a+h)-f(a)}h=f'(a)+\\eta(h),\\quad\\eta(h)\\to0"
+    },
+    {
+      "text": "同乘输入增量。",
+      "latex": "f(a+h)-f(a)=f'(a)h+h\\eta(h)"
+    },
+    {
+      "text": "两项都趋零，得到连续。",
+      "latex": "f(a+h)\\to f(a)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "平方的余项",
+      "problem": "$f(x)=x^2$ 在中心 $a$ 的线性主项与余项？",
+      "steps": [
+        "$(a+h)^2-a^2=2ah+h^2$。",
+        "$h^2/h=h\\to0$。"
+      ],
+      "answer": "主项 $2ah$，余项 $h^2$。"
+    },
+    {
+      "title": "连续但不可导",
+      "problem": "$|x|$ 在零的差商？",
+      "steps": [
+        "正增量给一。",
+        "负增量给负一。"
+      ],
+      "answer": "左右不同，无导数。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "可导是否连续？",
+      "hint": "局部线性分解。",
+      "solution": [
+        "线性主项与小阶余项都趋零。"
+      ],
+      "answer": "是。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-derivative-q1"
+    },
+    {
+      "problem": "连续是否可导？",
+      "hint": "绝对值零处。",
+      "solution": [
+        "反例否定逆命题。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-derivative-q2"
+    },
+    {
+      "problem": "$h^2$ 是 $o(h)$ 吗？",
+      "hint": "相除后取极限。",
+      "solution": [
+        "$h^2/h=h\\to0$。"
+      ],
+      "answer": "是。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-derivative-q3"
+    },
+    {
+      "id": "ra-derivative-q4",
+      "problem": "直接由定义证明 $|x|$ 在零处不可导。",
+      "hint": "分别计算正负增量的差商。",
+      "solution": [
+        "在 $h>0$ 时，$(|h|-0)/h=1$。",
+        "在 $h<0$ 时，$(|h|-0)/h=-1$。",
+        "左右极限不同，双侧差商没有极限，故零处不可导；函数本身在零处仍连续。"
+      ],
+      "answer": "左右极限不同，双侧差商没有极限，故零处不可导；函数本身在零处仍连续。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-derivative-m1",
+        "ra-derivative-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "可导比连续多要求什么？",
+    "choices": [
+      "局部有统一一阶线性斜率",
+      "函数必须单调",
+      "导数必须连续"
+    ],
+    "correctIndex": 0,
+    "explanation": "导数本身也可不连续。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-derivative-m1",
+      "claim": "差商很大就等于不存在连续性",
+      "correction": "可导性与连续性需分别检验。"
+    },
+    {
+      "id": "ra-derivative-m2",
+      "claim": "小余项只需本身趋零",
+      "correction": "还须比输入变化更小阶。"
+    }
+  ],
+  "prerequisites": [
+    "ra-function-limit"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ra-derivative-m1",
+    "ra-derivative-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-derivative",
+    "prediction": "缩小增量，平方余项除以增量后的误差怎样变化？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "连续只让函数值接近；可导还要求接近方式有统一的一阶斜率。 可导性与连续性需分别检验。",
+    "steps": [
+      {
+        "title": "增量大小：0.4",
+        "instruction": "将增量大小设为 $0.4$。比较当前割线与切线；切换方向后检查差商是否趋于同一值。",
+        "observation": "当前差商 $0.4$；中心导数 $0$；余项除增量 $0.4$。",
+        "preset": {
+          "a": 0,
+          "b": 0,
+          "h": 0.4,
+          "c": 1
+        }
+      },
+      {
+        "title": "增量大小：0.2001",
+        "instruction": "将增量大小设为 $0.2001$。比较当前割线与切线；切换方向后检查差商是否趋于同一值。",
+        "observation": "当前差商 $0.2001$；中心导数 $0$；余项除增量 $0.2001$。",
+        "preset": {
+          "a": 0,
+          "b": 0,
+          "h": 0.2001,
+          "c": 1
+        }
+      },
+      {
+        "title": "增量大小：0.0001",
+        "instruction": "将增量大小设为 $0.0001$。比较当前割线与切线；切换方向后检查差商是否趋于同一值。",
+        "observation": "当前差商 $0.0001$；中心导数 $0$；余项除增量 $0.0001$。",
+        "preset": {
+          "a": 0,
+          "b": 0,
+          "h": 0.0001,
+          "c": 1
+        }
+      }
+    ]
+  }
+}

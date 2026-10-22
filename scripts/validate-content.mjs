@@ -15,6 +15,7 @@ import {
 import { validateGuidance } from "../packages/visuals/guidance.mjs";
 import {linearControls,linearFrame,linearDefaults} from '../packages/visuals/linear-algebra.mjs';
 import {odeControls,odeFrame,odeDefaults} from '../packages/visuals/ode.mjs';
+import {analysisControls,analysisFrame,analysisDefaults} from '../packages/visuals/analysis.mjs';
 import {discreteControls,discreteFrame,discreteDefaults} from '../packages/visuals/discrete.mjs';
 import {probabilityControls,probabilityFrame,probabilityDefaults} from '../packages/visuals/probability.mjs';
 import { functions } from "../packages/visuals/math.mjs";
@@ -96,7 +97,9 @@ export function validateContent() {
         l.sources.every((id) => sourceIds.has(id)),
         `${l.id}: unknown source`,
       );
-      if(l.interactiveVisual.kind==='discrete') {
+      if(l.interactiveVisual.kind==='analysis') {
+        assert.equal(l.interactiveVisual.function,l.id);assert(analysisControls(l.id));analysisFrame(l.id,analysisDefaults(l.id));
+      } else if(l.interactiveVisual.kind==='discrete') {
         assert.equal(l.interactiveVisual.function,l.id);assert(discreteControls(l.id));discreteFrame(l.id,discreteDefaults(l.id));
       } else if(l.interactiveVisual.kind==='probability') {
         assert.equal(l.interactiveVisual.function,l.id);

@@ -1,0 +1,205 @@
+{
+  "id": "ra-interchange",
+  "chapterId": "ra-function-sequences",
+  "number": "8.4",
+  "title": "交换积分与导数的条件",
+  "subtitle": "一致收敛足以传递有限区间积分，但单独还不足以传递导数。",
+  "concept": "一致收敛足以传递有限区间积分，但单独还不足以传递导数。",
+  "intuition": "面积由总宽度乘统一高度误差控制；斜率却可能在小幅振荡中保持很大。",
+  "objectives": [
+    "积分交换",
+    "导数交换的充分条件"
+  ],
+  "body": [
+    {
+      "title": "积分交换",
+      "text": "每个近似函数可积且一致趋于极限时，先用小间隙分割证明极限可积，再用总宽度乘统一误差估计积分差。"
+    },
+    {
+      "title": "导数交换的充分条件",
+      "text": "若每个函数连续可导，导数列一致趋于连续极限，且某一个输入点的函数值收敛，就可通过积分累积证明原函数列一致收敛且极限可导。"
+    },
+    {
+      "title": "看清不足的条件",
+      "text": "正弦高频项除以频率一致趋零，但导数为高频余弦。在零点各近似导数恒一，极限函数导数却为零。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "积分与微分使用各自不同的充分条件。",
+    "latex": "\\left|\\int_a^b(f_n-f)\\right|\\le(b-a)\\|f_n-f\\|_\\infty",
+    "conditions": [
+      "积分：有限闭区间，每项 Riemann 可积且一致收敛。",
+      "导数：每项连续可导、导数一致收敛，并有一点函数值收敛。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "统一误差先保证极限可积，继而控制积分差。",
+      "latex": "U(f,P)-L(f,P)\\le U(f_n,P)-L(f_n,P)+2(b-a)\\|f_n-f\\|_\\infty"
+    },
+    {
+      "text": "导数定理写出每个函数的积分表示。",
+      "latex": "f_n(x)=f_n(x_0)+\\int_{x_0}^x f_n'(t)\\,dt"
+    },
+    {
+      "text": "导数统一误差与锚点误差共同控制函数。",
+      "latex": "\\|f_n-f\\|_\\infty\\le|f_n(x_0)-\\ell|+(b-a)\\|f_n'-g\\|_\\infty"
+    },
+    {
+      "text": "连续极限与微积分基本定理给出导数。",
+      "latex": "f(x)=\\ell+\\int_{x_0}^xg(t)\\,dt\\implies f'=g"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "积分不能只逐点",
+      "problem": "三角尖峰支撑零到两倍倒数、峰高为指标，指标至少二。积分怎样？",
+      "steps": [
+        "每个固定输入最终落在支撑外，逐点趋零。",
+        "底长两倍倒数乘高再除二，每个积分恒一。"
+      ],
+      "answer": "积分极限为一，与零函数积分不同。"
+    },
+    {
+      "title": "导数不能只看函数一致",
+      "problem": "$f_n(x)=\\sin(nx)/n$ 在 $[0,1]$ 上一致收敛。各函数在实线上可导，零处导数能否传递给极限函数？",
+      "steps": [
+        "函数全域幅度不超过 $1/n$，一致趋零。",
+        "$f_n'(0)=1$，而零函数导数为零。"
+      ],
+      "answer": "不能交换求导。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "积分误差在单位区间上受什么控制？",
+      "hint": "总宽度一。",
+      "solution": [
+        "不超过函数统一误差。"
+      ],
+      "answer": "统一误差。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-interchange-q1"
+    },
+    {
+      "problem": "函数列一致收敛是否自动导数列收敛？",
+      "hint": "高频正弦反例。",
+      "solution": [
+        "否。"
+      ],
+      "answer": "不自动。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-interchange-q2"
+    },
+    {
+      "problem": "导数列一致收敛但不固定一点函数值，原列可发散吗？",
+      "hint": "取不断增大的常数函数。",
+      "solution": [
+        "导数全零，原函数可恒等于指标。"
+      ],
+      "answer": "可以。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-interchange-q3"
+    },
+    {
+      "id": "ra-interchange-q4",
+      "problem": "构造在 $[0,1]$ 上逐点趋零、每项积分却恒一的连续函数列，并证明。",
+      "hint": "将移动三角尖峰的高度改为指标。",
+      "solution": [
+        "令 $f_n(x)=n\\max(0,1-|nx-1|)$，$n\\ge2$。支撑在 $[0,2/n]$，峰值在 $1/n$。",
+        "零处恒零，任意固定正输入最终在支撑外，所以逐点趋零。",
+        "三角形底长 $2/n$、高度 $n$，积分为一；极限零函数的积分为零，所以这里不能交换极限与积分。"
+      ],
+      "answer": "三角形底长 $2/n$、高度 $n$，积分为一；极限零函数的积分为零，所以这里不能交换极限与积分。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-interchange-m1",
+        "ra-interchange-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "函数一致收敛直接保证哪一种传递？",
+    "choices": [
+      "有限区间可积函数的积分",
+      "任意函数的导数",
+      "任意无穷区间积分"
+    ],
+    "correctIndex": 0,
+    "explanation": "区间长度和可积性是误差估计的条件。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-interchange-m1",
+      "claim": "所有极限运算共用一个条件",
+      "correction": "求导比积分需要更强控制。"
+    },
+    {
+      "id": "ra-interchange-m2",
+      "claim": "只控导数无需锚点",
+      "correction": "常数偏移可能不断漂走。"
+    }
+  ],
+  "prerequisites": [
+    "ra-uniform-continuous-limit",
+    "ra-ftc-evaluation",
+    "ra-ftc-derivative"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ra-interchange-m1",
+    "ra-interchange-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra",
+    "lebl-interchange"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-interchange",
+    "prediction": "比较高频振荡与移动尖峰，幅度、斜率和面积为何给出不同结果？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "面积由总宽度乘统一高度误差控制；斜率却可能在小幅振荡中保持很大。 求导比积分需要更强控制。",
+    "steps": [
+      {
+        "title": "函数指标：2",
+        "instruction": "将函数指标设为 $2$。分别比较幅度、导数和积分，判断它们是否同时趋零。",
+        "observation": "函数统一误差上界 $0.5$；零处近似函数导数 $1$；极限函数导数 $0$；当前积分 $0.3540367$。",
+        "preset": {
+          "a": 0,
+          "n": 2
+        }
+      },
+      {
+        "title": "函数指标：31",
+        "instruction": "将函数指标设为 $31$。分别比较幅度、导数和积分，判断它们是否同时趋零。",
+        "observation": "函数统一误差上界 $0.03225806$；零处近似函数导数 $1$；极限函数导数 $0$；当前积分 $0.00008871763$。",
+        "preset": {
+          "a": 0,
+          "n": 31
+        }
+      },
+      {
+        "title": "函数指标：60",
+        "instruction": "将函数指标设为 $60$。分别比较幅度、导数和积分，判断它们是否同时趋零。",
+        "observation": "函数统一误差上界 $0.01666667$；零处近似函数导数 $1$；极限函数导数 $0$；当前积分 $0.0005423369$。",
+        "preset": {
+          "a": 0,
+          "n": 60
+        }
+      }
+    ]
+  }
+}

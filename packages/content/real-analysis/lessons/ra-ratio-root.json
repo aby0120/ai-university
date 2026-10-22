@@ -1,0 +1,199 @@
+{
+  "id": "ra-ratio-root",
+  "chapterId": "ra-series",
+  "number": "3.3",
+  "title": "比值与根值判别",
+  "subtitle": "最终能用收敛几何级数压住绝对值，就得到绝对收敛。",
+  "concept": "最终能用收敛几何级数压住绝对值，就得到绝对收敛。",
+  "intuition": "临界值一时，几何控制消失，必须换方法。",
+  "objectives": [
+    "用比值建立几何界",
+    "使用根值"
+  ],
+  "body": [
+    {
+      "title": "用比值建立几何界",
+      "text": "若绝对比值最终小于某个严格小于一的常数，反复相乘就用几何尾部控制原项。"
+    },
+    {
+      "title": "使用根值",
+      "text": "根值的上极限小于一时，最终每项绝对值都不超过某个几何幂。上极限的定义与性质在附录给出。"
+    },
+    {
+      "title": "认清临界",
+      "text": "比值或根值等于一，既可能收敛也可能发散。若比值极限大于一，项最终不可能趋零；根值上极限大于一也有子列不趋零。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "比值判别要求尾部项非零；根值可处理零项。",
+    "latex": "\\lim\\left|\\frac{a_{n+1}}{a_n}\\right|<1\\quad\\text{或}\\quad\\limsup |a_n|^{1/n}<1\\implies\\sum|a_n|<\\infty",
+    "conditions": [
+      "比值表达式在尾部有定义。",
+      "等于一时本判别法不作结论。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "选择严格介于比值极限与一的数。",
+      "latex": "L<q<1"
+    },
+    {
+      "text": "尾部比值被统一控制。",
+      "latex": "|a_{n+1}|\\le q|a_n|\\quad(n\\ge N)"
+    },
+    {
+      "text": "迭代并用几何和。",
+      "latex": "|a_{N+k}|\\le |a_N|q^k"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "阶乘分母",
+      "problem": "$\\sum 2^n/n!$ 是否收敛？",
+      "steps": [
+        "相邻绝对比值为 $2/(n+1)$。",
+        "极限零，小于一。"
+      ],
+      "answer": "绝对收敛。"
+    },
+    {
+      "title": "临界比较",
+      "problem": "调和与平方倒数级数的比值极限各是多少？",
+      "steps": [
+        "分别为 $n/(n+1)$ 和 $n^2/(n+1)^2$。",
+        "都趋一，但一个发散、一个收敛。"
+      ],
+      "answer": "临界一无法判断。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$\\sum (3/4)^n$ 根值？",
+      "hint": "每项取指标次方根。",
+      "solution": [
+        "恒为四分之三。"
+      ],
+      "answer": "$3/4$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.75,
+      "id": "ra-ratio-root-q1"
+    },
+    {
+      "problem": "比值极限一是否表示发散？",
+      "hint": "平方倒数反例。",
+      "solution": [
+        "需要其他判别。"
+      ],
+      "answer": "不表示。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-ratio-root-q2"
+    },
+    {
+      "problem": "含无穷多个零项能直接逐项作比吗？",
+      "hint": "分母可能为零。",
+      "solution": [
+        "比值可能无定义，可考虑根值或比较。"
+      ],
+      "answer": "不能保证。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-ratio-root-q3"
+    },
+    {
+      "id": "ra-ratio-root-q4",
+      "problem": "用比值判别证明 $\\sum_{n\\ge1}n/2^n$ 收敛，并给出尾部几何控制。",
+      "hint": "从第三项以后把比值压在四分之三以下。",
+      "solution": [
+        "令 $a_n=n/2^n$，则 $a_{n+1}/a_n=(n+1)/(2n)$。",
+        "对 $n\\ge2$，该比值不超过 $3/4$，故 $a_{2+k}\\le a_2(3/4)^k$。",
+        "尾部由收敛几何级数控制，因此绝对收敛。"
+      ],
+      "answer": "尾部由收敛几何级数控制，因此绝对收敛。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-ratio-root-m1",
+        "ra-ratio-root-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "临界值一意味着什么？",
+    "choices": [
+      "总收敛",
+      "总发散",
+      "本判别不决定"
+    ],
+    "correctIndex": 2,
+    "explanation": "不同级数在这一数值下可有不同结果。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-ratio-root-m1",
+      "claim": "比值只需某一项小于一",
+      "correction": "需要统一的尾部控制。"
+    },
+    {
+      "id": "ra-ratio-root-m2",
+      "claim": "根值与逐项大小没有关系",
+      "correction": "最终根值界正对应几何幂界。"
+    }
+  ],
+  "prerequisites": [
+    "ra-positive-series"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ra-ratio-root-m1",
+    "ra-ratio-root-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-ratio-root",
+    "prediction": "比较阶乘、调和与平方倒数的相邻比值，临界一为何不够？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "临界值一时，几何控制消失，必须换方法。 需要统一的尾部控制。",
+    "steps": [
+      {
+        "title": "显示到指标：2",
+        "instruction": "将显示到指标设为 $2$。分别观察比值和根值，检查是否真正远离临界一。",
+        "observation": "当前案例：阶乘分母：绝对收敛。",
+        "preset": {
+          "a": 0,
+          "n": 2
+        }
+      },
+      {
+        "title": "显示到指标：21",
+        "instruction": "将显示到指标设为 $21$。分别观察比值和根值，检查是否真正远离临界一。",
+        "observation": "当前案例：阶乘分母：绝对收敛。",
+        "preset": {
+          "a": 0,
+          "n": 21
+        }
+      },
+      {
+        "title": "显示到指标：40",
+        "instruction": "将显示到指标设为 $40$。分别观察比值和根值，检查是否真正远离临界一。",
+        "observation": "当前案例：阶乘分母：绝对收敛。",
+        "preset": {
+          "a": 0,
+          "n": 40
+        }
+      }
+    ]
+  }
+}

@@ -163,7 +163,8 @@
             "linear-algebra",
             "ode",
             "probability",
-            "discrete"
+            "discrete",
+            "analysis"
           ]
         },
         "function": {

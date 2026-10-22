@@ -13,11 +13,11 @@ const near = (a, b, tol = 1e-7) =>
   assert(Math.abs(a - b) < tol, `${a} differs from ${b}`);
 test("entire manuscript is linked, schema valid, formula-renderable and acyclic", () => {
   const result = validateContent();
-  assert.equal(result.sections, 305);
-  assert.equal(result.exercises, 1512);
-  assert.equal(result.examples, 622);
-  assert.equal(result.publishedVolumes, 9);
-  assert.equal(result.chapters, 63);
+  assert.equal(result.sections, 345);
+  assert.equal(result.exercises, 1696);
+  assert.equal(result.examples, 702);
+  assert.equal(result.publishedVolumes, 10);
+  assert.equal(result.chapters, 71);
 });
 test("canonical derivatives agree with independent central differences", () => {
   for (const [id, s] of Object.entries(functions)) {

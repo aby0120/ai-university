@@ -14,7 +14,7 @@ test('linear algebra is an independent full course with linked examples, exercis
   assert.equal(book.allLessons.flatMap(l=>l.workedExamples).length,100);
   assert.equal(book.allLessons.flatMap(l=>l.practice).length,200);
   assert.equal(book.extra.reviews.flatMap(r=>r.questions).length,30);assert.equal(book.extra.exam.length,20);
-  assert.equal(new Set(libraryLessons.map(l=>l.id)).size,305);
+  assert.equal(new Set(libraryLessons.map(l=>l.id)).size,345);
   const prompts=new Set(book.allLessons.flatMap(l=>l.practice).map(q=>q.problem));
   for(const q of [...book.extra.exam,...book.extra.reviews.flatMap(r=>r.questions)])assert(!prompts.has(q.problem),'review must not repeat section prompts');
   for(const l of book.allLessons){validateGuidance(l);assert(l.prerequisites.every(id=>id.startsWith('la-')));assert.notEqual(l.intuition,l.teaching.explain);}

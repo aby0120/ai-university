@@ -1,0 +1,231 @@
+{
+  "id": "real-analysis",
+  "title": "Real Analysis",
+  "titleZh": "实分析",
+  "subtitle": "把直觉变成有条件的证明",
+  "version": "0.1.0",
+  "language": "zh-CN",
+  "author": "AI University · AI-generated",
+  "description": "实数完备性、数列级数、紧致与连续、微分、Riemann 积分、函数列和极限交换。每节提供证明思路、条件、反例、完整习题解答和本地交互。",
+  "audience": "学过一元微积分并愿意练习基本证明的中文读者；逻辑与集合可回看离散数学",
+  "scope": "八章四十节完整的实直线上第一门分析课程。以完备有序域为起点，严谨建立一元微积分和一致收敛理论。一般度量空间、测度与 Lebesgue 积分、泛函分析及多元分析属于后续课程。",
+  "chapters": [
+    {
+      "id": "ra-reals",
+      "title": "实数与完备性",
+      "subtitle": "为极限准备可靠的数系",
+      "intro": "为极限准备可靠的数系。",
+      "goals": [
+        "用有序域公理证明基本不等式",
+        "区分上界、最大值与上确界",
+        "从完备性证明平方根存在"
+      ],
+      "lessonIds": [
+        "ra-ordered-field",
+        "ra-supremum",
+        "ra-archimedes",
+        "ra-absolute-value",
+        "ra-square-root"
+      ]
+    },
+    {
+      "id": "ra-sequences",
+      "title": "数列与收敛",
+      "subtitle": "把无限趋近写成可检查的条件",
+      "intro": "把无限趋近写成可检查的条件。",
+      "goals": [
+        "写清极限定义中量词的顺序",
+        "证明单调收敛与嵌套区间定理",
+        "用子列与 Cauchy 条件判断收敛"
+      ],
+      "lessonIds": [
+        "ra-sequence-limit",
+        "ra-limit-algebra",
+        "ra-monotone",
+        "ra-subsequences",
+        "ra-cauchy"
+      ]
+    },
+    {
+      "id": "ra-series",
+      "title": "无穷级数",
+      "subtitle": "研究部分和，不把无穷当作普通加法",
+      "intro": "研究部分和，不把无穷当作普通加法。",
+      "goals": [
+        "从部分和定义级数收敛",
+        "选择比较、比值、根值或交错判别",
+        "区分绝对收敛与条件收敛"
+      ],
+      "lessonIds": [
+        "ra-series-definition",
+        "ra-positive-series",
+        "ra-ratio-root",
+        "ra-alternating",
+        "ra-absolute-rearrangement"
+      ]
+    },
+    {
+      "id": "ra-topology",
+      "title": "实直线上的集合",
+      "subtitle": "用邻域、紧致与连通组织局部信息",
+      "intro": "用邻域、紧致与连通组织局部信息。",
+      "goals": [
+        "用邻域判断开集、闭集与聚点",
+        "证明紧致等价于闭且有界",
+        "区分连通、可数与不可数"
+      ],
+      "lessonIds": [
+        "ra-open-closed",
+        "ra-closure",
+        "ra-compactness",
+        "ra-connectedness",
+        "ra-countability"
+      ]
+    },
+    {
+      "id": "ra-continuity",
+      "title": "连续与一致连续",
+      "subtitle": "把输入误差转成输出误差",
+      "intro": "把输入误差转成输出误差。",
+      "goals": [
+        "区分函数极限与中心点的值",
+        "证明连续像保持紧致与连通",
+        "区分连续和一致连续"
+      ],
+      "lessonIds": [
+        "ra-function-limit",
+        "ra-sequential-continuity",
+        "ra-extreme-values",
+        "ra-intermediate-values",
+        "ra-uniform-continuity"
+      ]
+    },
+    {
+      "id": "ra-differentiation",
+      "title": "微分的理论",
+      "subtitle": "从局部线性到整体控制",
+      "intro": "从局部线性到整体控制。",
+      "goals": [
+        "把可导改写为局部线性近似",
+        "说明中值定理和 Darboux 定理的条件",
+        "用 Taylor 余项与二阶导数估计函数"
+      ],
+      "lessonIds": [
+        "ra-derivative",
+        "ra-mean-value",
+        "ra-darboux",
+        "ra-taylor",
+        "ra-convexity"
+      ]
+    },
+    {
+      "id": "ra-integration",
+      "title": "Riemann 积分",
+      "subtitle": "让上下估计挤到同一个数",
+      "intro": "让上下估计挤到同一个数。",
+      "goals": [
+        "从上下和定义积分并判断可积性",
+        "证明连续与单调函数可积",
+        "在条件满足时使用微积分基本定理"
+      ],
+      "lessonIds": [
+        "ra-darboux-sums",
+        "ra-integrability",
+        "ra-integrable-classes",
+        "ra-ftc-derivative",
+        "ra-ftc-evaluation"
+      ]
+    },
+    {
+      "id": "ra-function-sequences",
+      "title": "函数列与极限交换",
+      "subtitle": "检查误差能否对整个定义域统一控制",
+      "intro": "检查误差能否对整个定义域统一控制。",
+      "goals": [
+        "区分逐点收敛与一致收敛",
+        "用一致 Cauchy 和 M 判别控制尾部",
+        "核对连续性、积分及导数的极限交换条件"
+      ],
+      "lessonIds": [
+        "ra-pointwise-uniform",
+        "ra-uniform-cauchy",
+        "ra-uniform-continuous-limit",
+        "ra-interchange",
+        "ra-power-series"
+      ]
+    }
+  ],
+  "lessonIds": [
+    "ra-ordered-field",
+    "ra-supremum",
+    "ra-archimedes",
+    "ra-absolute-value",
+    "ra-square-root",
+    "ra-sequence-limit",
+    "ra-limit-algebra",
+    "ra-monotone",
+    "ra-subsequences",
+    "ra-cauchy",
+    "ra-series-definition",
+    "ra-positive-series",
+    "ra-ratio-root",
+    "ra-alternating",
+    "ra-absolute-rearrangement",
+    "ra-open-closed",
+    "ra-closure",
+    "ra-compactness",
+    "ra-connectedness",
+    "ra-countability",
+    "ra-function-limit",
+    "ra-sequential-continuity",
+    "ra-extreme-values",
+    "ra-intermediate-values",
+    "ra-uniform-continuity",
+    "ra-derivative",
+    "ra-mean-value",
+    "ra-darboux",
+    "ra-taylor",
+    "ra-convexity",
+    "ra-darboux-sums",
+    "ra-integrability",
+    "ra-integrable-classes",
+    "ra-ftc-derivative",
+    "ra-ftc-evaluation",
+    "ra-pointwise-uniform",
+    "ra-uniform-cauchy",
+    "ra-uniform-continuous-limit",
+    "ra-interchange",
+    "ra-power-series"
+  ],
+  "sources": [
+    {
+      "id": "mit-18100",
+      "title": "MIT 18.100A · Real Analysis",
+      "url": "https://ocw.mit.edu/courses/18-100a-real-analysis-fall-2020/pages/lecture-notes-and-readings/",
+      "usage": "核对第一门实分析课程范围及完备性、收敛、连续、微分、积分与一致性之间的先修关系；正文与题目独立编写。"
+    },
+    {
+      "id": "lebl-ra",
+      "title": "Jiří Lebl · Basic Analysis I",
+      "url": "https://www.jirka.org/ra/html/ra.html",
+      "usage": "核对公开作者教材的课程边界，不复制正文、图或习题。"
+    },
+    {
+      "id": "lebl-interchange",
+      "title": "Basic Analysis · Interchange of limits",
+      "url": "https://www.jirka.org/ra/html/sec_liminter.html",
+      "usage": "核对积分及导数极限交换的充分条件。"
+    },
+    {
+      "id": "lebl-ftc",
+      "title": "Basic Analysis · Fundamental theorem of calculus",
+      "url": "https://www.jirka.org/ra/html/sec_ftc.html",
+      "usage": "核对 Riemann 积分版本的微积分基本定理条件。"
+    }
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "humanReviewed": false,
+    "checks": "结构、排版、依赖、选定证明与反例复核及解析模型交叉检查；未声称人类审校或形式化证明。"
+  }
+}

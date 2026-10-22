@@ -1,0 +1,195 @@
+{
+  "id": "ra-limit-algebra",
+  "chapterId": "ra-sequences",
+  "number": "2.2",
+  "title": "极限运算、保序与夹逼",
+  "subtitle": "先控制每个误差，再组合；分母远离零才允许取倒数。",
+  "concept": "先控制每个误差，再组合；分母远离零才允许取倒数。",
+  "intuition": "和的误差容易分预算，乘积还要先给幅度设上界。",
+  "objectives": [
+    "收敛推出有界",
+    "证明乘积与商"
+  ],
+  "body": [
+    {
+      "title": "收敛推出有界",
+      "text": "尾部落在极限周围半径一内，有限前缀再取一个最大幅度，两者合并成全列上界。"
+    },
+    {
+      "title": "证明乘积与商",
+      "text": "乘积差拆成两项，利用有界性分配误差。若分母极限非零，最终其绝对值至少为极限绝对值的一半。"
+    },
+    {
+      "title": "使用夹逼",
+      "text": "上下列最终夹住中间列且趋同一极限，就把中间误差也压住。严格不等号取极限后通常只能保留非严格形式。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "有限实数极限满足代数运算与夹逼定理。",
+    "latex": "a_n\\to a,\\ b_n\\to b\\ne0\\implies\\frac{a_n}{b_n}\\to\\frac ab",
+    "conditions": [
+      "商的尾部分母非零；有限个未定义前项须先排除。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "分母最终远离零。",
+      "latex": "|b_n-b|<|b|/2\\implies|b_n|>|b|/2"
+    },
+    {
+      "text": "倒数误差用共同分母表示。",
+      "latex": "\\left|\\frac1{b_n}-\\frac1b\\right|=\\frac{|b_n-b|}{|b_n||b|}"
+    },
+    {
+      "text": "统一估计后与乘积定理合用。",
+      "latex": "\\left|\\frac1{b_n}-\\frac1b\\right|\\le\\frac{2|b_n-b|}{|b|^2}\\to0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "有界振荡乘消失项",
+      "problem": "求 $\\sin n/n$ 极限。",
+      "steps": [
+        "$|\\sin n|\\le1$。",
+        "$|\\sin n/n|\\le1/n\\to0$。"
+      ],
+      "answer": "零。"
+    },
+    {
+      "title": "严格次序不保留",
+      "problem": "$a_n=0,b_n=1/n$ 虽始终前者小于后者，极限如何？",
+      "steps": [
+        "前列极限为零。",
+        "后列也趋于零。"
+      ],
+      "answer": "极限相等，不能保留严格小于。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$(2n+1)/(n+3)$ 极限？",
+      "hint": "同除以指标。",
+      "solution": [
+        "$(2+1/n)/(1+3/n)\\to2$。"
+      ],
+      "answer": "二。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 2,
+      "id": "ra-limit-algebra-q1"
+    },
+    {
+      "problem": "分母极限零能直接用商法则吗？",
+      "hint": "关键下界会失效。",
+      "solution": [
+        "结果可能有限、发散或无极限。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-limit-algebra-q2"
+    },
+    {
+      "problem": "有界数列一定收敛吗？",
+      "hint": "交替正负一。",
+      "solution": [
+        "振荡列有界却不收敛。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-limit-algebra-q3"
+    },
+    {
+      "id": "ra-limit-algebra-q4",
+      "problem": "若 $a_n\\to a$、$b_n\\to b$，证明 $a_nb_n\\to ab$。",
+      "hint": "收敛列有界，再拆乘积误差。",
+      "solution": [
+        "由收敛性可取常数 $M\\ge1$ 使全部 $|a_n|\\le M$。",
+        "$|a_nb_n-ab|\\le M|b_n-b|+|b||a_n-a|$。",
+        "取共同截断，使两项分别小于 $\\varepsilon/2$；第二项在 $b=0$ 时恒为零。故总误差小于 $\\varepsilon$。"
+      ],
+      "answer": "取共同截断，使两项分别小于 $\\varepsilon/2$；第二项在 $b=0$ 时恒为零。故总误差小于 $\\varepsilon$。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-limit-algebra-m1",
+        "ra-limit-algebra-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "商法则最关键的额外条件？",
+    "choices": [
+      "分母极限非零",
+      "分子必须正",
+      "所有项单调"
+    ],
+    "correctIndex": 0,
+    "explanation": "保证尾部分母一致远离零。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-limit-algebra-m1",
+      "claim": "有界就是收敛",
+      "correction": "还需控制尾部行为。"
+    },
+    {
+      "id": "ra-limit-algebra-m2",
+      "claim": "严格次序取极限仍严格",
+      "correction": "间隔可能缩为零。"
+    }
+  ],
+  "prerequisites": [
+    "ra-sequence-limit"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ra-limit-algebra-m1",
+    "ra-limit-algebra-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-limit-algebra",
+    "prediction": "被正负倒数包围的振荡项，为什么仍会收敛？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "和的误差容易分预算，乘积还要先给幅度设上界。 还需控制尾部行为。",
+    "steps": [
+      {
+        "title": "显示项数：2",
+        "instruction": "将显示项数设为 $2$。检查所有显示点是否留在上下界内，并观察两界收拢。",
+        "observation": "第末项绝对值 $0.4546487$；解析上界 $0.5$。",
+        "preset": {
+          "n": 2
+        }
+      },
+      {
+        "title": "显示项数：41",
+        "instruction": "将显示项数设为 $41$。检查所有显示点是否留在上下界内，并观察两界收拢。",
+        "observation": "第末项绝对值 $0.003868846$；解析上界 $0.02439024$。",
+        "preset": {
+          "n": 41
+        }
+      },
+      {
+        "title": "显示项数：80",
+        "instruction": "将显示项数设为 $80$。检查所有显示点是否留在上下界内，并观察两界收拢。",
+        "observation": "第末项绝对值 $0.01242361$；解析上界 $0.0125$。",
+        "preset": {
+          "n": 80
+        }
+      }
+    ]
+  }
+}

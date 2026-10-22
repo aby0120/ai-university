@@ -2,7 +2,7 @@
 
 外部贡献先隔离、复核，再收录；正式版本由受保护的主分支发布。流程与验证边界见 [贡献保护](docs/CONTRIBUTION_SECURITY.md)。
 
-**AI 编写的开放教科书，一本一本完整完成。** 首页与书库面向微积分、线性代数、微分方程、概率统计、离散数学、实分析等方向。目前已出版 **Calculus I / 微积分 I**、**Calculus II / 微积分 II**、**Calculus III / 微积分 III**、**Linear Algebra / 线性代数**、**Ordinary Differential Equations / 常微分方程**，分别为 35、35、40、50、55 节完整正文，均包含条件、推导、可操作图示、例题与完整练习解答。
+**AI 编写的开放教科书，一本一本完整完成。** 首页与书库面向微积分、线性代数、微分方程、概率统计、离散数学、实分析等方向。目前已出版 **Calculus I / 微积分 I**、**Calculus II / 微积分 II**、**Calculus III / 微积分 III**、**Linear Algebra / 线性代数**、**Ordinary Differential Equations / 常微分方程**，以及 **Probability & Statistics / 概率与统计**、**Discrete Mathematics / 离散数学**、**Real Analysis / 实分析**，分别为 35、35、40、50、55、50、40、40 节完整正文，均包含条件、推导、可操作图示、例题与完整练习解答。
 
 | 教材 | 章 | 节 | 例题 | 节内练习 | 回顾 / 综合题 |
 |---|---:|---:|---:|---:|---:|
@@ -41,7 +41,7 @@ npm run preview   # 查看构建后的静态版本
 
 ## 分类与书库
 
-`packages/content/library.json` 统一维护分类、学科方向、教材简介和出版状态。当前 9 本已出版、1 本规划中。数学分类包含微积分 I/II/III、线性代数、常微分方程、概率与统计、离散数学；其他分类暂时收录 Python 编程入门与《带着 AI 做项目》。规划条目不提供空白章节或阅读链接。新增规划会自动进入首页方向与书库，整本内容接入完成后再出版。详见 [系列目录与新增教材](docs/LIBRARY.md)。
+`packages/content/library.json` 统一维护分类、学科方向、教材简介和出版状态。当前 10 本已出版：数学 8 本、其他 2 本。数学分类包含微积分 I/II/III、线性代数、常微分方程、概率与统计、离散数学、实分析；其他分类暂时收录 Python 编程入门与《带着 AI 做项目》。规划条目不提供空白章节或阅读链接。新增规划会自动进入首页方向与书库，整本内容接入完成后再出版。详见 [系列目录与新增教材](docs/LIBRARY.md)。
 
 ## 第一卷的完整范围
 
@@ -96,10 +96,10 @@ npm run preview   # 查看构建后的静态版本
 
 ## 阅读与下载
 
-- 网站 v0.16.0：数学系列首页、按方向和出版状态筛选的书库、教材主页、数学七卷共 63 个章节主页、305 个知识点页面、实验室、分页练习中心、全文搜索、公式/术语/附录索引、阅读指南、下载、项目与贡献资料。
+- 网站 v0.17.0：数学系列首页、按方向和出版状态筛选的书库、教材主页、数学八卷共 71 个章节主页、345 个知识点页面、实验室、分页练习中心、全文搜索、公式/术语/附录索引、阅读指南、下载、项目与贡献资料。
 - 阅读页：专注模式、嵌入演示、页内定位、上下节翻页、收藏、较大字号与已读标记。练习支持逐题/连续查看、提示、完整解答与数值检查。
 - [微积分 I 书稿](book/Calculus-I.md)与[微积分 II 书稿](book/Calculus-II.md)、[微积分 III 书稿](book/Calculus-III.md)与[线性代数书稿](book/Linear-Algebra.md)、[常微分方程书稿](book/Ordinary-Differential-Equations.md)：版本化源产物，包含所有解答。
-- `dist/book.html` 与 `dist/calculus-2.html` 与 `dist/calculus-3.html` 与 `dist/linear-algebra.html`：数学七卷各自的完整阅读页（另含 `dist/ordinary-differential-equations.html` 、`dist/probability-statistics.html` 与 `dist/discrete-math.html`），公式预先排版，支持浏览器打印为 PDF。
+- `dist/book.html` 与 `dist/calculus-2.html` 与 `dist/calculus-3.html` 与 `dist/linear-algebra.html`：数学八卷各自的完整阅读页（另含 `dist/ordinary-differential-equations.html` 、`dist/probability-statistics.html` 、`dist/discrete-math.html` 与 `dist/real-analysis.html`），公式预先排版，支持浏览器打印为 PDF。
 - `dist/Calculus-I.md` 与 `dist/Calculus-II.md` 与 `dist/Calculus-III.md` 与 `dist/Linear-Algebra.md`：供网站下载的同版书稿。
 - 阅读、收藏和练习记录仅保存在浏览器，可导出与导入。已读标记与练习掌握状态分别记录；数值题可以检查数值，其余题为明确标注的自评。没有认证成绩。
 
@@ -120,7 +120,7 @@ docs/                      架构、内容规范、生成检查流程、部署�
 
 ## 质量与版本
 
-网站版本 **v0.16.0**；微积分 I 内容为 **v0.3.2**，微积分 II、III 为 **v0.1.1**，线性代数、常微分方程、概率与统计及离散数学均为 **v0.1.0**。尚未逐节人工审校。结构校验、公式渲染、先修图与选定数值验证可以发现部分错误，但不等同于逐式形式化证明。欢迎用具体反例、章节位置和可复算步骤提交勘误。
+网站版本 **v0.17.0**；微积分 I 内容为 **v0.3.2**，微积分 II、III 为 **v0.1.1**，线性代数、常微分方程、概率与统计、离散数学及实分析均为 **v0.1.0**。尚未逐节人工审校。结构校验、公式渲染、先修图与选定数值验证可以发现部分错误，但不等同于逐式形式化证明。欢迎用具体反例、章节位置和可复算步骤提交勘误。
 
 `npm run check` 检查所有章节结构、章节链接、公式语法、先修有向无环图、视觉函数配置与数学模型。浏览器验证记录见 [QA](docs/QA.md)。
 
@@ -175,4 +175,10 @@ English: AI University publishes complete AI-authored, versioned textbooks with 
 
 完整首版 v0.1.0，8 章 40 节、80 个例题、184 道带解答练习、40 个交互模型与 120 组引导参数。覆盖逻辑证明、集合关系、整数同余、归纳算法、计数递推、图论和树与网络算法。
 
-[完整书稿](book/Discrete-Mathematics.md) · [检查记录](docs/DISCRETE_MATH_AUDIT.md)。从 `#/book/discrete-math` 阅读；打印版为 `discrete-math.html`。书单中尚未完成的是《实分析》，偏微分方程属于独立后续课程。
+[完整书稿](book/Discrete-Mathematics.md) · [检查记录](docs/DISCRETE_MATH_AUDIT.md)。从 `#/book/discrete-math` 阅读；打印版为 `discrete-math.html`。原书单现已全部出版；偏微分方程等属于独立后续课程。
+
+## 实分析
+
+完整首版 8 章 40 节、80 个例题、184 道带解答练习与回顾题。由实数完备性到数列、级数、实线拓扑、连续、微分、Riemann 积分及一致收敛；每节含证明练习。交互模型展示误差带、二分包围、开覆盖、上下和、移动尖峰及极限交换反例。
+
+[完整书稿](book/Real-Analysis.md) · [检查记录](docs/REAL_ANALYSIS_AUDIT.md)。阅读入口 `#/book/real-analysis`，打印版 `real-analysis.html`。这是实直线上第一门分析课程；一般度量空间、测度与 Lebesgue 积分、泛函分析和多元理论另属后续课程。

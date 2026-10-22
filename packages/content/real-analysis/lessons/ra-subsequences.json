@@ -1,0 +1,197 @@
+{
+  "id": "ra-subsequences",
+  "chapterId": "ra-sequences",
+  "number": "2.4",
+  "title": "子列与 Bolzano–Weierstrass 定理",
+  "subtitle": "实数中的有界数列，至少能选出一条收敛子列。",
+  "concept": "实数中的有界数列，至少能选出一条收敛子列。",
+  "intuition": "原列可以来回跳；挑选越来越晚且落在越来越小区间的项，能找到一条稳定路线。",
+  "objectives": [
+    "子列必须向后选",
+    "反复二分"
+  ],
+  "body": [
+    {
+      "title": "子列必须向后选",
+      "text": "子列指标严格递增，不能反复拿同一个好点。收敛原列的每条子列都趋同一极限。"
+    },
+    {
+      "title": "反复二分",
+      "text": "把包含全列的闭区间二分，至少一半含无穷多项；保留这一半并重复。区间长度趋零，嵌套定理给出唯一公共点。"
+    },
+    {
+      "title": "选出趋近项",
+      "text": "在第几个保留区间中选一个指标比前次更大的项。这可以做到，因为其中始终有无穷多项。误差不超过区间长度。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "Bolzano–Weierstrass 此处针对有界实数数列。",
+    "latex": "(a_n)\\text{ 有界}\\implies\\exists n_1<n_2<\\cdots:\\ a_{n_k}\\to L",
+    "conditions": [
+      "有界性与实数完备性都参与证明。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "每轮保留含无穷多项的半区间。",
+      "latex": "I_{k+1}\\subseteq I_k,\\quad |I_k|=2^{-k}|I_0|"
+    },
+    {
+      "text": "嵌套区间有唯一公共点。",
+      "latex": "\\bigcap_k I_k=\\{L\\}"
+    },
+    {
+      "text": "递增选择指标并用长度控制误差。",
+      "latex": "a_{n_k}\\in I_k\\implies|a_{n_k}-L|\\le|I_k|\\to0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "两个子列极限",
+      "problem": "$(-1)^n$ 有哪些显然的收敛子列？",
+      "steps": [
+        "偶数指标子列恒为一。",
+        "奇数指标子列恒为负一。"
+      ],
+      "answer": "有两个不同子列极限，原列不收敛。"
+    },
+    {
+      "title": "唯一聚点加有界",
+      "problem": "有界实数数列只有一个子列极限，能推出原列收敛到它吗？",
+      "steps": [
+        "若不收敛，有固定误差外的无穷多项。",
+        "该有界坏子列再取收敛子列，极限仍在误差外，与唯一性冲突。"
+      ],
+      "answer": "能。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "有一条收敛子列就代表原列收敛吗？",
+      "hint": "交替正负一。",
+      "solution": [
+        "另一条子列可能去别处。"
+      ],
+      "answer": "不代表。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-subsequences-q1"
+    },
+    {
+      "problem": "反复选择同一个项构成子列吗？",
+      "hint": "检查指标严格递增。",
+      "solution": [
+        "指标不能重复。"
+      ],
+      "answer": "不构成。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-subsequences-q2"
+    },
+    {
+      "problem": "无界数列能有收敛子列吗？",
+      "hint": "奇项零、偶项增长。",
+      "solution": [
+        "零子列收敛，整列无界。"
+      ],
+      "answer": "能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-subsequences-q3"
+    },
+    {
+      "id": "ra-subsequences-q4",
+      "problem": "证明：若 $a_n\\to L$，则任意子列 $a_{n_k}$ 也趋于 $L$。",
+      "hint": "严格递增的正整数指标满足什么下界？",
+      "solution": [
+        "子列指标严格递增，因此 $n_k\\ge k$。",
+        "给定 $\\varepsilon>0$，取原列截断 $N$。",
+        "当 $k\\ge N$ 时 $n_k\\ge N$，故 $|a_{n_k}-L|<\\varepsilon$。"
+      ],
+      "answer": "当 $k\\ge N$ 时 $n_k\\ge N$，故 $|a_{n_k}-L|<\\varepsilon$。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-subsequences-m1",
+        "ra-subsequences-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "子列选择的指标条件？",
+    "choices": [
+      "严格递增",
+      "可以任意重复",
+      "必须连续"
+    ],
+    "correctIndex": 0,
+    "explanation": "必须不断选取更晚的项。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-subsequences-m1",
+      "claim": "有界列本身必收敛",
+      "correction": "定理只保证一条子列。"
+    },
+    {
+      "id": "ra-subsequences-m2",
+      "claim": "子列极限必在原项集合",
+      "correction": "只保证在其闭包。"
+    }
+  ],
+  "prerequisites": [
+    "ra-monotone"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ra-subsequences-m1",
+    "ra-subsequences-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-subsequences",
+    "prediction": "分别突出奇、偶子列，为什么有子列收敛仍不足以控制全列？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "原列可以来回跳；挑选越来越晚且落在越来越小区间的项，能找到一条稳定路线。 定理只保证一条子列。",
+    "steps": [
+      {
+        "title": "显示项数：4",
+        "instruction": "将显示项数设为 $4$。辨认所选子列的颜色，并比较奇偶子列极限。",
+        "observation": "偶子列极限 $1$；奇子列极限 $-1$。",
+        "preset": {
+          "a": 0,
+          "n": 4
+        }
+      },
+      {
+        "title": "显示项数：22",
+        "instruction": "将显示项数设为 $22$。辨认所选子列的颜色，并比较奇偶子列极限。",
+        "observation": "偶子列极限 $1$；奇子列极限 $-1$。",
+        "preset": {
+          "a": 0,
+          "n": 22
+        }
+      },
+      {
+        "title": "显示项数：40",
+        "instruction": "将显示项数设为 $40$。辨认所选子列的颜色，并比较奇偶子列极限。",
+        "observation": "偶子列极限 $1$；奇子列极限 $-1$。",
+        "preset": {
+          "a": 0,
+          "n": 40
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "id": "ra-monotone",
+  "chapterId": "ra-sequences",
+  "number": "2.3",
+  "title": "单调收敛与嵌套区间",
+  "subtitle": "单调且有界的实数数列必收敛，极限就是合适的确界。",
+  "concept": "单调且有界的实数数列必收敛，极限就是合适的确界。",
+  "intuition": "不回头走，又不能走出上界，剩下的空间由上确界刻画。",
+  "objectives": [
+    "用上确界证明",
+    "区分有界和单调"
+  ],
+  "body": [
+    {
+      "title": "用上确界证明",
+      "text": "单调递增且有上界，取所有项的上确界。某项进入任意左邻域后，后面项因单调都留在其中。"
+    },
+    {
+      "title": "区分有界和单调",
+      "text": "两条件缺一都不够：单调列可无界，单独有界可振荡。递减下有界的情况通过取负号得到。"
+    },
+    {
+      "title": "连接嵌套区间",
+      "text": "非空闭区间逐个包含，左端递增右端递减，且都受首区间限制。完备性给出公共点，若长度趋零则只能有一个。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "嵌套闭有界区间有公共点；长度趋零保证唯一。",
+    "latex": "a_n\\uparrow,\\ a_n\\le M\\implies a_n\\to\\sup\\{a_n:n\\ge1\\}",
+    "conditions": [
+      "单调列为实数且有相应方向界。",
+      "区间非空、闭、有界并嵌套。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "设上确界并找到靠近它的一项。",
+      "latex": "s=\\sup\\{a_n\\},\\quad s-\\varepsilon<a_N\\le s"
+    },
+    {
+      "text": "单调控制全部尾项。",
+      "latex": "n\\ge N\\implies s-\\varepsilon<a_N\\le a_n\\le s"
+    },
+    {
+      "text": "嵌套区间公共点可由左端上确界给出。",
+      "latex": "s=\\sup_n l_n\\implies l_n\\le s\\le r_n\\quad\\forall n"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "单调逼近",
+      "problem": "$a_n=1-1/n$ 如何用单调定理求极限？",
+      "steps": [
+        "递增且小于一。",
+        "一是项集上确界，因此极限为一。"
+      ],
+      "answer": "一。"
+    },
+    {
+      "title": "闭条件必要",
+      "problem": "嵌套区间 $(0,1/n)$ 交集是什么？",
+      "steps": [
+        "零被全部排除。",
+        "任意正数在足够小的区间外。"
+      ],
+      "answer": "空集；开区间不满足闭条件。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$[0,1/n]$ 的交集？",
+      "hint": "同时满足所有上界。",
+      "solution": [
+        "仅零满足。"
+      ],
+      "answer": "零。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0,
+      "id": "ra-monotone-q1"
+    },
+    {
+      "problem": "嵌套闭区间长度不趋零还能保证唯一吗？",
+      "hint": "所有区间都取同一个。",
+      "solution": [
+        "交集可是一整段。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-monotone-q2"
+    },
+    {
+      "problem": "单调递增但无上界能有有限极限吗？",
+      "hint": "有限极限推出有界。",
+      "solution": [
+        "与无上界冲突。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-monotone-q3"
+    },
+    {
+      "id": "ra-monotone-q4",
+      "problem": "给一个嵌套、非空、有界但不闭的区间族，交集却为空，并证明。",
+      "hint": "考虑 $(0,1/n)$。",
+      "solution": [
+        "令 $I_n=(0,1/n)$。每个区间非空有界，且 $I_{n+1}\\subseteq I_n$。",
+        "若 $x$ 属于全部区间，则 $x>0$。取 $n>1/x$，便有 $1/n<x$，矛盾。",
+        "零不在任何区间中，所以交集为空。这说明闭性不能省去。"
+      ],
+      "answer": "零不在任何区间中，所以交集为空。这说明闭性不能省去。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-monotone-m1",
+        "ra-monotone-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "单调有界收敛的核心依据？",
+    "choices": [
+      "完备性",
+      "有限画点",
+      "导数为零"
+    ],
+    "correctIndex": 0,
+    "explanation": "项集的确界提供实数极限。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-monotone-m1",
+      "claim": "任何嵌套区间都有公共点",
+      "correction": "开区间或无统一有界起点可能失败。"
+    },
+    {
+      "id": "ra-monotone-m2",
+      "claim": "长度不变仍唯一",
+      "correction": "唯一性需要长度趋零等额外条件。"
+    }
+  ],
+  "prerequisites": [
+    "ra-supremum",
+    "ra-sequence-limit"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ra-monotone-m1",
+    "ra-monotone-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-monotone",
+    "prediction": "逐步缩小闭区间，公共点与区间长度分别说明什么？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "不回头走，又不能走出上界，剩下的空间由上确界刻画。 开区间或无统一有界起点可能失败。",
+    "steps": [
+      {
+        "title": "嵌套层数：0",
+        "instruction": "将嵌套层数设为 $0$。检查每层是否嵌套，并比较末层长度与公共点。",
+        "observation": "最后区间长度 $1$；唯一公共点 $0$。",
+        "preset": {
+          "n": 0
+        }
+      },
+      {
+        "title": "嵌套层数：7",
+        "instruction": "将嵌套层数设为 $7$。检查每层是否嵌套，并比较末层长度与公共点。",
+        "observation": "最后区间长度 $0.0078125$；唯一公共点 $0$。",
+        "preset": {
+          "n": 7
+        }
+      },
+      {
+        "title": "嵌套层数：15",
+        "instruction": "将嵌套层数设为 $15$。检查每层是否嵌套，并比较末层长度与公共点。",
+        "observation": "最后区间长度 $0.00003051758$；唯一公共点 $0$。",
+        "preset": {
+          "n": 15
+        }
+      }
+    ]
+  }
+}

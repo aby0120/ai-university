@@ -1,4 +1,5 @@
 export type VisualKind =
+  | "analysis"
   | "discrete"
   | "probability"
   | "ode"

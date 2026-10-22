@@ -1,0 +1,202 @@
+{
+  "id": "ra-supremum",
+  "chapterId": "ra-reals",
+  "number": "1.2",
+  "title": "上界、上确界与完备性",
+  "subtitle": "上确界是最小上界，不要求它属于原集合。",
+  "concept": "上确界是最小上界，不要求它属于原集合。",
+  "intuition": "所有点都在一条线左侧还不够；这条线必须已经不能再向左挪。",
+  "objectives": [
+    "区分最大元与上确界",
+    "使用逼近性质"
+  ],
+  "body": [
+    {
+      "title": "区分最大元与上确界",
+      "text": "最大元既属于集合又大于等于全部元素；上确界只要求在所有上界中最小。开区间可以有上确界而无最大元。"
+    },
+    {
+      "title": "使用逼近性质",
+      "text": "若一个数是上确界，那么每个正误差内，都能从集合找到比它减误差还大的点。否则更小的数就成了上界。"
+    },
+    {
+      "title": "说明完备性",
+      "text": "每个非空、有上界的实数子集都有实数上确界。非空和有上界都不能删除；空集在实数中没有最小上界。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "本卷把最小上界性质作为实数完备性公理。",
+    "latex": "s=\\sup A\\iff\\bigl[\\forall a\\in A:a\\le s\\bigr]\\land\\bigl[\\forall\\varepsilon>0\\ \\exists a\\in A:s-\\varepsilon<a\\bigr]",
+    "conditions": [
+      "集合非空且在实数中有上界。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "最小上界必是上界。",
+      "latex": "a\\le s\\quad(a\\in A)"
+    },
+    {
+      "text": "若没有点落在上确界的任意左邻域。",
+      "latex": "\\forall a\\in A:\\ a\\le s-\\varepsilon"
+    },
+    {
+      "text": "就出现更小上界，矛盾。",
+      "latex": "s-\\varepsilon<s"
+    },
+    {
+      "text": "反向若更小的数也是上界，取两者差作为误差就会找到超过它的集合成员。",
+      "latex": "t<s,\\ \\varepsilon=s-t\\implies\\exists a\\in A:a>t"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "开闭区间",
+      "problem": "求 $(0,1)$ 与 $(0,1]$ 的上确界和最大元。",
+      "steps": [
+        "两者所有元素不超过一，且可任意逼近一。",
+        "前者不含一，后者含一。"
+      ],
+      "answer": "上确界都为一；只有后者有最大元。"
+    },
+    {
+      "title": "离散逼近",
+      "problem": "$A=\\{1-1/n:n\\ge1\\}$ 的上确界？",
+      "steps": [
+        "所有项小于一。",
+        "给定正误差，取 $n>1/\\varepsilon$ 即落入一的左邻域。"
+      ],
+      "answer": "一，没有最大元。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "集合无上界时有实数上确界吗？",
+      "hint": "实数上确界首先是上界。",
+      "solution": [
+        "没有实数上界，就没有实数上确界。"
+      ],
+      "answer": "没有。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-supremum-q1"
+    },
+    {
+      "problem": "上确界一定属于集合吗？",
+      "hint": "用开区间反例。",
+      "solution": [
+        "开区间右端不在集合。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-supremum-q2"
+    },
+    {
+      "problem": "$\\{2,5,7\\}$ 的上确界？",
+      "hint": "有限集最大值。",
+      "solution": [
+        "七属于集合且是最小上界。"
+      ],
+      "answer": "七。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 7,
+      "id": "ra-supremum-q3"
+    },
+    {
+      "id": "ra-supremum-q4",
+      "problem": "设非空有界集 $A$ 的上确界为 $s$。证明存在 $a_n\\in A$ 使 $a_n\\to s$。",
+      "hint": "对每个倒数误差使用上确界逼近性质。",
+      "solution": [
+        "对每个 $n\\ge1$，选择 $s-1/n<a_n\\le s$ 的集合成员。",
+        "于是 $0\\le s-a_n<1/n$。",
+        "给定 $\\varepsilon>0$，取 $N>1/\\varepsilon$，所有 $n\\ge N$ 都有 $|a_n-s|<\\varepsilon$。"
+      ],
+      "answer": "给定 $\\varepsilon>0$，取 $N>1/\\varepsilon$，所有 $n\\ge N$ 都有 $|a_n-s|<\\varepsilon$。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-supremum-m1",
+        "ra-supremum-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "上确界与最大元的差别是什么？",
+    "choices": [
+      "是否最大上界",
+      "是否必须属于集合",
+      "是否大于零"
+    ],
+    "correctIndex": 1,
+    "explanation": "最大元必须是集合成员。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-supremum-m1",
+      "claim": "上确界是最大上界",
+      "correction": "上界还可不断增大，上确界是最小上界。"
+    },
+    {
+      "id": "ra-supremum-m2",
+      "claim": "有界足够，不需非空",
+      "correction": "空集的上界没有最小者。"
+    }
+  ],
+  "prerequisites": [
+    "ra-ordered-field"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ra-supremum-m1",
+    "ra-supremum-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-supremum",
+    "prediction": "增加逼近项数、缩小误差，有限最大值与上确界有什么差别？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "所有点都在一条线左侧还不够；这条线必须已经不能再向左挪。 上界还可不断增大，上确界是最小上界。",
+    "steps": [
+      {
+        "title": "显示项数：1",
+        "instruction": "将显示项数设为 $1$。比较有限最大值与上确界，检查误差带里是否出现集合成员。",
+        "observation": "有限项最大值 $0$；全体上确界 $1$；还差 $1$。",
+        "preset": {
+          "n": 1,
+          "eps": 0.1
+        }
+      },
+      {
+        "title": "显示项数：50",
+        "instruction": "将显示项数设为 $50$。比较有限最大值与上确界，检查误差带里是否出现集合成员。",
+        "observation": "有限项最大值 $0.98$；全体上确界 $1$；还差 $0.02$。",
+        "preset": {
+          "n": 50,
+          "eps": 0.1
+        }
+      },
+      {
+        "title": "显示项数：100",
+        "instruction": "将显示项数设为 $100$。比较有限最大值与上确界，检查误差带里是否出现集合成员。",
+        "observation": "有限项最大值 $0.99$；全体上确界 $1$；还差 $0.01$。",
+        "preset": {
+          "n": 100,
+          "eps": 0.1
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "id": "ra-pointwise-uniform",
+  "chapterId": "ra-function-sequences",
+  "number": "8.1",
+  "title": "逐点收敛与一致收敛",
+  "subtitle": "逐点允许每个输入等不同的时间；一致收敛要求同一项号后全域都达标。",
+  "concept": "逐点允许每个输入等不同的时间；一致收敛要求同一项号后全域都达标。",
+  "intuition": "把最大误差放在整个定义域上比较，才能看见会躲到端点附近的坏点。",
+  "objectives": [
+    "比较量词",
+    "使用上确界误差"
+  ],
+  "body": [
+    {
+      "title": "比较量词",
+      "text": "逐点先固定输入再选截断；一致先按误差选截断，再允许任意输入。两种截断的依赖不同。"
+    },
+    {
+      "title": "使用上确界误差",
+      "text": "当差的绝对值有有限上确界，一致收敛等价于这份全域误差趋零。上确界不必在某个输入取到。"
+    },
+    {
+      "title": "检查端点层",
+      "text": "幂函数列在零到一闭区间内，除右端外趋零，右端恒一。坏输入可以随项号向右端移动，因此逐点收敛却不一致。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "一致收敛以相同定义域和实值目标函数为基础。",
+    "latex": "\\forall\\varepsilon>0\\ \\exists N\\ \\forall n\\ge N\\ \\forall x\\in D:\\ |f_n(x)-f(x)|<\\varepsilon",
+    "conditions": [
+      "逐点的截断可依赖输入，一致的截断不可以。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "一致控制立即给出每个固定输入的控制。",
+      "latex": "\\text{一致}\\implies\\text{逐点}"
+    },
+    {
+      "text": "对幂函数取随指标移动的输入。",
+      "latex": "x_n=2^{-1/n}\\in[0,1),\\quad x_n^n=1/2"
+    },
+    {
+      "text": "该处极限函数为零，误差始终至少一半。",
+      "latex": "|f_n(x_n)-f(x_n)|=1/2"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "真的一致",
+      "problem": "$f_n(x)=x/n$ 在 $[0,1]$ 上如何收敛？",
+      "steps": [
+        "逐点趋零。",
+        "$\\sup_{[0,1]}|x/n|=1/n\\to0$。"
+      ],
+      "answer": "一致趋零。"
+    },
+    {
+      "title": "删去端点也不够",
+      "problem": "$x^n$ 在 $[0,1)$ 上是否一致趋零？",
+      "steps": [
+        "对每个固定输入趋零。",
+        "每项的全域上确界仍为一，虽不取到。"
+      ],
+      "answer": "不一致；只删单个端点不消除边界层。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "一致收敛是否推出逐点收敛？",
+      "hint": "固定任意输入即可。",
+      "solution": [
+        "推出。"
+      ],
+      "answer": "推出。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-pointwise-uniform-q1"
+    },
+    {
+      "problem": "逐点收敛能否用输入依赖的截断？",
+      "hint": "量词先固定输入。",
+      "solution": [
+        "允许。"
+      ],
+      "answer": "能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-pointwise-uniform-q2"
+    },
+    {
+      "problem": "$x^n$ 在 $[0,r]$ 且固定 $0<r<1$ 上怎样？",
+      "hint": "最坏输入为右端。",
+      "solution": [
+        "全域误差为 $r^n\\to0$。"
+      ],
+      "answer": "一致趋零。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-pointwise-uniform-q3"
+    },
+    {
+      "id": "ra-pointwise-uniform-q4",
+      "problem": "证明 $f_n(x)=x^n$ 在 $[0,r]$ 上一致趋零，其中固定 $0<r<1$。",
+      "hint": "直接求整个定义域的误差上界。",
+      "solution": [
+        "对所有 $x\\in[0,r]$，有 $0\\le x^n\\le r^n$，且右端在 $x=r$ 取到。",
+        "所以 $\\sup_{[0,r]}|f_n|=r^n\\to0$。",
+        "给定误差，选择同一个满足 $r^N<\\varepsilon$ 的 $N$，即可同时控制所有输入。"
+      ],
+      "answer": "给定误差，选择同一个满足 $r^N<\\varepsilon$ 的 $N$，即可同时控制所有输入。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-pointwise-uniform-m1",
+        "ra-pointwise-uniform-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "一致收敛的截断能否随输入变化？",
+    "choices": [
+      "能",
+      "不能",
+      "只在端点能"
+    ],
+    "correctIndex": 1,
+    "explanation": "它必须同时控制全域。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-pointwise-uniform-m1",
+      "claim": "删掉一个坏端点就一定一致",
+      "correction": "端点附近仍可能有坏输入。"
+    },
+    {
+      "id": "ra-pointwise-uniform-m2",
+      "claim": "最大误差没取到就等于零",
+      "correction": "要用上确界，不是只找最大点。"
+    }
+  ],
+  "prerequisites": [
+    "ra-sequence-limit",
+    "ra-function-limit"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ra-pointwise-uniform-m1",
+    "ra-pointwise-uniform-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-pointwise-uniform",
+    "prediction": "随项号移动到坏点附近，逐点看不见的误差是否仍存在？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "把最大误差放在整个定义域上比较，才能看见会躲到端点附近的坏点。 端点附近仍可能有坏输入。",
+    "steps": [
+      {
+        "title": "函数指标：2",
+        "instruction": "将函数指标设为 $2$。跟踪随指标移动的点，并比较该点误差与全域误差。",
+        "observation": "解析全域上确界误差 $1$；该点误差 $0.5$；是否一致收敛：否。",
+        "preset": {
+          "a": 0,
+          "n": 2
+        }
+      },
+      {
+        "title": "函数指标：41",
+        "instruction": "将函数指标设为 $41$。跟踪随指标移动的点，并比较该点误差与全域误差。",
+        "observation": "解析全域上确界误差 $1$；该点误差 $0.5$；是否一致收敛：否。",
+        "preset": {
+          "a": 0,
+          "n": 41
+        }
+      },
+      {
+        "title": "函数指标：80",
+        "instruction": "将函数指标设为 $80$。跟踪随指标移动的点，并比较该点误差与全域误差。",
+        "observation": "解析全域上确界误差 $1$；该点误差 $0.5$；是否一致收敛：否。",
+        "preset": {
+          "a": 0,
+          "n": 80
+        }
+      }
+    ]
+  }
+}

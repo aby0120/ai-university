@@ -1,0 +1,199 @@
+{
+  "id": "ra-absolute-rearrangement",
+  "chapterId": "ra-series",
+  "number": "3.5",
+  "title": "绝对收敛与重排",
+  "subtitle": "绝对收敛保证重排不改变总和；条件收敛没有这份自由。",
+  "concept": "绝对收敛保证重排不改变总和；条件收敛没有这份自由。",
+  "intuition": "绝对尾和像一个总预算，无论尾部怎样换顺序，都不会超出它。",
+  "objectives": [
+    "由绝对收敛推收敛",
+    "重排的有限前缀"
+  ],
+  "body": [
+    {
+      "title": "由绝对收敛推收敛",
+      "text": "有限尾段和绝对值不超过对应绝对值尾段和；后者趋小，前者便满足级数 Cauchy 判据。"
+    },
+    {
+      "title": "重排的有限前缀",
+      "text": "给定足够小的绝对尾预算，重排总会在有限时刻收集齐原来那段关键前缀。余下遗漏与多收的项都来自小尾部。"
+    },
+    {
+      "title": "条件收敛会变",
+      "text": "交错调和的正项总和向正无穷，负项总和向负无穷。交替取足够多正项超过目标、再取负项降到目标下，越界幅度趋零，就可重排到任意指定实数。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "重排由自然数的双射给出，每项恰好出现一次。",
+    "latex": "\\sum|a_n|<\\infty\\implies\\sum a_{\\pi(n)}=\\sum a_n",
+    "conditions": [
+      "重排不能删项、重复项或改变项值。",
+      "一般相乘或交换双重和还需相应收敛条件。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先选择小绝对尾预算。",
+      "latex": "\\sum_{n>N}|a_n|<\\varepsilon"
+    },
+    {
+      "text": "重排的足够长前缀包含原来关键前缀。",
+      "latex": "\\{1,\\ldots,N\\}\\subseteq\\{\\pi(1),\\ldots,\\pi(M)\\}"
+    },
+    {
+      "text": "与原总和的差仅由原尾部控制。",
+      "latex": "\\left|\\sum_{j=1}^M a_{\\pi(j)}-S\\right|\\le\\sum_{n>N}|a_n|<\\varepsilon"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "安全重排",
+      "problem": "$\\sum (-1)^{n-1}/2^n$ 能任意重排吗？",
+      "steps": [
+        "绝对值级数是收敛几何级数。",
+        "任意双射重排保持总和。"
+      ],
+      "answer": "能。"
+    },
+    {
+      "title": "只保留正项",
+      "problem": "把交错调和只保留正项算重排吗？",
+      "steps": [
+        "原来的全部负项被删除。",
+        "重排必须每项恰一次。"
+      ],
+      "answer": "不算；它已经是另一条级数。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "绝对收敛是否推出普通收敛？",
+      "hint": "三角不等式与 Cauchy 判据。",
+      "solution": [
+        "绝对尾预算控制原尾段。"
+      ],
+      "answer": "推出。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-absolute-rearrangement-q1"
+    },
+    {
+      "problem": "普通收敛是否推出绝对收敛？",
+      "hint": "交错调和反例。",
+      "solution": [
+        "绝对值级数发散。"
+      ],
+      "answer": "不推出。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-absolute-rearrangement-q2"
+    },
+    {
+      "problem": "重排能让同一项多出现一次吗？",
+      "hint": "双射要求。",
+      "solution": [
+        "每个原指标恰出现一次。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-absolute-rearrangement-q3"
+    },
+    {
+      "id": "ra-absolute-rearrangement-q4",
+      "problem": "给出分组后的部分和收敛、原级数却不收敛的例子。",
+      "hint": "成对相消可能掩盖中间部分和。",
+      "solution": [
+        "取原级数 $1-1+1-1+\\cdots$。",
+        "每两项分成一组后，各组为零，分组部分和恒为零。",
+        "但原部分和奇数项为一、偶数项为零，无共同极限，所以原级数不收敛。"
+      ],
+      "answer": "但原部分和奇数项为一、偶数项为零，无共同极限，所以原级数不收敛。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-absolute-rearrangement-m1",
+        "ra-absolute-rearrangement-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "合法重排必须满足什么？",
+    "choices": [
+      "每项恰出现一次",
+      "总挑正项",
+      "任意删有限项"
+    ],
+    "correctIndex": 0,
+    "explanation": "双射保留所有原项与重数。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-absolute-rearrangement-m1",
+      "claim": "无穷求和和有限求和一样可交换",
+      "correction": "条件收敛可能改变结果。"
+    },
+    {
+      "id": "ra-absolute-rearrangement-m2",
+      "claim": "分组与重排没有区别",
+      "correction": "分组先改变了观察部分和的位置。"
+    }
+  ],
+  "prerequisites": [
+    "ra-cauchy",
+    "ra-alternating"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ra-absolute-rearrangement-m1",
+    "ra-absolute-rearrangement-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-absolute-rearrangement",
+    "prediction": "比较绝对收敛与交错调和的重排部分和，哪些保证来自尾部预算？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "绝对尾和像一个总预算，无论尾部怎样换顺序，都不会超出它。 条件收敛可能改变结果。",
+    "steps": [
+      {
+        "title": "保留项数：3",
+        "instruction": "将保留项数设为 $3$。比较相同项数的两种次序，区分有限差异和总和变化。",
+        "observation": "原序部分和 $0.375$；重排部分和 $0.375$；绝对收敛保证：适用。",
+        "preset": {
+          "a": 0,
+          "n": 3
+        }
+      },
+      {
+        "title": "保留项数：41",
+        "instruction": "将保留项数设为 $41$。比较相同项数的两种次序，区分有限差异和总和变化。",
+        "observation": "原序部分和 $0.3333333$；重排部分和 $0.3333333$；绝对收敛保证：适用。",
+        "preset": {
+          "a": 0,
+          "n": 41
+        }
+      },
+      {
+        "title": "保留项数：80",
+        "instruction": "将保留项数设为 $80$。比较相同项数的两种次序，区分有限差异和总和变化。",
+        "observation": "原序部分和 $0.3333333$；重排部分和 $0.3333333$；绝对收敛保证：适用。",
+        "preset": {
+          "a": 0,
+          "n": 80
+        }
+      }
+    ]
+  }
+}

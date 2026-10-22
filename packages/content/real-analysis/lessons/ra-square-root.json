@@ -1,0 +1,200 @@
+{
+  "id": "ra-square-root",
+  "chapterId": "ra-reals",
+  "number": "1.5",
+  "title": "从完备性构造平方根",
+  "subtitle": "平方根存在不是图形看起来有交点，而是上确界把缺口填上。",
+  "concept": "平方根存在不是图形看起来有交点，而是上确界把缺口填上。",
+  "intuition": "先收集平方还没超过目标的数，再证明其最右边界的平方恰好等于目标。",
+  "objectives": [
+    "构造集合",
+    "排除边界偏小"
+  ],
+  "body": [
+    {
+      "title": "构造集合",
+      "text": "对 $a>0$ 取 $A=\\{x\\ge0:x^2\\le a\\}$。若 $a\\ge1$，一属于集合；若 $0<a<1$，则 $a$ 属于集合，所以集合有正成员。$\\max(1,a)$ 是上界，因此存在正的上确界 $s$。"
+    },
+    {
+      "title": "排除边界偏小",
+      "text": "若上确界的平方仍小于目标，选足够小正增量，平方仍不超过目标，于是得到比上确界还大的集合成员。"
+    },
+    {
+      "title": "排除边界偏大",
+      "text": "若 $s^2>a$，取 $0<h<\\min(s,(s^2-a)/(2s))$，便有 $(s-h)^2>a$。因非负数的平方严格递增，集合所有成员都小于 $s-h$。这个比 $s$ 更小的上界造成矛盾。故 $s^2=a$，严格递增性也保证正根唯一。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "每个正实数有唯一正平方根。",
+    "latex": "A=\\{x\\ge0:x^2\\le a\\},\\quad s=\\sup A\\implies s^2=a",
+    "conditions": [
+      "目标实数严格正；零的平方根单独为零。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "有界性使上确界存在，且其值正。",
+      "latex": "0<s\\le\\max(1,a)"
+    },
+    {
+      "text": "若平方偏小，取小增量控制新增平方。",
+      "latex": "(s+h)^2-s^2=h(2s+h)<a-s^2"
+    },
+    {
+      "text": "若平方偏大，取小减量仍保持超过目标，产生更小上界。",
+      "latex": "s^2-(s-h)^2=h(2s-h)<s^2-a"
+    },
+    {
+      "text": "两种严格不等均不可能。",
+      "latex": "s^2=a"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "二的平方根",
+      "problem": "为何有理数域不足以完成相同构造？",
+      "steps": [
+        "有理数中平方小于二的数集非空且有理上界。",
+        "若其有理上确界，沿同样的小有理扰动论证可推出平方等于二，但该根无理。"
+      ],
+      "answer": "缺少有理上确界。"
+    },
+    {
+      "title": "二分包围",
+      "problem": "用区间一到二包围平方根二，二分两步。",
+      "steps": [
+        "中点一点五的平方大于二，取左半。",
+        "新中点一点二五平方小于二，取右半。"
+      ],
+      "answer": "得到 $[1.25,1.5]$。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "正平方根唯一性的关键？",
+      "hint": "比较两个非负数平方。",
+      "solution": [
+        "$0\\le x<y\\implies y^2-x^2=(y-x)(y+x)>0$。"
+      ],
+      "answer": "平方严格递增。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-square-root-q1"
+    },
+    {
+      "problem": "平方根九的正值？",
+      "hint": "平方并检查非负。",
+      "solution": [
+        "三的平方为九且三为正。"
+      ],
+      "answer": "三。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 3,
+      "id": "ra-square-root-q2"
+    },
+    {
+      "problem": "二分有限步能得到任意根的精确值吗？",
+      "hint": "有限区间宽度仍可能正。",
+      "solution": [
+        "通常只得到包围与误差界。"
+      ],
+      "answer": "不能保证。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-square-root-q3"
+    },
+    {
+      "id": "ra-square-root-q4",
+      "problem": "在平方根构造中，设 $s>0$ 且 $s^2<a$。给出一个具体的 $h>0$，使 $(s+h)^2<a$。",
+      "hint": "同时控制 $h\\le1$ 和线性误差。",
+      "solution": [
+        "记 $d=a-s^2>0$，取 $h=\\min(1,d/[2(2s+1)])$。",
+        "由于 $h\\le1$，有 $2sh+h^2\\le(2s+1)h\\le d/2$。",
+        "所以 $(s+h)^2\\le s^2+d/2<a$，与 $s$ 为上界矛盾。"
+      ],
+      "answer": "所以 $(s+h)^2\\le s^2+d/2<a$，与 $s$ 为上界矛盾。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-square-root-m1",
+        "ra-square-root-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "构造平方根真正用到了哪一性质？",
+    "choices": [
+      "有限采样",
+      "最小上界完备性",
+      "小数位很多"
+    ],
+    "correctIndex": 1,
+    "explanation": "它确保候选边界是实数。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-square-root-m1",
+      "claim": "用连续性证存在无需检查依赖",
+      "correction": "本卷此时尚未证明连续性与介值定理，避免循环。"
+    },
+    {
+      "id": "ra-square-root-m2",
+      "claim": "二分图片就是存在证明",
+      "correction": "存在由完备性，有限图只说明包围过程。"
+    }
+  ],
+  "prerequisites": [
+    "ra-supremum",
+    "ra-absolute-value"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ra-square-root-m1",
+    "ra-square-root-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-square-root",
+    "prediction": "逐步二分，包围区间宽度怎样给出可证明的误差界？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "先收集平方还没超过目标的数，再证明其最右边界的平方恰好等于目标。 本卷此时尚未证明连续性与介值定理，避免循环。",
+    "steps": [
+      {
+        "title": "二分步数：0",
+        "instruction": "将二分步数设为 $0$。核对两端平方的方向，以及区间宽度的减半。",
+        "observation": "左端 $1$；右端 $2$；区间宽度 $1$；中点误差上界 $0.5$。",
+        "preset": {
+          "n": 0
+        }
+      },
+      {
+        "title": "二分步数：12",
+        "instruction": "将二分步数设为 $12$。核对两端平方的方向，以及区间宽度的减半。",
+        "observation": "左端 $1.414063$；右端 $1.414307$；区间宽度 $0.0002441406$；中点误差上界 $0.0001220703$。",
+        "preset": {
+          "n": 12
+        }
+      },
+      {
+        "title": "二分步数：24",
+        "instruction": "将二分步数设为 $24$。核对两端平方的方向，以及区间宽度的减半。",
+        "observation": "左端 $1.414214$；右端 $1.414214$；区间宽度 $5.960464\\times10^{-8}$；中点误差上界 $2.980232\\times10^{-8}$。",
+        "preset": {
+          "n": 24
+        }
+      }
+    ]
+  }
+}

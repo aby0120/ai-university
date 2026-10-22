@@ -178,7 +178,7 @@ export function AboutPage() {
         </div>
       ) : part === "versions" ? (
         <div className="versions-page">
-          <div className="version-entry"><span className="badge">当前网站 · 离散数学 v0.1.0</span><h2>v0.16.0 · 离散数学完整首版</h2><time>2026 年 10 月 22 日</time><ul><li>8 章 40 节、80 个例题、184 道带解答练习与回顾题。</li><li>逻辑、证明、集合、整数、归纳、计数、递推、图与网络算法。</li><li>真值表、映射、余数时钟和逐步搜索、生成树、最短路与匹配演示。</li><li>完整书稿、打印、搜索、索引与练习同步接入；无需 API。</li></ul></div>
+          <div className="version-entry"><span className="badge">当前网站 · 实分析 v0.1.0</span><h2>v0.17.0 · 实分析完整首版</h2><time>2026 年 10 月 22 日</time><ul><li>8 章 40 节、80 个例题、184 道带解答练习与回顾题。</li><li>完备性、收敛、实线拓扑、连续、微分、积分与一致收敛。</li><li>误差带、二分包围、开覆盖、上下和与极限交换反例演示。</li><li>完整书稿、打印、搜索、索引与练习同步接入；无需 API。</li></ul></div>
           <div className="version-entry"><span className="badge">概率与统计 v0.1.0</span><h2>v0.15.0 · 概率与统计完整首版</h2><time>2026 年 10 月 21 日</time><ul><li>10 章 50 节、100 个例题、230 道练习及回顾，全部附解答。</li><li>从数据、抽样与概率，到分布、估计、检验、回归和贝叶斯更新。</li><li>50 节交互模型，包含重复抽样、覆盖率、精确二项尾部、置换、回归与预测区间。</li><li>理论值、浮点近似和固定种子模拟分别说明；无需模型 API。</li></ul></div>
           <div className="version-entry"><span className="badge">分类书库 · 七本教材</span><h2>v0.14.0 · 分类书库与两本新教材</h2><time>2026 年 10 月 21 日</time><ul><li>数学：微积分三卷、线性代数、常微分方程。</li><li>其他：Python 编程入门与《带着 AI 做项目》，由 aby0120 投稿、AI 编写。</li><li>两本新书接入搜索、下载、打印和完整检查；保留旧投稿链接。</li><li>Python 执行回放统一由 CPython 3.14 生成，修正解释器行事件差异。</li></ul></div>
           <div className="version-entry"><span className="badge">常微分方程 v0.1.0</span><h2>v0.13.0 · 常微分方程完整首版</h2><time>2026 年 10 月 21 日</time><ul><li>11 章 55 节、110 个例题、275 道练习与完整解答。</li><li>一阶、存在唯一性、振动、Laplace、线性与非线性系统、级数和数值方法。</li><li>55 节交互演示：方向场、可拖动初态、相轨迹、弹簧运动、误差比较与自适应节点。</li><li>整本书稿、打印版、搜索、练习、术语和附录同步提供。</li></ul></div>

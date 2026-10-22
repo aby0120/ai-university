@@ -244,12 +244,20 @@
         "Real",
         "Analysis"
       ],
-      "tagline": "追问结论的根基",
-      "description": "以实数、序列与极限为起点，严谨建立连续、微分与积分。",
+      "tagline": "把直觉变成有条件的证明",
+      "description": "完备性、数列级数、紧致连续、微分、Riemann 积分、函数列与极限交换。",
       "audience": "已学过微积分并熟悉基础证明的学习者",
-      "scope": "实数 · 收敛 · 连续 · 微分与积分",
-      "status": "planned",
-      "categoryId": "mathematics"
+      "scope": "实数 · 收敛 · 拓扑 · 连续 · 微分积分 · 一致极限",
+      "status": "published",
+      "categoryId": "mathematics",
+      "route": "book/real-analysis",
+      "coverFormula": "\\forall\\varepsilon>0\\ \\exists N\\ \\forall n\\ge N:\\ |a_n-L|<\\varepsilon",
+      "stats": {
+        "chapters": 8,
+        "lessons": 40,
+        "examples": 80,
+        "exercises": 184
+      }
     },
     {
       "id": "python-introduction",

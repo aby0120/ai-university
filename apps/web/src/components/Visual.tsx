@@ -1,3 +1,4 @@
+import AnalysisVisual, {AnalysisPreview} from "./AnalysisVisual";
 import DiscreteVisual, {DiscretePreview} from "./DiscreteVisual";
 import Calculus3Visual, {Calculus3Preview} from "./Calculus3Visual";
 import ProbabilityVisual, {ProbabilityPreview} from "./ProbabilityVisual";
@@ -228,7 +229,7 @@ export function Visual({
           </button>
         </div>
       )}
-      {lesson.interactiveVisual.kind==='discrete'?<DiscreteVisual key={lesson.id} lesson={lesson} compact={compact} scenario={scenario} onInteraction={()=>setModified(true)}/>:lesson.interactiveVisual.kind==='probability'?<ProbabilityVisual key={lesson.id} lesson={lesson} compact={compact} scenario={scenario} onInteraction={()=>setModified(true)}/>:['calculus3','linear-algebra','ode'].includes(lesson.interactiveVisual.kind) ? <Calculus3Visual lesson={lesson} compact={compact} scenario={scenario}/> : lesson.interactiveVisual.kind === "calculus2" ? <Calculus2Visual lesson={lesson} compact={compact} scenario={scenario}/> : dimension === "3d" ? (
+      {lesson.interactiveVisual.kind==='analysis'?<AnalysisVisual key={lesson.id} lesson={lesson} compact={compact} scenario={scenario} onInteraction={()=>setModified(true)}/>:lesson.interactiveVisual.kind==='discrete'?<DiscreteVisual key={lesson.id} lesson={lesson} compact={compact} scenario={scenario} onInteraction={()=>setModified(true)}/>:lesson.interactiveVisual.kind==='probability'?<ProbabilityVisual key={lesson.id} lesson={lesson} compact={compact} scenario={scenario} onInteraction={()=>setModified(true)}/>:['calculus3','linear-algebra','ode'].includes(lesson.interactiveVisual.kind) ? <Calculus3Visual lesson={lesson} compact={compact} scenario={scenario}/> : lesson.interactiveVisual.kind === "calculus2" ? <Calculus2Visual lesson={lesson} compact={compact} scenario={scenario}/> : dimension === "3d" ? (
         <Suspense
           fallback={<div className="solid-loading">准备三维数学模型…</div>}
         >
@@ -1231,6 +1232,7 @@ function PlanarVisual({
 
 /** A read-only snapshot of the same model used in the interactive lesson. */
 export function VisualPreview({ lesson }: { lesson: Lesson }) {
+  if(lesson.interactiveVisual.kind==="analysis")return <AnalysisPreview lesson={lesson}/>;
   if(lesson.interactiveVisual.kind==="discrete")return <DiscretePreview lesson={lesson}/>;
   if(lesson.interactiveVisual.kind==="probability")return <ProbabilityPreview lesson={lesson}/>;
   if(['calculus3','linear-algebra','ode'].includes(lesson.interactiveVisual.kind))return <Calculus3Preview lesson={lesson}/>;

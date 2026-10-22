@@ -1,0 +1,197 @@
+{
+  "id": "ra-alternating",
+  "chapterId": "ra-series",
+  "number": "3.4",
+  "title": "交错级数与余项界",
+  "subtitle": "项幅度递减到零时，交错相消把余项压在下一项以内。",
+  "concept": "项幅度递减到零时，交错相消把余项压在下一项以内。",
+  "intuition": "奇数部分和从上方降，偶数部分和从下方升，两边的间隙就是下一项幅度。",
+  "objectives": [
+    "核对两个条件",
+    "证明部分和夹逼"
+  ],
+  "body": [
+    {
+      "title": "核对两个条件",
+      "text": "幅度必须非负、趋零，并在使用误差界的尾部非增。交替正负本身不够。"
+    },
+    {
+      "title": "证明部分和夹逼",
+      "text": "偶部分和单调增，奇部分和单调减，二者彼此夹住。相邻间隙趋零，所以极限相同。"
+    },
+    {
+      "title": "定位余项",
+      "text": "总和在相邻两个部分和之间，因此前若干项与总和的距离不超过下一项幅度。若单调性只在较晚开始，不能提前套界。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "从第一项正号开始，交错判别给出有符号的上下夹逼。",
+    "latex": "S_{2k}\\le S\\le S_{2k+1},\\qquad |S-S_N|\\le b_{N+1}",
+    "conditions": [
+      "非负幅度非增且趋零。",
+      "若仅尾部满足，需将此前有限前缀单独保留。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "偶部分和每次增加一对差。",
+      "latex": "S_{2k+2}-S_{2k}=b_{2k+1}-b_{2k+2}\\ge0"
+    },
+    {
+      "text": "奇部分和每次减少一对差。",
+      "latex": "S_{2k+3}-S_{2k+1}=-b_{2k+2}+b_{2k+3}\\le0"
+    },
+    {
+      "text": "上下间隙趋零并包含总和。",
+      "latex": "S_{2k+1}-S_{2k}=b_{2k+1}\\to0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "交错调和误差",
+      "problem": "交错调和取前九十九项，余项最多多大？",
+      "steps": [
+        "幅度倒数单调趋零。",
+        "下一项幅度为一百分之一。"
+      ],
+      "answer": "不超过 $0.01$。"
+    },
+    {
+      "title": "交错但不趋零",
+      "problem": "$1-1+1-1+\\cdots$ 能使用判别吗？",
+      "steps": [
+        "幅度恒一不趋零。",
+        "上下部分和间隙不会消失。"
+      ],
+      "answer": "不能。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "交错调和前九项误差界？",
+      "hint": "下一项为第十项。",
+      "solution": [
+        "界为十分之一。"
+      ],
+      "answer": "$0.1$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.1,
+      "id": "ra-alternating-q1"
+    },
+    {
+      "problem": "交错级数收敛必绝对收敛吗？",
+      "hint": "交错调和。",
+      "solution": [
+        "绝对值后变调和发散。"
+      ],
+      "answer": "不必。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-alternating-q2"
+    },
+    {
+      "problem": "幅度从第十项才单调，能给第一项近似套下一项界吗？",
+      "hint": "界依赖整个被忽略尾部单调。",
+      "solution": [
+        "第一项之后尾部未满足条件。"
+      ],
+      "answer": "不能直接套。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-alternating-q3"
+    },
+    {
+      "id": "ra-alternating-q4",
+      "problem": "用交错余项界求一个足够的 $N$，使交错调和前 $N$ 项的绝对误差小于 $10^{-3}$。",
+      "hint": "题目要求严格小于。",
+      "solution": [
+        "余项满足 $|S-S_N|\\le1/(N+1)$。",
+        "若要由此保证严格小于 $10^{-3}$，须使 $N+1>1000$。",
+        "取 $N=1000$ 即足够；$N=999$ 的该界只有小于等于，尚不足以由此给出严格保证。"
+      ],
+      "answer": "取 $N=1000$ 即足够；$N=999$ 的该界只有小于等于，尚不足以由此给出严格保证。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-alternating-m1",
+        "ra-alternating-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "余项界用哪个幅度？",
+    "choices": [
+      "最后保留项",
+      "第一项",
+      "第一个未保留项"
+    ],
+    "correctIndex": 2,
+    "explanation": "它是两相邻部分和的距离。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-alternating-m1",
+      "claim": "交替符号就一定收敛",
+      "correction": "还需幅度控制。"
+    },
+    {
+      "id": "ra-alternating-m2",
+      "claim": "最终递减可给任何前缀同样界",
+      "correction": "只能在满足条件的尾部使用。"
+    }
+  ],
+  "prerequisites": [
+    "ra-series-definition",
+    "ra-monotone"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ra-alternating-m1",
+    "ra-alternating-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-alternating",
+    "prediction": "增加项数，奇偶部分和的夹逼与下一项误差界怎样收缩？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "奇数部分和从上方降，偶数部分和从下方升，两边的间隙就是下一项幅度。 还需幅度控制。",
+    "steps": [
+      {
+        "title": "保留项数：1",
+        "instruction": "将保留项数设为 $1$。观察奇偶部分和夹住的区间及下一项给出的误差界。",
+        "observation": "当前部分和 $1$；总和下界 $0.5$；总和上界 $1$；余项界 $0.5$。",
+        "preset": {
+          "n": 1
+        }
+      },
+      {
+        "title": "保留项数：50",
+        "instruction": "将保留项数设为 $50$。观察奇偶部分和夹住的区间及下一项给出的误差界。",
+        "observation": "当前部分和 $0.6832472$；总和下界 $0.6832472$；总和上界 $0.702855$；余项界 $0.01960784$。",
+        "preset": {
+          "n": 50
+        }
+      },
+      {
+        "title": "保留项数：100",
+        "instruction": "将保留项数设为 $100$。观察奇偶部分和夹住的区间及下一项给出的误差界。",
+        "observation": "当前部分和 $0.6881722$；总和下界 $0.6881722$；总和上界 $0.6980732$；余项界 $0.00990099$。",
+        "preset": {
+          "n": 100
+        }
+      }
+    ]
+  }
+}
