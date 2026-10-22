@@ -1,6 +1,6 @@
 # AI University working rules
 
-- User scope: complete one textbook at a time; Calculus I, II and III are published; Linear Algebra is published; the user has authorized a complete Ordinary Differential Equations volume. Static textbook and local interactive illustrations only. Do not add runtime chat, a model backend, API keys, user accounts, or blank future-volume lessons.
+- User scope: complete one textbook at a time; Calculus I, II and III are published; Linear Algebra is published; Ordinary Differential Equations is published. The user has authorized incorporating Python Introduction and Building Projects with AI under Other; all mathematical volumes belong to Mathematics. Static textbook and local interactive illustrations only. Do not add runtime chat, a model backend, API keys, user accounts, or blank future-volume lessons.
 - Canonical content is in `packages/content`; generated book files are derived. Keep website, print manuscript, exercises and prerequisite graph consistent.
 - Preserve concise Chinese explanations, actual theorem hypotheses, full worked steps and answers. Use diagrams to clarify mathematics, never as proof by finite sampling.
 - Identify content as AI-generated. Do not claim human review or exhaustive mathematical verification without evidence.

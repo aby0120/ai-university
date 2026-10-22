@@ -88,10 +88,7 @@ export default function App() {
     return () => window.removeEventListener("hashchange", changed);
   }, []);
   useEffect(() => {
-    document.title =
-      (route.path === "python" || route.path.startsWith("python/")
-        ? "Python 编程入门 · 投稿预览"
-        : route.path === "ai-development" || route.path.startsWith("ai-development/") ? "带着 AI 做项目 · 投稿预览" : labelFor(route)) + " · AI University";
+    document.title = labelFor(route) + " · AI University";
     window.scrollTo({ top: 0, behavior: "instant" });
     if (!firstLoad.current)
       document.getElementById("main")?.focus({ preventScroll: true });
@@ -132,21 +129,11 @@ export default function App() {
     clear,
     storageOk,
   };
-  if (route.path === "python" || route.path.startsWith("python/")) {
-    return (
-      <Suspense
-        fallback={
-          <p role="status" style={{ padding: 40 }}>
-            正在打开 Python 教材…
-          </p>
-        }
-      >
-        <PythonPreview path={route.path} />
-      </Suspense>
-    );
+  if (route.path === "book/python-introduction" || route.path.startsWith("book/python-introduction/")) {
+    return <Suspense fallback={<p role="status">正在打开 Python 教材…</p>}><PythonPreview path={route.path.replace("book/python-introduction","python")} /></Suspense>;
   }
-  if (route.path === "ai-development" || route.path.startsWith("ai-development/")) {
-    return <Suspense fallback={<p role="status">正在打开教材…</p>}><AIDevelopmentPreview path={route.path} /></Suspense>;
+  if (route.path === "book/ai-development" || route.path.startsWith("book/ai-development/")) {
+    return <Suspense fallback={<p role="status">正在打开教材…</p>}><AIDevelopmentPreview path={route.path.replace("book/ai-development","ai-development")} /></Suspense>;
   }
   return (
     <Curriculum.Provider value={curriculum}><State.Provider value={state}>

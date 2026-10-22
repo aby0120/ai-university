@@ -24,150 +24,43 @@ import {
 import { BOOK, chapterPath, lessonPath } from "../lib/catalog";
 import { useApp } from "../lib/state";
 import { PlannedBooks, PublishedBook } from "../components/Series";
-import { mathAreas, volumes, type PublishedVolume } from "../lib/library";
+import { categories, mathAreas, volumes, type PublishedVolume } from "../lib/library";
 import { routeHref } from "../lib/navigation";
 export function Library() {
-  const { route } = useApp();
-  const area = route.params.get("area") || "";
-  const requestedStatus = route.params.get("status");
-  const status =
-    requestedStatus === "published" || requestedStatus === "planned"
-      ? requestedStatus
-      : "all";
-  const currentArea = mathAreas.find((a) => a.id === area);
-  const matching = volumes.filter(
-    (v) =>
-      (!currentArea || v.areaId === currentArea.id) &&
-      (status === "all" || v.status === status),
-  );
-  const published = matching.filter(
-    (v): v is PublishedVolume => v.status === "published",
-  );
-  const planned = matching.filter((v) => v.status === "planned");
-  return (
-    <div className="library-exhibition">
-      <PageTitle
-        tag="THE OPEN BOOKSHELF"
-        title="教科书库"
-        description="按数学方向选书。已出版的教材，整本开放阅读。"
-      >
-        <div className="library-edition">
-          <strong>
-            {String(
-              volumes.filter((v) => v.status === "published").length,
-            ).padStart(2, "0")}
-          </strong>
-          <span>本已出版 / {volumes.length} 本系列教材</span>
-        </div>
-      </PageTitle>
-      <div className="series-library-filter">
-        <nav aria-label="教材出版状态">
-          {[
-            ["all", "全部"],
-            ["published", "已出版"],
-            ["planned", "规划中"],
-          ].map(([id, title]) => (
-            <Link
-              key={id}
-              to="library"
-              params={{ area: currentArea?.id, status: id }}
-              className={status === id ? "active" : ""}
-              aria-current={status === id ? "page" : undefined}
-            >
-              {title}
-              <span>
-                {
-                  volumes.filter(
-                    (v) =>
-                      (!currentArea || v.areaId === currentArea.id) &&
-                      (id === "all" || v.status === id),
-                  ).length
-                }
-              </span>
-            </Link>
-          ))}
-        </nav>
-        <label>
-          数学方向
-          <select
-            aria-label="筛选数学方向"
-            value={currentArea?.id || ""}
-            onChange={(e) => {
-              location.hash = routeHref("library", {
-                area: e.target.value || undefined,
-                status,
-              });
-            }}
-          >
-            <option value="">全部方向</option>
-            {mathAreas.map((a) => (
-              <option key={a.id} value={a.id}>
-                {a.title}
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
-      {currentArea && (
-        <div className="library-area-intro">
-          <Eyebrow>{currentArea.english.toUpperCase()}</Eyebrow>
-          <h2>
-            {currentArea.title}：{currentArea.question}
-          </h2>
-          <p>{currentArea.description}</p>
-        </div>
-      )}
-      {published.length > 0 && (
-        <section className="library-published">
-          <div className="section-title">
-            <h2>已出版</h2>
-            <span>整本内容已开放阅读</span>
-          </div>
-          <div className="published-book-list">
-            {published.map((volume) => (
-              <PublishedBook key={volume.id} volume={volume} />
-            ))}
-          </div>
-        </section>
-      )}
-      {planned.length > 0 && (
-        <section className="library-planned">
-          <div className="section-title">
-            <h2>后续教材规划</h2>
-            <span>内容尚未出版</span>
-          </div>
-          <PlannedBooks items={planned} />
-        </section>
-      )}
-      {matching.length === 0 && (
-        <div className="series-library-empty">
-          <h2>这个方向暂未出版教材。</h2>
-          <p>可以查看该方向的教材规划，或先读已经出版的书。</p>
-          <Link
-            to="library"
-            params={{ area: currentArea?.id, status: "all" }}
-            className="secondary-btn"
-          >
-            查看这个方向的全部教材
-            <ArrowRight size={16} />
-          </Link>
-        </div>
-      )}
-      <div className="quiet-note">
-        <Layers3 size={24} />
-        <div>
-          <h3>一本一本完成，系列持续扩展。</h3>
-          <p>
-            已出版教材提供完整正文与交互图示；规划条目展示拟覆盖的范围，出版顺序与范围可随编写进展调整。
-          </p>
-        </div>
-        <Link to="about/contribute">
-          了解内容规范
-          <ArrowUpRight size={16} />
-        </Link>
-      </div>
+  const {route}=useApp();
+  const category=categories.find(c=>c.id===(route.params.get("category")|| (mathAreas.some(a=>a.id===route.params.get("area"))?"mathematics":"")));
+  const area=category?.id==="mathematics" ? mathAreas.find(a=>a.id===route.params.get("area")) : undefined;
+  const rawStatus=route.params.get("status");
+  const status=rawStatus==="published"||rawStatus==="planned"?rawStatus:"all";
+  const matches=(v:typeof volumes[number])=>(!category||v.categoryId===category.id)&&(!area||v.areaId===area.id);
+  const filtered=volumes.filter(v=>matches(v)&&(status==="all"||v.status===status));
+  return <div className="library-exhibition">
+    <PageTitle tag="THE OPEN BOOKSHELF" title="教科书库" description="选一个学科，读一本完整的书。正文、互动和练习全部开放。">
+      <div className="library-edition"><strong>{String(volumes.filter(v=>v.status==="published").length).padStart(2,"0")}</strong><span>本已出版 / {categories.length} 个分类</span></div>
+    </PageTitle>
+    <nav className="subject-tabs" aria-label="教材分类">
+      <Link to="library" params={{status}} className={!category?"active":""} aria-current={!category?"page":undefined}>全部<span>{volumes.filter(v=>v.status==="published").length}</span></Link>
+      {categories.map(c=><Link key={c.id} to="library" params={{category:c.id,status}} className={category?.id===c.id?"active":""} aria-current={category?.id===c.id?"page":undefined}>{c.title}<span>{volumes.filter(v=>v.categoryId===c.id&&v.status==="published").length}</span></Link>)}
+    </nav>
+    <div className="series-library-filter">
+      <nav aria-label="教材出版状态">{[["all","全部"],["published","已出版"],["planned","规划中"]].map(([id,title])=><Link key={id} to="library" params={{category:category?.id,area:area?.id,status:id}} className={status===id?"active":""} aria-current={status===id?"page":undefined}>{title}<span>{volumes.filter(v=>matches(v)&&(id==="all"||v.status===id)).length}</span></Link>)}</nav>
+      {category?.id==="mathematics"&&<label>数学方向<select aria-label="筛选数学方向" value={area?.id||""} onChange={e=>{location.hash=routeHref("library",{category:"mathematics",area:e.target.value||undefined,status})}}><option value="">全部方向</option>{mathAreas.map(a=><option key={a.id} value={a.id}>{a.title}</option>)}</select></label>}
     </div>
-  );
+    {area&&<div className="library-area-intro"><Eyebrow>{area.english.toUpperCase()}</Eyebrow><h2>{area.title}：{area.question}</h2><p>{area.description}</p></div>}
+    {categories.filter(c=>!category||c.id===category.id).map(c=>{
+      const items=filtered.filter(v=>v.categoryId===c.id);
+      const published=items.filter((v):v is PublishedVolume=>v.status==="published");
+      const planned=items.filter(v=>v.status==="planned");
+      if(!items.length)return null;
+      return <section className="library-subject" key={c.id} aria-label={c.title+"教材"}>
+        <div className="subject-heading"><div><Eyebrow>{c.english.toUpperCase()}</Eyebrow><h2>{c.title}</h2><p>{c.description}</p></div><span>{published.length} 本已出版{planned.length?` / ${planned.length} 本规划中`:""}</span></div>
+        {published.length>0&&<div className="published-book-list">{published.map(v=><PublishedBook key={v.id} volume={v}/>)}</div>}
+        {planned.length>0&&<div className="library-planned"><div className="section-title"><h3>后续教材规划</h3><span>尚未出版</span></div><PlannedBooks items={planned}/></div>}
+      </section>;
+    })}
+    {!filtered.length&&<div className="series-library-empty"><h2>这个分类下暂时没有{status==="planned"?"规划中的":"符合条件的"}教材。</h2><Link to="library" params={{category:category?.id}} className="secondary-btn">查看本分类的全部教材<ArrowRight size={16}/></Link></div>}
+    <div className="quiet-note"><Layers3 size={24}/><div><h3>一本一本完成，持续扩展。</h3><p>已出版的教材提供整本正文和解答。新书完成后再加入正式书库。</p></div><Link to="about/contribute">了解内容规范<ArrowUpRight size={16}/></Link></div>
+  </div>;
 }
 
 export function BookPage() {

@@ -17,9 +17,12 @@ jobs:
         with:
           node-version: 24
           cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
       - run: npm ci
       - run: npm run check
-      - run: git diff --exit-code -- book/*.md
+      - run: git diff --exit-code -- book/*.md packages/content/python packages/content/ai-development packages/content/programming-index.generated.json
       - uses: actions/upload-artifact@v4
         with:
           name: ai-university-static-website

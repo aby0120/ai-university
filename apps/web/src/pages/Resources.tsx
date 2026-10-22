@@ -1,7 +1,10 @@
+import programmingRegistry from "../../../../packages/content/programming.json";
+import {publishedVolumes} from "../lib/library";
 import {VolumeSwitcher} from "../components/VolumeSwitcher";
 import {useCurriculum} from "../lib/curriculum";
 import {
   ArrowRight,
+  BookOpen,
   ArrowUpRight,
   ChevronDown,
   Download,
@@ -31,7 +34,7 @@ import {
   REPO,
   chapterPath,
   lessonPath,
-  searchLessons,
+  searchTextbooks as searchLessons,
 } from "../lib/catalog";
 import { useApp } from "../lib/state";
 export function ReferencePage() {
@@ -304,16 +307,15 @@ export function SearchPage() {
       {list.length ? (
         <div className="search-results">
           {list.slice(start, end).map((l) => (
-            <Link key={l.id} to={lessonPath(l.id)}>
+            <Link key={l.id} to={l.route}>
               <span>{l.number}</span>
               <div>
                 <small>
-                  微积分 I /{" "}
-                  {collections.find(c=>c.book.lessonIds.includes(l.id))!.book.titleZh+" · "+collections.flatMap(c=>c.book.chapters).find(c=>c.id===l.chapterId)!.title}
+                  {l.bookTitle+" · "+l.chapterTitle}
                 </small>
-                <h2><MathText text={l.title} /></h2>
+                <h2>{l.isMath?<MathText text={l.title}/>:l.title}</h2>
                 <p>
-                  <MathText text={l.concept} />
+                  {l.isMath?<MathText text={l.concept}/>:l.concept}
                 </p>
               </div>
               <ArrowUpRight size={20} />
@@ -445,6 +447,19 @@ export function GuidePage() {
 
 export function DownloadsPage() {
   const {book,lessons,bookStats,supplements,BOOK,filename,printFile}=useCurriculum();
+  const {route}=useApp();
+  const program=programmingRegistry.find(c=>c.id===route.params.get("book"));
+  const volume=publishedVolumes.find(v=>v.id===program?.id);
+  if(program&&volume)return <>
+    <PageTitle tag="TAKE THE BOOK WITH YOU" title="下载与离线阅读" description="正文、练习、解答与项目源码，来自同一个固定版本。"/>
+    <VolumeSwitcher path="downloads"/>
+    <div className="download-grid">
+      <article><Download size={28}/><span>TEXTBOOK / MARKDOWN</span><h2>{volume.title} · 完整书稿</h2><p>{volume.stats.chapters} 章 {volume.stats.lessons} 节，{volume.stats.examples} 个例题与 {volume.stats.exercises} 道练习及回顾，含全部解答和项目代码。</p><a href={"./"+program.filename} download className="primary-btn">下载 Markdown<Download size={16}/></a></article>
+      <article><Printer size={28}/><span>TEXTBOOK / PRINT</span><h2>整本阅读与打印</h2><p>连续阅读全部正文和项目源码，或通过浏览器打印保存为 PDF。互动操作请打开网页教材。</p><a href={"./"+program.printFile} target="_blank" rel="noreferrer" className="primary-btn">打开打印版<ExternalLink size={16}/></a></article>
+      <article><Github size={28}/><span>WEBSITE / OPEN SOURCE</span><h2>网站与教材源码</h2><p>示例和项目可在本机运行，网站的互动演示无需 API。</p><a href={REPO+"/releases"} target="_blank" rel="noreferrer" className="secondary-btn">查看发布包<ArrowUpRight size={16}/></a></article>
+    </div><div className="quiet-note"><BookOpen/><div><h3>{volume.title}</h3><p>互动演示、练习与术语都在本书目录中。</p></div><Link to={volume.route} className="secondary-btn">返回教材<ArrowRight size={16}/></Link></div>
+  </>;
+
   return (
     <>
       <PageTitle

@@ -1,5 +1,5 @@
 {
-  "subject": "数学",
+  "subject": "开放教科书",
   "areas": [
     {
       "id": "calculus",
@@ -7,7 +7,8 @@
       "english": "Calculus",
       "question": "变化有多快，累积有多少？",
       "description": "从极限与导数到积分、级数与多元变化。",
-      "symbol": "calculus"
+      "symbol": "calculus",
+      "categoryId": "mathematics"
     },
     {
       "id": "linear-algebra",
@@ -15,7 +16,8 @@
       "english": "Linear Algebra",
       "question": "空间怎样被移动与变换？",
       "description": "用向量、矩阵与线性映射理解空间的结构。",
-      "symbol": "linear"
+      "symbol": "linear",
+      "categoryId": "mathematics"
     },
     {
       "id": "differential-equations",
@@ -23,7 +25,8 @@
       "english": "Differential Equations",
       "question": "知道变化规律，怎样预测未来？",
       "description": "从变化率建立方程，理解解与动态系统。",
-      "symbol": "dynamics"
+      "symbol": "dynamics",
+      "categoryId": "mathematics"
     },
     {
       "id": "probability",
@@ -31,7 +34,8 @@
       "english": "Probability & Statistics",
       "question": "不确定中，有什么规律？",
       "description": "从随机事件与分布到估计、推断与数据。",
-      "symbol": "probability"
+      "symbol": "probability",
+      "categoryId": "mathematics"
     },
     {
       "id": "discrete-math",
@@ -39,7 +43,8 @@
       "english": "Discrete Mathematics",
       "question": "有限的对象，可以怎样组织？",
       "description": "用逻辑、计数、图与递归研究离散结构。",
-      "symbol": "discrete"
+      "symbol": "discrete",
+      "categoryId": "mathematics"
     },
     {
       "id": "analysis",
@@ -47,7 +52,17 @@
       "english": "Real Analysis",
       "question": "熟悉的结论，为什么成立？",
       "description": "从实数与收敛出发，建立严谨的分析语言。",
-      "symbol": "analysis"
+      "symbol": "analysis",
+      "categoryId": "mathematics"
+    },
+    {
+      "id": "programming",
+      "categoryId": "other",
+      "title": "编程与开发",
+      "english": "Programming & Development",
+      "question": "怎样写程序、完成项目？",
+      "description": "从代码执行过程到需求、版本管理与交付。",
+      "symbol": "code"
     }
   ],
   "volumes": [
@@ -72,7 +87,8 @@
         "examples": 79,
         "exercises": 191
       },
-      "coverFormula": "\\frac{d}{dx}\\int_a^x f(t)\\,dt=f(x)"
+      "coverFormula": "\\frac{d}{dx}\\int_a^x f(t)\\,dt=f(x)",
+      "categoryId": "mathematics"
     },
     {
       "id": "calculus-2",
@@ -95,7 +111,8 @@
         "examples": 72,
         "exercises": 179
       },
-      "coverFormula": "T_m(x)=\\sum_{n=0}^{m}\\frac{f^{(n)}(a)}{n!}(x-a)^n"
+      "coverFormula": "T_m(x)=\\sum_{n=0}^{m}\\frac{f^{(n)}(a)}{n!}(x-a)^n",
+      "categoryId": "mathematics"
     },
     {
       "id": "calculus-3",
@@ -118,7 +135,8 @@
         "examples": 81,
         "exercises": 203
       },
-      "coverFormula": "\\iint_{\\partial E}\\mathbf F\\cdot\\mathbf n\\,dS=\\iiint_E\\nabla\\cdot\\mathbf F\\,dV"
+      "coverFormula": "\\iint_{\\partial E}\\mathbf F\\cdot\\mathbf n\\,dS=\\iiint_E\\nabla\\cdot\\mathbf F\\,dV",
+      "categoryId": "mathematics"
     },
     {
       "id": "linear-algebra",
@@ -141,7 +159,8 @@
         "examples": 100,
         "exercises": 250
       },
-      "coverFormula": "A=U\\Sigma V^T"
+      "coverFormula": "A=U\\Sigma V^T",
+      "categoryId": "mathematics"
     },
     {
       "id": "ordinary-differential-equations",
@@ -165,7 +184,8 @@
         "examples": 110,
         "exercises": 275
       },
-      "coverFormula": "\\mathbf x'=A\\mathbf x+\\mathbf b(t)"
+      "coverFormula": "\\mathbf x'=A\\mathbf x+\\mathbf b(t)",
+      "categoryId": "mathematics"
     },
     {
       "id": "probability-statistics",
@@ -180,7 +200,8 @@
       "description": "从概率与随机变量到数据描述、参数估计与统计推断。",
       "audience": "有函数与基础微积分知识的学习者",
       "scope": "概率 · 分布 · 估计 · 推断",
-      "status": "planned"
+      "status": "planned",
+      "categoryId": "mathematics"
     },
     {
       "id": "discrete-math",
@@ -195,7 +216,8 @@
       "description": "从逻辑与证明到组合计数、图论与递归。",
       "audience": "有初等代数基础的学习者",
       "scope": "逻辑 · 计数 · 图论 · 递归",
-      "status": "planned"
+      "status": "planned",
+      "categoryId": "mathematics"
     },
     {
       "id": "real-analysis",
@@ -210,7 +232,70 @@
       "description": "以实数、序列与极限为起点，严谨建立连续、微分与积分。",
       "audience": "已学过微积分并熟悉基础证明的学习者",
       "scope": "实数 · 收敛 · 连续 · 微分与积分",
-      "status": "planned"
+      "status": "planned",
+      "categoryId": "mathematics"
+    },
+    {
+      "id": "python-introduction",
+      "categoryId": "other",
+      "areaId": "programming",
+      "title": "Python 编程入门",
+      "englishTitle": "Introduction to Programming with Python",
+      "coverTitle": [
+        "Python",
+        "入门"
+      ],
+      "tagline": "从第一行代码到完整程序",
+      "description": "从输入输出、分支与循环开始，学习数据容器、函数、文件与测试，完成消费汇总器。每节都有可调参数的执行回放。",
+      "audience": "没有编程经验的中文读者",
+      "scope": "5 章 · 20 节 · Python 标准库与命令行项目",
+      "status": "published",
+      "route": "book/python-introduction",
+      "coverMark": "print(\"Hello, world\")",
+      "stats": {
+        "chapters": 5,
+        "lessons": 20,
+        "examples": 40,
+        "exercises": 94
+      }
+    },
+    {
+      "id": "ai-development",
+      "categoryId": "other",
+      "areaId": "programming",
+      "title": "带着 AI 做项目",
+      "englishTitle": "Building Projects with AI",
+      "coverTitle": [
+        "Build",
+        "with AI"
+      ],
+      "tagline": "说清需求，验证结果，完成交付",
+      "description": "面向 AI 辅助编程（Vibe Coding）的开发入门。用一个学习清单项目，串起需求、Git、任务拆分、测试与发布。",
+      "audience": "用过 AI 写代码、希望系统学习项目开发的读者",
+      "scope": "6 章 · 18 节 · 工具中立的项目开发基础",
+      "status": "published",
+      "route": "book/ai-development",
+      "coverMark": "idea → code → test",
+      "stats": {
+        "chapters": 6,
+        "lessons": 18,
+        "examples": 36,
+        "exercises": 88
+      }
+    }
+  ],
+  "categories": [
+    {
+      "id": "mathematics",
+      "title": "数学",
+      "english": "Mathematics",
+      "description": "从微积分到线性代数，理解变化、空间与方程。"
+    },
+    {
+      "id": "other",
+      "title": "其他",
+      "english": "Other Subjects",
+      "description": "Python 编程入门与 AI 辅助开发，从理解程序到完成项目。"
     }
   ]
 }

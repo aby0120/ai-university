@@ -1,10 +1,21 @@
-# 数学系列与书库
+# 分类与书库
 
-首页面向完整数学系列。目前已出版 Calculus I（7 章 35 节）、Calculus II（8 章 35 节）、Calculus III（9 章 40 节）和 Linear Algebra（10 章 50 节）。其他方向仍标为规划，不创建空白正文。
+顶层分类由 `packages/content/library.json` 的 `categories` 定义：
 
-`packages/content/library.json` 维护展示目录；`packages/content/index.ts` 的 `collections` 注册真实教材。出版状态必须和已实现的教材集合完全一致，计数由 canonical 内容核对。
+- **数学**：微积分 I、II、III，线性代数，常微分方程；后续数学规划也归此类。
+- **其他**：Python 编程入门、《带着 AI 做项目》，暂不另建编程分类。
 
-## 教材隔离与兼容
+首页按分类切换已出版教材，书库支持分类、出版状态及数学方向筛选。分类与方向分别由 `categoryId`、`areaId` 标识，校验拒绝不一致的归属。共有 7 本已出版教材，规划不冒充已出版内容。
+
+数学 canonical 集合由 `packages/content/index.ts` 和 `scripts/content-utils.mjs` 注册；编程教材由 `packages/content/programming.json` 和 `scripts/programming-utils.mjs` 注册。两个 schema 各自验证本学科语义，统一向书库提供真实计数、搜索索引与出版产物。
+
+编程两卷使用 `#/book/python-introduction[/<lesson-id>]`、`#/book/ai-development[/<lesson-id>]`；旧投稿路由解析为新入口。局部 ID 允许同名，搜索结果以书 ID 为命名空间，避免 debugging、testing 等跨书冲突。
+
+编程正文、例题、练习、术语及项目代码同步生成 Markdown 和打印 HTML；共享下载页按顶层分类列出全部教材。搜索同时覆盖七卷并标出所属书。程序回放、Git 台和任务卡是离线教学组件，不提供实时聊天。
+
+## 原有数学教材的兼容
+
+
 
 - 第一卷保留 `book.json`、`lessons/`、`supplements.json`，旧阅读链接不变。
 - 第二卷放在 `calculus-2/`，小节与章节使用 `c2-` 前缀，练习 ID 也唯一。跨卷先修边可以回到第一卷具体知识点。

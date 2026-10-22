@@ -16,7 +16,7 @@ test("entire manuscript is linked, schema valid, formula-renderable and acyclic"
   assert.equal(result.sections, 215);
   assert.equal(result.exercises, 1098);
   assert.equal(result.examples, 442);
-  assert.equal(result.publishedVolumes, 5);
+  assert.equal(result.publishedVolumes, 7);
   assert.equal(result.chapters, 45);
 });
 test("canonical derivatives agree with independent central differences", () => {

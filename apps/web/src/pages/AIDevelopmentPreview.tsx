@@ -11,17 +11,17 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
-import book from "../../../../drafts/ai-development/book.json";
-import supplements from "../../../../drafts/ai-development/supplements.json";
-import manuscript from "../../../../drafts/ai-development/AI-Assisted-Development.md?raw";
-import project from "../../../../drafts/ai-development/project.generated.json";
-import projectZip from "../../../../drafts/ai-development/learning-list.zip?url";
+import book from "../../../../packages/content/ai-development/book.json";
+import supplements from "../../../../packages/content/ai-development/supplements.json";
+import manuscript from "../../../../packages/content/ai-development/AI-Assisted-Development.md?raw";
+import project from "../../../../packages/content/ai-development/project.generated.json";
+import projectZip from "../../../../packages/content/ai-development/learning-list.zip?url";
 import {
   initialGit,
   transition,
   headOf,
   type GitAction,
-} from "../../../../drafts/ai-development/lib/git-lab.mjs";
+} from "../../../../packages/content/ai-development/lib/git-lab.mjs";
 import "./ai-development-preview.css";
 type Choice = {
   question: string;
@@ -68,15 +68,15 @@ type Lesson = {
   sources: string[];
 };
 const files = import.meta.glob<Lesson>(
-  "../../../../drafts/ai-development/lessons/*.json",
+  "../../../../packages/content/ai-development/lessons/*.json",
   { eager: true, import: "default" },
 );
 const lessons = book.chapters.flatMap((c) =>
   c.lessons.map(
-    (id) => files[`../../../../drafts/ai-development/lessons/${id}.json`],
+    (id) => files[`../../../../packages/content/ai-development/lessons/${id}.json`],
   ),
 );
-const href = (path = "") => "#/ai-development" + (path ? "/" + path : "");
+const href = (path = "") => "#/book/ai-development" + (path ? "/" + path : "");
 const READ_KEY = "au-ai-development-reading-v1";
 function savedRead(): string[] {
   try {
@@ -193,8 +193,8 @@ function Scenario({ lesson }: { lesson: Lesson }) {
   const items = lesson.interactiveVisual.steps;
   return (
     <section className="ad-panel ad-scenario">
-      <p className="ad-eyebrow">把你放进项目现场</p>
-      <h2>先做一个决定</h2>
+      <p className="ad-eyebrow">情境练习</p>
+      <h2>你会怎么处理？</h2>
       <p>{lesson.interactiveVisual.prediction}</p>
       <div
         className="ad-step-dots"
@@ -457,6 +457,7 @@ function PromptLab({ lesson }: { lesson: Lesson }) {
             <label key={key} className="ad-field">
               {label}
               <textarea
+                aria-label={label}
                 rows={3}
                 value={values[key]}
                 placeholder={placeholder}
@@ -651,7 +652,7 @@ function Home({ read }: { read: string[] }) {
     <>
       <section className="ad-hero">
         <div>
-          <p className="ad-eyebrow">AI University · 开放教材投稿预览</p>
+          <p className="ad-eyebrow">AI University · 开放教科书</p>
           <h1>
             带着 AI
             <br />
@@ -1002,16 +1003,19 @@ export default function AIDevelopmentPreview({ path }: { path: string }) {
         跳到正文
       </a>
       <header className="ad-header">
-        <a href={href()} className="ad-brand">
+        <a href="#/home" className="ad-brand">
           <span>
             Au<span>•</span>
           </span>
           <div>
-            带着 AI 做项目
-            <small>AI University · 投稿预览 v{book.version}</small>
+            AI University
+            <small>开放教科书计划 · 其他</small>
           </div>
         </a>
         <nav aria-label="教材导航">
+          <a href="#/downloads?book=ai-development">下载与打印</a>
+          <a href="#/library?category=other">教科书库</a>
+          <a href={href()}>本书目录</a>
           <a href={href("project")}>贯穿项目</a>
           <a href={href("review")}>回顾与实作</a>
           <button
@@ -1210,9 +1214,9 @@ export default function AIDevelopmentPreview({ path }: { path: string }) {
         </main>
       </div>
       <footer className="ad-footer">
-        <p>AI 生成 · 尚未人工审校 · 内容 CC0-1.0 · 工具与项目 MIT</p>
+        <p>AI 编写 · 投稿贡献：aby0120 · 内容 CC0 / 代码 MIT</p>
         <nav>
-          <a href="#/library">数学教材</a>
+          <a href="#/library">教科书库</a>
           <a href={href("glossary")}>术语索引</a>
           <a href={href()}>本书主页</a>
         </nav>

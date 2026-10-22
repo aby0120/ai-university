@@ -1,3 +1,4 @@
+import {programmingBooks,programmingStats} from "./programming-utils.mjs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import fs from "node:fs";
@@ -192,14 +193,30 @@ export function validateContent() {
     new Set(library.volumes.map((v) => v.id)).size,
     library.volumes.length,
   );
-  library.volumes.forEach((v) => assert(areas.has(v.areaId)));
+  const categories=new Set(library.categories.map(c=>c.id));
+  assert.equal(categories.size,library.categories.length);
+  library.areas.forEach(a=>assert(categories.has(a.categoryId)));
+  library.volumes.forEach(v=>{
+    assert(areas.has(v.areaId));
+    assert.equal(v.categoryId, library.areas.find(a=>a.id===v.areaId).categoryId);
+  });
   const published = library.volumes.filter((v) => v.status === "published");
   assert.deepEqual(
     published.map((v) => v.id).sort(),
-    contentBooks.map((c) => c.book.id).sort(),
+    [...contentBooks.map((c) => c.book.id),...programmingBooks.map(c=>c.id)].sort(),
     "Published catalog must match complete books",
   );
   for (const volume of published) {
+    const programming=programmingBooks.find(c=>c.id===volume.id);
+    if(programming){
+      assert.equal(programming.book.status,'published');
+      assert.equal(volume.categoryId,'other');
+      assert.equal(volume.route,`book/${programming.id}`);
+      assert.deepEqual(volume.stats,programmingStats(programming));
+      assert(volume.coverMark && !volume.coverFormula);
+      continue;
+    }
+    assert.equal(volume.categoryId,'mathematics');
     const { book, allLessons, extra } = contentBooks.find(
       (c) => c.book.id === volume.id,
     );
@@ -220,6 +237,7 @@ export function validateContent() {
   }
   return {
     publishedVolumes: published.length,
+    programming: programmingBooks.reduce((s,c)=>{const v=programmingStats(c);for(const k of Object.keys(v))s[k]+=v[k];return s;},{chapters:0,lessons:0,examples:0,exercises:0}),
     chapters: contentBooks.reduce((n, c) => n + c.book.chapters.length, 0),
     sections: ids.size,
     examples: libraryLessons.reduce((n, l) => n + l.workedExamples.length, 0),

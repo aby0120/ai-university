@@ -126,10 +126,10 @@ export function BookCover({
   return (
     <div className={"book-cover " + (small ? "small" : "")+(volume.coverTitle.some(line=>line.length>10)?" long-title":"")}>
       <div className="cover-top">
-        AI UNIVERSITY<span>MATHEMATICS</span>
+        AI UNIVERSITY<span>{volume.categoryId==="mathematics"?"MATHEMATICS":"OTHER SUBJECTS"}</span>
       </div>
       <div>
-        <span>MATHEMATICS</span>
+        <span>{volume.categoryId==="mathematics"?"MATHEMATICS":"OTHER SUBJECTS"}</span>
         <h2>
           {volume.coverTitle.map((line, i) => (
             <span key={i}>
@@ -146,7 +146,7 @@ export function BookCover({
       </div>
       <div className="cover-bottom">
         {volume.status === "published" && (
-          <Formula latex={volume.coverFormula} />
+          volume.coverFormula ? <Formula latex={volume.coverFormula} /> : <code className="cover-code">{volume.coverMark}</code>
         )}
         <span>OPEN TEXTBOOK</span>
       </div>

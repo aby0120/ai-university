@@ -1,3 +1,5 @@
+import programmingIndex from "../../../../packages/content/programming-index.generated.json";
+import {publishedVolumes} from "./library";
 import { plainMathText } from "../../../../packages/content/math-text.mjs";
 import { book, lessonById, allLessons as lessons, collections } from "../../../../packages/content";
 import type { Lesson } from "../../../../packages/content/types";
@@ -12,6 +14,12 @@ export function findLesson(path: string) {
     | undefined;
 }
 export function labelFor(route: Route) {
+  const programLesson=programmingIndex.find(l=>l.route===route.path.replace(/\/(experiment|practice)$/, ""));
+  if(programLesson)return programLesson.title;
+  const programBook=publishedVolumes.find(v=>route.path===v.route);
+  if(programBook)return programBook.title;
+  const programSection=publishedVolumes.find(v=>v.categoryId==="other"&&route.path.startsWith(v.route+"/"));
+  if(programSection)return programSection.title;
   const l = findLesson(route.path);
   if (l) return plainMathText(l.title);
   const selectedBook=collections.find(c=>route.path===c.BOOK);
@@ -21,7 +29,7 @@ export function labelFor(route: Route) {
   return (
     (
       {
-        home: "开放数学教科书系列",
+        home: "开放教科书",
         library: "教科书库",
         [BOOK]: "微积分 I",
         lab: "互动实验室",
@@ -62,4 +70,15 @@ export function searchLessons(query: string) {
       .join(" ")).toLowerCase();
     return words.every((w) => text.includes(w));
   });
+}
+
+export function searchTextbooks(query:string){
+  const words=query.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  if(!words.length)return [];
+  const math=searchLessons(query).map(l=>({
+    id:l.id,number:l.number,title:l.title,subtitle:l.subtitle,concept:l.concept,route:lessonPath(l.id),isMath:true,
+    bookTitle:collections.find(c=>c.book.lessonIds.includes(l.id))!.book.titleZh,
+    chapterTitle:collections.flatMap(c=>c.book.chapters).find(c=>c.id===l.chapterId)!.title,
+  }));
+  return [...math,...programmingIndex.filter(l=>words.every(w=>l.text.toLowerCase().includes(w))).map(l=>({...l,isMath:false}))];
 }

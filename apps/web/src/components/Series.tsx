@@ -117,7 +117,7 @@ export function MathAreas() {
           <Link
             key={area.id}
             to="library"
-            params={{ area: area.id }}
+            params={{ category:"mathematics", area: area.id }}
             className="math-area-card"
           >
             <div className="area-card-top">

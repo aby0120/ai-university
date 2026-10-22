@@ -2,7 +2,7 @@
 
 外部贡献先隔离、复核，再收录；正式版本由受保护的主分支发布。流程与验证边界见 [贡献保护](docs/CONTRIBUTION_SECURITY.md)。
 
-**AI 编写的开放数学教科书系列，一本一本完整完成。** 首页与书库面向微积分、线性代数、微分方程、概率统计、离散数学、实分析等方向。目前已出版 **Calculus I / 微积分 I**、**Calculus II / 微积分 II**、**Calculus III / 微积分 III**、**Linear Algebra / 线性代数**、**Ordinary Differential Equations / 常微分方程**，分别为 35、35、40、50、55 节完整正文，均包含条件、推导、可操作图示、例题与完整练习解答。
+**AI 编写的开放教科书，一本一本完整完成。** 首页与书库面向微积分、线性代数、微分方程、概率统计、离散数学、实分析等方向。目前已出版 **Calculus I / 微积分 I**、**Calculus II / 微积分 II**、**Calculus III / 微积分 III**、**Linear Algebra / 线性代数**、**Ordinary Differential Equations / 常微分方程**，分别为 35、35、40、50、55 节完整正文，均包含条件、推导、可操作图示、例题与完整练习解答。
 
 | 教材 | 章 | 节 | 例题 | 节内练习 | 回顾 / 综合题 |
 |---|---:|---:|---:|---:|---:|
@@ -26,21 +26,22 @@
 
 ```sh
 npm ci
+# 完整检查另需 CPython 3.14（网页阅读不需要 Python）
 npm run dev
 ```
 
 打开 `http://127.0.0.1:5173`。不需要 `.env` 或任何 API key。
 
 ```sh
-npm run check     # 内容、公式、类型、整本生成、构建、数学测试
+npm run check     # 全部七卷：内容、程序回放、项目测试、公式、类型、整本生成与构建
 npm run preview   # 查看构建后的静态版本
 ```
 
 首次运行开发预览前，可先 `npm run build` 生成整本阅读页与下载书稿。发布只需把 `dist/` 放到任意静态服务器。不要双击 `dist/index.html` 作为 file URL；使用静态 HTTP 服务器。
 
-## 数学系列与书库
+## 分类与书库
 
-`packages/content/library.json` 统一维护数学方向、教材简介和出版状态。当前 3 本已出版、5 本规划中；规划条目不提供空白章节或阅读链接。新增规划会自动进入首页方向与书库，整本内容接入完成后再出版。详见 [系列目录与新增教材](docs/LIBRARY.md)。
+`packages/content/library.json` 统一维护分类、学科方向、教材简介和出版状态。当前 7 本已出版、3 本规划中。数学分类包含微积分 I/II/III、线性代数、常微分方程；其他分类暂时收录 Python 编程入门与《带着 AI 做项目》。规划条目不提供空白章节或阅读链接。新增规划会自动进入首页方向与书库，整本内容接入完成后再出版。详见 [系列目录与新增教材](docs/LIBRARY.md)。
 
 ## 第一卷的完整范围
 
@@ -95,7 +96,7 @@ npm run preview   # 查看构建后的静态版本
 
 ## 阅读与下载
 
-- 网站 v0.13.0：数学系列首页、按方向和出版状态筛选的书库、教材主页、45 个章节主页、215 个知识点页面、实验室、分页练习中心、全文搜索、公式/术语/附录索引、阅读指南、下载、项目与贡献资料。
+- 网站 v0.14.0：数学系列首页、按方向和出版状态筛选的书库、教材主页、45 个章节主页、215 个知识点页面、实验室、分页练习中心、全文搜索、公式/术语/附录索引、阅读指南、下载、项目与贡献资料。
 - 阅读页：专注模式、嵌入演示、页内定位、上下节翻页、收藏、较大字号与已读标记。练习支持逐题/连续查看、提示、完整解答与数值检查。
 - [微积分 I 书稿](book/Calculus-I.md)与[微积分 II 书稿](book/Calculus-II.md)、[微积分 III 书稿](book/Calculus-III.md)与[线性代数书稿](book/Linear-Algebra.md)、[常微分方程书稿](book/Ordinary-Differential-Equations.md)：版本化源产物，包含所有解答。
 - `dist/book.html` 与 `dist/calculus-2.html` 与 `dist/calculus-3.html` 与 `dist/linear-algebra.html`：五卷各自的完整阅读页（另含 `dist/ordinary-differential-equations.html`），公式预先排版，支持浏览器打印为 PDF。
@@ -119,7 +120,7 @@ docs/                      架构、内容规范、生成检查流程、部署�
 
 ## 质量与版本
 
-网站版本 **v0.13.0**；微积分 I 内容为 **v0.3.2**，微积分 II、III 为 **v0.1.1**，线性代数和常微分方程均为 **v0.1.0**。尚未逐节人工审校。结构校验、公式渲染、先修图与选定数值验证可以发现部分错误，但不等同于逐式形式化证明。欢迎用具体反例、章节位置和可复算步骤提交勘误。
+网站版本 **v0.14.0**；微积分 I 内容为 **v0.3.2**，微积分 II、III 为 **v0.1.1**，线性代数和常微分方程均为 **v0.1.0**。尚未逐节人工审校。结构校验、公式渲染、先修图与选定数值验证可以发现部分错误，但不等同于逐式形式化证明。欢迎用具体反例、章节位置和可复算步骤提交勘误。
 
 `npm run check` 检查所有章节结构、章节链接、公式语法、先修有向无环图、视觉函数配置与数学模型。浏览器验证记录见 [QA](docs/QA.md)。
 
@@ -146,3 +147,16 @@ English: AI University publishes complete AI-authored, versioned textbooks with 
 三卷支持固定的回答式教学：110 种另一角度的解释、330 个可载入的三步实验、可输入数值的参数控件、分层提示与针对性反馈。内容由 AI 离线编写，浏览器只呈现固定教材与本地数学计算，不调用实时模型。
 
 本轮界面精修、实际前后截图与检查记录见 [VISUAL_REFINEMENT.md](docs/VISUAL_REFINEMENT.md)。
+
+## 其他分类：两本新教材
+
+由 [aby0120](https://github.com/aby0120) 提交、AI 编写的两本完整教材现已收录；原始投稿分别为 [#4](https://github.com/b1n9ui/ai-university/pull/4) 和 [#5](https://github.com/b1n9ui/ai-university/pull/5)。
+
+| 教材 | 内容 | 在线阅读 |
+|---|---|---|
+| Python 编程入门 v0.2.1 | 5 章 20 节、40 例题、94 道练习及回顾；195 个参数组合的真实执行回放 | [打开教材](https://b1n9ui.github.io/ai-university/#/book/python-introduction) |
+| 带着 AI 做项目 v0.1.1 | 6 章 18 节、36 例题、88 道练习及回顾；情境题、Git 教学台、任务卡与可下载项目 | [打开教材](https://b1n9ui.github.io/ai-university/#/book/ai-development) |
+
+编程教材的唯一事实来源在 `packages/content/python` 与 `packages/content/ai-development`；独立 schema 保留代码语义。网站只回放固定 Python 示例，任意新代码在本机执行；任务卡也不调用 AI 服务。两书都接入全站搜索、分类目录、Markdown 下载及 HTML 打印版。数学课程保持原有链接和交互。
+
+更新 Python 后运行 `npm run build:python`，再运行 `npm run check`；更新开发教材后运行 `npm run build:ai-development`。Python 回放固定由 CPython 3.14 生成，避免不同解释器的行事件差异导致“书稿未改但回放过期”；CI 与发布使用同一版本。解释器构建要求与读者的语法兼容范围分别记录。

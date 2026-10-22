@@ -1,0 +1,14 @@
+[
+  {
+    "id": "python-introduction",
+    "directory": "python",
+    "filename": "Python-Introduction.md",
+    "printFile": "python-introduction.html"
+  },
+  {
+    "id": "ai-development",
+    "directory": "ai-development",
+    "filename": "AI-Assisted-Development.md",
+    "printFile": "ai-development.html"
+  }
+]
