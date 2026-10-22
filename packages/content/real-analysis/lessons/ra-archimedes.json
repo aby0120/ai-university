@@ -1,0 +1,196 @@
+{
+  "id": "ra-archimedes",
+  "chapterId": "ra-reals",
+  "number": "1.3",
+  "title": "Archimedes 性质与稠密性",
+  "subtitle": "自然数能超过任意实数；再小的区间里也有有理数。",
+  "concept": "自然数能超过任意实数；再小的区间里也有有理数。",
+  "intuition": "把区间放大到长度超过一，里面就能塞进一个整数，再缩回去。",
+  "objectives": [
+    "排除无限大实数",
+    "寻找有理数"
+  ],
+  "body": [
+    {
+      "title": "排除无限大实数",
+      "text": "若自然数有实数上界，取其上确界。上确界附近有一个自然数，再加一就超过上确界，矛盾。"
+    },
+    {
+      "title": "寻找有理数",
+      "text": "对两个严格有序实数，选分母使放大后的间隔大于一，再用整数部分找到严格夹在中间的整数分子。"
+    },
+    {
+      "title": "别混淆稠密与完备",
+      "text": "有理数每个区间里都有，却不能填满实数。稠密说明局部能逼近，不保证所有极限仍在该数系内。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "自然数在实数中无上界，且有理数在实数中稠密。",
+    "latex": "a<b\\implies\\exists m\\in\\mathbb Z,n\\in\\mathbb N:\\ a<\\frac mn<b",
+    "conditions": [
+      "分母取正整数，区间长度严格正。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "反设自然数有上确界。",
+      "latex": "s=\\sup\\mathbb N"
+    },
+    {
+      "text": "从逼近性质选靠近上确界的自然数。",
+      "latex": "s-1<n\\le s"
+    },
+    {
+      "text": "后继超过上界。",
+      "latex": "n+1>s"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "在两数之间",
+      "problem": "在 $1.41$ 与 $1.42$ 间找一个有理数。",
+      "steps": [
+        "取分母一千。",
+        "分子一千四百一十五严格落在放大区间。"
+      ],
+      "answer": "$1415/1000$。"
+    },
+    {
+      "title": "同时有无理数",
+      "problem": "任一非空开区间也有无理数吗？",
+      "steps": [
+        "先取有理数 $r$ 位于区间内部。",
+        "取足够大正整数 $n$ 使 $r+\\sqrt2/n$ 仍在区间内。",
+        "有理数加非零无理数仍无理。"
+      ],
+      "answer": "有；此处平方根二存在性在后文证明。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "对正误差能否找到自然数使其倒数更小？",
+      "hint": "Archimedes 性质。",
+      "solution": [
+        "取 $n>1/\\varepsilon$。"
+      ],
+      "answer": "能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-archimedes-q1"
+    },
+    {
+      "problem": "稠密集合一定等于整个实线吗？",
+      "hint": "有理数的反例。",
+      "solution": [
+        "有理数稠密但不含无理数。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-archimedes-q2"
+    },
+    {
+      "problem": "零与十分之一之间的一个有理数？",
+      "hint": "取更大分母。",
+      "solution": [
+        "$1/20=0.05$。"
+      ],
+      "answer": "$1/20$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.05,
+      "id": "ra-archimedes-q3"
+    },
+    {
+      "id": "ra-archimedes-q4",
+      "problem": "证明任意 $a<b$ 之间存在有理数。",
+      "hint": "先放大区间，再找一个整数。",
+      "solution": [
+        "取正整数 $n$ 使 $n(b-a)>1$。",
+        "令 $m=\\lfloor na\\rfloor+1$，则 $na<m\\le na+1<nb$。",
+        "除以正数 $n$ 得 $a<m/n<b$。"
+      ],
+      "answer": "除以正数 $n$ 得 $a<m/n<b$。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-archimedes-m1",
+        "ra-archimedes-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "稠密描述的是什么？",
+    "choices": [
+      "每个非空开区间都能找到成员",
+      "包含所有极限",
+      "元素个数有限"
+    ],
+    "correctIndex": 0,
+    "explanation": "它是逼近性质，不是完备性。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-archimedes-m1",
+      "claim": "小数间距小就没有有理数",
+      "correction": "可选更大分母。"
+    },
+    {
+      "id": "ra-archimedes-m2",
+      "claim": "没有最大自然数已经证明无上界",
+      "correction": "无最大元不等于无上界；完整证明要用完备性。"
+    }
+  ],
+  "prerequisites": [
+    "ra-supremum"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ra-archimedes-m1",
+    "ra-archimedes-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-archimedes",
+    "prediction": "放大分母，有理数网格如何进入固定小区间？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "把区间放大到长度超过一，里面就能塞进一个整数，再缩回去。 可选更大分母。",
+    "steps": [
+      {
+        "title": "共同分母：1",
+        "instruction": "将共同分母设为 $1$。检查当前分母的哪些网格点严格落在开区间内。",
+        "observation": "当前分母 $1$；严格在区间内的分子数 $0$。",
+        "preset": {
+          "a": 1
+        }
+      },
+      {
+        "title": "共同分母：150",
+        "instruction": "将共同分母设为 $150$。检查当前分母的哪些网格点严格落在开区间内。",
+        "observation": "当前分母 $150$；严格在区间内的分子数 $1$。",
+        "preset": {
+          "a": 150
+        }
+      },
+      {
+        "title": "共同分母：300",
+        "instruction": "将共同分母设为 $300$。检查当前分母的哪些网格点严格落在开区间内。",
+        "observation": "当前分母 $300$；严格在区间内的分子数 $2$。",
+        "preset": {
+          "a": 300
+        }
+      }
+    ]
+  }
+}

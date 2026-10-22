@@ -1,0 +1,199 @@
+{
+  "id": "ra-uniform-continuity",
+  "chapterId": "ra-continuity",
+  "number": "5.5",
+  "title": "一致连续与 Heine–Cantor 定理",
+  "subtitle": "一致连续用同一个输入半径控制整个定义域，不再随中心点改变。",
+  "concept": "一致连续用同一个输入半径控制整个定义域，不再随中心点改变。",
+  "intuition": "局部每处都有办法不等于全局共用一把尺；紧致能把局部控制统一起来。",
+  "objectives": [
+    "交换量词的位置",
+    "用坏点对反证"
+  ],
+  "body": [
+    {
+      "title": "交换量词的位置",
+      "text": "普通连续允许半径依赖中心与误差。一致连续先给输出误差，选一个半径后要对全部输入对有效。"
+    },
+    {
+      "title": "用坏点对反证",
+      "text": "紧致上若不一致连续，存在固定输出差及距离趋零的输入点对。取第一列的收敛子列，第二列也趋同一极限，连续性迫使输出差趋零，矛盾。"
+    },
+    {
+      "title": "寻找非紧致反例",
+      "text": "平方函数在实线上连续但不一致连续。取越来越大的点与只差倒数的小扰动，输出差仍接近二。非紧致上也可一致连续，如恒等函数。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "紧致集上的连续函数一致连续。",
+    "latex": "\\forall\\varepsilon>0\\ \\exists\\delta>0\\ \\forall x,y\\in D:\\ |x-y|<\\delta\\implies|f(x)-f(y)|<\\varepsilon",
+    "conditions": [
+      "Heine–Cantor 需要定义域紧致、函数连续。",
+      "紧致是充分条件，不是一致连续的必要条件。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "不一致连续会给坏点对。",
+      "latex": "|x_n-y_n|<1/n,\\quad|f(x_n)-f(y_n)|\\ge\\varepsilon_0"
+    },
+    {
+      "text": "紧致取子列，两输入趋同点。",
+      "latex": "x_{n_k}\\to x,\\quad y_{n_k}\\to x"
+    },
+    {
+      "text": "连续使输出差趋零，与固定下界矛盾。",
+      "latex": "|f(x_{n_k})-f(y_{n_k})|\\to0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "平方函数的反例",
+      "problem": "取 $x_n=n,y_n=n+1/n$ 比较距离与平方差。",
+      "steps": [
+        "$|x_n-y_n|=1/n\\to0$。",
+        "$y_n^2-x_n^2=2+1/n^2\\to2$。"
+      ],
+      "answer": "平方函数在全实线上不一致连续。"
+    },
+    {
+      "title": "紧致不必要",
+      "problem": "恒等函数在全实线一致连续吗？",
+      "steps": [
+        "$|f(x)-f(y)|=|x-y|$。",
+        "对任意误差取相同半径即可。"
+      ],
+      "answer": "一致连续，定义域却不紧致。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "在零到一闭区间平方函数一致连续吗？",
+      "hint": "紧致连续或直接因子界。",
+      "solution": [
+        "$|x^2-y^2|\\le2|x-y|$。"
+      ],
+      "answer": "是。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-uniform-continuity-q1"
+    },
+    {
+      "problem": "一致连续是否允许半径依赖所选中心？",
+      "hint": "半径先于任意输入对。",
+      "solution": [
+        "不能。"
+      ],
+      "answer": "不允许。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-uniform-continuity-q2"
+    },
+    {
+      "problem": "实线上的正弦函数一致连续吗？",
+      "hint": "用斜率界或三角估计。",
+      "solution": [
+        "$|\\sin x-\\sin y|\\le|x-y|$。"
+      ],
+      "answer": "是。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-uniform-continuity-q3"
+    },
+    {
+      "id": "ra-uniform-continuity-q4",
+      "problem": "证明 $f(x)=x^2$ 在整个实线上不一致连续。",
+      "hint": "构造输入差趋零、输出差却不趋零的点对。",
+      "solution": [
+        "取 $x_n=n$、$y_n=n+1/n$，则 $|x_n-y_n|=1/n\\to0$。",
+        "但 $|f(y_n)-f(x_n)|=2+1/n^2>2$。",
+        "若存在对应输出误差一的统一 $\\delta>0$，取 $n>1/\\delta$ 即同时满足输入差小于 $\\delta$ 和输出差大于一，矛盾。"
+      ],
+      "answer": "若存在对应输出误差一的统一 $\\delta>0$，取 $n>1/\\delta$ 即同时满足输入差小于 $\\delta$ 和输出差大于一，矛盾。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-uniform-continuity-m1",
+        "ra-uniform-continuity-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "一致连续的半径控制哪些输入？",
+    "choices": [
+      "某一个中心",
+      "定义域所有输入对",
+      "有限网格上的点"
+    ],
+    "correctIndex": 1,
+    "explanation": "它是全域统一的量词。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-uniform-continuity-m1",
+      "claim": "连续就自动一致连续",
+      "correction": "非紧致域有反例。"
+    },
+    {
+      "id": "ra-uniform-continuity-m2",
+      "claim": "不紧致就不可能一致连续",
+      "correction": "恒等函数是反例。"
+    }
+  ],
+  "prerequisites": [
+    "ra-compactness",
+    "ra-sequential-continuity"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ra-uniform-continuity-m1",
+    "ra-uniform-continuity-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-uniform-continuity",
+    "prediction": "让输入点彼此更近却移向远处，输出差是否仍能保持固定大小？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "局部每处都有办法不等于全局共用一把尺；紧致能把局部控制统一起来。 非紧致域有反例。",
+    "steps": [
+      {
+        "title": "输入远移指标：1",
+        "instruction": "将输入远移指标设为 $1$。比较输入点间距和输出点间距，观察是否同时缩小。",
+        "observation": "输入差 $1$；输出差 $3$。",
+        "preset": {
+          "a": 0,
+          "n": 1
+        }
+      },
+      {
+        "title": "输入远移指标：50",
+        "instruction": "将输入远移指标设为 $50$。比较输入点间距和输出点间距，观察是否同时缩小。",
+        "observation": "输入差 $0.02$；输出差 $2.0004$。",
+        "preset": {
+          "a": 0,
+          "n": 50
+        }
+      },
+      {
+        "title": "输入远移指标：100",
+        "instruction": "将输入远移指标设为 $100$。比较输入点间距和输出点间距，观察是否同时缩小。",
+        "observation": "输入差 $0.01$；输出差 $2.0001$。",
+        "preset": {
+          "a": 0,
+          "n": 100
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,196 @@
+{
+  "id": "ra-countability",
+  "chapterId": "ra-topology",
+  "number": "4.5",
+  "title": "可数、不可数与对角线",
+  "subtitle": "可数说明能用自然数列完，不代表元素稀疏。",
+  "concept": "可数说明能用自然数列完，不代表元素稀疏。",
+  "intuition": "有理数既可数又稠密；实数更多，不是因为小数位写得长，而是任何列表都会漏掉对象。",
+  "objectives": [
+    "枚举有理数",
+    "使用对角线"
+  ],
+  "body": [
+    {
+      "title": "枚举有理数",
+      "text": "把整数分子和正整数分母按大小分层排列，遇到重复分数跳过，可得到全部有理数的列表。"
+    },
+    {
+      "title": "使用对角线",
+      "text": "给出任意二进制无限序列的列表，构造第几个位与第几个列表成员的该位相反的新序列。它与每行至少在一个位置不同，因此不在列表中。"
+    },
+    {
+      "title": "转到实数",
+      "text": "把二进制位映成三进制的零和二，得到实区间内的单射。首个不同位的贡献严格大于后续可能抵消量，避免表示歧义。于是实区间不可数。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "可数指有限或能与自然数集合建立双射；无限二进制序列集不可数。",
+    "latex": "b_n=1-a_{nn}\\implies (b_n)\\ne(a_{kn})_{n\\ge1}\\quad\\forall k",
+    "conditions": [
+      "对角线反驳的是任意声称完整的无限列表。",
+      "有限显示窗口不是无穷证明。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "假设所有二进制序列有一个列表。",
+      "latex": "A=(a_{kn})_{k,n\\ge1}"
+    },
+    {
+      "text": "逐位反转对角线。",
+      "latex": "b_n=1-a_{nn}"
+    },
+    {
+      "text": "与任意第几行在该指标处不同，故列表不全。",
+      "latex": "b_k\\ne a_{kk}\\quad\\forall k"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "偶数也一样多",
+      "problem": "正整数与正偶数如何双射？",
+      "steps": [
+        "映射 $n\\mapsto2n$。",
+        "每个正偶数恰有一个原像。"
+      ],
+      "answer": "真子集也可能等势。"
+    },
+    {
+      "title": "有理数稠密却可数",
+      "problem": "为什么稠密不等于不可数？",
+      "steps": [
+        "稠密只说每个开区间有成员。",
+        "可数说是否可列举，二者约束不同。"
+      ],
+      "answer": "有理数同时满足两者。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "有限多个可数集的并可数吗？",
+      "hint": "可交替输出各列表并去重。",
+      "solution": [
+        "每个成员最终会出现。"
+      ],
+      "answer": "可数。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-countability-q1"
+    },
+    {
+      "problem": "实数对角线证明中只改固定第一位够吗？",
+      "hint": "需要排除列表每一行。",
+      "solution": [
+        "应针对每一行都有一个差异位置。"
+      ],
+      "answer": "不够。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-countability-q2"
+    },
+    {
+      "problem": "自然数真子集必然更小吗？",
+      "hint": "正偶数双射。",
+      "solution": [
+        "无限集合不沿用有限直觉。"
+      ],
+      "answer": "不必。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-countability-q3"
+    },
+    {
+      "id": "ra-countability-q4",
+      "problem": "证明映射 $T(b)=\\sum_{n\\ge1}2b_n/3^n$ 将无限零一序列单射到 $[0,1]$。",
+      "hint": "取两个序列的第一个不同位置。",
+      "solution": [
+        "每项非负且总和不超过 $\\sum2/3^n=1$，故映射有定义且落在 $[0,1]$。",
+        "若首个不同位置为 $k$，该位的差的绝对值为 $2/3^k$；后续差最多为 $\\sum_{n>k}2/3^n=1/3^k$。",
+        "所以两像之差的绝对值至少为 $1/3^k>0$。结合对角线不可列举性，得到区间不可数。"
+      ],
+      "answer": "所以两像之差的绝对值至少为 $1/3^k>0$。结合对角线不可列举性，得到区间不可数。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-countability-m1",
+        "ra-countability-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "对角线新对象为什么不在列表中？",
+    "choices": [
+      "长度更长",
+      "与每一行都有对应的差异位",
+      "数值更大"
+    ],
+    "correctIndex": 1,
+    "explanation": "不依赖对象大小或排列顺序。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-countability-m1",
+      "claim": "可数集不可能稠密",
+      "correction": "有理数是反例。"
+    },
+    {
+      "id": "ra-countability-m2",
+      "claim": "所有无限集合大小相同",
+      "correction": "对角线表明存在更大基数。"
+    }
+  ],
+  "prerequisites": [
+    "dm-functions",
+    "dm-counting-rules"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ra-countability-m1",
+    "ra-countability-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-countability",
+    "prediction": "逐行查看差异位，为什么新序列不会等于任何一行？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "有理数既可数又稠密；实数更多，不是因为小数位写得长，而是任何列表都会漏掉对象。 有理数是反例。",
+    "steps": [
+      {
+        "title": "显示行列数：2",
+        "instruction": "将显示行列数设为 $2$。逐行检查新序列与该行的对角位差异。",
+        "observation": "已确保差异的行数 $2$。",
+        "preset": {
+          "n": 2
+        }
+      },
+      {
+        "title": "显示行列数：6",
+        "instruction": "将显示行列数设为 $6$。逐行检查新序列与该行的对角位差异。",
+        "observation": "已确保差异的行数 $6$。",
+        "preset": {
+          "n": 6
+        }
+      },
+      {
+        "title": "显示行列数：10",
+        "instruction": "将显示行列数设为 $10$。逐行检查新序列与该行的对角位差异。",
+        "observation": "已确保差异的行数 $10$。",
+        "preset": {
+          "n": 10
+        }
+      }
+    ]
+  }
+}

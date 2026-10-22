@@ -1,0 +1,195 @@
+{
+  "id": "ra-connectedness",
+  "chapterId": "ra-topology",
+  "number": "4.4",
+  "title": "连通与区间",
+  "subtitle": "实线子集连通，当且仅当它没有跳过两个成员之间的任何点。",
+  "concept": "实线子集连通，当且仅当它没有跳过两个成员之间的任何点。",
+  "intuition": "如果中间漏了一点，左右两边就能被分开。",
+  "objectives": [
+    "定义分离",
+    "连通集不能跳点"
+  ],
+  "body": [
+    {
+      "title": "定义分离",
+      "text": "若集合能分成两个非空、互不相交、相对开部分，就不连通。相对开而非必须实线开是关键。"
+    },
+    {
+      "title": "连通集不能跳点",
+      "text": "两个成员之间若缺一个点，用该点左右的开半线相交即可把集合分成两部分。"
+    },
+    {
+      "title": "区间不能分离",
+      "text": "若区间有分离，选两部分各一点，取其中一侧在两点间部分的上确界。利用两边相对开放性，在该边界的任一归属都导出矛盾。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "单点与空集按约定也连通。",
+    "latex": "A\\subseteq\\mathbb R\\text{ 连通}\\iff x<z<y,\\ x,y\\in A\\implies z\\in A",
+    "conditions": [
+      "区间可以开、闭、半开或无界。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "若中点缺失，用左右开半线分离。",
+      "latex": "A=(A\\cap(-\\infty,z))\\cup(A\\cap(z,\\infty))"
+    },
+    {
+      "text": "若区间被分离，取两成员之间一侧的边界上确界。",
+      "latex": "c=\\sup(U\\cap[a,b])"
+    },
+    {
+      "text": "边界无论落在哪个相对开部分，都能向另一侧推进或排除逼近，矛盾。",
+      "latex": "c\\in U\\ \\text{或}\\ c\\in V"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "两个分离区间",
+      "problem": "$[0,1]\\cup[2,3]$ 连通吗？",
+      "steps": [
+        "一与二之间漏掉了点。",
+        "可用一点五左右两部分分离。"
+      ],
+      "answer": "不连通。"
+    },
+    {
+      "title": "无限区间",
+      "problem": "整条实线连通吗？",
+      "steps": [
+        "任意两个实数之间的点仍在实线中。",
+        "满足区间性质，不要求有界。"
+      ],
+      "answer": "连通但不紧致。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "开区间连通吗？",
+      "hint": "是否跳过内部点？",
+      "solution": [
+        "不跳过，故连通。"
+      ],
+      "answer": "连通。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-connectedness-q1"
+    },
+    {
+      "problem": "两个不同点构成的集合连通吗？",
+      "hint": "它们之间存在漏点。",
+      "solution": [
+        "被左右分开。"
+      ],
+      "answer": "不连通。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-connectedness-q2"
+    },
+    {
+      "problem": "紧致必连通吗？",
+      "hint": "两个不同点是紧致集。",
+      "solution": [
+        "有限集紧致但可不连通。"
+      ],
+      "answer": "不必。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-connectedness-q3"
+    },
+    {
+      "id": "ra-connectedness-q4",
+      "problem": "证明 $\\mathbb Q$ 在实线的相对拓扑中不连通。",
+      "hint": "用无理数 $\\sqrt2$ 分开左右两侧。",
+      "solution": [
+        "令 $U=\\mathbb Q\\cap(-\\infty,\\sqrt2)$，$V=\\mathbb Q\\cap(\\sqrt2,\\infty)$。",
+        "二者相对开、互不相交且都非空；因为 $\\sqrt2\\notin\\mathbb Q$，它们的并等于 $\\mathbb Q$。",
+        "这给出一个分离，所以 $\\mathbb Q$ 不连通；稠密并不保证连通。"
+      ],
+      "answer": "这给出一个分离，所以 $\\mathbb Q$ 不连通；稠密并不保证连通。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-connectedness-m1",
+        "ra-connectedness-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "实线上的连通集最关键的特征？",
+    "choices": [
+      "有限",
+      "不跳过中间点",
+      "必须闭"
+    ],
+    "correctIndex": 1,
+    "explanation": "它恰好是区间性质。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-connectedness-m1",
+      "claim": "连通等于有界",
+      "correction": "两种性质独立。"
+    },
+    {
+      "id": "ra-connectedness-m2",
+      "claim": "集合能画成一段就无需证明",
+      "correction": "需要检查没有遗漏中间点。"
+    }
+  ],
+  "prerequisites": [
+    "ra-supremum",
+    "ra-open-closed"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ra-connectedness-m1",
+    "ra-connectedness-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-connectedness",
+    "prediction": "在区间中挖掉一个内点，左右两部分如何形成分离？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "如果中间漏了一点，左右两边就能被分开。 两种性质独立。",
+    "steps": [
+      {
+        "title": "完整区间",
+        "instruction": "切换到“完整区间”，核对条件与读数。。检查两个成员之间是否存在被挖去的点。",
+        "observation": "是否连通：是。",
+        "preset": {
+          "a": 0
+        }
+      },
+      {
+        "title": "挖去零点",
+        "instruction": "切换到“挖去零点”，核对条件与读数。。检查两个成员之间是否存在被挖去的点。",
+        "observation": "是否连通：否。",
+        "preset": {
+          "a": 1
+        }
+      },
+      {
+        "title": "挖去一段",
+        "instruction": "切换到“挖去一段”，核对条件与读数。。检查两个成员之间是否存在被挖去的点。",
+        "observation": "是否连通：否。",
+        "preset": {
+          "a": 2
+        }
+      }
+    ]
+  }
+}

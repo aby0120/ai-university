@@ -1,0 +1,199 @@
+{
+  "id": "ra-taylor",
+  "chapterId": "ra-differentiation",
+  "number": "6.4",
+  "title": "Taylor 定理与可控余项",
+  "subtitle": "Taylor 多项式能否逼近，取决于余项是否真的变小。",
+  "concept": "Taylor 多项式能否逼近，取决于余项是否真的变小。",
+  "intuition": "高阶可导给出一个带条件的误差公式，不自动保证整条无穷级数等于函数。",
+  "objectives": [
+    "声明光滑条件",
+    "用辅助函数制造零点"
+  ],
+  "body": [
+    {
+      "title": "声明光滑条件",
+      "text": "本节采用较强而清楚的条件：函数在包含两点的开区间具有连续的指定阶导数。这样可直接使用反复 Rolle 的余项证明。"
+    },
+    {
+      "title": "用辅助函数制造零点",
+      "text": "把函数减去 Taylor 多项式，再减一个待定的高次项，让端点误差为零。反复 Rolle 迫使高阶导数在中间某点为零。"
+    },
+    {
+      "title": "用界代替未知点",
+      "text": "若最高阶导数有统一界，就得到可计算误差上界。随着阶数增加是否趋零，要再看该界与阶乘、距离的组合。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "采用连续到下一阶导数的充分条件给出 Lagrange 余项。",
+    "latex": "f(x)=\\sum_{k=0}^m\\frac{f^{(k)}(a)}{k!}(x-a)^k+\\frac{f^{(m+1)}(\\xi)}{(m+1)!}(x-a)^{m+1}",
+    "conditions": [
+      "函数在包含线段的开区间属于相应连续可导类。",
+      "中间点位于两点之间；两点相等时余项零。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "选系数让辅助函数两端满足多重零条件。",
+      "latex": "g(t)=f(t)-T_m(t)-C(t-a)^{m+1},\\quad g(x)=0"
+    },
+    {
+      "text": "在中心低阶导数全为零，反复使用 Rolle。",
+      "latex": "g(a)=g'(a)=\\cdots=g^{(m)}(a)=0"
+    },
+    {
+      "text": "得到某中间点高阶导数零并解出系数。",
+      "latex": "0=f^{(m+1)}(\\xi)-(m+1)!C"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "指数二阶近似",
+      "problem": "用二次 Taylor 近似 $e^{0.1}$，在零到零点一用三阶导数上界二。",
+      "steps": [
+        "$T_2=1+0.1+0.1^2/2=1.105$。",
+        "误差不超过 $2(0.1)^3/6=1/3000$。"
+      ],
+      "answer": "$1.105$，误差至多 $1/3000$。"
+    },
+    {
+      "title": "无穷光滑仍非解析",
+      "problem": "$f(0)=0,f(x)=e^{-1/x^2}$ 对非零输入，有何启示？",
+      "steps": [
+        "其零处全部导数为零；证明见附录的指数压过幂估计。",
+        "零中心 Taylor 级数恒零，但函数在非零点为正。"
+      ],
+      "answer": "光滑不等于等于自身 Taylor 级数。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "余项公式中的中间点通常已知吗？",
+      "hint": "定理给存在。",
+      "solution": [
+        "一般只知道它位于区间内。"
+      ],
+      "answer": "通常未知。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-taylor-q1"
+    },
+    {
+      "problem": "提高次数就必定让任意点误差趋零吗？",
+      "hint": "需检查导数界随阶数增长。",
+      "solution": [
+        "不能只看多项式次数。"
+      ],
+      "answer": "不保证。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-taylor-q2"
+    },
+    {
+      "problem": "最高阶导数界六，二次近似距离十分之一，误差界？",
+      "hint": "除以三阶阶乘。",
+      "solution": [
+        "$6\\cdot0.1^3/6=0.001$。"
+      ],
+      "answer": "$0.001$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.001,
+      "id": "ra-taylor-q3"
+    },
+    {
+      "id": "ra-taylor-q4",
+      "problem": "用二次 Taylor 近似估计 $e^{0.1}$，给出严格的误差上界。",
+      "hint": "使用三阶导数在 $[0,0.1]$ 上的界。",
+      "solution": [
+        "二次多项式为 $1+0.1+0.1^2/2=1.105$。",
+        "三阶导数仍为指数函数，在该段不超过 $e^{0.1}<2$。",
+        "故余项绝对值小于 $2\\cdot0.1^3/6=1/3000$；真实值位于 $1.105$ 加减此误差的区间。"
+      ],
+      "answer": "故余项绝对值小于 $2\\cdot0.1^3/6=1/3000$；真实值位于 $1.105$ 加减此误差的区间。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-taylor-m1",
+        "ra-taylor-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "多项式接近函数靠什么保证？",
+    "choices": [
+      "图看起来重合",
+      "余项估计",
+      "项数写得多"
+    ],
+    "correctIndex": 2,
+    "explanation": "需要证明余项小于所需误差。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-taylor-m1",
+      "claim": "无限可导就一定解析",
+      "correction": "平坦函数是反例。"
+    },
+    {
+      "id": "ra-taylor-m2",
+      "claim": "余项中的导数可任意用中心导数替代",
+      "correction": "需要区间内统一界或实际中间点值。"
+    }
+  ],
+  "prerequisites": [
+    "ra-mean-value"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ra-taylor-m1",
+    "ra-taylor-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-taylor",
+    "prediction": "提高次数与移动输入，解析误差上界是否同时反映这两种变化？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "高阶可导给出一个带条件的误差公式，不自动保证整条无穷级数等于函数。 平坦函数是反例。",
+    "steps": [
+      {
+        "title": "多项式次数：0",
+        "instruction": "将多项式次数设为 $0$。比较多项式、真实函数以及解析余项上界。",
+        "observation": "近似值 $1$；浮点计算的绝对误差 $0.6487213$；解析误差上界 $0.8243606$。",
+        "preset": {
+          "n": 0,
+          "x": 0.5
+        }
+      },
+      {
+        "title": "多项式次数：6",
+        "instruction": "将多项式次数设为 $6$。比较多项式、真实函数以及解析余项上界。",
+        "observation": "近似值 $1.64872$；浮点计算的绝对误差 $0.000001652645$；解析误差上界 $0.000002555682$。",
+        "preset": {
+          "n": 6,
+          "x": 0.5
+        }
+      },
+      {
+        "title": "多项式次数：12",
+        "instruction": "将多项式次数设为 $12$。比较多项式、真实函数以及解析余项上界。",
+        "observation": "近似值 $1.648721$；浮点计算的绝对误差 $2.065015\\times10^{-14}$；解析误差上界 $3.232042\\times10^{-14}$。",
+        "preset": {
+          "n": 12,
+          "x": 0.5
+        }
+      }
+    ]
+  }
+}

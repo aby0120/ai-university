@@ -1,0 +1,199 @@
+{
+  "id": "ra-uniform-continuous-limit",
+  "chapterId": "ra-function-sequences",
+  "number": "8.3",
+  "title": "连续函数的一致极限仍连续",
+  "subtitle": "用三段误差，把极限函数的变化转给某一个已经连续的近似函数。",
+  "concept": "用三段误差，把极限函数的变化转给某一个已经连续的近似函数。",
+  "intuition": "先选一条足够好的函数，再在它身上选局部半径；顺序不能反过来。",
+  "objectives": [
+    "分配三份预算",
+    "解释一致性的作用"
+  ],
+  "body": [
+    {
+      "title": "分配三份预算",
+      "text": "极限函数两端各与同一近似函数比较，剩下中间一段由该近似函数的连续性控制。"
+    },
+    {
+      "title": "解释一致性的作用",
+      "text": "两端近似误差必须用同一个项号同时控制所有附近输入。一致收敛提供这点，逐点一般不行。"
+    },
+    {
+      "title": "反向用来排除一致收敛",
+      "text": "若每个函数连续而逐点极限不连续，那么在该域上必不一致收敛。但极限连续本身还不能证明一致。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "同一实数定义域上的连续函数列若一致收敛，其极限也连续。",
+    "latex": "|f(x)-f(a)|\\le|f(x)-f_N(x)|+|f_N(x)-f_N(a)|+|f_N(a)-f(a)|",
+    "conditions": [
+      "每个函数在该定义域连续。",
+      "收敛对整个所讨论定义域一致。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先按误差选统一近似项。",
+      "latex": "\\sup_x|f(x)-f_N(x)|<\\varepsilon/3"
+    },
+    {
+      "text": "再按该连续函数在中心选半径。",
+      "latex": "|x-a|<\\delta\\implies|f_N(x)-f_N(a)|<\\varepsilon/3"
+    },
+    {
+      "text": "三角不等式合并三份误差。",
+      "latex": "|f(x)-f(a)|<\\varepsilon"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "一致极限连续",
+      "problem": "$f_n(x)=x/n$ 在零到一闭区间的极限是否连续？",
+      "steps": [
+        "全域误差倒数趋零，收敛一致。",
+        "极限恒零连续。"
+      ],
+      "answer": "连续。"
+    },
+    {
+      "title": "极限连续仍可不一致",
+      "problem": "连续三角尖峰，中心在倒数、支撑零到两倍倒数、高度一，在零到一上怎样？",
+      "steps": [
+        "对每个固定正输入，尖峰最终移走；零点始终为零。",
+        "逐点极限恒零连续，但每项最高误差一。"
+      ],
+      "answer": "不一致；极限连续不是充分条件。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "连续函数逐点极限必连续吗？",
+      "hint": "幂函数列在含右端区间上。",
+      "solution": [
+        "极限在端点跳跃。"
+      ],
+      "answer": "不必。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-uniform-continuous-limit-q1"
+    },
+    {
+      "problem": "三段预算必须各取三分之一吗？",
+      "hint": "只需总和小于目标。",
+      "solution": [
+        "可用其他正份额。"
+      ],
+      "answer": "不必须。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-uniform-continuous-limit-q2"
+    },
+    {
+      "problem": "选择近似项后，局部半径能依赖该项吗？",
+      "hint": "它已经固定。",
+      "solution": [
+        "可以。"
+      ],
+      "answer": "可以。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-uniform-continuous-limit-q3"
+    },
+    {
+      "id": "ra-uniform-continuous-limit-q4",
+      "problem": "连续函数列逐点趋于连续函数时，能否推出一致收敛？在 $[0,1]$ 上给反例。",
+      "hint": "使用高度保持一、向零移动的三角尖峰。",
+      "solution": [
+        "取 $f_n(x)=\\max(0,1-|nx-1|)$，$n\\ge2$。各函数连续，且在零处始终为零。",
+        "任意固定 $x>0$，当 $n>2/x$ 时 $nx>2$，此后函数值全零。故逐点极限为连续的零函数。",
+        "但 $f_n(1/n)=1$，全域上确界误差恒一，因此不一致收敛。"
+      ],
+      "answer": "但 $f_n(1/n)=1$，全域上确界误差恒一，因此不一致收敛。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-uniform-continuous-limit-m1",
+        "ra-uniform-continuous-limit-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "证明中的正确顺序？",
+    "choices": [
+      "先统一选近似项，再选局部半径",
+      "先任取输入再随意换项",
+      "只需画重合图"
+    ],
+    "correctIndex": 0,
+    "explanation": "保持同一近似函数同时控制两端。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-uniform-continuous-limit-m1",
+      "claim": "连续极限说明一致收敛",
+      "correction": "移动尖峰反例。"
+    },
+    {
+      "id": "ra-uniform-continuous-limit-m2",
+      "claim": "可为两个输入分别选不同近似项再套连续",
+      "correction": "中间比较需要同一函数。"
+    }
+  ],
+  "prerequisites": [
+    "ra-pointwise-uniform",
+    "ra-function-limit"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ra-uniform-continuous-limit-m1",
+    "ra-uniform-continuous-limit-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-uniform-continuous-limit",
+    "prediction": "比较端点跳跃与移动尖峰，极限连续性究竟能排除什么？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "先选一条足够好的函数，再在它身上选局部半径；顺序不能反过来。 移动尖峰反例。",
+    "steps": [
+      {
+        "title": "函数指标：2",
+        "instruction": "将函数指标设为 $2$。同时检查每项连续性、逐点极限连续性和一致收敛。",
+        "observation": "解析全域上确界误差 $1$；该点误差 $0.5$；是否一致收敛：否；逐点极限是否连续：否。",
+        "preset": {
+          "a": 0,
+          "n": 2
+        }
+      },
+      {
+        "title": "函数指标：41",
+        "instruction": "将函数指标设为 $41$。同时检查每项连续性、逐点极限连续性和一致收敛。",
+        "observation": "解析全域上确界误差 $1$；该点误差 $0.5$；是否一致收敛：否；逐点极限是否连续：否。",
+        "preset": {
+          "a": 0,
+          "n": 41
+        }
+      },
+      {
+        "title": "函数指标：80",
+        "instruction": "将函数指标设为 $80$。同时检查每项连续性、逐点极限连续性和一致收敛。",
+        "observation": "解析全域上确界误差 $1$；该点误差 $0.5$；是否一致收敛：否；逐点极限是否连续：否。",
+        "preset": {
+          "a": 0,
+          "n": 80
+        }
+      }
+    ]
+  }
+}

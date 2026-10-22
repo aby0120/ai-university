@@ -1,0 +1,200 @@
+{
+  "id": "ra-power-series",
+  "chapterId": "ra-function-sequences",
+  "number": "8.5",
+  "title": "幂级数、收敛半径与逐项运算",
+  "subtitle": "收敛半径内部的小闭区间上，幂级数和导数级数都有统一控制。",
+  "concept": "收敛半径内部的小闭区间上，幂级数和导数级数都有统一控制。",
+  "intuition": "内部可以安全缩出余量；边界点则要逐个检查，不能由半径一口决定。",
+  "objectives": [
+    "定义半径",
+    "先缩到内部闭区间"
+  ],
+  "body": [
+    {
+      "title": "定义半径",
+      "text": "对系数绝对值的指标次方根取上极限，倒数给收敛半径；零与无穷按扩展约定处理。内部绝对收敛，外部项不趋零。"
+    },
+    {
+      "title": "先缩到内部闭区间",
+      "text": "选比目标小闭区间稍大的内部半径，利用根值或比较给几何界。导数系数多出的指标因子不改变指数增长率，因此也有一致控制。"
+    },
+    {
+      "title": "逐项求导与积分",
+      "text": "函数级数与导数级数在该闭区间一致收敛，前一节定理允许逐项运算。由此幂级数函数的系数等于中心导数除阶乘；反向从任意光滑函数出发，仍必须证明 Taylor 余项趋零。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "幂级数在收敛半径内部局部一致收敛，可逐项微分与积分。",
+    "latex": "R=\\frac1{\\limsup_{n\\to\\infty}|a_n|^{1/n}},\\quad\\sum_{n=0}^{\\infty}a_n(x-c)^n",
+    "conditions": [
+      "约定倒数零为无穷、倒数无穷为零。",
+      "边界点收敛性单独判断。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "固定小于收敛半径的闭子区间半径。",
+      "latex": "0<r<\\rho<R"
+    },
+    {
+      "text": "系数在较大半径处有几何控制，较小半径吸收导数因子。",
+      "latex": "n(r/\\rho)^{n-1}\\quad\\text{可由可求和数列控制}"
+    },
+    {
+      "text": "使用 M 判别与极限交换定理。",
+      "latex": "\\left(\\sum a_n(x-c)^n\\right)'=\\sum_{n\\ge1}na_n(x-c)^{n-1}\\quad(|x-c|<R)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "几何幂级数",
+      "problem": "$\\sum_{n=0}^{\\infty}x^n$ 的半径与端点？",
+      "steps": [
+        "系数全一，半径一。",
+        "右端项全一发散；左端交替正负一也不收敛。"
+      ],
+      "answer": "在 $(-1,1)$ 内和为 $1/(1-x)$；两端均发散。"
+    },
+    {
+      "title": "不同边界行为",
+      "problem": "$\\sum_{n=1}^{\\infty}x^n/n$ 的两端？",
+      "steps": [
+        "根值给半径一。",
+        "右端为调和发散；左端为负交错调和，条件收敛。"
+      ],
+      "answer": "同一半径不代表两端同结论。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "半径内部任意闭子区间是否一致收敛？",
+      "hint": "预留到边界的正余量。",
+      "solution": [
+        "M 判别可给统一界。"
+      ],
+      "answer": "是。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-power-series-q1"
+    },
+    {
+      "problem": "整个开收敛区间都一定一致吗？",
+      "hint": "几何级数靠近边界的尾部。",
+      "solution": [
+        "可能无法全域统一控制。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-power-series-q2"
+    },
+    {
+      "problem": "导数级数收敛半径会因乘指标而改变吗？",
+      "hint": "指标次方根趋一。",
+      "solution": [
+        "半径保持相同。"
+      ],
+      "answer": "不会。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-power-series-q3"
+    },
+    {
+      "id": "ra-power-series-q4",
+      "problem": "求 $\\sum_{n=1}^{\\infty}x^n/n$ 的收敛半径和全部实数收敛区间。",
+      "hint": "根值判别给内部，再分别检查两端。",
+      "solution": [
+        "系数根值 $n^{-1/n}\\to1$，故收敛半径为一。$|x|<1$ 时绝对收敛。",
+        "$x=1$ 给调和级数，发散；$x=-1$ 给负交错调和级数，条件收敛。",
+        "$|x|>1$ 时项不趋零，发散。实数收敛集合为 $[-1,1)$。"
+      ],
+      "answer": "$|x|>1$ 时项不趋零，发散。实数收敛集合为 $[-1,1)$。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-power-series-m1",
+        "ra-power-series-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "半径本身能决定端点收敛吗？",
+    "choices": [
+      "能",
+      "不能，端点逐个检查",
+      "只决定左端"
+    ],
+    "correctIndex": 1,
+    "explanation": "相同半径可有不同边界行为。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-power-series-m1",
+      "claim": "内部结论可直接搬到边界",
+      "correction": "边界可能失去几何余量。"
+    },
+    {
+      "id": "ra-power-series-m2",
+      "claim": "光滑等于可用幂级数表示",
+      "correction": "需要额外的解析性或余项证据。"
+    }
+  ],
+  "prerequisites": [
+    "ra-uniform-cauchy",
+    "ra-interchange",
+    "ra-ratio-root"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ra-power-series-m1",
+    "ra-power-series-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-power-series",
+    "prediction": "把区间半径推向边界，统一尾部预算为什么迅速变大？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "内部可以安全缩出余量；边界点则要逐个检查，不能由半径一口决定。 边界可能失去几何余量。",
+    "steps": [
+      {
+        "title": "闭区间半径：0.1",
+        "instruction": "将闭区间半径设为 $0.1$。比较全域尾界，留意半径接近一时的变化。",
+        "observation": "闭区间半径 $0.1$；保留到指标 $8$；精确统一尾部界 $1.111111\\times10^{-9}$。",
+        "preset": {
+          "a": 0.1,
+          "n": 8
+        }
+      },
+      {
+        "title": "闭区间半径：0.545",
+        "instruction": "将闭区间半径设为 $0.545$。比较全域尾界，留意半径接近一时的变化。",
+        "observation": "闭区间半径 $0.545$；保留到指标 $8$；精确统一尾部界 $0.009323031$。",
+        "preset": {
+          "a": 0.545,
+          "n": 8
+        }
+      },
+      {
+        "title": "闭区间半径：0.99",
+        "instruction": "将闭区间半径设为 $0.99$。比较全域尾界，留意半径接近一时的变化。",
+        "observation": "闭区间半径 $0.99$；保留到指标 $8$；精确统一尾部界 $91.35172$。",
+        "preset": {
+          "a": 0.99,
+          "n": 8
+        }
+      }
+    ]
+  }
+}

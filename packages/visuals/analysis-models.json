@@ -1,0 +1,931 @@
+{
+  "ra-supremum": {
+    "family": "supremum",
+    "title": "上界、上确界与完备性",
+    "controls": [
+      {
+        "key": "n",
+        "label": "显示项数",
+        "min": 1,
+        "max": 100,
+        "value": 10,
+        "step": 1
+      },
+      {
+        "key": "eps",
+        "label": "输出误差",
+        "min": 0.01,
+        "max": 1,
+        "value": 0.1,
+        "step": 0.01
+      }
+    ]
+  },
+  "ra-series-definition": {
+    "family": "geometric",
+    "title": "级数就是部分和的极限",
+    "controls": [
+      {
+        "key": "a",
+        "label": "几何比",
+        "min": -0.8,
+        "max": 0.8,
+        "value": 0.5,
+        "step": 0.01
+      },
+      {
+        "key": "n",
+        "label": "保留项数",
+        "min": 1,
+        "max": 40,
+        "value": 6,
+        "step": 1
+      }
+    ]
+  },
+  "ra-compactness": {
+    "family": "cover",
+    "title": "紧致与 Heine–Borel 定理",
+    "controls": [
+      {
+        "key": "n",
+        "label": "保留覆盖集数",
+        "min": 1,
+        "max": 20,
+        "value": 5,
+        "step": 1
+      }
+    ]
+  },
+  "ra-ordered-field": {
+    "family": "order",
+    "title": "有序域与实数运算",
+    "controls": [
+      {
+        "key": "a",
+        "label": "左数",
+        "min": -3,
+        "max": 3,
+        "value": 2,
+        "step": 0.01
+      },
+      {
+        "key": "b",
+        "label": "乘数",
+        "min": -3,
+        "max": 3,
+        "value": -2,
+        "step": 0.01
+      }
+    ]
+  },
+  "ra-pointwise-uniform": {
+    "family": "uniform",
+    "title": "逐点收敛与一致收敛",
+    "controls": [
+      {
+        "key": "a",
+        "label": "比较案例",
+        "min": 0,
+        "max": 2,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "幂函数",
+          "缩小线性",
+          "移动尖峰"
+        ]
+      },
+      {
+        "key": "n",
+        "label": "函数指标",
+        "min": 2,
+        "max": 80,
+        "value": 10,
+        "step": 1
+      }
+    ]
+  },
+  "ra-absolute-rearrangement": {
+    "family": "rearrangement",
+    "title": "绝对收敛与重排",
+    "controls": [
+      {
+        "key": "a",
+        "label": "比较案例",
+        "min": 0,
+        "max": 1,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "绝对收敛几何项",
+          "条件收敛调和项"
+        ]
+      },
+      {
+        "key": "n",
+        "label": "保留项数",
+        "min": 3,
+        "max": 80,
+        "value": 10,
+        "step": 1
+      }
+    ]
+  },
+  "ra-closure": {
+    "family": "closure",
+    "title": "聚点、闭包与序列判据",
+    "controls": [
+      {
+        "key": "n",
+        "label": "显示倒数项数",
+        "min": 1,
+        "max": 100,
+        "value": 10,
+        "step": 1
+      }
+    ]
+  },
+  "ra-positive-series": {
+    "family": "harmonic",
+    "title": "正项级数、比较与分组",
+    "controls": [
+      {
+        "key": "n",
+        "label": "倍增块数",
+        "min": 1,
+        "max": 12,
+        "value": 6,
+        "step": 1
+      }
+    ]
+  },
+  "ra-countability": {
+    "family": "diagonal",
+    "title": "可数、不可数与对角线",
+    "controls": [
+      {
+        "key": "n",
+        "label": "显示行列数",
+        "min": 2,
+        "max": 10,
+        "value": 6,
+        "step": 1
+      }
+    ]
+  },
+  "ra-taylor": {
+    "family": "taylor",
+    "title": "Taylor 定理与可控余项",
+    "controls": [
+      {
+        "key": "n",
+        "label": "多项式次数",
+        "min": 0,
+        "max": 12,
+        "value": 3,
+        "step": 1
+      },
+      {
+        "key": "x",
+        "label": "当前输入",
+        "min": -1,
+        "max": 1,
+        "value": 0.5,
+        "step": 0.01
+      }
+    ]
+  },
+  "ra-power-series": {
+    "family": "power-series",
+    "title": "幂级数、收敛半径与逐项运算",
+    "controls": [
+      {
+        "key": "a",
+        "label": "闭区间半径",
+        "min": 0.1,
+        "max": 0.99,
+        "value": 0.8,
+        "step": 0.01
+      },
+      {
+        "key": "n",
+        "label": "保留到指标",
+        "min": 1,
+        "max": 40,
+        "value": 8,
+        "step": 1
+      }
+    ]
+  },
+  "ra-absolute-value": {
+    "family": "distance",
+    "title": "绝对值与误差估计",
+    "controls": [
+      {
+        "key": "a",
+        "label": "甲坐标",
+        "min": -3,
+        "max": 3,
+        "value": 1,
+        "step": 0.01
+      },
+      {
+        "key": "b",
+        "label": "乙坐标",
+        "min": -3,
+        "max": 3,
+        "value": -1,
+        "step": 0.01
+      }
+    ]
+  },
+  "ra-ratio-root": {
+    "family": "ratio",
+    "title": "比值与根值判别",
+    "controls": [
+      {
+        "key": "a",
+        "label": "比较案例",
+        "min": 0,
+        "max": 2,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "阶乘分母",
+          "调和",
+          "平方倒数"
+        ]
+      },
+      {
+        "key": "n",
+        "label": "显示到指标",
+        "min": 2,
+        "max": 40,
+        "value": 12,
+        "step": 1
+      }
+    ]
+  },
+  "ra-limit-algebra": {
+    "family": "squeeze",
+    "title": "极限运算、保序与夹逼",
+    "controls": [
+      {
+        "key": "n",
+        "label": "显示项数",
+        "min": 2,
+        "max": 80,
+        "value": 20,
+        "step": 1
+      }
+    ]
+  },
+  "ra-integrability": {
+    "family": "integrability",
+    "title": "Darboux 可积判据",
+    "controls": [
+      {
+        "key": "a",
+        "label": "比较案例",
+        "min": 0,
+        "max": 3,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "平方",
+          "单跳阶跃",
+          "稠密零一",
+          "恒等函数"
+        ]
+      },
+      {
+        "key": "n",
+        "label": "等分块数",
+        "min": 1,
+        "max": 40,
+        "value": 10,
+        "step": 1
+      }
+    ]
+  },
+  "ra-interchange": {
+    "family": "interchange",
+    "title": "交换积分与导数的条件",
+    "controls": [
+      {
+        "key": "a",
+        "label": "比较案例",
+        "min": 0,
+        "max": 1,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "小幅高频振荡",
+          "增高移动尖峰"
+        ]
+      },
+      {
+        "key": "n",
+        "label": "函数指标",
+        "min": 2,
+        "max": 60,
+        "value": 10,
+        "step": 1
+      }
+    ]
+  },
+  "ra-subsequences": {
+    "family": "subsequence",
+    "title": "子列与 Bolzano–Weierstrass 定理",
+    "controls": [
+      {
+        "key": "a",
+        "label": "比较案例",
+        "min": 0,
+        "max": 2,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "全列",
+          "偶指标",
+          "奇指标"
+        ]
+      },
+      {
+        "key": "n",
+        "label": "显示项数",
+        "min": 4,
+        "max": 40,
+        "value": 12,
+        "step": 1
+      }
+    ]
+  },
+  "ra-uniform-continuous-limit": {
+    "family": "continuous-limit",
+    "title": "连续函数的一致极限仍连续",
+    "controls": [
+      {
+        "key": "a",
+        "label": "比较案例",
+        "min": 0,
+        "max": 2,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "幂函数",
+          "缩小线性",
+          "移动尖峰"
+        ]
+      },
+      {
+        "key": "n",
+        "label": "函数指标",
+        "min": 2,
+        "max": 80,
+        "value": 12,
+        "step": 1
+      }
+    ]
+  },
+  "ra-derivative": {
+    "family": "differentiability",
+    "title": "导数与局部线性",
+    "controls": [
+      {
+        "key": "a",
+        "label": "固定中心",
+        "min": -1,
+        "max": 1,
+        "value": 0,
+        "step": 0.01
+      },
+      {
+        "key": "b",
+        "label": "函数案例",
+        "min": 0,
+        "max": 1,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "平方",
+          "绝对值"
+        ]
+      },
+      {
+        "key": "h",
+        "label": "增量大小",
+        "min": 0.0001,
+        "max": 0.4,
+        "value": 0.4,
+        "step": 0.001
+      },
+      {
+        "key": "c",
+        "label": "靠近方向",
+        "min": 0,
+        "max": 1,
+        "value": 1,
+        "step": 1,
+        "options": [
+          "左侧",
+          "右侧"
+        ]
+      }
+    ]
+  },
+  "ra-ftc-evaluation": {
+    "family": "ftc",
+    "title": "积分计算、换元与分部积分",
+    "controls": [
+      {
+        "key": "a",
+        "label": "比较案例",
+        "min": 0,
+        "max": 1,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "平方被积函数",
+          "正弦被积函数"
+        ]
+      },
+      {
+        "key": "n",
+        "label": "分割块数",
+        "min": 1,
+        "max": 40,
+        "value": 8,
+        "step": 1
+      }
+    ]
+  },
+  "ra-connectedness": {
+    "family": "connected",
+    "title": "连通与区间",
+    "controls": [
+      {
+        "key": "a",
+        "label": "比较案例",
+        "min": 0,
+        "max": 2,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "完整区间",
+          "挖去零点",
+          "挖去一段"
+        ]
+      }
+    ]
+  },
+  "ra-alternating": {
+    "family": "alternating",
+    "title": "交错级数与余项界",
+    "controls": [
+      {
+        "key": "n",
+        "label": "保留项数",
+        "min": 1,
+        "max": 100,
+        "value": 10,
+        "step": 1
+      }
+    ]
+  },
+  "ra-ftc-derivative": {
+    "family": "accumulation",
+    "title": "积分累积函数的导数",
+    "controls": [
+      {
+        "key": "a",
+        "label": "比较案例",
+        "min": 0,
+        "max": 1,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "连续线性",
+          "单跳阶跃"
+        ]
+      },
+      {
+        "key": "x",
+        "label": "当前输入",
+        "min": 0,
+        "max": 1,
+        "value": 0.6,
+        "step": 0.01
+      },
+      {
+        "key": "h",
+        "label": "增量大小",
+        "min": 0.0001,
+        "max": 0.4,
+        "value": 0.1,
+        "step": 0.001
+      },
+      {
+        "key": "c",
+        "label": "靠近方向",
+        "min": 0,
+        "max": 1,
+        "value": 1,
+        "step": 1,
+        "options": [
+          "左侧",
+          "右侧"
+        ]
+      }
+    ]
+  },
+  "ra-open-closed": {
+    "family": "neighborhood",
+    "title": "开集、闭集与相对拓扑",
+    "controls": [
+      {
+        "key": "a",
+        "label": "比较案例",
+        "min": 0,
+        "max": 2,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "闭区间",
+          "开区间",
+          "左闭右开"
+        ]
+      },
+      {
+        "key": "x",
+        "label": "当前输入",
+        "min": -0.2,
+        "max": 1.2,
+        "value": 0,
+        "step": 0.01
+      },
+      {
+        "key": "eps",
+        "label": "输出误差",
+        "min": 0.01,
+        "max": 1,
+        "value": 0.2,
+        "step": 0.01
+      }
+    ]
+  },
+  "ra-uniform-cauchy": {
+    "family": "m-test",
+    "title": "一致 Cauchy 与 Weierstrass 判别",
+    "controls": [
+      {
+        "key": "a",
+        "label": "几何控制比",
+        "min": 0.1,
+        "max": 0.9,
+        "value": 0.5,
+        "step": 0.01
+      },
+      {
+        "key": "n",
+        "label": "保留项数",
+        "min": 1,
+        "max": 40,
+        "value": 6,
+        "step": 1
+      }
+    ]
+  },
+  "ra-darboux-sums": {
+    "family": "darboux-sums",
+    "title": "分割、上和与下和",
+    "controls": [
+      {
+        "key": "a",
+        "label": "比较案例",
+        "min": 0,
+        "max": 3,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "平方",
+          "单跳阶跃",
+          "稠密零一",
+          "恒等函数"
+        ]
+      },
+      {
+        "key": "n",
+        "label": "等分块数",
+        "min": 1,
+        "max": 40,
+        "value": 8,
+        "step": 1
+      }
+    ]
+  },
+  "ra-intermediate-values": {
+    "family": "ivt",
+    "title": "介值定理与连续像的连通性",
+    "controls": [
+      {
+        "key": "x",
+        "label": "当前输入",
+        "min": 1,
+        "max": 2,
+        "value": 1.5,
+        "step": 0.01
+      },
+      {
+        "key": "n",
+        "label": "根包围二分数",
+        "min": 0,
+        "max": 20,
+        "value": 4,
+        "step": 1
+      }
+    ]
+  },
+  "ra-extreme-values": {
+    "family": "extreme",
+    "title": "紧致上的连续函数与极值",
+    "controls": [
+      {
+        "key": "a",
+        "label": "比较案例",
+        "min": 0,
+        "max": 2,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "闭区间连续",
+          "开区间连续",
+          "闭区间不连续"
+        ]
+      },
+      {
+        "key": "x",
+        "label": "当前输入",
+        "min": 0,
+        "max": 1,
+        "value": 1,
+        "step": 0.01
+      }
+    ]
+  },
+  "ra-square-root": {
+    "family": "bisection",
+    "title": "从完备性构造平方根",
+    "controls": [
+      {
+        "key": "n",
+        "label": "二分步数",
+        "min": 0,
+        "max": 24,
+        "value": 4,
+        "step": 1
+      }
+    ]
+  },
+  "ra-uniform-continuity": {
+    "family": "uniform-continuity",
+    "title": "一致连续与 Heine–Cantor 定理",
+    "controls": [
+      {
+        "key": "a",
+        "label": "比较案例",
+        "min": 0,
+        "max": 1,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "平方函数",
+          "恒等函数"
+        ]
+      },
+      {
+        "key": "n",
+        "label": "输入远移指标",
+        "min": 1,
+        "max": 100,
+        "value": 10,
+        "step": 1
+      }
+    ]
+  },
+  "ra-sequential-continuity": {
+    "family": "jump",
+    "title": "用数列检验函数极限",
+    "controls": [
+      {
+        "key": "a",
+        "label": "比较案例",
+        "min": 0,
+        "max": 1,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "符号跳跃",
+          "有理无理分列"
+        ]
+      },
+      {
+        "key": "n",
+        "label": "显示项数",
+        "min": 2,
+        "max": 30,
+        "value": 12,
+        "step": 1
+      }
+    ]
+  },
+  "ra-function-limit": {
+    "family": "epsilon-delta",
+    "title": "函数极限与连续",
+    "controls": [
+      {
+        "key": "a",
+        "label": "固定中心",
+        "min": -1.5,
+        "max": 1.5,
+        "value": 1,
+        "step": 0.01
+      },
+      {
+        "key": "eps",
+        "label": "输出误差",
+        "min": 0.01,
+        "max": 1,
+        "value": 0.3,
+        "step": 0.01
+      }
+    ]
+  },
+  "ra-convexity": {
+    "family": "convex",
+    "title": "凸性、切线与二阶导数",
+    "controls": [
+      {
+        "key": "a",
+        "label": "比较案例",
+        "min": 0,
+        "max": 1,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "平方",
+          "四次方"
+        ]
+      },
+      {
+        "key": "x",
+        "label": "当前输入",
+        "min": -1,
+        "max": 1,
+        "value": 1,
+        "step": 0.01
+      }
+    ]
+  },
+  "ra-archimedes": {
+    "family": "density",
+    "title": "Archimedes 性质与稠密性",
+    "controls": [
+      {
+        "key": "a",
+        "label": "共同分母",
+        "min": 1,
+        "max": 300,
+        "value": 10,
+        "step": 1
+      }
+    ]
+  },
+  "ra-sequence-limit": {
+    "family": "sequence",
+    "title": "数列极限的量词",
+    "controls": [
+      {
+        "key": "eps",
+        "label": "输出误差",
+        "min": 0.01,
+        "max": 1,
+        "value": 0.1,
+        "step": 0.01
+      },
+      {
+        "key": "n",
+        "label": "显示到指标",
+        "min": 1,
+        "max": 200,
+        "value": 20,
+        "step": 1
+      }
+    ]
+  },
+  "ra-mean-value": {
+    "family": "mvt",
+    "title": "Rolle 与中值定理",
+    "controls": [
+      {
+        "key": "a",
+        "label": "左端",
+        "min": -2,
+        "max": 1,
+        "value": 0,
+        "step": 0.01
+      },
+      {
+        "key": "b",
+        "label": "右端",
+        "min": 1.1,
+        "max": 3,
+        "value": 2,
+        "step": 0.01
+      }
+    ]
+  },
+  "ra-integrable-classes": {
+    "family": "integrable-classes",
+    "title": "连续、单调与有限跳跃的可积性",
+    "controls": [
+      {
+        "key": "a",
+        "label": "比较案例",
+        "min": 0,
+        "max": 3,
+        "value": 1,
+        "step": 1,
+        "options": [
+          "平方",
+          "单跳阶跃",
+          "稠密零一",
+          "恒等函数"
+        ]
+      },
+      {
+        "key": "n",
+        "label": "等分块数",
+        "min": 1,
+        "max": 40,
+        "value": 10,
+        "step": 1
+      }
+    ]
+  },
+  "ra-monotone": {
+    "family": "nested",
+    "title": "单调收敛与嵌套区间",
+    "controls": [
+      {
+        "key": "n",
+        "label": "嵌套层数",
+        "min": 0,
+        "max": 15,
+        "value": 5,
+        "step": 1
+      }
+    ]
+  },
+  "ra-darboux": {
+    "family": "darboux",
+    "title": "导数未必连续，但不能跳值",
+    "controls": [
+      {
+        "key": "n",
+        "label": "放大指标",
+        "min": 1,
+        "max": 50,
+        "value": 12,
+        "step": 1
+      }
+    ]
+  },
+  "ra-cauchy": {
+    "family": "cauchy",
+    "title": "Cauchy 条件与完备性",
+    "controls": [
+      {
+        "key": "a",
+        "label": "比较案例",
+        "min": 0,
+        "max": 1,
+        "value": 0,
+        "step": 1,
+        "options": [
+          "倒数列",
+          "调和部分和"
+        ]
+      },
+      {
+        "key": "n",
+        "label": "第一尾项指标",
+        "min": 1,
+        "max": 80,
+        "value": 10,
+        "step": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "id": "ra-extreme-values",
+  "chapterId": "ra-continuity",
+  "number": "5.3",
+  "title": "紧致上的连续函数与极值",
+  "subtitle": "连续函数把紧致集变成紧致集，所以最大最小值都能取到。",
+  "concept": "连续函数把紧致集变成紧致集，所以最大最小值都能取到。",
+  "intuition": "有界只说不会冲向无穷；取到极值还要保证逼近极值的点不会逃出定义域。",
+  "objectives": [
+    "证明连续像紧致",
+    "得到有界与极值"
+  ],
+  "body": [
+    {
+      "title": "证明连续像紧致",
+      "text": "像集的任意开覆盖，经连续函数取原像，形成定义域的相对开覆盖。紧致性选出有限子覆盖，再映回去。"
+    },
+    {
+      "title": "得到有界与极值",
+      "text": "实线紧致集闭有界。非空像集的上确界可由成员列逼近，闭性保证上确界仍在像中，因此取到最大值。最小值同理。"
+    },
+    {
+      "title": "检查缺失条件",
+      "text": "开区间上的恒等函数有界却不取端点；有界闭区间上的不连续函数可以无界。定理条件不能只留“区间”。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "非空紧致定义域上的连续实值函数取到最大最小值。",
+    "latex": "\\exists x_m,x_M\\in K:\\ f(x_m)\\le f(x)\\le f(x_M)\\quad\\forall x\\in K",
+    "conditions": [
+      "定义域非空、紧致；函数连续且实值。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "设像集上确界，选逼近其值的输入。",
+      "latex": "f(x_n)>M-1/n,\\quad M=\\sup f(K)"
+    },
+    {
+      "text": "紧致保证输入有收敛子列且极限留在定义域。",
+      "latex": "x_{n_k}\\to x_*\\in K"
+    },
+    {
+      "text": "连续把极限传到输出。",
+      "latex": "f(x_*)=\\lim_k f(x_{n_k})=M"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "取到最小值",
+      "problem": "$f(x)=x^2$ 在 $[-1,2]$ 上极值？",
+      "steps": [
+        "连续且闭有界。",
+        "零在区间内给最小值零，右端二给最大值四。"
+      ],
+      "answer": "最小零，最大四。"
+    },
+    {
+      "title": "不连续会怎样",
+      "problem": "$f(0)=0,f(x)=1/x$ 对 $0<x\\le1$，在 $[0,1]$ 有界吗？",
+      "steps": [
+        "输入倒数列趋零。",
+        "输出依次为自然数。"
+      ],
+      "answer": "无界，失去零处连续性。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "连续像紧致是否要求函数可导？",
+      "hint": "证明只用开集原像或序列连续。",
+      "solution": [
+        "不需要可导。"
+      ],
+      "answer": "不要求。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-extreme-values-q1"
+    },
+    {
+      "problem": "开区间上的连续函数一定取最大值吗？",
+      "hint": "恒等函数。",
+      "solution": [
+        "上端点未包含。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-extreme-values-q2"
+    },
+    {
+      "problem": "紧致集上的连续函数有界吗？",
+      "hint": "像集紧致。",
+      "solution": [
+        "实线紧致集有界。"
+      ],
+      "answer": "有界。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-extreme-values-q3"
+    },
+    {
+      "id": "ra-extreme-values-q4",
+      "problem": "证明非空紧致集上连续实值函数的最小值也能取到。",
+      "hint": "将最大值结论用于哪个函数？",
+      "solution": [
+        "若 $f$ 连续，$g=-f$ 也连续。",
+        "最大值定理给出 $x_*\\in K$，使所有 $x\\in K$ 都有 $-f(x)\\le-f(x_*)$。",
+        "乘负一反向，得 $f(x_*)\\le f(x)$，所以 $f$ 在 $x_*$ 取到最小值。"
+      ],
+      "answer": "乘负一反向，得 $f(x_*)\\le f(x)$，所以 $f$ 在 $x_*$ 取到最小值。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-extreme-values-m1",
+        "ra-extreme-values-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "连续有界函数是否一定取到最大值？",
+    "choices": [
+      "是",
+      "还需要合适的定义域条件",
+      "只要函数正就取到"
+    ],
+    "correctIndex": 1,
+    "explanation": "开区间上的恒等函数有界却不取上确界。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-extreme-values-m1",
+      "claim": "有界等于取到界",
+      "correction": "上确界未必属于像集。"
+    },
+    {
+      "id": "ra-extreme-values-m2",
+      "claim": "闭区间无需连续也有界",
+      "correction": "不连续反例可以在端点附近爆增。"
+    }
+  ],
+  "prerequisites": [
+    "ra-compactness",
+    "ra-sequential-continuity"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ra-extreme-values-m1",
+    "ra-extreme-values-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-extreme-values",
+    "prediction": "比较闭区间、开区间与不连续案例，极值条件分别在哪里失效？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "有界只说不会冲向无穷；取到极值还要保证逼近极值的点不会逃出定义域。 上确界未必属于像集。",
+    "steps": [
+      {
+        "title": "闭区间连续",
+        "instruction": "切换到“闭区间连续”，核对条件与读数。。检查端点是否属于定义域，并区分上确界和取到的最大值。",
+        "observation": "上确界 $1$；最大值是否取到：是；最小值 $0$。",
+        "preset": {
+          "a": 0,
+          "x": 1
+        }
+      },
+      {
+        "title": "开区间连续",
+        "instruction": "切换到“开区间连续”，核对条件与读数。。检查端点是否属于定义域，并区分上确界和取到的最大值。",
+        "observation": "上确界 $1$；最大值是否取到：否；最小值 $0$。",
+        "preset": {
+          "a": 1,
+          "x": 1
+        }
+      },
+      {
+        "title": "闭区间不连续",
+        "instruction": "切换到“闭区间不连续”，核对条件与读数。。检查端点是否属于定义域，并区分上确界和取到的最大值。",
+        "observation": "当前输出 $1$；是否有界：否。",
+        "preset": {
+          "a": 2,
+          "x": 1
+        }
+      }
+    ]
+  }
+}

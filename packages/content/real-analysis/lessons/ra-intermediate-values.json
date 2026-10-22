@@ -1,0 +1,202 @@
+{
+  "id": "ra-intermediate-values",
+  "chapterId": "ra-continuity",
+  "number": "5.4",
+  "title": "介值定理与连续像的连通性",
+  "subtitle": "连续函数不能从一个值跳到另一个值而跳过中间值。",
+  "concept": "连续函数不能从一个值跳到另一个值而跳过中间值。",
+  "intuition": "输入是一整段，输出也不能断成两段；这不代表函数一定单调。",
+  "objectives": [
+    "保留区间与连续",
+    "用上确界定位"
+  ],
+  "body": [
+    {
+      "title": "保留区间与连续",
+      "text": "定义域必须包含两点之间整段，函数在整段连续。若端点值夹住目标，某个中间输入就命中目标。"
+    },
+    {
+      "title": "用上确界定位",
+      "text": "在左端值低于目标、右端值高于目标的情况下，取输出低于目标的输入集合上确界。连续性排除边界值仍偏低或偏高。"
+    },
+    {
+      "title": "理解存在而非唯一",
+      "text": "介值定理只保证存在。要唯一还需严格单调等额外条件；二分逼近同样不自动证明所有根只有一个。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "连续函数在区间上的像仍是区间。",
+    "latex": "f(a)<y<f(b)\\implies\\exists c\\in(a,b):f(c)=y",
+    "conditions": [
+      "函数在闭区间连续；端点顺序反过来时同理。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "取低于目标的输入集合上确界。",
+      "latex": "c=\\sup\\{x\\in[a,b]:f(x)<y\\}"
+    },
+    {
+      "text": "若边界值偏低，连续性容许向右继续低于目标。",
+      "latex": "f(c)<y\\implies\\exists h>0:f(c+h)<y"
+    },
+    {
+      "text": "若偏高，连续性禁止左侧任意近的低值点。",
+      "latex": "f(c)>y\\implies\\exists h>0:\\ f(x)>y\\ (|x-c|<h)"
+    },
+    {
+      "text": "两者均矛盾，只能等于目标。",
+      "latex": "f(c)=y"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "根的存在",
+      "problem": "$f(x)=x^3-x-1$ 在一到二之间有根吗？",
+      "steps": [
+        "多项式连续，端点值为负一和五。",
+        "零在两输出之间，介值定理保证根。"
+      ],
+      "answer": "有；这里不由该定理断言唯一。"
+    },
+    {
+      "title": "缺失区间",
+      "problem": "在定义域 $\\{-1,1\\}$ 上恒等函数连续，是否取零？",
+      "steps": [
+        "在该相对定义域连续。",
+        "定义域不连通且未包含两点之间的区间。"
+      ],
+      "answer": "不取零。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "连续函数取到两个输出，必取其中间值吗？",
+      "hint": "先查定义域包含连接区间。",
+      "solution": [
+        "若定义域是区间则是；一般域未必。"
+      ],
+      "answer": "需要区间等连通条件。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-intermediate-values-q1"
+    },
+    {
+      "problem": "介值定理保证唯一根吗？",
+      "hint": "连续振荡可多次穿过零。",
+      "solution": [
+        "仅保证至少一个。"
+      ],
+      "answer": "不保证。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-intermediate-values-q2"
+    },
+    {
+      "problem": "端点值同号就无根吗？",
+      "hint": "函数中间可下穿。",
+      "solution": [
+        "$x^2-1$ 在两端正而中间负的区间可有根。"
+      ],
+      "answer": "不能这样推。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-intermediate-values-q3"
+    },
+    {
+      "id": "ra-intermediate-values-q4",
+      "problem": "证明 $x^3-x-1=0$ 在 $(1,2)$ 有且仅有一根。",
+      "hint": "存在性和唯一性要分别证明。",
+      "solution": [
+        "多项式连续，且 $f(1)=-1$、$f(2)=5$；介值定理给区间内至少一根。",
+        "若 $1\\le u<v\\le2$，则 $f(v)-f(u)=(v-u)(v^2+uv+u^2-1)>0$。",
+        "故该区间函数严格递增，不可能有两个零点。这里用代数证明唯一性，尚无需中值定理。"
+      ],
+      "answer": "故该区间函数严格递增，不可能有两个零点。这里用代数证明唯一性，尚无需中值定理。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-intermediate-values-m1",
+        "ra-intermediate-values-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "介值定理直接保证什么？",
+    "choices": [
+      "存在中间输出",
+      "唯一输入",
+      "函数单调"
+    ],
+    "correctIndex": 0,
+    "explanation": "只给存在性。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-intermediate-values-m1",
+      "claim": "端点同号足以排除根",
+      "correction": "中间仍可穿过零。"
+    },
+    {
+      "id": "ra-intermediate-values-m2",
+      "claim": "连续在任意离散域也必取中间值",
+      "correction": "定义域须具有区间连接性质。"
+    }
+  ],
+  "prerequisites": [
+    "ra-connectedness",
+    "ra-function-limit"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ra-intermediate-values-m1",
+    "ra-intermediate-values-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-intermediate-values",
+    "prediction": "移动输入定位目标值，哪些结论是存在性，哪些还没有保证？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "输入是一整段，输出也不能断成两段；这不代表函数一定单调。 中间仍可穿过零。",
+    "steps": [
+      {
+        "title": "根包围二分数：0",
+        "instruction": "将根包围二分数设为 $0$。比较当前输出与零，并观察根包围区间缩小。",
+        "observation": "当前输出 $0.875$；根包围左端 $1$；根包围右端 $2$。",
+        "preset": {
+          "x": 1.5,
+          "n": 0
+        }
+      },
+      {
+        "title": "根包围二分数：10",
+        "instruction": "将根包围二分数设为 $10$。比较当前输出与零，并观察根包围区间缩小。",
+        "observation": "当前输出 $0.875$；根包围左端 $1.324219$；根包围右端 $1.325195$。",
+        "preset": {
+          "x": 1.5,
+          "n": 10
+        }
+      },
+      {
+        "title": "根包围二分数：20",
+        "instruction": "将根包围二分数设为 $20$。比较当前输出与零，并观察根包围区间缩小。",
+        "observation": "当前输出 $0.875$；根包围左端 $1.324718$；根包围右端 $1.324718$。",
+        "preset": {
+          "x": 1.5,
+          "n": 20
+        }
+      }
+    ]
+  }
+}

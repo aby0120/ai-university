@@ -1,0 +1,195 @@
+{
+  "id": "ra-closure",
+  "chapterId": "ra-topology",
+  "number": "4.2",
+  "title": "聚点、闭包与序列判据",
+  "subtitle": "闭包收进所有任意近处都能遇到原集合的点。",
+  "concept": "闭包收进所有任意近处都能遇到原集合的点。",
+  "intuition": "闭包允许命中该点自身；聚点则要求附近还有别的集合成员。",
+  "objectives": [
+    "区分闭包与聚点",
+    "建立序列判据"
+  ],
+  "body": [
+    {
+      "title": "区分闭包与聚点",
+      "text": "点在闭包中，指每个邻域都与集合相交。点是聚点，还要每个去心邻域都与集合相交，因此孤立点在闭包内却不是聚点。"
+    },
+    {
+      "title": "建立序列判据",
+      "text": "闭包中每点都可在半径倒数的邻域挑一个集合成员，得到趋向它的序列；反向由收敛定义立即得到每邻域相交。"
+    },
+    {
+      "title": "证明闭与极限",
+      "text": "闭集包含所有来自自身的收敛数列极限。若集合不闭，闭包外漏点可用同样序列构造证伪。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "闭包等于集合与全部聚点的并。",
+    "latex": "x\\in\\overline A\\iff\\exists(a_n)\\subseteq A:\\ a_n\\to x",
+    "conditions": [
+      "序列判据在实数及度量空间中成立。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "每个小邻域都有集合成员。",
+      "latex": "B(x,1/n)\\cap A\\ne\\varnothing"
+    },
+    {
+      "text": "逐个选择成员。",
+      "latex": "a_n\\in A,\\quad |a_n-x|<1/n"
+    },
+    {
+      "text": "误差趋零，得到闭包序列。",
+      "latex": "a_n\\to x"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "倒数集合",
+      "problem": "$A=\\{1/n:n\\ge1\\}$ 的闭包？",
+      "steps": [
+        "每个原成员已在闭包中，零也是聚点。",
+        "对其他点可找不含原成员的小邻域。"
+      ],
+      "answer": "$A\\cup\\{0\\}$。"
+    },
+    {
+      "title": "有理数闭包",
+      "problem": "有理数在实线的闭包是什么？",
+      "steps": [
+        "任意实数的每个非空邻域都含有理数。",
+        "所以所有实数都被纳入。"
+      ],
+      "answer": "整条实线。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "孤立点是闭包成员吗？",
+      "hint": "集合本身包含于闭包。",
+      "solution": [
+        "是，但未必是聚点。"
+      ],
+      "answer": "是。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-closure-q1"
+    },
+    {
+      "problem": "单点集合有聚点吗？",
+      "hint": "去心邻域。",
+      "solution": [
+        "去掉该点后没有其他成员。"
+      ],
+      "answer": "没有。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-closure-q2"
+    },
+    {
+      "problem": "闭集中的收敛列极限可跑到集合外吗？",
+      "hint": "闭的序列判据。",
+      "solution": [
+        "不能。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-closure-q3"
+    },
+    {
+      "id": "ra-closure-q4",
+      "problem": "证明闭包中的孤立点不一定是聚点。给出最小的例子。",
+      "hint": "分别检查包含中心和去掉中心的邻域。",
+      "solution": [
+        "取 $A=\\{0\\}$。零的每个邻域与 $A$ 相交，所以 $0\\in\\overline A$。",
+        "但去心邻域 $( -r,r)\\setminus\\{0\\}$ 与 $A$ 无交点。",
+        "所以零是闭包成员，却不是聚点。闭包定义允许命中点本身。"
+      ],
+      "answer": "所以零是闭包成员，却不是聚点。闭包定义允许命中点本身。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-closure-m1",
+        "ra-closure-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "聚点与闭包点的关键区别？",
+    "choices": [
+      "是否要求去心邻域仍命中",
+      "是否是正数",
+      "是否可写成小数"
+    ],
+    "correctIndex": 0,
+    "explanation": "孤立成员只满足闭包条件。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-closure-m1",
+      "claim": "闭包只包含原成员",
+      "correction": "还要加入缺失的极限点。"
+    },
+    {
+      "id": "ra-closure-m2",
+      "claim": "每个成员都一定是聚点",
+      "correction": "孤立点是反例。"
+    }
+  ],
+  "prerequisites": [
+    "ra-open-closed",
+    "ra-sequence-limit"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ra-closure-m1",
+    "ra-closure-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-closure",
+    "prediction": "增加倒数集合的可见项，零为什么是聚点而不属于原集合？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "闭包允许命中该点自身；聚点则要求附近还有别的集合成员。 还要加入缺失的极限点。",
+    "steps": [
+      {
+        "title": "显示倒数项数：1",
+        "instruction": "将显示倒数项数设为 $1$。观察倒数点向零积聚，区分原集合和闭包。",
+        "observation": "有限显示项数 $1$；全体闭包是否含零：是。",
+        "preset": {
+          "n": 1
+        }
+      },
+      {
+        "title": "显示倒数项数：50",
+        "instruction": "将显示倒数项数设为 $50$。观察倒数点向零积聚，区分原集合和闭包。",
+        "observation": "有限显示项数 $50$；全体闭包是否含零：是。",
+        "preset": {
+          "n": 50
+        }
+      },
+      {
+        "title": "显示倒数项数：100",
+        "instruction": "将显示倒数项数设为 $100$。观察倒数点向零积聚，区分原集合和闭包。",
+        "observation": "有限显示项数 $100$；全体闭包是否含零：是。",
+        "preset": {
+          "n": 100
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,196 @@
+{
+  "id": "ra-darboux",
+  "chapterId": "ra-differentiation",
+  "number": "6.3",
+  "title": "导数未必连续，但不能跳值",
+  "subtitle": "导数可以剧烈振荡而不连续，却仍拥有介值性质。",
+  "concept": "导数可以剧烈振荡而不连续，却仍拥有介值性质。",
+  "intuition": "有导数并不意味着斜率变化平滑；但斜率从一边走到另一边，不能直接跳过中间值。",
+  "objectives": [
+    "构造不连续导数",
+    "证明导数介值"
+  ],
+  "body": [
+    {
+      "title": "构造不连续导数",
+      "text": "零处定义为零、其他点取平方乘倒数正弦，函数零处差商趋零，故导数零；非零处导数含倒数余弦振荡，不能趋零。"
+    },
+    {
+      "title": "证明导数介值",
+      "text": "要找导数等于目标斜率，先从函数减去目标斜率的直线。端点导数一负一正时，闭区间最小值不能在两端，只能在内部取到，导数便为零。"
+    },
+    {
+      "title": "区分介值与连续",
+      "text": "具有介值性质的函数仍可不连续；Darboux 说明导数不存在跳跃型不连续，不是说所有不连续都被排除。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "在包含两端的开区间可导时，导数在两点之间取遍其端点导数之间的值。",
+    "latex": "f'(a)<\\lambda<f'(b)\\implies\\exists c\\in(a,b):f'(c)=\\lambda",
+    "conditions": [
+      "函数在包含所讨论闭区间的开区间可导。",
+      "反向导数次序同理。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "扣去目标斜率。",
+      "latex": "g(x)=f(x)-\\lambda x,\\quad g'(a)<0<g'(b)"
+    },
+    {
+      "text": "端点导数符号排除端点为最小值。",
+      "latex": "g(a+h)<g(a),\\quad g(b-h)<g(b)\\quad\\text{对足够小 }h>0"
+    },
+    {
+      "text": "连续保证内部最小值，可导使其导数零。",
+      "latex": "g'(c)=0\\implies f'(c)=\\lambda"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "振荡导数",
+      "problem": "$f(x)=x^2\\sin(1/x)$ 对非零输入，零处为零，求零处导数。",
+      "steps": [
+        "$f(h)/h=h\\sin(1/h)$。",
+        "绝对值不超过 $|h|$，故趋零。"
+      ],
+      "answer": "零，但邻近导数未必趋零。"
+    },
+    {
+      "title": "阶跃不能作导数",
+      "problem": "一个函数左侧恒负一、右侧恒一，中间只补一个值，能作为某个处处可导函数的导数吗？",
+      "steps": [
+        "它跳过许多介于负一与一的值。",
+        "违反导数的介值性质。"
+      ],
+      "answer": "不能。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "可导函数的导数一定连续吗？",
+      "hint": "振荡例子。",
+      "solution": [
+        "否。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-darboux-q1"
+    },
+    {
+      "problem": "导数可有跳跃不连续吗？",
+      "hint": "Darboux。",
+      "solution": [
+        "跳跃会漏掉中间值。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-darboux-q2"
+    },
+    {
+      "problem": "介值性质是否等价连续？",
+      "hint": "振荡导数反例。",
+      "solution": [
+        "介值不排除振荡不连续。"
+      ],
+      "answer": "不等价。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-darboux-q3"
+    },
+    {
+      "id": "ra-darboux-q4",
+      "problem": "证明在零处取零、其余取 $x^2\\sin(1/x)$ 的函数可导，但导数在零不连续。",
+      "hint": "先算零处差商，再检查导数的两条子列。",
+      "solution": [
+        "零处差商为 $h\\sin(1/h)$，绝对值不超过 $|h|$，故 $f'(0)=0$。",
+        "非零处 $f'(x)=2x\\sin(1/x)-\\cos(1/x)$。",
+        "取 $x_n=1/(2\\pi n)$ 得导数为负一；取 $y_n=1/((2n+1)\\pi)$ 得导数为一。两列均趋零，故导数不连续。"
+      ],
+      "answer": "取 $x_n=1/(2\\pi n)$ 得导数为负一；取 $y_n=1/((2n+1)\\pi)$ 得导数为一。两列均趋零，故导数不连续。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-darboux-m1",
+        "ra-darboux-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "Darboux 对导数排除了什么？",
+    "choices": [
+      "所有不连续",
+      "跳过中间值",
+      "负导数"
+    ],
+    "correctIndex": 1,
+    "explanation": "振荡不连续仍可能。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-darboux-m1",
+      "claim": "可导等于导数连续",
+      "correction": "后者是更强条件。"
+    },
+    {
+      "id": "ra-darboux-m2",
+      "claim": "介值性质就能随意交换极限",
+      "correction": "仍需具体连续或一致控制。"
+    }
+  ],
+  "prerequisites": [
+    "ra-extreme-values",
+    "ra-derivative"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ra-darboux-m1",
+    "ra-darboux-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-darboux",
+    "prediction": "放大零附近的函数与斜率，哪一个趋稳，哪一个仍振荡？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "有导数并不意味着斜率变化平滑；但斜率从一边走到另一边，不能直接跳过中间值。 后者是更强条件。",
+    "steps": [
+      {
+        "title": "放大指标：1",
+        "instruction": "将放大指标设为 $1$。放大零附近，比较函数值的缩小和导数子列的持续振荡。",
+        "observation": "零处导数 $0$；所选导数子列：负一与正一。",
+        "preset": {
+          "n": 1
+        }
+      },
+      {
+        "title": "放大指标：25",
+        "instruction": "将放大指标设为 $25$。放大零附近，比较函数值的缩小和导数子列的持续振荡。",
+        "observation": "零处导数 $0$；所选导数子列：负一与正一。",
+        "preset": {
+          "n": 25
+        }
+      },
+      {
+        "title": "放大指标：50",
+        "instruction": "将放大指标设为 $50$。放大零附近，比较函数值的缩小和导数子列的持续振荡。",
+        "observation": "零处导数 $0$；所选导数子列：负一与正一。",
+        "preset": {
+          "n": 50
+        }
+      }
+    ]
+  }
+}

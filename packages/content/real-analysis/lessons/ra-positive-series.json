@@ -1,0 +1,196 @@
+{
+  "id": "ra-positive-series",
+  "chapterId": "ra-series",
+  "number": "3.2",
+  "title": "正项级数、比较与分组",
+  "subtitle": "非负项让部分和单调；能否收敛就看它是否有上界。",
+  "concept": "非负项让部分和单调；能否收敛就看它是否有上界。",
+  "intuition": "比较不只是看两条曲线谁高，要把大小关系转成全部尾项或全部部分和的控制。",
+  "objectives": [
+    "使用比较判别",
+    "解释调和发散"
+  ],
+  "body": [
+    {
+      "title": "使用比较判别",
+      "text": "较大非负级数收敛可控制较小级数；较小级数发散可迫使较大级数发散。方向不能交换。"
+    },
+    {
+      "title": "解释调和发散",
+      "text": "把指标按二的幂分块。每块项数翻倍、每项虽变小，但整块贡献仍至少二分之一，所以部分和无界。"
+    },
+    {
+      "title": "比较幂次级数",
+      "text": "对单调非增非负项，二进分组把原级数与加权的倍增指标项作双边比较。这给出幂次级数在指数大于一时收敛、否则发散。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "非负级数收敛当且仅当其部分和有上界。",
+    "latex": "0\\le a_n\\le b_n,\\quad\\sum b_n<\\infty\\implies\\sum a_n<\\infty",
+    "conditions": [
+      "比较关系至少在某个尾部成立。",
+      "本节比较的项非负。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "每个倍增块包含固定数量的项。",
+      "latex": "2^{k-1}<n\\le2^k"
+    },
+    {
+      "text": "调和项在该块的下界。",
+      "latex": "\\sum_{n=2^{k-1}+1}^{2^k}\\frac1n\\ge2^{k-1}\\frac1{2^k}=\\frac12"
+    },
+    {
+      "text": "累积任意多块使部分和无上界。",
+      "latex": "H_{2^K}\\ge1+K/2\\to\\infty"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "平方倒数收敛",
+      "problem": "证明 $\\sum_{n=1}^{\\infty}1/n^2$ 收敛。",
+      "steps": [
+        "对 $n\\ge2$，$1/n^2\\le1/[n(n-1)]$。",
+        "$1/[n(n-1)]=1/(n-1)-1/n$，尾部分和望远镜相消且不超过一。"
+      ],
+      "answer": "部分和有界，故收敛。"
+    },
+    {
+      "title": "错误方向",
+      "problem": "调和项大于平方倒数项，能从平方倒数收敛推出调和收敛吗？",
+      "steps": [
+        "收敛的较小量不能控制较大量。",
+        "调和部分和有分块下界而发散。"
+      ],
+      "answer": "不能。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$\\sum 1/n^p$ 何时收敛？",
+      "hint": "二进块比较得到几何比。",
+      "solution": [
+        "块量级为 $2^{k(1-p)}$，当且仅当 $p>1$ 收敛。"
+      ],
+      "answer": "$p>1$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-positive-series-q1"
+    },
+    {
+      "problem": "非负部分和能有界但振荡不收敛吗？",
+      "hint": "部分和自动单调。",
+      "solution": [
+        "单调有界必收敛。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-positive-series-q2"
+    },
+    {
+      "problem": "比较判别允许忽略有限前缀吗？",
+      "hint": "有限项只改变常数。",
+      "solution": [
+        "尾部大小关系已够。"
+      ],
+      "answer": "允许。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-positive-series-q3"
+    },
+    {
+      "id": "ra-positive-series-q4",
+      "problem": "用二进分组证明 $\\sum_{n=1}^{\\infty}n^{-p}$ 在 $p>1$ 时收敛。",
+      "hint": "用每块项数乘该块最大项。",
+      "solution": [
+        "对块 $2^k\\le n<2^{k+1}$，有 $n^{-p}\\le2^{-kp}$。",
+        "该块共 $2^k$ 项，故块和不超过 $2^{k(1-p)}$。",
+        "因 $2^{1-p}<1$，这些块上界形成收敛几何级数。所有非负部分和因而有界，原级数收敛。"
+      ],
+      "answer": "因 $2^{1-p}<1$，这些块上界形成收敛几何级数。所有非负部分和因而有界，原级数收敛。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-positive-series-m1",
+        "ra-positive-series-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "由大级数收敛能推出小非负级数怎样？",
+    "choices": [
+      "收敛",
+      "发散",
+      "不确定"
+    ],
+    "correctIndex": 0,
+    "explanation": "较大的部分和统一提供上界。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-positive-series-m1",
+      "claim": "比较方向可随意反转",
+      "correction": "大收敛推小收敛，小发散推大发散。"
+    },
+    {
+      "id": "ra-positive-series-m2",
+      "claim": "调和项很小所以总和有限",
+      "correction": "每个倍增块仍有固定贡献。"
+    }
+  ],
+  "prerequisites": [
+    "ra-series-definition",
+    "ra-monotone"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ra-positive-series-m1",
+    "ra-positive-series-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-positive-series",
+    "prediction": "把项按二进区间分块，每一块是否仍有固定贡献？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "比较不只是看两条曲线谁高，要把大小关系转成全部尾项或全部部分和的控制。 大收敛推小收敛，小发散推大发散。",
+    "steps": [
+      {
+        "title": "倍增块数：1",
+        "instruction": "将倍增块数设为 $1$。逐行比较倍增块的贡献，检查是否都至少为二分之一。",
+        "observation": "每块下界 $0.5$；末指标 $2$。",
+        "preset": {
+          "n": 1
+        }
+      },
+      {
+        "title": "倍增块数：6",
+        "instruction": "将倍增块数设为 $6$。逐行比较倍增块的贡献，检查是否都至少为二分之一。",
+        "observation": "每块下界 $0.5$；末指标 $64$。",
+        "preset": {
+          "n": 6
+        }
+      },
+      {
+        "title": "倍增块数：12",
+        "instruction": "将倍增块数设为 $12$。逐行比较倍增块的贡献，检查是否都至少为二分之一。",
+        "observation": "每块下界 $0.5$；末指标 $4096$。",
+        "preset": {
+          "n": 12
+        }
+      }
+    ]
+  }
+}

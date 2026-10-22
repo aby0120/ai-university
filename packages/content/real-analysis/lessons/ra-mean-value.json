@@ -1,0 +1,198 @@
+{
+  "id": "ra-mean-value",
+  "chapterId": "ra-differentiation",
+  "number": "6.2",
+  "title": "Rolle 与中值定理",
+  "subtitle": "连续跨过闭区间、内部可导，才能把整体平均变化率连到某处导数。",
+  "concept": "连续跨过闭区间、内部可导，才能把整体平均变化率连到某处导数。",
+  "intuition": "扣掉端点连线后，两端同高；内部极值就给出水平切线。",
+  "objectives": [
+    "先证 Rolle",
+    "减去割线"
+  ],
+  "body": [
+    {
+      "title": "先证 Rolle",
+      "text": "两端同值且函数非常值时，极值定理保证至少一个极值在内部。内部可导极值的左右差商符号相反，导数只能为零。"
+    },
+    {
+      "title": "减去割线",
+      "text": "一般函数减去端点割线后满足 Rolle，零导数条件还原为原导数等于平均变化率。"
+    },
+    {
+      "title": "把局部界变整体界",
+      "text": "导数绝对值统一不超过常数时，中值定理把任意两点函数差控制为该常数乘输入距离。仅知导数处处存在不等于有统一上界。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "中值定理不要求导数连续。",
+    "latex": "\\exists c\\in(a,b):\\quad f'(c)=\\frac{f(b)-f(a)}{b-a}",
+    "conditions": [
+      "端点满足严格次序；函数在闭区间连续、开区间可导。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "扣除平均斜率对应的直线。",
+      "latex": "g(x)=f(x)-\\frac{f(b)-f(a)}{b-a}(x-a)"
+    },
+    {
+      "text": "两端值相同，Rolle 给出内部零导数。",
+      "latex": "g(a)=g(b),\\quad g'(c)=0"
+    },
+    {
+      "text": "移项还原结论。",
+      "latex": "f'(c)=\\frac{f(b)-f(a)}{b-a}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "平方的中值点",
+      "problem": "$x^2$ 在零到二的中值定理点？",
+      "steps": [
+        "平均斜率为四除二等于二。",
+        "$2c=2$，所以 $c=1$。"
+      ],
+      "answer": "一。"
+    },
+    {
+      "title": "缺可导条件",
+      "problem": "$|x|$ 在负一到一的平均斜率零，存在零导数点吗？",
+      "steps": [
+        "零处不可导。",
+        "其他点导数是正一或负一。"
+      ],
+      "answer": "没有；不能套中值定理。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "导数恒零，在一个区间上函数怎样？",
+      "hint": "对任意两点用中值定理。",
+      "solution": [
+        "函数差为零。"
+      ],
+      "answer": "常数。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-mean-value-q1"
+    },
+    {
+      "problem": "导数非负能推出区间上函数非减吗？",
+      "hint": "中值定理与输入差符号。",
+      "solution": [
+        "任意后点函数值不小于前点。"
+      ],
+      "answer": "能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-mean-value-q2"
+    },
+    {
+      "problem": "中值定理需要导数连续吗？",
+      "hint": "核对条件。",
+      "solution": [
+        "只需内点可导。"
+      ],
+      "answer": "不需要。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-mean-value-q3"
+    },
+    {
+      "id": "ra-mean-value-q4",
+      "problem": "设 $f$ 在区间上可导且 $|f'|\\le M$。证明 $|f(x)-f(y)|\\le M|x-y|$。",
+      "hint": "对两点之间的闭线段用中值定理。",
+      "solution": [
+        "若 $x=y$，结论显然；否则不妨设 $x<y$。可导保证该闭线段连续。",
+        "存在 $c\\in(x,y)$ 使 $f(y)-f(x)=f'(c)(y-x)$。",
+        "取绝对值并用导数界，得到所需不等式。特别地，这也证明一致连续。"
+      ],
+      "answer": "取绝对值并用导数界，得到所需不等式。特别地，这也证明一致连续。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-mean-value-m1",
+        "ra-mean-value-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "Rolle 证明中的内部极值来自什么？",
+    "choices": [
+      "极值定理与端点同值",
+      "图像采样",
+      "导数连续"
+    ],
+    "correctIndex": 0,
+    "explanation": "闭区间连续保证取到极值。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-mean-value-m1",
+      "claim": "缺一个角点也可直接套",
+      "correction": "该点可能正是需要的中值点。"
+    },
+    {
+      "id": "ra-mean-value-m2",
+      "claim": "导数零推出任意不连通域上同一个常数",
+      "correction": "结论只在每个区间分量分别成立。"
+    }
+  ],
+  "prerequisites": [
+    "ra-extreme-values",
+    "ra-derivative"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ra-mean-value-m1",
+    "ra-mean-value-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-mean-value",
+    "prediction": "改变区间，割线斜率与中值点的切线怎样对应？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "扣掉端点连线后，两端同高；内部极值就给出水平切线。 该点可能正是需要的中值点。",
+    "steps": [
+      {
+        "title": "左端：-2",
+        "instruction": "将左端设为 $-2$。比较割线与切线斜率，检查中值点是否位于两端之间。",
+        "observation": "割线斜率 $0$；中值点 $0$。",
+        "preset": {
+          "a": -2,
+          "b": 2
+        }
+      },
+      {
+        "title": "左端：-0.5",
+        "instruction": "将左端设为 $-0.5$。比较割线与切线斜率，检查中值点是否位于两端之间。",
+        "observation": "割线斜率 $1.5$；中值点 $0.75$。",
+        "preset": {
+          "a": -0.5,
+          "b": 2
+        }
+      },
+      {
+        "title": "左端：1",
+        "instruction": "将左端设为 $1$。比较割线与切线斜率，检查中值点是否位于两端之间。",
+        "observation": "割线斜率 $3$；中值点 $1.5$。",
+        "preset": {
+          "a": 1,
+          "b": 2
+        }
+      }
+    ]
+  }
+}

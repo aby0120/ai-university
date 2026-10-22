@@ -1,0 +1,598 @@
+{
+  "reviews": [
+    {
+      "chapterId": "ra-reals",
+      "title": "实数与完备性 · 章末回顾",
+      "questions": [
+        {
+          "problem": "证明若 $s=\\sup A$、$t=\\sup B$，两集合非空有上界，则 $\\sup(A+B)=s+t$。",
+          "hint": "先给上界，再分别从两集合逼近。",
+          "solution": [
+            "任意和不超过 $s+t$。",
+            "给定正误差，分别取 $a>s-\\varepsilon/2,b>t-\\varepsilon/2$。",
+            "于是 $a+b>s+t-\\varepsilon$。"
+          ],
+          "answer": "$s+t$。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "ra-review-1-1"
+        },
+        {
+          "problem": "为什么有理数稠密不能推出有理数完备？",
+          "hint": "比较局部逼近与确界归属。",
+          "solution": [
+            "有理数可任意逼近平方根二。",
+            "这些有理逼近的极限不是有理数，上确界可能在数系外。"
+          ],
+          "answer": "两性质不同。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "ra-review-1-2"
+        }
+      ]
+    },
+    {
+      "chapterId": "ra-sequences",
+      "title": "数列与收敛 · 章末回顾",
+      "questions": [
+        {
+          "problem": "证明收敛实数数列只有一个极限。",
+          "hint": "将两极限间距分成三份。",
+          "solution": [
+            "若两不同极限间距为 $d>0$，取误差 $d/3$。",
+            "同时进入两尾部后用三角不等式得距离小于三分之二倍自身，矛盾。"
+          ],
+          "answer": "极限唯一。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "ra-review-2-1"
+        },
+        {
+          "problem": "给一列有界却不收敛的实数列，再指出两条收敛子列。",
+          "hint": "持续振荡。",
+          "solution": [
+            "取 $(-1)^n$。",
+            "奇偶子列分别趋负一与一。"
+          ],
+          "answer": "有界只保证存在收敛子列。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "ra-review-2-2"
+        }
+      ]
+    },
+    {
+      "chapterId": "ra-series",
+      "title": "无穷级数 · 章末回顾",
+      "questions": [
+        {
+          "problem": "证明 $\\sum_{n=1}^{\\infty}1/[n(n+1)]$ 并求和。",
+          "hint": "拆成相邻倒数之差。",
+          "solution": [
+            "$1/[n(n+1)]=1/n-1/(n+1)$。",
+            "部分和 $1-1/(N+1)\\to1$。"
+          ],
+          "answer": "一。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "numericAnswer": 1,
+          "id": "ra-review-3-1"
+        },
+        {
+          "problem": "某级数比值极限一，能否判断收敛？给正反例。",
+          "hint": "使用两种幂次倒数。",
+          "solution": [
+            "调和级数发散，平方倒数级数收敛。",
+            "两者比值极限都为一。"
+          ],
+          "answer": "不能。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "ra-review-3-2"
+        }
+      ]
+    },
+    {
+      "chapterId": "ra-topology",
+      "title": "实直线上的集合 · 章末回顾",
+      "questions": [
+        {
+          "problem": "求倒数集合加零后的开闭、有界、紧致与连通性。",
+          "hint": "先找全部聚点，再检查是否有间隙。",
+          "solution": [
+            "闭且有界，故紧致。",
+            "不是开集；有多个分离成员并跳过中间点，所以不连通。"
+          ],
+          "answer": "闭、有界、紧致；不开、不连通。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "ra-review-4-1"
+        },
+        {
+          "problem": "为什么所有有限覆盖图示都不能直接验证一个集合紧致？",
+          "hint": "定义对所有开覆盖量化。",
+          "solution": [
+            "图示只检查一份覆盖。",
+            "需要一般有限子覆盖论证，或已证 Heine–Borel 等价条件。"
+          ],
+          "answer": "有限示例不能替代全称证明。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "ra-review-4-2"
+        }
+      ]
+    },
+    {
+      "chapterId": "ra-continuity",
+      "title": "连续与一致连续 · 章末回顾",
+      "questions": [
+        {
+          "problem": "证明平方函数在任意固定有界闭区间一致连续，并解释全实线为何不同。",
+          "hint": "用乘积因子界。",
+          "solution": [
+            "在 $[-M,M]$ 上有 $|x^2-y^2|\\le2M|x-y|$；当 $M=0$ 结论平凡。",
+            "全实线上取 $n,n+1/n$，输入差趋零而输出差趋二。"
+          ],
+          "answer": "有界域上有统一界，全实线没有。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "ra-review-5-1"
+        },
+        {
+          "problem": "连续函数在紧致区间上既取极值又取中间值，这两结论分别需要什么？",
+          "hint": "区分紧致与区间连通。",
+          "solution": [
+            "紧致加连续保证取极值。",
+            "区间的连通性加连续保证不跳中间值。"
+          ],
+          "answer": "条件各有用途。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "ra-review-5-2"
+        }
+      ]
+    },
+    {
+      "chapterId": "ra-differentiation",
+      "title": "微分的理论 · 章末回顾",
+      "questions": [
+        {
+          "problem": "证明一个区间上导数恒零的函数是常数，并说明不连通域的例外。",
+          "hint": "对任意两点用中值定理。",
+          "solution": [
+            "区间内两点差等于某处导数乘输入差，故为零。",
+            "两个分离区间可分别取不同常数，导数仍处处零。"
+          ],
+          "answer": "结论在每个区间分量成立。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "ra-review-6-1"
+        },
+        {
+          "problem": "$f(0)=0$、$f(x)=x^2\\sin(1/x)$（$x\\ne0$）。证明它在零处可导，但导数在零处不连续。",
+          "hint": "分别看函数差商与非零处导数。",
+          "solution": [
+            "$f(h)/h=h\\sin(1/h)\\to0$。",
+            "非零处导数 $2x\\sin(1/x)-\\cos(1/x)$ 持续振荡。"
+          ],
+          "answer": "可导不保证导数连续。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "ra-review-6-2"
+        }
+      ]
+    },
+    {
+      "chapterId": "ra-integration",
+      "title": "Riemann 积分 · 章末回顾",
+      "questions": [
+        {
+          "problem": "证明 Riemann 可积函数只改有限个点的有限函数值，仍可积且积分不变。",
+          "hint": "用总宽度任意小的区间包住异常点。",
+          "solution": [
+            "异常点外上下和相同或按原可积函数控制。",
+            "异常区间的额外不确定面积不超过统一高度界乘总长度，可任意缩小。"
+          ],
+          "answer": "新函数可积且积分相同。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "ra-review-7-1"
+        },
+        {
+          "problem": "为什么处处存在导数还不足以直接使用本卷端点积分公式？",
+          "hint": "检查积分对象。",
+          "solution": [
+            "导数未必有界或 Riemann 可积。",
+            "公式中的导数可积条件不能省略。"
+          ],
+          "answer": "还需相应可积性。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "ra-review-7-2"
+        }
+      ]
+    },
+    {
+      "chapterId": "ra-function-sequences",
+      "title": "函数列与极限交换 · 章末回顾",
+      "questions": [
+        {
+          "problem": "证明 $x^n$ 在 $[0,r]$ 上一致趋零（固定 $0<r<1$），但在 $[0,1)$ 上不一致。",
+          "hint": "比较全域上确界。",
+          "solution": [
+            "前域误差上确界为 $r^n\\to0$。",
+            "后域每项上确界为一，或取移动输入使误差一半。"
+          ],
+          "answer": "定义域边界改变统一误差。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "ra-review-8-1"
+        },
+        {
+          "problem": "解释为什么函数列一致趋零仍不能交换求导。",
+          "hint": "高频小幅正弦。",
+          "solution": [
+            "$\\sin(nx)/n$ 的统一幅度不超过倒数。",
+            "零处导数却始终一，极限函数导数零。"
+          ],
+          "answer": "函数幅度控制不等于导数控制。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "id": "ra-review-8-2"
+        }
+      ]
+    }
+  ],
+  "exam": [
+    {
+      "problem": "构造平方根时，若上确界平方小于目标，怎样得到矛盾？",
+      "hint": "选足够小的正增量。",
+      "solution": [
+        "保持 $h(2s+h)<a-s^2$，则新数平方仍小于目标。",
+        "新数大于上确界却属于候选集合，矛盾。"
+      ],
+      "answer": "排除偏小；偏大同样由更小上界排除。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-exam-1"
+    },
+    {
+      "problem": "有界实数列的全部收敛子列都趋同一值，证明全列收敛。",
+      "hint": "反设存在固定误差外的无穷多项。",
+      "solution": [
+        "坏子列仍有界，可再取收敛子列。",
+        "其极限留在误差外，与唯一子列极限冲突。"
+      ],
+      "answer": "必须结合有界性。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-exam-2"
+    },
+    {
+      "problem": "用倍增块证明调和发散，再解释相邻差趋零为什么不够。",
+      "hint": "比较两个倍增指标处的部分和。",
+      "solution": [
+        "每块至少贡献二分之一。",
+        "相邻差倒数虽趋零，远隔的尾部部分和差仍不小。"
+      ],
+      "answer": "不是 Cauchy。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-exam-3"
+    },
+    {
+      "problem": "给一个紧致不连通集和一个连通不紧致集。",
+      "hint": "有限集与无界区间。",
+      "solution": [
+        "两个不同点的集合紧致不连通。",
+        "实线连通但无界，故不紧致。"
+      ],
+      "answer": "性质相互独立。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-exam-4"
+    },
+    {
+      "problem": "实线连续函数若导数绝对值统一有界，证明一致连续。",
+      "hint": "使用中值定理。",
+      "solution": [
+        "$|f(x)-f(y)|\\le M|x-y|$。",
+        "若界正，取半径为误差除以该界；零界时函数常数。"
+      ],
+      "answer": "Lipschitz 控制推出一致连续。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-exam-5"
+    },
+    {
+      "problem": "对零到一的平方函数等分分割，写上下和并求积分。",
+      "hint": "使用平方和公式。",
+      "solution": [
+        "$L_n=(n-1)n(2n-1)/(6n^3)$。",
+        "$U_n=n(n+1)(2n+1)/(6n^3)$。",
+        "两者都趋三分之一。"
+      ],
+      "answer": "$1/3$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.3333333333333333,
+      "id": "ra-exam-6"
+    },
+    {
+      "problem": "构造连续函数列逐点趋零但每项积分为一。",
+      "hint": "移动且增高的三角尖峰。",
+      "solution": [
+        "指标至少二，支撑 $[0,2/n]$，中心 $1/n$，高度 $n$。",
+        "每个固定正点最终在支撑外，零处为零；每项三角面积一。"
+      ],
+      "answer": "逐点控制不够交换积分。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-exam-7"
+    },
+    {
+      "problem": "说明一致导数收敛为何还要一点函数值收敛，并给缺失条件的反例。",
+      "hint": "导数看不到常数偏移。",
+      "solution": [
+        "常数函数 $f_n(x)=n$ 的导数全零且一致收敛。",
+        "原函数却处处发散，锚点条件失败。"
+      ],
+      "answer": "固定常数漂移。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-exam-8"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "有序域与实数运算",
+      "meaning": "实数允许加减乘除和大小比较，但除法、开方和取倒数都有条件。",
+      "lessonId": "ra-ordered-field"
+    },
+    {
+      "term": "上界、上确界与完备性",
+      "meaning": "上确界是最小上界，不要求它属于原集合。",
+      "lessonId": "ra-supremum"
+    },
+    {
+      "term": "Archimedes 性质与稠密性",
+      "meaning": "自然数能超过任意实数；再小的区间里也有有理数。",
+      "lessonId": "ra-archimedes"
+    },
+    {
+      "term": "绝对值与误差估计",
+      "meaning": "绝对值把“离多远”写成可相加控制的量。",
+      "lessonId": "ra-absolute-value"
+    },
+    {
+      "term": "从完备性构造平方根",
+      "meaning": "平方根存在不是图形看起来有交点，而是上确界把缺口填上。",
+      "lessonId": "ra-square-root"
+    },
+    {
+      "term": "数列极限的量词",
+      "meaning": "收敛要求从某一项起，所有后续项都在任意给定误差内。",
+      "lessonId": "ra-sequence-limit"
+    },
+    {
+      "term": "极限运算、保序与夹逼",
+      "meaning": "先控制每个误差，再组合；分母远离零才允许取倒数。",
+      "lessonId": "ra-limit-algebra"
+    },
+    {
+      "term": "单调收敛与嵌套区间",
+      "meaning": "单调且有界的实数数列必收敛，极限就是合适的确界。",
+      "lessonId": "ra-monotone"
+    },
+    {
+      "term": "子列与 Bolzano–Weierstrass 定理",
+      "meaning": "实数中的有界数列，至少能选出一条收敛子列。",
+      "lessonId": "ra-subsequences"
+    },
+    {
+      "term": "Cauchy 条件与完备性",
+      "meaning": "不先知道极限在哪里，也能用尾项彼此接近来判断是否收敛。",
+      "lessonId": "ra-cauchy"
+    },
+    {
+      "term": "级数就是部分和的极限",
+      "meaning": "无穷级数是否收敛，要看前若干项之和是否趋于有限实数。",
+      "lessonId": "ra-series-definition"
+    },
+    {
+      "term": "正项级数、比较与分组",
+      "meaning": "非负项让部分和单调；能否收敛就看它是否有上界。",
+      "lessonId": "ra-positive-series"
+    },
+    {
+      "term": "比值与根值判别",
+      "meaning": "最终能用收敛几何级数压住绝对值，就得到绝对收敛。",
+      "lessonId": "ra-ratio-root"
+    },
+    {
+      "term": "交错级数与余项界",
+      "meaning": "项幅度递减到零时，交错相消把余项压在下一项以内。",
+      "lessonId": "ra-alternating"
+    },
+    {
+      "term": "绝对收敛与重排",
+      "meaning": "绝对收敛保证重排不改变总和；条件收敛没有这份自由。",
+      "lessonId": "ra-absolute-rearrangement"
+    },
+    {
+      "term": "开集、闭集与相对拓扑",
+      "meaning": "开集让每个成员都有可留在集合内的小邻域；闭集包含自己的所有极限点。",
+      "lessonId": "ra-open-closed"
+    },
+    {
+      "term": "聚点、闭包与序列判据",
+      "meaning": "闭包收进所有任意近处都能遇到原集合的点。",
+      "lessonId": "ra-closure"
+    },
+    {
+      "term": "紧致与 Heine–Borel 定理",
+      "meaning": "实线中，紧致恰好等于闭且有界；它把无限局部覆盖压成有限个。",
+      "lessonId": "ra-compactness"
+    },
+    {
+      "term": "连通与区间",
+      "meaning": "实线子集连通，当且仅当它没有跳过两个成员之间的任何点。",
+      "lessonId": "ra-connectedness"
+    },
+    {
+      "term": "可数、不可数与对角线",
+      "meaning": "可数说明能用自然数列完，不代表元素稀疏。",
+      "lessonId": "ra-countability"
+    },
+    {
+      "term": "函数极限与连续",
+      "meaning": "函数极限控制附近的输入，连续再要求极限等于当前函数值。",
+      "lessonId": "ra-function-limit"
+    },
+    {
+      "term": "用数列检验函数极限",
+      "meaning": "实数中，所有趋向中心的合法输入列都给同一输出极限，才说明函数极限存在。",
+      "lessonId": "ra-sequential-continuity"
+    },
+    {
+      "term": "紧致上的连续函数与极值",
+      "meaning": "连续函数把紧致集变成紧致集，所以最大最小值都能取到。",
+      "lessonId": "ra-extreme-values"
+    },
+    {
+      "term": "介值定理与连续像的连通性",
+      "meaning": "连续函数不能从一个值跳到另一个值而跳过中间值。",
+      "lessonId": "ra-intermediate-values"
+    },
+    {
+      "term": "一致连续与 Heine–Cantor 定理",
+      "meaning": "一致连续用同一个输入半径控制整个定义域，不再随中心点改变。",
+      "lessonId": "ra-uniform-continuity"
+    },
+    {
+      "term": "导数与局部线性",
+      "meaning": "可导表示一阶误差可写成线性主项，加上比输入变化更小的余项。",
+      "lessonId": "ra-derivative"
+    },
+    {
+      "term": "Rolle 与中值定理",
+      "meaning": "连续跨过闭区间、内部可导，才能把整体平均变化率连到某处导数。",
+      "lessonId": "ra-mean-value"
+    },
+    {
+      "term": "导数未必连续，但不能跳值",
+      "meaning": "导数可以剧烈振荡而不连续，却仍拥有介值性质。",
+      "lessonId": "ra-darboux"
+    },
+    {
+      "term": "Taylor 定理与可控余项",
+      "meaning": "Taylor 多项式能否逼近，取决于余项是否真的变小。",
+      "lessonId": "ra-taylor"
+    },
+    {
+      "term": "凸性、切线与二阶导数",
+      "meaning": "凸函数的图像在两点连线下方；可导时也在每条切线上方。",
+      "lessonId": "ra-convexity"
+    },
+    {
+      "term": "分割、上和与下和",
+      "meaning": "每个小区间都用真正的上下界夹住函数，再把矩形面积相加。",
+      "lessonId": "ra-darboux-sums"
+    },
+    {
+      "term": "Darboux 可积判据",
+      "meaning": "能为任意误差找到一份分割，让上和与下和的差小于误差，才叫可积。",
+      "lessonId": "ra-integrability"
+    },
+    {
+      "term": "连续、单调与有限跳跃的可积性",
+      "meaning": "连续或单调的有界区间函数都可积，但理由不同。",
+      "lessonId": "ra-integrable-classes"
+    },
+    {
+      "term": "积分累积函数的导数",
+      "meaning": "在被积函数连续的点，局部平均值趋于该点值，累积函数就在该点有对应导数。",
+      "lessonId": "ra-ftc-derivative"
+    },
+    {
+      "term": "积分计算、换元与分部积分",
+      "meaning": "原函数的端点差能计算积分，但原函数与可积性条件必须同时成立。",
+      "lessonId": "ra-ftc-evaluation"
+    },
+    {
+      "term": "逐点收敛与一致收敛",
+      "meaning": "逐点允许每个输入等不同的时间；一致收敛要求同一项号后全域都达标。",
+      "lessonId": "ra-pointwise-uniform"
+    },
+    {
+      "term": "一致 Cauchy 与 Weierstrass 判别",
+      "meaning": "先用统一尾部预算控制函数差，再证明整列或整条函数级数一致收敛。",
+      "lessonId": "ra-uniform-cauchy"
+    },
+    {
+      "term": "连续函数的一致极限仍连续",
+      "meaning": "用三段误差，把极限函数的变化转给某一个已经连续的近似函数。",
+      "lessonId": "ra-uniform-continuous-limit"
+    },
+    {
+      "term": "交换积分与导数的条件",
+      "meaning": "一致收敛足以传递有限区间积分，但单独还不足以传递导数。",
+      "lessonId": "ra-interchange"
+    },
+    {
+      "term": "幂级数、收敛半径与逐项运算",
+      "meaning": "收敛半径内部的小闭区间上，幂级数和导数级数都有统一控制。",
+      "lessonId": "ra-power-series"
+    }
+  ],
+  "appendices": [
+    {
+      "id": "ra-limsup",
+      "title": "上极限、下极限与根值判别",
+      "text": "对有界数列，每个尾部取上确界形成非增列，其极限为上极限；尾部下确界同理。上极限严格小于某数，意味着足够晚的全部项都小于该数；严格大于某数，意味着无穷多项大于该数。根值判别将这些性质用于项绝对值的指标次方根。无界情况允许扩展实数值。",
+      "latex": "\\limsup a_n=\\lim_{N\\to\\infty}\\sup_{n\\ge N}a_n,\\quad\\liminf a_n=\\lim_{N\\to\\infty}\\inf_{n\\ge N}a_n"
+    },
+    {
+      "id": "ra-compact-proof",
+      "title": "紧致、闭有界与子列紧致",
+      "text": "紧致集有界：用整数半径的开区间覆盖并取有限子覆盖。紧致集闭：对外点与每个成员，取成员周围半径为双方距离三分之一的邻域；有限子覆盖后，再取这些半径的最小值，外点周围该半径邻域避开全体成员。闭有界集先包含于闭区间，闭区间二分证明紧致；闭子集用其开补集补成覆盖以继承紧致。闭有界还由 Bolzano–Weierstrass 与闭性推出每列都有极限留在集合中的收敛子列；反向若无界可挑绝对值不断增长的列，若不闭可挑趋向外部闭包点的列，均违背子列性质。",
+      "latex": "K\\subseteq\\mathbb R:\\quad\\text{紧致}\\iff\\text{闭有界}\\iff\\text{每列有收敛子列且极限在 }K"
+    },
+    {
+      "id": "ra-integral-properties",
+      "title": "积分的线性、加性与标记和",
+      "text": "共同细分使两个函数可用同一分割；振幅的三角估计证明线性组合可积，随后用同一份标记和取极限得到线性。把区间在一个点切开，分割也相应拼接，得到区间加性。若函数绝对值不超过常数，每个标记和的绝对值不超过常数乘总宽度，积分也满足该界。Darboux 判据与“任意足够细网格及任意标记和都靠近积分”等价：先固定一份小间隙分割，任意细网格只有跨其有限分割点的小块需要额外误差；这些小块总宽度随网格趋零，余下小块受原上下和控制。",
+      "latex": "\\left|\\int_a^bf\\right|\\le\\int_a^b|f|\\le(b-a)\\sup_{[a,b]}|f|"
+    },
+    {
+      "id": "ra-finite-jumps",
+      "title": "有限异常点与稠密不连续的区别",
+      "text": "有限异常点可被总长度任意小的区间包住，因函数有界，这部分上下和差也可任意小。相反，有理点一、无理点零的函数，每个正长度区间的振幅都是一，因此任何分割间隙等于全区间长度。这里不能靠有限采样判断稠密性；精确上下界来自有理数和无理数都稠密的证明。",
+      "latex": "D(x)=\\mathbf1_{\\mathbb Q}(x),\\quad U(D,P)-L(D,P)=b-a"
+    },
+    {
+      "id": "ra-flat-function",
+      "title": "光滑不等于解析：平坦函数",
+      "text": "定义零处为零，其他点为指数函数的负倒数平方指数。非零处每阶导数都是倒数的某个多项式乘该指数。令新变量为倒数平方，指数级数的正项下界说明指数增长快于任意固定幂，从而上述多项式乘衰减指数都趋零。再对差商归纳，全部零处导数存在且为零，且各阶导数连续。然而每个非零输入的函数值为正，所以中心 Taylor 级数恒零却不等于函数。",
+      "latex": "t^me^{-t}\\to0\\quad(t\\to\\infty),\\qquad f(x)=\\begin{cases}e^{-1/x^2}&x\\ne0\\\\0&x=0\\end{cases}"
+    },
+    {
+      "id": "ra-inverse",
+      "title": "一元反函数的可导条件",
+      "text": "若函数在某点附近连续可导，且该点导数非零，导数连续使一个小邻域内导数保持同号。中值定理给严格单调，因此在像区间上有连续反函数。反函数差商等于原函数对应差商的倒数，分母趋非零导数，故可取倒数极限。不能忽略分支，也不能将结论套到导数为零的点。",
+      "latex": "(f^{-1})'(f(a))=\\frac1{f'(a)},\\quad f'(a)\\ne0"
+    },
+    {
+      "id": "ra-improper",
+      "title": "反常积分与数值级数的联系",
+      "text": "无穷区间积分另定义为有限端点积分的极限，不是把无穷当普通端点。对非负非增函数，单位区间上的积分被相邻整数点函数值夹住，累积这些不等式得到积分判别；前提不能省略。有限区间的一致收敛积分定理也不能无条件搬到无穷区间，因为总长度误差界会失效。",
+      "latex": "\\int_1^{N+1}f(x)dx\\le\\sum_{n=1}^Nf(n)\\le f(1)+\\int_1^Nf(x)dx"
+    },
+    {
+      "id": "ra-dependencies",
+      "title": "证明依赖与后续分析",
+      "text": "本卷以实数完备有序域为起点；指数、对数、三角函数采用一元微积分中熟悉的定义与性质。若需从积分构造对数，再由反函数定义指数，可在微积分基本定理和一元反函数定理之后进行。一般度量空间、测度、Lebesgue 积分、泛函分析和多元实分析是后续独立课程；有限画图与自动测试不替代一般证明。",
+      "latex": "\\text{完备性}\\to\\text{数列}\\to\\text{紧致连续}\\to\\text{微积分}\\to\\text{一致极限}"
+    }
+  ]
+}

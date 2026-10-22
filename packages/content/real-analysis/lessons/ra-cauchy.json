@@ -1,0 +1,198 @@
+{
+  "id": "ra-cauchy",
+  "chapterId": "ra-sequences",
+  "number": "2.5",
+  "title": "Cauchy 条件与完备性",
+  "subtitle": "不先知道极限在哪里，也能用尾项彼此接近来判断是否收敛。",
+  "concept": "不先知道极限在哪里，也能用尾项彼此接近来判断是否收敛。",
+  "intuition": "收敛把尾项拴在同一目标附近；Cauchy 则直接把所有尾项拴在一起。",
+  "objectives": [
+    "全尾部控制",
+    "证明有界与收敛"
+  ],
+  "body": [
+    {
+      "title": "全尾部控制",
+      "text": "Cauchy 条件同时约束任意两个足够晚的指标，不是只比较相邻两项。调和部分和相邻差趋零却仍发散。"
+    },
+    {
+      "title": "证明有界与收敛",
+      "text": "误差取一，尾部落在某个固定项附近，故全列有界。再用 Bolzano–Weierstrass 选收敛子列，Cauchy 条件把其他尾项也拉向同一极限。"
+    },
+    {
+      "title": "辨认数系条件",
+      "text": "在有理数中，逼近平方根二的有理 Cauchy 列没有有理极限。实数的完备性把 Cauchy 变成了收敛。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "在实数中，数列收敛当且仅当它是 Cauchy 列。",
+    "latex": "\\forall\\varepsilon>0\\ \\exists N\\ \\forall m,n\\ge N:\\ |a_m-a_n|<\\varepsilon",
+    "conditions": [
+      "此等价要求数系完备。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "收敛时将两个尾项误差各分一半。",
+      "latex": "|a_m-a_n|\\le|a_m-L|+|a_n-L|<\\varepsilon"
+    },
+    {
+      "text": "反向先由 Cauchy 推有界，再选收敛子列。",
+      "latex": "a_{n_k}\\to L"
+    },
+    {
+      "text": "对任意尾项选更晚的好子列项，分配误差。",
+      "latex": "|a_n-L|\\le|a_n-a_{n_k}|+|a_{n_k}-L|<\\varepsilon"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "倒数 Cauchy",
+      "problem": "不使用已知极限证明 $1/n$ 是 Cauchy。",
+      "steps": [
+        "对 $m,n\\ge N$，$|1/m-1/n|\\le1/N$。",
+        "选 $N>1/\\varepsilon$。"
+      ],
+      "answer": "全部尾项满足要求。"
+    },
+    {
+      "title": "邻项差不够",
+      "problem": "调和部分和为何不是 Cauchy？",
+      "steps": [
+        "从指标 $N$ 到 $2N$ 的新增 $N$ 项，每项至少 $1/(2N)$。",
+        "两部分和之差至少二分之一。"
+      ],
+      "answer": "固定大小的尾部差始终存在。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "相邻差趋零能推出 Cauchy 吗？",
+      "hint": "调和部分和反例。",
+      "solution": [
+        "不能控制任意远的两尾项。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-cauchy-q1"
+    },
+    {
+      "problem": "实数中的 Cauchy 列是否有界？",
+      "hint": "误差取一并合并有限前缀。",
+      "solution": [
+        "尾部在一个固定点附近，前缀有限。"
+      ],
+      "answer": "有界。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-cauchy-q2"
+    },
+    {
+      "problem": "Cauchy 定义是否需要预先写出极限？",
+      "hint": "只比较两项。",
+      "solution": [
+        "定义没有目标极限。"
+      ],
+      "answer": "不需要。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-cauchy-q3"
+    },
+    {
+      "id": "ra-cauchy-q4",
+      "problem": "证明任意实数 Cauchy 列有界。",
+      "hint": "先把尾部控制在一个固定项周围。",
+      "solution": [
+        "在误差一处取截断 $N$，使 $m,n\\ge N$ 时 $|a_m-a_n|<1$。",
+        "固定 $n=N$，得到尾部 $|a_m|\\le|a_N|+1$。",
+        "再将有限前缀绝对值与 $|a_N|+1$ 取最大值，即得全列的界。"
+      ],
+      "answer": "再将有限前缀绝对值与 $|a_N|+1$ 取最大值，即得全列的界。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-cauchy-m1",
+        "ra-cauchy-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "Cauchy 比较哪些指标？",
+    "choices": [
+      "仅相邻",
+      "任意两个足够晚的指标",
+      "仅偶数指标"
+    ],
+    "correctIndex": 1,
+    "explanation": "这是它比相邻差趋零更强的地方。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-cauchy-m1",
+      "claim": "邻项很近就不会走远",
+      "correction": "很多小差可以累积成固定距离。"
+    },
+    {
+      "id": "ra-cauchy-m2",
+      "claim": "有理数中的 Cauchy 也一定有有理极限",
+      "correction": "有理数不完备。"
+    }
+  ],
+  "prerequisites": [
+    "ra-subsequences",
+    "ra-limit-algebra"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ra-cauchy-m1",
+    "ra-cauchy-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-cauchy",
+    "prediction": "比较倒数尾部与调和部分和的倍增区间，哪种差能统一缩小？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "收敛把尾项拴在同一目标附近；Cauchy 则直接把所有尾项拴在一起。 很多小差可以累积成固定距离。",
+    "steps": [
+      {
+        "title": "第一尾项指标：1",
+        "instruction": "将第一尾项指标设为 $1$。比较相隔倍增指标的两尾项，判断差值能否趋零。",
+        "observation": "两尾项之差 $0.5$；解析控制：小于 1。",
+        "preset": {
+          "a": 0,
+          "n": 1
+        }
+      },
+      {
+        "title": "第一尾项指标：40",
+        "instruction": "将第一尾项指标设为 $40$。比较相隔倍增指标的两尾项，判断差值能否趋零。",
+        "observation": "两尾项之差 $0.0125$；解析控制：小于 0.025。",
+        "preset": {
+          "a": 0,
+          "n": 40
+        }
+      },
+      {
+        "title": "第一尾项指标：80",
+        "instruction": "将第一尾项指标设为 $80$。比较相隔倍增指标的两尾项，判断差值能否趋零。",
+        "observation": "两尾项之差 $0.00625$；解析控制：小于 0.0125。",
+        "preset": {
+          "a": 0,
+          "n": 80
+        }
+      }
+    ]
+  }
+}

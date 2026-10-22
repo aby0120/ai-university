@@ -41,7 +41,7 @@ test("third volume has an entire linked course with independent review and exam 
       !sectionPrompts.has(q.problem),
       "reviews must transfer, not repeat section questions verbatim",
     );
-  assert.equal(new Set(libraryLessons.map((l) => l.id)).size, 305);
+  assert.equal(new Set(libraryLessons.map((l) => l.id)).size, 345);
   for (const l of third.allLessons) {
     assert.notEqual(l.teaching.explain, l.intuition);
     validateGuidance(l);

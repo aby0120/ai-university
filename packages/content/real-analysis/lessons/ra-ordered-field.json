@@ -1,0 +1,199 @@
+{
+  "id": "ra-ordered-field",
+  "chapterId": "ra-reals",
+  "number": "1.1",
+  "title": "有序域与实数运算",
+  "subtitle": "实数允许加减乘除和大小比较，但除法、开方和取倒数都有条件。",
+  "concept": "实数允许加减乘除和大小比较，但除法、开方和取倒数都有条件。",
+  "intuition": "运算规则不是靠图上几个点成立，而是从域公理和序的兼容性推出。",
+  "objectives": [
+    "从公理推结论",
+    "处理不等式"
+  ],
+  "body": [
+    {
+      "title": "从公理推结论",
+      "text": "本卷以实数是完备有序域为起点，不从小数构造实数。域公理保证加乘的结合、交换、分配及非零数的逆元。"
+    },
+    {
+      "title": "处理不等式",
+      "text": "两边加同一个数保持顺序；乘正数保持顺序，乘负数反向。平方非负由正负两种情况推出。"
+    },
+    {
+      "title": "辨认数系差别",
+      "text": "有理数也构成有序域，但缺少某些有上界集合的最小上界。完备性才是后续极限定理的关键额外条件。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "有序域的正数加法和乘法与序相容。",
+    "latex": "a<b,\\ c>0\\implies ac<bc",
+    "conditions": [
+      "除法只对非零除数定义。",
+      "实数序是全序，且与加乘相容。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "负一不等于零，平方为一。",
+      "latex": "(-1)^2=1>0"
+    },
+    {
+      "text": "若两数相差正数。",
+      "latex": "b-a>0"
+    },
+    {
+      "text": "乘正数后的差仍正；乘负数后改写为负的正数。",
+      "latex": "c(b-a)>0\\ (c>0),\\quad c(b-a)<0\\ (c<0)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "负数乘法",
+      "problem": "解不等式负二乘一个实数小于六。",
+      "steps": [
+        "$-2x<6$，除以负二必须反向。",
+        "$x>-3$；取零验算确实满足。"
+      ],
+      "answer": "$x>-3$。"
+    },
+    {
+      "title": "倒数的次序",
+      "problem": "$0<a<b$ 时比较倒数。",
+      "steps": [
+        "$ab>0$，可将 $a<b$ 同除以 $ab$。",
+        "得到 $1/b<1/a$。"
+      ],
+      "answer": "$0<1/b<1/a$。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$x^2<0$ 有实数解吗？",
+      "hint": "分别考虑正、负、零。",
+      "solution": [
+        "任意实数的平方非负。"
+      ],
+      "answer": "没有。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-ordered-field-q1"
+    },
+    {
+      "problem": "两边同时乘未知符号的数能直接保留不等号吗？",
+      "hint": "需要知道符号。",
+      "solution": [
+        "正、负、零三类后果不同。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-ordered-field-q2"
+    },
+    {
+      "problem": "有理数缺少的是除法规则吗？",
+      "hint": "非零有理数倒数仍有理。",
+      "solution": [
+        "缺少完备性，而非域运算。"
+      ],
+      "answer": "不是。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-ordered-field-q3"
+    },
+    {
+      "id": "ra-ordered-field-q4",
+      "problem": "证明：若 $0<a<b$，则 $1/b<1/a$。",
+      "hint": "先判断分母乘积的符号。",
+      "solution": [
+        "$ab>0$，故可以同乘正数 $1/(ab)$ 而不改变不等号。",
+        "由 $a<b$ 得 $a/(ab)<b/(ab)$。",
+        "约分即得 $1/b<1/a$；若不先检查正性，这一步不能直接做。"
+      ],
+      "answer": "约分即得 $1/b<1/a$；若不先检查正性，这一步不能直接做。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-ordered-field-m1",
+        "ra-ordered-field-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "乘负数时不等号怎样？",
+    "choices": [
+      "不变",
+      "反向",
+      "变成等号"
+    ],
+    "correctIndex": 1,
+    "explanation": "差值被乘成负数。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-ordered-field-m1",
+      "claim": "平方根可不看定义域",
+      "correction": "实数平方根要求被开方数非负。"
+    },
+    {
+      "id": "ra-ordered-field-m2",
+      "claim": "有序域自动完备",
+      "correction": "有理数就是反例。"
+    }
+  ],
+  "prerequisites": [
+    "dm-direct-proof",
+    "dm-contradiction"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ra-ordered-field-m1",
+    "ra-ordered-field-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-ordered-field",
+    "prediction": "改变乘数符号，两个数的次序怎样变化？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "运算规则不是靠图上几个点成立，而是从域公理和序的兼容性推出。 实数平方根要求被开方数非负。",
+    "steps": [
+      {
+        "title": "乘数：-3",
+        "instruction": "将乘数设为 $-3$。比较乘法前后两点的左右次序。",
+        "observation": "乘数 $-3$；结果次序：反向。",
+        "preset": {
+          "a": 2,
+          "b": -3
+        }
+      },
+      {
+        "title": "乘数：0",
+        "instruction": "将乘数设为 $0$。比较乘法前后两点的左右次序。",
+        "observation": "乘数 $0$；结果次序：两者相等。",
+        "preset": {
+          "a": 2,
+          "b": 0
+        }
+      },
+      {
+        "title": "乘数：3",
+        "instruction": "将乘数设为 $3$。比较乘法前后两点的左右次序。",
+        "observation": "乘数 $3$；结果次序：保持。",
+        "preset": {
+          "a": 2,
+          "b": 3
+        }
+      }
+    ]
+  }
+}

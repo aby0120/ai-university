@@ -1,0 +1,198 @@
+{
+  "id": "ra-integrability",
+  "chapterId": "ra-integration",
+  "number": "7.2",
+  "title": "Darboux 可积判据",
+  "subtitle": "能为任意误差找到一份分割，让上和与下和的差小于误差，才叫可积。",
+  "concept": "能为任意误差找到一份分割，让上和与下和的差小于误差，才叫可积。",
+  "intuition": "关键是有办法把总不确定面积压到任意小，而不是某一次差已经看着不大。",
+  "objectives": [
+    "定义上下积分",
+    "证明等价判据"
+  ],
+  "body": [
+    {
+      "title": "定义上下积分",
+      "text": "下积分是全部下和的上确界，上积分是全部上和的下确界。二者相等时称 Riemann 可积，公共值为积分。"
+    },
+    {
+      "title": "证明等价判据",
+      "text": "若有小间隙分割，上下积分之间更小；反向从上下和分别逼近共同积分，再取共同细分，获得同一分割上的小间隙。"
+    },
+    {
+      "title": "反驳不可积",
+      "text": "若能证明每份分割的间隙都至少某个固定正数，就无法通过判据。稠密零一振荡函数在单位区间的间隙始终为一。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "本卷使用与 Riemann 定义等价的 Darboux 构造。",
+    "latex": "f\\text{ 可积}\\iff\\forall\\varepsilon>0\\ \\exists P:\\ U(f,P)-L(f,P)<\\varepsilon",
+    "conditions": [
+      "函数有界且定义在固定闭有界区间。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "小分割间隙控制上下积分。",
+      "latex": "0\\le\\overline I-\\underline I\\le U(f,P)-L(f,P)"
+    },
+    {
+      "text": "若上下积分相等，分别找逼近它们的和。",
+      "latex": "U(f,P_1)<I+\\varepsilon/2,\\quad L(f,P_2)>I-\\varepsilon/2"
+    },
+    {
+      "text": "共同细分同时改善两边。",
+      "latex": "P=P_1\\cup P_2\\implies U(f,P)-L(f,P)<\\varepsilon"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "平方间隙",
+      "problem": "平方函数在零到一等分 $n$ 块，上下和间隙多少？",
+      "steps": [
+        "每块上下高度差为 $(i/n)^2-((i-1)/n)^2$。",
+        "乘共同宽度并望远镜相消，总差为倒数。"
+      ],
+      "answer": "$1/n$。"
+    },
+    {
+      "title": "Dirichlet 反例",
+      "problem": "有理一、无理零函数在零到一可积吗？",
+      "steps": [
+        "任意分割上和一、下和零。",
+        "间隙不能小于二分之一。"
+      ],
+      "answer": "不可 Riemann 积分。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "可积要求所有分割的间隙都很小吗？",
+      "hint": "判据是存在合适分割。",
+      "solution": [
+        "对每个误差存在一份即可。"
+      ],
+      "answer": "不是。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-integrability-q1"
+    },
+    {
+      "problem": "某次间隙为十分之一就证明可积吗？",
+      "hint": "还需任意小误差。",
+      "solution": [
+        "不能只停在固定误差。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-integrability-q2"
+    },
+    {
+      "problem": "平方等分二十块的间隙？",
+      "hint": "倒数公式。",
+      "solution": [
+        "$1/20=0.05$。"
+      ],
+      "answer": "$0.05$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.05,
+      "id": "ra-integrability-q3"
+    },
+    {
+      "id": "ra-integrability-q4",
+      "problem": "证明有理点取一、无理点取零的函数在 $[0,1]$ 不 Riemann 可积。",
+      "hint": "每个正长度小区间都同时包含有理数和无理数。",
+      "solution": [
+        "任意分割小区间都具有上确界一和下确界零。",
+        "因此不论分割多细，上和总为一、下和总为零。",
+        "间隙恒为一，不可能小于误差 $1/2$，故不满足 Darboux 可积判据。"
+      ],
+      "answer": "间隙恒为一，不可能小于误差 $1/2$，故不满足 Darboux 可积判据。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-integrability-m1",
+        "ra-integrability-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "可积判据中的量词顺序？",
+    "choices": [
+      "存在一个误差对所有分割",
+      "每个误差有一份分割",
+      "每个分割有任意目标值"
+    ],
+    "correctIndex": 1,
+    "explanation": "分割可依赖误差。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-integrability-m1",
+      "claim": "一张细图已足够证明可积",
+      "correction": "要给出任意误差的构造。"
+    },
+    {
+      "id": "ra-integrability-m2",
+      "claim": "所有不连续函数都不可积",
+      "correction": "有限跳跃等许多不连续函数仍可积。"
+    }
+  ],
+  "prerequisites": [
+    "ra-darboux-sums"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ra-integrability-m1",
+    "ra-integrability-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-integrability",
+    "prediction": "比较平方、阶跃和稠密振荡，哪些间隙能真正趋零？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "关键是有办法把总不确定面积压到任意小，而不是某一次差已经看着不大。 要给出任意误差的构造。",
+    "steps": [
+      {
+        "title": "等分块数：1",
+        "instruction": "将等分块数设为 $1$。比较上下和与间隙；更换案例，检查细分是否能消除间隙。",
+        "observation": "下和 $0$；上和 $1$；间隙 $1$；积分 $0.3333333$。",
+        "preset": {
+          "a": 0,
+          "n": 1
+        }
+      },
+      {
+        "title": "等分块数：20",
+        "instruction": "将等分块数设为 $20$。比较上下和与间隙；更换案例，检查细分是否能消除间隙。",
+        "observation": "下和 $0.30875$；上和 $0.35875$；间隙 $0.05$；积分 $0.3333333$。",
+        "preset": {
+          "a": 0,
+          "n": 20
+        }
+      },
+      {
+        "title": "等分块数：40",
+        "instruction": "将等分块数设为 $40$。比较上下和与间隙；更换案例，检查细分是否能消除间隙。",
+        "observation": "下和 $0.3209375$；上和 $0.3459375$；间隙 $0.025$；积分 $0.3333333$。",
+        "preset": {
+          "a": 0,
+          "n": 40
+        }
+      }
+    ]
+  }
+}

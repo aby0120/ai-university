@@ -1,0 +1,200 @@
+{
+  "id": "ra-function-limit",
+  "chapterId": "ra-continuity",
+  "number": "5.1",
+  "title": "函数极限与连续",
+  "subtitle": "函数极限控制附近的输入，连续再要求极限等于当前函数值。",
+  "concept": "函数极限控制附近的输入，连续再要求极限等于当前函数值。",
+  "intuition": "先给输出误差，再选输入半径；极限通常不检查中心点，连续必须检查。",
+  "objectives": [
+    "指定聚点与定义域",
+    "区分极限与函数值"
+  ],
+  "body": [
+    {
+      "title": "指定聚点与定义域",
+      "text": "函数极限在定义域的聚点讨论，输入需属于定义域且不等于中心。相对端点采用定义域内的单侧靠近。"
+    },
+    {
+      "title": "区分极限与函数值",
+      "text": "只改变中心一个值，不会改变去心极限，却可能破坏连续。若点是定义域孤立点，函数在该点自动连续。"
+    },
+    {
+      "title": "从目标倒推半径",
+      "text": "平方函数在固定中心的误差可分解为输入差乘幅度因子。先把半径压到一以内，再给出足够小的统一估计。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "函数在定义域内某点连续，指全部足够近的定义域输入的输出趋近该点函数值。",
+    "latex": "\\forall\\varepsilon>0\\ \\exists\\delta>0:\\ x\\in D,\\ |x-a|<\\delta\\implies|f(x)-f(a)|<\\varepsilon",
+    "conditions": [
+      "极限定义还要求中心是定义域聚点，并使用去心邻域。",
+      "连续定义中中心属于定义域。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先限制输入在中心半径一内。",
+      "latex": "|x-a|<1\\implies|x+a|\\le2|a|+1"
+    },
+    {
+      "text": "分解平方误差。",
+      "latex": "|x^2-a^2|=|x-a||x+a|"
+    },
+    {
+      "text": "选择能满足两个要求的半径。",
+      "latex": "\\delta=\\min\\left(1,\\frac{\\varepsilon}{2|a|+1}\\right)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "补错中心值",
+      "problem": "$f(x)=x$ 对非零输入，$f(0)=1$。零处极限和连续性？",
+      "steps": [
+        "去心输入仍按恒等函数趋零。",
+        "中心值却为一。"
+      ],
+      "answer": "极限零，不连续。"
+    },
+    {
+      "title": "线性半径",
+      "problem": "$f(x)=3x+1$，输出误差小于 $0.06$ 可取哪个输入半径？",
+      "steps": [
+        "$|f(x)-f(a)|=3|x-a|$。",
+        "取半径零点零二，输入严格在内时输出也严格在界内。"
+      ],
+      "answer": "$0.02$。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "改变一个点的值能改变该点去心极限吗？",
+      "hint": "极限不检查中心输入。",
+      "solution": [
+        "定义域其他位置没变，极限不变。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-function-limit-q1"
+    },
+    {
+      "problem": "孤立点连续是否要求附近还有别的输入？",
+      "hint": "可选半径只含自身。",
+      "solution": [
+        "条件自动满足。"
+      ],
+      "answer": "不要求。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-function-limit-q2"
+    },
+    {
+      "problem": "$f(x)=x^2$ 在中心一，按本节保守公式，误差 $0.3$ 可取半径？",
+      "hint": "代入两倍中心绝对值加一。",
+      "solution": [
+        "$\\delta=\\min(1,0.3/3)=0.1$。"
+      ],
+      "answer": "$0.1$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.1,
+      "id": "ra-function-limit-q3"
+    },
+    {
+      "id": "ra-function-limit-q4",
+      "problem": "按定义证明 $f(x)=x^2$ 在任意 $a\\in\\mathbb R$ 连续。",
+      "hint": "同时要求输入误差小于一和所需的比例界。",
+      "solution": [
+        "给定 $\\varepsilon>0$，取 $\\delta=\\min(1,\\varepsilon/(2|a|+1))$。",
+        "若 $|x-a|<\\delta$，则 $|x+a|\\le|x-a|+2|a|<2|a|+1$。",
+        "于是 $|x^2-a^2|=|x-a||x+a|<\\delta(2|a|+1)\\le\\varepsilon$。"
+      ],
+      "answer": "于是 $|x^2-a^2|=|x-a||x+a|<\\delta(2|a|+1)\\le\\varepsilon$。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-function-limit-m1",
+        "ra-function-limit-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "去心极限为何不决定中心值？",
+    "choices": [
+      "中心点未纳入输入条件",
+      "函数没有定义域",
+      "误差必须固定"
+    ],
+    "correctIndex": 0,
+    "explanation": "连续才将极限与函数值相连。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-function-limit-m1",
+      "claim": "有极限就一定连续",
+      "correction": "还要中心有定义且值相同。"
+    },
+    {
+      "id": "ra-function-limit-m2",
+      "claim": "半径可根据随后每个输入单独选",
+      "correction": "必须先选半径控制全部邻近输入。"
+    }
+  ],
+  "prerequisites": [
+    "ra-limit-algebra",
+    "ra-absolute-value"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ra-function-limit-m1",
+    "ra-function-limit-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-function-limit",
+    "prediction": "移动中心与输出误差，保守半径如何保证整段输入都合格？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "先给输出误差，再选输入半径；极限通常不检查中心点，连续必须检查。 还要中心有定义且值相同。",
+    "steps": [
+      {
+        "title": "输出误差：1",
+        "instruction": "将输出误差设为 $1$。比较输入半径与输出误差带，检查保证半径的解析估计。",
+        "observation": "保证半径 $0.3333333$；闭边界最坏误差 $0.7777778$。",
+        "preset": {
+          "a": 1,
+          "eps": 1
+        }
+      },
+      {
+        "title": "输出误差：0.505",
+        "instruction": "将输出误差设为 $0.505$。比较输入半径与输出误差带，检查保证半径的解析估计。",
+        "observation": "保证半径 $0.1683333$；闭边界最坏误差 $0.3650028$。",
+        "preset": {
+          "a": 1,
+          "eps": 0.505
+        }
+      },
+      {
+        "title": "输出误差：0.01",
+        "instruction": "将输出误差设为 $0.01$。比较输入半径与输出误差带，检查保证半径的解析估计。",
+        "observation": "保证半径 $0.003333333$；闭边界最坏误差 $0.006677778$。",
+        "preset": {
+          "a": 1,
+          "eps": 0.01
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "id": "ra-compactness",
+  "chapterId": "ra-topology",
+  "number": "4.3",
+  "title": "紧致与 Heine–Borel 定理",
+  "subtitle": "实线中，紧致恰好等于闭且有界；它把无限局部覆盖压成有限个。",
+  "concept": "实线中，紧致恰好等于闭且有界；它把无限局部覆盖压成有限个。",
+  "intuition": "闭有界不是靠名称方便，而是能阻止点逃向无穷或漏掉边界极限。",
+  "objectives": [
+    "定义有限子覆盖",
+    "证明紧致推出闭有界"
+  ],
+  "body": [
+    {
+      "title": "定义有限子覆盖",
+      "text": "每个点被至少一个开集覆盖。紧致要求不管选了怎样的开覆盖，都能从中挑有限个继续覆盖全体。"
+    },
+    {
+      "title": "证明紧致推出闭有界",
+      "text": "整数半径开区间覆盖实线，有限子覆盖迫使集合有界。对集合外一点，用各成员与该点距离构造邻域，再取有限子覆盖，可得到集合外点的安全邻域，故集合闭。"
+    },
+    {
+      "title": "证明闭区间紧致",
+      "text": "若闭区间某开覆盖无有限子覆盖，二分后保留仍无法有限覆盖的一半。嵌套区间长度趋零，其公共点所属开集最终覆盖整个小区间，矛盾。闭子集继承紧致。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "Heine–Borel 针对实线的通常拓扑。",
+    "latex": "K\\subseteq\\mathbb R\\text{ 紧致}\\iff K\\text{ 闭且有界}",
+    "conditions": [
+      "“闭且有界等于紧致”不能无条件搬到任意度量空间。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "反设闭区间有无有限子覆盖的开覆盖，逐次二分。",
+      "latex": "I_{n+1}\\subseteq I_n,\\quad |I_n|\\to0"
+    },
+    {
+      "text": "公共点属于某个覆盖开集，故有正半径邻域。",
+      "latex": "x\\in U,\\quad (x-r,x+r)\\subseteq U"
+    },
+    {
+      "text": "足够小的保留区间完全落在该开集内，构成有限覆盖，矛盾。",
+      "latex": "|I_n|<r\\implies I_n\\subseteq U"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "开区间不紧致",
+      "problem": "$K=(0,1)$，用开覆盖展示不紧致。",
+      "steps": [
+        "集合 $(1/n,1)$ 对 $n\\ge2$ 覆盖它。",
+        "有限多个中最小左端仍正，漏掉更靠近零的点。"
+      ],
+      "answer": "没有有限子覆盖。"
+    },
+    {
+      "title": "有限集合",
+      "problem": "有限实数集合为什么紧致？",
+      "steps": [
+        "对每个点选一个覆盖它的开集。",
+        "点只有有限个，选出的开集也有限。"
+      ],
+      "answer": "紧致。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "闭区间是否紧致？",
+      "hint": "Heine–Borel。",
+      "solution": [
+        "闭且有界。"
+      ],
+      "answer": "是。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-compactness-q1"
+    },
+    {
+      "problem": "整数集合在实线闭，却紧致吗？",
+      "hint": "还要检查有界。",
+      "solution": [
+        "无界，所以不紧致。"
+      ],
+      "answer": "不紧致。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-compactness-q2"
+    },
+    {
+      "problem": "紧致等于每种覆盖本身有限吗？",
+      "hint": "允许原覆盖无限。",
+      "solution": [
+        "只要求可选有限子覆盖。"
+      ],
+      "answer": "不是。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-compactness-q3"
+    },
+    {
+      "id": "ra-compactness-q4",
+      "problem": "证明紧致实数集 $K$ 有界。",
+      "hint": "使用一个固定的可数开覆盖。",
+      "solution": [
+        "开区间族 $(-n,n)$，$n\\ge1$，覆盖整个实线，当然覆盖 $K$。",
+        "紧致性给有限子覆盖。令所选半径的最大值为 $M$。",
+        "所选开集的并包含在 $(-M,M)$ 中，故 $K\\subseteq(-M,M)$。空集也有界。"
+      ],
+      "answer": "所选开集的并包含在 $(-M,M)$ 中，故 $K\\subseteq(-M,M)$。空集也有界。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-compactness-m1",
+        "ra-compactness-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "紧致对开覆盖提出哪种要求？",
+    "choices": [
+      "原覆盖必须有限",
+      "存在有限子覆盖",
+      "开集个数最多三个"
+    ],
+    "correctIndex": 1,
+    "explanation": "允许先给出任意大的覆盖。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-compactness-m1",
+      "claim": "有界即可紧致",
+      "correction": "还需闭，开区间是反例。"
+    },
+    {
+      "id": "ra-compactness-m2",
+      "claim": "一张有限网格图可验证所有开覆盖",
+      "correction": "定义量化全部开覆盖，有限图只能说明选例。"
+    }
+  ],
+  "prerequisites": [
+    "ra-monotone",
+    "ra-open-closed"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ra-compactness-m1",
+    "ra-compactness-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-compactness",
+    "prediction": "观察开区间覆盖留下的端点缺口，有限个集合为什么始终不够？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "闭有界不是靠名称方便，而是能阻止点逃向无穷或漏掉边界极限。 还需闭，开区间是反例。",
+    "steps": [
+      {
+        "title": "保留覆盖集数：1",
+        "instruction": "将保留覆盖集数设为 $1$。找出有限覆盖仍漏掉的那个点。",
+        "observation": "有限族最小左端 $0.5$；一个确切漏点 $0.25$。",
+        "preset": {
+          "n": 1
+        }
+      },
+      {
+        "title": "保留覆盖集数：10",
+        "instruction": "将保留覆盖集数设为 $10$。找出有限覆盖仍漏掉的那个点。",
+        "observation": "有限族最小左端 $0.09090909$；一个确切漏点 $0.04545455$。",
+        "preset": {
+          "n": 10
+        }
+      },
+      {
+        "title": "保留覆盖集数：20",
+        "instruction": "将保留覆盖集数设为 $20$。找出有限覆盖仍漏掉的那个点。",
+        "observation": "有限族最小左端 $0.04761905$；一个确切漏点 $0.02380952$。",
+        "preset": {
+          "n": 20
+        }
+      }
+    ]
+  }
+}

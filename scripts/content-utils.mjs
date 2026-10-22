@@ -74,6 +74,8 @@ const book6 = JSON.parse(fs.readFileSync(root+'/packages/content/probability-sta
 contentBooks.push({book:book6,allLessons:book6.lessonIds.map(id=>JSON.parse(fs.readFileSync(root+'/packages/content/probability-statistics/lessons/'+id+'.json'))),extra:JSON.parse(fs.readFileSync(root+'/packages/content/probability-statistics/supplements.json')),directory:'packages/content/probability-statistics/lessons',filename:'Probability-Statistics.md',printFile:'probability-statistics.html'});
 const book7 = JSON.parse(fs.readFileSync(root+'/packages/content/discrete-math/book.json'));
 contentBooks.push({book:book7,allLessons:book7.lessonIds.map(id=>JSON.parse(fs.readFileSync(root+'/packages/content/discrete-math/lessons/'+id+'.json'))),extra:JSON.parse(fs.readFileSync(root+'/packages/content/discrete-math/supplements.json')),directory:'packages/content/discrete-math/lessons',filename:'Discrete-Mathematics.md',printFile:'discrete-math.html'});
+const book8=JSON.parse(fs.readFileSync(root+'/packages/content/real-analysis/book.json'));
+contentBooks.push({book:book8,allLessons:book8.lessonIds.map(id=>JSON.parse(fs.readFileSync(root+'/packages/content/real-analysis/lessons/'+id+'.json'))),extra:JSON.parse(fs.readFileSync(root+'/packages/content/real-analysis/supplements.json')),directory:'packages/content/real-analysis/lessons',filename:'Real-Analysis.md',printFile:'real-analysis.html'});
 export const libraryLessons = contentBooks.flatMap((c) => c.allLessons);
 export function walkStrings(value, fn, key = "") {
   if (typeof value === "string") fn(value, key);

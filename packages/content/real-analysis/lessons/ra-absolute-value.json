@@ -1,0 +1,197 @@
+{
+  "id": "ra-absolute-value",
+  "chapterId": "ra-reals",
+  "number": "1.4",
+  "title": "绝对值与误差估计",
+  "subtitle": "绝对值把“离多远”写成可相加控制的量。",
+  "concept": "绝对值把“离多远”写成可相加控制的量。",
+  "intuition": "中间绕一下也许更长，但能把一个难估计的误差拆成两个容易估计的误差。",
+  "objectives": [
+    "翻译邻域",
+    "使用三角不等式"
+  ],
+  "body": [
+    {
+      "title": "翻译邻域",
+      "text": "绝对值小于正误差，等价于落在中心左右的开区间。严格小于不能悄悄改成小于等于。"
+    },
+    {
+      "title": "使用三角不等式",
+      "text": "连接两个误差的共同中间量，再分别给预算，是极限和连续性证明中反复使用的方法。"
+    },
+    {
+      "title": "使用反三角不等式",
+      "text": "两个距离的差，不会超过两个点本身的距离。它保证绝对值函数连续，而且误差放大倍数不超过一。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "实数绝对值满足三角与反三角不等式。",
+    "latex": "|x+y|\\le|x|+|y|,\\qquad\\bigl||x|-|y|\\bigr|\\le|x-y|",
+    "conditions": [
+      "误差半径取正数。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "由绝对值定义给出双边界。",
+      "latex": "-|x|-|y|\\le x+y\\le|x|+|y|"
+    },
+    {
+      "text": "得到三角不等式。",
+      "latex": "|x+y|\\le|x|+|y|"
+    },
+    {
+      "text": "写成差加中间量，并交换两者。",
+      "latex": "|x|\\le|x-y|+|y|\\implies\\bigl||x|-|y|\\bigr|\\le|x-y|"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "拆误差",
+      "problem": "若 $|x-a|<0.02,|y-b|<0.03$，和的误差多少？",
+      "steps": [
+        "$|(x+y)-(a+b)|\\le|x-a|+|y-b|$。",
+        "两项预算相加严格小于零点零五。"
+      ],
+      "answer": "小于 $0.05$。"
+    },
+    {
+      "title": "乘积需有界",
+      "problem": "$x_n\\to a,y_n\\to b$ 时，为什么乘积证明还要控制大小？",
+      "steps": [
+        "$x_ny_n-ab=x_n(y_n-b)+b(x_n-a)$。",
+        "第一项误差会被 $|x_n|$ 放大；收敛数列有界才能统一估计。"
+      ],
+      "answer": "需要统一的幅度上界。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$|x-2|<1/2$ 对应哪个区间？",
+      "hint": "中心加减半径。",
+      "solution": [
+        "$3/2<x<5/2$。"
+      ],
+      "answer": "$(3/2,5/2)$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-absolute-value-q1"
+    },
+    {
+      "problem": "三角不等式一定是等号吗？",
+      "hint": "取符号相反的数。",
+      "solution": [
+        "$|1+(-1)|=0<2$。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-absolute-value-q2"
+    },
+    {
+      "problem": "绝对值的变化会超过输入变化吗？",
+      "hint": "用反三角不等式。",
+      "solution": [
+        "$||x|-|y||\\le|x-y|$。"
+      ],
+      "answer": "不会。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-absolute-value-q3"
+    },
+    {
+      "id": "ra-absolute-value-q4",
+      "problem": "证明若 $|x-a|<\\delta$ 且 $|y-b|<\\delta$，则 $|(x+y)-(a+b)|<2\\delta$。",
+      "hint": "先把总误差拆成两段。",
+      "solution": [
+        "写成 $(x+y)-(a+b)=(x-a)+(y-b)$。",
+        "三角不等式给出绝对值不超过 $|x-a|+|y-b|$。",
+        "两项各小于 $\\delta$，总误差严格小于 $2\\delta$。"
+      ],
+      "answer": "两项各小于 $\\delta$，总误差严格小于 $2\\delta$。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-absolute-value-m1",
+        "ra-absolute-value-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "中间量拆分误差的依据是什么？",
+    "choices": [
+      "三角不等式",
+      "求导法则",
+      "整数归纳"
+    ],
+    "correctIndex": 0,
+    "explanation": "距离可用绕行的两段之和控制。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-absolute-value-m1",
+      "claim": "平方后可不看符号开根",
+      "correction": "需要使用非负平方根与绝对值。"
+    },
+    {
+      "id": "ra-absolute-value-m2",
+      "claim": "乘积误差只需两项误差相加",
+      "correction": "还包含幅度因子。"
+    }
+  ],
+  "prerequisites": [
+    "ra-ordered-field"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ra-absolute-value-m1",
+    "ra-absolute-value-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-absolute-value",
+    "prediction": "移动两个点，直接距离与经过原点的距离如何比较？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "中间绕一下也许更长，但能把一个难估计的误差拆成两个容易估计的误差。 需要使用非负平方根与绝对值。",
+    "steps": [
+      {
+        "title": "甲坐标：-3",
+        "instruction": "将甲坐标设为 $-3$。比较直达距离与经原点绕行的总长度。",
+        "observation": "直接距离 $2$；经原点长度 $4$。",
+        "preset": {
+          "a": -3,
+          "b": -1
+        }
+      },
+      {
+        "title": "甲坐标：0",
+        "instruction": "将甲坐标设为 $0$。比较直达距离与经原点绕行的总长度。",
+        "observation": "直接距离 $1$；经原点长度 $1$。",
+        "preset": {
+          "a": 0,
+          "b": -1
+        }
+      },
+      {
+        "title": "甲坐标：3",
+        "instruction": "将甲坐标设为 $3$。比较直达距离与经原点绕行的总长度。",
+        "observation": "直接距离 $4$；经原点长度 $4$。",
+        "preset": {
+          "a": 3,
+          "b": -1
+        }
+      }
+    ]
+  }
+}

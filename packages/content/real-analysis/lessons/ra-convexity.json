@@ -1,0 +1,198 @@
+{
+  "id": "ra-convexity",
+  "chapterId": "ra-differentiation",
+  "number": "6.5",
+  "title": "凸性、切线与二阶导数",
+  "subtitle": "凸函数的图像在两点连线下方；可导时也在每条切线上方。",
+  "concept": "凸函数的图像在两点连线下方；可导时也在每条切线上方。",
+  "intuition": "割线斜率随位置不下降，把几何弯曲变成了可比较的数量。",
+  "objectives": [
+    "从线段定义凸",
+    "联系导数单调"
+  ],
+  "body": [
+    {
+      "title": "从线段定义凸",
+      "text": "两点加权平均处的函数值，不超过两输出的同权平均。权重在零到一之间，定义域须是区间。"
+    },
+    {
+      "title": "联系导数单调",
+      "text": "对凸函数比较三点割线，再令相邻点靠近，得到导数非减；反过来导数非减，用中值定理比较割线，推出凸。"
+    },
+    {
+      "title": "用二阶导数作充分判别",
+      "text": "二次可导且二阶导数非负时，一阶导数由中值定理非减，因此函数凸。二阶在个别点为零，不代表那里不严格凸或必是拐点。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "可导凸函数的切线给出全域下界。",
+    "latex": "f((1-t)x+ty)\\le(1-t)f(x)+tf(y),\\quad t\\in[0,1]",
+    "conditions": [
+      "定义域为区间。",
+      "二阶判别需要相应二次可导条件。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "对三个有序点比较相邻割线。",
+      "latex": "\\frac{f(y)-f(x)}{y-x}\\le\\frac{f(z)-f(x)}{z-x}\\le\\frac{f(z)-f(y)}{z-y}"
+    },
+    {
+      "text": "令其中一点靠近，得到切线下界。",
+      "latex": "f(y)\\ge f(x)+f'(x)(y-x)"
+    },
+    {
+      "text": "二阶非负经中值定理推出一阶非减。",
+      "latex": "f''\\ge0\\implies f'\\text{ 非减}\\implies f\\text{ 凸}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "平方凸性",
+      "problem": "直接证明平方函数满足凸定义。",
+      "steps": [
+        "$(1-t)x^2+ty^2-[(1-t)x+ty]^2=t(1-t)(x-y)^2$。",
+        "右边非负。"
+      ],
+      "answer": "凸；两点不同且权重在内部时严格。"
+    },
+    {
+      "title": "零二阶仍可严格凸",
+      "problem": "$x^4$ 在零二阶导数为零，是否妨碍严格凸？",
+      "steps": [
+        "导数 $4x^3$ 严格递增。",
+        "故函数严格凸，零不是拐点。"
+      ],
+      "answer": "不妨碍。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "凸函数图像在割线哪边？",
+      "hint": "定义中加权平均。",
+      "solution": [
+        "在割线下方或线上。"
+      ],
+      "answer": "下方。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-convexity-q1"
+    },
+    {
+      "problem": "可导凸函数图像在切线哪边？",
+      "hint": "切线下界。",
+      "solution": [
+        "在上方或线上。"
+      ],
+      "answer": "上方。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-convexity-q2"
+    },
+    {
+      "problem": "二阶导数等于零一定是拐点吗？",
+      "hint": "四次函数。",
+      "solution": [
+        "可不改变凸性。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-convexity-q3"
+    },
+    {
+      "id": "ra-convexity-q4",
+      "problem": "用切线下界证明任意正数 $x$ 满足 $\\log x\\le x-1$。",
+      "hint": "将凸函数 $-\\log x$ 的切点取在一。",
+      "solution": [
+        "令 $g(x)=-\\log x$，则 $g''(x)=1/x^2>0$，在正半轴凸。",
+        "在一处，$g(1)=0$、$g'(1)=-1$。切线下界给 $-\\log x\\ge-(x-1)$。",
+        "两边乘负一，得到 $\\log x\\le x-1$。对数的基本导数作为微积分先修使用。"
+      ],
+      "answer": "两边乘负一，得到 $\\log x\\le x-1$。对数的基本导数作为微积分先修使用。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-convexity-m1",
+        "ra-convexity-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "二阶非负能保证什么？",
+    "choices": [
+      "凸",
+      "所有点严格凸",
+      "所有点都是极值"
+    ],
+    "correctIndex": 0,
+    "explanation": "严格性还需额外信息。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-convexity-m1",
+      "claim": "凸图像在割线上方",
+      "correction": "方向应相反。"
+    },
+    {
+      "id": "ra-convexity-m2",
+      "claim": "二阶零点就是拐点",
+      "correction": "要检查两侧凸性是否改变。"
+    }
+  ],
+  "prerequisites": [
+    "ra-mean-value"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ra-convexity-m1",
+    "ra-convexity-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-convexity",
+    "prediction": "移动切点，曲线、切线和割线的相对位置怎样体现凸性？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "割线斜率随位置不下降，把几何弯曲变成了可比较的数量。 方向应相反。",
+    "steps": [
+      {
+        "title": "当前输入：-1",
+        "instruction": "将当前输入设为 $-1$。比较函数、下方切线与两点间的上方割线。",
+        "observation": "切线斜率 $-2$；切点到割线高度 $0$。",
+        "preset": {
+          "a": 0,
+          "x": -1
+        }
+      },
+      {
+        "title": "当前输入：0",
+        "instruction": "将当前输入设为 $0$。比较函数、下方切线与两点间的上方割线。",
+        "observation": "切线斜率 $0$；切点到割线高度 $1$。",
+        "preset": {
+          "a": 0,
+          "x": 0
+        }
+      },
+      {
+        "title": "当前输入：1",
+        "instruction": "将当前输入设为 $1$。比较函数、下方切线与两点间的上方割线。",
+        "observation": "切线斜率 $2$；切点到割线高度 $0$。",
+        "preset": {
+          "a": 0,
+          "x": 1
+        }
+      }
+    ]
+  }
+}

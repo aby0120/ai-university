@@ -1,0 +1,199 @@
+{
+  "id": "ra-series-definition",
+  "chapterId": "ra-series",
+  "number": "3.1",
+  "title": "级数就是部分和的极限",
+  "subtitle": "无穷级数是否收敛，要看前若干项之和是否趋于有限实数。",
+  "concept": "无穷级数是否收敛，要看前若干项之和是否趋于有限实数。",
+  "intuition": "项本身变小还不够，累积总量也必须稳定。",
+  "objectives": [
+    "定义部分和",
+    "得到必要条件"
+  ],
+  "body": [
+    {
+      "title": "定义部分和",
+      "text": "先定义有限求和，再讨论部分和数列的极限。级数符号不授权无限次代数运算。"
+    },
+    {
+      "title": "得到必要条件",
+      "text": "若部分和收敛，前后相邻部分和之差就是当前项，因而项必须趋零；逆命题被调和级数否定。"
+    },
+    {
+      "title": "使用级数 Cauchy 判据",
+      "text": "所有足够靠后的有限尾段和都必须小。绝对值放在整个尾段和外，与绝对收敛中的逐项绝对值求和不同。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "级数的收敛定义为部分和数列有有限极限。",
+    "latex": "s_N=\\sum_{n=1}^N a_n,\\quad\\sum_{n=1}^{\\infty}a_n=S\\iff s_N\\to S",
+    "conditions": [
+      "只给有定义的实数项。",
+      "收敛与发散均指部分和行为。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "几何和乘比例后相减。",
+      "latex": "(1-r)\\sum_{k=0}^N r^k=1-r^{N+1}"
+    },
+    {
+      "text": "比例绝对值小于一时幂趋零。",
+      "latex": "|r|<1\\implies r^{N+1}\\to0"
+    },
+    {
+      "text": "得到总和及精确余项。",
+      "latex": "\\sum_{k=0}^{\\infty}r^k=\\frac1{1-r},\\quad\\sum_{k=N+1}^{\\infty}r^k=\\frac{r^{N+1}}{1-r}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "几何和",
+      "problem": "$\\sum_{n=1}^{\\infty}2^{-n}$ 的和？",
+      "steps": [
+        "从指标零开始的总和为二。",
+        "扣去零次幂的一。"
+      ],
+      "answer": "一。"
+    },
+    {
+      "title": "项不趋零",
+      "problem": "$1-1+1-1+\\cdots$ 按普通级数定义收敛吗？",
+      "steps": [
+        "部分和在一与零间切换。",
+        "项本身也不趋零。"
+      ],
+      "answer": "不收敛；其他求和约定不是本卷的普通收敛。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "$\\sum_{k=0}^{\\infty}(1/3)^k$ 的和？",
+      "hint": "套几何和条件。",
+      "solution": [
+        "$1/(1-1/3)=3/2$。"
+      ],
+      "answer": "$3/2$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 1.5,
+      "id": "ra-series-definition-q1"
+    },
+    {
+      "problem": "级数收敛能推出项趋零吗？",
+      "hint": "相邻部分和之差。",
+      "solution": [
+        "两个部分和都趋于同一总和。"
+      ],
+      "answer": "能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-series-definition-q2"
+    },
+    {
+      "problem": "项趋零能推出级数收敛吗？",
+      "hint": "调和级数。",
+      "solution": [
+        "小项仍可累积成无界部分和。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-series-definition-q3"
+    },
+    {
+      "id": "ra-series-definition-q4",
+      "problem": "证明级数收敛必有 $a_n\\to0$，并给出逆命题的反例。",
+      "hint": "把一项写成相邻部分和之差。",
+      "solution": [
+        "令 $S_n=\\sum_{k=1}^n a_k$。若 $S_n\\to S$，则 $a_n=S_n-S_{n-1}\\to S-S=0$。",
+        "逆命题可取 $a_n=1/n$：项趋零。",
+        "但每个倍增块贡献至少 $1/2$，其部分和无上界，所以级数发散。"
+      ],
+      "answer": "但每个倍增块贡献至少 $1/2$，其部分和无上界，所以级数发散。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-series-definition-m1",
+        "ra-series-definition-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "级数收敛研究哪个数列？",
+    "choices": [
+      "原项",
+      "部分和",
+      "项的导数"
+    ],
+    "correctIndex": 1,
+    "explanation": "总累积的有限近似必须稳定。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-series-definition-m1",
+      "claim": "项趋零就是级数收敛",
+      "correction": "仅为必要条件。"
+    },
+    {
+      "id": "ra-series-definition-m2",
+      "claim": "无穷求和可任意照搬有限代数",
+      "correction": "需检查收敛与交换条件。"
+    }
+  ],
+  "prerequisites": [
+    "ra-cauchy"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ra-series-definition-m1",
+    "ra-series-definition-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-series-definition",
+    "prediction": "增加部分和项数，精确几何余项如何控制未显示的尾部？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "项本身变小还不够，累积总量也必须稳定。 仅为必要条件。",
+    "steps": [
+      {
+        "title": "保留项数：1",
+        "instruction": "将保留项数设为 $1$。比较部分和、精确余项和水平总和线。",
+        "observation": "保留项数 $1$；当前部分和 $1$；精确余项 $1$。",
+        "preset": {
+          "a": 0.5,
+          "n": 1
+        }
+      },
+      {
+        "title": "保留项数：20",
+        "instruction": "将保留项数设为 $20$。比较部分和、精确余项和水平总和线。",
+        "observation": "保留项数 $20$；当前部分和 $1.999998$；精确余项 $0.000001907349$。",
+        "preset": {
+          "a": 0.5,
+          "n": 20
+        }
+      },
+      {
+        "title": "保留项数：40",
+        "instruction": "将保留项数设为 $40$。比较部分和、精确余项和水平总和线。",
+        "observation": "保留项数 $40$；当前部分和 $2$；精确余项 $1.818989\\times10^{-12}$。",
+        "preset": {
+          "a": 0.5,
+          "n": 40
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "id": "ra-sequential-continuity",
+  "chapterId": "ra-continuity",
+  "number": "5.2",
+  "title": "用数列检验函数极限",
+  "subtitle": "实数中，所有趋向中心的合法输入列都给同一输出极限，才说明函数极限存在。",
+  "concept": "实数中，所有趋向中心的合法输入列都给同一输出极限，才说明函数极限存在。",
+  "intuition": "一条输入列可以找出反例；一条顺利的输入列却不能证明全部靠近方式都顺利。",
+  "objectives": [
+    "从极限到输入列",
+    "从失败构造坏列"
+  ],
+  "body": [
+    {
+      "title": "从极限到输入列",
+      "text": "给定输出误差，函数极限提供输入半径；输入数列最终进入该半径，所以输出最终进入误差带。"
+    },
+    {
+      "title": "从失败构造坏列",
+      "text": "若极限定义失败，有一个固定输出误差，无论半径多小都能找到违规输入。对倒数半径逐个挑选，组成趋向中心却输出不收敛到目标的列。"
+    },
+    {
+      "title": "判断跳跃",
+      "text": "左右两条趋同一点的输入列若输出极限不同，就否定共同极限。连续性判据允许输入列含中心，而去心极限判据要求排除中心。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "实线函数极限的序列判据对所有合法去心输入列量化。",
+    "latex": "\\lim_{x\\to a}f(x)=L\\iff\\forall x_n\\in D\\setminus\\{a\\},\\ x_n\\to a:\\ f(x_n)\\to L",
+    "conditions": [
+      "中心为定义域聚点。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "否定函数极限的误差陈述。",
+      "latex": "\\exists\\varepsilon_0>0\\ \\forall\\delta>0\\ \\exists x:\\ 0<|x-a|<\\delta,\\ |f(x)-L|\\ge\\varepsilon_0"
+    },
+    {
+      "text": "选择倒数半径对应的违规输入。",
+      "latex": "0<|x_n-a|<1/n"
+    },
+    {
+      "text": "输入趋中心，输出始终违规。",
+      "latex": "x_n\\to a,\\quad|f(x_n)-L|\\ge\\varepsilon_0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "符号跳跃",
+      "problem": "非零输入按正负输出正一或负一，零处有极限吗？",
+      "steps": [
+        "取 $x_n=1/n$，输出恒一。",
+        "取 $y_n=-1/n$，输出恒负一。"
+      ],
+      "answer": "无极限。"
+    },
+    {
+      "title": "稠密跳跃",
+      "problem": "有理输入输出一，无理输入输出零，在任意实数点连续吗？",
+      "steps": [
+        "有理数与无理数都稠密，可分别挑趋向该点的列。",
+        "两条输出列的极限不同。"
+      ],
+      "answer": "处处不连续。"
+    }
+  ],
+  "practice": [
+    {
+      "problem": "一条输入列输出趋正确目标，能证明函数极限吗？",
+      "hint": "需要所有合法列。",
+      "solution": [
+        "还有其他靠近方式未检查。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-sequential-continuity-q1"
+    },
+    {
+      "problem": "反驳某个候选极限需要所有输入列吗？",
+      "hint": "一条坏列已足够。",
+      "solution": [
+        "给一条趋中心但输出不趋目标的列即可。"
+      ],
+      "answer": "不需要。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-sequential-continuity-q2"
+    },
+    {
+      "problem": "去心极限判据能选恒等于中心的列吗？",
+      "hint": "输入排除中心。",
+      "solution": [
+        "不合法。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "id": "ra-sequential-continuity-q3"
+    },
+    {
+      "id": "ra-sequential-continuity-q4",
+      "problem": "用两条趋零的输入列证明：有理点为一、无理点为零的函数在零处没有极限。",
+      "hint": "不要只用一条序列。",
+      "solution": [
+        "取 $x_n=1/n\\in\\mathbb Q$ 与 $y_n=\\sqrt2/n\\notin\\mathbb Q$，二者均趋零且不等于零。",
+        "第一条的函数值恒一，第二条恒零。",
+        "若函数极限存在，序列判据要求两条输出列有同一极限，与一不等于零矛盾。"
+      ],
+      "answer": "若函数极限存在，序列判据要求两条输出列有同一极限，与一不等于零矛盾。",
+      "difficulty": 4,
+      "misconceptionTags": [
+        "ra-sequential-continuity-m1",
+        "ra-sequential-continuity-m2"
+      ]
+    }
+  ],
+  "learningCheck": {
+    "question": "找一条坏输入列的用途？",
+    "choices": [
+      "否定候选极限",
+      "证明所有输入都好",
+      "替代定义域"
+    ],
+    "correctIndex": 0,
+    "explanation": "全称断言可由一个反例否定。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ra-sequential-continuity-m1",
+      "claim": "检验一条直线路径就够",
+      "correction": "一元也有左右和不同输入列。"
+    },
+    {
+      "id": "ra-sequential-continuity-m2",
+      "claim": "坏列的输出误差可以不断缩到零来反驳",
+      "correction": "需有固定正误差持续违规，或输出极限不同。"
+    }
+  ],
+  "prerequisites": [
+    "ra-function-limit",
+    "ra-sequence-limit"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ra-sequential-continuity-m1",
+    "ra-sequential-continuity-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-18100",
+    "lebl-ra"
+  ],
+  "interactiveVisual": {
+    "kind": "analysis",
+    "function": "ra-sequential-continuity",
+    "prediction": "对照从左右靠近的两条输入列，输出能否趋向同一值？",
+    "caption": "有限实例用于检查和解释；一般结论以正文证明及条件为准。"
+  },
+  "teaching": {
+    "explain": "一条输入列可以找出反例；一条顺利的输入列却不能证明全部靠近方式都顺利。 一元也有左右和不同输入列。",
+    "steps": [
+      {
+        "title": "显示项数：2",
+        "instruction": "将显示项数设为 $2$。比较两条输入列对应的输出，而非只观察一条。",
+        "observation": "第一列输出极限 $1$；第二列输出极限 $-1$。",
+        "preset": {
+          "a": 0,
+          "n": 2
+        }
+      },
+      {
+        "title": "显示项数：16",
+        "instruction": "将显示项数设为 $16$。比较两条输入列对应的输出，而非只观察一条。",
+        "observation": "第一列输出极限 $1$；第二列输出极限 $-1$。",
+        "preset": {
+          "a": 0,
+          "n": 16
+        }
+      },
+      {
+        "title": "显示项数：30",
+        "instruction": "将显示项数设为 $30$。比较两条输入列对应的输出，而非只观察一条。",
+        "observation": "第一列输出极限 $1$；第二列输出极限 $-1$。",
+        "preset": {
+          "a": 0,
+          "n": 30
+        }
+      }
+    ]
+  }
+}
