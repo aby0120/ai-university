@@ -1,0 +1,193 @@
+{
+  "id": "ps-sampling",
+  "chapterId": "ps-data",
+  "number": "1.2",
+  "title": "总体、样本与选择偏差",
+  "subtitle": "从谁那里收集数据，决定结论能推广到谁。",
+  "concept": "从谁那里收集数据，决定结论能推广到谁。",
+  "intuition": "再大的自愿问卷，也可能只测到愿意回答的人。",
+  "objectives": [
+    "说明目标总体",
+    "理解随机抽样"
+  ],
+  "body": [
+    {
+      "title": "说明目标总体",
+      "text": "总体是想研究的全部单位；抽样框是实际能抽到的名单，两者可能不同。"
+    },
+    {
+      "title": "理解随机抽样",
+      "text": "简单随机抽样使每个给定大小的样本有相同机会。分层抽样先分组再随机抽取，合并时按总体占比加权。"
+    },
+    {
+      "title": "分清偏差与波动",
+      "text": "标准误描述随机抽样波动，不能覆盖漏掉某类人、拒访或测量错误造成的系统偏差。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "分层总体均值用总体组权重，而非随意平均组均值。",
+    "latex": "\\hat\\mu=\\sum_{h=1}^{H}W_h\\bar x_h,\\qquad\\sum_hW_h=1",
+    "conditions": [
+      "分层总体均值用总体组权重，而非随意平均组均值。",
+      "组内样本需能代表各组；权重不能修复所有未观测选择机制。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "将总体均值按组拆开。",
+      "latex": "\\mu=\\sum_hW_h\\mu_h"
+    },
+    {
+      "text": "用各组样本均值替代未知组均值。",
+      "latex": "\\mu_h\\longmapsto\\bar x_h"
+    },
+    {
+      "text": "保持总体权重，避免过度抽样改变组成。",
+      "latex": "\\hat\\mu=\\sum_hW_h\\bar x_h"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "分层合并",
+      "problem": "两组总体占比为 $0.8,0.2$，样本组均值为 $10,20$，估计总体均值。",
+      "steps": [
+        "按总体权重计算。",
+        "$0.8\\times10+0.2\\times20=12$。"
+      ],
+      "answer": "$12$。"
+    },
+    {
+      "title": "大样本仍偏",
+      "problem": "只调查健身房常客，能估计全城运动时长吗？",
+      "steps": [
+        "抽样框遗漏大量不去健身房的人。",
+        "扩大该名单内样本不能填补这部分遗漏。"
+      ],
+      "answer": "不能直接推广到全城。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-sampling-q1",
+      "problem": "总体两组权重各为 $0.5$，均值为 $4,8$，加权结果？",
+      "hint": "权重乘组均值后相加。",
+      "solution": [
+        "$0.5(4)+0.5(8)=6$。"
+      ],
+      "answer": "$6$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 6
+    },
+    {
+      "id": "ps-sampling-q2",
+      "problem": "随机样本的均值每次都相同吗？",
+      "hint": "随机抽样带来什么？",
+      "solution": [
+        "抽到的对象不同，统计量通常会波动。"
+      ],
+      "answer": "通常不同。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-sampling-q3",
+      "problem": "增加自愿答题人数一定消除选择偏差吗？",
+      "hint": "人数和选择方式分别考虑。",
+      "solution": [
+        "回答倾向仍可能与结果有关。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-sampling-q4",
+      "problem": "分层中小组被过度抽样，合并时直接平均所有记录合适吗？",
+      "hint": "比较样本构成与总体构成。",
+      "solution": [
+        "原始记录平均会过度加权小组。"
+      ],
+      "answer": "一般应使用抽样设计对应的权重。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "样本量变大，哪项一定随之消失？",
+    "choices": [
+      "选择偏差",
+      "所有测量错误",
+      "两项都不一定"
+    ],
+    "correctIndex": 2,
+    "explanation": "样本量不是代表性的替代品。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-sampling-m1",
+      "claim": "随机抽样等于随便问人",
+      "correction": "随机需要可说明的概率机制。"
+    },
+    {
+      "id": "ps-sampling-m2",
+      "claim": "样本大就没有偏差",
+      "correction": "大样本能缩小随机波动，不能自动修正选择偏差。"
+    }
+  ],
+  "prerequisites": [
+    "ps-units"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-sampling-m1",
+    "ps-sampling-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-sampling",
+    "prediction": "改变被抽到的组别比例，样本均值怎样偏离总体均值？",
+    "caption": "固定两组均值，改变样本组成；总体权重始终另行显示。"
+  },
+  "teaching": {
+    "explain": "随机需要可说明的概率机制。",
+    "steps": [
+      {
+        "title": "样本中第一组比例：0.5",
+        "instruction": "将样本中第一组比例设为 $0.5$，对照图形和读数。",
+        "observation": "本组参数的计算结果：样本组成对应均值 $15$；总体均值 $12$；两者差值 $3$。",
+        "preset": {
+          "a": 0.5,
+          "b": 0.8
+        }
+      },
+      {
+        "title": "样本中第一组比例：0",
+        "instruction": "将样本中第一组比例设为 $0$，对照图形和读数。",
+        "observation": "本组参数的计算结果：样本组成对应均值 $20$；总体均值 $12$；两者差值 $8$。",
+        "preset": {
+          "a": 0,
+          "b": 0.8
+        }
+      },
+      {
+        "title": "样本中第一组比例：1",
+        "instruction": "将样本中第一组比例设为 $1$，对照图形和读数。",
+        "observation": "本组参数的计算结果：样本组成对应均值 $10$；总体均值 $12$；两者差值 $-2$。",
+        "preset": {
+          "a": 1,
+          "b": 0.8
+        }
+      }
+    ]
+  }
+}

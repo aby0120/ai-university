@@ -1,0 +1,198 @@
+{
+  "id": "ps-mean-test",
+  "chapterId": "ps-testing",
+  "number": "9.2",
+  "title": "单样本均值检验",
+  "subtitle": "把均值与假设值的差，放到抽样噪声尺度上比较。",
+  "concept": "把均值与假设值的差，放到抽样噪声尺度上比较。",
+  "intuition": "同样差一单位，标准误很小时比标准误很大时更不寻常。",
+  "objectives": [
+    "确定尺度已知与否",
+    "根据备择选尾部"
+  ],
+  "body": [
+    {
+      "title": "确定尺度已知与否",
+      "text": "正态总体尺度已知用 $z$，尺度未知用 $t$；小样本精确 $t$ 推断需要正态性。"
+    },
+    {
+      "title": "根据备择选尾部",
+      "text": "双侧备择同时关心升高和降低。对称 $t$ 分布中用绝对统计量对应双侧尾部。"
+    },
+    {
+      "title": "连接区间与检验",
+      "text": "相同模型和显著性水平下，双侧 $t$ 检验拒绝给定均值，当且仅当相应 $t$ 置信区间不含它。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "精确单样本 $t$ 检验要求独立正态样本且 $n\\ge2$。",
+    "latex": "T=\\frac{\\bar X-\\mu_0}{S/\\sqrt n},\\qquad p_{\\mathrm{two}}=2\\{1-F_{t_{n-1}}(|t_{\\mathrm{obs}}|)\\}",
+    "conditions": [
+      "精确单样本 $t$ 检验要求独立正态样本且 $n\\ge2$。",
+      "零样本方差导致标准误为零，不能直接按常规 $t$ 公式计算。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "在原假设下中心化。",
+      "latex": "H_0:\\mu=\\mu_0"
+    },
+    {
+      "text": "用均值的估计标准误缩放。",
+      "latex": "T=(\\bar X-\\mu_0)/(S/\\sqrt n)"
+    },
+    {
+      "text": "对称两尾相加。",
+      "latex": "P_0(|T|\\ge|t|)=2P_0(T\\ge|t|)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "计算统计量",
+      "problem": "$n=25,\\bar x=12,s=5$，假设均值十，$t$ 值及自由度？",
+      "steps": [
+        "标准误为一。",
+        "差值二除以一。"
+      ],
+      "answer": "$t=2$，自由度 $24$；双侧 $p$ 值约 $0.057$。"
+    },
+    {
+      "title": "区间判断",
+      "problem": "与某双侧检验对应的区间为 $[2,6]$，对假设值零怎样决策？",
+      "steps": [
+        "零不在区间内。",
+        "按相同水平的双侧检验拒绝。"
+      ],
+      "answer": "拒绝均值为零。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-mean-test-q1",
+      "problem": "$n=16,\\bar x=3,s=2,\\mu_0=2$，$t$ 值？",
+      "hint": "标准误是二除以四。",
+      "solution": [
+        "$(3-2)/0.5=2$。"
+      ],
+      "answer": "$2$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 2
+    },
+    {
+      "id": "ps-mean-test-q2",
+      "problem": "对称双侧检验观察 $t$ 为零，$p$ 值？",
+      "hint": "没有偏离假设中心。",
+      "solution": [
+        "两侧尾部合计为一。"
+      ],
+      "answer": "$1$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 1
+    },
+    {
+      "id": "ps-mean-test-q3",
+      "problem": "数据是强偏斜总体的四个观测，可无条件宣称精确 $t$ 检验吗？",
+      "hint": "检查正态样本条件。",
+      "solution": [
+        "小样本下没有该精确保证。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-mean-test-q4",
+      "problem": "双侧区间恰好包含假设值，能按对应规则拒绝吗？",
+      "hint": "边界需统一包含约定。",
+      "solution": [
+        "通常内部包含时不拒绝；临界边界按预定规则处理。"
+      ],
+      "answer": "不能把区间内部的值判为拒绝。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "均值检验的分母是个体标准差还是均值标准误？",
+    "choices": [
+      "个体标准差",
+      "均值标准误",
+      "样本总和"
+    ],
+    "correctIndex": 1,
+    "explanation": "比较对象是样本均值的波动。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-mean-test-m1",
+      "claim": "$t$ 统计量要除以样本量",
+      "correction": "尺度是样本标准差除以平方根样本量。"
+    },
+    {
+      "id": "ps-mean-test-m2",
+      "claim": "双侧 $p$ 值总等于右尾两倍",
+      "correction": "应先取绝对统计量；负观测不能直接用原右尾翻倍。"
+    }
+  ],
+  "prerequisites": [
+    "ps-test-logic"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-mean-test-m1",
+    "ps-mean-test-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "nist-t",
+    "nist-confidence"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-mean-test",
+    "prediction": "观察差值相同，增加样本量会怎样改变 $t$ 值和 $p$ 值？",
+    "caption": "使用给定样本摘要计算 $t$ 检验；摘要控制不是新的随机数据。"
+  },
+  "teaching": {
+    "explain": "尺度是样本标准差除以平方根样本量。",
+    "steps": [
+      {
+        "title": "样本量：25",
+        "instruction": "将样本量设为 $25$，对照图形和读数。",
+        "observation": "本组参数的计算结果：观察统计量 $2$；双侧 $p$ 值 $0.0569398$；自由度 $24$。",
+        "preset": {
+          "n": 25,
+          "a": 2,
+          "b": 5
+        }
+      },
+      {
+        "title": "样本量：3",
+        "instruction": "将样本量设为 $3$，对照图形和读数。",
+        "observation": "本组参数的计算结果：观察统计量 $0.69282$；双侧 $p$ 值 $0.560059$；自由度 $2$。",
+        "preset": {
+          "n": 3,
+          "a": 2,
+          "b": 5
+        }
+      },
+      {
+        "title": "样本量：80",
+        "instruction": "将样本量设为 $80$，对照图形和读数。",
+        "observation": "本组参数的计算结果：观察统计量 $3.57771$；双侧 $p$ 值 $0.000595789$；自由度 $79$。",
+        "preset": {
+          "n": 80,
+          "a": 2,
+          "b": 5
+        }
+      }
+    ]
+  }
+}

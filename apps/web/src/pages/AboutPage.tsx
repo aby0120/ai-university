@@ -75,7 +75,7 @@ export function AboutPage() {
             {[
               [
                 "完整，而不是摘选",
-                "每本教材都沿着系统的课程结构完成。微积分 I、II、III、线性代数、常微分方程、Python 入门与《带着 AI 做项目》已提供完整内容与互动；其他未出版教材在书库中明确标注为规划中。",
+                "每本教材都沿着系统的课程结构完成。微积分 I、II、III、线性代数、常微分方程、概率与统计、Python 入门与《带着 AI 做项目》已提供完整内容与互动；其他未出版教材在书库中明确标注为规划中。",
               ],
               [
                 "清楚，也保留必要条件",
@@ -178,7 +178,8 @@ export function AboutPage() {
         </div>
       ) : part === "versions" ? (
         <div className="versions-page">
-          <div className="version-entry"><span className="badge">当前网站 · 七本完整教材</span><h2>v0.14.0 · 分类书库与两本新教材</h2><time>2026 年 10 月 21 日</time><ul><li>数学：微积分三卷、线性代数、常微分方程。</li><li>其他：Python 编程入门与《带着 AI 做项目》，由 aby0120 投稿、AI 编写。</li><li>两本新书接入搜索、下载、打印和完整检查；保留旧投稿链接。</li><li>Python 执行回放统一由 CPython 3.14 生成，修正解释器行事件差异。</li></ul></div>
+          <div className="version-entry"><span className="badge">当前网站 · 概率与统计 v0.1.0</span><h2>v0.15.0 · 概率与统计完整首版</h2><time>2026 年 10 月 21 日</time><ul><li>10 章 50 节、100 个例题、230 道练习及回顾，全部附解答。</li><li>从数据、抽样与概率，到分布、估计、检验、回归和贝叶斯更新。</li><li>50 节交互模型，包含重复抽样、覆盖率、精确二项尾部、置换、回归与预测区间。</li><li>理论值、浮点近似和固定种子模拟分别说明；无需模型 API。</li></ul></div>
+          <div className="version-entry"><span className="badge">分类书库 · 七本教材</span><h2>v0.14.0 · 分类书库与两本新教材</h2><time>2026 年 10 月 21 日</time><ul><li>数学：微积分三卷、线性代数、常微分方程。</li><li>其他：Python 编程入门与《带着 AI 做项目》，由 aby0120 投稿、AI 编写。</li><li>两本新书接入搜索、下载、打印和完整检查；保留旧投稿链接。</li><li>Python 执行回放统一由 CPython 3.14 生成，修正解释器行事件差异。</li></ul></div>
           <div className="version-entry"><span className="badge">常微分方程 v0.1.0</span><h2>v0.13.0 · 常微分方程完整首版</h2><time>2026 年 10 月 21 日</time><ul><li>11 章 55 节、110 个例题、275 道练习与完整解答。</li><li>一阶、存在唯一性、振动、Laplace、线性与非线性系统、级数和数值方法。</li><li>55 节交互演示：方向场、可拖动初态、相轨迹、弹簧运动、误差比较与自适应节点。</li><li>整本书稿、打印版、搜索、练习、术语和附录同步提供。</li></ul></div>
           <div className="version-entry"><span className="badge">Linear Algebra v0.1.0</span><h2>v0.12.0 · 线性代数完整首版</h2><time>2026 年 10 月 21 日</time><ul><li>10 章 50 节、100 个例题、250 道练习与完整解答。</li><li>从方程组、向量空间和特征值，到正交投影、SVD、网络与 PCA。</li><li>50 个二维或三维交互演示，支持矩阵参数输入、消元步骤和退化情形。</li><li>整本阅读、目录、练习、索引和下载均可独立使用，无需先修微积分。</li></ul></div>
           <div className="version-entry"><span className="badge">历史网站版本</span><h2>v0.11.0 · 补全方法，校准图示</h2><time>2026 年 10 月 21 日</time><ul><li>补充根式三角代换、不可约二次因子和非线性 Jacobian 的完整例题。</li><li>明确抽水几何与固定出口；说明交错误差界必须从递减尾部使用。</li><li>偏导图同时展示两条切线；Jacobian 图比较局部倍率与总面积。</li><li>精简演示、练习和阅读指南的中文提示，删除重复口号。</li><li>微积分 I v0.3.2，II、III v0.1.1；保留原链接与学习记录。</li></ul></div>

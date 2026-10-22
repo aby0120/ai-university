@@ -1,0 +1,195 @@
+{
+  "id": "ps-normal-sample",
+  "chapterId": "ps-sampling",
+  "number": "7.4",
+  "title": "正态样本、卡方与 $t$ 分布",
+  "subtitle": "用样本标准差替代未知总体尺度，会增加不确定性。",
+  "concept": "用样本标准差替代未知总体尺度，会增加不确定性。",
+  "intuition": "小样本对标准差的估计更不稳，因此 $t$ 分布比标准正态有更厚的尾部。",
+  "objectives": [
+    "校正样本方差",
+    "使用正态样本理论"
+  ],
+  "body": [
+    {
+      "title": "校正样本方差",
+      "text": "估计样本均值消耗一个线性约束，平方偏差和的期望是自由度乘总体方差。"
+    },
+    {
+      "title": "使用正态样本理论",
+      "text": "独立正态样本的均值与样本方差独立，标准化平方偏差和为卡方；这些精确性质不适用于任意总体。"
+    },
+    {
+      "title": "构造 $t$ 统计量",
+      "text": "标准正态除以独立卡方平方根的尺度估计，得到 $t$ 分布。自由度增加时，额外尺度不确定性减小。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "独立正态样本，$n\\ge2$，$\\sigma>0$。",
+    "latex": "\\frac{(n-1)S^2}{\\sigma^2}\\sim\\chi^2_{n-1},\\qquad\\frac{\\bar X-\\mu}{S/\\sqrt n}\\sim t_{n-1}",
+    "conditions": [
+      "独立正态样本，$n\\ge2$，$\\sigma>0$。",
+      "非正态大样本可在适当条件下近似使用，但不属于上述精确结论。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "围绕真均值与样本均值的平方和相差一项。",
+      "latex": "\\sum_i(X_i-\\bar X)^2=\\sum_i(X_i-\\mu)^2-n(\\bar X-\\mu)^2"
+    },
+    {
+      "text": "取期望得到自由度校正。",
+      "latex": "E\\sum_i(X_i-\\bar X)^2=(n-1)\\sigma^2"
+    },
+    {
+      "text": "正态样本下用独立卡方尺度替换真标准差。",
+      "latex": "T=Z/\\sqrt{V/(n-1)}\\sim t_{n-1}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "自由度",
+      "problem": "独立正态样本十个，均值 $t$ 统计量有多少自由度？",
+      "steps": [
+        "用样本均值估计中心。",
+        "自由度为样本量减一。"
+      ],
+      "answer": "$9$。"
+    },
+    {
+      "title": "计算 $t$",
+      "problem": "$n=9,\\bar x=5,s=3$，检验中心四，$t$ 值？",
+      "steps": [
+        "估计标准误为一。",
+        "差值一除以标准误。"
+      ],
+      "answer": "$t=1$，自由度 $8$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-normal-sample-q1",
+      "problem": "样本量六，卡方平方偏差和的自由度？",
+      "hint": "样本量减一。",
+      "solution": [
+        "$6-1=5$。"
+      ],
+      "answer": "$5$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 5
+    },
+    {
+      "id": "ps-normal-sample-q2",
+      "problem": "$t$ 统计量用已知的总体标准差作分母吗？",
+      "hint": "区别 $z$ 和 $t$。",
+      "solution": [
+        "它使用样本标准差。"
+      ],
+      "answer": "不是。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-normal-sample-q3",
+      "problem": "任意非正态总体的小样本 $t$ 值都精确 $t$ 分布吗？",
+      "hint": "检查精确理论假设。",
+      "solution": [
+        "缺少正态总体条件。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-normal-sample-q4",
+      "problem": "$t$ 自由度增大时，分布趋向什么？",
+      "hint": "尺度估计变稳定。",
+      "solution": [
+        "标准正态。"
+      ],
+      "answer": "$N(0,1)$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "小自由度 $t$ 曲线比标准正态如何？",
+    "choices": [
+      "尾部更厚",
+      "总面积更大",
+      "总面积更小"
+    ],
+    "correctIndex": 0,
+    "explanation": "两者都归一化，但小自由度 $t$ 分配更多概率到尾部。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-normal-sample-m1",
+      "claim": "分母换成样本标准差仍精确正态",
+      "correction": "正态样本中应使用 $t$ 分布。"
+    },
+    {
+      "id": "ps-normal-sample-m2",
+      "claim": "自由度只是一种标签",
+      "correction": "它控制尺度估计的不确定性与尾部形状。"
+    }
+  ],
+  "prerequisites": [
+    "ps-sampling-mean",
+    "ps-variance"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-normal-sample-m1",
+    "ps-normal-sample-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "nist-t",
+    "nist-chi-square"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-normal-sample",
+    "prediction": "增加自由度，$t$ 曲线与标准正态怎样接近？",
+    "caption": "绘出两个归一化密度，并计算同一阈值的双侧尾概率。"
+  },
+  "teaching": {
+    "explain": "正态样本中应使用 $t$ 分布。",
+    "steps": [
+      {
+        "title": "$t$ 自由度：5",
+        "instruction": "将$t$ 自由度设为 $5$，对照图形和读数。",
+        "observation": "本组参数的计算结果：$t$ 自由度 $5$；$t$ 双侧尾概率 $0.101939$；正态双侧尾概率 $0.0455003$。",
+        "preset": {
+          "n": 5,
+          "b": 2
+        }
+      },
+      {
+        "title": "$t$ 自由度：1",
+        "instruction": "将$t$ 自由度设为 $1$，对照图形和读数。",
+        "observation": "本组参数的计算结果：$t$ 自由度 $1$；$t$ 双侧尾概率 $0.295167$；正态双侧尾概率 $0.0455003$。",
+        "preset": {
+          "n": 1,
+          "b": 2
+        }
+      },
+      {
+        "title": "$t$ 自由度：60",
+        "instruction": "将$t$ 自由度设为 $60$，对照图形和读数。",
+        "observation": "本组参数的计算结果：$t$ 自由度 $60$；$t$ 双侧尾概率 $0.050033$；正态双侧尾概率 $0.0455003$。",
+        "preset": {
+          "n": 60,
+          "b": 2
+        }
+      }
+    ]
+  }
+}

@@ -2,10 +2,10 @@
 
 顶层分类由 `packages/content/library.json` 的 `categories` 定义：
 
-- **数学**：微积分 I、II、III，线性代数，常微分方程；后续数学规划也归此类。
+- **数学**：微积分 I、II、III，线性代数，常微分方程，概率与统计；后续数学规划也归此类。
 - **其他**：Python 编程入门、《带着 AI 做项目》，暂不另建编程分类。
 
-首页按分类切换已出版教材，书库支持分类、出版状态及数学方向筛选。分类与方向分别由 `categoryId`、`areaId` 标识，校验拒绝不一致的归属。共有 7 本已出版教材，规划不冒充已出版内容。
+首页按分类切换已出版教材，书库支持分类、出版状态及数学方向筛选。分类与方向分别由 `categoryId`、`areaId` 标识，校验拒绝不一致的归属。共有 8 本已出版教材，规划不冒充已出版内容。
 
 数学 canonical 集合由 `packages/content/index.ts` 和 `scripts/content-utils.mjs` 注册；编程教材由 `packages/content/programming.json` 和 `scripts/programming-utils.mjs` 注册。两个 schema 各自验证本学科语义，统一向书库提供真实计数、搜索索引与出版产物。
 
@@ -35,3 +35,5 @@
 运行 `npm run check`，检查桌面与手机的阅读、实验、练习、搜索、下载和记录隔离；按发布流程发布同一提交。规划条目依旧不提供阅读链接或虚构完成数量。
 
 常微分方程以 `ordinary-differential-equations` 为卷 ID，`ode-` 为知识点前缀；归入微分方程方向。偏微分方程仍是独立后续课程，不使用空章节占位。
+
+概率与统计放在 `probability-statistics/`，使用 `ps-` 前缀；打印文件为 `Probability-Statistics.md` 和 `probability-statistics.html`。`packages/visuals/statistics.mjs` 为数值核，`probability.mjs` 与两份 registry 保存五十节模型、控件与绘图数据。

@@ -1,0 +1,197 @@
+{
+  "id": "ps-events",
+  "chapterId": "ps-probability",
+  "number": "2.1",
+  "title": "样本空间与事件",
+  "subtitle": "先列出可能结果，再说明哪些结果算作同一事件。",
+  "concept": "先列出可能结果，再说明哪些结果算作同一事件。",
+  "intuition": "结果是一次具体发生，事件是一组符合条件的结果。",
+  "objectives": [
+    "描述样本空间",
+    "进行事件运算"
+  ],
+  "body": [
+    {
+      "title": "描述样本空间",
+      "text": "掷两枚硬币可记录有序结果。若只记录正面数，则换成另一个样本空间；新结果未必等可能。"
+    },
+    {
+      "title": "进行事件运算",
+      "text": "交集表示同时发生，并集表示至少一个发生，补集表示未发生。画集合能帮助避免重复计数。"
+    },
+    {
+      "title": "检查等可能性",
+      "text": "只有在等可能的有限空间中，概率才等于有利结果数除以总结果数。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "样本空间需覆盖研究问题的所有可能结果。",
+    "latex": "P(A)=\\frac{|A|}{|\\Omega|}\\quad\\text{仅限有限等可能结果}",
+    "conditions": [
+      "样本空间需覆盖研究问题的所有可能结果。",
+      "计数公式要求基本结果等可能。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "列出互斥的基本结果。",
+      "latex": "\\Omega=\\{HH,HT,TH,TT\\}"
+    },
+    {
+      "text": "至少一正的事件包含三个结果。",
+      "latex": "A=\\{HH,HT,TH\\}"
+    },
+    {
+      "text": "在公平独立硬币假设下相加。",
+      "latex": "P(A)=3/4"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "两枚硬币",
+      "problem": "公平独立硬币掷两次，恰好一正的概率？",
+      "steps": [
+        "有序结果共四种等可能。",
+        "有利结果是两种。"
+      ],
+      "answer": "$1/2$。"
+    },
+    {
+      "title": "压缩记录",
+      "problem": "正面数 $0,1,2$ 是否等可能？",
+      "steps": [
+        "各自对应一、二、一种基本结果。",
+        "概率为 $1/4,1/2,1/4$。"
+      ],
+      "answer": "不等可能。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-events-q1",
+      "problem": "公平骰子出偶数的概率？",
+      "hint": "列出偶数面。",
+      "solution": [
+        "三种有利结果除以六。"
+      ],
+      "answer": "$1/2$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.5
+    },
+    {
+      "id": "ps-events-q2",
+      "problem": "事件 $A$ 与补集能同时发生吗？",
+      "hint": "按补集定义。",
+      "solution": [
+        "没有共同结果。"
+      ],
+      "answer": "不能。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-events-q3",
+      "problem": "两次独立公平掷币，至少一反的概率？",
+      "hint": "先算全正的补集。",
+      "solution": [
+        "$1-1/4=3/4$。"
+      ],
+      "answer": "$3/4$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.75
+    },
+    {
+      "id": "ps-events-q4",
+      "problem": "用“中奖、没中”两种记录能推出中奖率一半吗？",
+      "hint": "两类结果是否等可能？",
+      "solution": [
+        "两种类别本身不提供概率。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "三种不同记录值，概率就都为三分之一吗？",
+    "choices": [
+      "总是",
+      "只有最大值不是",
+      "不一定"
+    ],
+    "correctIndex": 2,
+    "explanation": "记录方式可以合并不同数量的基本结果。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-events-m1",
+      "claim": "有限结果一定等可能",
+      "correction": "等可能是模型假设，需要理由。"
+    },
+    {
+      "id": "ps-events-m2",
+      "claim": "事件和结果是一回事",
+      "correction": "事件可以包含许多基本结果。"
+    }
+  ],
+  "prerequisites": [
+    "ps-units"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-events-m1",
+    "ps-events-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-events",
+    "prediction": "改变事件包含的格子数，联合、交集和补集怎样变化？",
+    "caption": "演示使用十个等可能基本结果，只有在这个模型内才按格子计数。"
+  },
+  "teaching": {
+    "explain": "等可能是模型假设，需要理由。",
+    "steps": [
+      {
+        "title": "事件乙起始位置：4",
+        "instruction": "将事件乙起始位置设为 $4$，对照图形和读数。",
+        "observation": "本组参数的计算结果：甲概率 $0.6$；乙概率 $0.5$；交集概率 $0.2$；并集概率 $0.9$。",
+        "preset": {
+          "a": 6,
+          "b": 5,
+          "c": 4
+        }
+      },
+      {
+        "title": "事件乙起始位置：0",
+        "instruction": "将事件乙起始位置设为 $0$，对照图形和读数。",
+        "observation": "本组参数的计算结果：甲概率 $0.6$；乙概率 $0.5$；交集概率 $0.5$；并集概率 $0.6$。",
+        "preset": {
+          "a": 6,
+          "b": 5,
+          "c": 0
+        }
+      },
+      {
+        "title": "事件乙起始位置：9",
+        "instruction": "将事件乙起始位置设为 $9$，对照图形和读数。",
+        "observation": "本组参数的计算结果：甲概率 $0.6$；乙概率 $0.5$；交集概率 $0.4$；并集概率 $0.7$。",
+        "preset": {
+          "a": 6,
+          "b": 5,
+          "c": 9
+        }
+      }
+    ]
+  }
+}

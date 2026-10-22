@@ -1,0 +1,194 @@
+{
+  "id": "ps-conditional-expectation",
+  "chapterId": "ps-joint",
+  "number": "6.5",
+  "title": "条件期望与全方差",
+  "subtitle": "先在各组内计算，再把组间差异合回来。",
+  "concept": "先在各组内计算，再把组间差异合回来。",
+  "intuition": "总波动包括组内波动，也包括不同组的均值不相同。",
+  "objectives": [
+    "条件均值是函数",
+    "使用塔式法则"
+  ],
+  "body": [
+    {
+      "title": "条件均值是函数",
+      "text": "给定不同条件值，可得到不同的条件均值；它本身随条件变量变化。"
+    },
+    {
+      "title": "使用塔式法则",
+      "text": "对条件均值再取总体期望，恢复原变量期望。分组时需按组概率加权。"
+    },
+    {
+      "title": "分解总方差",
+      "text": "将偏差拆为组内偏差与组均值偏差，交叉项条件期望为零，得到全方差。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "全期望要求可积；全方差要求有限二阶矩。",
+    "latex": "E[Y]=E[E(Y\\mid X)],\\qquad\\operatorname{Var}(Y)=E[\\operatorname{Var}(Y\\mid X)]+\\operatorname{Var}(E[Y\\mid X])",
+    "conditions": [
+      "全期望要求可积；全方差要求有限二阶矩。",
+      "条件组权重必须与总体组成一致。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "设条件均值为 $m(X)$，拆分总偏差。",
+      "latex": "Y-EY=(Y-m(X))+(m(X)-EY)"
+    },
+    {
+      "text": "组内偏差的条件均值为零。",
+      "latex": "E[Y-m(X)\\mid X]=0"
+    },
+    {
+      "text": "平方取期望，交叉项消失。",
+      "latex": "\\operatorname{Var}(Y)=E[\\operatorname{Var}(Y\\mid X)]+\\operatorname{Var}(m(X))"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "混合均值",
+      "problem": "两组各一半，条件均值零和四，总均值？",
+      "steps": [
+        "按两组概率加权。",
+        "$0.5(0)+0.5(4)=2$。"
+      ],
+      "answer": "$2$。"
+    },
+    {
+      "title": "混合方差",
+      "problem": "沿上例，组内方差都为一，总方差？",
+      "steps": [
+        "组内平均方差是一。",
+        "组均值围绕二的方差是四。"
+      ],
+      "answer": "$1+4=5$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-conditional-expectation-q1",
+      "problem": "两组概率 $0.25,0.75$，均值二和六，总均值？",
+      "hint": "加权组均值。",
+      "solution": [
+        "$0.25(2)+0.75(6)=5$。"
+      ],
+      "answer": "$5$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 5
+    },
+    {
+      "id": "ps-conditional-expectation-q2",
+      "problem": "所有条件均值都相同，组间方差是多少？",
+      "hint": "常数的方差。",
+      "solution": [
+        "零。"
+      ],
+      "answer": "$0$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0
+    },
+    {
+      "id": "ps-conditional-expectation-q3",
+      "problem": "所有组内方差为零，总方差一定零吗？",
+      "hint": "组均值还可不同。",
+      "solution": [
+        "组间方差仍可能为正。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-conditional-expectation-q4",
+      "problem": "“各组内部相同”能保证两总体总体均值相同吗？",
+      "hint": "组权重是否相同？",
+      "solution": [
+        "组权重不同可使混合均值不同。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "总方差减去平均组内方差，剩下什么？",
+    "choices": [
+      "零",
+      "组均值的方差",
+      "总体均值"
+    ],
+    "correctIndex": 1,
+    "explanation": "组间位置差也构成总体波动。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-conditional-expectation-m1",
+      "claim": "总方差只是组内方差的平均",
+      "correction": "还必须加上组均值的方差。"
+    },
+    {
+      "id": "ps-conditional-expectation-m2",
+      "claim": "条件期望只是一个固定数",
+      "correction": "它通常是随条件变量变化的随机变量。"
+    }
+  ],
+  "prerequisites": [
+    "ps-covariance"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-conditional-expectation-m1",
+    "ps-conditional-expectation-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-conditional-expectation",
+    "prediction": "拉开两组均值，组内方差不变时总方差怎样变化？",
+    "caption": "显示两组分布和总方差的组内、组间分解。"
+  },
+  "teaching": {
+    "explain": "还必须加上组均值的方差。",
+    "steps": [
+      {
+        "title": "两组中心距离：4",
+        "instruction": "将两组中心距离设为 $4$，对照图形和读数。",
+        "observation": "本组参数的计算结果：总均值 $0$；平均组内方差 $1$；组间方差 $4$；总方差 $5$。",
+        "preset": {
+          "a": 4,
+          "b": 1
+        }
+      },
+      {
+        "title": "两组中心距离：0",
+        "instruction": "将两组中心距离设为 $0$，对照图形和读数。",
+        "observation": "本组参数的计算结果：总均值 $0$；平均组内方差 $1$；组间方差 $0$；总方差 $1$。",
+        "preset": {
+          "a": 0,
+          "b": 1
+        }
+      },
+      {
+        "title": "两组中心距离：8",
+        "instruction": "将两组中心距离设为 $8$，对照图形和读数。",
+        "observation": "本组参数的计算结果：总均值 $0$；平均组内方差 $1$；组间方差 $16$；总方差 $17$。",
+        "preset": {
+          "a": 8,
+          "b": 1
+        }
+      }
+    ]
+  }
+}

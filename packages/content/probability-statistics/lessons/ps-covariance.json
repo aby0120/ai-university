@@ -1,0 +1,190 @@
+{
+  "id": "ps-covariance",
+  "chapterId": "ps-joint",
+  "number": "6.4",
+  "title": "协方差、相关系数与和的方差",
+  "subtitle": "协方差描述共同偏离的方向，相关系数再去掉单位。",
+  "concept": "协方差描述共同偏离的方向，相关系数再去掉单位。",
+  "intuition": "正相关是经常同向偏离，不代表每次都同向，也不代表因果。",
+  "objectives": [
+    "计算交叉偏差",
+    "标准化相关"
+  ],
+  "body": [
+    {
+      "title": "计算交叉偏差",
+      "text": "把两变量相对各自均值的偏差相乘再平均；正负混合决定协方差符号。"
+    },
+    {
+      "title": "标准化相关",
+      "text": "非零标准差时，相关系数在负一与一之间。它主要衡量线性关系，不覆盖所有非线性依赖。"
+    },
+    {
+      "title": "保留和的方差项",
+      "text": "展开平方会出现两倍协方差；不相关只令该项为零，并不保证独立。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "要求有限二阶矩；相关系数还要求两个标准差都为正。",
+    "latex": "\\operatorname{Cov}(X,Y)=E[XY]-EX\\,EY,\\quad\\rho=\\frac{\\operatorname{Cov}(X,Y)}{\\sigma_X\\sigma_Y},\\quad\\operatorname{Var}(X+Y)=\\sigma_X^2+\\sigma_Y^2+2\\operatorname{Cov}(X,Y)",
+    "conditions": [
+      "要求有限二阶矩；相关系数还要求两个标准差都为正。",
+      "独立可推出不相关，反向一般不成立。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "展开两个中心化变量的乘积。",
+      "latex": "E[(X-EX)(Y-EY)]=E[XY]-EX\\,EY"
+    },
+    {
+      "text": "由 Cauchy–Schwarz 不等式限制协方差。",
+      "latex": "|\\operatorname{Cov}(X,Y)|\\le\\sigma_X\\sigma_Y"
+    },
+    {
+      "text": "展开和的平方偏差。",
+      "latex": "\\operatorname{Var}(X+Y)=\\sigma_X^2+\\sigma_Y^2+2\\operatorname{Cov}(X,Y)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "相关缩放",
+      "problem": "标准差为二和三，相关系数一半，协方差？",
+      "steps": [
+        "相关乘两个标准差。",
+        "$0.5(2)(3)=3$。"
+      ],
+      "answer": "$3$。"
+    },
+    {
+      "title": "零相关仍依赖",
+      "problem": "$X$ 在 $-1,0,1$ 等可能，$Y=X^2$，是否独立？",
+      "steps": [
+        "$EX=EXY=0$，协方差为零。",
+        "给定 $X=0$ 就确定 $Y=0$，不独立。"
+      ],
+      "answer": "不相关但不独立。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-covariance-q1",
+      "problem": "方差为四和九，协方差三，和的方差？",
+      "hint": "保留交叉项。",
+      "solution": [
+        "$4+9+2(3)=19$。"
+      ],
+      "answer": "$19$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 19
+    },
+    {
+      "id": "ps-covariance-q2",
+      "problem": "把一个变量加十，相关系数变吗？",
+      "hint": "中心化后平移抵消。",
+      "solution": [
+        "标准差和中心偏差不变。"
+      ],
+      "answer": "不变。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-covariance-q3",
+      "problem": "一个变量恒为常数，相关系数能按公式定义吗？",
+      "hint": "检查分母。",
+      "solution": [
+        "其标准差为零。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-covariance-q4",
+      "problem": "相关为负一是否表示独立？",
+      "hint": "非退化完全线性依赖。",
+      "solution": [
+        "一个变量由另一个的下降直线确定。"
+      ],
+      "answer": "不表示独立。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "相关为零，能否排除非线性依赖？",
+    "choices": [
+      "能",
+      "不能",
+      "只有方差小时能"
+    ],
+    "correctIndex": 1,
+    "explanation": "相关主要描述线性共同变化。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-covariance-m1",
+      "claim": "零相关就是独立",
+      "correction": "可能有很强的非线性依赖。"
+    },
+    {
+      "id": "ps-covariance-m2",
+      "claim": "相关数值带原单位",
+      "correction": "相关系数无量纲，协方差才带两变量单位的乘积。"
+    }
+  ],
+  "prerequisites": [
+    "ps-independent-variables"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-covariance-m1",
+    "ps-covariance-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-covariance",
+    "prediction": "把相关从负改正，散点与和的方差怎样变化？",
+    "caption": "构造具有指定相关系数的固定标准化点云；相关来自构造，不由有限散点证明。"
+  },
+  "teaching": {
+    "explain": "可能有很强的非线性依赖。",
+    "steps": [
+      {
+        "title": "指定相关系数：0.5",
+        "instruction": "将指定相关系数设为 $0.5$，对照图形和读数。",
+        "observation": "本组参数的计算结果：指定总体相关 $0.5$；共同边缘方差 $1$；和的方差 $3$。",
+        "preset": {
+          "a": 0.5
+        }
+      },
+      {
+        "title": "指定相关系数：-0.95",
+        "instruction": "将指定相关系数设为 $-0.95$，对照图形和读数。",
+        "observation": "本组参数的计算结果：指定总体相关 $-0.95$；共同边缘方差 $1$；和的方差 $0.1$。",
+        "preset": {
+          "a": -0.95
+        }
+      },
+      {
+        "title": "指定相关系数：0.95",
+        "instruction": "将指定相关系数设为 $0.95$，对照图形和读数。",
+        "observation": "本组参数的计算结果：指定总体相关 $0.95$；共同边缘方差 $1$；和的方差 $3.9$。",
+        "preset": {
+          "a": 0.95
+        }
+      }
+    ]
+  }
+}

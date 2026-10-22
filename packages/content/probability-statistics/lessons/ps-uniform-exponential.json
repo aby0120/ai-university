@@ -1,0 +1,195 @@
+{
+  "id": "ps-uniform-exponential",
+  "chapterId": "ps-continuous",
+  "number": "5.2",
+  "title": "均匀分布与指数等待",
+  "subtitle": "等长区间等概率对应均匀；恒定到达速率对应指数等待。",
+  "concept": "等长区间等概率对应均匀；恒定到达速率对应指数等待。",
+  "intuition": "均匀没有偏爱的位置，指数没有“已经等够了”的补偿。",
+  "objectives": [
+    "建立均匀模型",
+    "连接计数和等待"
+  ],
+  "body": [
+    {
+      "title": "建立均匀模型",
+      "text": "在有限区间内密度恒定，由总面积确定高度；区间外为零。对长度没有上界的整条实轴不存在同样的均匀概率密度。"
+    },
+    {
+      "title": "连接计数和等待",
+      "text": "Poisson 过程中，等待超过某时刻等于此前没有到达，因此指数尾部来自 Poisson 零次概率。"
+    },
+    {
+      "title": "检查无记忆性",
+      "text": "指数剩余等待分布不因已等待时长改变。老化、周期或排队状态改变速率时不宜直接套用。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "均匀模型中 $a<b$，密度只在该区间非零。",
+    "latex": "X\\sim U(a,b):f(x)=\\frac1{b-a};\\qquad T\\sim\\operatorname{Exp}(\\lambda):P(T>t)=e^{-\\lambda t},\\ ET=1/\\lambda",
+    "conditions": [
+      "均匀模型中 $a<b$，密度只在该区间非零。",
+      "指数采用速率参数 $\\lambda>0$，等待时间非负。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "均匀的总面积决定高度。",
+      "latex": "(b-a)f=1"
+    },
+    {
+      "text": "指数等待尾部等价于零次到达。",
+      "latex": "P(T>t)=P(N(t)=0)=e^{-\\lambda t}"
+    },
+    {
+      "text": "相除可见剩余等待不依赖过去。",
+      "latex": "P(T>s+t\\mid T>s)=e^{-\\lambda t}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "均匀区间",
+      "problem": "在 $[2,8]$ 均匀取数，落在 $[3,5]$ 的概率？",
+      "steps": [
+        "目标长度二，总长度六。",
+        "用长度之比。"
+      ],
+      "answer": "$1/3$。"
+    },
+    {
+      "title": "指数剩余等待",
+      "problem": "速率每单位二次，已经等待三单位，继续等超过一单位的概率？",
+      "steps": [
+        "模型具有无记忆性。",
+        "所问剩余尾部为 $e^{-2(1)}$。"
+      ],
+      "answer": "$e^{-2}\\approx0.1353$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-uniform-exponential-q1",
+      "problem": "$U(0,4)$ 的密度高度？",
+      "hint": "常数乘区间长度等于一。",
+      "solution": [
+        "$1/4$。"
+      ],
+      "answer": "$0.25$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.25
+    },
+    {
+      "id": "ps-uniform-exponential-q2",
+      "problem": "指数速率 $0.5$，平均等待？",
+      "hint": "本卷使用速率参数。",
+      "solution": [
+        "$1/0.5=2$。"
+      ],
+      "answer": "$2$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 2
+    },
+    {
+      "id": "ps-uniform-exponential-q3",
+      "problem": "指数速率二，等待不超过一的概率？",
+      "hint": "尾部的补集。",
+      "solution": [
+        "$1-e^{-2}$。"
+      ],
+      "answer": "$1-e^{-2}$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-uniform-exponential-q4",
+      "problem": "指数参数写作“均值二”时，速率是否也是二？",
+      "hint": "参数约定不同。",
+      "solution": [
+        "速率是均值的倒数。"
+      ],
+      "answer": "速率为 $1/2$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "指数速率越大，平均等待怎样变？",
+    "choices": [
+      "越长",
+      "越短",
+      "不变"
+    ],
+    "correctIndex": 1,
+    "explanation": "平均等待是速率的倒数。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-uniform-exponential-m1",
+      "claim": "速率和平均等待是同一个量",
+      "correction": "二者互为倒数，单位也不同。"
+    },
+    {
+      "id": "ps-uniform-exponential-m2",
+      "claim": "所有等待都无记忆",
+      "correction": "无记忆是特定模型性质，不是等待本身的常识。"
+    }
+  ],
+  "prerequisites": [
+    "ps-density",
+    "ps-poisson"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-uniform-exponential-m1",
+    "ps-uniform-exponential-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-uniform-exponential",
+    "prediction": "提高到达速率，等待超过某阈值的概率怎样变化？",
+    "caption": "显示指数密度、尾部面积与平均等待；无记忆结论限定指数模型。"
+  },
+  "teaching": {
+    "explain": "二者互为倒数，单位也不同。",
+    "steps": [
+      {
+        "title": "到达速率：2",
+        "instruction": "将到达速率设为 $2$，对照图形和读数。",
+        "observation": "本组参数的计算结果：平均等待 $0.5$；超过阈值概率 $0.135335$；不超过阈值概率 $0.864665$。",
+        "preset": {
+          "a": 2,
+          "b": 1
+        }
+      },
+      {
+        "title": "到达速率：0.2",
+        "instruction": "将到达速率设为 $0.2$，对照图形和读数。",
+        "observation": "本组参数的计算结果：平均等待 $5$；超过阈值概率 $0.818731$；不超过阈值概率 $0.181269$。",
+        "preset": {
+          "a": 0.2,
+          "b": 1
+        }
+      },
+      {
+        "title": "到达速率：4",
+        "instruction": "将到达速率设为 $4$，对照图形和读数。",
+        "observation": "本组参数的计算结果：平均等待 $0.25$；超过阈值概率 $0.0183156$；不超过阈值概率 $0.981684$。",
+        "preset": {
+          "a": 4,
+          "b": 1
+        }
+      }
+    ]
+  }
+}

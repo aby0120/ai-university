@@ -1,0 +1,193 @@
+{
+  "id": "ps-categorical",
+  "chapterId": "ps-modeling",
+  "number": "10.1",
+  "title": "分类表与卡方检验",
+  "subtitle": "分类计数与独立模型的预期计数，差得是否足够大？",
+  "concept": "分类计数与独立模型的预期计数，差得是否足够大？",
+  "intuition": "先按边缘比例预测每格人数，再累积标准化的平方偏差。",
+  "objectives": [
+    "计算独立预期",
+    "计算偏离量"
+  ],
+  "body": [
+    {
+      "title": "计算独立预期",
+      "text": "列联表原假设是行列类别独立。固定观测边缘后，预期计数为行总数乘列总数除以总数。"
+    },
+    {
+      "title": "计算偏离量",
+      "text": "各格平方偏差除以预期值再相加，量度相对原模型的偏离。自由度由行列和约束决定。"
+    },
+    {
+      "title": "检查近似条件",
+      "text": "需要独立观察单位和足够的预期计数；本卷采用各格预期至少五的保守课堂规则。稀疏表可考虑精确或设计适配方法。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "这里是列联表独立性检验；边缘对应的类别须互斥并覆盖。",
+    "latex": "\\chi^2=\\sum_{i,j}\\frac{(O_{ij}-E_{ij})^2}{E_{ij}},\\quad E_{ij}=\\frac{O_{i+}O_{+j}}{N},\\quad\\nu=(r-1)(c-1)",
+    "conditions": [
+      "这里是列联表独立性检验；边缘对应的类别须互斥并覆盖。",
+      "拟合优度的自由度另为类别数减一再减所估计参数数，不能混用。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "独立模型下联合比例为边缘比例乘积。",
+      "latex": "\\hat p_{ij}=\\frac{O_{i+}}N\\frac{O_{+j}}N"
+    },
+    {
+      "text": "乘总数得到预期计数。",
+      "latex": "E_{ij}=N\\hat p_{ij}"
+    },
+    {
+      "text": "按预期尺度累积偏差，使用渐近卡方参考。",
+      "latex": "T=\\sum_{i,j}(O_{ij}-E_{ij})^2/E_{ij}\\approx\\chi^2_{(r-1)(c-1)}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "二乘二表",
+      "problem": "计数表 $(20,10)$、$(10,20)$，求预期与卡方。",
+      "steps": [
+        "各行列总数三十，总数六十，每格预期十五。",
+        "四格各贡献 $25/15$。"
+      ],
+      "answer": "统计量 $20/3\\approx6.667$，自由度一，渐近 $p$ 值约 $0.0098$。"
+    },
+    {
+      "title": "拟合优度",
+      "problem": "四个固定概率类别、未估任何参数，拟合优度自由度？",
+      "steps": [
+        "四个类别计数总和固定。",
+        "剩余三个自由方向。"
+      ],
+      "answer": "$3$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-categorical-q1",
+      "problem": "三行四列独立性检验自由度？",
+      "hint": "行列各减一再相乘。",
+      "solution": [
+        "$2\\times3=6$。"
+      ],
+      "answer": "$6$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 6
+    },
+    {
+      "id": "ps-categorical-q2",
+      "problem": "行总二十、列总三十、总数六十，交叉格预期？",
+      "hint": "乘后除总数。",
+      "solution": [
+        "$20(30)/60=10$。"
+      ],
+      "answer": "$10$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 10
+    },
+    {
+      "id": "ps-categorical-q3",
+      "problem": "所有观察计数恰等于预期，统计量？",
+      "hint": "每项偏差为零。",
+      "solution": [
+        "总和为零。"
+      ],
+      "answer": "$0$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0
+    },
+    {
+      "id": "ps-categorical-q4",
+      "problem": "一个人填写多次问卷，能无条件当作独立计数吗？",
+      "hint": "观察单位重复。",
+      "solution": [
+        "组内相关破坏独立单位假设。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "卡方近似主要看哪一项是否太小？",
+    "choices": [
+      "预期计数",
+      "观察表字体",
+      "类别名称长度"
+    ],
+    "correctIndex": 0,
+    "explanation": "稀疏的预期会影响渐近参考分布。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-categorical-m1",
+      "claim": "二乘二表固定用四个自由度",
+      "correction": "独立性约束后只有一个自由度。"
+    },
+    {
+      "id": "ps-categorical-m2",
+      "claim": "显著关联证明因果",
+      "correction": "列联表关联不排除混杂和选择偏差。"
+    }
+  ],
+  "prerequisites": [
+    "ps-power",
+    "ps-joint"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-categorical-m1",
+    "ps-categorical-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "nist-chi-square"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-categorical",
+    "prediction": "保持边缘总数不变，增加对角线计数，卡方统计量怎样变化？",
+    "caption": "使用各格预期十五的二乘二表，展示观察、预期与逐格贡献。"
+  },
+  "teaching": {
+    "explain": "独立性约束后只有一个自由度。",
+    "steps": [
+      {
+        "title": "每条对角线格子的计数：20",
+        "instruction": "将每条对角线格子的计数设为 $20$，对照图形和读数。",
+        "observation": "本组参数的计算结果：每格预期计数 $15$；卡方统计量 $6.66667$；自由度 $1$；渐近右尾 $p$ 值 $0.00982327$。",
+        "preset": {
+          "a": 20
+        }
+      },
+      {
+        "title": "每条对角线格子的计数：0",
+        "instruction": "将每条对角线格子的计数设为 $0$，对照图形和读数。",
+        "observation": "本组参数的计算结果：每格预期计数 $15$；卡方统计量 $60$；自由度 $1$；渐近右尾 $p$ 值 $9.486\\times10^{-15}$。",
+        "preset": {
+          "a": 0
+        }
+      },
+      {
+        "title": "每条对角线格子的计数：30",
+        "instruction": "将每条对角线格子的计数设为 $30$，对照图形和读数。",
+        "observation": "本组参数的计算结果：每格预期计数 $15$；卡方统计量 $60$；自由度 $1$；渐近右尾 $p$ 值 $9.486\\times10^{-15}$。",
+        "preset": {
+          "a": 30
+        }
+      }
+    ]
+  }
+}

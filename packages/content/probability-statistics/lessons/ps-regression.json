@@ -1,0 +1,192 @@
+{
+  "id": "ps-regression",
+  "chapterId": "ps-modeling",
+  "number": "10.2",
+  "title": "最小二乘直线与残差",
+  "subtitle": "找一条直线，让纵向预测误差的平方和最小。",
+  "concept": "找一条直线，让纵向预测误差的平方和最小。",
+  "intuition": "回归拟合的是给定输入时的平均响应，不是让每个点都落在线上。",
+  "objectives": [
+    "区分拟合与模型",
+    "计算斜率截距"
+  ],
+  "body": [
+    {
+      "title": "区分拟合与模型",
+      "text": "最小二乘可对固定数据计算。要进一步作统计推断，还需响应均值线性、误差条件等模型假设。"
+    },
+    {
+      "title": "计算斜率截距",
+      "text": "斜率由共同变化除以输入的平方变化确定，截距使拟合线穿过样本中心。"
+    },
+    {
+      "title": "检查残差",
+      "text": "残差是观察减拟合值，不是到直线的垂直距离。弯曲、漏斗形或时间结构提示模型可能遗漏关系。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "带截距的简单最小二乘，要求 $S_{xx}>0$。",
+    "latex": "\\hat\\beta_1=\\frac{S_{xy}}{S_{xx}},\\quad\\hat\\beta_0=\\bar y-\\hat\\beta_1\\bar x,\\quad S_{xx}=\\sum_i(x_i-\\bar x)^2",
+    "conditions": [
+      "带截距的简单最小二乘，要求 $S_{xx}>0$。",
+      "回归关联不自动支持因果或观测范围外的外推。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "最小化纵向平方误差。",
+      "latex": "Q(b_0,b_1)=\\sum_i(y_i-b_0-b_1x_i)^2"
+    },
+    {
+      "text": "对截距求导，得到残差和为零。",
+      "latex": "\\hat\\beta_0=\\bar y-\\hat\\beta_1\\bar x"
+    },
+    {
+      "text": "代回并对斜率求导。",
+      "latex": "\\hat\\beta_1=S_{xy}/S_{xx}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "拟合三点",
+      "problem": "点 $(0,1),(1,2),(2,3)$ 的最小二乘线？",
+      "steps": [
+        "样本中心为 $(1,2)$，$S_{xx}=2,S_{xy}=2$。",
+        "斜率一、截距一。"
+      ],
+      "answer": "$\\hat y=1+x$，残差均零。"
+    },
+    {
+      "title": "非完美拟合",
+      "problem": "点 $(0,1),(1,1),(2,4)$，求斜率截距。",
+      "steps": [
+        "中心 $(1,2)$，$S_{xx}=2,S_{xy}=3$。",
+        "斜率 $1.5$，截距 $0.5$。"
+      ],
+      "answer": "$\\hat y=0.5+1.5x$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-regression-q1",
+      "problem": "给定 $S_{xy}=6,S_{xx}=3$，斜率？",
+      "hint": "两者相除。",
+      "solution": [
+        "$6/3=2$。"
+      ],
+      "answer": "$2$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 2
+    },
+    {
+      "id": "ps-regression-q2",
+      "problem": "观察为五、预测为三，残差？",
+      "hint": "观察减预测。",
+      "solution": [
+        "$5-3=2$。"
+      ],
+      "answer": "$2$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 2
+    },
+    {
+      "id": "ps-regression-q3",
+      "problem": "所有输入都相同，斜率是否唯一确定？",
+      "hint": "分母为零。",
+      "solution": [
+        "没有输入变化可供识别斜率。"
+      ],
+      "answer": "不能唯一确定。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-regression-q4",
+      "problem": "残差呈明显弯曲，应该只继续报高相关吗？",
+      "hint": "线性均值结构可能不合适。",
+      "solution": [
+        "应检查模型结构，必要时作有依据的修改。"
+      ],
+      "answer": "不应忽略。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "普通最小二乘最小化什么？",
+    "choices": [
+      "纵向残差平方和",
+      "每个点的横坐标",
+      "所有垂直几何距离"
+    ],
+    "correctIndex": 0,
+    "explanation": "误差方向与响应变量的定义有关。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-regression-m1",
+      "claim": "回归线总证明因果",
+      "correction": "仍依赖设计与因果识别条件。"
+    },
+    {
+      "id": "ps-regression-m2",
+      "claim": "拟合好就可无限外推",
+      "correction": "超出观测范围可能换了关系或条件。"
+    }
+  ],
+  "prerequisites": [
+    "ps-categorical",
+    "ps-covariance"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-regression-m1",
+    "ps-regression-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-regression",
+    "prediction": "移动一个观测点，斜率、残差与平方误差怎样变化？",
+    "caption": "固定四个点，单独调整第五个响应；展示精确最小二乘和纵向残差。"
+  },
+  "teaching": {
+    "explain": "仍依赖设计与因果识别条件。",
+    "steps": [
+      {
+        "title": "第五个点的响应：3",
+        "instruction": "将第五个点的响应设为 $3$，对照图形和读数。",
+        "observation": "本组参数的计算结果：斜率 $0.5$；截距 $1$；残差平方和 $1.5$；样本点数 $5$。",
+        "preset": {
+          "a": 3
+        }
+      },
+      {
+        "title": "第五个点的响应：-1",
+        "instruction": "将第五个点的响应设为 $-1$，对照图形和读数。",
+        "observation": "本组参数的计算结果：斜率 $-0.3$；截距 $1.8$；残差平方和 $7.9$；样本点数 $5$。",
+        "preset": {
+          "a": -1
+        }
+      },
+      {
+        "title": "第五个点的响应：8",
+        "instruction": "将第五个点的响应设为 $8$，对照图形和读数。",
+        "observation": "本组参数的计算结果：斜率 $1.5$；截距 $0$；残差平方和 $11.5$；样本点数 $5$。",
+        "preset": {
+          "a": 8
+        }
+      }
+    ]
+  }
+}

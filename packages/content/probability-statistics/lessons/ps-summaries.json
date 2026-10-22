@@ -1,0 +1,190 @@
+{
+  "id": "ps-summaries",
+  "chapterId": "ps-data",
+  "number": "1.5",
+  "title": "均值、中位数与离散程度",
+  "subtitle": "中心告诉你数据在哪里，离散程度告诉你它们有多分散。",
+  "concept": "中心告诉你数据在哪里，离散程度告诉你它们有多分散。",
+  "intuition": "均值像平衡点，中位数像排队中点；一个极端值对两者的影响不同。",
+  "objectives": [
+    "选择位置统计量",
+    "计算样本方差"
+  ],
+  "body": [
+    {
+      "title": "选择位置统计量",
+      "text": "均值使用每个数值，中位数由排序位置决定。偏态和极端值存在时，常把中位数与四分位距一起报告。"
+    },
+    {
+      "title": "计算样本方差",
+      "text": "样本方差围绕样本均值，用平方偏差和除以自由度；标准差与原数据有同样单位。"
+    },
+    {
+      "title": "保持单位一致",
+      "text": "平移改变中心、不改变离散程度；乘倍数使标准差乘绝对倍数，方差乘平方倍数。本卷四分位数使用中位数分半法；奇数样本分半时排除整体中位数，再分别求两半的中位数。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "样本方差要求 $n\\ge2$；总体描述方差可用总个数作分母，必须说明约定。",
+    "latex": "\\bar x=\\frac1n\\sum_ix_i,\\quad s^2=\\frac{\\sum_i(x_i-\\bar x)^2}{n-1},\\quad s=\\sqrt{s^2}",
+    "conditions": [
+      "样本方差要求 $n\\ge2$；总体描述方差可用总个数作分母，必须说明约定。",
+      "无偏性需要独立同分布与有限二阶矩，稍后证明。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "偏差总和为零。",
+      "latex": "\\sum_i(x_i-\\bar x)=0"
+    },
+    {
+      "text": "用平方避免正负抵消。",
+      "latex": "\\mathrm{SS}=\\sum_i(x_i-\\bar x)^2"
+    },
+    {
+      "text": "估计总体方差时校正一个自由度。",
+      "latex": "s^2=\\mathrm{SS}/(n-1)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "计算方差",
+      "problem": "数据 $1,2,3$ 的样本标准差？",
+      "steps": [
+        "均值是二，平方偏差和是二。",
+        "除以二得方差一，再开方。"
+      ],
+      "answer": "$s=1$。"
+    },
+    {
+      "title": "加入极端值",
+      "problem": "数据 $1,2,3$ 改为 $1,2,30$，均值和中位数？",
+      "steps": [
+        "均值 $33/3=11$。",
+        "排序中间的值仍是二。"
+      ],
+      "answer": "均值 $11$，中位数 $2$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-summaries-q1",
+      "problem": "数据 $2,4,6$ 的均值？",
+      "hint": "求和后除以三。",
+      "solution": [
+        "$12/3=4$。"
+      ],
+      "answer": "$4$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 4
+    },
+    {
+      "id": "ps-summaries-q2",
+      "problem": "把所有数据加五，样本标准差怎样变化？",
+      "hint": "考察相对均值的偏差。",
+      "solution": [
+        "每个偏差不变。"
+      ],
+      "answer": "不变。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-summaries-q3",
+      "problem": "把数据乘三，方差怎样变化？",
+      "hint": "平方偏差随之变化。",
+      "solution": [
+        "每个平方偏差乘九。"
+      ],
+      "answer": "乘以 $9$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-summaries-q4",
+      "problem": "样本量为一能计算上述样本方差吗？",
+      "hint": "检查分母。",
+      "solution": [
+        "自由度为零。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "数据乘以 $-2$ 后，标准差怎样变？",
+    "choices": [
+      "乘以 $-2$",
+      "乘以 $2$",
+      "乘以 $4$"
+    ],
+    "correctIndex": 1,
+    "explanation": "标准差非负，按倍数的绝对值缩放。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-summaries-m1",
+      "claim": "标准差和方差有相同单位",
+      "correction": "方差单位是原单位平方，标准差恢复原单位。"
+    },
+    {
+      "id": "ps-summaries-m2",
+      "claim": "中心接近就说明分布相同",
+      "correction": "还要比较离散、形状和异常值。"
+    }
+  ],
+  "prerequisites": [
+    "ps-displays"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-summaries-m1",
+    "ps-summaries-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-summaries",
+    "prediction": "移动最后一个观测，均值、中位数和标准差谁更敏感？",
+    "caption": "其余观测固定，展示极端值的影响；不据此自动判定应删除数据。"
+  },
+  "teaching": {
+    "explain": "方差单位是原单位平方，标准差恢复原单位。",
+    "steps": [
+      {
+        "title": "最后一个观测值：7",
+        "instruction": "将最后一个观测值设为 $7$，对照图形和读数。",
+        "observation": "本组参数的计算结果：均值 $3.4$；中位数 $3$；样本标准差 $2.30217$。",
+        "preset": {
+          "a": 7
+        }
+      },
+      {
+        "title": "最后一个观测值：4",
+        "instruction": "将最后一个观测值设为 $4$，对照图形和读数。",
+        "observation": "本组参数的计算结果：均值 $2.8$；中位数 $3$；样本标准差 $1.30384$。",
+        "preset": {
+          "a": 4
+        }
+      },
+      {
+        "title": "最后一个观测值：20",
+        "instruction": "将最后一个观测值设为 $20$，对照图形和读数。",
+        "observation": "本组参数的计算结果：均值 $6$；中位数 $3$；样本标准差 $7.90569$。",
+        "preset": {
+          "a": 20
+        }
+      }
+    ]
+  }
+}

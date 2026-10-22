@@ -1,0 +1,193 @@
+{
+  "id": "ps-bias-mse",
+  "chapterId": "ps-estimation",
+  "number": "8.1",
+  "title": "偏差、一致性与均方误差",
+  "subtitle": "估计量既可能系统偏离，也可能每次大幅波动。",
+  "concept": "估计量既可能系统偏离，也可能每次大幅波动。",
+  "intuition": "略有偏差但波动更小的估计，有时平均平方误差反而更低。",
+  "objectives": [
+    "按重复抽样定义偏差",
+    "分解均方误差"
+  ],
+  "body": [
+    {
+      "title": "按重复抽样定义偏差",
+      "text": "偏差是估计量期望与目标参数之差，不等于某一次样本的估计误差。"
+    },
+    {
+      "title": "分解均方误差",
+      "text": "平方误差的平均由方差与偏差平方组成。无偏只消除其中一项。"
+    },
+    {
+      "title": "区分无偏与一致",
+      "text": "无偏是有限样本的期望性质，一致是样本量趋于无穷时的收敛性质；两者不能互相替代。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "本节假设平方误差可积。",
+    "latex": "\\operatorname{MSE}(\\hat\\theta)=E[(\\hat\\theta-\\theta)^2]=\\operatorname{Var}(\\hat\\theta)+\\operatorname{Bias}(\\hat\\theta)^2",
+    "conditions": [
+      "本节假设平方误差可积。",
+      "比较估计量应说明目标、损失与抽样模型。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "在误差中加减估计量期望。",
+      "latex": "\\hat\\theta-\\theta=(\\hat\\theta-E\\hat\\theta)+(E\\hat\\theta-\\theta)"
+    },
+    {
+      "text": "展开平方，中心项期望为零。",
+      "latex": "E[\\hat\\theta-E\\hat\\theta]=0"
+    },
+    {
+      "text": "留下方差与偏差平方。",
+      "latex": "\\mathrm{MSE}=\\mathrm{Var}+\\mathrm{Bias}^2"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "比较误差",
+      "problem": "估计甲无偏、方差四；乙偏差一、方差二，谁的 MSE 小？",
+      "steps": [
+        "甲 MSE 为四。",
+        "乙为 $2+1=3$。"
+      ],
+      "answer": "乙较小。"
+    },
+    {
+      "title": "偏的方差估计",
+      "problem": "用 $n$ 而非 $n-1$ 除平方偏差和，期望是多少？",
+      "steps": [
+        "平方偏差和期望为 $(n-1)\\sigma^2$。",
+        "再除以 $n$。"
+      ],
+      "answer": "$(n-1)\\sigma^2/n$，向下偏。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-bias-mse-q1",
+      "problem": "偏差二、方差三，MSE？",
+      "hint": "偏差要平方。",
+      "solution": [
+        "$3+4=7$。"
+      ],
+      "answer": "$7$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 7
+    },
+    {
+      "id": "ps-bias-mse-q2",
+      "problem": "某次估计误差为零，能证明无偏吗？",
+      "hint": "偏差基于重复抽样期望。",
+      "solution": [
+        "一次实现不足以确定期望。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-bias-mse-q3",
+      "problem": "无偏估计一定比所有有偏估计 MSE 小吗？",
+      "hint": "比较两个组成部分。",
+      "solution": [
+        "有偏估计可能显著降低方差。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-bias-mse-q4",
+      "problem": "分母为 $n$ 的正态方差 MLE，样本增加时偏差怎样？",
+      "hint": "看 $(n-1)/n$。",
+      "solution": [
+        "该因子趋于一。"
+      ],
+      "answer": "偏差趋于零；该估计在适当条件下也一致。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "MSE 等于什么？",
+    "choices": [
+      "方差加偏差",
+      "方差加偏差平方",
+      "标准差加均值"
+    ],
+    "correctIndex": 1,
+    "explanation": "平方损失把系统偏离按平方计入。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-bias-mse-m1",
+      "claim": "无偏就是每次准确",
+      "correction": "它只约束重复抽样平均。"
+    },
+    {
+      "id": "ps-bias-mse-m2",
+      "claim": "有偏就不值得使用",
+      "correction": "还应比较方差、MSE 和任务目标。"
+    }
+  ],
+  "prerequisites": [
+    "ps-bootstrap"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-bias-mse-m1",
+    "ps-bias-mse-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-bias-mse",
+    "prediction": "移动估计分布的中心并改变宽度，偏差和 MSE 谁更大？",
+    "caption": "用已知目标与正态估计模型分解 MSE，图形分别标注偏差和标准差。"
+  },
+  "teaching": {
+    "explain": "它只约束重复抽样平均。",
+    "steps": [
+      {
+        "title": "估计量偏差：1",
+        "instruction": "将估计量偏差设为 $1$，对照图形和读数。",
+        "observation": "本组参数的计算结果：偏差 $1$；方差 $1$；均方误差 $2$。",
+        "preset": {
+          "a": 1,
+          "b": 1
+        }
+      },
+      {
+        "title": "估计量偏差：-3",
+        "instruction": "将估计量偏差设为 $-3$，对照图形和读数。",
+        "observation": "本组参数的计算结果：偏差 $-3$；方差 $1$；均方误差 $10$。",
+        "preset": {
+          "a": -3,
+          "b": 1
+        }
+      },
+      {
+        "title": "估计量偏差：3",
+        "instruction": "将估计量偏差设为 $3$，对照图形和读数。",
+        "observation": "本组参数的计算结果：偏差 $3$；方差 $1$；均方误差 $10$。",
+        "preset": {
+          "a": 3,
+          "b": 1
+        }
+      }
+    ]
+  }
+}

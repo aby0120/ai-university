@@ -7,7 +7,7 @@ const read=p=>JSON.parse(fs.readFileSync(path.join(root,p),'utf8'));
 test('both contributed books are complete published volumes, registered only under Other',()=>{
  const catalog=read('packages/content/library.json');
  assert.deepEqual(catalog.categories.map(c=>[c.id,c.title]),[['mathematics','数学'],['other','其他']]);
- assert.equal(catalog.volumes.filter(v=>v.status==='published'&&v.categoryId==='mathematics').length,5);
+ assert.equal(catalog.volumes.filter(v=>v.status==='published'&&v.categoryId==='mathematics').length,6);
  assert.deepEqual(catalog.volumes.filter(v=>v.categoryId==='other').map(v=>v.id).sort(),['ai-development','python-introduction']);
  for(const c of programmingBooks){
   assert.equal(c.book.status,'published');

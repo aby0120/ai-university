@@ -1,0 +1,194 @@
+{
+  "id": "ps-independence",
+  "chapterId": "ps-probability",
+  "number": "2.5",
+  "title": "独立、互斥与多次试验",
+  "subtitle": "独立表示知道一件事，不改变另一件事的概率。",
+  "concept": "独立表示知道一件事，不改变另一件事的概率。",
+  "intuition": "互斥事件会互相排除；两个正概率事件若独立，就不能互斥。",
+  "objectives": [
+    "判断两个事件独立",
+    "区分两两与相互独立"
+  ],
+  "body": [
+    {
+      "title": "判断两个事件独立",
+      "text": "用交集概率是否等于边缘概率之积判断；有正概率条件时，等价于条件概率不变。"
+    },
+    {
+      "title": "区分两两与相互独立",
+      "text": "三个及更多事件相互独立，要求所有子组的交集都满足乘积公式；只检查两两不够。"
+    },
+    {
+      "title": "检查重复试验模型",
+      "text": "二项模型等后续结论依赖独立试验。放回与充分混匀可支持模型，不放回通常产生依赖。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "事件独立性是联合模型的性质。",
+    "latex": "A\\perp B\\iff P(A\\cap B)=P(A)P(B)",
+    "conditions": [
+      "事件独立性是联合模型的性质。",
+      "相互独立需检查任意有限子组的乘积关系。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "独立时条件概率不变。",
+      "latex": "P(A\\mid B)=P(A)"
+    },
+    {
+      "text": "与条件乘法公式合并。",
+      "latex": "P(A\\cap B)=P(B)P(A)"
+    },
+    {
+      "text": "正概率互斥事件的交集却为零。",
+      "latex": "P(A)P(B)>0\\ne P(A\\cap B)=0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "检验独立",
+      "problem": "$P(A)=0.4,P(B)=0.5,P(A\\cap B)=0.2$，独立吗？",
+      "steps": [
+        "边缘乘积为 $0.2$。",
+        "与交集一致。"
+      ],
+      "answer": "独立。"
+    },
+    {
+      "title": "两两不够",
+      "problem": "两次公平独立掷币，事件为第一正、第二正、两次相同。三者相互独立吗？",
+      "steps": [
+        "每个概率为一半，各对交集为四分之一。",
+        "三者交集是全正，概率四分之一，不等于八分之一。"
+      ],
+      "answer": "两两独立，但不相互独立。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-independence-q1",
+      "problem": "独立事件概率各 $0.2,0.3$，交集概率？",
+      "hint": "相乘。",
+      "solution": [
+        "$0.2\\times0.3=0.06$。"
+      ],
+      "answer": "$0.06$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.06
+    },
+    {
+      "id": "ps-independence-q2",
+      "problem": "两个正概率互斥事件独立吗？",
+      "hint": "比较零交集和正乘积。",
+      "solution": [
+        "两者不相等。"
+      ],
+      "answer": "不独立。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-independence-q3",
+      "problem": "独立两次试验成功率均一半，恰好一次成功？",
+      "hint": "有两条路径。",
+      "solution": [
+        "$2(1/2)^2=1/2$。"
+      ],
+      "answer": "$1/2$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.5
+    },
+    {
+      "id": "ps-independence-q4",
+      "problem": "三个事件只检查三对独立够吗？",
+      "hint": "还剩哪个交集？",
+      "solution": [
+        "还须检查三事件交集。"
+      ],
+      "answer": "不够。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "两个正概率事件互斥时，知道一个发生对另一个有什么影响？",
+    "choices": [
+      "概率变成零",
+      "完全没有影响",
+      "概率变成一"
+    ],
+    "correctIndex": 0,
+    "explanation": "因此它们不独立。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-independence-m1",
+      "claim": "两两独立就是相互独立",
+      "correction": "多事件还要检查更高阶交集。"
+    },
+    {
+      "id": "ps-independence-m2",
+      "claim": "不放回抽样仍是独立重复",
+      "correction": "抽取会改变后续组成。"
+    }
+  ],
+  "prerequisites": [
+    "ps-conditional"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-independence-m1",
+    "ps-independence-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-independence",
+    "prediction": "在独立模型中改变一个事件概率，条件概率会变化吗？",
+    "caption": "显示联合概率与条件概率；独立由模型构造保证，不靠有限采样判定。"
+  },
+  "teaching": {
+    "explain": "多事件还要检查更高阶交集。",
+    "steps": [
+      {
+        "title": "事件甲概率：0.4",
+        "instruction": "将事件甲概率设为 $0.4$，对照图形和读数。",
+        "observation": "本组参数的计算结果：第一行边缘 $0.4$；第一列边缘 $0.5$；左上联合概率 $0.2$；给定第一行后第一列概率 $0.5$。",
+        "preset": {
+          "a": 0.4,
+          "b": 0.5
+        }
+      },
+      {
+        "title": "事件甲概率：0.05",
+        "instruction": "将事件甲概率设为 $0.05$，对照图形和读数。",
+        "observation": "本组参数的计算结果：第一行边缘 $0.05$；第一列边缘 $0.5$；左上联合概率 $0.025$；给定第一行后第一列概率 $0.5$。",
+        "preset": {
+          "a": 0.05,
+          "b": 0.5
+        }
+      },
+      {
+        "title": "事件甲概率：0.95",
+        "instruction": "将事件甲概率设为 $0.95$，对照图形和读数。",
+        "observation": "本组参数的计算结果：第一行边缘 $0.95$；第一列边缘 $0.5$；左上联合概率 $0.475$；给定第一行后第一列概率 $0.5$。",
+        "preset": {
+          "a": 0.95,
+          "b": 0.5
+        }
+      }
+    ]
+  }
+}

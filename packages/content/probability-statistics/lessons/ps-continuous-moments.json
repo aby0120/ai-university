@@ -1,0 +1,192 @@
+{
+  "id": "ps-continuous-moments",
+  "chapterId": "ps-continuous",
+  "number": "5.5",
+  "title": "连续期望、方差与尾积分",
+  "subtitle": "把概率加权和换成积分，就能计算连续变量的平均行为。",
+  "concept": "把概率加权和换成积分，就能计算连续变量的平均行为。",
+  "intuition": "密度负责给每一小段概率权重，积分把所有贡献累积起来。",
+  "objectives": [
+    "直接积分",
+    "使用二阶矩"
+  ],
+  "body": [
+    {
+      "title": "直接积分",
+      "text": "连续变量的函数期望可直接对原变量积分，无需先求变换后的密度。"
+    },
+    {
+      "title": "使用二阶矩",
+      "text": "方差仍是二阶矩减期望平方，先检查积分是否收敛。重尾变量可能没有有限期望或方差。"
+    },
+    {
+      "title": "用尾部算平均等待",
+      "text": "非负变量的期望等于生存函数下的面积；这条公式把累计等待与尾部概率连起来。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "绝对可积时函数期望为有限实数；非负变量可允许期望为无穷。",
+    "latex": "E[g(X)]=\\int g(x)f_X(x)dx,\\qquad E[X]=\\int_0^\\infty P(X>t)dt\\quad(X\\ge0)",
+    "conditions": [
+      "绝对可积时函数期望为有限实数；非负变量可允许期望为无穷。",
+      "交换积分的尾积分推导依赖非负性。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "非负数可写成高度指示函数的积分。",
+      "latex": "x=\\int_0^\\infty\\mathbf1\\{t<x\\}dt"
+    },
+    {
+      "text": "对非负被积函数交换次序。",
+      "latex": "EX=\\int_0^\\infty E[\\mathbf1\\{X>t\\}]dt"
+    },
+    {
+      "text": "指示函数期望就是事件概率。",
+      "latex": "EX=\\int_0^\\infty P(X>t)dt"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "均匀方差",
+      "problem": "$X\\sim U(0,2)$，求方差。",
+      "steps": [
+        "$EX=1$，$EX^2=\\int_0^2x^2/2\\,dx=4/3$。",
+        "相减。"
+      ],
+      "answer": "$1/3$。"
+    },
+    {
+      "title": "指数均值",
+      "problem": "指数生存函数 $e^{-3t}$，期望？",
+      "steps": [
+        "从零到无穷积分。",
+        "原函数为 $-e^{-3t}/3$。"
+      ],
+      "answer": "$1/3$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-continuous-moments-q1",
+      "problem": "$U(0,1)$ 的二阶矩？",
+      "hint": "积分平方乘密度一。",
+      "solution": [
+        "$\\int_0^1x^2dx=1/3$。"
+      ],
+      "answer": "$1/3$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.3333333333333333
+    },
+    {
+      "id": "ps-continuous-moments-q2",
+      "problem": "$U(0,1)$ 的方差？",
+      "hint": "从二阶矩减均值平方。",
+      "solution": [
+        "$1/3-1/4=1/12$。"
+      ],
+      "answer": "$1/12$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.08333333333333333
+    },
+    {
+      "id": "ps-continuous-moments-q3",
+      "problem": "Cauchy 分布左右对称，是否因此期望为零？",
+      "hint": "检查绝对积分而非对称截断。",
+      "solution": [
+        "其绝对一阶矩发散。"
+      ],
+      "answer": "其通常期望不存在，不能说为零。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-continuous-moments-q4",
+      "problem": "非负变量尾面积无穷表示什么？",
+      "hint": "尾积分公式允许无穷。",
+      "solution": [
+        "平均等待没有有限值。"
+      ],
+      "answer": "期望为正无穷。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "求 $E[X^2]$ 时应积分什么？",
+    "choices": [
+      "$x^2f(x)$",
+      "$xf(x)^2$",
+      "$f(x)^2$"
+    ],
+    "correctIndex": 0,
+    "explanation": "平方作用在取值上，不作用在概率权重上。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-continuous-moments-m1",
+      "claim": "对称就一定有有限均值",
+      "correction": "还必须检查可积性。"
+    },
+    {
+      "id": "ps-continuous-moments-m2",
+      "claim": "密度归一化就保证方差存在",
+      "correction": "尾部仍可能使二阶矩发散。"
+    }
+  ],
+  "prerequisites": [
+    "ps-transformations",
+    "ps-expectation"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-continuous-moments-m1",
+    "ps-continuous-moments-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-continuous-moments",
+    "prediction": "改变均匀区间长度，均值和方差怎样缩放？",
+    "caption": "直接积分的读数与密度面积一起显示；它不代表所有分布都有有限矩。"
+  },
+  "teaching": {
+    "explain": "还必须检查可积性。",
+    "steps": [
+      {
+        "title": "均匀区间上限：2",
+        "instruction": "将均匀区间上限设为 $2$，对照图形和读数。",
+        "observation": "本组参数的计算结果：期望 $1$；方差 $0.333333$；密度高度 $0.5$。",
+        "preset": {
+          "a": 2
+        }
+      },
+      {
+        "title": "均匀区间上限：0.5",
+        "instruction": "将均匀区间上限设为 $0.5$，对照图形和读数。",
+        "observation": "本组参数的计算结果：期望 $0.25$；方差 $0.0208333$；密度高度 $2$。",
+        "preset": {
+          "a": 0.5
+        }
+      },
+      {
+        "title": "均匀区间上限：8",
+        "instruction": "将均匀区间上限设为 $8$，对照图形和读数。",
+        "observation": "本组参数的计算结果：期望 $4$；方差 $5.33333$；密度高度 $0.125$。",
+        "preset": {
+          "a": 8
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "id": "ps-power",
+  "chapterId": "ps-testing",
+  "number": "9.5",
+  "title": "功效、效应大小与多重比较",
+  "subtitle": "发现差异的机会，取决于真实效应、噪声、样本量和决策门槛。",
+  "concept": "发现差异的机会，取决于真实效应、噪声、样本量和决策门槛。",
+  "intuition": "更大样本可能让很小的效应显著，因此还要报告实际影响有多大。",
+  "objectives": [
+    "区分错误与功效",
+    "明确设计目标"
+  ],
+  "body": [
+    {
+      "title": "区分错误与功效",
+      "text": "第一类错误在原假设真时定义；第二类错误在某个具体备择下定义。功效是该备择下正确拒绝的概率。"
+    },
+    {
+      "title": "明确设计目标",
+      "text": "功效计算需要指定值得关注的效应和尺度。事后用同一效应估计做“观察功效”通常不能替代区间信息。"
+    },
+    {
+      "title": "控制多重机会",
+      "text": "同时检验很多假设会累积误报机会。Bonferroni 在任意依赖下用并集上界控制家族错误，但可能保守；反复查看与选择也需处理。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "功效必须对应指定备择参数与检验规则。",
+    "latex": "\\operatorname{Power}(\\theta)=P_\\theta(\\text{拒绝 }H_0),\\qquad P(\\text{任一误拒绝})\\le\\sum_{j=1}^{m}\\alpha_j",
+    "conditions": [
+      "功效必须对应指定备择参数与检验规则。",
+      "Bonferroni 若各检验水平不超过 $\\alpha/m$，家族错误不超过 $\\alpha$。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先在原假设下定拒绝区域。",
+      "latex": "R=\\{|Z|>z_{1-\\alpha/2}\\}"
+    },
+    {
+      "text": "换到给定备择分布计算同一拒绝区域概率。",
+      "latex": "Z\\sim N(\\delta\\sqrt n/\\sigma,1)"
+    },
+    {
+      "text": "多检验通过并集界限制任一错误。",
+      "latex": "P(\\cup_jE_j)\\le\\sum_jP(E_j)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "多次机会",
+      "problem": "做十个检验，希望家族水平不超过 $0.05$，Bonferroni 每项最多多少？",
+      "steps": [
+        "总预算平均分给十项。",
+        "$0.05/10=0.005$。"
+      ],
+      "answer": "$0.005$。"
+    },
+    {
+      "title": "精度与显著性",
+      "problem": "相同效应和尺度，样本量扩大四倍，正态标准化效应怎样变？",
+      "steps": [
+        "效应尺度是 $\\delta\\sqrt n/\\sigma$。",
+        "平方根样本量扩大二倍。"
+      ],
+      "answer": "扩大二倍，通常提高给定双侧检验的功效。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-power-q1",
+      "problem": "第二类错误概率 $0.2$，对应功效？",
+      "hint": "功效为其补集。",
+      "solution": [
+        "$1-0.2=0.8$。"
+      ],
+      "answer": "$0.8$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.8
+    },
+    {
+      "id": "ps-power-q2",
+      "problem": "二十项检验、家族水平 $0.05$，Bonferroni 每项？",
+      "hint": "除以检验数。",
+      "solution": [
+        "$0.05/20=0.0025$。"
+      ],
+      "answer": "$0.0025$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.0025
+    },
+    {
+      "id": "ps-power-q3",
+      "problem": "统计显著是否一定实际重要？",
+      "hint": "显著性还受样本量影响。",
+      "solution": [
+        "很小效应在大样本中也可显著。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-power-q4",
+      "problem": "不断收集数据直到显著，仍可直接用固定样本 $p$ 值吗？",
+      "hint": "停止规则改变了拒绝机会。",
+      "solution": [
+        "须使用预定序贯方法或调整。"
+      ],
+      "answer": "不能保证原错误水平。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "其他条件不变，提高显著性门槛的严格程度，功效通常怎样？",
+    "choices": [
+      "提高",
+      "降低",
+      "必定不变"
+    ],
+    "correctIndex": 1,
+    "explanation": "拒绝区域缩小，备择下拒绝机会也通常减少。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-power-m1",
+      "claim": "显著就是效应大",
+      "correction": "还需要效应尺度与区间。"
+    },
+    {
+      "id": "ps-power-m2",
+      "claim": "多试几次再报最小 $p$ 值没影响",
+      "correction": "筛选与重复查看都可能增加误报，需要纳入程序。"
+    }
+  ],
+  "prerequisites": [
+    "ps-comparison-tests"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-power-m1",
+    "ps-power-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-power",
+    "prediction": "改变真实效应和样本量，原假设错误水平与功效怎样变化？",
+    "caption": "使用已知尺度的双侧正态检验，分别计算原假设拒绝概率和指定备择功效。"
+  },
+  "teaching": {
+    "explain": "还需要效应尺度与区间。",
+    "steps": [
+      {
+        "title": "计划样本量：25",
+        "instruction": "将计划样本量设为 $25$，对照图形和读数。",
+        "observation": "本组参数的计算结果：原假设显著性水平 $0.05$；指定备择下功效 $0.705418$；标准化真实效应 $2.5$。",
+        "preset": {
+          "n": 25,
+          "a": 0.5,
+          "b": 0.05
+        }
+      },
+      {
+        "title": "计划样本量：5",
+        "instruction": "将计划样本量设为 $5$，对照图形和读数。",
+        "observation": "本组参数的计算结果：原假设显著性水平 $0.05$；指定备择下功效 $0.200956$；标准化真实效应 $1.11803$。",
+        "preset": {
+          "n": 5,
+          "a": 0.5,
+          "b": 0.05
+        }
+      },
+      {
+        "title": "计划样本量：150",
+        "instruction": "将计划样本量设为 $150$，对照图形和读数。",
+        "observation": "本组参数的计算结果：原假设显著性水平 $0.05$；指定备择下功效 $0.999984$；标准化真实效应 $6.12372$。",
+        "preset": {
+          "n": 150,
+          "a": 0.5,
+          "b": 0.05
+        }
+      }
+    ]
+  }
+}

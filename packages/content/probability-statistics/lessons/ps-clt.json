@@ -1,0 +1,197 @@
+{
+  "id": "ps-clt",
+  "chapterId": "ps-sampling",
+  "number": "7.2",
+  "title": "中心极限定理",
+  "subtitle": "很多独立贡献相加后，标准化的和趋向正态。",
+  "concept": "很多独立贡献相加后，标准化的和趋向正态。",
+  "intuition": "原数据不必像钟形，但这里讨论的是重复抽样后的平均值分布。",
+  "objectives": [
+    "辨认抽样分布",
+    "正确标准化"
+  ],
+  "body": [
+    {
+      "title": "辨认抽样分布",
+      "text": "一次样本的直方图与许多次样本均值的直方图不是同一个对象。"
+    },
+    {
+      "title": "正确标准化",
+      "text": "对独立同分布、有限正方差变量，样本均值用总体标准误缩放后分布收敛到标准正态。"
+    },
+    {
+      "title": "评估近似边界",
+      "text": "偏态、重尾、稀少事件和尾概率任务可需要更多样本。“三十个就够”没有普遍保证。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "本节经典版本要求独立同分布且 $0<\\sigma^2<\\infty$。",
+    "latex": "\\frac{\\sqrt n(\\bar X_n-\\mu)}{\\sigma}\\xrightarrow{d}N(0,1)",
+    "conditions": [
+      "本节经典版本要求独立同分布且 $0<\\sigma^2<\\infty$。",
+      "分布收敛不等于每个有限样本已经精确正态。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "平均的中心保持不变。",
+      "latex": "E\\bar X_n=\\mu"
+    },
+    {
+      "text": "平均尺度随样本量缩小。",
+      "latex": "\\operatorname{SD}(\\bar X_n)=\\sigma/\\sqrt n"
+    },
+    {
+      "text": "按该尺度中心化，得到非退化极限。",
+      "latex": "Z_n=\\sqrt n(\\bar X_n-\\mu)/\\sigma\\xrightarrow dN(0,1)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "近似一个均值",
+      "problem": "独立总体均值十、标准差六，样本量三十六，近似 $P(\\bar X>12)$。",
+      "steps": [
+        "标准误为一。",
+        "阈值标准化为二。"
+      ],
+      "answer": "若正态近似适用，约 $1-\\Phi(2)=0.0228$。"
+    },
+    {
+      "title": "与大数定律区别",
+      "problem": "平均越来越靠近期望，为什么标准化平均仍有波动？",
+      "steps": [
+        "未缩放平均的波动缩小。",
+        "乘以平方根样本量后，观察的是缩小波动的形状。"
+      ],
+      "answer": "两条定理讨论不同尺度。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-clt-q1",
+      "problem": "总体标准差十，样本量二十五，平均标准误？",
+      "hint": "除以平方根样本量。",
+      "solution": [
+        "$10/5=2$。"
+      ],
+      "answer": "$2$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 2
+    },
+    {
+      "id": "ps-clt-q2",
+      "problem": "增加样本量会把原总体分布变成正态吗？",
+      "hint": "收敛对象是什么？",
+      "solution": [
+        "改变的是均值等统计量的抽样分布。"
+      ],
+      "answer": "不会。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-clt-q3",
+      "problem": "独立 Cauchy 样本能用这里有限方差 CLT 吗？",
+      "hint": "检查矩条件。",
+      "solution": [
+        "该总体没有有限方差。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-clt-q4",
+      "problem": "高度偏斜总体中三十个样本必够吗？",
+      "hint": "还要看尾部和目标精度。",
+      "solution": [
+        "没有统一样本量门槛。"
+      ],
+      "answer": "不保证。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "CLT 主要描述哪张图趋近正态？",
+    "choices": [
+      "原始总体",
+      "重复样本的标准化均值",
+      "任意一小组数据"
+    ],
+    "correctIndex": 1,
+    "explanation": "需区分总体、单次样本和统计量抽样分布。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-clt-m1",
+      "claim": "CLT 说明原数据变正态",
+      "correction": "它描述标准化平均等统计量。"
+    },
+    {
+      "id": "ps-clt-m2",
+      "claim": "样本三十就保证近似准确",
+      "correction": "偏态、尾部和精度要求都会改变所需样本量。"
+    }
+  ],
+  "prerequisites": [
+    "ps-lln",
+    "ps-normal"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-clt-m1",
+    "ps-clt-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-clt",
+    "prediction": "增大每次样本量，标准化均值的重复抽样图怎样变化？",
+    "caption": "固定种子重复抽样 Bernoulli 均值并标准化；直方图是有限模拟，曲线是正态参照。"
+  },
+  "teaching": {
+    "explain": "它描述标准化平均等统计量。",
+    "steps": [
+      {
+        "title": "每份样本量：20",
+        "instruction": "将每份样本量设为 $20$，对照图形和读数。",
+        "observation": "本组参数的计算结果：每次样本量 $20$；重复次数 $300$；模拟均值 $0.0048795$；窗口外样本比例 $0$。",
+        "preset": {
+          "n": 20,
+          "a": 0.3,
+          "c": 7
+        }
+      },
+      {
+        "title": "每份样本量：1",
+        "instruction": "将每份样本量设为 $1$，对照图形和读数。",
+        "observation": "本组参数的计算结果：每次样本量 $1$；重复次数 $300$；模拟均值 $-0.0436436$；窗口外样本比例 $0$。",
+        "preset": {
+          "n": 1,
+          "a": 0.3,
+          "c": 7
+        }
+      },
+      {
+        "title": "每份样本量：80",
+        "instruction": "将每份样本量设为 $80$，对照图形和读数。",
+        "observation": "本组参数的计算结果：每次样本量 $80$；重复次数 $300$；模拟均值 $0.0439155$；窗口外样本比例 $0$。",
+        "preset": {
+          "n": 80,
+          "a": 0.3,
+          "c": 7
+        }
+      }
+    ]
+  }
+}

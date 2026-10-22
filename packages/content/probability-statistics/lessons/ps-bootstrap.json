@@ -1,0 +1,196 @@
+{
+  "id": "ps-bootstrap",
+  "chapterId": "ps-sampling",
+  "number": "7.5",
+  "title": "Bootstrap：从样本模拟再抽样",
+  "subtitle": "把观察到的样本当作经验总体，重复有放回抽取。",
+  "concept": "把观察到的样本当作经验总体，重复有放回抽取。",
+  "intuition": "每次保持样本大小不变，只让被选到的记录和次数变化。",
+  "objectives": [
+    "构造经验分布",
+    "估计统计量波动"
+  ],
+  "body": [
+    {
+      "title": "构造经验分布",
+      "text": "普通非参数 bootstrap 给每条记录相同权重。每次有放回抽取原样本大小的记录，再计算统计量。"
+    },
+    {
+      "title": "估计统计量波动",
+      "text": "重复结果的标准差可估计标准误；本卷展示百分位区间，端点取重抽样统计量的分位数。"
+    },
+    {
+      "title": "检查适用条件",
+      "text": "独立抽样只是常见起点。时间序列、聚类、强偏差和某些非光滑统计量需要专门方法；重复次数多不能修复原样本不具代表性。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "普通 bootstrap 以经验分布近似总体并按原样本量重抽。",
+    "latex": "X_1^*,\\ldots,X_n^*\\stackrel{\\mathrm{iid}}\\sim\\hat F_n,\\qquad\\widehat{\\operatorname{SE}}_{\\mathrm{boot}}=\\operatorname{SD}(\\hat\\theta_1^*,\\ldots,\\hat\\theta_B^*)",
+    "conditions": [
+      "普通 bootstrap 以经验分布近似总体并按原样本量重抽。",
+      "百分位区间不是任意小样本下覆盖准确的保证。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "每条原始记录赋相同质量。",
+      "latex": "\\hat F_n=\\frac1n\\sum_i\\delta_{x_i}"
+    },
+    {
+      "text": "从这份经验分布重复取样。",
+      "latex": "\\hat\\theta_b^*=T(X_{b1}^*,\\ldots,X_{bn}^*)"
+    },
+    {
+      "text": "计算重复统计量的离散程度或分位数。",
+      "latex": "I_{\\mathrm{perc}}=[q_{\\alpha/2}^*,q_{1-\\alpha/2}^*]"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "允许重复",
+      "problem": "原数据 $1,2,5$，bootstrap 样本 $(2,2,5)$ 是否允许？",
+      "steps": [
+        "每次有放回抽三次。",
+        "同一记录可以出现多次。"
+      ],
+      "answer": "允许，均值为 $3$。"
+    },
+    {
+      "title": "固定多少",
+      "problem": "原样本二十条，做一千次普通 bootstrap，每份样本有几条？",
+      "steps": [
+        "一千是重复次数。",
+        "每份仍取二十条。"
+      ],
+      "answer": "每份二十条。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-bootstrap-q1",
+      "problem": "原数据 $2,4$，有序 bootstrap 样本有几种等可能结果？",
+      "hint": "每个位置独立选两种。",
+      "solution": [
+        "$2^2=4$。"
+      ],
+      "answer": "$4$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 4
+    },
+    {
+      "id": "ps-bootstrap-q2",
+      "problem": "上述四种样本均值有哪些？",
+      "hint": "列出两次抽取。",
+      "solution": [
+        "$(2,2),(2,4),(4,2),(4,4)$。"
+      ],
+      "answer": "$2,3,3,4$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-bootstrap-q3",
+      "problem": "重抽一百万次能修正原样本选择偏差吗？",
+      "hint": "一直从哪份数据抽？",
+      "solution": [
+        "仍重复原来的偏样本。"
+      ],
+      "answer": "不能自动修正。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-bootstrap-q4",
+      "problem": "时间序列直接按单行独立重抽总合适吗？",
+      "hint": "记录可能相关。",
+      "solution": [
+        "会破坏时间依赖结构。"
+      ],
+      "answer": "不总合适，可能需要块 bootstrap 等方法。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "普通 bootstrap 的“有放回”表示什么？",
+    "choices": [
+      "原数据会被删除",
+      "同一记录可以重复抽中",
+      "每次样本变大"
+    ],
+    "correctIndex": 1,
+    "explanation": "每份样本大小固定，记录可重复。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-bootstrap-m1",
+      "claim": "重复次数大就一定有效",
+      "correction": "原抽样与统计量条件仍然重要。"
+    },
+    {
+      "id": "ps-bootstrap-m2",
+      "claim": "百分位区间总是精确置信区间",
+      "correction": "其覆盖通常是近似，某些情形效果很差。"
+    }
+  ],
+  "prerequisites": [
+    "ps-normal-sample"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-bootstrap-m1",
+    "ps-bootstrap-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-bootstrap",
+    "prediction": "改变重复次数与一个极端观测，bootstrap 区间会怎样变化？",
+    "caption": "固定种子重抽一个小样本，仅演示方法；小样本区间不声称达到名义覆盖。"
+  },
+  "teaching": {
+    "explain": "原抽样与统计量条件仍然重要。",
+    "steps": [
+      {
+        "title": "重抽次数：200",
+        "instruction": "将重抽次数设为 $200$，对照图形和读数。",
+        "observation": "本组参数的计算结果：原样本均值 $3$；bootstrap 标准误 $0.83684$；百分位下端 $1.6$；百分位上端 $4.8$。",
+        "preset": {
+          "n": 200,
+          "a": 6,
+          "c": 7
+        }
+      },
+      {
+        "title": "重抽次数：50",
+        "instruction": "将重抽次数设为 $50$，对照图形和读数。",
+        "observation": "本组参数的计算结果：原样本均值 $3$；bootstrap 标准误 $0.887546$；百分位下端 $1.8$；百分位上端 $5.11$。",
+        "preset": {
+          "n": 50,
+          "a": 6,
+          "c": 7
+        }
+      },
+      {
+        "title": "重抽次数：400",
+        "instruction": "将重抽次数设为 $400$，对照图形和读数。",
+        "observation": "本组参数的计算结果：原样本均值 $3$；bootstrap 标准误 $0.792683$；百分位下端 $1.6$；百分位上端 $4.8$。",
+        "preset": {
+          "n": 400,
+          "a": 6,
+          "c": 7
+        }
+      }
+    ]
+  }
+}

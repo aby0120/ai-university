@@ -1,0 +1,193 @@
+{
+  "id": "ps-anova",
+  "chapterId": "ps-modeling",
+  "number": "10.4",
+  "title": "单因素方差分析",
+  "subtitle": "比较多个组均值，先看组间差异相对组内噪声有多大。",
+  "concept": "比较多个组均值，先看组间差异相对组内噪声有多大。",
+  "intuition": "各组中心分得远但组内也很散，证据未必强；要比较两种尺度。",
+  "objectives": [
+    "分解平方和",
+    "按自由度比较"
+  ],
+  "body": [
+    {
+      "title": "分解平方和",
+      "text": "总变差拆为组间与组内平方和。组间部分使用组样本量作为权重。"
+    },
+    {
+      "title": "按自由度比较",
+      "text": "分别除以自由度得到均方；在独立同方差正态模型及均值相同的原假设下，均方比服从 $F$ 分布。"
+    },
+    {
+      "title": "解释总体拒绝",
+      "text": "拒绝只表示不全相等，不说明每一对都不同。后续比较需预先设计或处理多重性；方差不等可使用适配方法。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "经典精确单因素 ANOVA 要求独立、组内正态且共同方差。",
+    "latex": "F=\\frac{\\mathrm{SSB}/(k-1)}{\\mathrm{SSW}/(N-k)},\\quad\\mathrm{SSB}=\\sum_jn_j(\\bar y_j-\\bar y)^2,\\quad\\mathrm{SSW}=\\sum_{j,i}(y_{ij}-\\bar y_j)^2",
+    "conditions": [
+      "经典精确单因素 ANOVA 要求独立、组内正态且共同方差。",
+      "需 $k\\ge2,N>k$ 且组内均方为正；零噪声需单独处理。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "将每个偏差拆为组内与组间。",
+      "latex": "y_{ij}-\\bar y=(y_{ij}-\\bar y_j)+(\\bar y_j-\\bar y)"
+    },
+    {
+      "text": "组内偏差和为零，交叉项抵消。",
+      "latex": "\\mathrm{SST}=\\mathrm{SSW}+\\mathrm{SSB}"
+    },
+    {
+      "text": "用各自自由度标准化，在原假设下取比。",
+      "latex": "F\\sim F_{k-1,N-k}\\quad(H_0:\\mu_1=\\cdots=\\mu_k)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "三组比较",
+      "problem": "三组为 $(1,2,3),(3,4,5),(5,6,7)$，求 $F$。",
+      "steps": [
+        "组均值二、四、六，总均值四，组间平方和二十四。",
+        "组内平方和六；均方分别十二和一。"
+      ],
+      "answer": "$F=12$，自由度 $(2,6)$，右尾 $p$ 值 $0.008$。"
+    },
+    {
+      "title": "相同组均值",
+      "problem": "各组均值相同且组内仍有波动，组间平方和与 $F$？",
+      "steps": [
+        "每组均值等于总均值。",
+        "组间偏差全零。"
+      ],
+      "answer": "组间平方和零，$F=0$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-anova-q1",
+      "problem": "四组共二十个观察，$F$ 的自由度？",
+      "hint": "组间减一，组内减组数。",
+      "solution": [
+        "$(4-1,20-4)=(3,16)$。"
+      ],
+      "answer": "$(3,16)$。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-anova-q2",
+      "problem": "组间均方六、组内均方二，$F$？",
+      "hint": "取两者比。",
+      "solution": [
+        "$6/2=3$。"
+      ],
+      "answer": "$3$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 3
+    },
+    {
+      "id": "ps-anova-q3",
+      "problem": "ANOVA 显著是否说明所有组两两不同？",
+      "hint": "总体原假设是什么？",
+      "solution": [
+        "只否定全体均值都相等。"
+      ],
+      "answer": "不是。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-anova-q4",
+      "problem": "各组方差差异极大，经典 $F$ 还精确吗？",
+      "hint": "共同方差条件被破坏。",
+      "solution": [
+        "需评估近似或采用异方差适配方法。"
+      ],
+      "answer": "不能保证精确。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "ANOVA 拒绝的含义是？",
+    "choices": [
+      "所有组两两不同",
+      "至少有一个均值不同",
+      "所有组方差相同"
+    ],
+    "correctIndex": 1,
+    "explanation": "它是对整体均值相等假设的检验。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-anova-m1",
+      "claim": "比较组均值不用考虑组内噪声",
+      "correction": "均方比同时考虑组间差异与组内波动。"
+    },
+    {
+      "id": "ps-anova-m2",
+      "claim": "事后任意多对检验都用原门槛",
+      "correction": "多重比较会增加错误机会，需要适配控制。"
+    }
+  ],
+  "prerequisites": [
+    "ps-regression-inference"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-anova-m1",
+    "ps-anova-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "nist-anova"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-anova",
+    "prediction": "拉开组均值或增加组内波动，$F$ 统计量如何变化？",
+    "caption": "固定三组各三条，显示平方和分解和 $F$ 右尾；不把显著性解释为每对不同。"
+  },
+  "teaching": {
+    "explain": "均方比同时考虑组间差异与组内波动。",
+    "steps": [
+      {
+        "title": "相邻组中心距离：2",
+        "instruction": "将相邻组中心距离设为 $2$，对照图形和读数。",
+        "observation": "本组参数的计算结果：组间平方和 $24$；组内平方和 $6$；$F$ 统计量 $12$；右尾 $p$ 值 $0.008$。",
+        "preset": {
+          "a": 2,
+          "b": 1
+        }
+      },
+      {
+        "title": "相邻组中心距离：0",
+        "instruction": "将相邻组中心距离设为 $0$，对照图形和读数。",
+        "observation": "本组参数的计算结果：组间平方和 $0$；组内平方和 $6$；$F$ 统计量 $0$；右尾 $p$ 值 $1$。",
+        "preset": {
+          "a": 0,
+          "b": 1
+        }
+      },
+      {
+        "title": "相邻组中心距离：4",
+        "instruction": "将相邻组中心距离设为 $4$，对照图形和读数。",
+        "observation": "本组参数的计算结果：组间平方和 $96$；组内平方和 $6$；$F$ 统计量 $48$；右尾 $p$ 值 $0.000203542$。",
+        "preset": {
+          "a": 4,
+          "b": 1
+        }
+      }
+    ]
+  }
+}

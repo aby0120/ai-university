@@ -1,0 +1,196 @@
+{
+  "id": "ps-difference-interval",
+  "chapterId": "ps-estimation",
+  "number": "8.5",
+  "title": "两组均值差与配对区间",
+  "subtitle": "先判断两组是否独立；配对数据应分析每对的差。",
+  "concept": "先判断两组是否独立；配对数据应分析每对的差。",
+  "intuition": "同一个人前后各测一次，信息来自“每人改变多少”，不是两个互不相关的人群。",
+  "objectives": [
+    "独立两组",
+    "计算近似自由度"
+  ],
+  "body": [
+    {
+      "title": "独立两组",
+      "text": "Welch 方法分别估计两组方差，不强制方差相等。标准误由两个平均方差相加得到。"
+    },
+    {
+      "title": "计算近似自由度",
+      "text": "Welch–Satterthwaite 自由度可为非整数。等方差池化法需要额外的共同方差假设。"
+    },
+    {
+      "title": "处理配对",
+      "text": "先形成独立配对差，再对差值做单样本 $t$ 区间。有效样本量是对数，不能误用记录总数。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "独立两样本的 Welch 区间为常用近似；小样本需评估组内正态性。",
+    "latex": "\\hat\\Delta\\pm t_{1-\\alpha/2,\\nu}\\sqrt{v_1+v_2},\\quad v_j=s_j^2/n_j,\\quad\\nu=\\frac{(v_1+v_2)^2}{v_1^2/(n_1-1)+v_2^2/(n_2-1)}",
+    "conditions": [
+      "独立两样本的 Welch 区间为常用近似；小样本需评估组内正态性。",
+      "配对区间要求各对之间独立，正态差值时为精确 $t$ 区间。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "独立均值的差方差相加。",
+      "latex": "\\operatorname{Var}(\\bar X_1-\\bar X_2)=\\sigma_1^2/n_1+\\sigma_2^2/n_2"
+    },
+    {
+      "text": "用两组样本方差估计。",
+      "latex": "\\widehat{\\mathrm{SE}}=\\sqrt{v_1+v_2}"
+    },
+    {
+      "text": "配对时先相减，保留对内协方差。",
+      "latex": "\\operatorname{Var}(X-Y)=\\sigma_X^2+\\sigma_Y^2-2\\operatorname{Cov}(X,Y)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "独立标准误",
+      "problem": "两独立组 $n_1=n_2=25,s_1=3,s_2=4$，差值标准误？",
+      "steps": [
+        "两个平均方差为 $9/25,16/25$。",
+        "相加后开方。"
+      ],
+      "answer": "$1$。"
+    },
+    {
+      "title": "配对差",
+      "problem": "配对差 $1,2,3$ 的平均差与标准误？",
+      "steps": [
+        "平均二，样本标准差一。",
+        "标准误用三对而不是六条记录。"
+      ],
+      "answer": "均值 $2$，标准误 $1/\\sqrt3$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-difference-interval-q1",
+      "problem": "两独立均值标准误分别二和三，差的标准误？",
+      "hint": "平方后相加再开方。",
+      "solution": [
+        "$\\sqrt{4+9}=\\sqrt{13}$。"
+      ],
+      "answer": "$\\sqrt{13}$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-difference-interval-q2",
+      "problem": "十人前后测量，配对 $t$ 的自由度？",
+      "hint": "独立单位是人。",
+      "solution": [
+        "十个差值，自由度九。"
+      ],
+      "answer": "$9$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 9
+    },
+    {
+      "id": "ps-difference-interval-q3",
+      "problem": "Welch 自由度必须取整吗？",
+      "hint": "$t$ 分布允许正实自由度。",
+      "solution": [
+        "公式常给非整数。"
+      ],
+      "answer": "无需强制取整。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-difference-interval-q4",
+      "problem": "配对分析为何可能更精确？",
+      "hint": "对内共同因素会相消。",
+      "solution": [
+        "正协方差降低差值方差。"
+      ],
+      "answer": "对内正相关可减少差值噪声，但并非无条件保证。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "前后测量的配对区间应先对什么建模？",
+    "choices": [
+      "所有记录混成一组",
+      "每对的差",
+      "每组分别复制数据"
+    ],
+    "correctIndex": 1,
+    "explanation": "差值保存了配对关系。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-difference-interval-m1",
+      "claim": "两组问题总按独立处理",
+      "correction": "配对与独立设计要求不同的标准误。"
+    },
+    {
+      "id": "ps-difference-interval-m2",
+      "claim": "Welch 自动解决所有异常和偏差",
+      "correction": "它处理方差不等，不自动修复依赖、离群或选择偏差。"
+    }
+  ],
+  "prerequisites": [
+    "ps-proportion-interval"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-difference-interval-m1",
+    "ps-difference-interval-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "nist-welch"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-difference-interval",
+    "prediction": "改变两组样本量或尺度，差值标准误与 Welch 自由度怎样变化？",
+    "caption": "展示独立正态两组的差值近似区间；配对方法另在正文逐步计算。"
+  },
+  "teaching": {
+    "explain": "配对与独立设计要求不同的标准误。",
+    "steps": [
+      {
+        "title": "每组样本量：25",
+        "instruction": "将每组样本量设为 $25$，对照图形和读数。",
+        "observation": "本组参数的计算结果：估计标准误 $1$；Welch 自由度 $44.5104$；区间下端 $-0.0147151$；区间上端 $4.01472$。",
+        "preset": {
+          "n": 25,
+          "a": 2,
+          "b": 4
+        }
+      },
+      {
+        "title": "每组样本量：3",
+        "instruction": "将每组样本量设为 $3$，对照图形和读数。",
+        "observation": "本组参数的计算结果：估计标准误 $2.88675$；Welch 自由度 $3.7092$；区间下端 $-6.26891$；区间上端 $10.2689$。",
+        "preset": {
+          "n": 3,
+          "a": 2,
+          "b": 4
+        }
+      },
+      {
+        "title": "每组样本量：60",
+        "instruction": "将每组样本量设为 $60$，对照图形和读数。",
+        "observation": "本组参数的计算结果：估计标准误 $0.645497$；Welch 自由度 $109.421$；区间下端 $0.720701$；区间上端 $3.2793$。",
+        "preset": {
+          "n": 60,
+          "a": 2,
+          "b": 4
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "id": "ps-displays",
+  "chapterId": "ps-data",
+  "number": "1.4",
+  "title": "频数图、直方图与经验分布",
+  "subtitle": "图形显示分布；不同图的纵轴含义要先看清。",
+  "concept": "图形显示分布；不同图的纵轴含义要先看清。",
+  "intuition": "直方图用面积放频率，经验分布用台阶记录“不超过某值”的比例。",
+  "objectives": [
+    "区分类别条形与数值分箱",
+    "使用密度高度"
+  ],
+  "body": [
+    {
+      "title": "区分类别条形与数值分箱",
+      "text": "类别条形图的宽度没有概率含义。数值直方图按区间分箱，箱宽不同时不能直接用频数高度比较密集程度。"
+    },
+    {
+      "title": "使用密度高度",
+      "text": "箱内相对频率除以箱宽得到高度；每个矩形的面积才是该箱的相对频率。"
+    },
+    {
+      "title": "读取经验分布",
+      "text": "经验分布函数在每个观测值处上跳，相同值的跳幅会合并；换分箱不会改变它。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "直方图密度高度使用正箱宽。",
+    "latex": "\\hat F_n(x)=\\frac1n\\sum_{i=1}^{n}\\mathbf1\\{x_i\\le x\\},\\qquad h_j=\\frac{n_j}{n\\,w_j}",
+    "conditions": [
+      "直方图密度高度使用正箱宽。",
+      "经验分布使用“不超过”，为右连续阶梯。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "第一个箱的相对频率是计数除以总数。",
+      "latex": "p_j=n_j/n"
+    },
+    {
+      "text": "以面积等于相对频率确定高度。",
+      "latex": "w_jh_j=p_j"
+    },
+    {
+      "text": "将不超过阈值的观测逐个计数。",
+      "latex": "\\hat F_n(x)=\\#\\{i:x_i\\le x\\}/n"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "箱宽不同",
+      "problem": "两箱各占一半，宽度为 $1,2$，密度高度是多少？",
+      "steps": [
+        "第一箱 $0.5/1=0.5$。",
+        "第二箱 $0.5/2=0.25$，两箱面积仍相等。"
+      ],
+      "answer": "$0.5,0.25$。"
+    },
+    {
+      "title": "读台阶",
+      "problem": "数据 $1,2,2,5$，求 $\\hat F_4(2)$。",
+      "steps": [
+        "不超过二的观测有三个。",
+        "除以总数四。"
+      ],
+      "answer": "$3/4$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-displays-q1",
+      "problem": "数据 $1,3,3,4$，经验分布在 $3$ 的值？",
+      "hint": "包含等于阈值的点。",
+      "solution": [
+        "三个观测不超过三。"
+      ],
+      "answer": "$0.75$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.75
+    },
+    {
+      "id": "ps-displays-q2",
+      "problem": "箱宽 $2$、频率 $0.3$，密度高度？",
+      "hint": "面积等于频率。",
+      "solution": [
+        "$0.3/2=0.15$。"
+      ],
+      "answer": "$0.15$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.15
+    },
+    {
+      "id": "ps-displays-q3",
+      "problem": "直方图改箱宽，原始数据的平均值会变吗？",
+      "hint": "图形和数据区分。",
+      "solution": [
+        "只改变显示方式，没有改变原始值。"
+      ],
+      "answer": "不会。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-displays-q4",
+      "problem": "密度高度可以超过一吗？",
+      "hint": "检查限制是高度还是面积。",
+      "solution": [
+        "窄箱可有高密度；总面积仍为一。"
+      ],
+      "answer": "可以。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "密度直方图中，一个箱的频率对应什么？",
+    "choices": [
+      "高度",
+      "面积",
+      "中点"
+    ],
+    "correctIndex": 1,
+    "explanation": "频率等于高度乘箱宽。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-displays-m1",
+      "claim": "密度高度就是概率",
+      "correction": "连续区间的概率对应面积。"
+    },
+    {
+      "id": "ps-displays-m2",
+      "claim": "分箱越多越客观",
+      "correction": "不同箱宽突出不同尺度，需说明选择。"
+    }
+  ],
+  "prerequisites": [
+    "ps-units"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-displays-m1",
+    "ps-displays-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-displays",
+    "prediction": "同一份数据改箱宽，哪些特征会变，哪些不变？",
+    "caption": "固定数据只改变分箱；图中同时保留经验分布。"
+  },
+  "teaching": {
+    "explain": "连续区间的概率对应面积。",
+    "steps": [
+      {
+        "title": "分箱数：5",
+        "instruction": "将分箱数设为 $5$，对照图形和读数。",
+        "observation": "本组参数的计算结果：样本量 $12$；矩形总面积 $1$；经验累计比例 $0.416667$。",
+        "preset": {
+          "n": 5,
+          "b": 2
+        }
+      },
+      {
+        "title": "分箱数：1",
+        "instruction": "将分箱数设为 $1$，对照图形和读数。",
+        "observation": "本组参数的计算结果：样本量 $12$；矩形总面积 $1$；经验累计比例 $0.416667$。",
+        "preset": {
+          "n": 1,
+          "b": 2
+        }
+      },
+      {
+        "title": "分箱数：8",
+        "instruction": "将分箱数设为 $8$，对照图形和读数。",
+        "observation": "本组参数的计算结果：样本量 $12$；矩形总面积 $1$；经验累计比例 $0.416667$。",
+        "preset": {
+          "n": 8,
+          "b": 2
+        }
+      }
+    ]
+  }
+}

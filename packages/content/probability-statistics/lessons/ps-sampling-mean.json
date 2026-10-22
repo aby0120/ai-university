@@ -1,0 +1,197 @@
+{
+  "id": "ps-sampling-mean",
+  "chapterId": "ps-sampling",
+  "number": "7.3",
+  "title": "样本均值与标准误",
+  "subtitle": "标准差说个体有多散，标准误说估计值有多不稳定。",
+  "concept": "标准差说个体有多散，标准误说估计值有多不稳定。",
+  "intuition": "多人平均会抵消一部分独立波动，但不会把个体之间的差异消除。",
+  "objectives": [
+    "给统计量命名",
+    "计算平均的标准误"
+  ],
+  "body": [
+    {
+      "title": "给统计量命名",
+      "text": "样本均值是数据的函数，因此抽到不同样本时也会变化；它有自己的分布。"
+    },
+    {
+      "title": "计算平均的标准误",
+      "text": "独立同分布且有限方差时，平均方差为总体方差除以样本量。未知总体标准差常用样本标准差估计。"
+    },
+    {
+      "title": "区分精确与近似",
+      "text": "正态总体的均值对任意样本量精确正态。非正态总体需依据 CLT 等近似，不可只看代数公式。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "本节使用独立同分布样本。",
+    "latex": "E\\bar X=\\mu,\\quad\\operatorname{SE}(\\bar X)=\\sigma/\\sqrt n,\\quad\\widehat{\\operatorname{SE}}=s/\\sqrt n",
+    "conditions": [
+      "本节使用独立同分布样本。",
+      "有限总体较高比例的不放回抽样需另加有限总体修正。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "把样本均值写为缩放的和。",
+      "latex": "\\bar X=n^{-1}\\sum_iX_i"
+    },
+    {
+      "text": "独立性使和的方差相加。",
+      "latex": "\\operatorname{Var}(\\bar X)=n^{-2}\\sum_i\\sigma^2=\\sigma^2/n"
+    },
+    {
+      "text": "开方得到统计量的尺度。",
+      "latex": "\\operatorname{SE}(\\bar X)=\\sigma/\\sqrt n"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "区分两个尺度",
+      "problem": "个体标准差十二、独立样本量三十六，平均的标准误？",
+      "steps": [
+        "个体尺度仍为十二。",
+        "平均尺度为 $12/6$。"
+      ],
+      "answer": "$2$。"
+    },
+    {
+      "title": "精度成本",
+      "problem": "希望标准误缩小一半，样本量要怎样变化？",
+      "steps": [
+        "标准误按平方根倒数缩放。",
+        "样本量乘四。"
+      ],
+      "answer": "扩大到四倍。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-sampling-mean-q1",
+      "problem": "$s=8,n=16$，估计标准误？",
+      "hint": "标准差除以四。",
+      "solution": [
+        "$8/4=2$。"
+      ],
+      "answer": "$2$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 2
+    },
+    {
+      "id": "ps-sampling-mean-q2",
+      "problem": "标准误是原数据的样本标准差吗？",
+      "hint": "二者描述的对象不同。",
+      "solution": [
+        "一个描述均值，一个描述个体。"
+      ],
+      "answer": "不是。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-sampling-mean-q3",
+      "problem": "样本量从十增到四十，标准误变为多少倍？",
+      "hint": "取样本量比的平方根倒数。",
+      "solution": [
+        "$\\sqrt{10/40}=1/2$。"
+      ],
+      "answer": "$1/2$ 倍。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.5
+    },
+    {
+      "id": "ps-sampling-mean-q4",
+      "problem": "同一对象重复测量且正相关，直接用独立标准误会怎样？",
+      "hint": "遗漏正协方差。",
+      "solution": [
+        "实际平均方差可能更大。"
+      ],
+      "answer": "可能低估不确定性。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "样本增加时，个体总体标准差一定缩小吗？",
+    "choices": [
+      "一定",
+      "不一定，平均标准误才按条件缩小",
+      "变为零"
+    ],
+    "correctIndex": 1,
+    "explanation": "总体个体差异与估计精度是两件事。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-sampling-mean-m1",
+      "claim": "标准差和标准误可混用",
+      "correction": "报告时应指出描述个体还是统计量。"
+    },
+    {
+      "id": "ps-sampling-mean-m2",
+      "claim": "任何样本都能用独立标准误",
+      "correction": "相关性、设计权重与有限总体会改变方差。"
+    }
+  ],
+  "prerequisites": [
+    "ps-clt"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-sampling-mean-m1",
+    "ps-sampling-mean-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-sampling-mean",
+    "prediction": "样本量扩大四倍，抽样分布宽度会缩小多少？",
+    "caption": "使用已知正态总体的精确均值分布，同时标注个体标准差和均值标准误。"
+  },
+  "teaching": {
+    "explain": "报告时应指出描述个体还是统计量。",
+    "steps": [
+      {
+        "title": "样本量：25",
+        "instruction": "将样本量设为 $25$，对照图形和读数。",
+        "observation": "本组参数的计算结果：个体标准差 $2$；均值标准误 $0.4$；均值分布中心 $2$。",
+        "preset": {
+          "n": 25,
+          "a": 2,
+          "b": 2
+        }
+      },
+      {
+        "title": "样本量：1",
+        "instruction": "将样本量设为 $1$，对照图形和读数。",
+        "observation": "本组参数的计算结果：个体标准差 $2$；均值标准误 $2$；均值分布中心 $2$。",
+        "preset": {
+          "n": 1,
+          "a": 2,
+          "b": 2
+        }
+      },
+      {
+        "title": "样本量：100",
+        "instruction": "将样本量设为 $100$，对照图形和读数。",
+        "observation": "本组参数的计算结果：个体标准差 $2$；均值标准误 $0.2$；均值分布中心 $2$。",
+        "preset": {
+          "n": 100,
+          "a": 2,
+          "b": 2
+        }
+      }
+    ]
+  }
+}

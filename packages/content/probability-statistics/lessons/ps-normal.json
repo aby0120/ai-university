@@ -1,0 +1,198 @@
+{
+  "id": "ps-normal",
+  "chapterId": "ps-continuous",
+  "number": "5.3",
+  "title": "正态分布与标准化",
+  "subtitle": "减去均值、除以标准差，把正态问题换到同一张概率表。",
+  "concept": "减去均值、除以标准差，把正态问题换到同一张概率表。",
+  "intuition": "不同位置和宽度的钟形曲线，换单位后可以对齐。",
+  "objectives": [
+    "辨认两个参数",
+    "标准化区间"
+  ],
+  "body": [
+    {
+      "title": "辨认两个参数",
+      "text": "均值控制位置，标准差控制宽度。记号 $N(\\mu,\\sigma^2)$ 的第二个参数是方差。"
+    },
+    {
+      "title": "标准化区间",
+      "text": "先把每个阈值减去均值再除以标准差，使用标准正态累计函数。左右尾不能混用。"
+    },
+    {
+      "title": "限定经验规则",
+      "text": "约六十八、九十五、九十九点七个百分点落在一、二、三倍标准差内，是正态模型的近似描述，不适用于任意分布。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "$X\\sim N(\\mu,\\sigma^2)$ 且 $\\sigma>0$。",
+    "latex": "Z=\\frac{X-\\mu}{\\sigma}\\sim N(0,1),\\qquad f_X(x)=\\frac{e^{-(x-\\mu)^2/(2\\sigma^2)}}{\\sigma\\sqrt{2\\pi}}",
+    "conditions": [
+      "$X\\sim N(\\mu,\\sigma^2)$ 且 $\\sigma>0$。",
+      "非正态变量也能标准化，但标准化后不因此变成正态。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "统一中心。",
+      "latex": "E[X-\\mu]=0"
+    },
+    {
+      "text": "统一尺度。",
+      "latex": "\\operatorname{Var}((X-\\mu)/\\sigma)=1"
+    },
+    {
+      "text": "正态分布在仿射变换下仍为正态。",
+      "latex": "P(X\\le x)=\\Phi((x-\\mu)/\\sigma)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "读取左尾",
+      "problem": "$X\\sim N(10,4)$，求 $P(X\\le12)$。",
+      "steps": [
+        "标准差是二。",
+        "阈值标准化为一。"
+      ],
+      "answer": "$\\Phi(1)\\approx0.8413$。"
+    },
+    {
+      "title": "中心区间",
+      "problem": "正态变量落在均值左右各 $1.96$ 个标准差内的概率？",
+      "steps": [
+        "左右尾各约 $0.025$。",
+        "中间概率约 $0.95$。"
+      ],
+      "answer": "约 $0.95$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-normal-q1",
+      "problem": "$N(5,9)$ 中，$x=8$ 的标准化值？",
+      "hint": "标准差为三。",
+      "solution": [
+        "$(8-5)/3=1$。"
+      ],
+      "answer": "$1$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 1
+    },
+    {
+      "id": "ps-normal-q2",
+      "problem": "标准正态大于零的概率？",
+      "hint": "利用对称性。",
+      "solution": [
+        "一半面积在零右边。"
+      ],
+      "answer": "$0.5$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.5
+    },
+    {
+      "id": "ps-normal-q3",
+      "problem": "任意分布标准化后都正态吗？",
+      "hint": "变换只改变中心和尺度。",
+      "solution": [
+        "原分布的偏态或离散性可保留。"
+      ],
+      "answer": "不是。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-normal-q4",
+      "problem": "$N(2,16)$ 的标准差？",
+      "hint": "第二参数为方差。",
+      "solution": [
+        "$\\sqrt{16}=4$。"
+      ],
+      "answer": "$4$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 4
+    }
+  ],
+  "learningCheck": {
+    "question": "在 $N(\\mu,\\sigma^2)$ 记号中，第二项是什么？",
+    "choices": [
+      "标准差",
+      "方差",
+      "标准误"
+    ],
+    "correctIndex": 1,
+    "explanation": "计算标准化分母时要再开方。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-normal-m1",
+      "claim": "标准化自动制造正态",
+      "correction": "标准化和正态分布假设是不同步骤。"
+    },
+    {
+      "id": "ps-normal-m2",
+      "claim": "正态曲线在有限区间外为零",
+      "correction": "正态支持为整条实轴，有限显示窗外仍有尾概率。"
+    }
+  ],
+  "prerequisites": [
+    "ps-uniform-exponential"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-normal-m1",
+    "ps-normal-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "nist-normal"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-normal",
+    "prediction": "固定阈值，提高均值或标准差，左侧面积怎样变化？",
+    "caption": "显示正态密度与累计概率；窗口外尾部由累计函数计算。"
+  },
+  "teaching": {
+    "explain": "标准化和正态分布假设是不同步骤。",
+    "steps": [
+      {
+        "title": "总体均值：0",
+        "instruction": "将总体均值设为 $0$，对照图形和读数。",
+        "observation": "本组参数的计算结果：标准化阈值 $1$；阈值左侧概率 $0.841345$。",
+        "preset": {
+          "a": 0,
+          "b": 1,
+          "x": 1
+        }
+      },
+      {
+        "title": "总体均值：-2",
+        "instruction": "将总体均值设为 $-2$，对照图形和读数。",
+        "observation": "本组参数的计算结果：标准化阈值 $3$；阈值左侧概率 $0.99865$。",
+        "preset": {
+          "a": -2,
+          "b": 1,
+          "x": 1
+        }
+      },
+      {
+        "title": "总体均值：2",
+        "instruction": "将总体均值设为 $2$，对照图形和读数。",
+        "observation": "本组参数的计算结果：标准化阈值 $-1$；阈值左侧概率 $0.158655$。",
+        "preset": {
+          "a": 2,
+          "b": 1,
+          "x": 1
+        }
+      }
+    ]
+  }
+}

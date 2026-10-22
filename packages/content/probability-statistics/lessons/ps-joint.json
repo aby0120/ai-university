@@ -1,0 +1,192 @@
+{
+  "id": "ps-joint",
+  "chapterId": "ps-joint",
+  "number": "6.1",
+  "title": "联合分布与边缘分布",
+  "subtitle": "联合分布保留两个变量同时取值的概率。",
+  "concept": "联合分布保留两个变量同时取值的概率。",
+  "intuition": "只知道每个人的单科成绩分布，还不知道两科怎样搭配。",
+  "objectives": [
+    "排列联合表",
+    "求边缘"
+  ],
+  "body": [
+    {
+      "title": "排列联合表",
+      "text": "离散联合表的每格是同时取一对值的概率，所有格非负且总和为一。"
+    },
+    {
+      "title": "求边缘",
+      "text": "忽略另一变量时，对对应行列求和；连续情形改用在另一坐标方向积分。"
+    },
+    {
+      "title": "保留依赖信息",
+      "text": "不同联合分布可以有相同边缘。若只保存边缘，就无法恢复变量的配对关系。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "联合质量总和或联合密度总积分为一。",
+    "latex": "p_X(x)=\\sum_yp_{X,Y}(x,y),\\qquad f_X(x)=\\int_{-\\infty}^{\\infty}f_{X,Y}(x,y)dy",
+    "conditions": [
+      "联合质量总和或联合密度总积分为一。",
+      "求边缘时要对另一个变量的完整支持求和或积分。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "事件按另一坐标的可能取值分解。",
+      "latex": "\\{X=x\\}=\\bigcup_y\\{X=x,Y=y\\}"
+    },
+    {
+      "text": "不同取值给出互斥事件。",
+      "latex": "P(X=x)=\\sum_yP(X=x,Y=y)"
+    },
+    {
+      "text": "连续时同样沿另一坐标累积。",
+      "latex": "f_X(x)=\\int f_{X,Y}(x,y)dy"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "求行和",
+      "problem": "联合表两行为 $(0.1,0.2)$、$(0.3,0.4)$，第一行边缘概率？",
+      "steps": [
+        "对该行相加。",
+        "$0.1+0.2=0.3$。"
+      ],
+      "answer": "$0.3$。"
+    },
+    {
+      "title": "相同边缘",
+      "problem": "两个 Bernoulli 变量均成功率一半，能否一个模型中始终相同，另一个始终相反？",
+      "steps": [
+        "相同模型质量在对角线上各一半。",
+        "相反模型质量在非对角线上各一半。"
+      ],
+      "answer": "可以，边缘一样而联合不同。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-joint-q1",
+      "problem": "沿第一例，第二列边缘概率？",
+      "hint": "对该列求和。",
+      "solution": [
+        "$0.2+0.4=0.6$。"
+      ],
+      "answer": "$0.6$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.6
+    },
+    {
+      "id": "ps-joint-q2",
+      "problem": "沿第一例，两变量同时在第二类别的概率？",
+      "hint": "直接读联合格。",
+      "solution": [
+        "第二行第二列为 $0.4$。"
+      ],
+      "answer": "$0.4$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.4
+    },
+    {
+      "id": "ps-joint-q3",
+      "problem": "仅凭两个边缘能确定联合分布吗？",
+      "hint": "比较同向和反向配对。",
+      "solution": [
+        "两者可有相同边缘。"
+      ],
+      "answer": "一般不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-joint-q4",
+      "problem": "联合密度在单位正方形内恒一，$P(X<1/2,Y<1/3)$？",
+      "hint": "积分矩形面积。",
+      "solution": [
+        "$1/2\\times1/3=1/6$。"
+      ],
+      "answer": "$1/6$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.16666666666666666
+    }
+  ],
+  "learningCheck": {
+    "question": "求某变量边缘时，对谁求和？",
+    "choices": [
+      "对另一个变量",
+      "仅对对角线",
+      "把概率平方"
+    ],
+    "correctIndex": 0,
+    "explanation": "边缘忽略另一坐标的具体取值。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-joint-m1",
+      "claim": "联合表只记录边缘",
+      "correction": "每格保留了变量的配对信息。"
+    },
+    {
+      "id": "ps-joint-m2",
+      "claim": "连续密度的单点值是联合概率",
+      "correction": "仍须对区域积分求概率。"
+    }
+  ],
+  "prerequisites": [
+    "ps-continuous-moments"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-joint-m1",
+    "ps-joint-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-joint",
+    "prediction": "边缘保持不变时，把概率移向对角线，联合关系会怎样变？",
+    "caption": "二维联合表用格子面积与数值保留概率；边缘列在两侧。"
+  },
+  "teaching": {
+    "explain": "每格保留了变量的配对信息。",
+    "steps": [
+      {
+        "title": "左上联合概率：0.1",
+        "instruction": "将左上联合概率设为 $0.1$，对照图形和读数。",
+        "observation": "本组参数的计算结果：第一行边缘 $0.5$；第一列边缘 $0.5$；左上联合概率 $0.1$；两变量同时相同的概率 $0.2$。",
+        "preset": {
+          "a": 0.1
+        }
+      },
+      {
+        "title": "左上联合概率：0",
+        "instruction": "将左上联合概率设为 $0$，对照图形和读数。",
+        "observation": "本组参数的计算结果：第一行边缘 $0.5$；第一列边缘 $0.5$；左上联合概率 $0$；两变量同时相同的概率 $0$。",
+        "preset": {
+          "a": 0
+        }
+      },
+      {
+        "title": "左上联合概率：0.5",
+        "instruction": "将左上联合概率设为 $0.5$，对照图形和读数。",
+        "observation": "本组参数的计算结果：第一行边缘 $0.5$；第一列边缘 $0.5$；左上联合概率 $0.5$；两变量同时相同的概率 $1$。",
+        "preset": {
+          "a": 0.5
+        }
+      }
+    ]
+  }
+}

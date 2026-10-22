@@ -1,0 +1,192 @@
+{
+  "id": "ps-comparison-tests",
+  "chapterId": "ps-testing",
+  "number": "9.4",
+  "title": "两组检验与置换思路",
+  "subtitle": "比较组别时，参考分布必须符合独立、配对或随机分组设计。",
+  "concept": "比较组别时，参考分布必须符合独立、配对或随机分组设计。",
+  "intuition": "置换打乱的是零假设下可交换的标签，不是任意数据。",
+  "objectives": [
+    "选择正确统计量",
+    "建立置换参考"
+  ],
+  "body": [
+    {
+      "title": "选择正确统计量",
+      "text": "独立两组均值可用 Welch $t$；配对用差值的单样本 $t$。比例相等的两组得分检验在原假设下使用合并比例。"
+    },
+    {
+      "title": "建立置换参考",
+      "text": "随机分配且原假设为所有个体处理效应都为零时，可依据分配设计重新分组；观察性数据需额外可交换性假设。"
+    },
+    {
+      "title": "避免无限推广",
+      "text": "单纯均值相同但分布不同，原始标签未必可交换。Monte Carlo 置换还存在模拟误差，本卷小例穷举全部分配。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "Welch 的参考自由度按前章公式计算。",
+    "latex": "T_W=\\frac{\\bar X_1-\\bar X_2}{\\sqrt{s_1^2/n_1+s_2^2/n_2}},\\qquad p_{\\mathrm{perm}}=\\frac{\\#\\{|T_\\pi|\\ge|T_{\\mathrm{obs}}|\\}}{\\#\\{\\pi\\}}",
+    "conditions": [
+      "Welch 的参考自由度按前章公式计算。",
+      "置换精确性依赖随机化设计的锐零假设，或适当的标签可交换性。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先固定统计量与实际分组。",
+      "latex": "T_{\\mathrm{obs}}=\\bar x_A-\\bar x_B"
+    },
+    {
+      "text": "按零假设允许的分配枚举标签。",
+      "latex": "\\pi\\in\\Pi"
+    },
+    {
+      "text": "把至少同样极端的分配数除以总数。",
+      "latex": "p=|\\{\\pi:|T_\\pi|\\ge|T_{\\mathrm{obs}}|\\}|/|\\Pi|"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "穷举四个数",
+      "problem": "固定结果 $1,2,3,4$，均匀随机分两组各二个，实际第一组 $3,4$。双侧均值差置换 $p$ 值？",
+      "steps": [
+        "共 $\\binom42=6$ 种分配。",
+        "最大绝对差为二，对应 $3,4$ 或 $1,2$ 两种。"
+      ],
+      "answer": "$2/6=1/3$。"
+    },
+    {
+      "title": "合并比例",
+      "problem": "两组各五十次，成功三十和二十，检验相同比例时合并比例？",
+      "steps": [
+        "总成功五十，总次数一百。",
+        "合并比例为一半。"
+      ],
+      "answer": "$0.5$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-comparison-tests-q1",
+      "problem": "配对资料要打乱所有前后测量标签吗？",
+      "hint": "原设计包含配对约束。",
+      "solution": [
+        "任意打乱会破坏对内关系，需适合设计的随机化。"
+      ],
+      "answer": "不能任意打乱。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-comparison-tests-q2",
+      "problem": "两独立组差为二，估计标准误一，Welch $t$？",
+      "hint": "差除以标准误。",
+      "solution": [
+        "$2/1=2$。"
+      ],
+      "answer": "$2$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 2
+    },
+    {
+      "id": "ps-comparison-tests-q3",
+      "problem": "一组全为零、一组零均值但波动很大，均值相同就一定可交换吗？",
+      "hint": "比较完整分布。",
+      "solution": [
+        "两组分布不同。"
+      ],
+      "answer": "不一定。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-comparison-tests-q4",
+      "problem": "小例全部六种分配中两种极端，$p$ 值？",
+      "hint": "直接计数。",
+      "solution": [
+        "$2/6=1/3$。"
+      ],
+      "answer": "$1/3$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.3333333333333333
+    }
+  ],
+  "learningCheck": {
+    "question": "置换检验精确性的关键是什么？",
+    "choices": [
+      "有一台电脑",
+      "零假设下分配机制或标签可交换性成立",
+      "数据很多"
+    ],
+    "correctIndex": 1,
+    "explanation": "计算次数不能替代设计条件。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-comparison-tests-m1",
+      "claim": "所有两组数据都能任意置换",
+      "correction": "需要可交换性或随机化设计依据。"
+    },
+    {
+      "id": "ps-comparison-tests-m2",
+      "claim": "均值相等就等于完整分布相同",
+      "correction": "形状和方差仍可能不同。"
+    }
+  ],
+  "prerequisites": [
+    "ps-proportion-test",
+    "ps-difference-interval"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-comparison-tests-m1",
+    "ps-comparison-tests-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-comparison-tests",
+    "prediction": "在四个固定结果中枚举分组，观察差值处在什么位置？",
+    "caption": "精确穷举六种两两分组，双侧极端性按绝对均值差定义。"
+  },
+  "teaching": {
+    "explain": "需要可交换性或随机化设计依据。",
+    "steps": [
+      {
+        "title": "当前分配编号：6",
+        "instruction": "将当前分配编号设为 $6$，对照图形和读数。",
+        "observation": "本组参数的计算结果：观察均值差 $2$；全部分配数 $6$；至少同样极端的分配数 $2$；精确双侧 $p$ 值 $0.333333$。",
+        "preset": {
+          "n": 6
+        }
+      },
+      {
+        "title": "当前分配编号：1",
+        "instruction": "将当前分配编号设为 $1$，对照图形和读数。",
+        "observation": "本组参数的计算结果：观察均值差 $-2$；全部分配数 $6$；至少同样极端的分配数 $2$；精确双侧 $p$ 值 $0.333333$。",
+        "preset": {
+          "n": 1
+        }
+      },
+      {
+        "title": "当前分配编号：6",
+        "instruction": "将当前分配编号设为 $6$，对照图形和读数。",
+        "observation": "本组参数的计算结果：观察均值差 $2$；全部分配数 $6$；至少同样极端的分配数 $2$；精确双侧 $p$ 值 $0.333333$。",
+        "preset": {
+          "n": 6
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "id": "ps-units",
+  "chapterId": "ps-data",
+  "number": "1.1",
+  "title": "观察单位与变量",
+  "subtitle": "一行数据先对应一个对象，再讨论它有哪些特征。",
+  "concept": "一行数据先对应一个对象，再讨论它有哪些特征。",
+  "intuition": "同一名学生的两次成绩是两次测量，不自动等于两名独立学生。",
+  "objectives": [
+    "确定一行代表什么",
+    "区分变量类型"
+  ],
+  "body": [
+    {
+      "title": "确定一行代表什么",
+      "text": "学生、订单和测量时刻是不同的观察单位。先说明研究对象、时间范围与记录规则。"
+    },
+    {
+      "title": "区分变量类型",
+      "text": "类别变量表示组别；数值变量表示可解释的数量。邮政编码虽然由数字组成，平均值通常没有研究意义。"
+    },
+    {
+      "title": "检查重复和缺失",
+      "text": "重复记录会改变权重，缺失也可能与研究结果有关。保留缺失标记与处理规则，不直接当零。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "变量的解释依赖观察单位和测量规则。",
+    "latex": "\\text{数据表}=\\{(\\text{单位}_i,\\text{变量}_{i1},\\ldots,\\text{变量}_{ip})\\}_{i=1}^{n}",
+    "conditions": [
+      "变量的解释依赖观察单位和测量规则。",
+      "重复测量需考虑同一对象内的相关性。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先定义目标总体。",
+      "latex": null
+    },
+    {
+      "text": "确定单位后，记录每个单位的变量。",
+      "latex": null
+    },
+    {
+      "text": "同一单位重复出现时，区分对象数与记录数。",
+      "latex": "n_{\\mathrm{rows}}\\ne n_{\\mathrm{people}}\\quad\\text{一般而言}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "数人还是数记录",
+      "problem": "三名学生各测两次，记录数和人数分别多少？",
+      "steps": [
+        "每人两行，共 $3\\times2=6$ 行。",
+        "独立研究对象只有三名；独立性还依赖抽样。"
+      ],
+      "answer": "六条记录、三名学生。"
+    },
+    {
+      "title": "数字不一定是数量",
+      "problem": "把学号取平均能描述平均成绩吗？",
+      "steps": [
+        "学号用于辨认对象。",
+        "成绩才是此问题关心的数值变量。"
+      ],
+      "answer": "不能，学号的算术平均没有该含义。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-units-q1",
+      "problem": "五个家庭各记录七天开销，有多少行？",
+      "hint": "对象与时间组成记录。",
+      "solution": [
+        "$5\\times7=35$。"
+      ],
+      "answer": "$35$ 行。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 35
+    },
+    {
+      "id": "ps-units-q2",
+      "problem": "满意度“低、中、高”是什么变量？",
+      "hint": "看类别是否有顺序。",
+      "solution": [
+        "它有顺序，但相邻间隔未定义。"
+      ],
+      "answer": "有序类别变量。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-units-q3",
+      "problem": "缺失工资能直接填零吗？",
+      "hint": "区分没记录与确实没有。",
+      "solution": [
+        "零工资是具体取值；缺失含义未知。"
+      ],
+      "answer": "不能无依据填零。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-units-q4",
+      "problem": "把同一人的重复测量当作独立样本有什么问题？",
+      "hint": "想想共享的个体因素。",
+      "solution": [
+        "同一个人的测量往往相关，可能低估不确定性。"
+      ],
+      "answer": "样本独立性可能被破坏。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "学号属于什么类型？",
+    "choices": [
+      "数值测量",
+      "对象标识",
+      "随机误差"
+    ],
+    "correctIndex": 1,
+    "explanation": "数字形式不决定统计含义。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-units-m1",
+      "claim": "有数字就能取有意义的平均",
+      "correction": "先解释变量，数字编码也可能只是标签。"
+    },
+    {
+      "id": "ps-units-m2",
+      "claim": "缺失就是零",
+      "correction": "缺失表示不知道，零表示知道其值为零。"
+    }
+  ],
+  "prerequisites": [],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-units-m1",
+    "ps-units-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-units",
+    "prediction": "重复一名对象的记录，会增加研究对象数吗？",
+    "caption": "比较对象数与记录数，演示不把重复记录当作独立样本。"
+  },
+  "teaching": {
+    "explain": "先解释变量，数字编码也可能只是标签。",
+    "steps": [
+      {
+        "title": "对象数：4",
+        "instruction": "将对象数设为 $4$，对照图形和读数。",
+        "observation": "本组参数的计算结果：对象数 $4$；记录行数 $8$。",
+        "preset": {
+          "n": 4,
+          "b": 2
+        }
+      },
+      {
+        "title": "对象数：1",
+        "instruction": "将对象数设为 $1$，对照图形和读数。",
+        "observation": "本组参数的计算结果：对象数 $1$；记录行数 $2$。",
+        "preset": {
+          "n": 1,
+          "b": 2
+        }
+      },
+      {
+        "title": "对象数：10",
+        "instruction": "将对象数设为 $10$，对照图形和读数。",
+        "observation": "本组参数的计算结果：对象数 $10$；记录行数 $20$。",
+        "preset": {
+          "n": 10,
+          "b": 2
+        }
+      }
+    ]
+  }
+}

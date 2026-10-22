@@ -1,0 +1,332 @@
+{
+  "id": "probability-statistics",
+  "title": "Probability & Statistics",
+  "titleZh": "概率与统计",
+  "subtitle": "从不确定性到有依据的判断",
+  "version": "0.1.0",
+  "language": "zh-CN",
+  "author": "AI University · AI-generated",
+  "description": "数据与抽样、事件和分布、随机变量、联合模型、抽样极限、估计、检验、回归和贝叶斯更新。每节有推导、完整例题、练习解答与本地交互演示。",
+  "audience": "有初等代数基础的学习者；连续概率部分需要一元积分，联合密度部分使用基础二重积分",
+  "scope": "十章五十节完整入门课程。前半卷建立概率与抽样模型，后半卷建立频率推断、基础线性模型和 Beta–二项贝叶斯推断。测度概率、高级随机过程、多元回归、完整实验设计与高级非参数方法另作后续课程。",
+  "chapters": [
+    {
+      "id": "ps-data",
+      "title": "数据从哪里来",
+      "subtitle": "先辨认对象和获取方式",
+      "intro": "统计结论的范围，先由数据怎样取得决定。",
+      "goals": [
+        "确定观察单位与变量",
+        "区分抽样和随机分组",
+        "用图形与统计量描述数据"
+      ],
+      "lessonIds": [
+        "ps-units",
+        "ps-sampling",
+        "ps-design",
+        "ps-displays",
+        "ps-summaries"
+      ]
+    },
+    {
+      "id": "ps-probability",
+      "title": "事件与概率",
+      "subtitle": "给不确定性一套运算规则",
+      "intro": "从样本空间、计数和条件概率出发，分清事件之间的关系。",
+      "goals": [
+        "计算事件的概率",
+        "选择计数方法",
+        "判断独立性与条件概率"
+      ],
+      "lessonIds": [
+        "ps-events",
+        "ps-probability-rules",
+        "ps-counting",
+        "ps-conditional",
+        "ps-independence"
+      ]
+    },
+    {
+      "id": "ps-random-variables",
+      "title": "随机变量与平均行为",
+      "subtitle": "把结果变成可计算的数",
+      "intro": "分布描述可能性，期望和方差分别描述位置与波动。",
+      "goals": [
+        "用 Bayes 更新信息",
+        "读懂分布函数",
+        "计算期望、方差与概率界"
+      ],
+      "lessonIds": [
+        "ps-bayes",
+        "ps-cdf",
+        "ps-expectation",
+        "ps-variance",
+        "ps-inequalities"
+      ]
+    },
+    {
+      "id": "ps-discrete",
+      "title": "离散概率模型",
+      "subtitle": "数次数、数等待、数抽中的对象",
+      "intro": "选择模型前，先检查试验次数、独立性和是否放回。",
+      "goals": [
+        "使用二项、几何与负二项模型",
+        "处理不放回抽样",
+        "使用 Poisson 与离散近似"
+      ],
+      "lessonIds": [
+        "ps-binomial",
+        "ps-geometric",
+        "ps-hypergeometric",
+        "ps-poisson",
+        "ps-approximations"
+      ]
+    },
+    {
+      "id": "ps-continuous",
+      "title": "连续概率模型",
+      "subtitle": "概率是面积，密度是高度",
+      "intro": "用积分分配概率，再讨论正态标准化和变量变换。",
+      "goals": [
+        "从密度求区间概率",
+        "辨认均匀、指数与正态模型",
+        "计算连续变量的变换与期望"
+      ],
+      "lessonIds": [
+        "ps-density",
+        "ps-uniform-exponential",
+        "ps-normal",
+        "ps-transformations",
+        "ps-continuous-moments"
+      ]
+    },
+    {
+      "id": "ps-joint",
+      "title": "多个随机变量",
+      "subtitle": "同时变化，可能相关",
+      "intro": "联合分布保留变量间的联系；边缘分布会丢掉这部分信息。",
+      "goals": [
+        "求边缘与条件分布",
+        "区分独立和不相关",
+        "计算协方差与条件期望"
+      ],
+      "lessonIds": [
+        "ps-joint",
+        "ps-conditional-distributions",
+        "ps-independent-variables",
+        "ps-covariance",
+        "ps-conditional-expectation"
+      ]
+    },
+    {
+      "id": "ps-sampling",
+      "title": "从总体到样本",
+      "subtitle": "统计量本身也会波动",
+      "intro": "样本量改变估计的精度，但不能自动消除偏差。",
+      "goals": [
+        "区分大数定律与中心极限定理",
+        "计算标准误",
+        "使用正态样本理论与 bootstrap"
+      ],
+      "lessonIds": [
+        "ps-lln",
+        "ps-clt",
+        "ps-sampling-mean",
+        "ps-normal-sample",
+        "ps-bootstrap"
+      ]
+    },
+    {
+      "id": "ps-estimation",
+      "title": "估计与置信区间",
+      "subtitle": "给出数值，也说明精度",
+      "intro": "先选择估计量，再用其抽样分布构造区间。",
+      "goals": [
+        "计算偏差与均方误差",
+        "使用矩估计与极大似然",
+        "为均值、比例与差值构造区间"
+      ],
+      "lessonIds": [
+        "ps-bias-mse",
+        "ps-estimation",
+        "ps-mean-interval",
+        "ps-proportion-interval",
+        "ps-difference-interval"
+      ]
+    },
+    {
+      "id": "ps-testing",
+      "title": "假设检验与决策",
+      "subtitle": "衡量数据和假设的不一致",
+      "intro": "检验要预先说明假设、统计量、尾部和错误控制。",
+      "goals": [
+        "正确解释 $p$ 值",
+        "比较均值与比例",
+        "考虑检验功效和多重比较"
+      ],
+      "lessonIds": [
+        "ps-test-logic",
+        "ps-mean-test",
+        "ps-proportion-test",
+        "ps-comparison-tests",
+        "ps-power"
+      ]
+    },
+    {
+      "id": "ps-modeling",
+      "title": "关系、模型与更新",
+      "subtitle": "从比较走向解释与预测",
+      "intro": "分类表、回归、方差分析和贝叶斯推断回答不同问题。",
+      "goals": [
+        "分析分类数据与回归关系",
+        "检查模型条件和残差",
+        "解释贝叶斯更新并完成分析报告"
+      ],
+      "lessonIds": [
+        "ps-categorical",
+        "ps-regression",
+        "ps-regression-inference",
+        "ps-anova",
+        "ps-bayesian-inference"
+      ]
+    }
+  ],
+  "lessonIds": [
+    "ps-units",
+    "ps-sampling",
+    "ps-design",
+    "ps-displays",
+    "ps-summaries",
+    "ps-events",
+    "ps-probability-rules",
+    "ps-counting",
+    "ps-conditional",
+    "ps-independence",
+    "ps-bayes",
+    "ps-cdf",
+    "ps-expectation",
+    "ps-variance",
+    "ps-inequalities",
+    "ps-binomial",
+    "ps-geometric",
+    "ps-hypergeometric",
+    "ps-poisson",
+    "ps-approximations",
+    "ps-density",
+    "ps-uniform-exponential",
+    "ps-normal",
+    "ps-transformations",
+    "ps-continuous-moments",
+    "ps-joint",
+    "ps-conditional-distributions",
+    "ps-independent-variables",
+    "ps-covariance",
+    "ps-conditional-expectation",
+    "ps-lln",
+    "ps-clt",
+    "ps-sampling-mean",
+    "ps-normal-sample",
+    "ps-bootstrap",
+    "ps-bias-mse",
+    "ps-estimation",
+    "ps-mean-interval",
+    "ps-proportion-interval",
+    "ps-difference-interval",
+    "ps-test-logic",
+    "ps-mean-test",
+    "ps-proportion-test",
+    "ps-comparison-tests",
+    "ps-power",
+    "ps-categorical",
+    "ps-regression",
+    "ps-regression-inference",
+    "ps-anova",
+    "ps-bayesian-inference"
+  ],
+  "bridge": [],
+  "sources": [
+    {
+      "id": "mit-1805",
+      "title": "MIT OCW · 18.05 Introduction to Probability and Statistics",
+      "url": "https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/pages/syllabus/",
+      "usage": "核对课程范围；正文、推导和题目独立编写，不复制原课程题目。"
+    },
+    {
+      "id": "nist-binomial",
+      "title": "NIST · Binomial Distribution",
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda366i.htm",
+      "usage": "核对二项模型、质量函数和矩。"
+    },
+    {
+      "id": "nist-poisson",
+      "title": "NIST · Poisson Distribution",
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda366j.htm",
+      "usage": "核对 Poisson 参数、质量函数和矩。"
+    },
+    {
+      "id": "nist-normal",
+      "title": "NIST · Normal Distribution",
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda3661.htm",
+      "usage": "核对正态参数化与标准化。"
+    },
+    {
+      "id": "nist-t",
+      "title": "NIST · t Distribution",
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda3664.htm",
+      "usage": "核对 t 密度、自由度与尾部。"
+    },
+    {
+      "id": "nist-chi-square",
+      "title": "NIST · Chi-Square Distribution",
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda3666.htm",
+      "usage": "核对卡方分布与自由度参数化。"
+    },
+    {
+      "id": "nist-confidence",
+      "title": "NIST · Confidence Limits for the Mean",
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda352.htm",
+      "usage": "核对正态均值区间与覆盖解释。"
+    },
+    {
+      "id": "nist-welch",
+      "title": "NIST · Two-Sample t-Test for Equal Means",
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda353.htm",
+      "usage": "核对两样本标准误、Welch 自由度与条件。"
+    },
+    {
+      "id": "nist-regression",
+      "title": "NIST · Linear Least Squares Regression",
+      "url": "https://www.itl.nist.gov/div898/handbook/pmd/section4/pmd431.htm",
+      "usage": "核对最小二乘模型、参数与误差假设。"
+    },
+    {
+      "id": "nist-anova",
+      "title": "NIST · One-Way ANOVA",
+      "url": "https://www.itl.nist.gov/div898/handbook/ppc/section2/ppc231.htm",
+      "usage": "核对方差分解、自由度及 F 参考分布。"
+    },
+    {
+      "id": "r-beta",
+      "title": "R stats · Beta Distribution",
+      "url": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/Beta.html",
+      "usage": "核对 Beta 参数化、密度和分位数定义。"
+    },
+    {
+      "id": "r-binomial",
+      "title": "R stats · Exact Binomial Test",
+      "url": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/binom.test.html",
+      "usage": "核对精确二项检验的尾部与离散性。"
+    },
+    {
+      "id": "r-proportion",
+      "title": "R stats · Test of Equal or Given Proportions",
+      "url": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/prop.test.html",
+      "usage": "核对比例得分检验与区间反演；本卷说明自身不使用连续性校正的 Wilson 约定。"
+    }
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "humanReviewed": false,
+    "checks": "结构、排版、先修、独立复算、数值分布与图示边界检查；不声称逐式形式化证明或实证教学效果。"
+  }
+}

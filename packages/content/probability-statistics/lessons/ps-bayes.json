@@ -1,0 +1,198 @@
+{
+  "id": "ps-bayes",
+  "chapterId": "ps-random-variables",
+  "number": "3.1",
+  "title": "全概率与 Bayes 公式",
+  "subtitle": "把不同来源的概率合起来，再用观察结果反推来源。",
+  "concept": "把不同来源的概率合起来，再用观察结果反推来源。",
+  "intuition": "检测阳性可能来自真阳性，也可能来自人数更多的非目标群体。",
+  "objectives": [
+    "先分来源",
+    "求总结果概率"
+  ],
+  "body": [
+    {
+      "title": "先分来源",
+      "text": "把总体分成互斥且覆盖全体的组，分别计算“来自该组且出现结果”的概率。"
+    },
+    {
+      "title": "求总结果概率",
+      "text": "全概率公式对所有来源的路径概率求和，不能只保留符合直觉的一支。"
+    },
+    {
+      "title": "重新计算后验",
+      "text": "Bayes 公式把目标来源的路径概率除以所有产生该观察的路径概率。先验低时，较低误报率仍可能很重要。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "来源事件构成互斥完备划分，观察事件满足 $P(D)>0$。",
+    "latex": "P(H_i\\mid D)=\\frac{P(H_i)P(D\\mid H_i)}{\\sum_jP(H_j)P(D\\mid H_j)}",
+    "conditions": [
+      "来源事件构成互斥完备划分，观察事件满足 $P(D)>0$。",
+      "后验依赖基准率和模型中的条件概率。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "按来源拆分观察事件。",
+      "latex": "D=\\bigcup_j(D\\cap H_j)"
+    },
+    {
+      "text": "将互斥路径相加。",
+      "latex": "P(D)=\\sum_jP(H_j)P(D\\mid H_j)"
+    },
+    {
+      "text": "除以观察事件概率。",
+      "latex": "P(H_i\\mid D)=P(H_i\\cap D)/P(D)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "低基准率",
+      "problem": "目标比例 $0.01$，检出率 $0.9$，误报率 $0.1$，阳性后的目标概率？",
+      "steps": [
+        "真阳性路径 $0.009$，误报路径 $0.099$。",
+        "除以总阳性 $0.108$。"
+      ],
+      "answer": "$1/12\\approx0.0833$。"
+    },
+    {
+      "title": "来源混合",
+      "problem": "工厂一供货六成、次品率 $0.02$；工厂二供货四成、次品率 $0.05$。总次品率？",
+      "steps": [
+        "第一来源路径 $0.6(0.02)=0.012$。",
+        "第二来源路径 $0.4(0.05)=0.02$。"
+      ],
+      "answer": "$0.032$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-bayes-q1",
+      "problem": "沿上一例，已知次品，来自工厂二的概率？",
+      "hint": "用该来源的次品路径作分子。",
+      "solution": [
+        "$0.02/0.032=0.625$。"
+      ],
+      "answer": "$0.625$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.625
+    },
+    {
+      "id": "ps-bayes-q2",
+      "problem": "两来源等可能，观察似然分别 $0.8,0.2$，第一来源的后验？",
+      "hint": "分子与总概率分别算。",
+      "solution": [
+        "$0.4/(0.4+0.1)=0.8$。"
+      ],
+      "answer": "$0.8$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.8
+    },
+    {
+      "id": "ps-bayes-q3",
+      "problem": "灵敏度高就能保证阳性后几乎确定吗？",
+      "hint": "还缺基准率与误报率。",
+      "solution": [
+        "低基准率人群可能贡献大量误报。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-bayes-q4",
+      "problem": "两来源对某观察似然相同，观察会改变来源概率吗？",
+      "hint": "相同因子会约掉。",
+      "solution": [
+        "后验等于先验。"
+      ],
+      "answer": "不会。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "Bayes 公式的分母应包括什么？",
+    "choices": [
+      "仅目标来源",
+      "所有能产生观察的来源",
+      "仅误报来源"
+    ],
+    "correctIndex": 1,
+    "explanation": "分母是观察本身的总概率。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-bayes-m1",
+      "claim": "检出率就是阳性后的目标概率",
+      "correction": "两者条件方向相反，需要结合先验和误报率。"
+    },
+    {
+      "id": "ps-bayes-m2",
+      "claim": "先验可以省略",
+      "correction": "忽略来源占比通常会改变后验。"
+    }
+  ],
+  "prerequisites": [
+    "ps-conditional",
+    "ps-independence"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-bayes-m1",
+    "ps-bayes-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-bayes",
+    "prediction": "检出率不变，降低基准率，阳性后的目标比例怎样变？",
+    "caption": "用比例树和人群格子显示真阳性、误报与后验；仅为抽象检测模型。"
+  },
+  "teaching": {
+    "explain": "两者条件方向相反，需要结合先验和误报率。",
+    "steps": [
+      {
+        "title": "目标基准率：0.01",
+        "instruction": "将目标基准率设为 $0.01$，对照图形和读数。",
+        "observation": "本组参数的计算结果：真阳性路径 $0.009$；误报路径 $0.099$；总阳性概率 $0.108$；阳性后的目标概率 $0.0833333$。",
+        "preset": {
+          "a": 0.01,
+          "b": 0.9,
+          "c": 0.1
+        }
+      },
+      {
+        "title": "目标基准率：0.001",
+        "instruction": "将目标基准率设为 $0.001$，对照图形和读数。",
+        "observation": "本组参数的计算结果：真阳性路径 $0.0009$；误报路径 $0.0999$；总阳性概率 $0.1008$；阳性后的目标概率 $0.00892857$。",
+        "preset": {
+          "a": 0.001,
+          "b": 0.9,
+          "c": 0.1
+        }
+      },
+      {
+        "title": "目标基准率：0.5",
+        "instruction": "将目标基准率设为 $0.5$，对照图形和读数。",
+        "observation": "本组参数的计算结果：真阳性路径 $0.45$；误报路径 $0.05$；总阳性概率 $0.5$；阳性后的目标概率 $0.9$。",
+        "preset": {
+          "a": 0.5,
+          "b": 0.9,
+          "c": 0.1
+        }
+      }
+    ]
+  }
+}

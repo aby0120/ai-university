@@ -1,0 +1,724 @@
+{
+  "reviews": [
+    {
+      "chapterId": "ps-data",
+      "title": "数据从哪里来 · 章末回顾",
+      "questions": [
+        {
+          "id": "ps-review-1-1",
+          "problem": "两地区人口占比 $0.7,0.3$，地区平均值 $20,40$，求总体加权均值，并解释为什么不直接取三十。",
+          "hint": "样本或分组条数不能代替人口权重。",
+          "solution": [
+            "$0.7(20)+0.3(40)=26$。",
+            "直接平均暗含人口权重各一半。"
+          ],
+          "answer": "$26$；直接平均用了错误的组成。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ps-review-1-2",
+          "problem": "一个自愿参加的样本被随机分配处理与对照，分别能支持什么，不能保证什么？",
+          "hint": "分清入组和分组机制。",
+          "solution": [
+            "随机分组在所述试验条件下支持样本内因果比较。",
+            "自愿入组不能自动代表目标总体。"
+          ],
+          "answer": "支持试验框架内的处理比较，不自动保证总体推广。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        }
+      ]
+    },
+    {
+      "chapterId": "ps-probability",
+      "title": "事件与概率 · 章末回顾",
+      "questions": [
+        {
+          "id": "ps-review-2-1",
+          "problem": "两事件概率 $0.5,0.4$，交集 $0.2$，求并集、$P(A\\mid B)$，并判断独立。",
+          "hint": "先分别使用加法、条件与乘积准则。",
+          "solution": [
+            "并集 $0.5+0.4-0.2=0.7$。",
+            "条件概率 $0.2/0.4=0.5$，交集等于边缘乘积。"
+          ],
+          "answer": "并集 $0.7$、条件概率 $0.5$，独立。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ps-review-2-2",
+          "problem": "八人中选三名无区别代表，再从代表中指定一名发言人，有多少种？",
+          "hint": "先选组，再指定角色。",
+          "solution": [
+            "代表组 $\\binom83=56$。",
+            "每组有三种发言人。"
+          ],
+          "answer": "$168$ 种。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "numericAnswer": 168
+        }
+      ]
+    },
+    {
+      "chapterId": "ps-random-variables",
+      "title": "随机变量与平均行为 · 章末回顾",
+      "questions": [
+        {
+          "id": "ps-review-3-1",
+          "problem": "$X$ 以概率 $0.25$ 取零、以概率 $0.75$ 取四，求期望和方差。",
+          "hint": "先算一阶、二阶矩。",
+          "solution": [
+            "$EX=3,EX^2=12$。",
+            "方差为 $12-9=3$。"
+          ],
+          "answer": "期望 $3$、方差 $3$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ps-review-3-2",
+          "problem": "来源甲占两成，观察概率 $0.6$；来源乙占八成，观察概率 $0.1$。观察后来自甲的概率？",
+          "hint": "分子为甲路径，总观察包含两条路径。",
+          "solution": [
+            "两路径为 $0.12,0.08$。",
+            "后验为 $0.12/0.2=0.6$。"
+          ],
+          "answer": "$0.6$。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "numericAnswer": 0.6
+        }
+      ]
+    },
+    {
+      "chapterId": "ps-discrete",
+      "title": "离散概率模型 · 章末回顾",
+      "questions": [
+        {
+          "id": "ps-review-4-1",
+          "problem": "十件中三件目标，不放回抽四件，求目标计数期望与恰好一件概率。",
+          "hint": "用超几何，不能当作独立抽取。",
+          "solution": [
+            "期望 $4(3/10)=1.2$。",
+            "概率 $\\binom31\\binom73/\\binom{10}4=105/210$。"
+          ],
+          "answer": "期望 $1.2$，概率 $0.5$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ps-review-4-2",
+          "problem": "每分钟 Poisson 平均 $0.5$ 次，独立稳定增量，三分钟内至少一次的概率？",
+          "hint": "先换到三分钟参数，再取零次补集。",
+          "solution": [
+            "三分钟平均 $1.5$。",
+            "零次概率 $e^{-1.5}$。"
+          ],
+          "answer": "$1-e^{-1.5}$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        }
+      ]
+    },
+    {
+      "chapterId": "ps-continuous",
+      "title": "连续概率模型 · 章末回顾",
+      "questions": [
+        {
+          "id": "ps-review-5-1",
+          "problem": "密度 $f(x)=3x^2$ 在 $[0,1]$，求分布函数和期望。",
+          "hint": "积分时保留支持。",
+          "solution": [
+            "区间内累计为 $x^3$，区间左侧零、右侧一。",
+            "期望 $\\int_0^1 3x^3dx=3/4$。"
+          ],
+          "answer": "$F(x)=x^3$ 在支持内；$EX=3/4$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ps-review-5-2",
+          "problem": "$X\\sim N(4,9)$，求 $P(1<X<7)$。",
+          "hint": "两个端点分别标准化。",
+          "solution": [
+            "标准差三，端点变为负一和一。",
+            "概率 $\\Phi(1)-\\Phi(-1)$。"
+          ],
+          "answer": "约 $0.6827$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        }
+      ]
+    },
+    {
+      "chapterId": "ps-joint",
+      "title": "多个随机变量 · 章末回顾",
+      "questions": [
+        {
+          "id": "ps-review-6-1",
+          "problem": "两组各一半，组均值一和五，组内方差都为二，求总均值和总方差。",
+          "hint": "分别使用全期望与全方差。",
+          "solution": [
+            "总均值三。",
+            "组间均值方差四，加平均组内方差二。"
+          ],
+          "answer": "均值 $3$、方差 $6$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ps-review-6-2",
+          "problem": "标准差为一和二，相关系数 $-0.5$，求和的方差。",
+          "hint": "先还原协方差。",
+          "solution": [
+            "协方差为负一。",
+            "和的方差为 $1+4-2=3$。"
+          ],
+          "answer": "$3$。",
+          "difficulty": 2,
+          "misconceptionTags": [],
+          "numericAnswer": 3
+        }
+      ]
+    },
+    {
+      "chapterId": "ps-sampling",
+      "title": "从总体到样本 · 章末回顾",
+      "questions": [
+        {
+          "id": "ps-review-7-1",
+          "problem": "独立总体均值六、标准差八，样本量六十四；均值标准误多少？若 CLT 适用，超过八的概率约多少？",
+          "hint": "用均值分布而非个体分布。",
+          "solution": [
+            "标准误一。",
+            "标准化阈值二。"
+          ],
+          "answer": "标准误 $1$，概率约 $0.0228$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ps-review-7-2",
+          "problem": "原样本有五条，普通 bootstrap 做四百次。共生成多少份样本？每份几条？能否保证修复代表性偏差？",
+          "hint": "分开原大小和重复次数。",
+          "solution": [
+            "生成四百份，每份五条有放回记录。",
+            "仍从原经验分布抽，选择偏差不会自动消失。"
+          ],
+          "answer": "四百份，每份五条；不能保证修复偏差。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        }
+      ]
+    },
+    {
+      "chapterId": "ps-estimation",
+      "title": "估计与置信区间 · 章末回顾",
+      "questions": [
+        {
+          "id": "ps-review-8-1",
+          "problem": "正态总体已知标准差四，样本量六十四、均值十，给定临界值 $1.96$，计算均值区间并解释。",
+          "hint": "先算标准误，再说明重复覆盖。",
+          "solution": [
+            "标准误 $4/8=0.5$，半宽 $0.98$。",
+            "该区间构造方法在模型下约有 $95\\%$ 覆盖。"
+          ],
+          "answer": "约 $[9.02,10.98]$；不是直接赋给固定参数的后验概率。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ps-review-8-2",
+          "problem": "十二对前后差的样本均值二、标准差三，求配对区间标准误和自由度。",
+          "hint": "对数才是独立样本量。",
+          "solution": [
+            "标准误为 $3/\\sqrt{12}$。",
+            "自由度为十一。"
+          ],
+          "answer": "标准误约 $0.8660$，自由度 $11$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        }
+      ]
+    },
+    {
+      "chapterId": "ps-testing",
+      "title": "假设检验与决策 · 章末回顾",
+      "questions": [
+        {
+          "id": "ps-review-9-1",
+          "problem": "原假设为公平硬币，五次全正。预定右侧精确检验 $p$ 值是多少？按 $0.05$ 怎样判断？",
+          "hint": "极端右尾只有全正。",
+          "solution": [
+            "概率 $1/32=0.03125$。",
+            "小于预定阈值。"
+          ],
+          "answer": "拒绝公平假设；不等于公平假设后验概率为 $0.03125$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ps-review-9-2",
+          "problem": "同时做五个检验，要控制家族错误不超过 $0.01$，每项 Bonferroni 门槛？是否要求检验独立？",
+          "hint": "用并集上界。",
+          "solution": [
+            "每项 $0.01/5=0.002$。",
+            "并集界对任意依赖成立。"
+          ],
+          "answer": "每项 $0.002$，不要求独立。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        }
+      ]
+    },
+    {
+      "chapterId": "ps-modeling",
+      "title": "关系、模型与更新 · 章末回顾",
+      "questions": [
+        {
+          "id": "ps-review-10-1",
+          "problem": "最小二乘摘要 $n=10,\\bar x=2,\\bar y=5,S_{xx}=8,S_{xy}=12,\\mathrm{SSE}=16$，求直线与斜率标准误。",
+          "hint": "先拟合，再用残差自由度估计方差。",
+          "solution": [
+            "斜率 $1.5$，截距二。",
+            "噪声方差估计 $16/8=2$，斜率标准误 $\\sqrt{2/8}=0.5$。"
+          ],
+          "answer": "$\\hat y=2+1.5x$，斜率标准误 $0.5$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ps-review-10-2",
+          "problem": "先验 $\\operatorname{Beta}(2,2)$，八次中五次成功，求后验和预测成功率，并指出一项模型条件。",
+          "hint": "先验指数加成功与失败数。",
+          "solution": [
+            "后验 $\\operatorname{Beta}(7,5)$。",
+            "预测概率为 $7/12$，要求固定成功率独立 Bernoulli 模型等。"
+          ],
+          "answer": "后验 $\\operatorname{Beta}(7,5)$，预测 $7/12$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        }
+      ]
+    }
+  ],
+  "exam": [
+    {
+      "id": "ps-exam-1",
+      "problem": "一项自愿网络问卷显示使用某工具者更高效。报告“工具使所有人效率提高”，至少有哪些推断跳跃？",
+      "hint": "从抽样、处理分配、测量三处检查。",
+      "solution": [
+        "自愿样本可能存在覆盖与选择偏差。",
+        "使用工具并非随机分配，可能存在混杂或反向因果。",
+        "效率指标的定义和测量也需明确。"
+      ],
+      "answer": "没有充分依据支持因果和总体推广。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-exam-2",
+      "problem": "两独立公平骰子，已知总和为七，第一枚为六的概率？",
+      "hint": "先列条件事件的有序结果。",
+      "solution": [
+        "总和七有六种等可能有序结果。",
+        "其中只有 $(6,1)$ 符合目标。"
+      ],
+      "answer": "$1/6$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.16666666666666666
+    },
+    {
+      "id": "ps-exam-3",
+      "problem": "一千件货中三成来自甲，甲次品率 $0.01$，乙次品率 $0.04$。抽到次品，来自甲的后验概率？",
+      "hint": "用路径比例，不必实际抽一千件。",
+      "solution": [
+        "甲次品路径为 $0.003$，乙为 $0.028$。",
+        "分母为 $0.031$。"
+      ],
+      "answer": "$3/31\\approx0.0968$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.0967741935483871
+    },
+    {
+      "id": "ps-exam-4",
+      "problem": "独立重复试验成功率 $0.2$：前五次恰好一次成功的概率、首次成功平均总次数分别是多少？",
+      "hint": "固定次数与固定目标用不同模型。",
+      "solution": [
+        "二项概率 $\\binom51(0.2)(0.8)^4=0.4096$。",
+        "几何总次数均值 $1/0.2=5$。"
+      ],
+      "answer": "$0.4096$ 与 $5$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-exam-5",
+      "problem": "联合密度在 $0<x<y<1$ 上为二。求 $f_X(x)$、$E[Y\\mid X=x]$，并判断独立。",
+      "hint": "先沿另一坐标积分，再归一化。",
+      "solution": [
+        "$f_X(x)=2(1-x)$ 在 $(0,1)$。",
+        "条件 $Y$ 在 $(x,1)$ 均匀，条件均值 $(x+1)/2$。",
+        "条件分布随 $x$ 改变，因此不独立。"
+      ],
+      "answer": "$2(1-x)$、$(x+1)/2$；不独立。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-exam-6",
+      "problem": "独立样本总体标准差十二，当前样本量三十六；要把均值标准误从二减到一，需要多大样本量？这会自动解决选择偏差吗？",
+      "hint": "平方根精度与抽样代表性分开。",
+      "solution": [
+        "解 $12/\\sqrt n=1$，得 $n=144$。",
+        "增加样本量不自动改变选择机制。"
+      ],
+      "answer": "$144$；不会自动解决偏差。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 144
+    },
+    {
+      "id": "ps-exam-7",
+      "problem": "正态样本 $n=9,\\bar x=12,s=3$，给定 $t_{0.975,8}=2.306$。计算均值区间，并判断同水平双侧检验是否拒绝均值十。",
+      "hint": "区间与检验使用同一模型。",
+      "solution": [
+        "标准误一，区间 $[9.694,14.306]$。",
+        "十在区间内部。"
+      ],
+      "answer": "区间约 $[9.694,14.306]$；不拒绝均值十。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-exam-8",
+      "problem": "公平硬币四次全正，预定双侧概率排序精确二项 $p$ 值是多少？为何不是把它解释为公平概率？",
+      "hint": "同时计入原假设下同样低质量的另一端。",
+      "solution": [
+        "零正与四正的质量各 $1/16$，其他更大。",
+        "相加得 $1/8$。",
+        "$p$ 值在原假设下对结果取概率，没有给参数指定先验。"
+      ],
+      "answer": "$0.125$；不是原假设后验概率。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 0.125
+    },
+    {
+      "id": "ps-exam-9",
+      "problem": "三组各三条，均值为二、四、六，各组样本方差均一。求 ANOVA $F$ 与自由度，说明拒绝后能否直接宣布所有组不同。",
+      "hint": "从摘要还原组内平方和。",
+      "solution": [
+        "总均值四，组间平方和二十四。",
+        "每组组内平方和二，合计六。",
+        "均方比十二，自由度 $(2,6)$；整体拒绝不识别每一对。"
+      ],
+      "answer": "$F=12$，自由度 $(2,6)$；不能宣布每一对都不同。",
+      "difficulty": 3,
+      "misconceptionTags": [],
+      "numericAnswer": 12
+    },
+    {
+      "id": "ps-exam-10",
+      "problem": "先验 $\\operatorname{Beta}(1,1)$，观察三次成功一次失败。给出后验、预测成功率，以及下一轮分析报告应至少保留的四项信息。",
+      "hint": "更新后不要只留点估计。",
+      "solution": [
+        "后验为 $\\operatorname{Beta}(4,2)$，预测成功率 $2/3$。",
+        "保留观察与抽样设计、先验与似然、效应和区间、诊断与局限等。"
+      ],
+      "answer": "$\\operatorname{Beta}(4,2)$、$2/3$；报告设计、模型、精度与限制。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    }
+  ],
+  "glossary": [
+    {
+      "term": "观察单位与变量",
+      "meaning": "一行数据先对应一个对象，再讨论它有哪些特征。",
+      "lessonId": "ps-units"
+    },
+    {
+      "term": "总体、样本与选择偏差",
+      "meaning": "从谁那里收集数据，决定结论能推广到谁。",
+      "lessonId": "ps-sampling"
+    },
+    {
+      "term": "随机抽样与随机分组",
+      "meaning": "抽样支持推广，随机分组支持因果比较。",
+      "lessonId": "ps-design"
+    },
+    {
+      "term": "频数图、直方图与经验分布",
+      "meaning": "图形显示分布；不同图的纵轴含义要先看清。",
+      "lessonId": "ps-displays"
+    },
+    {
+      "term": "均值、中位数与离散程度",
+      "meaning": "中心告诉你数据在哪里，离散程度告诉你它们有多分散。",
+      "lessonId": "ps-summaries"
+    },
+    {
+      "term": "样本空间与事件",
+      "meaning": "先列出可能结果，再说明哪些结果算作同一事件。",
+      "lessonId": "ps-events"
+    },
+    {
+      "term": "概率公理与加法公式",
+      "meaning": "至少一个发生的概率，要减掉重复计算的部分。",
+      "lessonId": "ps-probability-rules"
+    },
+    {
+      "term": "乘法原理、排列与组合",
+      "meaning": "先决定是否在意顺序，再决定怎么数。",
+      "lessonId": "ps-counting"
+    },
+    {
+      "term": "条件概率与乘法公式",
+      "meaning": "已知一件事发生，就在它留下的结果中重新分配概率。",
+      "lessonId": "ps-conditional"
+    },
+    {
+      "term": "独立、互斥与多次试验",
+      "meaning": "独立表示知道一件事，不改变另一件事的概率。",
+      "lessonId": "ps-independence"
+    },
+    {
+      "term": "全概率与 Bayes 公式",
+      "meaning": "把不同来源的概率合起来，再用观察结果反推来源。",
+      "lessonId": "ps-bayes"
+    },
+    {
+      "term": "随机变量、质量函数与分布函数",
+      "meaning": "随机变量给每个结果一个数，分布说明这个数怎样出现。",
+      "lessonId": "ps-cdf"
+    },
+    {
+      "term": "期望与期望的线性性",
+      "meaning": "期望是按概率加权的平均，不是最常见结果。",
+      "lessonId": "ps-expectation"
+    },
+    {
+      "term": "方差、标准差与协方差项",
+      "meaning": "方差衡量围绕期望的平方波动。",
+      "lessonId": "ps-variance"
+    },
+    {
+      "term": "Markov 与 Chebyshev 概率界",
+      "meaning": "不知道完整分布，也能用少量信息约束尾部概率。",
+      "lessonId": "ps-inequalities"
+    },
+    {
+      "term": "Bernoulli 与二项分布",
+      "meaning": "固定次数的独立同概率试验，数成功总次数。",
+      "lessonId": "ps-binomial"
+    },
+    {
+      "term": "几何与负二项等待次数",
+      "meaning": "固定成功目标，数要等多少次试验。",
+      "lessonId": "ps-geometric"
+    },
+    {
+      "term": "不放回抽样与超几何分布",
+      "meaning": "总体组成固定、不放回抽取时，用超几何数抽中的目标个数。",
+      "lessonId": "ps-hypergeometric"
+    },
+    {
+      "term": "Poisson 计数与稀少事件",
+      "meaning": "在给定区间内数事件次数，用平均次数控制 Poisson 模型。",
+      "lessonId": "ps-poisson"
+    },
+    {
+      "term": "离散模型选择与近似",
+      "meaning": "先选对精确模型，再说明近似保留了什么。",
+      "lessonId": "ps-approximations"
+    },
+    {
+      "term": "密度与连续分布函数",
+      "meaning": "连续变量的区间概率是密度曲线下的面积。",
+      "lessonId": "ps-density"
+    },
+    {
+      "term": "均匀分布与指数等待",
+      "meaning": "等长区间等概率对应均匀；恒定到达速率对应指数等待。",
+      "lessonId": "ps-uniform-exponential"
+    },
+    {
+      "term": "正态分布与标准化",
+      "meaning": "减去均值、除以标准差，把正态问题换到同一张概率表。",
+      "lessonId": "ps-normal"
+    },
+    {
+      "term": "变量变换：先算累计概率",
+      "meaning": "换变量会同时改变取值和每段区间的密度。",
+      "lessonId": "ps-transformations"
+    },
+    {
+      "term": "连续期望、方差与尾积分",
+      "meaning": "把概率加权和换成积分，就能计算连续变量的平均行为。",
+      "lessonId": "ps-continuous-moments"
+    },
+    {
+      "term": "联合分布与边缘分布",
+      "meaning": "联合分布保留两个变量同时取值的概率。",
+      "lessonId": "ps-joint"
+    },
+    {
+      "term": "条件分布与条件密度",
+      "meaning": "固定一个变量后，沿留下的切片重新归一化。",
+      "lessonId": "ps-conditional-distributions"
+    },
+    {
+      "term": "随机变量独立与乘积分布",
+      "meaning": "两个变量独立，要求所有取值区域的联合概率都能拆成乘积。",
+      "lessonId": "ps-independent-variables"
+    },
+    {
+      "term": "协方差、相关系数与和的方差",
+      "meaning": "协方差描述共同偏离的方向，相关系数再去掉单位。",
+      "lessonId": "ps-covariance"
+    },
+    {
+      "term": "条件期望与全方差",
+      "meaning": "先在各组内计算，再把组间差异合回来。",
+      "lessonId": "ps-conditional-expectation"
+    },
+    {
+      "term": "大数定律与相对频率",
+      "meaning": "独立重复平均，能让随机波动相对稳定下来。",
+      "lessonId": "ps-lln"
+    },
+    {
+      "term": "中心极限定理",
+      "meaning": "很多独立贡献相加后，标准化的和趋向正态。",
+      "lessonId": "ps-clt"
+    },
+    {
+      "term": "样本均值与标准误",
+      "meaning": "标准差说个体有多散，标准误说估计值有多不稳定。",
+      "lessonId": "ps-sampling-mean"
+    },
+    {
+      "term": "正态样本、卡方与 $t$ 分布",
+      "meaning": "用样本标准差替代未知总体尺度，会增加不确定性。",
+      "lessonId": "ps-normal-sample"
+    },
+    {
+      "term": "Bootstrap：从样本模拟再抽样",
+      "meaning": "把观察到的样本当作经验总体，重复有放回抽取。",
+      "lessonId": "ps-bootstrap"
+    },
+    {
+      "term": "偏差、一致性与均方误差",
+      "meaning": "估计量既可能系统偏离，也可能每次大幅波动。",
+      "lessonId": "ps-bias-mse"
+    },
+    {
+      "term": "矩估计与极大似然",
+      "meaning": "把模型参数与实际数据连接起来，必须先说明抽样模型。",
+      "lessonId": "ps-estimation"
+    },
+    {
+      "term": "均值置信区间与覆盖率",
+      "meaning": "置信水平说的是方法的长期覆盖率，不是某个已算区间包含真值的概率。",
+      "lessonId": "ps-mean-interval"
+    },
+    {
+      "term": "比例区间：为什么不用零宽度",
+      "meaning": "观察到零次成功，不代表成功率已经确定为零。",
+      "lessonId": "ps-proportion-interval"
+    },
+    {
+      "term": "两组均值差与配对区间",
+      "meaning": "先判断两组是否独立；配对数据应分析每对的差。",
+      "lessonId": "ps-difference-interval"
+    },
+    {
+      "term": "原假设、$p$ 值与第一类错误",
+      "meaning": "$p$ 值衡量假设成立时，数据有多不寻常。",
+      "lessonId": "ps-test-logic"
+    },
+    {
+      "term": "单样本均值检验",
+      "meaning": "把均值与假设值的差，放到抽样噪声尺度上比较。",
+      "lessonId": "ps-mean-test"
+    },
+    {
+      "term": "比例检验与精确二项尾部",
+      "meaning": "检验比例时，用原假设比例构造参考分布。",
+      "lessonId": "ps-proportion-test"
+    },
+    {
+      "term": "两组检验与置换思路",
+      "meaning": "比较组别时，参考分布必须符合独立、配对或随机分组设计。",
+      "lessonId": "ps-comparison-tests"
+    },
+    {
+      "term": "功效、效应大小与多重比较",
+      "meaning": "发现差异的机会，取决于真实效应、噪声、样本量和决策门槛。",
+      "lessonId": "ps-power"
+    },
+    {
+      "term": "分类表与卡方检验",
+      "meaning": "分类计数与独立模型的预期计数，差得是否足够大？",
+      "lessonId": "ps-categorical"
+    },
+    {
+      "term": "最小二乘直线与残差",
+      "meaning": "找一条直线，让纵向预测误差的平方和最小。",
+      "lessonId": "ps-regression"
+    },
+    {
+      "term": "斜率检验、均值区间与预测区间",
+      "meaning": "估计平均响应，比预测一个新观测更容易。",
+      "lessonId": "ps-regression-inference"
+    },
+    {
+      "term": "单因素方差分析",
+      "meaning": "比较多个组均值，先看组间差异相对组内噪声有多大。",
+      "lessonId": "ps-anova"
+    },
+    {
+      "term": "Beta–二项更新与完整分析报告",
+      "meaning": "贝叶斯推断把先验和似然合并，得到参数的后验分布。",
+      "lessonId": "ps-bayesian-inference"
+    }
+  ],
+  "appendices": [
+    {
+      "title": "先修与课程边界",
+      "text": "前四章只需要初等代数与求和。连续密度和变量变换需要一元积分；联合密度使用最基本的二重积分，可链接微积分卷复习。本书覆盖完整本科入门概率统计课程，不展开测度论、随机过程系统理论、多元回归、实验设计全体系或高级非参数推断。Poisson 过程只作为计数与等待模型的入门背景。"
+    },
+    {
+      "title": "期望、方差与收敛条件",
+      "text": "有限离散支持可直接逐项求和；无限支持需检查绝对可积或非负积分条件。弱大数定律给出有限方差下的 Chebyshev 证明。经典 CLT 在正文陈述且用模拟探索；其一般证明需要特征函数或其他概率工具，本卷不把有限模拟当证明。强大数定律和依赖样本极限理论不在本卷证明。"
+    },
+    {
+      "title": "正态样本分解为何少一个自由度",
+      "text": "把独立标准正态向量沿常数向量与其正交补分解。投影到常数方向决定样本均值；正交补有 $n-1$ 维，平方长度给卡方。正态向量的正交分量独立，支持均值与样本方差独立的精确结论。一般非正态样本只保留部分矩关系，不能直接沿用这项独立性。"
+    },
+    {
+      "title": "$t$、卡方、$F$ 与数值概率",
+      "text": "$t$ 可写为独立标准正态除以独立卡方自由度平均的平方根。两个独立卡方各除以自由度再取比给 $F$。演示用 Gamma、正则化不完全 Beta/Gamma 及二分法计算累计函数与分位数；读数是浮点数值近似，显示位数不表示测量精度。"
+    },
+    {
+      "title": "离散尾部与端点约定",
+      "text": "本卷几何和负二项记录含最后成功的总次数；二项右尾包含观察计数。概率排序双侧二项检验把原假设下质量不大于观察质量的结果相加；该约定不同于所有情况下直接翻倍单侧尾。连续性修正只用于指定近似，精确计数不使用它。"
+    },
+    {
+      "title": "重抽样与置换的界限",
+      "text": "普通 bootstrap 从经验分布有放回抽取，保留原样本大小。百分位端点用排序线性插值分位数，不保证任意小样本下名义覆盖。置换演示穷举四个固定结果的六种均匀两两分组；精确性依赖锐零假设下的随机化设计或可交换性。两种方法不能互相替代。"
+    },
+    {
+      "title": "置信、可信与显著性",
+      "text": "置信区间的覆盖率是区间构造方法在重复抽样下的性质；贝叶斯可信区间是给定先验、模型与数据后的参数概率。$p$ 值在原假设下评价统计量极端性，不是参数后验。统计显著性不直接给出实际影响、因果性或模型正确性。多重比较与停止规则必须属于完整分析程序。"
+    },
+    {
+      "title": "完成一次可复核分析",
+      "text": "保留原始数据和单位、缺失处理、抽样或随机化设计、预先问题与对比方向、模型条件、计算步骤、效应和不确定性、诊断、敏感性与未验证项。探索后形成的新问题应标记探索性，不能假装预先检验。所有模拟固定可见种子，改变种子只换有限样本，不改变理论模型。"
+    }
+  ]
+}

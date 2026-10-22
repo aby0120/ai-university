@@ -1,0 +1,190 @@
+{
+  "id": "ps-test-logic",
+  "chapterId": "ps-testing",
+  "number": "9.1",
+  "title": "原假设、$p$ 值与第一类错误",
+  "subtitle": "$p$ 值衡量假设成立时，数据有多不寻常。",
+  "concept": "$p$ 值衡量假设成立时，数据有多不寻常。",
+  "intuition": "它问的是“如果按这个模型抽样”，不是直接问“这个假设有多可能是真的”。",
+  "objectives": [
+    "预先规定比较",
+    "定义 $p$ 值"
+  ],
+  "body": [
+    {
+      "title": "预先规定比较",
+      "text": "先写原假设、备择方向、统计量与显著性水平，避免看见结果后挑选更有利的尾部。"
+    },
+    {
+      "title": "定义 $p$ 值",
+      "text": "在原假设模型下，统计量至少和观察值一样支持备择的尾部概率；“至少一样极端”要依赖预定排序。"
+    },
+    {
+      "title": "区分错误类型",
+      "text": "第一类错误是原假设真时拒绝它。显著性水平约束程序的错误概率，不等于这次结论错误的后验概率。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "尾部与统计量在观察前明确；原假设分布需成立。",
+    "latex": "p_{\\mathrm{right}}=P_{H_0}(T\\ge t_{\\mathrm{obs}}),\\qquad P_{H_0}(\\text{拒绝 }H_0)\\le\\alpha",
+    "conditions": [
+      "尾部与统计量在观察前明确；原假设分布需成立。",
+      "复合原假设通常还要控制所有原假设参数下的拒绝概率。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "先给出原假设下统计量分布。",
+      "latex": "T\\mid H_0\\sim F_0"
+    },
+    {
+      "text": "按备择方向累积极端区域。",
+      "latex": "p=P_0(T\\ge t_{\\mathrm{obs}})\\quad\\text{右侧检验}"
+    },
+    {
+      "text": "用预设阈值决定是否拒绝。",
+      "latex": "p\\le\\alpha\\ \\Rightarrow\\ \\text{拒绝 }H_0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "右侧正态检验",
+      "problem": "原假设下标准正态，观察 $z=2$，右侧 $p$ 值？",
+      "steps": [
+        "原假设右尾为 $1-\\Phi(2)$。",
+        "数值约 $0.0228$。"
+      ],
+      "answer": "约 $0.0228$。"
+    },
+    {
+      "title": "未拒绝不是证明",
+      "problem": "检验未拒绝两组均值相同，能宣布它们等价吗？",
+      "steps": [
+        "小样本可能没有足够功效检出差异。",
+        "等价检验需要预定可忽略差异范围。"
+      ],
+      "answer": "不能。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-test-logic-q1",
+      "problem": "原假设下标准正态，右侧观察零，$p$ 值？",
+      "hint": "一半面积在右侧。",
+      "solution": [
+        "$0.5$。"
+      ],
+      "answer": "$0.5$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.5
+    },
+    {
+      "id": "ps-test-logic-q2",
+      "problem": "$p=0.03,\\alpha=0.05$，按预定规则是否拒绝？",
+      "hint": "比较 $p$ 值与阈值。",
+      "solution": [
+        "$0.03<0.05$。"
+      ],
+      "answer": "拒绝。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-test-logic-q3",
+      "problem": "$p$ 值是 $P(H_0\\mid\\text{数据})$ 吗？",
+      "hint": "条件方向不同。",
+      "solution": [
+        "它在原假设下对数据极端性取概率。"
+      ],
+      "answer": "不是。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-test-logic-q4",
+      "problem": "看结果后从左右检验中选较小 $p$ 值会有什么问题？",
+      "hint": "预定错误控制是否仍成立？",
+      "solution": [
+        "选择过程扩大拒绝机会，需校正。"
+      ],
+      "answer": "原显著性水平可能不再受控。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "$p$ 值小主要表示什么？",
+    "choices": [
+      "原假设后验概率小",
+      "该原假设模型下出现这么极端数据不常见",
+      "效应一定很大"
+    ],
+    "correctIndex": 1,
+    "explanation": "解释限定在模型、统计量和预设尾部下。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-test-logic-m1",
+      "claim": "$p$ 值是原假设为真的概率",
+      "correction": "这是把条件概率方向颠倒。"
+    },
+    {
+      "id": "ps-test-logic-m2",
+      "claim": "不显著就证明没有差异",
+      "correction": "未拒绝可能来自低精度或低功效。"
+    }
+  ],
+  "prerequisites": [
+    "ps-mean-interval"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-test-logic-m1",
+    "ps-test-logic-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-test-logic",
+    "prediction": "移动观察到的统计量，右侧 $p$ 值如何改变？",
+    "caption": "原假设标准正态固定，阴影只表示预定右侧尾部。"
+  },
+  "teaching": {
+    "explain": "这是把条件概率方向颠倒。",
+    "steps": [
+      {
+        "title": "观察 $z$ 值：2",
+        "instruction": "将观察 $z$ 值设为 $2$，对照图形和读数。",
+        "observation": "本组参数的计算结果：观察统计量 $2$；右侧 $p$ 值 $0.0227501$。",
+        "preset": {
+          "a": 2
+        }
+      },
+      {
+        "title": "观察 $z$ 值：-3",
+        "instruction": "将观察 $z$ 值设为 $-3$，对照图形和读数。",
+        "observation": "本组参数的计算结果：观察统计量 $-3$；右侧 $p$ 值 $0.99865$。",
+        "preset": {
+          "a": -3
+        }
+      },
+      {
+        "title": "观察 $z$ 值：4",
+        "instruction": "将观察 $z$ 值设为 $4$，对照图形和读数。",
+        "observation": "本组参数的计算结果：观察统计量 $4$；右侧 $p$ 值 $3.167\\times10^{-5}$。",
+        "preset": {
+          "a": 4
+        }
+      }
+    ]
+  }
+}

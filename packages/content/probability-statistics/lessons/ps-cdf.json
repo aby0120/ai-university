@@ -1,0 +1,191 @@
+{
+  "id": "ps-cdf",
+  "chapterId": "ps-random-variables",
+  "number": "3.2",
+  "title": "随机变量、质量函数与分布函数",
+  "subtitle": "随机变量给每个结果一个数，分布说明这个数怎样出现。",
+  "concept": "随机变量给每个结果一个数，分布说明这个数怎样出现。",
+  "intuition": "同一个试验可记录总得分，也可记录是否超标；它们是不同随机变量。",
+  "objectives": [
+    "从结果到数值",
+    "累积到阈值"
+  ],
+  "body": [
+    {
+      "title": "从结果到数值",
+      "text": "随机变量是从样本空间到实数的函数。离散质量函数给每个可能值分配概率，各项非负且和为一。"
+    },
+    {
+      "title": "累积到阈值",
+      "text": "分布函数描述不超过阈值的概率，单调不减、右连续，两端极限分别为零和一。"
+    },
+    {
+      "title": "用差求区间",
+      "text": "分布函数差自然对应左开右闭区间。离散点上是否包含端点会影响答案。"
+    }
+  ],
+  "formalDefinition": {
+    "text": "分布函数定义适用于离散、连续与混合分布。",
+    "latex": "F_X(x)=P(X\\le x),\\quad P(a<X\\le b)=F_X(b)-F_X(a)",
+    "conditions": [
+      "分布函数定义适用于离散、连续与混合分布。",
+      "离散质量 $P(X=x)=F_X(x)-F_X(x^-)$。"
+    ]
+  },
+  "derivation": [
+    {
+      "text": "将不超过阈值的事件按取值拆开。",
+      "latex": "F_X(x)=\\sum_{k\\le x}p(k)\\quad\\text{离散时}"
+    },
+    {
+      "text": "区间事件是嵌套事件之差。",
+      "latex": "\\{X\\le b\\}\\setminus\\{X\\le a\\}=\\{a<X\\le b\\}"
+    },
+    {
+      "text": "相减得到区间概率。",
+      "latex": "P(a<X\\le b)=F_X(b)-F_X(a)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "离散累计",
+      "problem": "$P(X=0,1,2)$ 分别为 $0.2,0.5,0.3$，求 $F_X(1)$。",
+      "steps": [
+        "累计零和一的质量。",
+        "$0.2+0.5=0.7$。"
+      ],
+      "answer": "$0.7$。"
+    },
+    {
+      "title": "端点不能漏",
+      "problem": "沿上例，求 $P(1<X\\le2)$ 与 $P(1\\le X\\le2)$。",
+      "steps": [
+        "前者只含二，为 $0.3$。",
+        "后者还含一的质量 $0.5$。"
+      ],
+      "answer": "分别为 $0.3,0.8$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ps-cdf-q1",
+      "problem": "沿上例，$F_X(-1)$ 是多少？",
+      "hint": "阈值低于全部支持点。",
+      "solution": [
+        "没有取值落入事件。"
+      ],
+      "answer": "$0$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0
+    },
+    {
+      "id": "ps-cdf-q2",
+      "problem": "沿上例，$P(X=1)$ 是多少？",
+      "hint": "读跳幅。",
+      "solution": [
+        "$0.7-0.2=0.5$。"
+      ],
+      "answer": "$0.5$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.5
+    },
+    {
+      "id": "ps-cdf-q3",
+      "problem": "分布函数可以向下跳吗？",
+      "hint": "事件随阈值如何变化？",
+      "solution": [
+        "阈值增大，只会纳入更多结果。"
+      ],
+      "answer": "不可以。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ps-cdf-q4",
+      "problem": "任意分布函数都能逐点求导恢复全部概率吗？",
+      "hint": "离散质量在何处？",
+      "solution": [
+        "跳跃点的质量不能由普通密度求导统一表示。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "learningCheck": {
+    "question": "分布函数的一次跳幅表示什么？",
+    "choices": [
+      "该点的概率",
+      "该点的数值",
+      "平均值"
+    ],
+    "correctIndex": 0,
+    "explanation": "跳幅是恰好等于该点的概率质量。"
+  },
+  "commonMistakes": [
+    {
+      "id": "ps-cdf-m1",
+      "claim": "分布函数一定光滑",
+      "correction": "离散分布有跳跃，混合分布也可能有跳跃。"
+    },
+    {
+      "id": "ps-cdf-m2",
+      "claim": "所有区间端点都无关",
+      "correction": "只有没有点质量时，单点才不影响概率。"
+    }
+  ],
+  "prerequisites": [
+    "ps-events"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ps-cdf-m1",
+    "ps-cdf-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1805"
+  ],
+  "interactiveVisual": {
+    "kind": "probability",
+    "function": "ps-cdf",
+    "prediction": "移动阈值，质量图与累计台阶怎样对应？",
+    "caption": "固定离散分布，显示阈值以下的质量及对应分布函数值。"
+  },
+  "teaching": {
+    "explain": "离散分布有跳跃，混合分布也可能有跳跃。",
+    "steps": [
+      {
+        "title": "取值阈值：1",
+        "instruction": "将取值阈值设为 $1$，对照图形和读数。",
+        "observation": "本组参数的计算结果：当前阈值 $1$；累计概率 $0.7$。",
+        "preset": {
+          "b": 1
+        }
+      },
+      {
+        "title": "取值阈值：-0.5",
+        "instruction": "将取值阈值设为 $-0.5$，对照图形和读数。",
+        "observation": "本组参数的计算结果：当前阈值 $-0.5$；累计概率 $0$。",
+        "preset": {
+          "b": -0.5
+        }
+      },
+      {
+        "title": "取值阈值：2.5",
+        "instruction": "将取值阈值设为 $2.5$，对照图形和读数。",
+        "observation": "本组参数的计算结果：当前阈值 $2.5$；累计概率 $1$。",
+        "preset": {
+          "b": 2.5
+        }
+      }
+    ]
+  }
+}

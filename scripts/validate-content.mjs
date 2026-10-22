@@ -15,6 +15,7 @@ import {
 import { validateGuidance } from "../packages/visuals/guidance.mjs";
 import {linearControls,linearFrame,linearDefaults} from '../packages/visuals/linear-algebra.mjs';
 import {odeControls,odeFrame,odeDefaults} from '../packages/visuals/ode.mjs';
+import {probabilityControls,probabilityFrame,probabilityDefaults} from '../packages/visuals/probability.mjs';
 import { functions } from "../packages/visuals/math.mjs";
 import {
   calculus2Controls,
@@ -94,7 +95,10 @@ export function validateContent() {
         l.sources.every((id) => sourceIds.has(id)),
         `${l.id}: unknown source`,
       );
-      if(l.interactiveVisual.kind==='ode') {
+      if(l.interactiveVisual.kind==='probability') {
+        assert.equal(l.interactiveVisual.function,l.id);
+        assert(probabilityControls(l.id));probabilityFrame(l.id,probabilityDefaults(l.id));
+      } else if(l.interactiveVisual.kind==='ode') {
         assert.equal(l.interactiveVisual.function,l.id);
         assert(odeControls(l.id));odeFrame(l.id,odeDefaults(l.id));
       } else if(l.interactiveVisual.kind==='linear-algebra') {
