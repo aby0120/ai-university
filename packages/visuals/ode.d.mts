@@ -1,0 +1,15 @@
+import type {Frame3} from './calculus3.mjs';
+import type {LinearControl} from './linear-algebra.mjs';
+export function odeControls(id:string):LinearControl[];
+export function odeDefaults(id:string):Record<string,number>;
+export function odeBounds(id:string):Record<string,number[]>;
+export function assertOdeParameters(id:string,p:Record<string,number>):void;
+export function odePlayback(id:string,seed:Record<string,number>,elapsed:number):{key:string;value:number;done:boolean};
+export function odeFrame(id:string,params?:Record<string,number>):Frame3;
+export function odeStep(f:(t:number,y:number[])=>number[],t:number,y:number[],h:number,method?:string):number[];
+export function integrateOde(f:(t:number,y:number[])=>number[],y0:number[],T:number,options?:{method?:string;steps?:number;limit?:number}):{points:number[][];done:boolean;time:number;reason?:string};
+export function adaptiveHeun(T:number,tol:number,options?:{initialStep?:number;minStep?:number;maxSteps?:number}):{points:number[][];done:boolean;rejected:number;maxEstimate:number;estimates:number[];reason?:string};
+export function dampedState(c:number,t:number):number[];
+export function forcedResponse(w:number,t:number):number;
+export function besselJ0(t:number,terms?:number):number;
+export function bifurcationSolution(mu:number,y0:number,t:number):{value:number;end:number};

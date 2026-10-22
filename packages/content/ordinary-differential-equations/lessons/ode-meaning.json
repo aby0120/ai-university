@@ -1,0 +1,195 @@
+{
+  "id": "ode-meaning",
+  "chapterId": "ode-intro",
+  "number": "1.1",
+  "title": "微分方程在描述什么",
+  "subtitle": "给出变化率，寻找整个过程",
+  "body": [
+    {
+      "title": "未知量是什么？",
+      "text": "在 $y'=2y$ 中，未知的是函数 $y(t)$；方程要求每一点的斜率等于该点高度的两倍。"
+    },
+    {
+      "title": "怎样判断解？",
+      "text": "计算导数，代入方程，并检查函数是否在所讨论区间内有定义。满足一个时刻还不够。"
+    },
+    {
+      "title": "模型还需要什么？",
+      "text": "变量、单位、参数、初值与适用范围都要说明。指数增长只描述比例增长率不变的理想情形。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "假设数量的瞬时增长率正比于现有数量。",
+      "latex": "y'=ky"
+    },
+    {
+      "text": "指数函数的导数保持同样的比例。",
+      "latex": "\\frac{d}{dt}(Ce^{kt})=kCe^{kt}"
+    },
+    {
+      "text": "代回后等式在整个区间成立。",
+      "latex": "y'-ky=0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "检验一个解",
+      "problem": "$y=3e^{2t}$ 是否解 $y'=2y$？",
+      "steps": [
+        "求导得 $y'=6e^{2t}$。",
+        "右侧 $2y=6e^{2t}$，两边相等。"
+      ],
+      "answer": "是，定义在整个实轴。"
+    },
+    {
+      "title": "从单位建模",
+      "problem": "数量每小时按当前数量的 $0.1$ 倍增长，初值为 $20$，写出模型与解。",
+      "steps": [
+        "以小时为时间单位，$y'=0.1y,y(0)=20$。",
+        "代入指数族，常数为 $20$。"
+      ],
+      "answer": "$y=20e^{0.1t}$，模型用于 $t\\ge0$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-meaning-q1",
+      "problem": "$y=2e^{-t}$ 满足哪个比例变化方程？",
+      "hint": "先求导。",
+      "solution": [
+        "$y'=-2e^{-t}=-y$。"
+      ],
+      "answer": "$y'=-y$。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-meaning-q2",
+      "problem": "$y=t^2$ 是否在实轴上解 $y'=2t$？",
+      "hint": "比较两侧。",
+      "solution": [
+        "导数是 $2t$，在每个实数点成立。"
+      ],
+      "answer": "是。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-meaning-q3",
+      "problem": "$y=t$ 是否解 $y'=y$？",
+      "hint": "区分一个点和整个区间。",
+      "solution": [
+        "导数为 $1$，右侧为 $t$，只在 $t=1$ 相等。"
+      ],
+      "answer": "不是区间上的解。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-meaning-q4",
+      "problem": "若 $y'=0.4y$，时间单位为天，参数的单位是什么？",
+      "hint": "两边单位必须相同。",
+      "solution": [
+        "左侧单位为数量每天，因此比例系数的单位为每天。"
+      ],
+      "answer": "$\\mathrm{day}^{-1}$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-meaning-m1",
+      "claim": "微分方程的解是一个数。",
+      "correction": "解通常是函数；初值才指定某时刻的数值。"
+    },
+    {
+      "id": "ode-meaning-m2",
+      "claim": "曲线经过正确的点就一定是解。",
+      "correction": "还须在整个区间满足导数关系。"
+    }
+  ],
+  "prerequisites": [
+    "derivative-definition"
+  ],
+  "difficulty": 1,
+  "misconceptionTags": [
+    "ode-meaning-m1",
+    "ode-meaning-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "微分方程约束未知函数及其导数；求解就是找出满足这个约束的函数。",
+  "intuition": "知道每一刻怎样变化，再加上起点，才有机会确定整个过程。",
+  "objectives": [
+    "从变化规律写出方程",
+    "把候选函数代回检验"
+  ],
+  "formalDefinition": {
+    "text": "微分方程在描述什么",
+    "latex": "F(t,y,y',\\ldots,y^{(n)})=0",
+    "conditions": [
+      "本卷自变量通常为时间 $t$；解在指定开区间上具有方程要求的导数。"
+    ]
+  },
+  "learningCheck": {
+    "question": "检验函数是否为解，最直接的方法是什么？",
+    "choices": [
+      "只看图像相似",
+      "求导并代回方程",
+      "只检查初值"
+    ],
+    "correctIndex": 1,
+    "explanation": "方程与初值是两项独立的检查。"
+  },
+  "teaching": {
+    "explain": "方程给的是每一点的变化规则。一个解必须沿途遵守规则，而不是只到达某个正确位置。",
+    "steps": [
+      {
+        "title": "增长",
+        "preset": {
+          "a": 1,
+          "c": 1,
+          "b": 1
+        },
+        "observation": "正比例系数使正初值指数增长。",
+        "instruction": "将比例系数 $k$设为 $1$；将初始值 $y_0$设为 $1$；将观察时间 $t$设为 $1$。"
+      },
+      {
+        "title": "衰减",
+        "preset": {
+          "a": -1,
+          "c": 1,
+          "b": 1
+        },
+        "observation": "负比例系数使正初值趋近零。",
+        "instruction": "将比例系数 $k$设为 $-1$；将初始值 $y_0$设为 $1$；将观察时间 $t$设为 $1$。"
+      },
+      {
+        "title": "零初值",
+        "preset": {
+          "a": 1,
+          "c": 0,
+          "b": 2
+        },
+        "observation": "零解保持为零。",
+        "instruction": "将比例系数 $k$设为 $1$；将初始值 $y_0$设为 $0$；将观察时间 $t$设为 $2$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-meaning",
+    "caption": "调整比例系数与初值，金色曲线给出解析解，亮点标出当前时间。",
+    "prediction": "比例系数由正变负后，同一正初值的趋势怎样变？"
+  }
+}

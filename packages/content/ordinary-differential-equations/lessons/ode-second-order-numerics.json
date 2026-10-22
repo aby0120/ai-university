@@ -1,0 +1,194 @@
+{
+  "id": "ode-second-order-numerics",
+  "chapterId": "ode-numerical",
+  "number": "11.2",
+  "title": "中点与 Heun 二阶方法",
+  "subtitle": "再看一次斜率，减少单步偏差",
+  "body": [
+    {
+      "title": "显式中点",
+      "text": "先用半步 Euler 预测中点，再用中点斜率走完整步。"
+    },
+    {
+      "title": "Heun 方法",
+      "text": "先预测终点，再将起点与预测终点的斜率平均。它不同于需要解方程的隐式梯形法。"
+    },
+    {
+      "title": "阶数不是名称游戏",
+      "text": "适当光滑下两者单步误差为三阶，全局为二阶；非线性问题上通常不是完全相同的方法。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "先用当前斜率预测终点。",
+      "latex": "y_*=y_n+hk_1"
+    },
+    {
+      "text": "在预测终点重新评估斜率。",
+      "latex": "k_2=f(t_n+h,y_*)"
+    },
+    {
+      "text": "平均两次斜率作正式更新。",
+      "latex": "y_{n+1}=y_n+\\frac h2(k_1+k_2)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Heun 一步",
+      "problem": "$y'=y,y_0=1,h=1$。",
+      "steps": [
+        "$k_1=1$，预测值二。",
+        "$k_2=2$，增量为 $3/2$。"
+      ],
+      "answer": "$y_1=5/2$。"
+    },
+    {
+      "title": "中点一步",
+      "problem": "同一问题使用显式中点。",
+      "steps": [
+        "中点预测值为 $3/2$。",
+        "用中点斜率乘完整步。"
+      ],
+      "answer": "$y_1=5/2$；本例相同不代表总相同。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-second-order-numerics-q1",
+      "problem": "二阶全局主误差随步长减半约变几倍？",
+      "hint": "误差与步长平方成比例。",
+      "solution": [
+        "平方缩小到四分之一。"
+      ],
+      "answer": "约 $1/4$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.25
+    },
+    {
+      "id": "ode-second-order-numerics-q2",
+      "problem": "Heun 的终点斜率是在精确终点计算吗？",
+      "hint": "精确解未知。",
+      "solution": [
+        "使用 Euler 预测终点。"
+      ],
+      "answer": "不是，在预测值上计算。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-second-order-numerics-q3",
+      "problem": "对 $y'=t,y(0)=0,h=1$，Heun 一步多少？",
+      "hint": "两端斜率为零与一。",
+      "solution": [
+        "增量为二者平均乘一。"
+      ],
+      "answer": "$1/2$，恰为精确值。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.5
+    },
+    {
+      "id": "ode-second-order-numerics-q4",
+      "problem": "显式 Heun 是否等同于隐式梯形法？",
+      "hint": "终点状态一个预测一个待求。",
+      "solution": [
+        "隐式法用未知新状态，需要求方程。"
+      ],
+      "answer": "不同。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-second-order-numerics-m1",
+      "claim": "增加一次斜率就永远精确。",
+      "correction": "只是提高在正则条件下的误差阶。"
+    },
+    {
+      "id": "ode-second-order-numerics-m2",
+      "claim": "Heun 的第二斜率来自真实未来。",
+      "correction": "它来自一个可计算的预测。"
+    }
+  ],
+  "prerequisites": [
+    "ode-euler"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-second-order-numerics-m1",
+    "ode-second-order-numerics-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "二阶方法增加一次斜率评估，用中点预测或两端斜率平均改进一步结果。",
+  "intuition": "先粗略探路，再用更有代表性的斜率正式迈步。",
+  "objectives": [
+    "区分显式中点与 Heun",
+    "计算二阶更新并说明误差阶"
+  ],
+  "formalDefinition": {
+    "text": "中点与 Heun 二阶方法",
+    "latex": "k_1=f(t_n,y_n),\\ k_2=f(t_n+h,y_n+hk_1),\\ y_{n+1}=y_n+\\frac h2(k_1+k_2)",
+    "conditions": [
+      "这是显式 Heun；中点法改用半步预测。二阶收敛需足够光滑和稳定误差传播。"
+    ]
+  },
+  "learningCheck": {
+    "question": "Heun 的正式更新使用什么斜率？",
+    "choices": [
+      "只用原初值斜率",
+      "只用起点",
+      "起点与预测终点斜率的平均"
+    ],
+    "correctIndex": 2,
+    "explanation": "第二次评估修正第一次预测。"
+  },
+  "teaching": {
+    "explain": "先预测、再修正，是提高精度的一种方式；仍要检查步长和稳定性。",
+    "steps": [
+      {
+        "title": "粗网格",
+        "preset": {
+          "n": 2,
+          "b": 2
+        },
+        "observation": "各方法在同一终点有不同误差。",
+        "instruction": "将等分步数 $N$设为 $2$；将目标时间 $T$设为 $2$。"
+      },
+      {
+        "title": "加密",
+        "preset": {
+          "n": 8,
+          "b": 2
+        },
+        "observation": "步长变为原来的四分之一。",
+        "instruction": "将等分步数 $N$设为 $8$；将目标时间 $T$设为 $2$。"
+      },
+      {
+        "title": "更细",
+        "preset": {
+          "n": 32,
+          "b": 2
+        },
+        "observation": "观察误差随阶数缩小，有限精度仍有下限。",
+        "instruction": "将等分步数 $N$设为 $32$；将目标时间 $T$设为 $2$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-second-order-numerics",
+    "caption": "比较显式 Euler、Heun、RK4 与解析指数；直线段仅连接数值节点。误差在同一终点计算。",
+    "prediction": "同样步数下，增加斜率评估能改善多少？"
+  }
+}

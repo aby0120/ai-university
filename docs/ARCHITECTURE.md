@@ -36,7 +36,7 @@ AI University 的 AI 位于制作流程，而不位于读者运行时。每卷�
 
 ## 扩展下一本
 
-完成本卷后，新增独立的卷目录、完整课程范围与依赖图，再逐章完成。多卷选择器已由 collections 注册，使用唯一章节与题目命名空间。目前已出版微积分 I、II、III 与线性代数；其他教材在正文、解答和模型完成前维持规划状态。
+完成本卷后，新增独立的卷目录、完整课程范围与依赖图，再逐章完成。多卷选择器已由 collections 注册，使用唯一章节与题目命名空间。目前已出版微积分 I、II、III、线性代数与常微分方程；其他教材在正文、解答和模型完成前维持规划状态。
 
 ## 网站页面与阅读组件（v0.2.0）
 
@@ -60,3 +60,7 @@ AI University 的 AI 位于制作流程，而不位于读者运行时。每卷�
 ## 数学系列展示
 
 `packages/content/library.json` 是系列方向、教材元数据与出版状态的统一目录，由 `schemas/library.schema.json` 和构建时关联检查校验。首页与书库通过 `lib/library.ts` 读取，`components/Series.tsx` 渲染方向卡、已出版教材和规划卡。`library?area=<id>&status=all|published|planned` 表达书库筛选状态，支持复制链接和浏览器返回。规划卡不创建教材路由。下一本教材的实际加载、路由与记录接入要求见 [LIBRARY](LIBRARY.md)。
+
+## 常微分方程
+
+`packages/content/ordinary-differential-equations/` 保存完整第五卷及补充题。`packages/visuals/ode-models.json` 映射 55 节到 47 个模型族，配置只含控件和显示公式；教学操作和说明仍来自 canonical 章节。`ode.mjs` 提供解析响应、显式步进、自适应 Heun、有限状态和失败标记。共享 SVG 渲染器在需要初值操作的图上接受局部坐标回调，公式、练习和打印共用原有渲染。

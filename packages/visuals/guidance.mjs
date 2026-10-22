@@ -1,9 +1,11 @@
 import {calculus2Bounds,calculus2Controls} from './calculus2.mjs';
 import {calculus3Bounds} from './calculus3.mjs';
 import {linearBounds} from './linear-algebra.mjs';
+import {odeBounds} from './ode.mjs';
 import { functions } from './math.mjs';
 export function guidanceBounds(lesson, preset) {
   const k=lesson.interactiveVisual.kind,f=lesson.interactiveVisual.function;
+  if(k==='ode')return odeBounds(f);
   if(k==='linear-algebra')return linearBounds(f);
   if(k==='calculus3')return calculus3Bounds(f);
   if(k==='calculus2')return calculus2Bounds(f);

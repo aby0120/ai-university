@@ -160,7 +160,8 @@
             "arc",
             "calculus2",
             "calculus3",
-            "linear-algebra"
+            "linear-algebra",
+            "ode"
           ]
         },
         "function": {

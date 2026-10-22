@@ -1,0 +1,192 @@
+{
+  "id": "ode-undetermined",
+  "chapterId": "ode-forcing",
+  "number": "5.1",
+  "title": "待定系数与共振修正",
+  "subtitle": "猜结构，再代回确定系数",
+  "body": [
+    {
+      "title": "哪些外力适用？",
+      "text": "常系数线性方程，外力是多项式、指数、正弦余弦及其有限乘积与和。"
+    },
+    {
+      "title": "为什么要补全项？",
+      "text": "多项式求导会降低次数；正弦余弦求导会互换，因此试解须包含相应的全部低次项或成对三角项。"
+    },
+    {
+      "title": "重合怎样修正？",
+      "text": "若外力对应特征根已有重数 $m$，把通常试解整体乘 $t^m$。只重复齐次项永远无法产生所需外力。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "考虑共振外力。",
+      "latex": "y''+y=\\cos t"
+    },
+    {
+      "text": "试取不与齐次解重复的函数。",
+      "latex": "y_p=At\\sin t"
+    },
+    {
+      "text": "代入确定系数。",
+      "latex": "y_p''+y_p=2A\\cos t\\Rightarrow A=\\frac12"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "指数外力",
+      "problem": "求 $y''-y=e^{2t}$ 的通解。",
+      "steps": [
+        "齐次解是 $C e^t+D e^{-t}$。",
+        "试 $Ae^{2t}$，左侧为 $3Ae^{2t}$，所以 $A=1/3$。"
+      ],
+      "answer": "$y=Ce^t+De^{-t}+e^{2t}/3$。"
+    },
+    {
+      "title": "正弦共振",
+      "problem": "求 $y''+y=\\cos t$ 的一个特解。",
+      "steps": [
+        "普通三角试解已经属于齐次空间。",
+        "改试 $At\\sin t$，代回给 $A=1/2$。"
+      ],
+      "answer": "$y_p=t\\sin t/2$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-undetermined-q1",
+      "problem": "求 $y''+y=2$ 的一个特解。",
+      "hint": "试常数。",
+      "solution": [
+        "常数的二阶导数为零，直接取二。"
+      ],
+      "answer": "$y_p=2$。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-undetermined-q2",
+      "problem": "$y''-2y'+y=e^t$ 的试解应乘几次时间？",
+      "hint": "根一的重数为二。",
+      "solution": [
+        "指数外力与二重特征根重合。"
+      ],
+      "answer": "可试 $At^2e^t$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-undetermined-q3",
+      "problem": "$y''+y=\\sin2t$ 的一个特解？",
+      "hint": "试同频正弦。",
+      "solution": [
+        "二阶求导产生负四倍，左侧合为负三倍。"
+      ],
+      "answer": "$y_p=-\\sin2t/3$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-undetermined-q4",
+      "problem": "待定系数法能否直接处理任意 $\\ln t$ 外力？",
+      "hint": "求导是否留在有限试解空间。",
+      "solution": [
+        "对数不断产生不同负幂，不属本节通常规则。"
+      ],
+      "answer": "应改用参数变易等方法。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-undetermined-m1",
+      "claim": "猜一个相同函数就完成了求解。",
+      "correction": "系数须由代回确定，并处理与齐次项重合。"
+    },
+    {
+      "id": "ode-undetermined-m2",
+      "claim": "非齐次通解只有特解。",
+      "correction": "还要加全部齐次解。"
+    }
+  ],
+  "prerequisites": [
+    "ode-repeated-roots"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-undetermined-m1",
+    "ode-undetermined-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "特定外力在求导下保持有限种形式，可以先选同类试解，再代回求系数。",
+  "intuition": "猜的是解的形状，不是系数；与齐次解重合时要乘时间因子避开冗余。",
+  "objectives": [
+    "选择试解空间",
+    "处理与齐次项重合的外力"
+  ],
+  "formalDefinition": {
+    "text": "待定系数与共振修正",
+    "latex": "y=y_h+y_p,\\qquad L[y_p]=g",
+    "conditions": [
+      "待定系数法用于常系数线性算子与对求导封闭的有限形式外力；最终必须代回验证。"
+    ]
+  },
+  "learningCheck": {
+    "question": "外力与齐次解重合时怎么办？",
+    "choices": [
+      "乘适当次幂的时间",
+      "删掉外力",
+      "沿用原试解"
+    ],
+    "correctIndex": 0,
+    "explanation": "时间幂次数由对应根的重数决定。"
+  },
+  "teaching": {
+    "explain": "待定系数法把求函数变成求有限个数；代回检查才让猜测成为答案。",
+    "steps": [
+      {
+        "title": "低频驱动",
+        "preset": {
+          "a": 0.5,
+          "b": 6
+        },
+        "observation": "外力与固有振动叠加。",
+        "instruction": "将外力角频率 $\\omega$设为 $0.5$；将观察时间 $t$设为 $6$。"
+      },
+      {
+        "title": "严格共振",
+        "preset": {
+          "a": 1,
+          "b": 6
+        },
+        "observation": "响应含时间乘正弦，包络增长。",
+        "instruction": "将外力角频率 $\\omega$设为 $1$；将观察时间 $t$设为 $6$。"
+      },
+      {
+        "title": "较高频驱动",
+        "preset": {
+          "a": 2,
+          "b": 6
+        },
+        "observation": "非共振响应为两个有界余弦之差。",
+        "instruction": "将外力角频率 $\\omega$设为 $2$；将观察时间 $t$设为 $6$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-undetermined",
+    "caption": "显示零初值解析响应与外力。频率为一时改用共振极限公式，避免除以零。",
+    "prediction": "驱动频率正好等于固有频率时，响应哪里不同？"
+  }
+}

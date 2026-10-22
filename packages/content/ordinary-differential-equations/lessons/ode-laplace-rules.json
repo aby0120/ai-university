@@ -1,0 +1,195 @@
+{
+  "id": "ode-laplace-rules",
+  "chapterId": "ode-laplace",
+  "number": "7.2",
+  "title": "基本变换、平移与逆变换",
+  "subtitle": "把表达式拆成可识别的部分",
+  "body": [
+    {
+      "title": "常用表从哪来？",
+      "text": "由定义或分部积分可得 $\\mathcal L\\{t^n\\}=n!/s^{n+1}$，以及正弦余弦的变换。"
+    },
+    {
+      "title": "指数平移",
+      "text": "乘 $e^{at}$ 会把变换参数替换成 $s-a$，收敛域同步平移。"
+    },
+    {
+      "title": "怎样逆变换？",
+      "text": "把有理式拆成简单极点、重极点或不可约二次因子的形式；必要时先做多项式除法，本卷经典函数逆变换主要处理真分式。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "指数乘入核函数。",
+      "latex": "e^{-st}e^{at}=e^{-(s-a)t}"
+    },
+    {
+      "text": "把简单分式拆开。",
+      "latex": "\\frac1{(s+1)(s+2)}=\\frac1{s+1}-\\frac1{s+2}"
+    },
+    {
+      "text": "逐项逆变换。",
+      "latex": "\\mathcal L^{-1}\\left\\{\\frac1{(s+1)(s+2)}\\right\\}=e^{-t}-e^{-2t}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "移位正弦",
+      "problem": "逆变换 $2/((s+1)^2+4)$。",
+      "steps": [
+        "分子二与角频率二对应。",
+        "参数平移为加一，时间因子为 $e^{-t}$。"
+      ],
+      "answer": "$e^{-t}\\sin2t$。"
+    },
+    {
+      "title": "重极点",
+      "problem": "逆变换 $3/(s-2)^2$。",
+      "steps": [
+        "$1/s^2$ 对应时间函数。",
+        "向右平移二并乘三。"
+      ],
+      "answer": "$3te^{2t}$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-laplace-rules-q1",
+      "problem": "$\\cos3t$ 的变换？",
+      "hint": "余弦的分子是参数。",
+      "solution": [
+        "基本公式为 $s/(s^2+\\omega^2)$。"
+      ],
+      "answer": "$s/(s^2+9)$，$\\operatorname{Re}s>0$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-laplace-rules-q2",
+      "problem": "$t^2$ 的变换？",
+      "hint": "用阶乘公式。",
+      "solution": [
+        "二的阶乘为二。"
+      ],
+      "answer": "$2/s^3$，$\\operatorname{Re}s>0$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-laplace-rules-q3",
+      "problem": "$1/(s+4)$ 的逆变换？",
+      "hint": "识别指数极点。",
+      "solution": [
+        "指数率为负四。"
+      ],
+      "answer": "$e^{-4t}$。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-laplace-rules-q4",
+      "problem": "$s/(s^2+4)$ 的逆变换？",
+      "hint": "匹配余弦。",
+      "solution": [
+        "角频率二。"
+      ],
+      "answer": "$\\cos2t$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-laplace-rules-m1",
+      "claim": "分母平移后，时间只做水平平移。",
+      "correction": "参数平移对应乘指数；时间延迟是另一条规则。"
+    },
+    {
+      "id": "ode-laplace-rules-m2",
+      "claim": "正弦公式的分子可以任意省掉频率。",
+      "correction": "频率系数决定幅值。"
+    }
+  ],
+  "prerequisites": [
+    "ode-laplace-definition"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-laplace-rules-m1",
+    "ode-laplace-rules-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "线性性、指数平移与部分分式把许多逆变换拆成基本函数。",
+  "intuition": "先认出分母的结构，再决定它代表指数还是振荡。",
+  "objectives": [
+    "使用指数平移",
+    "分解简单有理函数求逆变换"
+  ],
+  "formalDefinition": {
+    "text": "基本变换、平移与逆变换",
+    "latex": "\\mathcal L\\{e^{at}f(t)\\}=F(s-a),\\quad\\mathcal L\\{\\sin\\omega t\\}=\\frac\\omega{s^2+\\omega^2}",
+    "conditions": [
+      "在相应收敛域内使用；逆变换在分段连续指数阶类中除跳点值外唯一。"
+    ]
+  },
+  "learningCheck": {
+    "question": "变换参数中 $s$ 改成 $s-a$ 对应时间域什么操作？",
+    "choices": [
+      "取导数",
+      "延迟到某时刻",
+      "乘 $e^{at}$"
+    ],
+    "correctIndex": 2,
+    "explanation": "指数权重合并后直接得到这条规则。"
+  },
+  "teaching": {
+    "explain": "逆变换时把每一项读成一种熟悉的时间行为，再把它们组合回来。",
+    "steps": [
+      {
+        "title": "收敛区域",
+        "preset": {
+          "a": 0.5,
+          "c": 2,
+          "b": 6
+        },
+        "observation": "核衰减，截断积分靠近变换值。",
+        "instruction": "将信号指数率 $a$设为 $0.5$；将变换实参数 $s$设为 $2$；将截断上限 $T$设为 $6$。"
+      },
+      {
+        "title": "临界",
+        "preset": {
+          "a": 1,
+          "c": 1,
+          "b": 6
+        },
+        "observation": "被积函数恒为一，积分随上限线性增长。",
+        "instruction": "将信号指数率 $a$设为 $1$；将变换实参数 $s$设为 $1$；将截断上限 $T$设为 $6$。"
+      },
+      {
+        "title": "发散区域",
+        "preset": {
+          "a": 1,
+          "c": 0.5,
+          "b": 6
+        },
+        "observation": "被积函数增长，有限值不能冒充无穷积分。",
+        "instruction": "将信号指数率 $a$设为 $1$；将变换实参数 $s$设为 $0.5$；将截断上限 $T$设为 $6$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-laplace-rules",
+    "caption": "显示被积函数与截断积分。仅当参数实值大于信号增长率时，无穷上限变换收敛；有限积分不等于全变换。",
+    "prediction": "权重衰减率不大于信号增长率时，积分还会收敛吗？"
+  }
+}

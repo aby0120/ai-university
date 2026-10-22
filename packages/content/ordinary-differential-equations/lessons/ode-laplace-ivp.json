@@ -1,0 +1,189 @@
+{
+  "id": "ode-laplace-ivp",
+  "chapterId": "ode-laplace",
+  "number": "7.3",
+  "title": "用 Laplace 解初值问题",
+  "subtitle": "初值直接进入代数方程",
+  "body": [
+    {
+      "title": "导数规则",
+      "text": "记 $Y=\\mathcal L\\{y\\}$，则 $\\mathcal L\\{y'\\}=sY-y(0^+)$。"
+    },
+    {
+      "title": "二阶多一个初值",
+      "text": "再次使用规则得到 $\\mathcal L\\{y''\\}=s^2Y-sy(0^+)-y'(0^+)$。"
+    },
+    {
+      "title": "最后怎样查？",
+      "text": "逆变换后，分别检查初值和原方程；分段外力还要检查开关时刻的连续性条件。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "对一阶导数分部积分。",
+      "latex": "\\int_0^\\infty e^{-st}y'dt=[e^{-st}y]_0^\\infty+sY"
+    },
+    {
+      "text": "在收敛右半平面上边界项消失。",
+      "latex": "\\mathcal L\\{y'\\}=sY-y(0^+)"
+    },
+    {
+      "text": "再用一次规则。",
+      "latex": "\\mathcal L\\{y''\\}=s(sY-y(0^+))-y'(0^+)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "一阶恒定输入",
+      "problem": "解 $y'+y=1,y(0)=0$。",
+      "steps": [
+        "变换得 $(s+1)Y=1/s$。",
+        "部分分式为 $Y=1/s-1/(s+1)$。"
+      ],
+      "answer": "$y=1-e^{-t}$。"
+    },
+    {
+      "title": "二阶自由运动",
+      "problem": "解 $y''+4y=0,y(0)=0,y'(0)=3$。",
+      "steps": [
+        "变换得 $(s^2+4)Y=3$。",
+        "匹配正弦公式。"
+      ],
+      "answer": "$y=3\\sin2t/2$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-laplace-ivp-q1",
+      "problem": "若初值为二，$y'$ 的变换是什么？",
+      "hint": "保留端点项。",
+      "solution": [
+        "导数变换为参数乘变换减初值。"
+      ],
+      "answer": "$sY-2$。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-laplace-ivp-q2",
+      "problem": "$y(0)=1,y'(0)=-1$ 时二阶导数的变换？",
+      "hint": "逐项代入。",
+      "solution": [
+        "$s^2Y-s\\cdot1-(-1)$。"
+      ],
+      "answer": "$s^2Y-s+1$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-laplace-ivp-q3",
+      "problem": "解 $y'+2y=0,y(0)=5$。",
+      "hint": "先写频域方程。",
+      "solution": [
+        "$(s+2)Y=5$，逆变换为指数。"
+      ],
+      "answer": "$y=5e^{-2t}$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-laplace-ivp-q4",
+      "problem": "变换算完是否还要检查初值？",
+      "hint": "代数错误可能遗漏端点项。",
+      "solution": [
+        "对结果求值与求导可独立检查。"
+      ],
+      "answer": "需要。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-laplace-ivp-m1",
+      "claim": "导数变换只是乘变换参数。",
+      "correction": "单边变换还含初值端点项。"
+    },
+    {
+      "id": "ode-laplace-ivp-m2",
+      "claim": "初速度前的负号可以忽略。",
+      "correction": "它会改变整个初值响应。"
+    }
+  ],
+  "prerequisites": [
+    "ode-laplace-rules"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-laplace-ivp-m1",
+    "ode-laplace-ivp-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "导数的变换把初始数据保留为代数项，求解微分方程因此变成求解频域未知量。",
+  "intuition": "积分时丢不掉的起点，在分部积分的端点项里留下记录。",
+  "objectives": [
+    "使用一阶与二阶导数规则",
+    "逆变换并核对初值"
+  ],
+  "formalDefinition": {
+    "text": "用 Laplace 解初值问题",
+    "latex": "\\mathcal L\\{y^{(n)}\\}=s^nY-\\sum_{j=0}^{n-1}s^{n-1-j}y^{(j)}(0^+)",
+    "conditions": [
+      "导数具相应分段连续性和指数增长控制，端点取右极限；冲激情形另用分布解释。"
+    ]
+  },
+  "learningCheck": {
+    "question": "二阶导数变换保留哪两个初值？",
+    "choices": [
+      "只保留函数值",
+      "函数值与一阶导数",
+      "一阶与二阶导数"
+    ],
+    "correctIndex": 1,
+    "explanation": "二阶问题所需的两个初值都进入代数式。"
+  },
+  "teaching": {
+    "explain": "Laplace 方法把求解步骤集中到代数中，但起点仍通过端点项控制全过程。",
+    "steps": [
+      {
+        "title": "起点",
+        "preset": {
+          "b": 0
+        },
+        "observation": "输出满足零初值。",
+        "instruction": "将观察时间 $t$设为 $0$。"
+      },
+      {
+        "title": "一个时间单位",
+        "preset": {
+          "b": 1
+        },
+        "observation": "输出已上升但未等于稳态。",
+        "instruction": "将观察时间 $t$设为 $1$。"
+      },
+      {
+        "title": "更晚",
+        "preset": {
+          "b": 4
+        },
+        "observation": "输出继续靠近一。",
+        "instruction": "将观察时间 $t$设为 $4$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-laplace-ivp",
+    "caption": "蓝线为恒定输入，金线为含零初值的解析响应。可与频域式 $Y=1/[s(s+1)]$ 对照。",
+    "prediction": "响应从零初值出发，是否会立即等于输入？"
+  }
+}

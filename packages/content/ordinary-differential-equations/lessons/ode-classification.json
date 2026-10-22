@@ -1,0 +1,195 @@
+{
+  "id": "ode-classification",
+  "chapterId": "ode-intro",
+  "number": "1.2",
+  "title": "阶数、线性与标准形式",
+  "subtitle": "先识别结构，再选择方法",
+  "body": [
+    {
+      "title": "怎样数阶？",
+      "text": "看实际出现的最高阶导数。$y''+t^2y=0$ 是二阶；$y'+y^2=0$ 是一阶。"
+    },
+    {
+      "title": "线性针对谁？",
+      "text": "线性方程为 $a_n(t)y^{(n)}+\\cdots+a_0(t)y=g(t)$。系数可依赖自变量，不能依赖未知解。"
+    },
+    {
+      "title": "为什么不能随处除？",
+      "text": "将 $ty'+y=1$ 除以 $t$，只能在不含零的区间进行；原方程在零点的条件须另行检查。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "先指出最高导数。",
+      "latex": "y''+t^2y=\\sin t"
+    },
+    {
+      "text": "把系数和外力分别识别。",
+      "latex": "a_2=1,\\quad a_0=t^2,\\quad g=\\sin t"
+    },
+    {
+      "text": "最高项系数非零时才除以它。",
+      "latex": "ty'+y=1\\Rightarrow y'+\\frac1t y=\\frac1t\\quad(t\\ne0)"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "自变量的平方",
+      "problem": "$y''+t^2y=\\sin t$ 如何分类？",
+      "steps": [
+        "最高导数为二阶。",
+        "未知函数和导数都是一次，右端非零。"
+      ],
+      "answer": "二阶非齐次线性方程。"
+    },
+    {
+      "title": "导数的平方",
+      "problem": "$(y')^2+y=0$ 如何分类？",
+      "steps": [
+        "最高导数是一阶。",
+        "一阶导数被平方，不是线性形式。"
+      ],
+      "answer": "一阶非线性方程。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-classification-q1",
+      "problem": "$y'''+e^ty=0$ 的阶数是多少？",
+      "hint": "看最高导数。",
+      "solution": [
+        "出现三阶导数，且没有更高阶项。"
+      ],
+      "answer": "$3$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 3.0
+    },
+    {
+      "id": "ode-classification-q2",
+      "problem": "$y'+\\sin y=0$ 是否线性？",
+      "hint": "检查正弦作用于谁。",
+      "solution": [
+        "正弦作用于未知函数，不能写成仅依赖时间的系数乘以函数。"
+      ],
+      "answer": "非线性。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-classification-q3",
+      "problem": "$t^2y''+y=0$ 的标准形式在哪些最大开区间可用？",
+      "hint": "避开最高项系数的零点。",
+      "solution": [
+        "除以 $t^2$ 要求 $t\\ne0$。"
+      ],
+      "answer": "$(-\\infty,0)$ 与 $(0,\\infty)$。",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "ode-classification-m2"
+      ]
+    },
+    {
+      "id": "ode-classification-q4",
+      "problem": "$y'+2y=5$ 是否齐次？",
+      "hint": "看右端。",
+      "solution": [
+        "标准线性形式的右端是非零常数。"
+      ],
+      "answer": "非齐次。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-classification-m1",
+      "claim": "出现非线性系数就不是线性方程。",
+      "correction": "系数可以是任意给定的时间函数。"
+    },
+    {
+      "id": "ode-classification-m2",
+      "claim": "方程除以零点系数后仍在原区间等价。",
+      "correction": "除法缩小了适用区间。"
+    }
+  ],
+  "prerequisites": [
+    "ode-meaning"
+  ],
+  "difficulty": 2,
+  "misconceptionTags": [
+    "ode-classification-m1",
+    "ode-classification-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "最高阶导数决定阶数；未知函数及各阶导数是否只以一次形式出现，决定线性性。",
+  "intuition": "含有平方的自变量不影响线性；未知函数的平方会改变方程结构。",
+  "objectives": [
+    "判断阶数与线性性",
+    "说明化为标准形式的区间"
+  ],
+  "formalDefinition": {
+    "text": "阶数、线性与标准形式",
+    "latex": "a_n(t)y^{(n)}+\\cdots+a_1(t)y'+a_0(t)y=g(t)",
+    "conditions": [
+      "化为标准形式的区间上要求 $a_n(t)\\ne0$；齐次线性方程还要求 $g=0$。"
+    ]
+  },
+  "learningCheck": {
+    "question": "哪个是线性方程？",
+    "choices": [
+      "$y'+t^2y=0$",
+      "$yy'=1$",
+      "$y'+y^2=0$"
+    ],
+    "correctIndex": 0,
+    "explanation": "线性性针对未知函数及其导数。"
+  },
+  "teaching": {
+    "explain": "先看未知函数怎样出现。时间系数再复杂，也不一定破坏线性。",
+    "steps": [
+      {
+        "title": "直线解",
+        "preset": {
+          "a": 1,
+          "b": 2
+        },
+        "observation": "初值一给出直线解，曲线沿场方向前进。",
+        "instruction": "将初始值 $y_0$设为 $1$；将观察时间 $t$设为 $2$。"
+      },
+      {
+        "title": "向上偏离",
+        "preset": {
+          "a": 1.5,
+          "b": 1
+        },
+        "observation": "高于该初值会出现正指数差。",
+        "instruction": "将初始值 $y_0$设为 $1.5$；将观察时间 $t$设为 $1$。"
+      },
+      {
+        "title": "向下偏离",
+        "preset": {
+          "a": 0.5,
+          "b": 1
+        },
+        "observation": "低于该初值会出现负指数差。",
+        "instruction": "将初始值 $y_0$设为 $0.5$；将观察时间 $t$设为 $1$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-classification",
+    "caption": "短线显示方向场，曲线为解析初值解。线段长度归一化，只读斜率方向。",
+    "prediction": "把初始值从一调高或调低，解会怎样偏离直线？"
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "id": "ode-euler-cauchy",
+  "chapterId": "ode-higher-order",
+  "number": "6.2",
+  "title": "Euler–Cauchy 方程",
+  "subtitle": "用对数时间处理幂次系数",
+  "body": [
+    {
+      "title": "怎样试解？",
+      "text": "对 $t^2y''+aty'+by=0$，在正区间试 $t^r$，得到 $r(r-1)+ar+b=0$。"
+    },
+    {
+      "title": "为何不是普通特征式？",
+      "text": "二阶导数的系数是 $r(r-1)$，不是 $r^2$。这是幂函数求导的结果。"
+    },
+    {
+      "title": "零点与重根",
+      "text": "最高项系数在零点为零。分开讨论正负区间；重根增加 $\\ln t$，复根给对数时间中的振荡。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "令 $s=\\ln t$，函数改记为 $Y(s)$。",
+      "latex": "ty'=Y_s"
+    },
+    {
+      "text": "再次求导注意一阶项。",
+      "latex": "t^2y''=Y_{ss}-Y_s"
+    },
+    {
+      "text": "原方程变为常系数。",
+      "latex": "Y_{ss}+(a-1)Y_s+bY=0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "不同幂次",
+      "problem": "解 $t^2y''-2y=0$，$t>0$。",
+      "steps": [
+        "指标式 $r(r-1)-2=(r-2)(r+1)$。",
+        "两个幂次给独立解。"
+      ],
+      "answer": "$y=Ct^2+D/t$。"
+    },
+    {
+      "title": "对数重根",
+      "problem": "解 $t^2y''+ty'=0$，$t>0$。",
+      "steps": [
+        "指标式为 $r^2=0$。",
+        "零重根给常数与对数。"
+      ],
+      "answer": "$y=C+D\\ln t$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-euler-cauchy-q1",
+      "problem": "$t^2y''+3ty'+y=0$ 的指标根？",
+      "hint": "写出 $r(r-1)+3r+1$。",
+      "solution": [
+        "化为 $(r+1)^2$。"
+      ],
+      "answer": "负一二重根。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-euler-cauchy-q2",
+      "problem": "该方程的通解？",
+      "hint": "重根补对数因子。",
+      "solution": [
+        "幂次为负一。"
+      ],
+      "answer": "$y=t^{-1}(C+D\\ln t)$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-euler-cauchy-q3",
+      "problem": "$t^2y''+ty'+y=0$ 在正区间的实解？",
+      "hint": "指标式为 $r^2+1$。",
+      "solution": [
+        "对数时间中的正弦余弦。"
+      ],
+      "answer": "$C\\cos(\\ln t)+D\\sin(\\ln t)$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-euler-cauchy-q4",
+      "problem": "可否直接把正区间解穿过零点作为唯一延拓？",
+      "hint": "最高系数在零点为零。",
+      "solution": [
+        "标准线性存在唯一条件在此失效，须另行分析。"
+      ],
+      "answer": "不能直接断言。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-euler-cauchy-m1",
+      "claim": "指标式二阶项总是根的平方。",
+      "correction": "幂函数二阶导数产生下降阶乘。"
+    },
+    {
+      "id": "ode-euler-cauchy-m2",
+      "claim": "幂次解默认适用于任意实数时间。",
+      "correction": "分支与零点必须说明。"
+    }
+  ],
+  "prerequisites": [
+    "ode-higher-linear"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-euler-cauchy-m1",
+    "ode-euler-cauchy-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "Euler–Cauchy 方程中的系数幂次与导数阶数配合，可以用幂函数或对数时间化简。",
+  "intuition": "指数适合平移尺度，幂函数适合乘法尺度；对数把乘法尺度变回加法。",
+  "objectives": [
+    "建立指标方程",
+    "处理正负区间与重根"
+  ],
+  "formalDefinition": {
+    "text": "Euler–Cauchy 方程",
+    "latex": "r(r-1)+ar+b=0,\\qquad t>0",
+    "conditions": [
+      "常数 $a,b$；本节在正时间区间讨论。负区间可改用 $\\lvert t\\rvert$ 与 $\\ln\\lvert t\\rvert$，不自动跨越零点。"
+    ]
+  },
+  "learningCheck": {
+    "question": "Euler–Cauchy 方程的对数变量是什么？",
+    "choices": [
+      "$s=\\ln t$",
+      "$s=e^t$",
+      "$s=t^2$"
+    ],
+    "correctIndex": 0,
+    "explanation": "对数把幂次缩放转成常系数关系。"
+  },
+  "teaching": {
+    "explain": "先看方程保留哪种尺度。适合尺度的变量，比强套常系数公式更有效。",
+    "steps": [
+      {
+        "title": "常数解",
+        "preset": {
+          "a": 0,
+          "b": 1
+        },
+        "observation": "只有常数方向。",
+        "instruction": "将对数项系数 $D$设为 $0$；将正时间 $t$设为 $1$。"
+      },
+      {
+        "title": "正对数方向",
+        "preset": {
+          "a": 1,
+          "b": 2
+        },
+        "observation": "正时间增加时函数增长。",
+        "instruction": "将对数项系数 $D$设为 $1$；将正时间 $t$设为 $2$。"
+      },
+      {
+        "title": "反向",
+        "preset": {
+          "a": -1,
+          "b": 2
+        },
+        "observation": "同一方程的另一初始方向。",
+        "instruction": "将对数项系数 $D$设为 $-1$；将正时间 $t$设为 $2$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-euler-cauchy",
+    "caption": "比较常数解与对数解的组合，零时间是系数奇点，不跨越。",
+    "prediction": "改变对数项系数后，曲线在正时间如何变化？"
+  }
+}

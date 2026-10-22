@@ -1,0 +1,195 @@
+{
+  "id": "ode-bifurcations",
+  "chapterId": "ode-nonlinear",
+  "number": "9.5",
+  "title": "参数变化与基本分岔",
+  "subtitle": "规律连续变，平衡结构可能改变",
+  "body": [
+    {
+      "title": "鞍结模型",
+      "text": "$y'=\\mu-y^2$：负参数无平衡，零参数一个重平衡，正参数两个平衡，一稳一不稳。"
+    },
+    {
+      "title": "叉形模型",
+      "text": "$y'=\\mu y-y^3$：零平衡一直存在；正参数时另外出现两个稳定非零平衡，原点变不稳定。"
+    },
+    {
+      "title": "参数不是时间",
+      "text": "分岔图比较不同固定参数系统。自动扫动滑块是在比较模型，不自动模拟参数随时间缓慢变化的真实解。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "求平衡条件。",
+      "latex": "\\mu-y^2=0"
+    },
+    {
+      "text": "正参数给两根，负参数没有实根。",
+      "latex": "y_*=\\pm\\sqrt\\mu"
+    },
+    {
+      "text": "用状态导数分类。",
+      "latex": "f_y=-2y\\Rightarrow +\\sqrt\\mu\\text{ 稳定},\\ -\\sqrt\\mu\\text{ 不稳定}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "鞍结参数四",
+      "problem": "$y'=4-y^2$ 的平衡和稳定性？",
+      "steps": [
+        "平衡为正负二。",
+        "状态导数在正二处负、负二处正。"
+      ],
+      "answer": "正二稳定，负二不稳定。"
+    },
+    {
+      "title": "叉形参数一",
+      "problem": "$y'=y-y^3$ 的平衡怎样？",
+      "steps": [
+        "根为零与正负一。",
+        "导数为 $1-3y^2$。"
+      ],
+      "answer": "零不稳定，正负一渐近稳定。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-bifurcations-q1",
+      "problem": "$y'=-1-y^2$ 有实平衡吗？",
+      "hint": "令右端为零。",
+      "solution": [
+        "需要平方为负一，不可能。"
+      ],
+      "answer": "没有。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-bifurcations-q2",
+      "problem": "$y'=-y^2$ 的零平衡两侧怎样？",
+      "hint": "右端在两侧都负。",
+      "solution": [
+        "正侧向零，负侧离开。"
+      ],
+      "answer": "单侧吸引，整体不稳定。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-bifurcations-q3",
+      "problem": "叉形模型在负参数时原点怎样？",
+      "hint": "线性导数等于参数。",
+      "solution": [
+        "负导数给局部渐近稳定。"
+      ],
+      "answer": "稳定。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-bifurcations-q4",
+      "problem": "扫动参数动画能否直接当作非自治方程的解？",
+      "hint": "每帧使用的是不同固定参数系统。",
+      "solution": [
+        "参数的实际时间变化需写入微分方程重新求解。"
+      ],
+      "answer": "不能。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-bifurcations-m1",
+      "claim": "有重平衡就一定有稳定性结论。",
+      "correction": "零线性项需继续分析。"
+    },
+    {
+      "id": "ode-bifurcations-m2",
+      "claim": "分岔图是单个初值随时间的轨迹。",
+      "correction": "它记录固定参数下的平衡结构。"
+    }
+  ],
+  "prerequisites": [
+    "ode-energy"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ode-bifurcations-m1",
+    "ode-bifurcations-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "参数越过临界值时，平衡点的数量或稳定性可能改变，这种结构变化称为分岔。",
+  "intuition": "不是某条曲线偶然改变形状，而是附近一整族运动的组织方式变了。",
+  "objectives": [
+    "分析鞍结与叉形正规形",
+    "区别静态参数比较与时间变化参数"
+  ],
+  "formalDefinition": {
+    "text": "参数变化与基本分岔",
+    "latex": "y'=\\mu-y^2,\\quad y_*=\\pm\\sqrt\\mu\\ (\\mu>0)",
+    "conditions": [
+      "固定实参数；正根处导数为负，负根处为正；零参数须用符号分析，不能只靠线性导数。"
+    ]
+  },
+  "learningCheck": {
+    "question": "分岔关注哪一种变化？",
+    "choices": [
+      "积分常数换个符号",
+      "画图颜色变化",
+      "参数导致平衡或稳定结构变化"
+    ],
+    "correctIndex": 2,
+    "explanation": "结构改变才是关键。"
+  },
+  "teaching": {
+    "explain": "先固定参数研究一个系统，再比较不同参数。这个顺序能避免把分岔与时间演化混淆。",
+    "steps": [
+      {
+        "title": "负参数",
+        "preset": {
+          "a": -1,
+          "c": 0,
+          "b": 1
+        },
+        "observation": "没有实平衡，状态下降。",
+        "instruction": "将固定参数 $\\mu$设为 $-1$；将初始值 $y_0$设为 $0$；将观察时间 $t$设为 $1$。"
+      },
+      {
+        "title": "临界",
+        "preset": {
+          "a": 0,
+          "c": 0,
+          "b": 1
+        },
+        "observation": "零初值停在重平衡上。",
+        "instruction": "将固定参数 $\\mu$设为 $0$；将初始值 $y_0$设为 $0$；将观察时间 $t$设为 $1$。"
+      },
+      {
+        "title": "正参数",
+        "preset": {
+          "a": 1,
+          "c": 0,
+          "b": 2
+        },
+        "observation": "零初值向稳定平衡一靠近。",
+        "instruction": "将固定参数 $\\mu$设为 $1$；将初始值 $y_0$设为 $0$；将观察时间 $t$设为 $2$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-bifurcations",
+    "caption": "横轴为时间，显示固定参数下的解和存在时的平衡线。自动扫参数是在比较不同系统，非参数随时间变化的求解。",
+    "prediction": "固定参数从负变正后，会出现几个平衡点？"
+  }
+}

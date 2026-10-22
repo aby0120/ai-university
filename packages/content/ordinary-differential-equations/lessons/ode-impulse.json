@@ -1,0 +1,198 @@
+{
+  "id": "ode-impulse",
+  "chapterId": "ode-laplace",
+  "number": "7.5",
+  "title": "冲激与跳跃条件",
+  "subtitle": "很短的作用，有限的总冲量",
+  "body": [
+    {
+      "title": "怎样定义？",
+      "text": "Dirac 冲激满足对测试函数积分取指定点值。这里不把它当成逐点可代入的普通函数。"
+    },
+    {
+      "title": "质量块跳什么？",
+      "text": "对 $my''+cy'+ky=J\\delta(t-a)$，位置连续、速度跳跃为 $J/m$；这些结论按分布或跨点积分解释。"
+    },
+    {
+      "title": "本卷约定",
+      "text": "冲激时刻取 $a>0$，起点初值在零时刻右侧给出，避免零时刻冲激与初值约定混杂。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "在冲激附近积分原方程。",
+      "latex": "m[y']+c[y]+k\\int ydt=J"
+    },
+    {
+      "text": "位置跳变会在二阶导数中引入未给出的冲激导数，因此位置连续。",
+      "latex": "[y]=0"
+    },
+    {
+      "text": "缩小积分区间得到速度跳跃。",
+      "latex": "[y']=J/m"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "单位振子冲击",
+      "problem": "解 $y''+y=\\delta(t-2)$，零初始位置和速度。",
+      "steps": [
+        "单位因果响应为 $H(t)\\sin t$。",
+        "延迟到二，速度跳跃为一。"
+      ],
+      "answer": "$y=H(t-2)\\sin(t-2)$。"
+    },
+    {
+      "title": "给定冲量",
+      "problem": "质量二的系统受冲量六，速度跳多少？",
+      "steps": [
+        "跨冲击积分得到质量乘速度差等于冲量。",
+        "$2\\Delta v=6$。"
+      ],
+      "answer": "$\\Delta v=3$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-impulse-q1",
+      "problem": "$\\delta(t-3)$ 的单边变换？",
+      "hint": "积分取指数核在该点的值。",
+      "solution": [
+        "取 $e^{-st}$ 在时间三的值。"
+      ],
+      "answer": "$e^{-3s}$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-impulse-q2",
+      "problem": "冲量为负二、质量四，速度跳跃多少？",
+      "hint": "冲量除以质量，保留符号。",
+      "solution": [
+        "$-2/4=-1/2$。"
+      ],
+      "answer": "$-1/2$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": -0.5
+    },
+    {
+      "id": "ode-impulse-q3",
+      "problem": "有限脉冲越来越窄时，为何应保持面积而非高度？",
+      "hint": "总冲量由积分决定。",
+      "solution": [
+        "若高度固定而宽度趋零，总作用趋零。"
+      ],
+      "answer": "保持面积才保留有限总作用。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-impulse-q4",
+      "problem": "能否把冲激在某点的高度直接作为普通实数代入？",
+      "hint": "回看其定义。",
+      "solution": [
+        "冲激由积分作用而非逐点值定义。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": [
+        "ode-impulse-m1"
+      ]
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-impulse-m1",
+      "claim": "冲激是某点等于无穷的普通函数。",
+      "correction": "它是广义函数，需通过积分解释。"
+    },
+    {
+      "id": "ode-impulse-m2",
+      "claim": "冲激让质量块的位置立即跳变。",
+      "correction": "理想有限冲量改变速度，位置连续。"
+    }
+  ],
+  "prerequisites": [
+    "ode-step-input"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ode-impulse-m1",
+    "ode-impulse-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "冲激不是普通无限高函数，而是用积分作用定义的理想集中输入。",
+  "intuition": "把作用时间压短，同时保持总面积，运动可能保留一个有限速度跳变。",
+  "objectives": [
+    "用积分推导跳跃条件",
+    "求因果冲激响应"
+  ],
+  "formalDefinition": {
+    "text": "冲激与跳跃条件",
+    "latex": "\\int_{a-\\varepsilon}^{a+\\varepsilon}\\delta(t-a)dt=1,\\quad m[y']_{a^-}^{a^+}=J,\\quad[y]_{a^-}^{a^+}=0",
+    "conditions": [
+      "正质量、有限常系数二阶模型，冲激在 $a>0$；使用因果分布解，非冲激部分局部有界。"
+    ]
+  },
+  "learningCheck": {
+    "question": "标准质量—弹簧模型受到有限冲量时，哪个量跳变？",
+    "choices": [
+      "质量",
+      "位置",
+      "速度"
+    ],
+    "correctIndex": 2,
+    "explanation": "速度差由冲量除以质量决定。"
+  },
+  "teaching": {
+    "explain": "把方程跨冲击时刻积分，就能直接看清保留下来的有限变化。",
+    "steps": [
+      {
+        "title": "冲击前",
+        "preset": {
+          "a": 2,
+          "c": 1,
+          "b": 1
+        },
+        "observation": "系统仍静止。",
+        "instruction": "将冲击时刻 $a$设为 $2$；将冲量 $J$设为 $1$；将观察时间 $t$设为 $1$。"
+      },
+      {
+        "title": "冲击后",
+        "preset": {
+          "a": 1,
+          "c": 1,
+          "b": 2
+        },
+        "observation": "正冲量启动振动，位置不跳。",
+        "instruction": "将冲击时刻 $a$设为 $1$；将冲量 $J$设为 $1$；将观察时间 $t$设为 $2$。"
+      },
+      {
+        "title": "反向冲量",
+        "preset": {
+          "a": 1,
+          "c": -1,
+          "b": 2
+        },
+        "observation": "速度跳跃与后续位移方向反转。",
+        "instruction": "将冲击时刻 $a$设为 $1$；将冲量 $J$设为 $-1$；将观察时间 $t$设为 $2$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-impulse",
+    "caption": "冲激以箭头标示发生时刻，箭头高度是图示符号，不是冲激的逐点值。位移连续，速度有跳跃。",
+    "prediction": "反转冲量符号，位置与速度的跳跃各有什么变化？"
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "id": "ode-special-functions",
+  "chapterId": "ode-series",
+  "number": "10.4",
+  "title": "从递推到特殊函数",
+  "subtitle": "没有熟悉名字，也可以精确定义",
+  "body": [
+    {
+      "title": "一个重要方程",
+      "text": "零阶 Bessel 方程为 $t^2y''+ty'+t^2y=0$。零点是正则奇点。"
+    },
+    {
+      "title": "正则解怎样定义？",
+      "text": "取在零点有限且规范为一的解析解，得到 $J_0$。这是一条解，第二独立解在零附近有对数奇性。"
+    },
+    {
+      "title": "计算与证明分开",
+      "text": "递推给任意精度的部分和；可用比值检验证明此级数处处收敛。有限截断仍不是精确解。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "将普通幂级数代入该特例。",
+      "latex": "n^2a_n+a_{n-2}=0\\quad(n\\ge2),\\quad a_1=0"
+    },
+    {
+      "text": "规范化常数项为一。",
+      "latex": "a_{2k}=\\frac{(-1)^k}{4^k(k!)^2},\\quad a_{2k+1}=0"
+    },
+    {
+      "text": "项比趋零，保证每个有限时间收敛。",
+      "latex": "\\left\\lvert\\frac{u_{k+1}}{u_k}\\right\\rvert=\\frac{t^2}{4(k+1)^2}\\to0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "前几项",
+      "problem": "写出 $J_0$ 到四次项。",
+      "steps": [
+        "二次系数为负四分之一。",
+        "四次系数为正六十四分之一。"
+      ],
+      "answer": "$1-t^2/4+t^4/64+\\cdots$。"
+    },
+    {
+      "title": "六次系数",
+      "problem": "求 $J_0$ 的六次项系数。",
+      "steps": [
+        "取级数索引三。",
+        "分母为 $4^3(3!)^2=2304$，符号负。"
+      ],
+      "answer": "$-1/2304$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-special-functions-q1",
+      "problem": "$J_0(0)$ 是多少？",
+      "hint": "只保留常数项。",
+      "solution": [
+        "规范值是一。"
+      ],
+      "answer": "$1$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 1.0
+    },
+    {
+      "id": "ode-special-functions-q2",
+      "problem": "$J_0'(0)$ 是多少？",
+      "hint": "级数只有偶次项。",
+      "solution": [
+        "所有求导后项在零点为零。"
+      ],
+      "answer": "$0$。",
+      "difficulty": 1,
+      "misconceptionTags": [],
+      "numericAnswer": 0.0
+    },
+    {
+      "id": "ode-special-functions-q3",
+      "problem": "该级数的收敛半径？",
+      "hint": "对任何固定时间项比趋零。",
+      "solution": [
+        "所有有限实数和复数参数均收敛。"
+      ],
+      "answer": "无穷大。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-special-functions-q4",
+      "problem": "为什么只给出 $J_0$ 还不算方程的二阶通解？",
+      "hint": "需要两个独立解。",
+      "solution": [
+        "还有一个独立的奇性解方向。"
+      ],
+      "answer": "正则规范条件只选出其中一条。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-special-functions-m1",
+      "claim": "特殊函数只是没有解释的名字。",
+      "correction": "方程、规范条件和级数可明确构造它。"
+    },
+    {
+      "id": "ode-special-functions-m2",
+      "claim": "普通点定理可以不加说明地在奇点使用。",
+      "correction": "这里通过级数及规范条件单独构造。"
+    }
+  ],
+  "prerequisites": [
+    "ode-frobenius-roots"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ode-special-functions-m1",
+    "ode-special-functions-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "特殊函数常由微分方程与规范化条件定义，级数递推使它们可计算、可检验。",
+  "intuition": "“没有初等公式”不代表没有明确答案；方程、初值与收敛级数也能唯一描述函数。",
+  "objectives": [
+    "构造零阶 Bessel 正则解",
+    "解释截断与规范化"
+  ],
+  "formalDefinition": {
+    "text": "从递推到特殊函数",
+    "latex": "J_0(t)=\\sum_{k=0}^\\infty\\frac{(-1)^k}{(k!)^2}\\left(\\frac{t^2}{4}\\right)^k",
+    "conditions": [
+      "本节仅构造零阶正则解；$J_0(0)=1,J_0'(0)=0$ 作为规范条件，不把奇点当作标准初值定理的普通点。"
+    ]
+  },
+  "learningCheck": {
+    "question": "没有初等表达式时，什么仍可成为精确答案？",
+    "choices": [
+      "只有截图",
+      "收敛级数及明确条件",
+      "任意多项式拟合"
+    ],
+    "correctIndex": 1,
+    "explanation": "收敛级数不是有限拟合，而是完整定义。"
+  },
+  "teaching": {
+    "explain": "函数可以先由规律定义，再被赋予名字。真正有用的是你能否计算并验证它。",
+    "steps": [
+      {
+        "title": "一项",
+        "preset": {
+          "n": 1,
+          "b": 2
+        },
+        "observation": "只有规范化常数一。",
+        "instruction": "将保留的级数项数 $n$设为 $1$；将观察时间 $t$设为 $2$。"
+      },
+      {
+        "title": "四项",
+        "preset": {
+          "n": 4,
+          "b": 2
+        },
+        "observation": "包含到六次的递推结果。",
+        "instruction": "将保留的级数项数 $n$设为 $4$；将观察时间 $t$设为 $2$。"
+      },
+      {
+        "title": "更多项",
+        "preset": {
+          "n": 12,
+          "b": 4
+        },
+        "observation": "有限窗口内明显逼近参考值。",
+        "instruction": "将保留的级数项数 $n$设为 $12$；将观察时间 $t$设为 $4$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-special-functions",
+    "caption": "金线为指定项数的部分和，蓝线用更多收敛项作数值参考，并非外部服务。",
+    "prediction": "仅保留常数项与保留更多递推项，差别在哪里？"
+  }
+}

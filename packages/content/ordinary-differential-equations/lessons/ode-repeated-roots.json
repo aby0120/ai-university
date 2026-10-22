@@ -1,0 +1,192 @@
+{
+  "id": "ode-repeated-roots",
+  "chapterId": "ode-second-order",
+  "number": "4.5",
+  "title": "重根与降阶",
+  "subtitle": "重复同一个解不会增加自由度",
+  "body": [
+    {
+      "title": "重根怎么补？",
+      "text": "若特征根为 $r$ 且重数二，则解为 $(C+Dt)e^{rt}$。"
+    },
+    {
+      "title": "如何从已知解出发？",
+      "text": "对标准方程，令 $y=v y_1$，利用已知解消掉一项，得到关于 $v'$ 的一阶方程。"
+    },
+    {
+      "title": "降阶的区间",
+      "text": "公式含 $1/y_1^2$，必须在已知解不为零的子区间使用；这不是说原方程的解在零点不存在。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "代入 $y=vy_1$ 并消去已知解项。",
+      "latex": "y_1v''+(2y_1'+py_1)v'=0"
+    },
+    {
+      "text": "令 $w=v'$，分离并积分。",
+      "latex": "w=C\\frac{e^{-\\int pdt}}{y_1^2}"
+    },
+    {
+      "text": "重根情形的积分只留下时间。",
+      "latex": "p=-2r,\\quad y_1=e^{rt}\\Rightarrow y_2=te^{rt}"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "衰减重根",
+      "problem": "解 $y''+2y'+y=0,y(0)=1,y'(0)=0$。",
+      "steps": [
+        "重根为负一，通解 $(C+Dt)e^{-t}$。",
+        "初值给 $C=1,D-C=0$。"
+      ],
+      "answer": "$y=(1+t)e^{-t}$。"
+    },
+    {
+      "title": "从常数解降阶",
+      "problem": "对 $y''=0$，已知 $y_1=1$，求第二解。",
+      "steps": [
+        "标准系数 $p=0$。",
+        "降阶积分为 $\\int1dt=t$。"
+      ],
+      "answer": "可取 $y_2=t$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-repeated-roots-q1",
+      "problem": "$y''-4y'+4y=0$ 的通解？",
+      "hint": "特征式为完全平方。",
+      "solution": [
+        "二重根为二。"
+      ],
+      "answer": "$y=(C+Dt)e^{2t}$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-repeated-roots-q2",
+      "problem": "$e^t$ 与 $5e^t$ 是否能作为重根的两个基解？",
+      "hint": "检查倍数关系。",
+      "solution": [
+        "它们相关，不增加自由度。"
+      ],
+      "answer": "不能。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-repeated-roots-q3",
+      "problem": "$W(e^{rt},te^{rt})$ 是多少？",
+      "hint": "直接求导。",
+      "solution": [
+        "相减后只剩 $e^{2rt}$。"
+      ],
+      "answer": "$e^{2rt}$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-repeated-roots-q4",
+      "problem": "降阶公式能否直接在已知解的零点除法？",
+      "hint": "看公式分母。",
+      "solution": [
+        "该表达式要求已知解非零，须换区间或基解。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-repeated-roots-m1",
+      "claim": "重根只给一个任意常数。",
+      "correction": "仍需两个独立解与两个常数。"
+    },
+    {
+      "id": "ode-repeated-roots-m2",
+      "claim": "降阶中已知解的零点一定是原方程奇点。",
+      "correction": "可能只是该计算表示失效。"
+    }
+  ],
+  "prerequisites": [
+    "ode-complex-roots"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-repeated-roots-m1",
+    "ode-repeated-roots-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "二重特征根需要补上时间乘指数的第二个独立解；已知一个解时也可用降阶寻找另一个。",
+  "intuition": "把同一根写两遍，只会得到同一个方向，无法匹配两个独立初值。",
+  "objectives": [
+    "构造重根解",
+    "使用降阶公式及其条件"
+  ],
+  "formalDefinition": {
+    "text": "重根与降阶",
+    "latex": "y_2=y_1\\int\\frac{e^{-\\int p(t)dt}}{y_1^2}\\,dt",
+    "conditions": [
+      "方程 $y''+py'+qy=0$ 的系数连续，且已知解 $y_1$ 在所用子区间非零。"
+    ]
+  },
+  "learningCheck": {
+    "question": "二重根的第二个独立解通常是什么？",
+    "choices": [
+      "同一指数的常数倍",
+      "时间乘以该指数",
+      "指数的平方"
+    ],
+    "correctIndex": 1,
+    "explanation": "时间因子提供新的初值方向。"
+  },
+  "teaching": {
+    "explain": "重根的问题是解的方向不够；时间因子补出一个真正独立的方向。",
+    "steps": [
+      {
+        "title": "负根",
+        "preset": {
+          "a": -1,
+          "b": 2
+        },
+        "observation": "两个基解最终都衰减。",
+        "instruction": "将重复实根 $r$设为 $-1$；将观察时间 $t$设为 $2$。"
+      },
+      {
+        "title": "零根",
+        "preset": {
+          "a": 0,
+          "b": 2
+        },
+        "observation": "基解成为一与时间。",
+        "instruction": "将重复实根 $r$设为 $0$；将观察时间 $t$设为 $2$。"
+      },
+      {
+        "title": "正根",
+        "preset": {
+          "a": 0.5,
+          "b": 2
+        },
+        "observation": "两个方向允许增长。",
+        "instruction": "将重复实根 $r$设为 $0.5$；将观察时间 $t$设为 $2$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-repeated-roots",
+    "caption": "对照重复指数与补出的时间乘指数解。两者的 Wronskian 不为零。",
+    "prediction": "重复根为负数时，时间因子会阻止最终衰减吗？"
+  }
+}

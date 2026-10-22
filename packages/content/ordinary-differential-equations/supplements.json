@@ -1,0 +1,980 @@
+{
+  "reviews": [
+    {
+      "chapterId": "ode-intro",
+      "title": "方程、解与变化率 · 章末回顾",
+      "questions": [
+        {
+          "id": "ode-review-1-1",
+          "problem": "$y'=4y,y(0)=3$，求解并说明最大区间。",
+          "hint": "从指数族匹配初值。",
+          "solution": [
+            "通解 $Ce^{4t}$；初值给 $C=3$，任意有限时间有定义。"
+          ],
+          "answer": "$3e^{4t}$，实轴。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ode-review-1-2",
+          "problem": "$y''+(y')^2=0$ 如何分类？",
+          "hint": "看最高导数与未知导数的幂次。",
+          "solution": [
+            "最高二阶，但含一阶导数的平方。"
+          ],
+          "answer": "二阶非线性。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ode-review-1-3",
+          "problem": "$y'=t-y$ 在点 $(2,5)$ 的斜率？",
+          "hint": "代入右端。",
+          "solution": [
+            "$2-5=-3$。"
+          ],
+          "answer": "$-3$。",
+          "difficulty": 1,
+          "misconceptionTags": []
+        }
+      ]
+    },
+    {
+      "chapterId": "ode-first-order",
+      "title": "一阶方程的求解方法 · 章末回顾",
+      "questions": [
+        {
+          "id": "ode-review-2-1",
+          "problem": "解 $y'=3ty,y(0)=2$。",
+          "hint": "分离变量。",
+          "solution": [
+            "积分对数得 $3t^2/2+C$；匹配初值。"
+          ],
+          "answer": "$2e^{3t^2/2}$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ode-review-2-2",
+          "problem": "解 $y'+2y=8,y(0)=7$。",
+          "hint": "平衡值为四。",
+          "solution": [
+            "通解 $4+Ce^{-2t}$，初值给 $C=3$。"
+          ],
+          "answer": "$4+3e^{-2t}$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ode-review-2-3",
+          "problem": "求 $(3t^2+y)dt+(t+2y)dy=0$ 的隐式解。",
+          "hint": "比较交叉偏导后找势函数。",
+          "solution": [
+            "偏导同为一；势函数 $t^3+ty+y^2$。"
+          ],
+          "answer": "$t^3+ty+y^2=C$。",
+          "difficulty": 3,
+          "misconceptionTags": []
+        }
+      ]
+    },
+    {
+      "chapterId": "ode-existence",
+      "title": "存在、唯一与延拓 · 章末回顾",
+      "questions": [
+        {
+          "id": "ode-review-3-1",
+          "problem": "$y'=\\sqrt{\\lvert y\\rvert},y(0)=0$ 是否局部唯一？",
+          "hint": "构造等待后离开的解。",
+          "solution": [
+            "零解成立；对任意 $c\\ge0$，$t\\le c$ 时零，之后 $(t-c)^2/4$ 也满足。"
+          ],
+          "answer": "不唯一。",
+          "difficulty": 3,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ode-review-3-2",
+          "problem": "$y'=y^2,y(0)=5$ 的前向最大时间？",
+          "hint": "求分母零点。",
+          "solution": [
+            "$y=5/(1-5t)$，在五分之一处爆破。"
+          ],
+          "answer": "$1/5$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ode-review-3-3",
+          "problem": "$y'=-2y$ 的两解初值差为 $0.4$，求两时间单位后的绝对差。",
+          "hint": "求差的精确方程。",
+          "solution": [
+            "差按 $e^{-2t}$ 缩小。"
+          ],
+          "answer": "$0.4e^{-4}$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        }
+      ]
+    },
+    {
+      "chapterId": "ode-second-order",
+      "title": "二阶线性方程 · 章末回顾",
+      "questions": [
+        {
+          "id": "ode-review-4-1",
+          "problem": "解 $y''+6y'+9y=0$。",
+          "hint": "特征式为完全平方。",
+          "solution": [
+            "重根负三，补时间因子。"
+          ],
+          "answer": "$(C+Dt)e^{-3t}$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ode-review-4-2",
+          "problem": "解 $y''+16y=0,y(0)=2,y'(0)=4$。",
+          "hint": "频率四。",
+          "solution": [
+            "余弦系数二，正弦系数一。"
+          ],
+          "answer": "$2\\cos4t+\\sin4t$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ode-review-4-3",
+          "problem": "同一方程中 $p=-1$，若 $W(0)=2$，求 Wronskian。",
+          "hint": "使用 Abel 公式。",
+          "solution": [
+            "负积分系数为正时间。"
+          ],
+          "answer": "$2e^t$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        }
+      ]
+    },
+    {
+      "chapterId": "ode-forcing",
+      "title": "非齐次方程与振动 · 章末回顾",
+      "questions": [
+        {
+          "id": "ode-review-5-1",
+          "problem": "求 $y''+9y=3\\cos3t$ 的共振特解。",
+          "hint": "外力正好匹配固有频率。",
+          "solution": [
+            "系数 $F/(2\\omega_0)=3/6$。"
+          ],
+          "answer": "$t\\sin3t/2$。",
+          "difficulty": 3,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ode-review-5-2",
+          "problem": "质量一、刚度九的临界阻尼系数？",
+          "hint": "用平方判别式。",
+          "solution": [
+            "$c=2\\sqrt{mk}=6$。"
+          ],
+          "answer": "$6$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ode-review-5-3",
+          "problem": "$m=k=F=1,c=3,\\omega=1$ 的稳态幅值？",
+          "hint": "实部分母为零。",
+          "solution": [
+            "幅值为 $1/(c\\omega)$。"
+          ],
+          "answer": "$1/3$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        }
+      ]
+    },
+    {
+      "chapterId": "ode-higher-order",
+      "title": "高阶线性方程 · 章末回顾",
+      "questions": [
+        {
+          "id": "ode-review-6-1",
+          "problem": "解 $y''''=0$。",
+          "hint": "积分四次。",
+          "solution": [
+            "四个自由系数给三次多项式。"
+          ],
+          "answer": "$C_0+C_1t+C_2t^2+C_3t^3$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ode-review-6-2",
+          "problem": "解 $t^2y''-ty'=0$，取正区间。",
+          "hint": "指标式为 $r(r-2)$。",
+          "solution": [
+            "两个根为零和二。"
+          ],
+          "answer": "$C+Dt^2$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ode-review-6-3",
+          "problem": "$-y''=\\lambda y$ 在长度二的区间两端为零，最小特征值？",
+          "hint": "使用 Dirichlet 公式。",
+          "solution": [
+            "取模式一、长度二。"
+          ],
+          "answer": "$\\pi^2/4$。",
+          "difficulty": 3,
+          "misconceptionTags": []
+        }
+      ]
+    },
+    {
+      "chapterId": "ode-laplace",
+      "title": "Laplace 变换 · 章末回顾",
+      "questions": [
+        {
+          "id": "ode-review-7-1",
+          "problem": "逆变换 $1/((s+2)(s+3))$。",
+          "hint": "拆成两个一阶极点。",
+          "solution": [
+            "等于 $1/(s+2)-1/(s+3)$。"
+          ],
+          "answer": "$e^{-2t}-e^{-3t}$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ode-review-7-2",
+          "problem": "写出从时间二到五开启的幅值三外力。",
+          "hint": "相减两个开关。",
+          "solution": [
+            "在二打开三，在五减去三。"
+          ],
+          "answer": "$3[H(t-2)-H(t-5)]$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ode-review-7-3",
+          "problem": "质量三的振子在正时间受冲量负六，位置和速度各怎样变？",
+          "hint": "跨点积分。",
+          "solution": [
+            "位置连续，速度差为负六除以三。"
+          ],
+          "answer": "位置不跳，速度跳 $-2$。",
+          "difficulty": 3,
+          "misconceptionTags": []
+        }
+      ]
+    },
+    {
+      "chapterId": "ode-systems",
+      "title": "线性微分方程组 · 章末回顾",
+      "questions": [
+        {
+          "id": "ode-review-8-1",
+          "problem": "解 $x'=-2x,y'=3y$，初值 $(1,2)$。",
+          "hint": "逐分量指数。",
+          "solution": [
+            "两个初值分别作为指数系数。"
+          ],
+          "answer": "$(e^{-2t},2e^{3t})$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ode-review-8-2",
+          "problem": "求 $A=\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}$ 的指数。",
+          "hint": "标量部分加平方为零的部分。",
+          "solution": [
+            "幂零项指数为 $I+tN$。"
+          ],
+          "answer": "$e^t\\begin{pmatrix}1&2t\\\\0&1\\end{pmatrix}$。",
+          "difficulty": 3,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ode-review-8-3",
+          "problem": "线性系统两个特征值为 $-1\\pm3i$，原点怎样？",
+          "hint": "看实部。",
+          "solution": [
+            "严格负实部给衰减旋转。"
+          ],
+          "answer": "渐近稳定螺旋。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        }
+      ]
+    },
+    {
+      "chapterId": "ode-nonlinear",
+      "title": "非线性系统与定性分析 · 章末回顾",
+      "questions": [
+        {
+          "id": "ode-review-9-1",
+          "problem": "$y'=y(2-y)$ 的平衡稳定性？",
+          "hint": "求零点并测试导数。",
+          "solution": [
+            "零与二，导数 $2-2y$。"
+          ],
+          "answer": "零不稳定，二渐近稳定。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ode-review-9-2",
+          "problem": "$x'=-x^3,y'=-y$ 的原点能只靠 Jacobian 判定吗？",
+          "hint": "看是否有零特征值。",
+          "solution": [
+            "Jacobian 特征值零与负一，线性化不充分；可另用平方和证明。"
+          ],
+          "answer": "不能只靠线性化。",
+          "difficulty": 3,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ode-review-9-3",
+          "problem": "$y'=\\mu y-y^3$ 在 $\\mu=4$ 的稳定非零平衡？",
+          "hint": "求非零根。",
+          "solution": [
+            "$y^2=4$；导数在两根为负八。"
+          ],
+          "answer": "$y=\\pm2$。",
+          "difficulty": 3,
+          "misconceptionTags": []
+        }
+      ]
+    },
+    {
+      "chapterId": "ode-series",
+      "title": "幂级数与 Frobenius 方法 · 章末回顾",
+      "questions": [
+        {
+          "id": "ode-review-10-1",
+          "problem": "$y''+2y=0,y(0)=1,y'(0)=0$ 的四次 Taylor 截断？",
+          "hint": "使用系数递推。",
+          "solution": [
+            "二次系数负一，四次系数六分之一。"
+          ],
+          "answer": "$1-t^2+t^4/6$。",
+          "difficulty": 3,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ode-review-10-2",
+          "problem": "$t^2y''+ty'-4y=0$ 的指标根？",
+          "hint": "写指标式。",
+          "solution": [
+            "$r^2-4=0$。"
+          ],
+          "answer": "$\\pm2$。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ode-review-10-3",
+          "problem": "$J_0$ 的四次项系数为何为 $1/64$？",
+          "hint": "令级数索引二。",
+          "solution": [
+            "$4^2(2!)^2=64$，符号为正。"
+          ],
+          "answer": "由递推与规范值确定。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        }
+      ]
+    },
+    {
+      "chapterId": "ode-numerical",
+      "title": "数值解、误差与稳定性 · 章末回顾",
+      "questions": [
+        {
+          "id": "ode-review-11-1",
+          "problem": "$y'=-3y,y_0=2,h=1/3$，Euler 一步多少？",
+          "hint": "计算放大因子。",
+          "solution": [
+            "$1+h\\lambda=0$，所以数值归零，但精确值仍为 $2/e$。"
+          ],
+          "answer": "$0$，未精确跟随。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ode-review-11-2",
+          "problem": "测得步长减半后误差约缩小八倍，估计阶数？",
+          "hint": "解 $2^p=8$。",
+          "solution": [
+            "得到三阶，须处于渐近区间。"
+          ],
+          "answer": "约三阶。",
+          "difficulty": 2,
+          "misconceptionTags": []
+        },
+        {
+          "id": "ode-review-11-3",
+          "problem": "$y'=-20y$ 用显式 Euler 的稳定步长范围？",
+          "hint": "负实轴稳定条件。",
+          "solution": [
+            "$-2<-20h<0$。"
+          ],
+          "answer": "$0<h<1/10$。",
+          "difficulty": 3,
+          "misconceptionTags": []
+        }
+      ]
+    }
+  ],
+  "exam": [
+    {
+      "id": "ode-exam-1",
+      "problem": "解 $y'=5y,y(0)=-2$。",
+      "hint": "指数解也允许负初值。",
+      "solution": [
+        "常数由初值给负二。"
+      ],
+      "answer": "$-2e^{5t}$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-exam-2",
+      "problem": "$y'=y^2,y(0)=1/3$ 的最大区间？",
+      "hint": "找分母首个零点。",
+      "solution": [
+        "$y=1/(3-t)$，原点在极点左侧。"
+      ],
+      "answer": "$(-\\infty,3)$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-exam-3",
+      "problem": "解 $y'+3y=9,y(0)=0$。",
+      "hint": "移开平衡三。",
+      "solution": [
+        "差值按 $e^{-3t}$ 衰减，初始差负三。"
+      ],
+      "answer": "$3(1-e^{-3t})$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-exam-4",
+      "problem": "Logistic 模型 $y'=3y(1-y/4)$ 中初值为四时怎样运动？",
+      "hint": "它正是平衡。",
+      "solution": [
+        "右端恒零。"
+      ],
+      "answer": "$y\\equiv4$。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-exam-5",
+      "problem": "$y'=\\lvert y\\rvert$ 是否满足局部状态 Lipschitz 条件？",
+      "hint": "利用绝对值三角不等式。",
+      "solution": [
+        "$\\lvert\\lvert u\\rvert-\\lvert v\\rvert\\rvert\\le\\lvert u-v\\rvert$。"
+      ],
+      "answer": "满足，常数可取一，虽零点不可微。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-exam-6",
+      "problem": "解 $y''-4y=0,y(0)=0,y'(0)=4$。",
+      "hint": "根为正负二。",
+      "solution": [
+        "系数和零、系数差二。"
+      ],
+      "answer": "$e^{2t}-e^{-2t}$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-exam-7",
+      "problem": "解 $y''+4y'+4y=0,y(0)=0,y'(0)=1$。",
+      "hint": "负二重根。",
+      "solution": [
+        "通解 $(C+Dt)e^{-2t}$，初值给零与一。"
+      ],
+      "answer": "$te^{-2t}$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-exam-8",
+      "problem": "求 $y''+4y=2\\cos2t$ 的共振特解。",
+      "hint": "取外力系数除以两倍固有频率。",
+      "solution": [
+        "$2/(2\\times2)=1/2$。"
+      ],
+      "answer": "$t\\sin2t/2$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-exam-9",
+      "problem": "对 $m=1,k=4,c=1$，阻尼类型是什么？",
+      "hint": "比较一与十六。",
+      "solution": [
+        "判别式为负。"
+      ],
+      "answer": "欠阻尼。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-exam-10",
+      "problem": "解 $t^2y''+2ty'-2y=0$，正区间。",
+      "hint": "指标式 $r^2+r-2$。",
+      "solution": [
+        "根一与负二。"
+      ],
+      "answer": "$Ct+Dt^{-2}$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-exam-11",
+      "problem": "$y''+y=0,y(0)=y(2\\pi)=0$ 是否唯一？",
+      "hint": "保留正弦方向。",
+      "solution": [
+        "任意倍数正弦都满足。"
+      ],
+      "answer": "不唯一。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-exam-12",
+      "problem": "逆变换 $4/((s+2)^2+16)$。",
+      "hint": "识别移位正弦。",
+      "solution": [
+        "角频率四，衰减率二。"
+      ],
+      "answer": "$e^{-2t}\\sin4t$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-exam-13",
+      "problem": "解 $y'+y=H(t-3)$，零初值。",
+      "hint": "延迟单位阶跃响应。",
+      "solution": [
+        "开关前零，之后为 $1-e^{-(t-3)}$。"
+      ],
+      "answer": "$H(t-3)(1-e^{-(t-3)})$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-exam-14",
+      "problem": "求常数一与时间函数的卷积。",
+      "hint": "积分 $t-\\tau$。",
+      "solution": [
+        "$\\int_0^t(t-\\tau)d\\tau=t^2/2$。"
+      ],
+      "answer": "$t^2/2$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-exam-15",
+      "problem": "解 $x'=-x,y'=y$，哪些初值前向趋零？",
+      "hint": "去掉增长方向。",
+      "solution": [
+        "第二初值须为零，第一任意。"
+      ],
+      "answer": "$y_0=0$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-exam-16",
+      "problem": "矩阵 $\\begin{pmatrix}0&-2\\\\2&0\\end{pmatrix}$ 的指数？",
+      "hint": "标准旋转块。",
+      "solution": [
+        "角速度二，无径向放缩。"
+      ],
+      "answer": "$\\begin{pmatrix}\\cos2t&-\\sin2t\\\\\\sin2t&\\cos2t\\end{pmatrix}$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-exam-17",
+      "problem": "$y'=y^2(1-y)$ 的零平衡稳定吗？",
+      "hint": "检查左右符号。",
+      "solution": [
+        "零附近右端两侧都正，负侧靠近、正侧离开。"
+      ],
+      "answer": "整体不稳定，一侧吸引。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-exam-18",
+      "problem": "无阻尼摆从 $(0,2)$ 起步，能量是多少？",
+      "hint": "仅动能。",
+      "solution": [
+        "速度平方一半为二。"
+      ],
+      "answer": "$2$，处在分离能量层上。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-exam-19",
+      "problem": "$y''+y=0,y(0)=0,y'(0)=2$ 的五次截断？",
+      "hint": "两倍正弦 Taylor。",
+      "solution": [
+        "奇次项系数依次二、负三分之一、六十分之一。"
+      ],
+      "answer": "$2t-t^3/3+t^5/60$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-exam-20",
+      "problem": "二阶普通点级数解的两个自由初始系数是什么？",
+      "hint": "从函数值和导数读。",
+      "solution": [
+        "分别为常数项与一次项。"
+      ],
+      "answer": "$a_0=y(0),a_1=y'(0)$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-exam-21",
+      "problem": "$y'=-8y$，显式 Euler 取步长 $1/2$ 是否稳定？",
+      "hint": "看放大因子。",
+      "solution": [
+        "$1-4=-3$，模大于一。"
+      ],
+      "answer": "不稳定。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-exam-22",
+      "problem": "RK4 步长加倍比较中，细粗差为 $0.015$，局部误差估计大小？",
+      "hint": "除以十五。",
+      "solution": [
+        "$0.015/15=0.001$，仅为局部渐近估计。"
+      ],
+      "answer": "约 $0.001$。",
+      "difficulty": 3,
+      "misconceptionTags": []
+    }
+  ],
+  "glossary": [
+    {
+      "term": "微分方程在描述什么",
+      "meaning": "微分方程约束未知函数及其导数；求解就是找出满足这个约束的函数。",
+      "lessonId": "ode-meaning"
+    },
+    {
+      "term": "阶数、线性与标准形式",
+      "meaning": "最高阶导数决定阶数；未知函数及各阶导数是否只以一次形式出现，决定线性性。",
+      "lessonId": "ode-classification"
+    },
+    {
+      "term": "初值与解的区间",
+      "meaning": "初值从解族中选出满足起点的解；答案还必须包含解能延伸到哪里。",
+      "lessonId": "ode-initial-values"
+    },
+    {
+      "term": "方向场与积分曲线",
+      "meaning": "方向场把每一点允许的斜率画出来，解曲线的切线必须与它一致。",
+      "lessonId": "ode-direction-fields"
+    },
+    {
+      "term": "可分离变量方程",
+      "meaning": "当变化率能写成时间因子与状态因子的乘积时，可以分别积分。",
+      "lessonId": "ode-separable"
+    },
+    {
+      "term": "一阶线性方程与积分因子",
+      "meaning": "积分因子把一阶线性方程变成一个乘积的导数，从而直接积分。",
+      "lessonId": "ode-linear-first"
+    },
+    {
+      "term": "增长、冷却与混合",
+      "meaning": "建模先计算流入与流出，解的物理意义由单位、初值和适用条件共同决定。",
+      "lessonId": "ode-models"
+    },
+    {
+      "term": "恰当方程与势函数",
+      "meaning": "恰当方程把沿解曲线的变化写成某个函数的全微分，因此解是一条等值线。",
+      "lessonId": "ode-exact"
+    },
+    {
+      "term": "齐次代换与积分因子的识别",
+      "meaning": "当右端只依赖比值时，代入比值变量可把一阶方程化成可分离形式。",
+      "lessonId": "ode-substitutions"
+    },
+    {
+      "term": "Bernoulli 方程与 Logistic 模型",
+      "meaning": "Bernoulli 代换把特定幂次非线性化成线性方程，同时需要保留被除掉的解。",
+      "lessonId": "ode-bernoulli"
+    },
+    {
+      "term": "局部存在唯一性",
+      "meaning": "右端连续通常保证局部存在；对状态变量的局部 Lipschitz 条件进一步保证唯一。",
+      "lessonId": "ode-existence"
+    },
+    {
+      "term": "积分方程与 Picard 迭代",
+      "meaning": "把初值问题写成积分方程后，可以不断代入上一条近似曲线，构造局部解。",
+      "lessonId": "ode-picard"
+    },
+    {
+      "term": "最大区间与有限时间爆破",
+      "meaning": "局部解可以不断延拓；有限端点通常意味着离开定义域或状态失去有界性。",
+      "lessonId": "ode-continuation"
+    },
+    {
+      "term": "连续依赖与误差增长",
+      "meaning": "在 Lipschitz 条件和共同存在区间内，初值误差可由指数上界控制。",
+      "lessonId": "ode-sensitivity"
+    },
+    {
+      "term": "叠加原理与二阶解空间",
+      "meaning": "二阶齐次线性方程的全部解，由两个线性无关的解线性组合而成。",
+      "lessonId": "ode-superposition"
+    },
+    {
+      "term": "Wronskian 与 Abel 公式",
+      "meaning": "Wronskian 是函数值与导数组成的行列式；对同一线性方程的解，它判断能否独立匹配初值。",
+      "lessonId": "ode-wronskian"
+    },
+    {
+      "term": "特征方程与不同实根",
+      "meaning": "常系数线性方程代入指数函数后，微分运算变成关于指数增长率的代数方程。",
+      "lessonId": "ode-real-roots"
+    },
+    {
+      "term": "复根与真实振荡",
+      "meaning": "一对共轭复根给出实数解中的衰减或增长振荡。",
+      "lessonId": "ode-complex-roots"
+    },
+    {
+      "term": "重根与降阶",
+      "meaning": "二重特征根需要补上时间乘指数的第二个独立解；已知一个解时也可用降阶寻找另一个。",
+      "lessonId": "ode-repeated-roots"
+    },
+    {
+      "term": "待定系数与共振修正",
+      "meaning": "特定外力在求导下保持有限种形式，可以先选同类试解，再代回求系数。",
+      "lessonId": "ode-undetermined"
+    },
+    {
+      "term": "参数变易法",
+      "meaning": "参数变易把齐次解前的常数改成函数，用两个线性条件求出外力造成的变化。",
+      "lessonId": "ode-variation"
+    },
+    {
+      "term": "阻尼振动与临界阻尼",
+      "meaning": "阻尼通过速度耗散能量；特征根把响应分成欠阻尼、临界阻尼与过阻尼。",
+      "lessonId": "ode-damping"
+    },
+    {
+      "term": "受迫振动与共振",
+      "meaning": "无阻尼系统被固有频率持续驱动时，可出现随时间增长的共振项。",
+      "lessonId": "ode-resonance"
+    },
+    {
+      "term": "频率响应、幅值与相位",
+      "meaning": "有正阻尼的线性系统最终以外力频率振动，幅值和相位由频率响应决定。",
+      "lessonId": "ode-frequency-response"
+    },
+    {
+      "term": "高阶常系数线性方程",
+      "meaning": "高阶常系数齐次解由特征根及其重数组成，全部独立解的数量等于阶数。",
+      "lessonId": "ode-higher-linear"
+    },
+    {
+      "term": "Euler–Cauchy 方程",
+      "meaning": "Euler–Cauchy 方程中的系数幂次与导数阶数配合，可以用幂函数或对数时间化简。",
+      "lessonId": "ode-euler-cauchy"
+    },
+    {
+      "term": "降成一阶系统与状态变量",
+      "meaning": "一个高阶方程可以用函数及其低阶导数组成的状态，改写成一阶方程组。",
+      "lessonId": "ode-system-reduction"
+    },
+    {
+      "term": "边值条件与特征值问题",
+      "meaning": "边值条件分布在不同位置，可能导致无解、多解或只在特定参数下出现非零解。",
+      "lessonId": "ode-boundary-values"
+    },
+    {
+      "term": "Laplace 变换与收敛",
+      "meaning": "Laplace 变换用衰减指数对整段未来加权积分，把时间函数变成频域变量的函数。",
+      "lessonId": "ode-laplace-definition"
+    },
+    {
+      "term": "基本变换、平移与逆变换",
+      "meaning": "线性性、指数平移与部分分式把许多逆变换拆成基本函数。",
+      "lessonId": "ode-laplace-rules"
+    },
+    {
+      "term": "用 Laplace 解初值问题",
+      "meaning": "导数的变换把初始数据保留为代数项，求解微分方程因此变成求解频域未知量。",
+      "lessonId": "ode-laplace-ivp"
+    },
+    {
+      "term": "阶跃输入与时间延迟",
+      "meaning": "阶跃函数记录输入开始的时刻；延迟规则必须连同函数内部的时间一起移动。",
+      "lessonId": "ode-step-input"
+    },
+    {
+      "term": "冲激与跳跃条件",
+      "meaning": "冲激不是普通无限高函数，而是用积分作用定义的理想集中输入。",
+      "lessonId": "ode-impulse"
+    },
+    {
+      "term": "卷积与一般外力响应",
+      "meaning": "线性时不变系统的零初值响应，是外力与因果冲激响应的卷积。",
+      "lessonId": "ode-convolution"
+    },
+    {
+      "term": "线性系统与基本矩阵",
+      "meaning": "线性系统的基本矩阵用独立解作列，把任意初始状态映射到后续状态。",
+      "lessonId": "ode-linear-systems"
+    },
+    {
+      "term": "特征方向与节点、鞍点",
+      "meaning": "常系数系统的特征向量给出不转弯的运动方向，特征值给出沿该方向的指数变化。",
+      "lessonId": "ode-eigen-systems"
+    },
+    {
+      "term": "矩阵指数与连续时间演化",
+      "meaning": "矩阵指数把标量指数推广成线性系统的演化算子，对不可对角化矩阵同样存在。",
+      "lessonId": "ode-matrix-exponential"
+    },
+    {
+      "term": "重根系统与广义特征方向",
+      "meaning": "特征向量不足时，幂零部分在矩阵指数中产生时间多项式，补出独立解。",
+      "lessonId": "ode-defective-systems"
+    },
+    {
+      "term": "复特征值、旋转与稳定性",
+      "meaning": "复特征值的实部控制半径趋势，虚部控制绕转；线性系统的中心不等于渐近稳定。",
+      "lessonId": "ode-spirals"
+    },
+    {
+      "term": "非齐次系统与变常数公式",
+      "meaning": "非齐次线性系统的解由初值传播与外力传播两部分组成。",
+      "lessonId": "ode-system-forcing"
+    },
+    {
+      "term": "自治方程与相线",
+      "meaning": "一维自治方程的符号给出状态增加或减少的方向，平衡点把状态轴分成不同区间。",
+      "lessonId": "ode-phase-line"
+    },
+    {
+      "term": "Jacobian 与局部线性化",
+      "meaning": "非线性系统在平衡附近的一阶近似由 Jacobian 决定；双曲平衡的稳定类型可由线性化判断。",
+      "lessonId": "ode-linearization-systems"
+    },
+    {
+      "term": "零增长线与捕食模型",
+      "meaning": "零增长线把相平面划成分量上升、下降的区域；它们的交点才是平衡。",
+      "lessonId": "ode-nullclines"
+    },
+    {
+      "term": "能量、摆与 Lyapunov 思路",
+      "meaning": "能量或 Lyapunov 函数用一个标量控制整个状态的运动，不必求出每条轨迹。",
+      "lessonId": "ode-energy"
+    },
+    {
+      "term": "参数变化与基本分岔",
+      "meaning": "参数越过临界值时，平衡点的数量或稳定性可能改变，这种结构变化称为分岔。",
+      "lessonId": "ode-bifurcations"
+    },
+    {
+      "term": "普通点的幂级数解",
+      "meaning": "在普通点附近，将解写成幂级数，按同次幂比较系数便得到递推关系。",
+      "lessonId": "ode-power-series"
+    },
+    {
+      "term": "正则奇点与指标方程",
+      "meaning": "正则奇点附近，解可能需要幂次前因子；Frobenius 方法先用最低次项决定起始指数。",
+      "lessonId": "ode-frobenius"
+    },
+    {
+      "term": "重指标根与对数解",
+      "meaning": "指标根重合或相差整数时，第二条独立解可能出现对数，不能机械写出两条幂级数。",
+      "lessonId": "ode-frobenius-roots"
+    },
+    {
+      "term": "从递推到特殊函数",
+      "meaning": "特殊函数常由微分方程与规范化条件定义，级数递推使它们可计算、可检验。",
+      "lessonId": "ode-special-functions"
+    },
+    {
+      "term": "Euler 方法",
+      "meaning": "Euler 方法用当前斜率预测下一时刻，把连续变化近似成一段段切线推进。",
+      "lessonId": "ode-euler"
+    },
+    {
+      "term": "中点与 Heun 二阶方法",
+      "meaning": "二阶方法增加一次斜率评估，用中点预测或两端斜率平均改进一步结果。",
+      "lessonId": "ode-second-order-numerics"
+    },
+    {
+      "term": "经典四阶 Runge–Kutta",
+      "meaning": "经典 RK4 通过四次精心安排的斜率评估，在光滑条件下得到四阶全局精度。",
+      "lessonId": "ode-rk4"
+    },
+    {
+      "term": "局部误差与全局误差",
+      "meaning": "单步误差描述从正确起点迈一步的偏差；全局误差还包含此前误差的传播与累积。",
+      "lessonId": "ode-error-control"
+    },
+    {
+      "term": "绝对稳定性与刚性",
+      "meaning": "数值方法也有自己的动力学；步长过大时，衰减方程的近似解可能振荡甚至爆炸。",
+      "lessonId": "ode-stability-stiffness"
+    },
+    {
+      "term": "自适应步长与求解流程",
+      "meaning": "自适应方法根据局部误差估计接受或拒绝一步，并调整下一步长度，而不是固定用最小步长。",
+      "lessonId": "ode-adaptive"
+    }
+  ],
+  "appendices": [
+    {
+      "title": "阅读起点与先修",
+      "text": "前半卷需要一元求导、积分、指数与三角函数；级数章需要 Taylor 与收敛概念。恰当方程只需局部偏导，正文已解释所用规则。线性系统章需要矩阵乘法、特征值与基；可直接沿先修链接查阅线性代数，不要求先读完全部微积分 III。"
+    },
+    {
+      "title": "存在、唯一与积分不等式的证明边界",
+      "text": "局部存在唯一性采用 Picard–Lindelof 定理：在初值矩形中限制时间长度，使积分映射保留矩形并成为压缩。完备函数空间上的压缩映射定理在此引用，不展开实分析证明。连续右端的局部存在引用 Peano 定理。Gronwall 不等式可由对上界函数乘指数积分因子得到；这些结论不保证有限时间之外仍可延拓。"
+    },
+    {
+      "title": "线性解空间与基本矩阵",
+      "text": "连续系数的标准线性初值问题有唯一解，初始数据与解构成线性一一对应，因此解空间维数等于阶数。基本矩阵行列式满足 $\\det\\Phi(t)=\\det\\Phi(t_0)\\exp(\\int_{t_0}^t\\operatorname{tr}A(s)ds)$，可由行列式逐列求导得到；它说明独立初始解不会在正规区间中突然失去独立性。"
+    },
+    {
+      "title": "变换、冲激与跳点约定",
+      "text": "本卷采用单边因果 Laplace 变换，普通初值取零时刻右极限。严格正时间的冲激按广义函数处理，冲激的变换为指数延迟因子。完整分布理论和零时刻冲激的不同工程约定不在本卷推导。普通分段函数的单点取值不影响积分变换；经典微分等式在跳点两侧分别解释，必要时使用分布跳跃条件。"
+    },
+    {
+      "title": "稳定性结论的范围",
+      "text": "稳定表示所有足够近初值始终保持近；渐近稳定还要求趋近平衡。非线性线性化结论依赖平衡附近的一阶连续可微性，双曲情形可引用线性化稳定性定理；纯虚或零根须进一步研究。Lyapunov 导数非正只直接支持不增估计；要得吸引性还须研究零导数集合的不变运动。本卷不证明 Hartman–Grobman 或一般不变集定理。"
+    },
+    {
+      "title": "级数与数值方法的证据",
+      "text": "普通点解析性与 Frobenius 存在理论作为标准局部定理使用；递推算例在各节独立计算。数值方法的阶数结论限定足够光滑、固定有限区间与误差稳定传播。测试方程的稳定域只是诊断工具。步长加倍是局部渐近误差估计，不能代替全局保证；演示中的有限网格、固定步与有限窗口都不会构成定理证明。"
+    }
+  ]
+}

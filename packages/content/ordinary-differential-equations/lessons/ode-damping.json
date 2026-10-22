@@ -1,0 +1,195 @@
+{
+  "id": "ode-damping",
+  "chapterId": "ode-forcing",
+  "number": "5.3",
+  "title": "阻尼振动与临界阻尼",
+  "subtitle": "是否来回振荡，由根决定",
+  "body": [
+    {
+      "title": "建立运动方程",
+      "text": "质量 $m>0$、阻尼 $c\\ge0$、刚度 $k>0$，自由运动满足 $my''+cy'+ky=0$。"
+    },
+    {
+      "title": "三种情况",
+      "text": "比较 $c^2$ 与 $4mk$。小于时有衰减振荡；等于时为重根；大于时有两个实负根。"
+    },
+    {
+      "title": "能量为何下降？",
+      "text": "机械能为 $E=(m(y')^2+ky^2)/2$，求导并代入方程得 $E'=-c(y')^2$。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "从力平衡建立方程。",
+      "latex": "my''=-cy'-ky"
+    },
+    {
+      "text": "代入指数得到根。",
+      "latex": "r=\\frac{-c\\pm\\sqrt{c^2-4mk}}{2m}"
+    },
+    {
+      "text": "能量变化只剩耗散项。",
+      "latex": "E'=y'(my''+ky)=-c(y')^2"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "欠阻尼",
+      "problem": "$y''+2y'+5y=0$ 属于哪类？",
+      "steps": [
+        "判别式为 $4-20=-16$。",
+        "根为 $-1\\pm2i$。"
+      ],
+      "answer": "欠阻尼，包络 $e^{-t}$，振荡角频率二。"
+    },
+    {
+      "title": "临界值",
+      "problem": "质量二、刚度八的临界阻尼系数？",
+      "steps": [
+        "临界条件为 $c^2=4mk$。",
+        "取非负根 $c=2\\sqrt{16}$。"
+      ],
+      "answer": "$c=8$。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-damping-q1",
+      "problem": "$y''+6y'+4y=0$ 是哪种阻尼？",
+      "hint": "比较平方与四倍刚度。",
+      "solution": [
+        "$36>16$。"
+      ],
+      "answer": "过阻尼。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-damping-q2",
+      "problem": "无阻尼无外力时机械能怎样变？",
+      "hint": "令耗散系数为零。",
+      "solution": [
+        "能量导数恒为零。"
+      ],
+      "answer": "守恒。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-damping-q3",
+      "problem": "增大正阻尼是否一定让所有初值的归零时间更短？",
+      "hint": "过阻尼可能出现很慢的根。",
+      "solution": [
+        "大阻尼下一个负根接近零，衰减可变慢。"
+      ],
+      "answer": "不能一概而论。",
+      "difficulty": 3,
+      "misconceptionTags": [
+        "ode-damping-m1"
+      ]
+    },
+    {
+      "id": "ode-damping-q4",
+      "problem": "若阻尼系数取负，能量导数会怎样？",
+      "hint": "看耗散式的符号。",
+      "solution": [
+        "$-c(y')^2\\ge0$，系统注入能量。"
+      ],
+      "answer": "非减，属于负阻尼。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-damping-m1",
+      "claim": "阻尼越大，一切回稳过程越快。",
+      "correction": "过阻尼可能产生很慢的衰减方向。"
+    },
+    {
+      "id": "ode-damping-m2",
+      "claim": "有阻尼就完全不振荡。",
+      "correction": "欠阻尼仍来回振荡，但幅度下降。"
+    }
+  ],
+  "prerequisites": [
+    "ode-complex-roots",
+    "ode-repeated-roots"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-damping-m1",
+    "ode-damping-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "阻尼通过速度耗散能量；特征根把响应分成欠阻尼、临界阻尼与过阻尼。",
+  "intuition": "弹簧把系统拉回，阻尼消耗运动能量，两者的比例决定回到平衡的方式。",
+  "objectives": [
+    "由判别式分类阻尼",
+    "用能量判断耗散方向"
+  ],
+  "formalDefinition": {
+    "text": "阻尼振动与临界阻尼",
+    "latex": "m y''+c y'+k y=0,\\qquad E'=-c(y')^2\\le0",
+    "conditions": [
+      "$m,k>0,c\\ge0$，无外力，位移从平衡位置计；欠阻尼角频率为 $\\sqrt{k/m-(c/2m)^2}$。"
+    ]
+  },
+  "learningCheck": {
+    "question": "临界阻尼对应哪种特征根？",
+    "choices": [
+      "一对纯虚根",
+      "一个实二重负根",
+      "两个正实根"
+    ],
+    "correctIndex": 1,
+    "explanation": "在正质量刚度下，临界根为负实重根。"
+  },
+  "teaching": {
+    "explain": "先读特征根，再看运动。包络、振荡与耗散是同一个模型的三种表达。",
+    "steps": [
+      {
+        "title": "欠阻尼",
+        "preset": {
+          "a": 0.5,
+          "b": 6
+        },
+        "observation": "幅度衰减且仍会穿过平衡位置。",
+        "instruction": "将阻尼系数 $c$设为 $0.5$；将观察时间 $t$设为 $6$。"
+      },
+      {
+        "title": "临界阻尼",
+        "preset": {
+          "a": 2,
+          "b": 6
+        },
+        "observation": "使用实重根公式。",
+        "instruction": "将阻尼系数 $c$设为 $2$；将观察时间 $t$设为 $6$。"
+      },
+      {
+        "title": "过阻尼",
+        "preset": {
+          "a": 4,
+          "b": 6
+        },
+        "observation": "两个负实根中有一个较慢的衰减方向。",
+        "instruction": "将阻尼系数 $c$设为 $4$；将观察时间 $t$设为 $6$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-damping",
+    "caption": "质量和刚度取一；临界阻尼系数为二。时间曲线同时给出能量和耗散率。",
+    "prediction": "从欠阻尼调到过阻尼后，运动怎样改变？"
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "id": "ode-boundary-values",
+  "chapterId": "ode-higher-order",
+  "number": "6.4",
+  "title": "边值条件与特征值问题",
+  "subtitle": "两端条件不等于同点初值",
+  "body": [
+    {
+      "title": "为什么唯一性不同？",
+      "text": "二阶初值定理控制同一时刻的位置与速度，不能直接套在两个端点的函数值上。"
+    },
+    {
+      "title": "一个反例",
+      "text": "$y''+y=0,y(0)=y(\\pi)=0$ 允许任意倍数的正弦，因此有无穷多解。"
+    },
+    {
+      "title": "特征参数怎样产生？",
+      "text": "对 $-y''=\\lambda y$，两端为零会筛选允许的频率，留下离散特征值。这也是后续 PDE 分离变量的入口。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "正参数下写正弦余弦解。",
+      "latex": "y=C\\cos\\sqrt\\lambda t+D\\sin\\sqrt\\lambda t"
+    },
+    {
+      "text": "左端条件去掉余弦项，右端限制频率。",
+      "latex": "C=0,\\quad D\\sin(\\sqrt\\lambda L)=0"
+    },
+    {
+      "text": "非零解要求正弦为零；零与负参数只给零解。",
+      "latex": "\\sqrt\\lambda L=n\\pi\\Rightarrow\\lambda_n=(n\\pi/L)^2"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "区间长度为一",
+      "problem": "求 $-y''=\\lambda y,y(0)=y(1)=0$ 的最小特征值。",
+      "steps": [
+        "非零解要求 $\\sqrt\\lambda=n\\pi$。",
+        "最小正整数为一。"
+      ],
+      "answer": "$\\lambda_1=\\pi^2$。"
+    },
+    {
+      "title": "不相容边界",
+      "problem": "$y''+y=0,y(0)=0,y(\\pi)=1$ 有解吗？",
+      "steps": [
+        "左端条件迫使解为 $D\\sin t$。",
+        "在右端所有这些解都为零。"
+      ],
+      "answer": "无解。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-boundary-values-q1",
+      "problem": "$y''=0,y(0)=1,y(2)=3$ 的解？",
+      "hint": "写成一次函数。",
+      "solution": [
+        "截距一、斜率一。"
+      ],
+      "answer": "$y=1+t$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-boundary-values-q2",
+      "problem": "边界特征值问题为什么排除零函数？",
+      "hint": "零函数满足任意参数。",
+      "solution": [
+        "若允许它，参数无法被筛选。"
+      ],
+      "answer": "只把非零解称为特征函数。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-boundary-values-q3",
+      "problem": "区间长度加倍，最小 Dirichlet 特征值变为几倍？",
+      "hint": "特征值与长度平方成反比。",
+      "solution": [
+        "$(L/(2L))^2=1/4$。"
+      ],
+      "answer": "$1/4$。",
+      "difficulty": 2,
+      "misconceptionTags": [],
+      "numericAnswer": 0.25
+    },
+    {
+      "id": "ode-boundary-values-q4",
+      "problem": "两端零条件下 $\\lambda=0$ 有非零特征函数吗？",
+      "hint": "解一次函数并代两端。",
+      "solution": [
+        "两个条件使两个系数都为零。"
+      ],
+      "answer": "没有。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-boundary-values-m1",
+      "claim": "二阶有两个条件就一定唯一。",
+      "correction": "条件的位置与结构同样重要。"
+    },
+    {
+      "id": "ode-boundary-values-m2",
+      "claim": "零解可以作为任意参数的特征函数。",
+      "correction": "特征函数按定义非零。"
+    }
+  ],
+  "prerequisites": [
+    "ode-system-reduction"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-boundary-values-m1",
+    "ode-boundary-values-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "边值条件分布在不同位置，可能导致无解、多解或只在特定参数下出现非零解。",
+  "intuition": "从一端出发的轨迹不一定刚好满足另一端的要求。",
+  "objectives": [
+    "区分初值与边值问题",
+    "求最简单的边界特征值"
+  ],
+  "formalDefinition": {
+    "text": "边值条件与特征值问题",
+    "latex": "-y''=\\lambda y,\\quad y(0)=y(L)=0\\Rightarrow\\lambda_n=(n\\pi/L)^2,\\quad y_n=\\sin(n\\pi t/L)",
+    "conditions": [
+      "$L>0$，寻求非零经典解，$n=1,2,\\ldots$；零函数不是特征函数。"
+    ]
+  },
+  "learningCheck": {
+    "question": "边值问题与初值问题的关键区别是？",
+    "choices": [
+      "都不需要区间",
+      "条件可以分布在不同端点",
+      "边值问题没有导数"
+    ],
+    "correctIndex": 1,
+    "explanation": "分布的条件会改变可解性与唯一性。"
+  },
+  "teaching": {
+    "explain": "初值是在同一点定起步；边值是在不同地点定目标，两者的存在唯一结论不能互换。",
+    "steps": [
+      {
+        "title": "第一模式",
+        "preset": {
+          "n": 1,
+          "b": 0.5
+        },
+        "observation": "只有一个内部波腹。",
+        "instruction": "将模式编号 $n$设为 $1$；将位置 $t$设为 $0.5$。"
+      },
+      {
+        "title": "第二模式",
+        "preset": {
+          "n": 2,
+          "b": 0.5
+        },
+        "observation": "中点成为内部零点。",
+        "instruction": "将模式编号 $n$设为 $2$；将位置 $t$设为 $0.5$。"
+      },
+      {
+        "title": "第三模式",
+        "preset": {
+          "n": 3,
+          "b": 0.5
+        },
+        "observation": "更多空间振荡对应更大特征值。",
+        "instruction": "将模式编号 $n$设为 $3$；将位置 $t$设为 $0.5$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-boundary-values",
+    "caption": "固定区间长度一，比较允许的非零边界模式；横轴是位置，此处不是初值演化时间。",
+    "prediction": "模式编号增加后，内部零点与特征值怎样变？"
+  }
+}

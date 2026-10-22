@@ -243,3 +243,24 @@ test('Linear Algebra is independently navigable with complete reading, models an
  await expect(page.locator('.problem')).toHaveCount(250);
  await expect(page.locator('.katex-error')).toHaveCount(0);
 });
+
+const odeBook=JSON.parse(fs.readFileSync('packages/content/ordinary-differential-equations/book.json','utf8'));
+test('Ordinary Differential Equations has a complete static curriculum, finite models and printable answers',async({page})=>{
+ for(const id of odeBook.lessonIds){
+  const lesson=JSON.parse(fs.readFileSync('packages/content/ordinary-differential-equations/lessons/'+id+'.json','utf8'));
+  await page.goto('/#/lesson/'+id);
+  await expect(page.getByRole('heading',{name:lesson.title,level:1,exact:true})).toBeVisible();
+  await expect(page.locator('.worked-example')).toHaveCount(2);
+  await page.getByRole('link',{name:'交互演示',exact:true}).click();
+  await expect(page.locator('.spatial-plot')).toBeVisible();
+  for(const slider of await page.getByRole('slider').all()){await slider.press('Home');await slider.press('End');}
+  await expect(page.locator('.katex-error')).toHaveCount(0);
+  await expect(page.locator('svg [d*="NaN"],svg [d*="Infinity"]')).toHaveCount(0);
+  await page.getByRole('link',{name:'练习与解答 4',exact:true}).click();
+  await expect(page.locator('.exercise')).toHaveCount(4);
+ }
+ await page.goto('/ordinary-differential-equations.html');
+ await expect(page.locator('.lesson')).toHaveCount(55);
+ await expect(page.locator('.problem')).toHaveCount(275);
+ await expect(page.locator('.katex-error')).toHaveCount(0);
+});

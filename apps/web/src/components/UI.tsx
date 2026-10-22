@@ -124,7 +124,7 @@ export function BookCover({
   volume?: Volume;
 }) {
   return (
-    <div className={"book-cover " + (small ? "small" : "")}>
+    <div className={"book-cover " + (small ? "small" : "")+(volume.coverTitle.some(line=>line.length>10)?" long-title":"")}>
       <div className="cover-top">
         AI UNIVERSITY<span>MATHEMATICS</span>
       </div>

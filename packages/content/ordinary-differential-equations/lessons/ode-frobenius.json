@@ -1,0 +1,193 @@
+{
+  "id": "ode-frobenius",
+  "chapterId": "ode-series",
+  "number": "10.2",
+  "title": "正则奇点与指标方程",
+  "subtitle": "允许解从非整数幂开始",
+  "body": [
+    {
+      "title": "先检查奇点类型",
+      "text": "对 $y''+P(t)y'+Q(t)y=0$，若 $tP(t)$ 与 $t^2Q(t)$ 在零点解析，则零点是正则奇点。"
+    },
+    {
+      "title": "试解形式",
+      "text": "在正时间分支取 $y=t^r\\sum a_nt^n$，要求 $a_0\\ne0$；最低次项给指标方程。"
+    },
+    {
+      "title": "根决定什么？",
+      "text": "指标根给可能的起始幂次。根差不是整数时通常得到两条 Frobenius 解；整数差和重根还需检查，第二解可能含对数。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "写最低阶项。",
+      "latex": "y\\sim a_0t^r,\\quad y'\\sim ra_0t^{r-1},\\quad y''\\sim r(r-1)a_0t^{r-2}"
+    },
+    {
+      "text": "保留最低次幂的系数。",
+      "latex": "a_0[r(r-1)+p_0r+q_0]t^{r-2}=0"
+    },
+    {
+      "text": "非零首系数迫使括号为零。",
+      "latex": "a_0\\ne0\\Rightarrow r(r-1)+p_0r+q_0=0"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "不同指标根",
+      "problem": "$t^2y''+ty'-y=0$ 的指标根？",
+      "steps": [
+        "$p_0=1,q_0=-1$。",
+        "指标式为 $r^2-1$。"
+      ],
+      "answer": "$r=1,-1$，本例解为 $Ct+D/t$。"
+    },
+    {
+      "title": "判断正则性",
+      "problem": "$y''+y'/t+y/t^2=0$ 在零点怎样？",
+      "steps": [
+        "$tP=1,t^2Q=1$ 均解析。",
+        "指标式为 $r^2+1$。"
+      ],
+      "answer": "正则奇点，正区间实解是对数正弦余弦。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-frobenius-q1",
+      "problem": "$y''+y/t^3=0$ 的零点是否正则奇点？",
+      "hint": "检查平方时间乘系数。",
+      "solution": [
+        "$t^2Q=1/t$ 不在零点解析。"
+      ],
+      "answer": "不是，是非正则奇点。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-frobenius-q2",
+      "problem": "Frobenius 首系数为什么要求非零？",
+      "hint": "否则起始幂次并非真正最低项。",
+      "solution": [
+        "零首项可被吸收到更高起始幂中。"
+      ],
+      "answer": "用于确定真实起始指数。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-frobenius-q3",
+      "problem": "$t^2y''+2ty'=0$ 的指标根？",
+      "hint": "化简 $r(r-1)+2r$。",
+      "solution": [
+        "指标式为 $r(r+1)$。"
+      ],
+      "answer": "$0,-1$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-frobenius-q4",
+      "problem": "普通点方法与 Frobenius 方法能否不检查系数就任选？",
+      "hint": "方法有不同适用条件。",
+      "solution": [
+        "必须先分析展开点的奇性。"
+      ],
+      "answer": "不能。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-frobenius-m1",
+      "claim": "指标根是特征值，与起始幂次无关。",
+      "correction": "它由最低幂次平衡决定。"
+    },
+    {
+      "id": "ode-frobenius-m2",
+      "claim": "正则奇点表示解一定在该点有限。",
+      "correction": "可能出现负幂或对数发散。"
+    }
+  ],
+  "prerequisites": [
+    "ode-power-series",
+    "ode-euler-cauchy"
+  ],
+  "difficulty": 4,
+  "misconceptionTags": [
+    "ode-frobenius-m1",
+    "ode-frobenius-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "正则奇点附近，解可能需要幂次前因子；Frobenius 方法先用最低次项决定起始指数。",
+  "intuition": "普通 Taylor 级数从整数零次起步，而奇点可能要求另一种起跑尺度。",
+  "objectives": [
+    "判断正则奇点",
+    "从最低阶项建立指标方程"
+  ],
+  "formalDefinition": {
+    "text": "正则奇点与指标方程",
+    "latex": "r(r-1)+p_0r+q_0=0,\\quad p_0=\\lim_{t\\to0}tP(t),\\quad q_0=\\lim_{t\\to0}t^2Q(t)",
+    "conditions": [
+      "$tP,t^2Q$ 在零点解析；在 $t>0$ 的穿孔邻域构造解，不声称解能光滑穿过奇点。"
+    ]
+  },
+  "learningCheck": {
+    "question": "正则奇点的常用检查对象是什么？",
+    "choices": [
+      "$tP$ 与 $t^2Q$ 的解析性",
+      "只检查最高阶数",
+      "只检查右端是否为零"
+    ],
+    "correctIndex": 0,
+    "explanation": "这些缩放控制奇点强度。"
+  },
+  "teaching": {
+    "explain": "先判断奇点有多强，再选择允许哪种起始幂次，不要先套一个普通多项式。",
+    "steps": [
+      {
+        "title": "负幂",
+        "preset": {
+          "a": -1,
+          "b": 0.25
+        },
+        "observation": "靠近零点会变大。",
+        "instruction": "将起始幂次 $r$设为 $-1$；将正时间 $t$设为 $0.25$。"
+      },
+      {
+        "title": "分数幂",
+        "preset": {
+          "a": 0.5,
+          "b": 0.25
+        },
+        "observation": "函数趋零但导数可变大。",
+        "instruction": "将起始幂次 $r$设为 $0.5$；将正时间 $t$设为 $0.25$。"
+      },
+      {
+        "title": "整数幂",
+        "preset": {
+          "a": 2,
+          "b": 1
+        },
+        "observation": "熟悉的多项式也是特殊起始尺度。",
+        "instruction": "将起始幂次 $r$设为 $2$；将正时间 $t$设为 $1$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-frobenius",
+    "caption": "观察起始幂次改变零点附近的形状。参数改变时方程也随之改变；这里只画其中一条解，不冒充二阶通解。",
+    "prediction": "起始幂次为负、分数或整数时，零点附近有何不同？"
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "id": "ode-picard",
+  "chapterId": "ode-existence",
+  "number": "3.2",
+  "title": "积分方程与 Picard 迭代",
+  "subtitle": "用整条近似曲线更新整条曲线",
+  "body": [
+    {
+      "title": "为什么等价？",
+      "text": "对连续右端积分可得到初值；反过来对积分式求导得到方程。两者都保留起点。"
+    },
+    {
+      "title": "怎样迭代？",
+      "text": "从常数函数 $y_0(t)=y_0$ 开始，令 $y_{n+1}=y_0+\\int_{t_0}^t f(s,y_n(s))ds$。"
+    },
+    {
+      "title": "什么保证收敛？",
+      "text": "在合适矩形中，右端连续、状态 Lipschitz，且时间区间足够短，使迭代保持在矩形内并形成压缩。本节只证明小区间结论。"
+    }
+  ],
+  "derivation": [
+    {
+      "text": "对 $y'=y,y(0)=1$ 从常数开始。",
+      "latex": "y_0(t)=1"
+    },
+    {
+      "text": "第一次和第二次代入。",
+      "latex": "y_1=1+t,\\qquad y_2=1+t+\\frac{t^2}{2}"
+    },
+    {
+      "text": "不断迭代得到指数部分和。",
+      "latex": "y_n=\\sum_{k=0}^{n}\\frac{t^k}{k!}\\longrightarrow e^t"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "第二轮",
+      "problem": "$y'=2y,y(0)=1$，从常数起算第二轮。",
+      "steps": [
+        "第一轮为 $1+2t$。",
+        "积分 $2(1+2s)$ 得 $1+2t+2t^2$。"
+      ],
+      "answer": "$y_2=1+2t+2t^2$。"
+    },
+    {
+      "title": "显含时间",
+      "problem": "$y'=t,y(0)=3$ 的第一轮。",
+      "steps": [
+        "右端与近似函数无关。",
+        "直接积分时间变量。"
+      ],
+      "answer": "$y_1=3+t^2/2$，已是精确解。"
+    }
+  ],
+  "practice": [
+    {
+      "id": "ode-picard-q1",
+      "problem": "$y'=y,y(0)=2$ 的第一轮？",
+      "hint": "从常数二开始。",
+      "solution": [
+        "$2+\\int_0^t2ds$。"
+      ],
+      "answer": "$2+2t$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-picard-q2",
+      "problem": "同一问题第二轮？",
+      "hint": "再代入第一轮。",
+      "solution": [
+        "$2+\\int_0^t(2+2s)ds$。"
+      ],
+      "answer": "$2+2t+t^2$。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-picard-q3",
+      "problem": "积分式 $y=4+\\int_1^tf(s,y(s))ds$ 对应什么初值？",
+      "hint": "令上下限相同。",
+      "solution": [
+        "在 $t=1$ 时积分为零。"
+      ],
+      "answer": "$y(1)=4$。",
+      "difficulty": 1,
+      "misconceptionTags": []
+    },
+    {
+      "id": "ode-picard-q4",
+      "problem": "$L=2$ 时，半区间长度 $h=1$ 是否满足压缩条件？",
+      "hint": "检查乘积是否严格小于一。",
+      "solution": [
+        "$Lh=2$。"
+      ],
+      "answer": "不满足这个充分条件。",
+      "difficulty": 2,
+      "misconceptionTags": []
+    }
+  ],
+  "commonMistakes": [
+    {
+      "id": "ode-picard-m1",
+      "claim": "Picard 迭代只更新下一个时间点。",
+      "correction": "它更新一整条函数；Euler 方法才按时间步前进。"
+    },
+    {
+      "id": "ode-picard-m2",
+      "claim": "任意大的时间区间都自动压缩。",
+      "correction": "时间长度必须满足相应限制。"
+    }
+  ],
+  "prerequisites": [
+    "ode-existence"
+  ],
+  "difficulty": 3,
+  "misconceptionTags": [
+    "ode-picard-m1",
+    "ode-picard-m2"
+  ],
+  "provenance": {
+    "author": "AI-generated",
+    "version": "0.1.0",
+    "status": "first-edition",
+    "humanReviewed": false
+  },
+  "sources": [
+    "mit-1803",
+    "lebl-diffyqs"
+  ],
+  "concept": "把初值问题写成积分方程后，可以不断代入上一条近似曲线，构造局部解。",
+  "intuition": "每一轮用已有的状态估计，重新累积对应变化率。",
+  "objectives": [
+    "把微分初值问题改写为积分形式",
+    "计算迭代并说明收敛条件"
+  ],
+  "formalDefinition": {
+    "text": "积分方程与 Picard 迭代",
+    "latex": "y(t)=y_0+\\int_{t_0}^t f(s,y(s))\\,ds",
+    "conditions": [
+      "连续右端时与可微初值解等价；压缩论证还要求局部 Lipschitz、区间不越出矩形，且 $Lh<1$。"
+    ]
+  },
+  "learningCheck": {
+    "question": "Picard 迭代中的积分使用哪一轮曲线？",
+    "choices": [
+      "仅使用末点值",
+      "正在求的未知新曲线",
+      "上一轮近似曲线"
+    ],
+    "correctIndex": 2,
+    "explanation": "上一轮给出整个被积函数。"
+  },
+  "teaching": {
+    "explain": "这里的未知量是整条曲线，迭代也是在曲线之间进行。",
+    "steps": [
+      {
+        "title": "常数起步",
+        "preset": {
+          "n": 0,
+          "b": 1
+        },
+        "observation": "第零轮只是初值常数。",
+        "instruction": "将迭代次数 $n$设为 $0$；将观察时间 $t$设为 $1$。"
+      },
+      {
+        "title": "两轮",
+        "preset": {
+          "n": 2,
+          "b": 1
+        },
+        "observation": "得到二次部分和。",
+        "instruction": "将迭代次数 $n$设为 $2$；将观察时间 $t$设为 $1$。"
+      },
+      {
+        "title": "更多轮",
+        "preset": {
+          "n": 8,
+          "b": 1
+        },
+        "observation": "在当前有限窗口内更接近指数解。",
+        "instruction": "将迭代次数 $n$设为 $8$；将观察时间 $t$设为 $1$。"
+      }
+    ]
+  },
+  "interactiveVisual": {
+    "kind": "ode",
+    "function": "ode-picard",
+    "caption": "蓝线是精确指数，金线是 Picard 部分和。这里迭代整条函数，并非时间步进。",
+    "prediction": "增加迭代次数后，整条近似曲线怎样变化？"
+  }
+}
