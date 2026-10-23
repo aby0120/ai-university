@@ -11,7 +11,7 @@ test('programming books are complete published volumes, registered only under Ot
  assert.deepEqual(catalog.volumes.filter(v=>v.categoryId==='other').map(v=>v.id).sort(),['ai-development','c-programming','python-introduction']);
  for(const c of programmingBooks){
   assert.equal(c.book.status,'published');
-  assert.equal(c.book.contribution.submittedBy,c.id==='c-programming'?'GMguimei (AI-assisted)':'aby0120');
+  assert.equal(c.book.contribution.submittedBy,'aby0120');
   assert.equal(c.book.provenance.humanReviewed,false);
   assert.deepEqual(catalog.volumes.find(v=>v.id===c.id).stats,programmingStats(c));
  }
