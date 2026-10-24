@@ -1,0 +1,9 @@
+{
+  "book": "c-programming",
+  "bookVersion": "0.1.0",
+  "sourceCommit": "4d5fbdc91cf0c6733eb3a415d037733b3d609255",
+  "sourceBranch": "codex/c-beginners-textbook",
+  "preview": true,
+  "author": "AI-generated",
+  "humanReviewed": false
+}
